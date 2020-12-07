@@ -17,7 +17,7 @@ public class Index extends HttpServlet {
 			throws ServletException, IOException {
 
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/views/index.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/index.jsp");
 		dispatcher.forward(request, response);
 	}
 

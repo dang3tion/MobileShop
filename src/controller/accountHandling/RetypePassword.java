@@ -35,7 +35,7 @@ public class RetypePassword extends HttpServlet {
 		if (token != null) {
 			request.removeAttribute(Const.TOKEN_OTP_RETYPE_PASS);
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/RetypePassword.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/retypePass.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} else {

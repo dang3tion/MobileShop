@@ -25,7 +25,7 @@ public class Login extends HttpServlet {
 
 		// không sendRedirect vì phải hứng thông báo lỗi từ filter
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/views/accountHandling/login.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/login.jsp");
 		dispatcher.forward(request, response);
 
 	}

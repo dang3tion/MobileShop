@@ -22,7 +22,7 @@ public class Register extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.sendRedirect(request.getContextPath() + "/views/accountHandling/register.jsp");
+		response.sendRedirect(request.getContextPath() + "/VIEW/jsp/jsp-page/account/register.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

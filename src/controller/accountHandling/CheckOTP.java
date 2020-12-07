@@ -59,7 +59,7 @@ public class CheckOTP extends HttpServlet {
 			String email = newUser.getEmail();
 			SendMail.send(email, otp.getSysOTP());
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/accountHandling/checkOTP.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/checkOTP.jsp");
 			dispatcher.forward(request, response);
 			return;
 

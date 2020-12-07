@@ -38,7 +38,7 @@ public class checkOtpResetPassword extends HttpServlet {
 		if (token != null) {
 			request.removeAttribute(Const.TOKEN_RESETPASS_OTP);
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/accountHandling/checkOTPforgotPass.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/checkOTPforgotPass.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} else {
