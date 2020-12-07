@@ -6,9 +6,9 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<c:url var="url" scope="application" value="/VIEW/js/js-page"></c:url>
-  <script src="/VIEW/css/bootstrap/jquery/jquery.min.js"></script>
-  <script src="/VIEW/css/bootstrap/js/bootstrap.bundle.min.js"></script>
+<c:url var="url" scope="application" value="/VIEW"></c:url>
+  <script src="${url}/css/css-static/bootstrap/vendor/jquery/jquery.min.js"></script>
+  <script src="${url}/css/css-static/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Menu Toggle Script -->
   <script>
@@ -18,7 +18,7 @@
     });
 
   </script>
-     <script src="${url}/divide-page.js"></script>
+     <script src="${url}/js/js-page/divide-page.js"></script>
 
         <!-- search -->
         <script>
