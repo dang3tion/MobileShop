@@ -5,7 +5,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
-<c:url var="url" scope="application" value="/VIEW" ></c:url>
+<c:url var="url" scope="application" value="/VIEW"></c:url>
 </head>
 <!-- first comiit mmmmmmmmmmmmmmmmmmmmmmmmmmmmm -->
 <!-- BẢO COMMENT NÈ -->
@@ -597,7 +597,7 @@
 		</div>
 		<!--Thanh bar tim kiem theo noi dung-->
 		<div class="row">
-		<jsp:include page="/VIEW/jsp/jsp-component/sidebar-filter.jsp"></jsp:include>
+			<jsp:include page="/VIEW/jsp/jsp-component/sidebar-filter.jsp"></jsp:include>
 			<!--Noi dung ket qua sau khi tim kiem-->
 			<div class="col-9" id="result-content">
 				<!--Hang ket qua-->
