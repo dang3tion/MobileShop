@@ -55,12 +55,12 @@
 				Đăng nhập</button>
 
 			<div class="or-seperator">
-				<b>or</b>
+				<b>hoặc</b>
 			</div>
 
 			<a  id="google-login-button" href="${Config.GOOGLE_URL_HREF_JSP}"
 				class="btn btn-danger btn-lg  btn-block" role="button"
-				aria-pressed="true"><i id="icon-google" class="fab fa-google-plus-g mr-3" aria-hidden="true"></i> Đăng nhập bằng tài khoản google</a>
+				aria-pressed="true"><i id="icon-google" class="fab fa-google-plus-g mr-3" aria-hidden="true"></i> Đăng nhập bằng google</a>
 
 
 

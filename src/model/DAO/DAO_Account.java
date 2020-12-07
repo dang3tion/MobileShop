@@ -72,7 +72,7 @@ public class DAO_Account extends ConnectDB {
 
 	public List<Account> search(String keyword, int start, int end) {
 		List<Account> listAcc = new ArrayList<Account>();
-		String query = "SELECT * FROM SEARCH1(N'" + keyword + "'," + start + "," + end + ")";
+		String query = "SELECT * FROM SEARCH(N'" + keyword + "'," + start + "," + end + ")";
 		try (ResultSet rs = super.AccessDBstr(query)) {
 			while (rs.next()) {
 				Account acc = new Account( //

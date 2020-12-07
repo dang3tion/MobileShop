@@ -18,7 +18,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	border-top: 1px solid #e0e0e0;
 }
 
-.or-seperator > b {
+.or-seperator>b {
 	padding: 0 10px;
 	width: 40px;
 	height: 40px;
@@ -35,13 +35,12 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 #google-login-button {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1em;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 #icon-google {
-  margin-top: 2px;
-  font-size: 1.5em;
+	margin-top: 2px;
+	/* 	font-size: 1.5em; */
 }
 
 /* Firefox */
