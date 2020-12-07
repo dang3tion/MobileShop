@@ -51,4 +51,12 @@
 		e.preventDefault();
 		$("#wrapper").toggleClass("toggled");
 	});
+	
 </script>
+
+
+ <script>
+//    $(document).ready(function(){ 
+//      $('[data-toggle="tooltip"]').tooltip();   
+//    }); 
+ </script> 

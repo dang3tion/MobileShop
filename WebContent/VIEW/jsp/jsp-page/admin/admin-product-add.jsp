@@ -22,64 +22,10 @@
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 
-			<nav
-				class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-				<button class="btn btn-primary" id="menu-toggle">
-					<i class="fas fa-bars"></i>
-				</button>
-				<div class=""></div>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+			<!-- 		toggle logout -->
+			<jsp:include page="/VIEW/jsp/jsp-component/toggle-logout-bar.jsp"></jsp:include>
 
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-						<li class="nav-item active"><a class="nav-link" href="#"
-							data-toggle="modal" data-target="#log-out">Đăng xuất <span
-								class="log-out"><i class="fas fa-arrow-right"></i></span></a></li>
-						<!-- <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li> -->
-					</ul>
-					<div class="modal fade" id="log-out" tabindex="-1" role="dialog"
-						aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-						<div class="modal-dialog modal-dialog-centered" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLongTitle">Xác
-										nhận đăng xuất</h5>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">Bạn có muốn đăng xuất?</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">Hủy</button>
-									<button type="button" class="btn btn-primary">Đăng
-										xuất</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</nav>
+
 			<div class="container mt-5 " style="width: 95%">
 				<h2 style="text-align: center;">Thêm sản phẩm</h2>
 				<form>
@@ -238,7 +184,8 @@
 							<form action="${pageContext.request.contextPath}/admin/xxxxx"
 								method="GET" style="margin-top: 70px; border: 1px solid black">
 								<textarea name="productTopic" id="editor">${value}</textarea>
-								<button class="btn btn-primary col-sm-3 row" style="    margin: 15px 0px;"type="submit">Lưu</button>
+								<button class="btn btn-primary col-sm-3 row"
+									style="margin: 15px 0px;" type="submit">Lưu</button>
 							</form>
 						</div>
 						<!-- (3): Code Javascript thay thế textarea có id='editor1' bởi CKEditor -->
@@ -419,53 +366,9 @@
 			</div>
 		</div>
 	</div>
-	<!-- /#wrapper -->
-
-	<!-- Bootstrap core JavaScript -->
-
-	<!-- Menu Toggle Script -->
-	<script>
-		$("#menu-toggle").click(function(e) {
-			e.preventDefault();
-			$("#wrapper").toggleClass("toggled");
-		});
-	</script>
 
 
-	<!-- search -->
-	<script>
-		$(document)
-				.ready(
-						function() {
-							$("#myInput")
-									.on(
-											"keyup",
-											function() {
-												var value = $(this).val()
-														.toLowerCase();
-												$("#content-table tr")
-														.filter(
-																function() {
-																	$(this)
-																			.toggle(
-																					$(
-																							this)
-																							.text()
-																							.toLowerCase()
-																							.indexOf(
-																									value) > -1);
-																});
-											});
-						});
-	</script>
-
-	<script>
-		$(document).ready(function() {
-			$('[data-toggle="tooltip"]').tooltip();
-		});
-	</script>
-
-	<jsp:include page="/VIEW/jsp/jsp-component/footer-admin.jsp"></jsp:include>
+<%-- 	<jsp:include page="/VIEW/jsp/jsp-component/footer-admin.jsp"></jsp:include> --%>
 
 	<!-- /.container -->
 
