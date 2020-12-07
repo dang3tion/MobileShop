@@ -43,7 +43,7 @@ public class ForgotPassword extends HttpServlet {
 				messengeErr = "Tài khoản này đã bị khóa";
 				request.setAttribute("message", messengeErr);
 				RequestDispatcher dispatcher //
-						= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/forgotPass.jsp");
+						= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/forgot-pass.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
@@ -57,7 +57,7 @@ public class ForgotPassword extends HttpServlet {
 			messengeErr = "Email không tồn tại";
 			request.setAttribute("message", messengeErr);
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/forgotPass.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/forgot-pass.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}

@@ -36,11 +36,54 @@
 					<div class="modal-body">Bạn có muốn đăng xuất?</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-success" data-dismiss="modal">Hủy</button>
-						<a href="${pageContext.request.contextPath}/logout" class="btn btn-danger" role="button"
-							aria-pressed="true">Đăng xuất</a>
+						<a href="${pageContext.request.contextPath}/logout"
+							class="btn btn-danger" role="button" aria-pressed="true">Đăng
+							xuất</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </nav>
+
+
+
+<c:url var="url" scope="application" value="/VIEW"></c:url>
+<script
+	src="${url}/css/css-static/bootstrap/vendor/jquery/jquery.min.js"></script>
+<script
+	src="${url}/css/css-static/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+	$("#menu-toggle").click(function(e) {
+		e.preventDefault();
+		$("#wrapper").toggleClass("toggled");
+	});
+</script>
+<script src="${url}/js/js-page/divide-page.js"></script>
+
+<!-- search -->
+<script>
+	$(document).ready(
+			function() {
+				$("#myInput").on(
+						"keyup",
+						function() {
+							var value = $(this).val().toLowerCase();
+							$("#content-table tr").filter(
+									function() {
+										$(this).toggle(
+												$(this).text().toLowerCase()
+														.indexOf(value) > -1)
+									});
+						});
+			});
+</script>
+
+<script>
+	$(document).ready(function() {
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+</script>
+

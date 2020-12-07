@@ -6,14 +6,18 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<c:url var="url" scope="page" value="/VIEW/css/css-static" ></c:url>
+<c:url var="url" value="/VIEW/css/css-static"></c:url>
 <title>Mobile Shop</title>
 
 <!-- Bootstrap core CSS -->
 <link href="${url}/bootstrap/vendor/bootstrap/css/bootstrap.min.css "
-type="text/css"rel="stylesheet">
+	type="text/css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="${url}/font/css/all.min.css"type="text/css" rel="stylesheet">
+<link href="${url}/font/css/all.min.css" type="text/css"
+	rel="stylesheet">
 
-<link href="${url}/css-component/admin.css" type="text/css"rel="stylesheet">
+<link href="${url}/css-component/admin.css" type="text/css"
+	rel="stylesheet">
+
+

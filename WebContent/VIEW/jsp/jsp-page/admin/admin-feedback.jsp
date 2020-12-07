@@ -10,6 +10,7 @@
 	rel="stylesheet" />
 </head>
 
+
 <body>
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar -->
@@ -288,5 +289,6 @@
 	</div>
 
 </body>
+
 
 </html>

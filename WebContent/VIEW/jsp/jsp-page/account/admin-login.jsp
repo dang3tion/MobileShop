@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8;"
 	pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
 <c:url var="url" scope="application" value="/VIEW"></c:url>
 <link rel="stylesheet" type="text/css"
 	href="${url}/css/css-page/signin.css">
-
 
 </head>
 
@@ -18,9 +17,9 @@
 	<!-- Thanh menu loc du lieu va sap xep-->
 
 
-	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
-		<c:param name="title" value="Admin đăng nhập"></c:param>
-	</c:import>
+<%-- 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp"> --%>
+<%-- 		<c:param name="title" value="Admin đăng nhập"></c:param> --%>
+<%-- 	</c:import> --%>
 	<link rel="stylesheet" href="${url}/css/AdminLogin.css">
 	<!-- form dang nhập -->
 	<form action="${pageContext.request.contextPath}/adminlogin"
@@ -53,7 +52,7 @@
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 	<!-- Bootstrap core JavaScript -->
-
+	<jsp:include page="/VIEW/jsp/jsp-component/footer-admin.jsp"></jsp:include>
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<c:url var="url" scope="application" value="/VIEW"></c:url>
