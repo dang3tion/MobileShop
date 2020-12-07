@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <footer
@@ -70,17 +71,12 @@
 					<a href="${pageContext.request.contextPath}/contact"> Chính
 						sách đổi trả</a>
 				</p>
-				<p>
-					<a href="${pageContext.request.contextPath}/adminlogin">Admin</a>
-				</p>
-
 
 
 				<c:choose>
 					<c:when test="${KEY_Logined!= null && KEY_Logined.role == 'ADMIN'}">
 						<p>
-							<a href="${pageContext.request.contextPath}/logout">Đăng
-								xuất</a>
+							<a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
 						</p>
 					</c:when>
 					<c:otherwise>
@@ -101,9 +97,8 @@
 						aria-hidden="true"></i>
 				</p>
 			</div>
-			<!-- /.container -->
 </footer>
 <script
-	src="${url }/css/css-static/bootstrap/vendor/jquery/jquery.min.js"></script>
+	src="${url}/css/css-static/bootstrap/vendor/jquery/jquery.min.js"></script>
 <script
-	src="${url }/css/css-static/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	src="${url}/css/css-static/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

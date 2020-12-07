@@ -342,7 +342,6 @@
 
 		<!-- /#page-content-wrapper -->
 	</div>
-	<!-- /#wrapper -->
 	<!-- Modal -->
 	<div class="modal fade" id="themMau" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -367,11 +366,5 @@
 		</div>
 	</div>
 
-
-<%-- 	<jsp:include page="/VIEW/jsp/jsp-component/footer-admin.jsp"></jsp:include> --%>
-
-	<!-- /.container -->
-
-	<!-- Bootstrap core JavaScript -->
 </body>
 </html>

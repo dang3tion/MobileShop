@@ -17,8 +17,6 @@
 		<jsp:include page="/VIEW/jsp/jsp-component/sidebar-admin.jsp"></jsp:include>
 		<!--Nav-->
 
-		<!-- /#sidebar-wrapper -->
-
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 			<!-- 		toggle logout -->
@@ -168,31 +166,13 @@
 											</div>
 										</div>
 									</div>
-
-
 								</div>
 							</div>
-							<!-- .animated -->
 						</div>
-						<!-- .content -->
-
-
-						<!-- Add -->
-
 					</div>
-					<!-- /#right-panel -->
 				</div>
 			</div>
 		</div>
-	
-<%-- 		<jsp:include page="/VIEW/jsp/jsp-component/footer-admin.jsp"></jsp:include> --%>
-
-		<!-- /.container -->
-
-
-
-
-		<!-- Bootstrap core JavaScript -->
 </body>
 
 </html>

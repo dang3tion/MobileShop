@@ -11,21 +11,15 @@
 </head>
 
 <body>
-	<!-- Page Content -->
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar -->
 		<jsp:include page="/VIEW/jsp/jsp-component/sidebar-admin.jsp"></jsp:include>
-		<!--Nav-->
 
-		<!-- /#sidebar-wrapper -->
-
-		<!-- Page Content -->
 		<div id="page-content-wrapper">
-
 
 			<!-- 		toggle logout -->
 			<jsp:include page="/VIEW/jsp/jsp-component/toggle-logout-bar.jsp"></jsp:include>
-
+			<!-- Page Content -->
 			<div class="container-fluid">
 				<div class="mb-5 mt-3 ">
 					<div class="content">
@@ -217,7 +211,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- /#wrapper -->
 		<div class="modal fade" id="del" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
@@ -240,9 +233,6 @@
 				</div>
 			</div>
 		</div>
-
-
-<%-- 		<jsp:include page="/VIEW/jsp/jsp-component/footer-admin.jsp"></jsp:include> --%>
 </body>
 
 </html>

@@ -77,7 +77,7 @@ public class User extends HttpServlet {
 		}
 
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/views/admin/accountManagement.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-user.jsp");
 		dispatcher.forward(request, response);
 	}
 

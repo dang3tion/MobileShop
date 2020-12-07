@@ -17,7 +17,6 @@
 		<jsp:include page="/VIEW/jsp/jsp-component/sidebar-admin.jsp"></jsp:include>
 		<!--Nav-->
 
-		<!-- /#sidebar-wrapper -->
 
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
@@ -692,18 +691,11 @@
 							</div>
 						</div>
 					</div>
-					<!-- /#right-panel -->
 				</div>
 			</div>
-			<!-- /#page-content-wrapper -->
 		</div>
 
 	</div>
-	
-
-<%-- 	<jsp:include page="/VIEW/jsp/jsp-component/footer-admin.jsp"></jsp:include> --%>
-
-
 
 </body>
 

@@ -44,19 +44,3 @@
 		</div>
 	</div>
 </nav>
-
-<!-- Menu Toggle Script -->
-<script>
-	$("#menu-toggle").click(function(e) {
-		e.preventDefault();
-		$("#wrapper").toggleClass("toggled");
-	});
-	
-</script>
-
-
- <script>
-//    $(document).ready(function(){ 
-//      $('[data-toggle="tooltip"]').tooltip();   
-//    }); 
- </script> 
