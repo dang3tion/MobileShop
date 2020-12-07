@@ -58,9 +58,9 @@
 						<li class="nav-item"><a
 							href="${pageContext.request.contextPath}/admin/index">
 								<div class="item-menu">
-									<i class="fas fa-user"></i>
+									<i class="fas fa-cogs"></i>
 									<div class="item-menu-text">
-										<p>Chào, ${KEY_Logined.name} !</p>
+										<p>Quản lý Shop</p>
 									</div>
 
 								</div>

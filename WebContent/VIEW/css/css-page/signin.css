@@ -19,10 +19,9 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 .or-seperator>b {
-	padding: 0 10px;
 	width: 40px;
 	height: 40px;
-	font-size: 16px;
+	font-size: 14px;
 	text-align: center;
 	line-height: 40px;
 	background: #fff;

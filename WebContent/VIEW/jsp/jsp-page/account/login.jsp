@@ -42,14 +42,12 @@
 				onfocusout="check_password(this)">
 			<div class="require" id="require-password">Mật khẩu phải có ít
 				nhất 8 ký tự</div>
+			<h5 style="color: red">${message}</h5>
 			<div class="checkbox mb-3">
 				<a href="${pageContext.request.contextPath}/forgot" class="mx-2">Quên
 					mật khẩu</a> <a href="${pageContext.request.contextPath}/register"
 					class="mx-2">Đăng kí</a>
 			</div>
-
-
-			<h5 style="color: red">${message}</h5>
 
 			<button class="btn btn-lg btn-primary btn-block" type="submit">
 				Đăng nhập</button>
@@ -58,9 +56,11 @@
 				<b>hoặc</b>
 			</div>
 
-			<a  id="google-login-button" href="${Config.GOOGLE_URL_HREF_JSP}"
+			<a id="google-login-button" href="${Config.GOOGLE_URL_HREF_JSP}"
 				class="btn btn-danger btn-lg  btn-block" role="button"
-				aria-pressed="true"><i id="icon-google" class="fab fa-google-plus-g mr-3" aria-hidden="true"></i> Đăng nhập bằng google</a>
+				aria-pressed="true"><i id="icon-google"
+				class="fab fa-google-plus-g mr-3" aria-hidden="true"></i> Đăng nhập
+				bằng google</a>
 
 
 

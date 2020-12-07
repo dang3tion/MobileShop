@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+
+
 <footer
 	class=" bg-dark footerA text-center d-flex justify-content-center">
 	<div class="container pt-4">
@@ -71,6 +73,24 @@
 				<p>
 					<a href="${pageContext.request.contextPath}/adminlogin">Admin</a>
 				</p>
+
+
+
+				<c:choose>
+					<c:when test="${KEY_Logined!= null && KEY_Logined.role == 'ADMIN'}">
+						<p>
+							<a href="${pageContext.request.contextPath}/logout">Đăng
+								xuất</a>
+						</p>
+					</c:when>
+					<c:otherwise>
+						<p>
+							<a href="${pageContext.request.contextPath}/adminlogin">Admin</a>
+						</p>
+					</c:otherwise>
+				</c:choose>
+
+
 				<p class="footerIcon">
 					<i style="color: rgb(13, 107, 214);"
 						class="fa fa-facebook-official" aria-hidden="true"></i> <i
@@ -82,6 +102,8 @@
 				</p>
 			</div>
 			<!-- /.container -->
-	</footer>
-		<script src="${url }/css/css-static/bootstrap/vendor/jquery/jquery.min.js"></script>
-	<script src="${url }/css/css-static/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</footer>
+<script
+	src="${url }/css/css-static/bootstrap/vendor/jquery/jquery.min.js"></script>
+<script
+	src="${url }/css/css-static/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

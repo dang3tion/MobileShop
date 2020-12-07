@@ -19,7 +19,7 @@
 
 
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
-		<c:param name="title" value="Nhập OTP"></c:param>
+		<c:param name="title" value="Admin đăng nhập"></c:param>
 	</c:import>
 	<link rel="stylesheet" href="${url}/css/AdminLogin.css">
 	<!-- form dang nhập -->
@@ -28,7 +28,7 @@
 		<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col-12">
-					<h2>${message}</h2>
+					<h5 style="color: red">${message}</h5>
 				</div>
 			</div>
 		</div>

@@ -15,8 +15,8 @@ import model.BO_Service.BO_Account;
 import model.beans.Account;
 import model.utility.Const;
 
-@WebServlet(urlPatterns = "/admin/account")
-public class AccountManagement extends HttpServlet {
+@WebServlet(urlPatterns = "/admin/user")
+public class User extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

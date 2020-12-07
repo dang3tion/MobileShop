@@ -7,14 +7,10 @@
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
 <c:url var="url" scope="application" value="/VIEW"></c:url>
 </head>
-<!-- first comiit mmmmmmmmmmmmmmmmmmmmmmmmmmmmm -->
-<!-- BẢO COMMENT NÈ -->
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
-	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
-		<c:param name="title" value="SỦa lại title nè"></c:param>
-	</c:import>
+	
 	<!-- Page Content -->
 	<div class="container">
 
