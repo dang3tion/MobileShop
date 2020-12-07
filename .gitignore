@@ -1,3 +1,17 @@
+.settings/
+build/
+target/
+.classpath
+.project
+pom.xml
+README.md
+WebContent/WEB-INF/lib/
+WebContent/META-INF/*
+
+
+
+
+
 # Compiled class file
 *.class
 
