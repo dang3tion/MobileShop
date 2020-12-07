@@ -31,7 +31,7 @@ public class Cart extends HttpServlet {
 		System.out.println(session.getAttribute(Const.ACCOUNT_LOGINED));
 
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/views/cart.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
 		dispatcher.forward(request, response);
 
 	}

@@ -43,7 +43,7 @@ public class Login extends HttpServlet {
 			messageErr = "Tài khoản hoặc mật khẩu không đúng";
 			request.setAttribute("message", messageErr);
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/accountHandling/login.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/login.jsp");
 			dispatcher.forward(request, response);
 			break;
 		}
@@ -51,7 +51,7 @@ public class Login extends HttpServlet {
 			messageErr = "Tài khoản của bạn đã bị khóa";
 			request.setAttribute("message", messageErr);
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/accountHandling/login.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/login.jsp");
 			dispatcher.forward(request, response);
 			break;
 		}

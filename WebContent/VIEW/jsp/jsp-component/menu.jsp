@@ -28,7 +28,7 @@
 
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto pt-3">
-				<li class="nav-item "><a href="../Giuaky/LienHe/Contact.html">
+				<li class="nav-item "><a href="${pageContext.request.contextPath}/contact">
 						<div class="item-menu">
 
 							<i class="fas fa-phone-square-alt"></i>
@@ -40,7 +40,7 @@
 						</div>
 				</a></li>
 				<li class="nav-item"><a
-					href="../Giuaky/Check-reicept_Page/check-receipt.html">
+					href="${pageContext.request.contextPath}/check-receipt">
 						<div class="item-menu">
 							<i class="fas fa-money-check"></i>
 							<div class="item-menu-text">

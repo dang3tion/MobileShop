@@ -32,7 +32,7 @@ public class Payment extends HttpServlet {
 			session.removeAttribute(Const.TOKEN_CART_TO_PAY);
 			token = "empty";
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/payment.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/payment.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			RequestDispatcher dispatcher //
