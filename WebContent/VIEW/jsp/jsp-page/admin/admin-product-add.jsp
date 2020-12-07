@@ -229,27 +229,28 @@
 
 
 
-					<div class="form-group space-top" style="margin-top: 70px;">
+					<div class="form-group space-top">
 						<h5 class="spacing_form">Giới thiệu sản phẩm</h5>
-						<form action="" method="post">
 
+						<div
+							style="border: 1px solid #dadada; padding: 15px; border-radius: 5px;">
 							<!-- (2): textarea sẽ được thay thế bởi CKEditor -->
 							<form action="${pageContext.request.contextPath}/admin/xxxxx"
-								method="GET">
+								method="GET" style="margin-top: 70px; border: 1px solid black">
 								<textarea name="productTopic" id="editor">${value}</textarea>
-								<button type="submit">Lưu</button>
+								<button class="btn btn-primary col-sm-3 row" style="    margin: 15px 0px;"type="submit">Lưu</button>
 							</form>
+						</div>
+						<!-- (3): Code Javascript thay thế textarea có id='editor1' bởi CKEditor -->
+						<script src="${url}/js/js-static/ckeditor/ckeditor.js"></script>
+						<script src="${url}/js/js-static/ckeditor/samples/js/sample.js"></script>
+						<script>
+							initSample();
+						</script>
 
-							<!-- (3): Code Javascript thay thế textarea có id='editor1' bởi CKEditor -->
-							<script src="${url}/js/js-static/ckeditor/ckeditor.js"></script>
-							<script src="${url}/js/js-static/ckeditor/samples/js/sample.js"></script>
-							<script>
-								initSample();
-							</script>
 
 
 
-						</form>
 					</div>
 
 					<hr>
