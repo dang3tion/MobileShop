@@ -614,12 +614,8 @@
       </div>
 
 	</div>
-	<jsp:include page="/VIEW/jsp/jsp-component/footer-admin.jsp"></jsp:include>
 	<script src="${url}/js/js-page/confirmed.js"></script>
-	<script
-	src="${url}/css/css-static/bootstrap/vendor/jquery/jquery.min.js"></script>
-<script
-	src="${url}/css/css-static/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
