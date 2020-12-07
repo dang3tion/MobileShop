@@ -696,7 +696,7 @@
 		</div>
 
 	</div>
-
+	<jsp:include page="/VIEW/jsp/jsp-component/footer-admin.jsp"></jsp:include>
 </body>
 
 </html>
