@@ -51,16 +51,16 @@ public class checkOtpResetPassword extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		// xử lý có phải trang RESET chuyển qua đây hay người dùng submit form
 		token = request.getAttribute(Const.TOKEN_RESETPASS_OTP);
 		if (token != null) {
+			// xử lý trang NHẬP MAIL QMK chuyển qua 
 			request.removeAttribute(Const.TOKEN_RESETPASS_OTP);
 
 			email = (String) session.getAttribute(Const.EMAIL_FORGOT_PASS);
 			SendMail.send(email, otp.getSysOTP());
 
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/accountHandling/checkOTPforgotPass.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/checkOTPforgotPass.jsp");
 			dispatcher.forward(request, response);
 			return;
 
@@ -80,7 +80,7 @@ public class checkOtpResetPassword extends HttpServlet {
 				request.setAttribute("messenger", "Sai mã OTP");
 				RequestDispatcher dispatcher //
 						= this.getServletContext()
-								.getRequestDispatcher("/views/accountHandling/checkOTPforgotPass.jsp");
+								.getRequestDispatcher("/VIEW/jsp/jsp-page/account/checkOTPforgotPass.jsp");
 				dispatcher.forward(request, response);
 			}
 		}

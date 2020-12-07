@@ -23,7 +23,7 @@ public class ForgotPassword extends HttpServlet {
 			throws ServletException, IOException {
 
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/forgotPass.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/forgotPass.jsp");
 		dispatcher.forward(request, response);
 
 	}
