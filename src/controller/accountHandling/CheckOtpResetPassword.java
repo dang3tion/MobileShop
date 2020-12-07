@@ -21,7 +21,7 @@ import model.utility.SendMail;
  *
  */
 @WebServlet(urlPatterns = "/otpresetpass")
-public class checkOtpResetPassword extends HttpServlet {
+public class CheckOtpResetPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	OTP otp = new OTP();
@@ -38,7 +38,7 @@ public class checkOtpResetPassword extends HttpServlet {
 		if (token != null) {
 			request.removeAttribute(Const.TOKEN_RESETPASS_OTP);
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/checkOTPforgotPass.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp-forgot-pass.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} else {
@@ -60,7 +60,7 @@ public class checkOtpResetPassword extends HttpServlet {
 			SendMail.send(email, otp.getSysOTP());
 
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/checkOTPforgotPass.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp-forgot-pass.jsp");
 			dispatcher.forward(request, response);
 			return;
 
@@ -80,7 +80,7 @@ public class checkOtpResetPassword extends HttpServlet {
 				request.setAttribute("message", "Sai mã OTP");
 				RequestDispatcher dispatcher //
 						= this.getServletContext()
-								.getRequestDispatcher("/VIEW/jsp/jsp-page/account/checkOTPforgotPass.jsp");
+								.getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp-forgot-pass.jsp");
 				dispatcher.forward(request, response);
 			}
 		}

@@ -16,7 +16,7 @@ public class AdminIndex extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/views/admin/adminIndex.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-index.jsp");
 
 		dispatcher.forward(request, response);
 	}

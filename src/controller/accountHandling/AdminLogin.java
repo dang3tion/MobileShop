@@ -24,7 +24,7 @@ public class AdminLogin extends HttpServlet {
 			throws ServletException, IOException {
 
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/views/accountHandling/adLogin.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/admin-login.jsp");
 
 		dispatcher.forward(request, response);
 
@@ -61,7 +61,7 @@ public class AdminLogin extends HttpServlet {
 			request.setAttribute("message", messageErr);
 
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/accountHandling/adLogin.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/admin-login.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
