@@ -8,6 +8,7 @@
 <c:url var="url" scope="application" value="/VIEW" ></c:url>
 </head>
 <!-- first comiit mmmmmmmmmmmmmmmmmmmmmmmmmmmmm -->
+<!-- BẢO COMMENT NÈ -->
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
