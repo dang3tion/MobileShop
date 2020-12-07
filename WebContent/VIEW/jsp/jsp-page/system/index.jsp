@@ -7,7 +7,7 @@
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
 <c:url var="url" scope="application" value="/VIEW" ></c:url>
 </head>
-
+<!-- first comiit mmmmmmmmmmmmmmmmmmmmmmmmmmmmm -->
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
