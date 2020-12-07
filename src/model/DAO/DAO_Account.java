@@ -11,7 +11,7 @@ import model.utility.Const;
 public class DAO_Account extends ConnectDB {
 
 	// Tên bảng trong database
-	private final String ACCOUNT = "taikhoan";
+	private final String ACCOUNT = "khachhang";
 	// tên các cột của bảng ACCOUNT
 	private final String EMAIL = "email";
 	private final String ENCRYT_PASSWORD = "matKhau";

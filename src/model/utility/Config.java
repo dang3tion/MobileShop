@@ -3,10 +3,10 @@ package model.utility;
 public class Config {
 	// for SQL Server
 	public static final String DBDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	public static final String SERVER_NAME = "jdbc:sqlserver://localhost:1433";
-	public static final String DATABASE_NAME = "Demo2";
-	public static final String USERNAME_DB = "sa";
-	public static final String PASSWORD_DB = "sa";
+	public static final String SERVER_NAME = "jdbc:sqlserver://mobileshop.civgzrydcxzm.ap-southeast-1.rds.amazonaws.com:1433";
+	public static final String DATABASE_NAME = "MOBILESHOP";
+	public static final String USERNAME_DB = "bao";
+	public static final String PASSWORD_DB = "12345678";
 
 	// for Send Mail
 	public static final String OWNER_EMAIL = "lazadamimax3@gmail.com";

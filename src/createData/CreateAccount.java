@@ -1192,11 +1192,11 @@ public class CreateAccount {
 
 		DAO_Account daoACC = new DAO_Account();
 
-//		for (int i = 0; i < 2000; i++) {
-//			daoACC.add(acc());
-//		}
+		for (int i = 0; i < 2; i++) {
+			daoACC.add(acc());
+		}
 
-		try (ResultSet rs = daoACC.AccessDBstr("SELECT COUNT(*) FROM taikhoan")) {
+		try (ResultSet rs = daoACC.AccessDBstr("SELECT COUNT(*) FROM KHACHHANG")) {
 			while (rs.next()) {
 				System.out.println(rs.getString(1));
 			}
