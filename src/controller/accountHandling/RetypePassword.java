@@ -35,7 +35,7 @@ public class RetypePassword extends HttpServlet {
 		if (token != null) {
 			request.removeAttribute(Const.TOKEN_OTP_RETYPE_PASS);
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/retypePass.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/retype-pass.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} else {
@@ -53,7 +53,7 @@ public class RetypePassword extends HttpServlet {
 		if (token != null) {
 			request.removeAttribute(Const.TOKEN_OTP_RETYPE_PASS);
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/retypePass.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/retype-pass.jsp");
 			dispatcher.forward(request, response);
 			return;
 
@@ -68,7 +68,7 @@ public class RetypePassword extends HttpServlet {
 			request.setAttribute("message", "Đổi mật khẩu thành công, vui lòng đăng nhập lại");
 
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/retypePass.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/retype-pass.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}

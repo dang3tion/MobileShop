@@ -35,7 +35,7 @@ public class CheckOTP extends HttpServlet {
 		request.removeAttribute(Const.TOKEN_RESETPASS_OTP);
 		if (token != null) {
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/accountHandling/checkOTP.jsp");
+					= this.getServletContext().getRequestDispatcher("/views/accountHandling/check-otp.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} else {
@@ -59,7 +59,7 @@ public class CheckOTP extends HttpServlet {
 			String email = newUser.getEmail();
 			SendMail.send(email, otp.getSysOTP());
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/checkOTP.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp.jsp");
 			dispatcher.forward(request, response);
 			return;
 
