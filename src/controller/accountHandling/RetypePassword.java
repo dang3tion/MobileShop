@@ -53,7 +53,7 @@ public class RetypePassword extends HttpServlet {
 		if (token != null) {
 			request.removeAttribute(Const.TOKEN_OTP_RETYPE_PASS);
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/accountHandling/retypePassword.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/retypePass.jsp");
 			dispatcher.forward(request, response);
 			return;
 
@@ -65,10 +65,10 @@ public class RetypePassword extends HttpServlet {
 
 			(new BO_Account()).changePassword(userEmail, password);
 
-			request.setAttribute("DoiMatKhauThanhCong", "Đổi mật khẩu thành công, vui lòng đăng nhập lại");
+			request.setAttribute("message", "Đổi mật khẩu thành công, vui lòng đăng nhập lại");
 
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/accountHandling/login.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/retypePass.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}

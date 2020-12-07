@@ -77,7 +77,7 @@ public class checkOtpResetPassword extends HttpServlet {
 				return;
 
 			} else {
-				request.setAttribute("messenger", "Sai mã OTP");
+				request.setAttribute("message", "Sai mã OTP");
 				RequestDispatcher dispatcher //
 						= this.getServletContext()
 								.getRequestDispatcher("/VIEW/jsp/jsp-page/account/checkOTPforgotPass.jsp");

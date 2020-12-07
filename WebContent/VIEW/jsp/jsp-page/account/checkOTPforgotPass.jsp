@@ -16,16 +16,18 @@
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
-	<%--<jsp:include page="/VIEW/jsp/jsp-component/filter.jsp"></jsp:include>--%>
-	<%--breadcumb--%>
+	<%----%>
+	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
+		<c:param name="title" value="Nhập OTP"></c:param>
+	</c:import>
 
-	<jsp:include page="/VIEW/jsp/jsp-component/breadcumb.jsp"></jsp:include>
+
 
 	<!-- Page Content -->
 	<form onsubmit="return checkNum()" method="post"
 		action="${pageContext.request.contextPath}/otpresetpass"
 		class="form-signin" id="otp">
-		<img class="mb-4" src="../../image/imgLogin/OTP.png" alt="" width="72"
+		<img class="mb-4" src="${url}/image/img-sys/OTP.png" alt="" width="72"
 			height="72">
 		<h1 class="h3 mb-3 font-weight-normal">Nhập mã OTP</h1>
 		<label class="sr-only">OTP</label> <input name="OTP" id="checkOTP"
@@ -34,7 +36,7 @@
 		<p style="display: none; color: red" id="check_OTP">Vui lòng không
 			nhập chữ và kí tự đặc biệt.</p>
 		</div>
-		<h2 style="color: red">${message}Tàikhoản đã tồn tại</h2>
+		<h5 style="color: red">${message}</h5>
 		<button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Tiếp
 			tục</button>
 

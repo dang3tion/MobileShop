@@ -10,18 +10,18 @@
 						<p>
 							<img class="icon m-2"
 								style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 5px 1px 5.5px 1px;"
-								src="footer_phuongThucThanhtoan/vietcombank.svg" width="53px">
+								src="${url}/image/img-sys/vietcombank.svg" width="53px">
 							<img class="icon m-2"
 								style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 1px 12px 1px 13px;"
-								src="footer_phuongThucThanhtoan/momo.png" width="55px"> <img
+								src="${url}/image/img-sys/momo.png" width="55px"> <img
 								class="icon m-2"
 								style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 1.5px 0px 1.5px 0px;"
-								src="footer_phuongThucThanhtoan/agribank.png" width="53px">
+								src="${url}/image/img-sys/agribank.png" width="53px">
 							<img class="icon m-2"
 								style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 4px 1px 3px 1px;"
-								src="footer_phuongThucThanhtoan/BIDV.png" width="53px"> <img
-								class="icon m-2" src="footer_phuongThucThanhtoan/visa.svg">
-							<img class="icon m-2" src="footer_phuongThucThanhtoan/cash.svg">
+								src="${url}/image/img-sys/BIDV.png" width="53px"> <img
+								class="icon m-2" src="${url}/image/img-sys/visa.svg">
+							<img class="icon m-2" src="${url}/image/img-sys/cash.svg">
 						</p>
 					</div>
 					<p style="margin-top: -10px; font-size: 1em;">Lượt truy cập</p>
@@ -53,8 +53,8 @@
 							Gọi bảo hành: <strong>1800.1069</strong> (8:00 - 21:00)
 						</p>
 					</div>
-					<img width="30%" src="footer_phuongThucThanhtoan/BoCongThuong.png">
-					<img width="10%" src="footer_phuongThucThanhtoan/BoCongThuong2.png">
+					<img width="30%" src="${url}/image/img-sys/BoCongThuong.png">
+					<img width="10%" src="${url}/image/img-sys/BoCongThuong2.png">
 				</div>
 
 
@@ -80,15 +80,7 @@
 					</p>
 				</div>
 
-				<div class="row">
-					<div class="col-12">
-						<p class="description">© 1992. Công ty cổ phần MobileShop.
-							GPMXH: 238/GP-BTTTT do Bộ Thông Tin và Truyền Thông cấp ngày
-							04/06/1990. Địa chỉ: 128 Trần Quang Khải, P. Tân Định, Q.1, TP.Hồ
-							Chí Minh. Điện thoại: 028 38125960. Email: cskh@mobileShop.com.
-							Chịu trách nhiệm nội dung: Huỳnh Văn Tốt</p>
-					</div>
-				</div>
+				
 
 			</div>
 			<!-- /.container -->

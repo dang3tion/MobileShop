@@ -6,27 +6,28 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
+<%@ page import="model.utility.Config"%>
+
 <c:url var="url" scope="application" value="/VIEW"></c:url>
 <link rel="stylesheet" type="text/css"
 	href="${url}/css/css-page/signin.css">
-
 
 </head>
 
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
-	<%--<jsp:include page="/VIEW/jsp/jsp-component/filter.jsp"></jsp:include>--%>
-	<%--breadcumb--%>
 
-	<jsp:include page="/VIEW/jsp/jsp-component/breadcumb.jsp"></jsp:include>
+	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
+		<c:param name="title" value="Đăng nhập"></c:param>
+	</c:import>
 
 	<!-- Page Content -->
 	<form onsubmit="" action="${pageContext.request.contextPath}/login"
 		method="POST">
 		<div class="form-signin color_tt" id="login">
-			<img class="mb-4" src="../../image/imgLogin/icon.png" alt=""
-				width="72" height="72">
+			<img class="mb-4" src="${url}/image/img-sys/user.png" width="72"
+				height="72">
 			<h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
 
 			<input type="text" name="email" id="inputEmail" class="form-control"
@@ -42,21 +43,26 @@
 			<div class="require" id="require-password">Mật khẩu phải có ít
 				nhất 8 ký tự</div>
 			<div class="checkbox mb-3">
-				<a href="${pageContext.request.contextPath}/forgot" class="mx-2">Quên mật khẩu</a> <a
-					href="${pageContext.request.contextPath}/register" class="mx-2">Đăng kí</a>
+				<a href="${pageContext.request.contextPath}/forgot" class="mx-2">Quên
+					mật khẩu</a> <a href="${pageContext.request.contextPath}/register"
+					class="mx-2">Đăng kí</a>
 			</div>
-			<h2 style="color: red">${message}Tàikhoản đã tồn tại</h2>
+
+
+			<h5 style="color: red">${message}</h5>
+
 			<button class="btn btn-lg btn-primary btn-block" type="submit">
 				Đăng nhập</button>
 
-			<h3 class="h6  font-weight-normal mt-5">Đăng nhập bằng</h3>
-			<div class="with-login">
-
-				<a href="#"> <img
-					src="${url}/image/image-user/product/iconGoogle.svg" alt="google"
-					id="google"></a>
-
+			<div class="or-seperator">
+				<b>or</b>
 			</div>
+
+			<a  id="google-login-button" href="${Config.GOOGLE_URL_HREF_JSP}"
+				class="btn btn-danger btn-lg  btn-block" role="button"
+				aria-pressed="true"><i id="icon-google" class="fab fa-google-plus-g mr-3" aria-hidden="true"></i> Đăng nhập bằng tài khoản google</a>
+
+
 
 		</div>
 	</form>
