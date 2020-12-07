@@ -9,8 +9,7 @@ WebContent/WEB-INF/lib/
 WebContent/META-INF/*
 
 
-
-
+*.zip
 
 # Compiled class file
 *.class

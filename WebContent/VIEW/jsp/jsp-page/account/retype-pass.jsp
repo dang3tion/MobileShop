@@ -5,7 +5,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
-<c:url var="url" scope="application" value="/VIEW"></c:url>
+<c:url var="url" scope="session" value="/VIEW"></c:url>
 <link rel="stylesheet" type="text/css"
 	href="${url}/css/css-page/signin.css">
 </head>
@@ -22,7 +22,7 @@
 
 	<form action="${pageContext.request.contextPath}/retype" method="post"
 		onsubmit="return checkRegister()" class="form-signin" id="register">
-		<img class="mb-4" src="../../image/imgLogin/icon.png" alt=""
+		<img class="mb-4" src="${url}/image/img-sys/pass.png"
 			width="72" height="72">
 		<h1 class="h3 mb-3 font-weight-normal">Nhập mật khẩu mới</h1>
 		<div class="row">
@@ -60,17 +60,15 @@
 		</div>
 		<h5 style="color: red">${message}</h5>
 
-		<button class="btn btn-lg btn-primary btn-block">Ok</button>
+		<button class="btn btn-lg btn-primary btn-block">OK</button>
 
 	</form>
-	<!-- /.container -->
 
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
-	<!-- Bootstrap core JavaScript -->
 
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
 	<script src="${url}/js/js-page/form-forgot.js"></script>
 </body>
 

@@ -48,8 +48,8 @@
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 	<!-- Bootstrap core JavaScript -->
 
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	 
+	   
 	<c:url var="url" scope="application" value="/VIEW"></c:url>
 	<script src="${url}/js/js-page/form-login.js"></script>
 </body>

@@ -68,7 +68,7 @@ public class RetypePassword extends HttpServlet {
 			request.setAttribute("message", "Đổi mật khẩu thành công, vui lòng đăng nhập lại");
 
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/retype-pass.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/login.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}

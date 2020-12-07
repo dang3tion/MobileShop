@@ -28,7 +28,6 @@ public class Cart extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute(Const.TOKEN_CART_TO_PAY, "TOKEN");
 		
-		System.out.println(session.getAttribute(Const.ACCOUNT_LOGINED));
 
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
