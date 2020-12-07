@@ -81,9 +81,7 @@
 						aria-hidden="true"></i>
 				</p>
 			</div>
-
-
-
-		</div>
-		<!-- /.container -->
-</footer>
+			<!-- /.container -->
+	</footer>
+		<script src="${url }/css/css-static/bootstrap/vendor/jquery/jquery.min.js"></script>
+	<script src="${url }/css/css-static/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
