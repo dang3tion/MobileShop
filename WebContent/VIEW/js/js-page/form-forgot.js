@@ -62,7 +62,25 @@ function check_password2(id, id2) {
     }
 }
 
+var checknhap = false;
+function check_password3(id, id2) {
+    var s = document.getElementById(id).value;
+    var s2 = document.getElementById(id2).value;
+    if (s != s2) {
+        document.getElementById("displayErr").style.display = "block";
+        checknhap = false;
+    } else {
+        document.getElementById("displayErr").style.display = "none";
+        checknhap = true;
+    }
+}
 
+function checkNhap(){
+    if (checknhap){
+        return true;
+    }else
+        return false
+}
 
 function checkRegister() {
     if (checkRepass&&checkPass){
@@ -71,3 +89,4 @@ function checkRegister() {
         return  false;
     }
 }
+

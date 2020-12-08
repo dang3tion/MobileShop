@@ -23,7 +23,7 @@ public class Profile extends HttpServlet {
 			throws ServletException, IOException {
 
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/views/profile.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/profile.jsp");
 
 		dispatcher.forward(request, response);
 
@@ -48,7 +48,7 @@ public class Profile extends HttpServlet {
 
 		request.setAttribute("message", "Đã cập nhập thành công");
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/views/profile.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/profile.jsp");
 		dispatcher.forward(request, response);
 
 	}
