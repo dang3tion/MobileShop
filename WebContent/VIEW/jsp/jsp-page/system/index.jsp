@@ -37,256 +37,77 @@
 
 								<div class="carousel-item active ">
 									<div class="row d-block ">
-										<div class="col-3">
-											<div class="card">
-												<div class="card-img text-center">
-													<a href="Product_page/chiTietSanPham.html"> <img
-														src="${url }/image/image-user/product/1.jpg" width="80%"
-														class="" alt="..."></a>
-												</div>
-												<div class="card-content">
-													<div class="card-title">
-														<a href="Product_page/chiTietSanPham.html">Iphone 12
-															64 GBIphone 12 64 GBIphone 12 64 GB</a>
+										<c:forEach items="${list}" var="p">
+											<div class="col-3">
+												<div class="card">
+													<div class="card-img text-center">
+														<a href="Product_page/chiTietSanPham.html"> <img
+															src="${url }/image/image-user/product/${p.img}"
+															width="80%" class="" alt="..."></a>
 													</div>
-													<div class="card-price">
-														<span>
-															<div class="card-count">
-																19.990.000 <span class="unit">đ</span>
-															</div>
-															<div class="card-discount">
-																23.000.000 <span class="unit">đ</span>
-															</div>
-													</div>
-													<div class="card-stars">
-														<span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star  text-dark"></i></span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-3">
-											<div class="card">
-												<div class="card-img text-center">
-													<a href="Product_page/chiTietSanPham.html"> <img
-														src="image/img_phone/2.jpg" width="80%" class="" alt="..."></a>
-												</div>
-												<div class="card-content">
-													<div class="card-title">
-														<a href="Product_page/chiTietSanPham.html">Iphone 12
-															64 GBIphone 12 64 GBIphone 12 64 GB</a>
-													</div>
-													<div class="card-price">
-														<span>
-															<div class="card-count">
-																19.990.000 <span class="unit">đ</span>
-															</div>
-															<div class="card-discount">
-																23.000.000 <span class="unit">đ</span>
-															</div>
-													</div>
-													<div class="card-stars">
-														<span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star  text-dark"></i></span>
+													<div class="card-content">
+														<div class="card-title" style="min-height:43px;">
+															<a href="Product_page/chiTietSanPham.html">Iphone 12
+																${p.name } 
+														</div>
+														<div class="card-price">
+															<span>
+																<div class="card-count">
+																	${p.price } <span class="unit">đ</span>
+																</div>
+																<div class="card-discount">
+																	${p.priceSale } <span class="unit">đ</span>
+																</div>
+														</div>
+														<div class="card-stars">
+															<span> <i class="fas fa-star text-warning"></i></span> <span>
+																<i class="fas fa-star text-warning"></i>
+															</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
+																<i class="fas fa-star text-warning"></i>
+															</span> <span> <i class="fas fa-star  text-dark"></i></span>
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="col-3">
-											<div class="card">
-												<div class="card-img text-center">
-													<a href="Product_page/chiTietSanPham.html"> <img
-														src="image/img_phone/3.jpg" width="80%" class="" alt="..."></a>
-												</div>
-												<div class="card-content">
-													<div class="card-title">
-														<a href="Product_page/chiTietSanPham.html">Iphone 12
-															64 GBIphone 12 64 GBIphone 12 64 GB</a>
-													</div>
-													<div class="card-price">
-														<span>
-															<div class="card-count">
-																19.990.000 <span class="unit">đ</span>
-															</div>
-															<div class="card-discount">
-																23.000.000 <span class="unit">đ</span>
-															</div>
-													</div>
-													<div class="card-stars">
-														<span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star  text-dark"></i></span>
-													</div>
-												</div>
-											</div>
+										</c:forEach>
 
-										</div>
-										<div class="col-3">
-											<div class="card">
-												<div class="card-img text-center">
-													<a href="Product_page/chiTietSanPham.html"> <img
-														src="image/img_phone/4.jpg" width="80%" class="" alt="..."></a>
-												</div>
-												<div class="card-content">
-													<div class="card-title">
-														<a href="Product_page/chiTietSanPham.html">Iphone 12
-															64 GBIphone 12 64 GBIphone 12 64 GB</a>
-													</div>
-													<div class="card-price">
-														<span>
-															<div class="card-count">
-																19.990.000 <span class="unit">đ</span>
-															</div>
-															<div class="card-discount">
-																23.000.000 <span class="unit">đ</span>
-															</div>
-													</div>
-													<div class="card-stars">
-														<span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star  text-dark"></i></span>
-													</div>
-												</div>
-											</div>
-
-										</div>
 									</div>
 								</div>
 								<div class="carousel-item ">
 									<div class="row d-block">
-										<div class="col-3">
-											<div class="card">
-												<div class="card-img text-center">
-													<a href="Product_page/chiTietSanPham.html"> <img
-														src="image/img_phone/5.jpg" width="80%" class="" alt="..."></a>
-												</div>
-												<div class="card-content">
-													<div class="card-title">
-														<a href="Product_page/chiTietSanPham.html">Iphone 12
-															64 GBIphone 12 64 GBIphone 12 64 GB</a>
+										<c:forEach items="${list2}" var="p2">
+											<div class="col-3">
+												<div class="card">
+													<div class="card-img text-center">
+														<a href="Product_page/chiTietSanPham.html"> <img
+															src="${url }/image/image-user/product/${p2.img}"
+															width="80%" class="" alt="..."></a>
 													</div>
-													<div class="card-price">
-														<span>
-															<div class="card-count">
-																19.990.000 <span class="unit">đ</span>
-															</div>
-															<div class="card-discount">
-																23.000.000 <span class="unit">đ</span>
-															</div>
-													</div>
-													<div class="card-stars">
-														<span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star  text-dark"></i></span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-3">
-											<div class="card">
-												<div class="card-img text-center">
-													<a href="Product_page/chiTietSanPham.html"> <img
-														src="image/img_phone/1.jpg" width="80%" class="" alt="..."></a>
-												</div>
-												<div class="card-content">
-													<div class="card-title">
-														<a href="Product_page/chiTietSanPham.html">Iphone 12
-															64 GBIphone 12 64 GBIphone 12 64 GB</a>
-													</div>
-													<div class="card-price">
-														<span>
-															<div class="card-count">
-																19.990.000 <span class="unit">đ</span>
-															</div>
-															<div class="card-discount">
-																23.000.000 <span class="unit">đ</span>
-															</div>
-													</div>
-													<div class="card-stars">
-														<span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star  text-dark"></i></span>
+													<div class="card-content">
+														<div class="card-title" style="min-height:43px;">
+															<a href="Product_page/chiTietSanPham.html">Iphone 12
+																${p2.name } 
+														</div>
+														<div class="card-price">
+															<span>
+																<div class="card-count">
+																	${p2.price } <span class="unit">đ</span>
+																</div>
+																<div class="card-discount">
+																	${p2.priceSale } <span class="unit">đ</span>
+																</div>
+														</div>
+														<div class="card-stars">
+															<span> <i class="fas fa-star text-warning"></i></span> <span>
+																<i class="fas fa-star text-warning"></i>
+															</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
+																<i class="fas fa-star text-warning"></i>
+															</span> <span> <i class="fas fa-star  text-dark"></i></span>
+														</div>
 													</div>
 												</div>
 											</div>
-
-										</div>
-										<div class="col-3">
-											<div class="card">
-												<div class="card-img text-center">
-													<a href="Product_page/chiTietSanPham.html"> <img
-														src="image/img_phone/1.jpg" width="80%" class="" alt="..."></a>
-												</div>
-												<div class="card-content">
-													<div class="card-title">
-														<a href="Product_page/chiTietSanPham.html">Iphone 12
-															64 GBIphone 12 64 GBIphone 12 64 GB</a>
-													</div>
-													<div class="card-price">
-														<span>
-															<div class="card-count">
-																19.990.000 <span class="unit">đ</span>
-															</div>
-															<div class="card-discount">
-																23.000.000 <span class="unit">đ</span>
-															</div>
-													</div>
-													<div class="card-stars">
-														<span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star  text-dark"></i></span>
-													</div>
-												</div>
-											</div>
-
-										</div>
-										<div class="col-3">
-											<div class="card">
-												<div class="card-img text-center">
-													<a href="#"> <img src="image/img_phone/1.jpg"
-														width="80%" class="" alt="..."></a>
-												</div>
-												<div class="card-content">
-													<div class="card-title">
-														<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64
-															GB</a>
-													</div>
-													<div class="card-price">
-														<span>
-															<div class="card-count">
-																19.990.000 <span class="unit">đ</span>
-															</div>
-															<div class="card-discount">
-																23.000.000 <span class="unit">đ</span>
-															</div>
-													</div>
-													<div class="card-stars">
-														<span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-															<i class="fas fa-star text-warning"></i>
-														</span> <span> <i class="fas fa-star  text-dark"></i></span>
-													</div>
-												</div>
-											</div>
-
-										</div>
+										</c:forEach>
 									</div>
 
 								</div>
