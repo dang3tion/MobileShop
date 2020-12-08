@@ -266,7 +266,8 @@ a:hover{
   padding: 10px;
   background-color: #5e8dbf17;
   border-radius: 5px;
-}
+}.card-title{min-height:43px;}
+
 .card .card-content .card-title a {
   color: black;
   font-size: 15px;
