@@ -31,17 +31,16 @@ public class Register extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
-//		String firstName = request.getParameter("firstName");
-//		String phoneNumber = request.getParameter("phoneNumber");
-//		String address = request.getParameter("address");
-		String phoneNumber = "test";
-		String address = "test";
+		String phoneNumber = request.getParameter("phoneNumber");
+		String address = request.getParameter("address");
+		
+		
 
 		Account tmpAcc = new Account(email, password, name, phoneNumber, address);
 		if ((new BO_Account()).isExsit(email)) {
 			request.setAttribute("message", "Email này đã được đăng kí");
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/views/accountHandling/register.jsp");
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/register.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			request.setAttribute("newUser", tmpAcc);

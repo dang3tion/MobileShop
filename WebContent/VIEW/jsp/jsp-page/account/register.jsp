@@ -45,7 +45,7 @@
 				<div class="frame-register">
 					<div class="form-input">
 						<label class="">+84</label> <input type="number"
-							name="phonenumber" class=" form-control" id="inputphone"
+							name="phoneNumber" class=" form-control" id="inputphone"
 							placeholder="Nhập số điện thoại "
 							onfocusout="check_phone(this.id)">
 					</div>
