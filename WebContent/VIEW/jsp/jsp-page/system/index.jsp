@@ -10,7 +10,7 @@
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
-	
+	<jsp:include page="/VIEW/jsp/jsp-component/filter.jsp"></jsp:include>
 	<!-- Page Content -->
 	<div class="container">
 
