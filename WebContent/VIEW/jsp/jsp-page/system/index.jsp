@@ -46,7 +46,7 @@
 															width="80%" class="" alt="..."></a>
 													</div>
 													<div class="card-content">
-														<div class="card-title">
+														<div class="card-title" style="min-height:43px;">
 															<a href="Product_page/chiTietSanPham.html">Iphone 12
 																${p.name } 
 														</div>
@@ -84,7 +84,7 @@
 															width="80%" class="" alt="..."></a>
 													</div>
 													<div class="card-content">
-														<div class="card-title">
+														<div class="card-title" style="min-height:43px;">
 															<a href="Product_page/chiTietSanPham.html">Iphone 12
 																${p2.name } 
 														</div>
