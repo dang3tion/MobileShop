@@ -6,6 +6,8 @@
 <head>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
 <c:url var="url" scope="application" value="/VIEW"></c:url>
+
+<!-- HÓA ĐƠN BỊ LỖI CSS -->
 <link rel="stylesheet" href="${url}/css/css-page/bill.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900"
@@ -26,10 +28,11 @@
 					<td>
 						<table align="left" border="0" cellpadding="0" cellspacing="0"
 							style="text-align: left;" width="100%">
+							<tr>
 								<td style="text-align: center;">
-									<h2 style="margin-bottom: 20px;">Hóa đơn</h2> <img width="100" height="100"
-									src="${url}/image/img-sys/bill.png" alt="image bill"
-									style="margin-bottom: 30px;">
+									<h2 style="margin-bottom: 20px;">Hóa đơn</h2> <img
+									src="${url}/image/img-sys/bill.png" width="150" height="150"
+									alt="image bill" style="margin-bottom: 30px;">
 								</td>
 							</tr>
 						</table>
@@ -49,9 +52,32 @@
 								<b>Địa chỉ giao hàng : 124/97 Khu phố 6,Phường Linh
 									Trung,Quận Thủ Đức, Tp.HCM</b>
 							</p>
-						</div>
-
-
+						</div> <!-- <table cellpadding="0" cellspacing="0" border="0" align="left"
+                        style="width: 100%;margin-top: 10px; width: 80%  ; margin-bottom: 10px; margin-left: 110px;margin-right: 10px;">
+                        <tbody >
+                            <tr>
+                                <td
+                                    style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 45%;">
+                                    <h5
+                                        style="font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">
+                                        Địa chỉ giao hàng</h5>
+                                    <p
+                                        style="text-align: left;font-weight: normal; font-size: 14px; color: #000000;line-height: 21px;    margin-top: 0;">
+                                        124/97 Khu phố 6,<br> Phường Linh Trung <br>Quận Thủ Đức, tp.HCM</p>
+                                </td>
+                                <td></td>
+                                <td
+                                    style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 45%;">
+                                    <h5
+                                        style="font-size: 16px;font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">
+                                        Địa chỉ thanh toán</h5>
+                                    <p
+                                        style="text-align: left;font-weight: normal; font-size: 14px; color: #000000;line-height: 21px;    margin-top: 0;">
+                                        124/97 Khu phố 6,<br> Phường Linh Trung <br>Quận Thủ Đức, tp.HCM</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> -->
 						<table class="order-detail" border="0" cellpadding="0"
 							cellspacing="0" align="left"
 							style="width: 80%; margin-bottom: 50px; margin-left: 110px;">
@@ -137,6 +163,22 @@
 								</td>
 								<td colspan="2" align="right"><b>50.000.000<span>
 											VNĐ</span></b></td>
+								<!-- <tr class="pad-left-right-space">
+                            <td colspan="2" align="left">
+                                <p style="font-size: 14px;">THUẾ :</p>
+                            </td>
+                            <td colspan="2" align="right">
+                                <b>200.000VNĐ</b>
+                            </td>
+                        </tr>
+                        <tr class="pad-left-right-space">
+                            <td colspan="2" align="left">
+                                <p style="font-size: 14px;">VAT 10% :</p>
+                            </td>
+                            <td colspan="2" align="right">
+                                <b>2.220.000VNĐ</b>
+                            </td>
+                        </tr> -->
 							<tr class="pad-left-right-space">
 								<td colspan="2" align="left">
 									<p>Phí giao hàng :</p>
@@ -144,7 +186,14 @@
 								<td colspan="2" align="right"><b>500.000<span>
 											VNĐ</span></b></td>
 							</tr>
-
+							<!-- <tr class="pad-left-right-space">
+                            <td colspan="2" align="left">
+                                <p style="font-size: 14px;">giảm giá :</p>
+                            </td>
+                            <td colspan="2" align="right">
+                                <b>3.000.000VNĐ</b>
+                            </td>
+                        </tr> -->
 							<tr class="pad-left-right-space ">
 								<td class="m-b-5" colspan="2" align="left">
 									<p">Tổng cộng :</p>
@@ -166,11 +215,10 @@
 			border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 				<td style="padding: 30px;"><a
-					href=" ${pageContext.request.contextPath}/index"
-					class="btn btn-primary " role="button" aria-pressed="true">TIẾP
-						TỤC MUA HÀNG</a>
-
-
+					href=" ${pageContext.request.contextPath}/index">
+						<button type="submit" class="btn btn-primary">TIẾP TỤC
+							MUA HÀNG</button>
+				</a>
 					<table border="0" cellpadding="0" cellspacing="0"
 						class="footer-social-icon" align="center" class="text-center"
 						style="margin-top: 20px;">
@@ -194,7 +242,11 @@
 						style="margin: 20px auto 0;">
 
 						<tr>
-							<td></td>
+							<td>
+								<!-- <a href="../index.html">
+                                <button type="submit" class="btn btn-primary">TIẾP TỤC MUA HÀNG</button>
+                            </a> -->
+							</td>
 						</tr>
 						<tr>
 							<td></td>

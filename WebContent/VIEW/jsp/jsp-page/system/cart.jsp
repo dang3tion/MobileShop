@@ -191,9 +191,13 @@
 								</p>
 								<p>(Đã bao gồm VAT nếu có)</p>
 							</div>
-							<a href="${pageContext.request.contextPath}/member/payment"
-								class="btn btn-primary btn-lg active" role="button"
-								aria-pressed="true">Thanh Toán</a>
+							
+							
+							 <a class="text-none" style="color:rgb(255, 255, 255)" href="${pageContext.request.contextPath}/member/payment"> <button
+                                    class="btn-primary btn-receipt">Thanh toán</button></a>
+							
+							
+							
 
 						</div>
 					</div>

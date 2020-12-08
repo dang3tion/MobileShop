@@ -7,4 +7,9 @@
 	<welcome-file-list>
 		<welcome-file>start.jsp</welcome-file>
 	</welcome-file-list>
+	<!-- xử lý lỗi 404 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/VIEW/jsp/jsp-component/404.jsp</location>
+	</error-page>
 </web-app>
