@@ -1,7 +1,6 @@
 package controller.admin;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.BO_Service.BO_Account;
+import model.BO_service.BO_Account;
 import model.beans.Account;
 import model.utility.Const;
 
@@ -24,6 +23,7 @@ public class User extends HttpServlet {
 
 		String page = request.getParameter("page");
 		String nrow = request.getParameter("nrow");
+		String blockAcc = request.getParameter("blockaccount");
 		if (page == null) {
 			page = "1";
 		}
@@ -32,45 +32,51 @@ public class User extends HttpServlet {
 			nrow = "10";
 		}
 
+		BO_Account bo = new BO_Account(page, nrow);
 		String keyword = request.getParameter("keyword");
 		List<Account> listAcc = null;
 		if (keyword != null) {
 			int start = (Integer.parseInt(nrow) * Integer.parseInt(page)) - (Integer.parseInt(nrow) + 1);
 			int end = Integer.parseInt(nrow) * Integer.parseInt(page);
-			listAcc = (new BO_Account(page, nrow)).search(keyword, start, end);
-			request.setAttribute("TongSoTrang", (new BO_Account(page, nrow)).totalPageSearch(keyword));
-			request.setAttribute("totalSearch", (new BO_Account(page, nrow)).totalSearch(keyword));
+			listAcc = bo.search(keyword, start, end);
+			request.setAttribute("TongSoTrang", bo.totalPageSearch(keyword));
+			request.setAttribute("totalSearch", bo.totalSearch(keyword));
+		} else if (blockAcc != null) {
+			listAcc = (new BO_Account()).getListDisableAccount();
+			request.setAttribute("TongSoTrang", "1");
+			request.setAttribute("displayButtonXemTaiKhoanBiKhoa", true);
 		} else {
-			listAcc = (new BO_Account(page, nrow)).get();
-			request.setAttribute("TongSoTrang", (new BO_Account(page, nrow)).totalPage());
+			listAcc = bo.getListAccount();
+			request.setAttribute("TongSoTrang", bo.totalPage());
 		}
 
 		request.setAttribute("listAcc", listAcc);
 
-//		request.setAttribute("TongSoTrang", BO_acc.totalPage());
-		request.setAttribute("TongSoTaiKhoan", (new BO_Account(page, nrow)).getTotalAccount());
-		request.setAttribute("TongSoAccDangHoatDong", (new BO_Account(page, nrow)).getTotalStatusAccount(Const.ACCOUNT_ENABLE));
-		request.setAttribute("TongSoAccBiKhoa", (new BO_Account(page, nrow)).getTotalStatusAccount(Const.ACCONT_DISABLE));
+		request.setAttribute("TongSoTaiKhoan", bo.getTotalAccount());
+		request.setAttribute("TongSoAccDangHoatDong", bo.getTotalStatusAccount(Const.ACCOUNT_ENABLE));
+		request.setAttribute("TongSoAccBiKhoa", bo.getTotalStatusAccount(Const.ACCONT_DISABLE));
 		request.setAttribute("TrangHienTai", page);
-		request.setAttribute("STTstart", (new BO_Account(page, nrow)).startRow());
+		request.setAttribute("STTstart", bo.startRow());
 		request.setAttribute("page", page);
 		request.setAttribute("nrow", page);
 		request.setAttribute("keywordHienTai", keyword);
 
-		switch (nrow) {
+		switch (nrow)
+
+		{
 		case "10":
-			request.setAttribute("select10", "selected='selected'");
+			request.setAttribute("select10", "selected");
 			break;
 		case "20":
-			request.setAttribute("select20", "selected='selected'");
+			request.setAttribute("select20", "selected");
 			break;
 		default:
-			request.setAttribute("select50", "selected='selected'");
+			request.setAttribute("select50", "selected");
 			break;
 		}
 
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-user.jsp");
+				= this.getServletContext().getRequestDispatcher("/views/admin/accountManagement.jsp");
 		dispatcher.forward(request, response);
 	}
 

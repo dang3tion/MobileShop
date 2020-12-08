@@ -1,4 +1,4 @@
-package model.BO_Service;
+package model.BO_service;
 
 import java.util.List;
 
@@ -14,7 +14,6 @@ public class BO_Account {
 	private DAO_Account dao = new DAO_Account();
 
 	public BO_Account() {
-
 	}
 
 	// dùng để xuất danh sách tài khoản trong trang ADMIN
@@ -23,8 +22,7 @@ public class BO_Account {
 		this.numRowPerPage = Integer.parseInt(numRowPerPage_str);
 	}
 
-	// chỉ get được thông tin customer
-	public Account get(String email) {
+	public Account getCustomerInfo(String email) {
 		Account acc = dao.get(email);
 		if (!acc.getRole().equals(Const.ADMIN_ROLE)) {
 			return acc;
@@ -32,8 +30,8 @@ public class BO_Account {
 		return null;
 	}
 
-	public List<Account> get() {
-		List<Account> listAcc = dao.get(startRow(), endRow());
+	public List<Account> getListAccount() {
+		List<Account> listAcc = dao.getListAccount(startRow(), endRow());
 		return listAcc;
 
 	}
@@ -47,16 +45,16 @@ public class BO_Account {
 	}
 
 	// mặc định add role là CUSTOMER
-	public void add(Account tempAcc) {
-		tempAcc.setPassword(EncryptPassword.md5(tempAcc.getPassword()));
-		dao.add(tempAcc);
+	public void add(Account account) {
+		account.setPassword(EncryptPassword.md5(account.getPassword()));
+		dao.add(account);
 
 	}
 
 	/**
 	 * @param email
 	 * @param passwordPlaintext
-	 * @param loại              tài khoản cần checks
+	 * @param loại              tài khoản cần checks 
 	 * @return 1 là đăng nhập thành công. 2 là thông tin tài khoản không đúng. 3 là
 	 *         tài khoản bị khóa
 	 */
@@ -90,8 +88,8 @@ public class BO_Account {
 		(new DAO_Account()).update(acc);
 	}
 
-	public void update(Account acc) {
-		(new DAO_Account()).update(acc);
+	public void update(Account account) {
+		(new DAO_Account()).update(account);
 	}
 
 	/**
@@ -99,7 +97,7 @@ public class BO_Account {
 	 * @note : thường dùng kết hợp với hàm isExist()
 	 */
 	public boolean isDisable(String email) {
-		Account acc = get(email);
+		Account acc = getCustomerInfo(email);
 		if (acc.getStatus().equals(Const.ACCONT_DISABLE)) {
 			return true;
 		}
@@ -155,7 +153,7 @@ public class BO_Account {
 	}
 
 	public void on_off_account(String email) {
-		Account acc = get(email);
+		Account acc = getCustomerInfo(email);
 		if (acc.getStatus().equals(Const.ACCOUNT_ENABLE)) {
 			acc.setStatus(Const.ACCONT_DISABLE);
 			update(acc);
@@ -180,7 +178,8 @@ public class BO_Account {
 //_____________________________________________________________________________
 
 	public static void main(String[] args) {
-
+		BO_Account bo = new BO_Account("1","20");
+		System.out.println(bo.getListAccount());
 	}
 
 }

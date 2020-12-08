@@ -44,7 +44,6 @@ public class DAO_Account extends ConnectDB {
 	}
 
 	public void delete(String id) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -94,7 +93,8 @@ public class DAO_Account extends ConnectDB {
 
 	public int totalSearch(String keyword) {
 		List<Account> listAcc = new ArrayList<Account>();
-		String query = "SELECT * FROM SEARCHLISTACC(N'" + keyword + "') WHERE " + ROLE + " = '" + Const.CUSTOMER_ROLE + "'";
+		String query = "SELECT * FROM SEARCHLISTACC(N'" + keyword + "') WHERE " + ROLE + " = '" + Const.CUSTOMER_ROLE
+				+ "'";
 		try (ResultSet rs = super.AccessDBstr(query)) {
 			while (rs.next()) {
 				Account acc = new Account( //
@@ -124,7 +124,7 @@ public class DAO_Account extends ConnectDB {
 
 	}
 
-	public List<Account> get(int start, int end) {
+	public List<Account> getListAccount(int start, int end) {
 		List<Account> listAcc = new ArrayList<Account>();
 		String query = "SELECT * FROM " + " (SELECT ROW_NUMBER() OVER (ORDER BY " + TIMECREATE
 				+ " DESC) AS STT ,* FROM " + ACCOUNT + ") AS X " + " WHERE STT BETWEEN ? AND ? AND " + ROLE + " = '"

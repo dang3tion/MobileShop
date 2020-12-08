@@ -1,4 +1,4 @@
-package controller.accountHandling;
+package controller.account_handling;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.BO_Service.BO_Account;
+import model.BO_service.BO_Account;
 import model.DAO.DAO_Account;
 import model.beans.Account;
 import model.utility.Const;
@@ -60,7 +60,7 @@ public class Login extends HttpServlet {
 			//
 			// Thêm user này vào session
 			HttpSession session = request.getSession();
-			Account acc = (new BO_Account()).get(email);
+			Account acc = (new BO_Account()).getCustomerInfo(email);
 			session.setAttribute(Const.ACCOUNT_LOGINED, acc);
 
 			String path = (String) session.getAttribute(Const.CURRENT_LINK);

@@ -1,4 +1,4 @@
-package model.BO_Service;
+package model.BO_service;
 
 import model.DAO.DAO_Cart;
 

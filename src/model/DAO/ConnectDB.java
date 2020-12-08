@@ -1,5 +1,5 @@
 
-// Cài SQL_JDBC bằng maven
+// c SQL_JDBC bằng maven
 // <dependency>
 // <groupId>com.microsoft.sqlserver</groupId>
 // <artifactId>mssql-jdbc</artifactId>
@@ -18,17 +18,15 @@ import java.sql.Statement;
 import model.utility.Config;
 
 /**
- * @description khi sử dụng method AccessDB của class này phải đặt trong câu
- *              lệnh try-with-resource statement để đóng kết nối sau khi sử
- *              dụng.
+ * @description khi sử dụng method -->AccessDBstr<-- của class này phải đặt
+ *              trong câu lệnh "try-with-resource" để đóng kết nối sau
+ *              khi kết thúc hàm.
  *
  */
 public class ConnectDB {
 
-	// Dùng Single Connection cho hệ thống nhỏ
-	// Khi nào lượng User tăng cao nâng cấp thành Connection Pool
-
-	public String STRING_CONNECTION = "jdbc:sqlserver://localhost:1433;DATABASE_NAME=Demo;user=sa;password=sa";
+	// ===> Dùng Single Connection cho hệ thống nhỏ
+	// ===> Khi nào lượng User tăng cao nâng cấp thành Connection Pool
 
 	public String URL = Config.SERVER_NAME + ";databaseName=" + Config.DATABASE_NAME;
 
@@ -44,7 +42,8 @@ public class ConnectDB {
 	}
 
 	/**
-	 * @param query      : câu lệnh UDATE chứa "?" làm tham số
+	 * @implNote CHỈ DÙNG TRONG TRƯỜNG HỢP DANH SÁCH THAM SỐ ĐỀU LÀ STRING
+	 * @param query      : câu lệnh UDATE chứa "?" làm tham số (String)
 	 * @param parameters : danh sách tham số theo thứ tự.
 	 * @return : trả về 1 ResultSet, null đối với câu lệnh Update, delete
 	 * @throws SQLException
@@ -70,7 +69,8 @@ public class ConnectDB {
 	}
 
 	/**
-	 * @param query : câu truy vấn không chứa tham số
+	 * @implNote CHỈ DÙNG TRONG TRƯỜNG HỢP DANH SÁCH THAM SỐ ĐỀU LÀ STRING
+	 * @param query : câu truy vấn không chứa tham số  (String)
 	 * @return : trả về 1 ResultSet, null đối với câu lệnh delete
 	 * @throws SQLException
 	 */
@@ -91,5 +91,4 @@ public class ConnectDB {
 		return resultSet;
 	}
 
-	
 }

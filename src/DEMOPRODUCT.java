@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.BO_Service.BO_Product;
+import model.BO_service.BO_Product;
 
 @WebServlet("/ls")
 public class DEMOPRODUCT extends HttpServlet {

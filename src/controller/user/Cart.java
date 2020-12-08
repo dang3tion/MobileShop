@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.BO_Service.BO_Cart;
+import model.BO_service.BO_Cart;
 import model.beans.Account;
 import model.utility.Const;
 

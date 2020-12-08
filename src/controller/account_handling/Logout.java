@@ -1,4 +1,4 @@
-package controller.accountHandling;
+package controller.account_handling;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

@@ -1,4 +1,4 @@
-package createData;
+package create_data;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

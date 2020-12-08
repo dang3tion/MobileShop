@@ -1,4 +1,4 @@
-package model.BO_Service;
+package model.BO_service;
 
 import java.util.ArrayList;
 

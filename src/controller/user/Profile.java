@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.BO_Service.BO_Account;
+import model.BO_service.BO_Account;
 import model.beans.Account;
 import model.utility.Const;
 import model.utility.EncryptPassword;

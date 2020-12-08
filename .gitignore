@@ -8,7 +8,7 @@ README.md
 WebContent/WEB-INF/lib/
 WebContent/META-INF/*
 
-
+*.md
 *.zip
 
 # Compiled class file
