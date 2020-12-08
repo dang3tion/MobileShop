@@ -20,30 +20,33 @@ public class Payment extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// chỉ vào được trang payment từ trang giỏ hàng
-		HttpSession session = request.getSession();
-
-		String token = "empty";
-		if (session.getAttribute(Const.TOKEN_CART_TO_PAY) != null) {
-			token = (String) session.getAttribute(Const.TOKEN_CART_TO_PAY);
-		}
-
-		if (token.equals("TOKEN")) {
-			session.removeAttribute(Const.TOKEN_CART_TO_PAY);
-			token = "empty";
-			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/payment.jsp");
-			dispatcher.forward(request, response);
-		} else {
-			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/index");
-			dispatcher.forward(request, response);
-		}
+//		// chỉ vào được trang payment từ trang giỏ hàng
+//		HttpSession session = request.getSession();
+//
+//		String token = "empty";
+//		if (session.getAttribute(Const.TOKEN_CART_TO_PAY) != null) {
+//			token = (String) session.getAttribute(Const.TOKEN_CART_TO_PAY);
+//		}
+//
+//		if (token.equals("TOKEN")) {
+//			session.removeAttribute(Const.TOKEN_CART_TO_PAY);
+//			token = "empty";
+		RequestDispatcher dispatcher //
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/payment.jsp");
+		dispatcher.forward(request, response);
+//		} else {
+//			RequestDispatcher dispatcher //
+//					= this.getServletContext().getRequestDispatcher("/index");
+//			dispatcher.forward(request, response);
+//		}
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		RequestDispatcher dispatcher //
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/bill.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
