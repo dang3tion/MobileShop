@@ -20,7 +20,12 @@
 	<div class=" container m-2 mb-5">
 
 		<div class="row">
-			<jsp:include page="/VIEW/jsp/jsp-page/account/menu_profile.jsp"></jsp:include>
+
+
+			<c:import url="/VIEW/jsp/jsp-component/menu_profile.jsp">
+				<c:param name="infoactive" value="active"></c:param>
+			</c:import>
+
 			<div class="col-sm-8">
 				<form method="post" onsubmit="return checknhap()"
 					action="${pageContext.request.contextPath}/member/profile">
@@ -138,7 +143,7 @@
 										id="displayErr">Mật khẩu không khớp</h6>
 								</div>
 
-								<h2 style="color: red">${message}Tàikhoản đã tồn tại</h2>
+								<h2 style="color: red">${message}Tàikhoảnđã tồn tại</h2>
 							</div>
 
 							<!-- @@@@@@@@@@@@@@@@@ -->

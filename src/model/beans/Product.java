@@ -32,4 +32,10 @@ public class Product {
 		return imgSrc;
 	}
 
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", imgSrc=" + imgSrc + "]\n";
+	}
+
+	
 }
