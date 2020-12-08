@@ -4,11 +4,16 @@ public class Product {
 	private String id;
 	private String name;
 	private int price;
+	private String imgSrc;
 
-	public Product(String id, String name, int price) {
+	public Product(String id, String name, int price, String imgSrc) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
+		this.imgSrc = imgSrc;
+	}
+
+	public Product() {
 	}
 
 	public String getId() {
@@ -21,6 +26,10 @@ public class Product {
 
 	public int getPrice() {
 		return price;
+	}
+
+	public String getImgSrc() {
+		return imgSrc;
 	}
 
 }
