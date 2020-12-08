@@ -39,6 +39,9 @@
 					hàng <i class="menu-icon far fa-paper-plane"></i>
 			</a></li>
 			<li><a href=""
+				class="list-group-item list-group-item-action "> Thuộc tính sản phẩm <i
+					class="menu-icon fas fa-cog"></i></a></li>
+			<li><a href=""
 				class="list-group-item list-group-item-action "> Dữ liệu lọc <i
 					class="menu-icon fas fa-filter"></i></a></li>
 		</ul>

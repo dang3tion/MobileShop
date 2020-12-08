@@ -5,24 +5,13 @@ body {
 	display: block;
 }
 
-ul {
-	margin: 0;
-	padding: 0;
-}
 
-li {
-	display: inline-block;
-	text-decoration: unset;
-}
 
-a {
-	/* text-decoration: none; */
-	
-}
 
-p {
-	margin: 15px 0;
-}
+
+
+
+
 
 h5 {
 	color: #444;
@@ -30,13 +19,7 @@ h5 {
 	font-weight: 400;
 }
 
-.text-center {
-	text-align: center
-}
 
-.main-bg-light {
-	background-color: #fafafa;
-}
 
 .title {
 	color: #444444;

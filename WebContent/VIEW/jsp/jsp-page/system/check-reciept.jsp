@@ -6,7 +6,7 @@
 <head>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
 <c:url var="url" scope="application" value="/VIEW"></c:url>
- <link rel="stylesheet" href="${url }/css/css-page/receipt.css">
+<link rel="stylesheet" href="${url }/css/css-page/receipt.css">
 </head>
 
 <body>
@@ -36,31 +36,31 @@
 					</div>
 				</div>
 			</div>
-   <div class="col-12">
-                <div class="check-result">
-                    <h4 class="text-left mb-4">Kết quả tìm kiếm</h4>
-                    <table class="table table-hover ">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">Mã đơn hàng</th>
-                             <th scope="col">Mã khách hàng</th>
-                                <th scope="col">Ngày đặt hàng</th>
-                                
-                                <th scope="col">Tình trạng đơn hàng</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">MS291</th>
-                                <td>KH01</td>
-                                <td>10/10/2020</td>
-                                <td>Đang giao hàng</td>
-                            </tr>
+			<div class="col-12">
+				<div class="check-result">
+					<h4 class="text-left mb-4">Kết quả tìm kiếm</h4>
+					<table class="table table-hover ">
+						<thead class="thead-light">
+							<tr>
+								<th scope="col">Mã đơn hàng</th>
+								<th scope="col">Mã khách hàng</th>
+								<th scope="col">Ngày đặt hàng</th>
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+								<th scope="col">Tình trạng đơn hàng</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">MS291</th>
+								<td>KH01</td>
+								<td>10/10/2020</td>
+								<td>Đang giao hàng</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
 
 		</div>
 		<div class="row"></div>
@@ -70,8 +70,8 @@
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 	<!-- Bootstrap core JavaScript -->
 
-	 
-	   
+
+
 
 </body>
 
