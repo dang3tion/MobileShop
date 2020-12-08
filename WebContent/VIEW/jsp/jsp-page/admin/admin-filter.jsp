@@ -194,7 +194,8 @@
 											<tbody>
 												<tr>
 
-													<td>Android</td>
+													<td><input type="text" class="title-attribute"
+														value="Android"></td>
 													<td><select class="select-choose">
 															<option value="Andriod">Android</option>
 															<option value="IOS">IOS</option>
@@ -218,7 +219,8 @@
 												</tr>
 												<tr>
 
-													<td>IOS</td>
+													<td><input type="text" class="title-attribute"
+														value="IOS"></td>
 													<td><select class="select-choose">
 															<option value="IOS">IOS</option>
 															<option value="Andriod">Android</option>
@@ -242,7 +244,8 @@
 												</tr>
 												<tr>
 
-													<td>Khác</td>
+													<td><input type="text" class="title-attribute"
+														value="Khác"></td>
 													<td><select class="select-choose">
 															<option value="Khác">Khác</option>
 															<option value="Andriod">Android</option>
@@ -317,8 +320,8 @@
 
 											<tbody>
 												<tr>
-
-													<td>Màn hình nhỏ (Dưới 5 INCH)</td>
+													<td><input type="text" class="title-attribute"
+														value="Màn hình nhỏ (Dưới 5 INCH)"></td>
 													<td>Từ <input type="number" min=0 value=0
 														class="input-number"> đến <input type="number"
 														min=0 value=5 class="input-number">
@@ -340,8 +343,8 @@
 													</td>
 												</tr>
 												<tr>
-
-													<td>Vừa tay (5 INCH đến 6 INCH)</td>
+													<td><input type="text" class="title-attribute"
+														value="Vừa tay (5 INCH đến 6 INCH)"></td>
 													<td>Từ <input type="number" min=0 value=5
 														class="input-number"> đến <input type="number"
 														value=6 min=0 class="input-number">
@@ -363,8 +366,8 @@
 													</td>
 												</tr>
 												<tr>
-
-													<td>Tên 6 INCH</td>
+													<td><input type="text" class="title-attribute"
+														value="Trên 6 INCH"></td>
 													<td>Từ <input type="number" min=0 value=6
 														class="input-number"> đến <input type="number"
 														value=999 min=0 class="input-number">
@@ -502,7 +505,6 @@
 					<!-- /#right-panel -->
 				</div>
 			</div>
-
 			<div class="modal fade" id="delete" tabindex="-1" role="dialog"
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
