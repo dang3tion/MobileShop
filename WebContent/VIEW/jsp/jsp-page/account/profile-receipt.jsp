@@ -5,6 +5,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp"/>
+    <jsp:include page="/VIEW/jsp/jsp-component/head-css-admin.jsp"/>
     <c:url var="url" scope="application" value="/VIEW"></c:url>
     <link rel="stylesheet" type="text/css" href="${url}/css/css-page/profile.css">
 </head>
