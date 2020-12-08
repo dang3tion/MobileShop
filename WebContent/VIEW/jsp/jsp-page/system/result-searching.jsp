@@ -10,6 +10,7 @@
 
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
+	<jsp:include page="/VIEW/jsp/jsp-component/filter.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
 		<c:param name="title" value="SỦa lại title nè"></c:param>
@@ -25,7 +26,7 @@
 			<!--Noi dung ket qua sau khi tim kiem-->
 			<div class="col-9" id="result-content">
 				<!--Hang ket qua-->
-			
+
 				<div class="row-content">
 
 					<div class="row">
@@ -349,8 +350,8 @@
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 	<!-- Bootstrap core JavaScript -->
 
-	 
-	   
+
+
 
 </body>
 
