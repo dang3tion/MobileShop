@@ -65,8 +65,8 @@
 												</div>
 												<a href=" ${pageContext.request.contextPath}/admin/product-add"><button
 														data-toggle="tooltip" data-placement="top"
-														title="Thêm mới một model điện thoại" class="btn btn-success btn-add">
-														<i class="fas fa-plus-square"></i> Thêm điện thoại
+														title="Thêm một sản phẩm mới vào danh sách" class="btn btn-success btn-add">
+														<i class="fas fa-plus-square"></i> Thêm sản phẩm
 													</button></a>
 												<table id="bootstrap-data-table" class="table table-hover ">
 													<thead class="thead-light">
