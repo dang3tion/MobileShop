@@ -38,11 +38,11 @@
 				class="list-group-item list-group-item-action ${param.feedbackactive}"> Phản hồi khách
 					hàng <i class="menu-icon far fa-paper-plane"></i>
 			</a></li>
-			<li><a href=""
-				class="list-group-item list-group-item-action "> Thuộc tính sản phẩm <i
+			<li><a href="${pageContext.request.contextPath}/admin/attribute"
+				class="list-group-item list-group-item-action ${param.attributeactive}"> Thuộc tính sản phẩm <i
 					class="menu-icon fas fa-cog"></i></a></li>
-			<li><a href=""
-				class="list-group-item list-group-item-action "> Dữ liệu lọc <i
+			<li><a href="${pageContext.request.contextPath}/admin/filter"
+				class="list-group-item list-group-item-action ${param.filteractive} "> Dữ liệu lọc <i
 					class="menu-icon fas fa-filter"></i></a></li>
 		</ul>
 	</div>

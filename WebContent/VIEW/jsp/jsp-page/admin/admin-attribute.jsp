@@ -15,7 +15,7 @@
 		<!-- Sidebar -->
 
 		<c:import url="/VIEW/jsp/jsp-component/sidebar-admin.jsp">
-			<c:param name="useractive" value="active"></c:param>
+			<c:param name="attributeactive" value="active"></c:param>
 		</c:import>
 
 
