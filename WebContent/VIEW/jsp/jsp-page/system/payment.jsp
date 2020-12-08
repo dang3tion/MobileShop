@@ -60,17 +60,21 @@
 							cộng</span> <strong class="price">19.000.000 <span class='unit'>đ</span></strong>
 					</li>
 				</ul>
-
+				<!-- 
+        <form class="card p-2">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Nhập mã giảm giá">
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-secondary">Áp dụng</button>
+            </div>
+          </div>
+        </form> -->
 				<div class="row" style="margin-top: 20px;">
-
-
-					<form>
-						<a href="${pageContext.request.contextPath}/member/payment"
-							class="btn btn-primary btn-lg active" role="button"
-							aria-pressed="true">Thanh Toán</a>
-					</form>
-
-
+					<a href="../Bill_Page/Bill.html" style="margin: auto;">
+						<button class="btn btn-primary"
+							style="padding: 5px 100px;; text-align: center; margin: auto;"
+							type="submit">Thanh Toán</button>
+					</a>
 				</div>
 			</div>
 
