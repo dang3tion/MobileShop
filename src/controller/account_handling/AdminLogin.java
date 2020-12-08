@@ -41,7 +41,7 @@ public class AdminLogin extends HttpServlet {
 			// mở khóa link
 			// Thêm user này vào session
 			HttpSession session = request.getSession();
-			session.setAttribute("KEY_Logined", acc);
+			session.setAttribute("ADMIN_LOGINED", acc);
 
 			String path = (String) session.getAttribute(Const.CURRENT_LINK);
 

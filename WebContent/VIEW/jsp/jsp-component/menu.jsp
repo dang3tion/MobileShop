@@ -28,7 +28,8 @@
 
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto pt-3">
-				<li class="nav-item "><a href="${pageContext.request.contextPath}/contact">
+				<li class="nav-item "><a
+					href="${pageContext.request.contextPath}/contact">
 						<div class="item-menu">
 
 							<i class="fas fa-phone-square-alt"></i>
@@ -50,30 +51,57 @@
 						</div>
 				</a></li>
 
+				<li class="nav-item"><a
+					href="${pageContext.request.contextPath}/cart">
+						<div class="item-menu" id="cart">
+							<i class="fas fa-shopping-cart"></i>
+							<div class="item-menu-text">
+								<p>Giỏ hàng</p>
+							</div>
+							<label class="quantity-cart" id="quantity-cart">0</label>
+						</div>
+						<style>
+#quantity-cart {
+	position: absolute;
+	top: -5px;
+	left: 55px;
+	color: black;
+	background-color: #d88e3f;
+	border-radius: 4px;
+	padding: 4px 8px;
+	font-size: 10px;
+	font-weight: 700;
+	display: none;
+}
+</style>
+				</a></li>
+
 				<!-- xử lý nút login - START -->
 
 
 				<c:choose>
-					<c:when test="${KEY_Logined!=null && KEY_Logined.role == 'ADMIN'}">
+
+					<c:when
+						test="${CUSTOMER_LOGINED!=null && CUSTOMER_LOGINED.name == '' }">
 						<li class="nav-item"><a
-							href="${pageContext.request.contextPath}/admin/index">
+							href="${pageContext.request.contextPath}/member/profile">
 								<div class="item-menu">
-									<i class="fas fa-cogs"></i>
+									<i class="fas fa-user"></i>
 									<div class="item-menu-text">
-										<p>Quản lý Shop</p>
+										<p>Cập nhật thông tin!</p>
 									</div>
 
 								</div>
 						</a></li>
 					</c:when>
 					<c:when
-						test="${KEY_Logined!=null && KEY_Logined.role == 'CUSTOMER'}">
+						test="${CUSTOMER_LOGINED!=null && CUSTOMER_LOGINED.name != '' }">
 						<li class="nav-item"><a
 							href="${pageContext.request.contextPath}/member/profile">
 								<div class="item-menu">
 									<i class="fas fa-user"></i>
 									<div class="item-menu-text">
-										<p>Chào, ${KEY_Logined.getFirstName()} !</p>
+										<p>Chào, ${CUSTOMER_LOGINED.name}!</p>
 									</div>
 
 								</div>
@@ -96,24 +124,7 @@
 				<!-- xử lý nút login END -->
 
 
-				<!--  xử lý nút giỏ hàng START > -->
-				<c:choose>
-					<c:when test="${KEY_Logined.role == 'ADMIN'}">
-					</c:when>
-					<c:otherwise>
-						<li class="nav-item"><a
-							href="${pageContext.request.contextPath}/cart">
-								<div class="item-menu" id="cart">
-									<i class="fas fa-shopping-cart"></i>
-									<div class="item-menu-text">
-										<p>Giỏ hàng</p>
-									</div>
-									<label class="quantity-cart" id="quantity-cart">0</label>
-								</div>
-						</a></li>
-					</c:otherwise>
-				</c:choose>
-				<!--  xử lý nút giỏ hàng END > -->
+
 			</ul>
 		</div>
 	</div>

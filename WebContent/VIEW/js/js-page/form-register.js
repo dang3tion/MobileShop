@@ -108,8 +108,16 @@ function check_name(id) {
 }
 
 
-function checkRegister() {
+function checkRegisterABCDEFGH() {
   if (ckeckEmail&&checkFristName&&checkLastName&&checkPhone&&checkRepass&&checkPass){
+      return true;
+  }else {
+    alert("Vui lòng nhập đầy đủ thông tin.")
+    return  false;
+  }
+}
+function checkRegister() {
+  if (checkEmailcheckPass){
       return true;
   }else {
     alert("Vui lòng nhập đầy đủ thông tin.")

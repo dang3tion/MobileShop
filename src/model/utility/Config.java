@@ -9,11 +9,11 @@ public class Config {
 //	   ____) | | |__| | | |____    | |__| | | | | | | | | | | | | | |  __/
 //	  |_____/   \___\_\ |______|    \____/  |_| |_| |_| |_| |_| |_|  \___|
 //	___________________________________________________________________________________________  ______________________________________________________ ______________________________________________________ ___________________________________________________________________________________________________________________________________________________                                                                  
-	public static final String DBDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	public static final String SERVER_NAME = "jdbc:sqlserver://mobileshop.civgzrydcxzm.ap-southeast-1.rds.amazonaws.com:1433";
-	public static final String DATABASE_NAME = "MOBILESHOP";
-	public static final String USERNAME_DB = "bao";
-	public static final String PASSWORD_DB = "12345678";
+//	public static final String DBDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+//	public static final String SERVER_NAME = "jdbc:sqlserver://mobileshop.civgzrydcxzm.ap-southeast-1.rds.amazonaws.com:1433";
+//	public static final String DATABASE_NAME = "MOBILESHOP";
+//	public static final String USERNAME_DB = "bao";
+//	public static final String PASSWORD_DB = "12345678";
 //	____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 //	#####public static final String STRING_CONNECTION = "jdbc:sqlserver://localhost:1433;DATABASE_NAME=Demo;user=sa;password=sa";
 
@@ -42,10 +42,10 @@ public class Config {
 //	  ____) | | |__| | | |____        | | | (_) | | (__  | (_| | | | | | | | | (_) | \__ \ | |_ 
 //	 |_____/   \___\_\ |______|       |_|  \___/   \___|  \__,_| |_| |_| |_|  \___/  |___/  \__|
 //	___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
-//	public static final String DBDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-//	public static final String SERVER_NAME = "jdbc:sqlserver://localhost:1433";
-//	public static final String DATABASE_NAME = "Demo2";
-//	public static final String USERNAME_DB = "sa";
-//	public static final String PASSWORD_DB = "sa";
+	public static final String DBDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+	public static final String SERVER_NAME = "jdbc:sqlserver://localhost:1433";
+	public static final String DATABASE_NAME = "Demo2";
+	public static final String USERNAME_DB = "sa";
+	public static final String PASSWORD_DB = "sa";
 //	_______________________________________________________________________________________________________________________________________________________________________
 }

@@ -51,7 +51,7 @@
 											</div>
 										</div>
 										<input type="text" name="name" class="form-control py-4"
-											value="Nguyễn Dũng">
+											value="${CUSTOMER_LOGINED.name}">
 									</div>
 								</div>
 
@@ -63,8 +63,8 @@
 												<i class="fas fa-mobile-alt"></i>
 											</div>
 										</div>
-										<input type="text" name="numPhone" class="form-control py-4"
-											value="0954547984">
+										<input type="text" name="phoneNumber" class="form-control py-4"
+											value="${CUSTOMER_LOGINED.phoneNumber}">
 									</div>
 								</div>
 								<div class="col-12">
@@ -76,7 +76,7 @@
 											</div>
 										</div>
 										<input type="text" name="email" class="form-control py-4"
-											value="vandung123@gmail.com" disabled>
+											value="${CUSTOMER_LOGINED.email}" disabled>
 									</div>
 								</div>
 
@@ -89,7 +89,7 @@
 											</div>
 										</div>
 										<input type="text" class="form-control py-4"
-											value="13/10/2020" disabled>
+											value="${CUSTOMER_LOGINED.timeCreate}" disabled>
 									</div>
 								</div>
 
@@ -106,7 +106,7 @@
 											</div>
 										</div>
 										<input type="text" name="address" class="form-control py-4"
-											value="Khu Phố 6, Phường Linh Trung, Quận Thủ Đức">
+											value="${CUSTOMER_LOGINED.address}">
 									</div>
 								</div>
 							</div>
@@ -122,7 +122,7 @@
 												<i class="fas fa-key"></i>
 											</div>
 										</div>
-										<input type="text" name="password" id="changePass"
+										<input type="password" name="password" id="changePass"
 											onfocusout="check_password(this.id)"
 											class="form-control py-4" placeholder="***********">
 									</div>
@@ -135,7 +135,7 @@
 												<i class="fas fa-key"></i>
 											</div>
 										</div>
-										<input name="repassword" type="text" id="reCheckPass"
+										<input name="repassword" type="password" id="reCheckPass"
 											onfocusout="check_password3(this.id,'changePass')"
 											class="form-control py-4" placeholder="***********">
 									</div>
@@ -143,19 +143,19 @@
 										id="displayErr">Mật khẩu không khớp</h6>
 								</div>
 
-								<h2 style="color: red">${message}Tàikhoảnđã tồn tại</h2>
+								<h2 style="color: green">${message}</h2>
 							</div>
 
 							<!-- @@@@@@@@@@@@@@@@@ -->
 
-							<button type="" class="btn btn-primary spacing_form px-5 "
+							<button type="submit" class="btn btn-primary spacing_form px-5 "
 								style="float: right">
 								<i class="far fa-save"></i> Lưu
 							</button>
-							<button href="#" class="btn btn-danger spacing_form px-5 mx-3"
+							<a role="button" href="${pageContext.request.contextPath}/index" class="btn btn-danger spacing_form px-5 mx-3"
 								style="float: right">
 								<i class="far fa-trash-alt"></i> Hủy
-							</button>
+							</a>
 						</div>
 					</div>
 				</form>

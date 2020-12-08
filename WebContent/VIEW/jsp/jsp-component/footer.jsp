@@ -74,7 +74,7 @@
 
 
 				<c:choose>
-					<c:when test="${KEY_Logined!= null && KEY_Logined.role == 'ADMIN'}">
+					<c:when test="${CUSTOMER_LOGINED!= null && CUSTOMER_LOGINED.role == 'ADMIN'}">
 						<p>
 							<a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
 						</p>

@@ -31,7 +31,7 @@ public class MemberFilter implements Filter {
 
 		HttpSession session = ((HttpServletRequest) request).getSession();
 
-		Account acc = (Account) session.getAttribute("KEY_Logined");
+		Account acc = (Account) session.getAttribute("CUSTOMER_LOGINED");
 
 		if (acc == null) {
 			// lưu url của trang hiện tại.

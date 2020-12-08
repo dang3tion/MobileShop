@@ -44,7 +44,7 @@ public class Cart extends HttpServlet {
 		// kiểm tra đã đăng nhập hay chưa
 		HttpSession session = request.getSession();
 
-		if (session.getAttribute(Const.ACCOUNT_LOGINED) == null) {
+		if (session.getAttribute(Const.CUSTOMER_LOGINED) == null) {
 			for (Cookie c : request.getCookies()) {
 				String name = c.getName();
 				String value = c.getValue();
@@ -60,7 +60,7 @@ public class Cart extends HttpServlet {
 				}
 			}
 		} else {
-			String email = ((Account) session.getAttribute(Const.ACCOUNT_LOGINED)).getEmail();
+			String email = ((Account) session.getAttribute(Const.CUSTOMER_LOGINED)).getEmail();
 			BO_Cart bo = new BO_Cart(email);
 
 			switch (choose) {

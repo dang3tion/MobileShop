@@ -29,16 +29,17 @@
 			<img class="mb-4" src="${url}/image/img-sys/user.png" width="72"
 				height="72">
 			<h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
-
+			<label style="margin-bottom: -25px" for="recipient-name" class="d-flex justify-content-start align-baseline col-form-label">Email:</label>
 			<input type="text" name="email" id="inputEmail" class="form-control"
-				placeholder="Email hoặc số điện thoại" value=""
+				placeholder="nhập email" value=""
 				onfocusout=" check_email(this.id)">
 			<div class="require" id="require-email">
 				Yêu cầu nhập email theo đúng theo định dạng email <br>Ví dụ:
 				nlumobile@gmail.com
 			</div>
+			<label style="margin-bottom: -25px" for="recipient-name" class="d-flex justify-content-start align-baseline col-form-label">Mật khẩu:</label>
 			<input type="password" id="inputPassword" name="password"
-				class="form-control " placeholder="Mật khẩu" value=""
+				class="form-control " placeholder="Nhập mật khẩu" value=""
 				onfocusout="check_password(this)">
 			<div class="require" id="require-password">Mật khẩu phải có ít
 				nhất 8 ký tự</div>
@@ -68,8 +69,6 @@
 	</form>
 
 
-
-	<!-- /.container -->
 
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>

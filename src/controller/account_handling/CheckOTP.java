@@ -72,7 +72,7 @@ public class CheckOTP extends HttpServlet {
 
 				// Thêm user này vào session
 				HttpSession session = request.getSession();
-				session.setAttribute(Const.ACCOUNT_LOGINED, newUser);
+				session.setAttribute(Const.CUSTOMER_LOGINED, newUser);
 				RequestDispatcher dispatcher //
 						= this.getServletContext().getRequestDispatcher("/index");
 				dispatcher.forward(request, response);
