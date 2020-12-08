@@ -12,7 +12,9 @@
 
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar left -->
-		<jsp:include page="/VIEW/jsp/jsp-component/sidebar-admin.jsp"></jsp:include>
+		<c:import url="/VIEW/jsp/jsp-component/sidebar-admin.jsp">
+			<c:param name="indexactive" value="active"></c:param>
+		</c:import>
 		<!-- Page right -->
 		<div id="page-content-wrapper">
 			<!-- 		toggle logout -->

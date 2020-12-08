@@ -13,7 +13,9 @@
 <body>
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar -->
-		<jsp:include page="/VIEW/jsp/jsp-component/sidebar-admin.jsp"></jsp:include>
+		<c:import url="/VIEW/jsp/jsp-component/sidebar-admin.jsp">
+			<c:param name="listProductactive" value="active"></c:param>
+		</c:import>
 		<!--Nav-->
 
 
@@ -61,10 +63,10 @@
 													</div>
 
 												</div>
-												<a href="formAddProduct.html"><button
+												<a href=" ${pageContext.request.contextPath}/admin/product-add"><button
 														data-toggle="tooltip" data-placement="top"
-														title="Thêm sản phẩm" class="btn btn-success btn-add">
-														<i class="fas fa-plus-square"></i>
+														title="Thêm mới một model điện thoại" class="btn btn-success btn-add">
+														<i class="fas fa-plus-square"></i> Thêm điện thoại
 													</button></a>
 												<table id="bootstrap-data-table" class="table table-hover ">
 													<thead class="thead-light">
@@ -101,7 +103,7 @@
 															<td class="color-price">30.000.000 VND</td>
 															<td class="row" style="border: none;">
 																<div style="margin: auto;">
-																	<a href="formEdit.html"><button
+																	<a href="${pageContext.request.contextPath}/product-edit"><button
 																			class="m-wTD btn btn-primary" data-toggle="tooltip"
 																			data-placement="top" title="Chỉnh sửa"
 																			data-toggle="modal" data-target="#editUser">
@@ -134,7 +136,7 @@
 															<td class="color-price">15.000.000 VND</td>
 															<td class="row" style="border: none;">
 																<div style="margin: auto;">
-																	<a href="formEdit.html"><button
+																	<a href="${pageContext.request.contextPath}/admin/product-edit"><button
 																			class="m-wTD btn btn-primary" data-toggle="tooltip"
 																			data-placement="top" title="Chỉnh sửa"
 																			data-toggle="modal" data-target="#editUser">
@@ -168,7 +170,7 @@
 															<td class="color-price">20.000.000 VND</td>
 															<td class="row" style="border: none;">
 																<div style="margin: auto;">
-																	<a href="formEdit.html"><button
+																	<a href="${pageContext.request.contextPath}/admin/product-edit"><button
 																			class="m-wTD btn btn-primary" data-toggle="tooltip"
 																			data-placement="top" title="Chỉnh sửa"
 																			data-toggle="modal" data-target="#editUser">
@@ -199,7 +201,7 @@
 															<td class="color-price">20.000.000 VND</td>
 															<td class="row" style="border: none;">
 																<div style="margin: auto;">
-																	<a href="formEdit.html"><button
+																	<a href="${pageContext.request.contextPath}/admin/product-edit"><button
 																			class="m-wTD btn btn-primary" data-toggle="tooltip"
 																			data-placement="top" title="Chỉnh sửa"
 																			data-toggle="modal" data-target="#editUser">
@@ -230,7 +232,7 @@
 															<td class="color-price">20.000.000 VND</td>
 															<td class="row" style="border: none;">
 																<div style="margin: auto;">
-																	<a href="formEdit.html"><button
+																	<a href="${pageContext.request.contextPath}/admin/product-edit"><button
 																			class="m-wTD btn btn-primary" data-toggle="tooltip"
 																			data-placement="top" title="Chỉnh sửa"
 																			data-toggle="modal" data-target="#editUser">
@@ -262,7 +264,7 @@
 															<td class="color-price">30.000.000 VND</td>
 															<td class="row" style="border: none;">
 																<div style="margin: auto;">
-																	<a href="formEdit.html"><button
+																	<a href="${pageContext.request.contextPath}/admin/product-edit"><button
 																			class="m-wTD btn btn-primary" data-toggle="tooltip"
 																			data-placement="top" title="Chỉnh sửa"
 																			data-toggle="modal" data-target="#editUser">

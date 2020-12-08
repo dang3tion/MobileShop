@@ -14,7 +14,9 @@
 	<!-- Page Content -->
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar -->
-		<jsp:include page="/VIEW/jsp/jsp-component/sidebar-admin.jsp"></jsp:include>
+		<c:import url="/VIEW/jsp/jsp-component/sidebar-admin.jsp">
+			<c:param name="cancelactive" value="active"></c:param>
+		</c:import>
 		<!--Nav-->
 
 		<!-- Page Content -->

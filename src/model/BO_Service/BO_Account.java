@@ -179,4 +179,8 @@ public class BO_Account {
 
 //_____________________________________________________________________________
 
+	public static void main(String[] args) {
+
+	}
+
 }

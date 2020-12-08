@@ -94,7 +94,7 @@ public class DAO_Account extends ConnectDB {
 
 	public int totalSearch(String keyword) {
 		List<Account> listAcc = new ArrayList<Account>();
-		String query = "SELECT * FROM SEARCH(N'" + keyword + "') WHERE " + ROLE + " = '" + Const.CUSTOMER_ROLE + "'";
+		String query = "SELECT * FROM SEARCHLISTACC(N'" + keyword + "') WHERE " + ROLE + " = '" + Const.CUSTOMER_ROLE + "'";
 		try (ResultSet rs = super.AccessDBstr(query)) {
 			while (rs.next()) {
 				Account acc = new Account( //

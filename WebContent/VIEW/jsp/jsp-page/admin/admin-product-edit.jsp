@@ -13,9 +13,9 @@
 <body>
 	<!-- Page Content -->
 	<div class="d-flex" id="wrapper">
-		<!-- Sidebar -->
-		<jsp:include page="/VIEW/jsp/jsp-component/sidebar-admin.jsp"></jsp:include>
-		<!--Nav-->
+		<c:import url="/VIEW/jsp/jsp-component/sidebar-admin.jsp">
+			<c:param name="listProductactive" value="active"></c:param>
+		</c:import>
 
 		<!-- /#sidebar-wrapper -->
 

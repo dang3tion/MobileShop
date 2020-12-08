@@ -11,14 +11,16 @@
 </head>
 
 <body>
-	<!-- Page Content -->
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar -->
-		<jsp:include page="/VIEW/jsp/jsp-component/sidebar-admin.jsp"></jsp:include>
-		<!--Nav-->
+
+		<c:import url="/VIEW/jsp/jsp-component/sidebar-admin.jsp">
+			<c:param name="useractive" value="active"></c:param>
+		</c:import>
 
 
-		<!-- Page Content -->
+
+
 		<div id="page-content-wrapper">
 
 
@@ -37,6 +39,39 @@
 										<div class="card-body">
 											<div class=" mb-2">
 												<h4 class="text-center mt-3 mb-3">Danh sách khách hàng</h4>
+												<!-- @@@@@@@@@@@@@@@@ DỮ LIỆU TỪ DATABASE ĐỔ LÊN @@@@@@@@@@@@@@@ -->
+												<h1 style="color: red">tổng số tài khoản đã tạo :
+													${TongSoTaiKhoan}</h1>
+												<h1 style="color: red">Số tài khoản đang hoạt động :
+													${TongSoAccDangHoatDong}</h1>
+												<h1 style="color: red">Số tài khoản bị khóa :
+													${TongSoAccBiKhoa}</h1>
+
+
+
+												<c:choose>
+													<c:when test="${displayButtonXemTaiKhoanBiKhoa == null }">
+														<a name="" id="" class="btn btn-primary"
+															href="${pageContext.request.contextPath}/admin/account?blockaccount=true"
+															role="button">Xem tài khoản bị khóa</a>
+													</c:when>
+													<c:otherwise>
+														<a name="" id="" class="btn btn-primary"
+															href="${pageContext.request.contextPath}/admin/account"
+															role="button">Xem Toàn bộ danh sách</a>
+													</c:otherwise>
+												</c:choose>
+
+
+												<h1>tổng số trang : ${TongSoTrang}</h1>
+												<h1>Trang hiện tại : ${TrangHienTai}</h1>
+												<h1>${listAcc}</h1>
+												<c:if
+													test="${keywordHienTai != '' && keywordHienTai !=null }">
+													<h1 style="color: blue">đã tìm thấy ${totalSearch} tài
+														khoản có chứa: "${keywordHienTai}"</h1>
+												</c:if>
+												<!-- @@@@@@@@@@@@@@@@ DỮ LIỆU TỪ DATABASE ĐỔ LÊN @@@@@@@@@@@@@@@ -->
 												<div class="row">
 													<div class="show-page mb-3 ml-3">
 

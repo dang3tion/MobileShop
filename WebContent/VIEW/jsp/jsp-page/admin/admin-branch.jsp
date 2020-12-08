@@ -13,7 +13,9 @@
 <body>
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar -->
-		<jsp:include page="/VIEW/jsp/jsp-component/sidebar-admin.jsp"></jsp:include>
+		<c:import url="/VIEW/jsp/jsp-component/sidebar-admin.jsp">
+			<c:param name="branchactive" value="active"></c:param>
+		</c:import>
 
 		<div id="page-content-wrapper">
 
