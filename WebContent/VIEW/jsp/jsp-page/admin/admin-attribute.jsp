@@ -89,7 +89,7 @@
 														<tr>
 
 															<td>Hệ điều hành</td>
-															<td>Chuỗi</td>
+															<td>Văn bản</td>
 
 
 
@@ -223,11 +223,11 @@
 						</div>
 						<div class="modal-body">Bạn có muốn xóa thuộc tính này
 							không?</div>
-						<div class="modal-footer">
+						<div class="modal-footer">	<button type="button" data-dismiss="modal"
+								class="btn btn-primary">Đồng ý</button>
 							<button type="button" class="btn btn-secondary"
 								data-dismiss="modal">Không</button>
-							<button type="button" data-dismiss="modal"
-								class="btn btn-primary">Đồng ý</button>
+						
 						</div>
 					</div>
 				</div>
