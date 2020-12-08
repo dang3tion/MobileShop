@@ -23,15 +23,15 @@ public class Account {
 	}
 
 	// Dành cho lúc insert User mới
-	public Account(String email, String password, String name, String phoneNumber, String address) {
+	public Account(String email, String password) {
 		this.email = email;
 		this.password = password;
 		this.role = Const.CUSTOMER_ROLE;
 		this.status = Const.ACCOUNT_ENABLE;
 		this.timeCreate = LocalDate.now().toString();
-		this.name = name;
-		this.phoneNumber = phoneNumber;
-		this.address = address;
+		this.name = "";
+		this.phoneNumber = "";
+		this.address = "";
 	}
 
 	// Dành để load User từ database lên

@@ -29,14 +29,9 @@ public class Register extends HttpServlet {
 			throws ServletException, IOException {
 
 		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		String name = request.getParameter("name");
-		String phoneNumber = request.getParameter("phoneNumber");
-		String address = request.getParameter("address");
-		
-		
+		String password = request.getParameter("password");	
 
-		Account tmpAcc = new Account(email, password, name, phoneNumber, address);
+		Account tmpAcc = new Account(email, password);
 		if ((new BO_Account()).isExsit(email)) {
 			request.setAttribute("message", "Email này đã được đăng kí");
 			RequestDispatcher dispatcher //

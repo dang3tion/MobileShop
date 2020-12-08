@@ -43,7 +43,7 @@ public class LoginGoogle extends HttpServlet {
 			Account acc = null;
 			if (!(new DAO_Account().isExist(email))) {
 				// NẾU CHƯA CÓ TẠO MỚI.
-				acc = new Account(email, EncryptPassword.md5("FAKE_PASSWORD"), getNameFromEmail(email), " ", " ");
+				acc = new Account(email, EncryptPassword.md5("FAKE_PASSWORD"));
 				(new DAO_Account()).add(acc);
 			} else {
 				// Mail đã tồn tại thì load từ database
