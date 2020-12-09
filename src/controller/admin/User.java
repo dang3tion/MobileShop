@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.BO_service.BO_Account;
-import model.beans.Account;
+import model.beans.Customer;
 import model.utility.Const;
 
 @WebServlet(urlPatterns = "/admin/user")
@@ -34,7 +34,7 @@ public class User extends HttpServlet {
 
 		BO_Account bo = new BO_Account(page, nrow);
 		String keyword = request.getParameter("keyword");
-		List<Account> listAcc = null;
+		List<Customer> listAcc = null;
 		if (keyword != null) {
 			int start = (Integer.parseInt(nrow) * Integer.parseInt(page)) - (Integer.parseInt(nrow) + 1);
 			int end = Integer.parseInt(nrow) * Integer.parseInt(page);
@@ -76,7 +76,7 @@ public class User extends HttpServlet {
 		}
 
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/views/admin/accountManagement.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-user.jsp");
 		dispatcher.forward(request, response);
 	}
 

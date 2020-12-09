@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.BO_service.BO_Account;
-import model.beans.Account;
+import model.beans.Customer;
 import model.utility.Const;
 import model.utility.EncryptPassword;
 
@@ -38,7 +38,7 @@ public class Profile extends HttpServlet {
 		String password = request.getParameter("password");
 
 		HttpSession session = request.getSession();
-		Account acc = (Account) session.getAttribute(Const.CUSTOMER_LOGINED);
+		Customer acc = (Customer) session.getAttribute(Const.CUSTOMER_LOGINED);
 		acc.setAddress(address);
 		acc.setName(name);
 		acc.setPhoneNumber(phoneNumber);

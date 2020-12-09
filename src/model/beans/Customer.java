@@ -5,28 +5,27 @@ import java.util.ArrayList;
 
 import model.utility.Const;
 
-public class Account {
+public class Customer {
 
 	private String id;
 	private String email;
 	private String password;
-	private String role;
 	private String status;
 	// Output format : 2020-11-19
 	private String timeCreate;
-
 	private String name;
 	private String phoneNumber;
 	private String address;
 
-	// Dành cho JSTL
-	public Account() {
+	public Customer() {
 	}
 
-	public Account(String email, String password) {
+	/**
+	 * @apiNote Trang register
+	 */
+	public Customer(String email, String password) {
 		this.email = email;
 		this.password = password;
-		this.role = Const.CUSTOMER_ROLE;
 		this.status = Const.ACCOUNT_ENABLE;
 		this.timeCreate = LocalDate.now().toString();
 		this.name = "";
@@ -34,12 +33,14 @@ public class Account {
 		this.address = "";
 	}
 
-	public Account(String email, String password, String role, String status, String timeCreate, String name,
-			String phoneNumber, String address) {
-		
+	/**
+	 * 
+	 * @apiNote Trang Admin quản lý tài khoản
+	 */
+	public Customer(String id, String email, String status, String timeCreate, String name, String phoneNumber,
+			String address) {
+		this.id = id;
 		this.email = email;
-		this.password = password;
-		this.role = role;
 		this.status = status;
 		this.timeCreate = timeCreate;
 		this.name = name;
@@ -47,13 +48,24 @@ public class Account {
 		this.address = address;
 	}
 
-	public Account(String email, String status, String timeCreate, String name, String phoneNumber, String address) {
+	/**
+	 * @apiNote Trang Profile
+	 */
+	public Customer(String email, String timeCreate, String name, String phoneNumber, String address) {
 		this.email = email;
-		this.status = status;
 		this.timeCreate = timeCreate;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
+	}
+
+	/**
+	 * @apiNote Trang Login
+	 */
+	public Customer(String email, String password, String status) {
+		this.email = email;
+		this.password = password;
+		this.status = status;
 	}
 
 	public String getEmail() {
@@ -64,12 +76,12 @@ public class Account {
 		return password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public String getId() {
+		return id;
 	}
 
-	public String getRole() {
-		return role;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getStatus() {
@@ -125,9 +137,8 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [email=" + email + ", password=" + password + ", role=" + role + ", status=" + status
-				+ ", timeCreate=" + timeCreate + ", name=" + name + ", phoneNumber=" + phoneNumber + ", address="
-				+ address + "]\n";
+		return "Customer [email=" + email + ", password=" + password + ", status=" + status + ", timeCreate="
+				+ timeCreate + ", name=" + name + ", phoneNumber=" + phoneNumber + ", address=" + address + "]\n";
 	}
 
 }

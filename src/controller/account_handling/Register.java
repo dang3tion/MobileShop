@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.BO_service.BO_Account;
 import model.BO_service.OTP;
 import model.DAO.DAO_Account;
-import model.beans.Account;
+import model.beans.Customer;
 import model.utility.Const;
 import model.utility.SendMail;
 
@@ -31,10 +31,8 @@ public class Register extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");	
 		
-		System.out.println(email);
-		System.out.println(password);
 
-		Account tmpAcc = new Account(email, password);
+		Customer tmpAcc = new Customer(email, password);
 		if ((new BO_Account()).isExsit(email)) {
 			request.setAttribute("message", "Email này đã được đăng kí");
 			RequestDispatcher dispatcher //

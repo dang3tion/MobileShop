@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.DAO.DAO_Account;
-import model.beans.Account;
+import model.beans.Customer;
 import model.utility.EncryptPassword;
 
 public class CreateAccount {
@@ -1184,8 +1184,8 @@ public class CreateAccount {
 		return EncryptPassword.md5(rdText(3));
 	}
 
-	public static Account acc() {
-		return new Account(fullEmail(), password(), "CUSTOMER", "ENABLE", ngayTao(), fullName(), SDT(), fullDiaChi());
+	public static Customer acc() {
+		return new Customer(fullEmail(), password());
 	}
 
 	public static void main(String[] args) {

@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import model.beans.Account;
+import model.beans.Customer;
 import model.utility.Const;
 
 // trường hơp dùng filter này
@@ -31,7 +31,7 @@ public class MemberFilter implements Filter {
 
 		HttpSession session = ((HttpServletRequest) request).getSession();
 
-		Account acc = (Account) session.getAttribute("CUSTOMER_LOGINED");
+		Customer acc = (Customer) session.getAttribute("CUSTOMER_LOGINED");
 
 		if (acc == null) {
 			// lưu url của trang hiện tại.

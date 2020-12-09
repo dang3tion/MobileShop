@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.DAO.DAO_Account;
-import model.beans.Account;
+import model.beans.Customer;
 import model.beans.GooglePojo;
 import model.utility.*;
 
@@ -40,10 +40,10 @@ public class LoginGoogle extends HttpServlet {
 			String email = googlePojo.getEmail();
 
 			// KIỂM TRA MAIL CÓ TRONG DATABASE CHƯA
-			Account acc = null;
+			Customer acc = null;
 			if (!(new DAO_Account().isExist(email))) {
 				// NẾU CHƯA CÓ TẠO MỚI.
-				acc = new Account(email, EncryptPassword.md5("FAKE_PASSWORD"));
+				acc = new Customer(email, EncryptPassword.md5("FAKE_PASSWORD"));
 				(new DAO_Account()).add(acc);
 			} else {
 				// Mail đã tồn tại thì load từ database

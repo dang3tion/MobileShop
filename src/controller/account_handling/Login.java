@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.BO_service.BO_Account;
 import model.DAO.DAO_Account;
-import model.beans.Account;
+import model.beans.Customer;
 import model.utility.Const;
 import model.utility.EncryptPassword;
 
@@ -26,7 +26,6 @@ public class Login extends HttpServlet {
 		HttpSession s = request.getSession();
 		String str = (String) request.getAttribute("LANGUAGE");
 		
-		System.out.println("zdfdfds  "+str);
 		
 		
 		// không sendRedirect vì phải hứng thông báo lỗi từ filter
@@ -43,8 +42,8 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		String messageErr = null;
 
-
-		switch ((new BO_Account()).checkLogin(email, password, Const.CUSTOMER_ROLE)) {
+BO_Account bo = new BO_Account();
+		switch (bo.checkLogin(email, password, Const.CUSTOMER_ROLE)) {
 		case 2: {
 			messageErr = "Tài khoản hoặc mật khẩu không đúng";
 			request.setAttribute("message", messageErr);
@@ -66,7 +65,7 @@ public class Login extends HttpServlet {
 			//
 			// Thêm user này vào session
 			HttpSession session = request.getSession();
-			Account acc = (new BO_Account()).getCustomerInfo(email);
+			Customer acc = (bo.getCustomerInfo(email));
 			session.setAttribute(Const.CUSTOMER_LOGINED, acc);
 
 			String path = (String) session.getAttribute(Const.CURRENT_LINK);

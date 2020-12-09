@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.BO_service.BO_Cart;
-import model.beans.Account;
+import model.beans.Customer;
 import model.utility.Const;
 
 @WebServlet(urlPatterns = "/cart")
@@ -60,7 +60,7 @@ public class Cart extends HttpServlet {
 				}
 			}
 		} else {
-			String email = ((Account) session.getAttribute(Const.CUSTOMER_LOGINED)).getEmail();
+			String email = ((Customer) session.getAttribute(Const.CUSTOMER_LOGINED)).getEmail();
 			BO_Cart bo = new BO_Cart(email);
 
 			switch (choose) {

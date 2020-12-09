@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.BO_service.BO_Account;
 import model.DAO.DAO_Account;
-import model.beans.Account;
+import model.beans.Customer;
 import model.utility.Const;
 
 @WebServlet(urlPatterns = "/forgot")

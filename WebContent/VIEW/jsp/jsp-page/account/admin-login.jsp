@@ -35,7 +35,7 @@
 		<img class="mb-4" src="${url}/image/img-sys/AdminIcon.png" width="110">
 		<h1 class="h3 mb-3 font-weight-normal">Admin đăng nhập</h1>
 
-		<input name="email" id="inputEmail" class="form-control"
+		<input name="username" id="inputEmail" class="form-control"
 			placeholder="Email "> <input name="password" type="password"
 			id="inputPassword" class="form-control " placeholder="Mật khẩu">
 

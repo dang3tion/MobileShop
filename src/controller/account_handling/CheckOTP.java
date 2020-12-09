@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import model.BO_service.BO_Account;
 import model.BO_service.OTP;
 import model.DAO.DAO_Account;
-import model.beans.Account;
+import model.beans.Customer;
 import model.utility.Const;
 import model.utility.SendMail;
 
@@ -22,7 +22,7 @@ public class CheckOTP extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	OTP otp = new OTP();
-	Account newUser = null;
+	Customer newUser = null;
 	Object token = null;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -55,7 +55,7 @@ public class CheckOTP extends HttpServlet {
 		if (token != null) {
 			token = (Boolean) request.getAttribute(Const.TOKEN_REGISTER_OTP);
 			request.removeAttribute(Const.TOKEN_RESETPASS_OTP);
-			newUser = (Account) request.getAttribute("newUser");
+			newUser = (Customer) request.getAttribute("newUser");
 			String email = newUser.getEmail();
 			SendMail.send(email, otp.getSysOTP());
 			RequestDispatcher dispatcher //

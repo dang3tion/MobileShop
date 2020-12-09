@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import model.beans.Account;
+import model.beans.Admin;
 import model.utility.Const;
 
 /**
@@ -30,7 +30,7 @@ public class AdminFilter implements Filter {
 
 		HttpSession session = ((HttpServletRequest) request).getSession();
 
-		Account admin = (Account) session.getAttribute("ADMIN_LOGINED");
+		Admin admin = (Admin) session.getAttribute("ADMIN_LOGINED");
 
 	
 

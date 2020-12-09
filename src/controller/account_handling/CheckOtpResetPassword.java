@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.BO_service.BO_Account;
 import model.BO_service.OTP;
-import model.beans.Account;
+import model.beans.Customer;
 import model.utility.Const;
 import model.utility.SendMail;
 
@@ -25,7 +25,7 @@ public class CheckOtpResetPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	OTP otp = new OTP();
-	Account acc = null;
+	Customer acc = null;
 	Object token = null;
 	String email = "";
 

@@ -12,7 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import model.BO_service.BO_Account;
 import model.DAO.DAO_Account;
-import model.beans.Account;
+import model.beans.Admin;
+import model.beans.Customer;
 import model.utility.Const;
 import model.utility.EncryptPassword;
 
@@ -34,18 +35,18 @@ public class AdminLogin extends HttpServlet {
 			throws ServletException, IOException {
 
 		String messageErr = "Sai email hoặc mật khẩu";
-		String email = request.getParameter("email");
+
+		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		Account acc = (new DAO_Account()).get(email);
-		if ((new BO_Account()).checkLogin(email, password, Const.ADMIN_ROLE) == 1) {
-			// mở khóa link
-			// Thêm user này vào session
+		
+
+		BO_Account bo = new BO_Account();
+		if (bo.checkAdminLogin(username, password)) {
+			Admin admin = bo.getAdmin(username);
 			HttpSession session = request.getSession();
-			session.setAttribute("ADMIN_LOGINED", acc);
+			session.setAttribute("ADMIN_LOGINED", admin);
 
 			String path = (String) session.getAttribute(Const.CURRENT_LINK);
-
-			// Tại đây có 2 trường hợp để redirect
 
 			// TH1 : trang khác bị khóa và redirect sang trang login để mở khóa
 			// TH2 : người dùng tự truy cập vào link
