@@ -1,7 +1,6 @@
 package controller.admin;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,11 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.BO_service.BO_Account;
-import model.beans.Customer;
-import model.utility.Const;
 
 @WebServlet(urlPatterns = "/admin/user")
-public class User extends HttpServlet {
+public class Customer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,34 +29,34 @@ public class User extends HttpServlet {
 			nrow = "10";
 		}
 
-		BO_Account bo = new BO_Account(page, nrow);
-		String keyword = request.getParameter("keyword");
-		List<Customer> listAcc = null;
-		if (keyword != null) {
-			int start = (Integer.parseInt(nrow) * Integer.parseInt(page)) - (Integer.parseInt(nrow) + 1);
-			int end = Integer.parseInt(nrow) * Integer.parseInt(page);
-			listAcc = bo.search(keyword, start, end);
-			request.setAttribute("TongSoTrang", bo.totalPageSearch(keyword));
-			request.setAttribute("totalSearch", bo.totalSearch(keyword));
-		} else if (blockAcc != null) {
-			listAcc = (new BO_Account()).getListDisableAccount();
-			request.setAttribute("TongSoTrang", "1");
-			request.setAttribute("displayButtonXemTaiKhoanBiKhoa", true);
-		} else {
-			listAcc = bo.getListAccount();
-			request.setAttribute("TongSoTrang", bo.totalPage());
-		}
+//		BO_Account bo = new BO_Account(page, nrow);
+//		String keyword = request.getParameter("keyword");
+//		List<Customer> listAcc = null;
+//		if (keyword != null) {
+//			int start = (Integer.parseInt(nrow) * Integer.parseInt(page)) - (Integer.parseInt(nrow) + 1);
+//			int end = Integer.parseInt(nrow) * Integer.parseInt(page);
+//			listAcc = bo.search(keyword, start, end);
+//			request.setAttribute("TongSoTrang", bo.totalPageSearch(keyword));
+//			request.setAttribute("totalSearch", bo.totalSearch(keyword));
+//		} else if (blockAcc != null) {
+//			listAcc = (new BO_Account()).getListDisableAccount();
+//			request.setAttribute("TongSoTrang", "1");
+//			request.setAttribute("displayButtonXemTaiKhoanBiKhoa", true);
+//		} else {
+//			listAcc = bo.getListAccount();
+//			request.setAttribute("TongSoTrang", bo.totalPage());
+//		}
 
-		request.setAttribute("listAcc", listAcc);
-
-		request.setAttribute("TongSoTaiKhoan", bo.getTotalAccount());
-		request.setAttribute("TongSoAccDangHoatDong", bo.getTotalStatusAccount(Const.ACCOUNT_ENABLE));
-		request.setAttribute("TongSoAccBiKhoa", bo.getTotalStatusAccount(Const.ACCONT_DISABLE));
-		request.setAttribute("TrangHienTai", page);
-		request.setAttribute("STTstart", bo.startRow());
-		request.setAttribute("page", page);
-		request.setAttribute("nrow", page);
-		request.setAttribute("keywordHienTai", keyword);
+//		request.setAttribute("listAcc", listAcc);
+//
+//		request.setAttribute("TongSoTaiKhoan", bo.getTotalAccount());
+//		request.setAttribute("TongSoAccDangHoatDong", bo.getTotalStatusAccount(Const.ACCOUNT_ENABLE));
+//		request.setAttribute("TongSoAccBiKhoa", bo.getTotalStatusAccount(Const.ACCONT_DISABLE));
+//		request.setAttribute("TrangHienTai", page);
+//		request.setAttribute("STTstart", bo.startRow());
+//		request.setAttribute("page", page);
+//		request.setAttribute("nrow", page);
+//		request.setAttribute("keywordHienTai", keyword);
 
 		switch (nrow)
 

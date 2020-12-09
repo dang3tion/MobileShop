@@ -23,7 +23,7 @@ public class BO_Account {
 	}
 
 	public Customer getCustomerInfo(String email) {
-		Customer acc = dao.get(email);
+		Customer acc = dao.getCustomerInfo(email);
 		return acc;
 	}
 
@@ -34,14 +34,13 @@ public class BO_Account {
 	}
 
 	public boolean isExsit(String email) {
-		Customer acc = dao.get(email);
+		Customer acc = getCustomerInfo(email);
 		if (acc != null) {
 			return true;
 		}
 		return false;
 	}
 
-	// mặc định add role là CUSTOMER
 	public void add(Customer customer) {
 		customer.setPassword(EncryptPassword.md5(customer.getPassword()));
 		dao.add(customer);
@@ -55,21 +54,14 @@ public class BO_Account {
 	 * @return 1 là đăng nhập thành công. 2 là thông tin tài khoản không đúng. 3 là
 	 *         tài khoản bị khóa
 	 */
-	public int checkLogin(String email, String passwordPlaintext, String roleCheck) {
-		Customer acc = dao.get(email);
+	public int checkCustomerLogin(String email, String passwordPlaintext) {
+		Customer acc = dao.getCustomerInfoLogin(email);
 		// kiểm tra mail
 		if (acc != null) {
-			String role = "";
 			String encrytPass = acc.getPassword();
 			// kiểm tra trạng thái (có bị khóa không)
-			if (role.equals(Const.CUSTOMER_ROLE)) {
-				if (acc.getStatus().equals(Const.ACCONT_DISABLE)) {
-					return 3;
-				}
-			}
-			// kiểm tra quyền hạn
-			if (!roleCheck.equals(role)) {
-				return 2;
+			if (acc.getStatus().equals(Const.ACCONT_DISABLE)) {
+				return 3;
 			}
 			// kiểm tra pass
 			if (EncryptPassword.md5(passwordPlaintext).equals(encrytPass)) {
@@ -80,7 +72,7 @@ public class BO_Account {
 	}
 
 	public void changePassword(String email, String passpordPlaintext) {
-		Customer acc = dao.get(email);
+		Customer acc = dao.getCustomerInfo(email);
 		acc.setPassword(EncryptPassword.md5(passpordPlaintext));
 		(new DAO_Account()).update(acc);
 	}
@@ -104,15 +96,11 @@ public class BO_Account {
 	// _____________________________________________________________________________
 	public int getTotalAccount() {
 		int total;
-		// trừ acc admin
-
-		total = (new DAO_Account()).getTotal() - 1;
-
+		total = dao.getTotal();
 		return total;
 	}
 
 	public int getTotalStatusAccount(String status) {
-		// trừ acc admin
 		int total = dao.getTotalStatusAccount(status);
 		return total;
 	}
@@ -190,7 +178,7 @@ public class BO_Account {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(new BO_Account().checkAdminLogin("admin", "123"));
+		System.out.println(new BO_Account().checkCustomerLogin("1", "123"));
 	}
 
 }

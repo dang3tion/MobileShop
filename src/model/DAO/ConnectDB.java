@@ -26,7 +26,7 @@ import model.utility.Config;
 public class ConnectDB {
 
 	// ===> Dùng Single Connection cho hệ thống nhỏ
-	// ===> Khi nào lượng User tăng cao nâng cấp thành Connection Pool
+	// ===> Khi nào lượng Customer tăng cao nâng cấp thành Connection Pool
 
 	public String URL = Config.SERVER_NAME + ";databaseName=" + Config.DATABASE_NAME;
 

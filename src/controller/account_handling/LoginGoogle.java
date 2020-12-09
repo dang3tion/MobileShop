@@ -47,7 +47,7 @@ public class LoginGoogle extends HttpServlet {
 				(new DAO_Account()).add(acc);
 			} else {
 				// Mail đã tồn tại thì load từ database
-				acc = (new DAO_Account()).get(email);
+				acc = (new DAO_Account()). getCustomerInfo(email);
 			}
 
 			if (acc.getStatus().equals(Const.ACCONT_DISABLE)) {

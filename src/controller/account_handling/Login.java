@@ -23,11 +23,6 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession s = request.getSession();
-		String str = (String) request.getAttribute("LANGUAGE");
-		
-		
-		
 		// không sendRedirect vì phải hứng thông báo lỗi từ filter
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/login.jsp");
@@ -42,8 +37,8 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		String messageErr = null;
 
-BO_Account bo = new BO_Account();
-		switch (bo.checkLogin(email, password, Const.CUSTOMER_ROLE)) {
+		BO_Account bo = new BO_Account();
+		switch (bo.checkCustomerLogin(email, password)) {
 		case 2: {
 			messageErr = "Tài khoản hoặc mật khẩu không đúng";
 			request.setAttribute("message", messageErr);
@@ -61,12 +56,11 @@ BO_Account bo = new BO_Account();
 			break;
 		}
 		default: {
-			// mở khóa link
-			//
+			// đăng nhập thành công => mở khóa link
 			// Thêm user này vào session
 			HttpSession session = request.getSession();
-			Customer acc = (bo.getCustomerInfo(email));
-			session.setAttribute(Const.CUSTOMER_LOGINED, acc);
+			Customer customer = (bo.getCustomerInfo(email));
+			session.setAttribute(Const.CUSTOMER_LOGINED, customer);
 
 			String path = (String) session.getAttribute(Const.CURRENT_LINK);
 
