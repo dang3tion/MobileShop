@@ -44,6 +44,15 @@
 			<li><a href="${pageContext.request.contextPath}/admin/filter"
 				class="list-group-item list-group-item-action ${param.filteractive} "> Dữ liệu lọc <i
 					class="menu-icon fas fa-filter"></i></a></li>
+			 <li>
+                  <a href="confi-web.html" class="list-group-item list-group-item-action ${param.config}">Cấu hình trang web 
+                    <i class="menu-icon fas fa-cogs"></i></a>
+              </li>
+               <li>
+                  <a href="change-password.html" class="list-group-item list-group-item-action ${param.changePass}"> Đổi mật khẩu 
+                  <i class="menu-icon fas fa-key"></i></a>
+              </li>		
+			
 		</ul>
 	</div>
 </div>
