@@ -60,9 +60,11 @@ public class Login extends HttpServlet {
 			// Thêm user này vào session
 			HttpSession session = request.getSession();
 			Customer customer = (bo.getCustomerInfo(email));
+
 			session.setAttribute(Const.CUSTOMER_LOGINED, customer);
 
 			String path = (String) session.getAttribute(Const.CURRENT_LINK);
+			System.out.println(path);
 
 			// Tại đây có 2 trường hợp để redirect
 
@@ -73,7 +75,10 @@ public class Login extends HttpServlet {
 				// chuyển cứng trang đó
 				response.sendRedirect(request.getContextPath() + path);
 			} else {
-				response.sendRedirect(request.getContextPath() + "/index");
+			
+				System.out.println("psdmfosidmf");
+				response.sendRedirect(request.getContextPath() + "/otp");
+				
 			}
 		}
 		}

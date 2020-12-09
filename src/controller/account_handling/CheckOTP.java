@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import model.BO_service.BO_Account;
 import model.BO_service.OTP;
-import model.DAO.DAO_Account;
 import model.beans.Customer;
 import model.utility.Const;
 import model.utility.SendMail;
@@ -39,7 +38,7 @@ public class CheckOTP extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		} else {
-			response.sendRedirect(request.getContextPath() + "/index");
+			response.sendRedirect(request.getContextPath() + "/home");
 		}
 		return;
 	}
@@ -74,7 +73,7 @@ public class CheckOTP extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute(Const.CUSTOMER_LOGINED, newUser);
 				RequestDispatcher dispatcher //
-						= this.getServletContext().getRequestDispatcher("/index");
+						= this.getServletContext().getRequestDispatcher("/home");
 				dispatcher.forward(request, response);
 				return;
 			} else {

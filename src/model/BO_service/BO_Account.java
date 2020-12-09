@@ -34,7 +34,7 @@ public class BO_Account {
 	}
 
 	public boolean isExsit(String email) {
-		Customer acc = getCustomerInfo(email);
+		Customer acc = getCustomerLoginInfo(email);
 		if (acc != null) {
 			return true;
 		}
@@ -55,7 +55,7 @@ public class BO_Account {
 	 *         tài khoản bị khóa
 	 */
 	public int checkCustomerLogin(String email, String passwordPlaintext) {
-		Customer acc = dao.getCustomerInfoLogin(email);
+		Customer acc = dao.getCustomerLoginInfo(email);
 		// kiểm tra mail
 		if (acc != null) {
 			String encrytPass = acc.getPassword();
@@ -174,11 +174,15 @@ public class BO_Account {
 	}
 
 	public Admin getAdmin(String username) {
-		return (new DAO_Account()).getAdmin(username);
+		return dao.getAdmin(username);
+	}
+
+	public Customer getCustomerLoginInfo(String email) {
+		return dao.getCustomerLoginInfo(email);
 	}
 
 	public static void main(String[] args) {
-		System.out.println(new BO_Account().checkCustomerLogin("1", "123"));
+		System.out.println(new BO_Account().getCustomerInfo("1"));
 	}
 
 }

@@ -42,7 +42,7 @@ public class CheckOtpResetPassword extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		} else {
-			response.sendRedirect(request.getContextPath() + "/index");
+			response.sendRedirect(request.getContextPath() + "/home");
 		}
 		return;
 

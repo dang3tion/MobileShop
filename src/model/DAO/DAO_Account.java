@@ -272,7 +272,7 @@ public class DAO_Account extends ConnectDB {
 
 
 
-	public Customer getCustomerInfoLogin(String email) {
+	public Customer getCustomerLoginInfo(String email) {
 		String query = "SELECT "//
 				+ EMAIL + "," //
 				+ ENCRYT_PASSWORD + "," //
@@ -292,7 +292,7 @@ public class DAO_Account extends ConnectDB {
 	}
 
 	
-	
+
 	
 }
 

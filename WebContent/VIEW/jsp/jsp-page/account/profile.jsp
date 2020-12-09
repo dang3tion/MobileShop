@@ -152,7 +152,7 @@
 								style="float: right">
 								<i class="far fa-save"></i> Lưu
 							</button>
-							<a role="button" href="${pageContext.request.contextPath}/index" class="btn btn-danger spacing_form px-5 mx-3"
+							<a role="button" href="${pageContext.request.contextPath}/home" class="btn btn-danger spacing_form px-5 mx-3"
 								style="float: right">
 								<i class="far fa-trash-alt"></i> Hủy
 							</a>

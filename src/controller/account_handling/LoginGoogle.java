@@ -74,7 +74,7 @@ public class LoginGoogle extends HttpServlet {
 				// chuyển cứng trang đó
 				response.sendRedirect(request.getContextPath() + path);
 			} else {
-				response.sendRedirect(request.getContextPath() + "/index");
+				response.sendRedirect(request.getContextPath() + "/home");
 			}
 
 		}

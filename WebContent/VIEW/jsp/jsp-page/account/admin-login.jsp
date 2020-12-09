@@ -43,7 +43,7 @@
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Đăng
 			nhập</button>
 		<p class="mt-3">
-			<a href="${pageContext.request.contextPath}/index">trở về trang
+			<a href="${pageContext.request.contextPath}/home">trở về trang
 				chủ</a>
 		</p>
 

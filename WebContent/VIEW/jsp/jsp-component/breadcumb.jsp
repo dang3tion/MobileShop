@@ -7,7 +7,7 @@
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a
-					href="${pageContext.request.contextPath}/index">Trang chủ</a></li>
+					href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
 				<li class="breadcrumb-item active" aria-current="page">${param.title}</li>
 
 			</ol>
