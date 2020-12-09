@@ -38,7 +38,7 @@ public class CheckOTP extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		} else {
-			response.sendRedirect(request.getContextPath() + "/home");
+			response.sendRedirect(request.getContextPath() + "/index");
 		}
 		return;
 	}
@@ -73,7 +73,7 @@ public class CheckOTP extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute(Const.CUSTOMER_LOGINED, newUser);
 				RequestDispatcher dispatcher //
-						= this.getServletContext().getRequestDispatcher("/home");
+						= this.getServletContext().getRequestDispatcher("/index");
 				dispatcher.forward(request, response);
 				return;
 			} else {

@@ -36,7 +36,7 @@ public class Payment extends HttpServlet {
 		dispatcher.forward(request, response);
 //		} else {
 //			RequestDispatcher dispatcher //
-//					= this.getServletContext().getRequestDispatcher("/home");
+//					= this.getServletContext().getRequestDispatcher("/index");
 //			dispatcher.forward(request, response);
 //		}
 

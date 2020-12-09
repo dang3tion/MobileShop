@@ -16,7 +16,7 @@ import model.BO_service.BO_Cart;
 import model.beans.Customer;
 import model.utility.Const;
 
-@WebServlet(urlPatterns = "/home")
+@WebServlet(urlPatterns = "/index")
 public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

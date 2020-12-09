@@ -39,7 +39,7 @@ public class RetypePassword extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		} else {
-			response.sendRedirect(request.getContextPath() + "/home");
+			response.sendRedirect(request.getContextPath() + "/index");
 		}
 		return;
 

@@ -7,7 +7,7 @@
 <!-- Thanh navigation Bar cho khach hang -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-menu fixed-top">
 	<div class="container">
-		<a class="navbar-brand" href="${pageContext.request.contextPath}/home"><i
+		<a class="navbar-brand" href="${pageContext.request.contextPath}/index"><i
 			class="fas fa-mobile-alt"></i> Mobile Shop</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive"

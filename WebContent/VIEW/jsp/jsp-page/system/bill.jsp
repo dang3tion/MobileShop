@@ -216,7 +216,7 @@
 			border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 				<td style="padding: 30px;"><a
-					href=" ${pageContext.request.contextPath}/home">
+					href=" ${pageContext.request.contextPath}/index">
 						<button type="submit" class="btn btn-primary">TIẾP TỤC
 							MUA HÀNG</button>
 				</a>
