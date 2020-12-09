@@ -13,6 +13,9 @@
 		<location>/VIEW/jsp/jsp-component/404.jsp</location>
 	</error-page>
 	<!-- đa ngôn ngữ -->
+	<listener>
+		<listener-class>controller.format.MultiLanguage</listener-class>
+	</listener>
 	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
 		<param-value>model.multilanguage.MobileShop</param-value>

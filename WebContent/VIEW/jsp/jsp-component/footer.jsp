@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 <footer
@@ -11,21 +12,34 @@
 				<div class="block">
 					<p>PHƯƠNG THỨC THANH TOÁN</p>
 					<p>
-						<img class="icon m-2"
-							style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 5px 1px 5.5px 1px;"
-							src="${url}/image/img-sys/vietcombank.svg" width="53px"> <img
-							class="icon m-2"
-							style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 1px 12px 1px 13px;"
-							src="${url}/image/img-sys/momo.png" width="55px"> <img
-							class="icon m-2"
-							style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 1.5px 0px 1.5px 0px;"
-							src="${url}/image/img-sys/agribank.png" width="53px"> <img
-							class="icon m-2"
-							style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 4px 1px 3px 1px;"
-							src="${url}/image/img-sys/BIDV.png" width="53px"> <img
-							class="icon m-2" src="${url}/image/img-sys/visa.svg"> <img
-							class="icon m-2" src="${url}/image/img-sys/cash.svg">
+						<!-- Chọn ngôn ngữ-->
+					<div class="btn-group">
+						<button type="button" class="btn btn-warning dropdown-toggle"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Chọn ngôn ngữ</button>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href=" ${pageContext.request.contextPath}/switch-language?lang=en_US"><b>English</b></a> <a
+								class="dropdown-item" href=" ${pageContext.request.contextPath}/switch-language?lang=cn_CN"><b>漢語</b></a> 
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href=" ${pageContext.request.contextPath}/switch-language?lang=vi_VN"><b>Tiếng Việt</b></a>
+						</div>
+					</div>
+					<img class="icon m-2"
+						style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 5px 1px 5.5px 1px;"
+						src="${url}/image/img-sys/vietcombank.svg" width="53px"> <img
+						class="icon m-2"
+						style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 1px 12px 1px 13px;"
+						src="${url}/image/img-sys/momo.png" width="55px"> <img
+						class="icon m-2"
+						style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 1.5px 0px 1.5px 0px;"
+						src="${url}/image/img-sys/agribank.png" width="53px"> <img
+						class="icon m-2"
+						style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 4px 1px 3px 1px;"
+						src="${url}/image/img-sys/BIDV.png" width="53px"> <img
+						class="icon m-2" src="${url}/image/img-sys/visa.svg"> <img
+						class="icon m-2" src="${url}/image/img-sys/cash.svg">
 					</p>
+
 				</div>
 				<p style="margin-top: -10px; font-size: 1em;">Lượt truy cập</p>
 				<p style="margin-top: -20px;">
@@ -74,7 +88,8 @@
 
 
 				<c:choose>
-					<c:when test="${CUSTOMER_LOGINED!= null && CUSTOMER_LOGINED.role == 'ADMIN'}">
+					<c:when
+						test="${CUSTOMER_LOGINED!= null && CUSTOMER_LOGINED.role == 'ADMIN'}">
 						<p>
 							<a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
 						</p>

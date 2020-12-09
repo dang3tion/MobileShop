@@ -3,11 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <head>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
 <c:url var="url" scope="application" value="/VIEW"></c:url>
 </head>
 <body>
+
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
 	<jsp:include page="/VIEW/jsp/jsp-component/filter.jsp"></jsp:include>
@@ -23,6 +26,17 @@
 					<div class="title ">
 						<div class="title float-left">
 							<h3>Sản phẩm nổi bật</h3>
+
+							<!-- 	
+						@@@@@@@@@@ -->
+
+							<h1>
+								<h1>${sessionScope.LANGUAGE}</h1>
+								<fmt:message key="login"></fmt:message>
+							</h1>
+							<!-- 							@@@@@@@@@@ -->
+
+
 						</div>
 						<div class="title float-right">
 							<a href="#">Xem thêm <i class="fas fa-arrow-right"></i></a>
@@ -46,7 +60,7 @@
 															width="80%" class="" alt="..."></a>
 													</div>
 													<div class="card-content">
-														<div class="card-title" style="min-height:43px;">
+														<div class="card-title" style="min-height: 43px;">
 															<a href="Product_page/chiTietSanPham.html">Iphone 12
 																${p.name } 
 														</div>
@@ -84,7 +98,7 @@
 															width="80%" class="" alt="..."></a>
 													</div>
 													<div class="card-content">
-														<div class="card-title" style="min-height:43px;">
+														<div class="card-title" style="min-height: 43px;">
 															<a href="Product_page/chiTietSanPham.html">Iphone 12
 																${p2.name } 
 														</div>

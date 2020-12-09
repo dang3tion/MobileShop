@@ -28,6 +28,9 @@ public class AdminFilter implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		String servletPath = req.getServletPath();
+		
+		
+		
 
 		HttpSession session = ((HttpServletRequest) request).getSession();
 
@@ -41,7 +44,7 @@ public class AdminFilter implements Filter {
 			// để sau khi đăng nhập thì tiếp tục vào trang này
 			// Dùng trong trường hợp user truy cập vào các mục
 			// được bảo vệ bằng URL không thông qua giao diện
-			// VD : gõ URL : abc.com/admin/quanliSanPham/
+			// VD : gõ URL : MultiLanguage.com/admin/quanliSanPham/
 			session.setAttribute(Const.CURRENT_LINK, servletPath);
 //
 //			 chuyển qua login kèm theo thông báo
