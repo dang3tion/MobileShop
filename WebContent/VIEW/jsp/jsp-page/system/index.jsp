@@ -27,14 +27,6 @@
 						<div class="title float-left">
 							<h3>Sản phẩm nổi bật</h3>
 
-							<!-- 	
-						@@@@@@@@@@ -->
-
-							<h1>
-								<h1>${sessionScope.LANGUAGE}</h1>
-								<fmt:message key="login"></fmt:message>
-							</h1>
-							<!-- 							@@@@@@@@@@ -->
 
 
 						</div>

@@ -19,8 +19,6 @@ public class SwitchLanguage extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		String referrer = request.getHeader("referer");
-		System.out.println(referrer);
-		String currentLang = (String) session.getAttribute("LANGUAGE");
 		String setLanguage = request.getParameter("lang");
 		switch (setLanguage) {
 		case "vi_VN":
@@ -38,6 +36,8 @@ public class SwitchLanguage extends HttpServlet {
 		}
 
 		session.setAttribute("LANGUAGE", setLanguage);
+
+		response.sendRedirect(referrer);
 
 	}
 
