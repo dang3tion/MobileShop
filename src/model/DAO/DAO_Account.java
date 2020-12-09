@@ -11,20 +11,20 @@ import model.utility.Const;
 public class DAO_Account extends ConnectDB {
 
 	// Tên bảng trong database
-	private final String ACCOUNT = "khachhang";
+	private final String ACCOUNT = " khachhang ";
 	// tên các cột của bảng ACCOUNT
-	private final String EMAIL = "email";
-	private final String ENCRYT_PASSWORD = "matKhau";
-	private final String ROLE = "quyenHan";
-	private final String STATUS = "trangThai";
-	private final String TIMECREATE = "thoiGianTao";
-	private final String NAME = "ten";
-	private final String PHONE = "SDT";
-	private final String ADDRESS = "diaChi";
+	private final String EMAIL = " email ";
+	private final String ENCRYT_PASSWORD = " matKhau ";
+	private final String ROLE = " quyenHan ";
+	private final String STATUS = " trangThai ";
+	private final String TIMECREATE = " thoiGianTao ";
+	private final String NAME = " ten ";
+	private final String PHONE = " SDT ";
+	private final String ADDRESS = " diaChi ";
 
 	public void add(Account acc) {
 		try {
-			String query = "INSERT INTO " + ACCOUNT + " VALUES(?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO" + ACCOUNT + "VALUES(?,?,?,?,?,?,?,?)";
 			String[] parameters = { //
 					acc.getEmail(), //
 					acc.getPassword(), //
@@ -48,12 +48,12 @@ public class DAO_Account extends ConnectDB {
 	}
 
 	public void update(Account newAcc) {
-		String query = "UPDATE " + ACCOUNT + " SET "//
+		String query = "UPDATE" + ACCOUNT + "SET"//
 				+ ENCRYT_PASSWORD + " = ? , " //
 				+ STATUS + " = ? ,"//
 				+ NAME + " = ? , "//
 				+ PHONE + " = ? ,"//
-				+ ADDRESS + " = ? WHERE " + EMAIL + " = ? "; //
+				+ ADDRESS + " = ? WHERE" + EMAIL + "= ? "; //
 		Object[] parameters = { //
 				newAcc.getPassword(), //
 				newAcc.getStatus(), //
@@ -93,7 +93,7 @@ public class DAO_Account extends ConnectDB {
 
 	public int totalSearch(String keyword) {
 		List<Account> listAcc = new ArrayList<Account>();
-		String query = "SELECT * FROM SEARCHLISTACC(N'" + keyword + "') WHERE " + ROLE + " = '" + Const.CUSTOMER_ROLE
+		String query = "SELECT * FROM SEARCH(N'" + keyword + "') WHERE " + ROLE + " = '" + Const.CUSTOMER_ROLE
 				+ "'";
 		try (ResultSet rs = super.AccessDBstr(query)) {
 			while (rs.next()) {

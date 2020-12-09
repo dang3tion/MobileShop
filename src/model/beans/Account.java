@@ -7,6 +7,7 @@ import model.utility.Const;
 
 public class Account {
 
+	private String id;
 	private String email;
 	private String password;
 	private String role;
@@ -22,7 +23,6 @@ public class Account {
 	public Account() {
 	}
 
-	// Dành cho lúc insert User mới
 	public Account(String email, String password) {
 		this.email = email;
 		this.password = password;
@@ -34,9 +34,9 @@ public class Account {
 		this.address = "";
 	}
 
-	// Dành để load User từ database lên
 	public Account(String email, String password, String role, String status, String timeCreate, String name,
 			String phoneNumber, String address) {
+		
 		this.email = email;
 		this.password = password;
 		this.role = role;
@@ -47,7 +47,6 @@ public class Account {
 		this.address = address;
 	}
 
-	// Dành để load User thành danh sách
 	public Account(String email, String status, String timeCreate, String name, String phoneNumber, String address) {
 		this.email = email;
 		this.status = status;

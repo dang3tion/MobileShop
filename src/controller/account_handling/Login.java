@@ -23,6 +23,12 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		HttpSession s = request.getSession();
+		String str = (String) request.getAttribute("LANGUAGE");
+		
+		System.out.println("zdfdfds  "+str);
+		
+		
 		// không sendRedirect vì phải hứng thông báo lỗi từ filter
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/login.jsp");

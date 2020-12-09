@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-djfkdjfkdjfkdjfkdjfkdjfkdjfkdjkfd
+
 <h1>Tên : ${pro.name} </h1>
 <h2> Giá : ${pro.price}</h2>
 

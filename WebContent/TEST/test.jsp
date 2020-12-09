@@ -21,7 +21,7 @@
 	<div class="container">
 		<div class="row">
 
-			<c:forEach var="pro" items="${list}">
+			<c:forEach var="pro"  items="${list}">
 				<div class="col-4 m-2">
 					<div class="card">
 						<img class="card-img-top" src="holder.js/100x180/" alt="">
@@ -30,6 +30,7 @@
 							<c:url var="urlDetail" value="/Detail">
 								<c:param name="id" value="${pro.id}" />
 							</c:url>
+							
 							<a href="${urlDetail}">Xem chi tiết</a>
 							<h4 class="card-title">${pro.name}</h4>
 							<p class="card-text">${pro.price}</p>

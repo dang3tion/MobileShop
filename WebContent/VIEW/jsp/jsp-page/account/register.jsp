@@ -32,7 +32,7 @@
 				width="100" height="100">
 			<h1 class="h3 mb-3 font-weight-normal">Đăng kí tài khoản mới</h1>
 			<label style="margin-bottom: -25px" for="recipient-name" class="d-flex justify-content-start align-baseline col-form-label">Email:</label>
-			<input name="Nhập email" type="text" id="inputemail" class="form-control"
+			<input name="email" type="text" id="inputemail" class="form-control"
 				onfocusout="check_email(this.id)" placeholder="Email">
 			<div class="require mt-1 ml-5" id="require-email">Vui lòng nhập
 				đúng định dạng email</div>
