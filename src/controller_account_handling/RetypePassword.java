@@ -34,12 +34,12 @@ public class RetypePassword extends HttpServlet {
 //		token = request.getAttribute(Const.TOKEN_OTP_RETYPE_PASS);
 //		if (token != null) {
 //			request.removeAttribute(Const.TOKEN_OTP_RETYPE_PASS);
-//			RequestDispatcher dispatcher //
-//					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/retype-pass.jsp");
-//			dispatcher.forward(request, response);
+			RequestDispatcher dispatcher //
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/retype-pass.jsp");
+			dispatcher.forward(request, response);
 //			return;
 //		} else {
-			response.sendRedirect(request.getContextPath() + "/index");
+//			response.sendRedirect(request.getContextPath() + "/index");
 //		}
 //		return;
 

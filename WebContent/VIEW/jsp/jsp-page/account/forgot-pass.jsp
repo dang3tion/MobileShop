@@ -31,7 +31,7 @@
 		<input name="email" id="inputEmail" class="form-control"
 			placeholder="Nhập email" onfocusout=" check_email2(this.id)">
 		<div class="require" style="display: none" id="require-email2">
-		nhập email theo đúng theo định dạng email <br>Ví dụ:
+		Nhập email theo đúng theo định dạng email <br>Ví dụ:
 			nlumobile@gmail.com
 		</div>
 
@@ -50,7 +50,7 @@
 
 	 
 	   
-	<c:url var="url" scope="application" value="/VIEW"></c:url>
+	<c:url var="url" scope="session" value="/VIEW"></c:url>
 	<script src="${url}/js/js-page/form-login.js"></script>
 </body>
 

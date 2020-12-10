@@ -1,7 +1,5 @@
 package controller_account_handling;
 
-
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -39,12 +37,12 @@ public class CheckOtpResetPassword extends HttpServlet {
 //		token = request.getAttribute(Const.TOKEN_RESETPASS_OTP);
 //		if (token != null) {
 //			request.removeAttribute(Const.TOKEN_RESETPASS_OTP);
-//			RequestDispatcher dispatcher //
-//					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp-forgot-pass.jsp");
-//			dispatcher.forward(request, response);
+			RequestDispatcher dispatcher //
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp-forgot-pass.jsp");
+			dispatcher.forward(request, response);
 //			return;
 //		} else {
-			response.sendRedirect(request.getContextPath() + "/index");
+//			response.sendRedirect(request.getContextPath() + "/index");
 //		}
 //		return;
 
@@ -73,10 +71,10 @@ public class CheckOtpResetPassword extends HttpServlet {
 //				// nếu đúng mã OTP thì chuyển qua cho servlet retypepassword xử lý tiếp
 //				// có kèm theo token
 //				request.setAttribute(Const.TOKEN_OTP_RETYPE_PASS, true);
-				RequestDispatcher dispatcher //
-						= this.getServletContext().getRequestDispatcher("/retype");
-				dispatcher.forward(request, response);
-				return;
+//		RequestDispatcher dispatcher //
+//				= this.getServletContext().getRequestDispatcher("/retype");
+//		dispatcher.forward(request, response);
+//		return;
 
 //			} else {
 //				request.setAttribute("message", "Sai mã OTP");
@@ -87,6 +85,9 @@ public class CheckOtpResetPassword extends HttpServlet {
 //			}
 //		}
 
+//		########## XÓA DÒNG NÀY ############
+		response.sendRedirect(request.getContextPath() + "/retype");
+		
 	}
 
 }
