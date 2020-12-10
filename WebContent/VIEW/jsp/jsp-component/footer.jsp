@@ -11,34 +11,40 @@
 			<div class="ml-5 col-3">
 				<div class="block">
 					<p>PHƯƠNG THỨC THANH TOÁN</p>
-					<h1>dsd${LANGUAGE}</h1>
+
 					<p>
-						<!-- Chọn ngôn ngữ-->
+
+						<img class="icon m-2"
+							style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 5px 1px 5.5px 1px;"
+							src="${url}/image/img-sys/vietcombank.svg" width="53px"> <img
+							class="icon m-2"
+							style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 1px 12px 1px 13px;"
+							src="${url}/image/img-sys/momo.png" width="55px"> <img
+							class="icon m-2"
+							style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 1.5px 0px 1.5px 0px;"
+							src="${url}/image/img-sys/agribank.png" width="53px"> <img
+							class="icon m-2"
+							style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 4px 1px 3px 1px;"
+							src="${url}/image/img-sys/BIDV.png" width="53px"> <img
+							class="icon m-2" src="${url}/image/img-sys/visa.svg"> <img
+							class="icon m-2" src="${url}/image/img-sys/cash.svg">
+					</p>
+					<!-- Chọn ngôn ngữ-->
 					<div class="btn-group">
 						<button type="button" class="btn btn-warning dropdown-toggle"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<fmt:message key="choose-language"></fmt:message></button>
+							<fmt:message key="choose-language"></fmt:message>
+						</button>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href=" ${pageContext.request.contextPath}/switch-language?lang=en_US"><b>English</b></a> <a
-								class="dropdown-item" href=" ${pageContext.request.contextPath}/switch-language?lang=cn_CN"><b>漢語</b></a> 
-							<a class="dropdown-item" href=" ${pageContext.request.contextPath}/switch-language?lang=vi_VN"><b>Tiếng Việt</b></a>
+							<a class="dropdown-item"
+								href=" ${pageContext.request.contextPath}/switch-language?lang=en_US"><b>English</b></a>
+							<a class="dropdown-item"
+								href=" ${pageContext.request.contextPath}/switch-language?lang=cn_CN"><b>漢語</b></a>
+							<a class="dropdown-item"
+								href=" ${pageContext.request.contextPath}/switch-language?lang=vi_VN"><b>Tiếng
+									Việt</b></a>
 						</div>
 					</div>
-					<img class="icon m-2"
-						style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 5px 1px 5.5px 1px;"
-						src="${url}/image/img-sys/vietcombank.svg" width="53px"> <img
-						class="icon m-2"
-						style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 1px 12px 1px 13px;"
-						src="${url}/image/img-sys/momo.png" width="55px"> <img
-						class="icon m-2"
-						style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 1.5px 0px 1.5px 0px;"
-						src="${url}/image/img-sys/agribank.png" width="53px"> <img
-						class="icon m-2"
-						style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 4px 1px 3px 1px;"
-						src="${url}/image/img-sys/BIDV.png" width="53px"> <img
-						class="icon m-2" src="${url}/image/img-sys/visa.svg"> <img
-						class="icon m-2" src="${url}/image/img-sys/cash.svg">
-					</p>
 
 				</div>
 				<p style="margin-top: -10px; font-size: 1em;">Lượt truy cập</p>

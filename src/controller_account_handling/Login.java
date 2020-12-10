@@ -76,9 +76,13 @@ public class Login extends HttpServlet {
 //				response.sendRedirect(request.getContextPath() + path);
 //			} else {
 //			
-//				System.out.println("psdmfosidmf");
-				response.sendRedirect(request.getContextPath() + "/index");
-				
+		HttpSession session = request.getSession();
+		
+
+		session.setAttribute(Const.CUSTOMER_LOGINED, "TESSSSSSSSSSSSTjfsfak");
+
+		response.sendRedirect(request.getContextPath() + "/index");
+
 //			}
 //		}
 //		}

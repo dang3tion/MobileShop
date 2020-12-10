@@ -21,7 +21,7 @@
 			<li><a href="${pageContext.request.contextPath}/admin/manager-product"
 				class="list-group-item list-group-item-action ${param.listProductactive} "> Quản lý sản phẩm <i class="menu-icon fas fa-mobile-alt font-list"></i>
 			</a></li>
-			<li><a href=""
+			<li><a href="${pageContext.request.contextPath}/admin/receipt"
 				class="list-group-item list-group-item-action "> Quản lí đơn
 					hàng <i class="menu-icon fas fa-shopping-cart font-list"></i>
 			</a></li>
@@ -45,11 +45,11 @@
 				class="list-group-item list-group-item-action ${param.filteractive} "> Dữ liệu lọc <i
 					class="menu-icon fas fa-filter"></i></a></li>
 			 <li>
-                  <a href="confi-web.html" class="list-group-item list-group-item-action ${param.config}">Giao diện 
+                  <a href="${pageContext.request.contextPath}/admin/config" class="list-group-item list-group-item-action ${param.config}">Giao diện 
                     <i class="menu-icon fas fa-desktop"></i></a>
               </li>
                <li>
-                  <a href="change-password.html" class="list-group-item list-group-item-action ${param.information}"> Thông tin shop
+                  <a href="${pageContext.request.contextPath}/admin/information" class="list-group-item list-group-item-action ${param.information}"> Thông tin shop
                   <i class="menu-icon fas fa-cogs"></i></a>
               </li>		
 			

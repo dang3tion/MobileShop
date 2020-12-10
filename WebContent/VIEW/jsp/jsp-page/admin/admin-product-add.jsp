@@ -190,7 +190,6 @@
 						</div>
 						<!-- (3): Code Javascript thay thế textarea có id='editor1' bởi CKEditor -->
 						<script src="${url}/js/js-static/ckeditor/ckeditor.js"></script>
-						<h1>${url}</h1>
 						<script src="${url}/js/js-static/ckeditor/samples/js/sample.js"></script>
 						<script>
 							initSample();

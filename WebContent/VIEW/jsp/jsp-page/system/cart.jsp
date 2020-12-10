@@ -22,7 +22,7 @@
 				<div class="col-8">
 					<div class="frame-cart">
 						<ul>
-							<li class="cart-content"><img src="../image/img_phone/1.jpg">
+							<li class="cart-content"><img src="https://picsum.photos/400/400">
 
 
 								<div class="content-product">
@@ -63,7 +63,7 @@
 										</div>
 									</div>
 								</div></li>
-							<li class="cart-content"><img src="../image/img_phone/5.jpg">
+							<li class="cart-content"><img src="https://picsum.photos/400/400">
 
 
 								<div class="content-product">
@@ -105,7 +105,7 @@
 									</div>
 								</div></li>
 							<li class="cart-content"><img
-								src="../image/img_phone/12.jpg">
+								src="https://picsum.photos/400/400">
 
 
 								<div class="content-product">

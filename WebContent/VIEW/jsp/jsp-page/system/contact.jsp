@@ -35,11 +35,11 @@
               <p> Chọn sản phẩm bạn cần mua trên cửa hàng. </p>
               <div class="text-center justify-content-center">
                 <div class="text-center justify-content-center">
-                  <img style="width: 60%;" src="../image/imgContact/guide1.JPG">
+                  <img style="width: 60%;" src="https://picsum.photos/400/400">
                   <p> Cửa hàng cung cấp một số tùy chọn : tìm kiếm, lọc, sắp xếp để bạn để bạn dễ dàng tìm được sản phẩm
                     theo ý muốn. </p>
                   <div class="text-center justify-content-center">
-                    <img style="width: 60%;" src="../image/imgContact/guide21.PNG">
+                    <img style="width: 60%;" src="https://picsum.photos/400/400">
 
                   </div>
                 </div>
@@ -53,7 +53,7 @@
                   thanh toán bằng tiền
                   mặt qua hình thức COD sau khi đã nhận được hàng. </p>
                 <div class="text-center justify-content-center">
-                  <img style="width: 60%;" src="../image/imgContact/guide2.PNG">
+                  <img style="width: 60%;" src="https://picsum.photos/400/400">
 
                 </div>
               </div>
@@ -66,7 +66,7 @@
                   được được hàng. Bạn sẽ nhận được sản phẩm sau 3-7 ngày tùy theo khu vực.</p>
                 <div class="text-center justify-content-center">
 
-                  <img style="width: 40%;" src="../image/imgContact/guide3.png">
+                  <img style="width: 40%;" src="https://picsum.photos/400/400">
                 </div>
 
               </div>

@@ -13,11 +13,12 @@
 </head>
 <body>
 	<div class="d-flex" id="wrapper">
-		<!-- Sidebar -->
-
+			<!-- Sidebar -->
 		<c:import url="/VIEW/jsp/jsp-component/sidebar-admin.jsp">
-			<c:param name="filteractive" value="active"></c:param>
+			<c:param name="informationactive" value="active"></c:param>
 		</c:import>
+
+		
 
 
 
@@ -147,8 +148,6 @@
 								<h5 class="spacing_form">Chính sách</h5>
 
 								<!-- 								@@@@@@@@@@@@@@@CKEDITOR@@@@@@@@@@@@@@@@@@ -->
-								<div class="form-group space-top">
-									<h5 class="spacing_form">Giới thiệu sản phẩm</h5>
 
 									<div
 										style="border: 1px solid #dadada; padding: 15px; border-radius: 5px;">

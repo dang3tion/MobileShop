@@ -440,7 +440,7 @@
 						<div class="col-4">
 							<div class="card">
 								<div class="card-img text-center">
-									<a href="#"> <img src="image/img_phone/15.jpg" width="80%"
+									<a href="#"> <img src="https://picsum.photos/400/400" width="80%"
 										class="" alt="..."></a>
 								</div>
 								<div class="card-content">
@@ -469,7 +469,7 @@
 						<div class="col-4">
 							<div class="card">
 								<div class="card-img text-center">
-									<a href="#"> <img src="image/img_phone/14.jpg" width="80%"
+									<a href="#"> <img src="https://picsum.photos/400/400"width="80%"
 										class="" alt="..."></a>
 								</div>
 								<div class="card-content">
@@ -498,99 +498,7 @@
 						<div class="col-4">
 							<div class="card">
 								<div class="card-img text-center">
-									<a href="#"> <img src="image/img_phone/16.jpg" width="80%"
-										class="" alt="..."></a>
-								</div>
-								<div class="card-content">
-									<div class="card-title">
-										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a>
-									</div>
-									<div class="card-price">
-										<span>
-											<div class="card-count">
-												19.990.000 <span class="unit">đ</span>
-											</div>
-											<div class="card-discount">
-												23.000.000 <span class="unit">đ</span>
-											</div>
-									</div>
-									<div class="card-stars">
-										<span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star  text-dark"></i></span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--Hang ket qua-->
-				<div class="row-content">
-					<div class="row">
-						<div class="col-4">
-							<div class="card">
-								<div class="card-img text-center">
-									<a href="#"> <img src="image/img_phone/17.jpg" width="80%"
-										class="" alt="..."></a>
-								</div>
-								<div class="card-content">
-									<div class="card-title">
-										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a>
-									</div>
-									<div class="card-price">
-										<span>
-											<div class="card-count">
-												19.990.000 <span class="unit">đ</span>
-											</div>
-											<div class="card-discount">
-												23.000.000 <span class="unit">đ</span>
-											</div>
-									</div>
-									<div class="card-stars">
-										<span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star  text-dark"></i></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="card">
-								<div class="card-img text-center">
-									<a href="#"> <img src="image/img_phone/18.jpg" width="80%"
-										class="" alt="..."></a>
-								</div>
-								<div class="card-content">
-									<div class="card-title">
-										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a>
-									</div>
-									<div class="card-price">
-										<span>
-											<div class="card-count">
-												19.990.000 <span class="unit">đ</span>
-											</div>
-											<div class="card-discount">
-												23.000.000 <span class="unit">đ</span>
-											</div>
-									</div>
-									<div class="card-stars">
-										<span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star  text-dark"></i></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="card">
-								<div class="card-img text-center">
-									<a href="#"> <img src="image/img_phone/19.jpg" width="80%"
+									<a href="#"> <img src="https://picsum.photos/400/400"width="80%"
 										class="" alt="..."></a>
 								</div>
 								<div class="card-content">
@@ -624,7 +532,7 @@
 						<div class="col-4">
 							<div class="card">
 								<div class="card-img text-center">
-									<a href="#"> <img src="image/img_phone/20.jpg" width="80%"
+									<a href="#"> <img src="https://picsum.photos/400/400"width="80%"
 										class="" alt="..."></a>
 								</div>
 								<div class="card-content">
@@ -653,7 +561,7 @@
 						<div class="col-4">
 							<div class="card">
 								<div class="card-img text-center">
-									<a href="#"> <img src="image/img_phone/21.jpg" width="80%"
+									<a href="#"> <img src="https://picsum.photos/400/400"width="80%"
 										class="" alt="..."></a>
 								</div>
 								<div class="card-content">
@@ -682,7 +590,99 @@
 						<div class="col-4">
 							<div class="card">
 								<div class="card-img text-center">
-									<a href="#"> <img src="image/img_phone/22.jpg" width="80%"
+									<a href="#"> <img src="https://picsum.photos/400/400"width="80%"
+										class="" alt="..."></a>
+								</div>
+								<div class="card-content">
+									<div class="card-title">
+										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a>
+									</div>
+									<div class="card-price">
+										<span>
+											<div class="card-count">
+												19.990.000 <span class="unit">đ</span>
+											</div>
+											<div class="card-discount">
+												23.000.000 <span class="unit">đ</span>
+											</div>
+									</div>
+									<div class="card-stars">
+										<span> <i class="fas fa-star text-warning"></i></span> <span>
+											<i class="fas fa-star text-warning"></i>
+										</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
+											<i class="fas fa-star text-warning"></i>
+										</span> <span> <i class="fas fa-star  text-dark"></i></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Hang ket qua-->
+				<div class="row-content">
+					<div class="row">
+						<div class="col-4">
+							<div class="card">
+								<div class="card-img text-center">
+									<a href="#"> <img src="https://picsum.photos/400/400"width="80%"
+										class="" alt="..."></a>
+								</div>
+								<div class="card-content">
+									<div class="card-title">
+										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a>
+									</div>
+									<div class="card-price">
+										<span>
+											<div class="card-count">
+												19.990.000 <span class="unit">đ</span>
+											</div>
+											<div class="card-discount">
+												23.000.000 <span class="unit">đ</span>
+											</div>
+									</div>
+									<div class="card-stars">
+										<span> <i class="fas fa-star text-warning"></i></span> <span>
+											<i class="fas fa-star text-warning"></i>
+										</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
+											<i class="fas fa-star text-warning"></i>
+										</span> <span> <i class="fas fa-star  text-dark"></i></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="card">
+								<div class="card-img text-center">
+									<a href="#"> <img src="https://picsum.photos/400/400"width="80%"
+										class="" alt="..."></a>
+								</div>
+								<div class="card-content">
+									<div class="card-title">
+										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a>
+									</div>
+									<div class="card-price">
+										<span>
+											<div class="card-count">
+												19.990.000 <span class="unit">đ</span>
+											</div>
+											<div class="card-discount">
+												23.000.000 <span class="unit">đ</span>
+											</div>
+									</div>
+									<div class="card-stars">
+										<span> <i class="fas fa-star text-warning"></i></span> <span>
+											<i class="fas fa-star text-warning"></i>
+										</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
+											<i class="fas fa-star text-warning"></i>
+										</span> <span> <i class="fas fa-star  text-dark"></i></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="card">
+								<div class="card-img text-center">
+									<a href="#"> <img src="https://picsum.photos/400/400"width="80%"
 										class="" alt="..."></a>
 								</div>
 								<div class="card-content">
