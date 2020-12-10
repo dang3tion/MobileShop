@@ -23,40 +23,45 @@
 			<!-- 			main content -->
 			<div class="container-fluid ">
 				<div class="mb-5 mt-3 ">
-					<h3 class="text-center mt-3 mb-3">Cấu hình trang web</h3>
+					<h2 class="text-center mt-3 mb-3">Cấu hình trang web</h2>
 
 					<form action="">
 						<div class="row space-r">
-							<h4>1.Màu sắc</h4>
+							<h3>1.Màu sắc</h3>
 						</div>
 						<div class="row space-r">
-							<div class="col-4" style="margin-top: 20px;">
+							<div class="col-3" style="margin-top: 20px;">
 								<h6>
 									Menu: <input type="color" value="#4DABF7">
 								</h6>
 							</div>
 
-							<div class="col-4" style="margin-top: 20px;">
+							<div class="col-3" style="margin-top: 20px;">
 								<h6>
 									Thanh lọc: <input type="color" value="#FFFFFF">
 								</h6>
 							</div>
 
-							<div class="col-4" style="margin-top: 20px;">
+							<div class="col-3" style="margin-top: 20px;">
 								<h6>
 									Body trang web: <input type="color" value="#FFFFFF">
+								</h6>
+							</div>
+							<div class="col-3" style="margin-top: 20px;">
+								<h6>
+									Màu chữ: <input type="color" value="#000000">
 								</h6>
 							</div>
 
 
 						</div>
 						<div class="row space-r" style="margin-top: 20px;">
-							<h4>2.Biểu tượng trên thanh menu</h4>
+							<h3>2.Biểu tượng trên thanh menu</h3>
 
 						</div>
 						<div class="row" style="margin-top: 20px; margin: auto;">
 							<div class="card" style="width: 16rem; margin: 5px;">
-								<h2 style="text-align: center;">Icon 1</h2>
+								<h4 style="text-align: center;">Icon 1</h4>
 								<img class="card-img-top" src="..." alt="Card image cap">
 								<div class="card-body">
 									<input type="text" class="form-control"
@@ -66,7 +71,7 @@
 								</div>
 							</div>
 							<div class="card" style="width: 16rem; margin: 5px;">
-								<h2 style="text-align: center;">Icon 2</h2>
+								<h4 style="text-align: center;">Icon 2</h4>
 								<img class="card-img-top" src="..." alt="Card image cap">
 								<div class="card-body">
 									<input type="text" class="form-control"
@@ -76,7 +81,7 @@
 								</div>
 							</div>
 							<div class="card" style="width: 16rem; margin: 5px;">
-								<h2 style="text-align: center;">Icon 3</h2>
+								<h4 style="text-align: center;">Icon 3</h4>
 								<img class="card-img-top" src="..." alt="Card image cap">
 								<div class="card-body">
 									<input type="text" class="form-control"
@@ -86,7 +91,7 @@
 								</div>
 							</div>
 							<div class="card" style="width: 16rem; margin: 5px;">
-								<h2 style="text-align: center;">Icon 4</h2>
+								<h4 style="text-align: center;">Icon 4</h4>
 								<img class="card-img-top" src="..." alt="Card image cap">
 								<div class="card-body">
 									<input type="text" class="form-control"
@@ -135,6 +140,10 @@
 
 
 			</div>
+
+
+
+
 
 		</div>
 
