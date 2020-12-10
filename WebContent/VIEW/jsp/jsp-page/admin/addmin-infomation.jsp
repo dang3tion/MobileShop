@@ -10,69 +10,144 @@
 
 <body>
 
-	<div class="d-flex" id="wrapper">
+	<div class="d-flex" id="wrapper" >
 		<!-- Sidebar left -->
 		<c:import url="/VIEW/jsp/jsp-component/sidebar-admin.jsp">
 			<c:param name="indexactive" value="active"></c:param>
 		</c:import>
 		<!-- Page right -->
-		<div id="page-content-wrapper">
+		<div id="page-content-wrapper"  style="
+    background-color: #e6e6e682;">
 			<!-- 		toggle logout -->
 			<jsp:include page="/VIEW/jsp/jsp-component/toggle-logout-bar.jsp"></jsp:include>
 			<!-- 			main content -->
-			<div class="container-fluid">
-				  <div class=" col-8 mb-5" style="background-color: #f1f1f1; margin:auto; margin-top:100px">
-        
-              <h4 style="margin:30px auto; text-align: center;">Thay đổi mật khẩu</h4>
+		     <div class="container-fluid">
+        <div class="frame-cog">
+          <h3>Thông tin cửa hàng</h3>
+          <div class="save">
+            <button  data-toggle="modal" data-target="#save">  Lưu lại toàn bộ
 
-              <form>
-                <div class="form-group row">
-                  <label for="staticEmail" style="font-weight: bold;" class="col-sm-3 col-form-label">Mật khẩu mới:</label>
-                  <div class="col-sm-9">
-                    <input type="password" class="form-control" name="password" type="password" onChange="onChange()" placeholder="Nhập mật khẩu mới">
-                   <!-- ? <input  class="form-control-plaintext" name="password" type="password" onChange="onChange()" placeholder="Nhập mật khẩu mới"> -->
-                  </div>
+            </button>
+         
+          </div>   <div class="modal fade" id="save" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Xác nhận thay đổi</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
-                <div class="form-group row">
-                  <label for="inputPassword" style="font-weight: bold;" class="col-sm-3 col-form-label">Nhập lại mật khẩu:</label>
-                  <div class="col-sm-9">
-                    <input type="password" class="form-control" name="confirm"  type="password" onChange="onChange()" placeholder="Nhập lại mật khẩu">
-                  </div>
-                  <button type="button" onsubmit="return false" class="btn btn-primary" data-toggle="modal" data-target="#changePass" style="margin: 15px;margin-left: 650px; float: right;">Lưu</button>
+                <div class="modal-body">
+                  Bạn có muốn xác nhận thay đổi này?
                 </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+                  <button type="button" onclick="themMau()" id="btnAddColor" data-dismiss="modal" class="btn btn-primary">Đồng ý</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="frame-cog-content">
+            <div class="frame">
+            <h5>Thông tin chung</h5>
+            <ul class="information">
+              <li class="content-input">
+                <div class="title"><p>Tên cửa hàng</p></div>
 
-                 <!-- Modal -->
-                    <div class="modal fade" style="display: none;"  id="changePass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Thay đổi mật khẩu</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="modal-body">
-                            <h6 style="color: red;">Bạn có muốn thay đổi mật khẩu</h6>
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
-                            <button type="submit" class="btn btn-primary" data-dismiss="modal" > Có</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+                <div class="input"><input type="text" value="asdfassafdsadf"></div>
+              
+              </li>
+              <li class="content-input">
+                <div class="title"><p>Biểu tượng</p></div>
+
+                <div class="input"><input accept="image/png, image/jpeg" type="file" value=""></div>
+              
+              </li>
+              <li class="content-input">
+                <div class="title"><p>Địa chỉ thực</p></div>
+                <div class="input"><input type="text"></div>
+              </li> <li class="content-input">
+                <div class="title"><p>Địa chỉ Facebook</p></div>
+                <div class="input"><input type="text"></div>
+              </li> <li class="content-input">
+                <div class="title"><p>Địa chỉ Youtube</p></div>
+                <div class="input"><input type="text"></div>
+              </li>
+            </ul></div>
+           
+            <div class="frame-number"> <h5>Thông tin liên hệ</h5>
+              <div class="tab">
+            <div class="title-number">
+              <ul>
+              <li>Tiêu đề</li>
+              <li> Số điện thoại</li>
+              <li> Giờ hoạt động</li></ul>
+            </div>
+            <ul class="number">
+              <li>
+                <div class="content-number"><input type="text" value="asdfassafdsadf"></div>
+                <div class="content-number"><input type="number"></div>
+                <div class="content-number"><input type="text"></div>
+                <div class="content-number"><button ><i class="fas  fa-trash-alt"></i></div>
+              </li>
+            </ul></div>
+            <button class="plus"><i class="fas fa-plus"></i></button>
+          </div>
+          <div class="frame-liscen">  <script src="../ckeditor/ckeditor.js"></script>
+            <div class="form-group space-top" >
+              <h5 class="spacing_form">Chính sách</h5>
+              <form action="" method="post">
+  
+                <!-- (2): textarea sẽ được thay thế bởi CKEditor -->
+                <textarea id="edit" name="edit" cols="200" rows="80">
+  
+                      </textarea>
+  
+                <!-- (3): Code Javascript thay thế textarea có id='editor1' bởi CKEditor -->
+                <script>
+  
+                  CKEDITOR.replace('edit');
+  
+                </script>
+  
               </form>
-
-              <!-- Button trigger modal -->
-
- 
-
+            </div>
+  
+          </div>
+          </div>
         </div>
-			</div>
+     
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+  </div>
+  <!-- /#wrapper -->
 
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
+   <script src="ckeditor/ckeditor.js"></script>
+  <script>CKEDITOR.replace('ten');</script>
+  <!--Check pass-->
+  <script>
+      function onChange() {
+            const password = document.querySelector('input[name=password]');
+            const confirm = document.querySelector('input[name=confirm]');
+            if (confirm.value === password.value) {
+                confirm.setCustomValidity('');
+            } else {
+                confirm.setCustomValidity('Mật khẩu không phù hợp');
+            }
+    }   
+
+
+  </script>
 		</div>
 
 	</div>
-	
+
+	</div>
+
 </body>
 </html>
