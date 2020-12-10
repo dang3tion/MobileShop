@@ -13,12 +13,12 @@
 </head>
 <body>
 	<div class="d-flex" id="wrapper">
-			<!-- Sidebar -->
+		<!-- Sidebar -->
 		<c:import url="/VIEW/jsp/jsp-component/sidebar-admin.jsp">
 			<c:param name="informationactive" value="active"></c:param>
 		</c:import>
 
-		
+
 
 
 
@@ -60,130 +60,142 @@
 							</div>
 						</div>
 					</div>
-					<div class="frame-cog-content">
-						<div class="frame">
-							<h5>Thông tin chung</h5>
-							<ul class="information">
-								<li class="content-input">
-									<div class="title">
-										<p>Tên cửa hàng</p>
-									</div>
 
-									<div class="input">
-										<input type="text" value="asdfassafdsadf">
-									</div>
+					<form action="${pageContext.request.contextPath}/admin/information"
+						method="POST">
 
-								</li>
-								<li class="content-input">
-									<div class="title">
-										<p>Biểu tượng</p>
-									</div>
-
-									<div class="input">
-										<input accept="image/png, image/jpeg" type="file" value="">
-									</div>
-
-								</li>
-								<li class="content-input">
-									<div class="title">
-										<p>Địa chỉ thực</p>
-									</div>
-									<div class="input">
-										<input type="text">
-									</div>
-								</li>
-								<li class="content-input">
-									<div class="title">
-										<p>Địa chỉ Facebook</p>
-									</div>
-									<div class="input">
-										<input type="text">
-									</div>
-								</li>
-								<li class="content-input">
-									<div class="title">
-										<p>Địa chỉ Youtube</p>
-									</div>
-									<div class="input">
-										<input type="text">
-									</div>
-								</li>
-							</ul>
-						</div>
-
-						<div class="frame-number">
-							<h5>Thông tin liên hệ</h5>
-							<div class="tab">
-								<div class="title-number">
-									<ul>
-										<li>Tiêu đề</li>
-										<li>Số điện thoại</li>
-										<li>Giờ hoạt động</li>
-									</ul>
-								</div>
-								<ul class="number">
-									<li>
-										<div class="content-number">
-											<input type="text" value="asdfassafdsadf">
+						<div class="frame-cog-content">
+							<div class="frame">
+								<h5>Thông tin chung</h5>
+								<ul class="information">
+									<li class="content-input">
+										<div class="title">
+											<p>Tên cửa hàng</p>
 										</div>
-										<div class="content-number">
-											<input type="number">
+
+										<div class="input">
+											<input name="name" type="text" value="${SHOPINFO.name}">
 										</div>
-										<div class="content-number">
+
+									</li>
+									<li class="content-input">
+										<div class="title">
+											<p>Biểu tượng</p>
+										</div>
+
+										<div class="input">
+											<input accept="image/png, image/jpeg" type="file" value="">
+										</div>
+
+									</li>
+									<li class="content-input">
+										<div class="title">
+											<p>Địa chỉ thực</p>
+										</div>
+										<div class="input">
 											<input type="text">
 										</div>
-										<div class="content-number">
-											<button>
-												<i class="fas  fa-trash-alt"></i>
+									</li>
+									<li class="content-input">
+										<div class="title">
+											<p>Địa chỉ Facebook</p>
+										</div>
+										<div class="input">
+											<input type="text">
+										</div>
+									</li>
+									<li class="content-input">
+										<div class="title">
+											<p>Địa chỉ Youtube</p>
+										</div>
+										<div class="input">
+											<input type="text">
 										</div>
 									</li>
 								</ul>
 							</div>
-							<button class="plus">
-								<i class="fas fa-plus"></i>
-							</button>
-						</div>
-						<div class="frame-liscen">
-							<div class="form-group space-top">
 
-
-								<!-- 								@@@@@@@@@@@@@@@CKEDITOR@@@@@@@@@@@@@@@@@@ -->
-
-
-								<div
-									style="border: 1px solid #dadada; padding: 0px; border-radius: 5px;">
-									<!-- (2): textarea sẽ được thay thế bởi CKEditor -->
-									<h5 class="spacing_form"
-										style="padding: 10px; background-color: #dfdfdf;">Chính
-										sách</h5>
-									<form action="${pageContext.request.contextPath}/admin/xxxxx"
-										method="GET" style="margin-top: 30px;">
-										<textarea name="productTopic" id="editor">${value}</textarea>
-
-									</form>
+							<div class="frame-number">
+								<h5>Thông tin liên hệ</h5>
+								<div class="tab">
+									<div class="title-number">
+										<ul>
+											<li>Tiêu đề</li>
+											<li>Số điện thoại</li>
+											<li>Giờ hoạt động</li>
+										</ul>
+									</div>
+									<ul class="number">
+										<li>
+											<div class="content-number">
+												<input type="text" value="asdfassafdsadf">
+											</div>
+											<div class="content-number">
+												<input type="number">
+											</div>
+											<div class="content-number">
+												<input type="text">
+											</div>
+											<div class="content-number">
+												<button>
+													<i class="fas  fa-trash-alt"></i>
+											</div>
+										</li>
+									</ul>
 								</div>
-
-								<!-- (3): Code Javascript thay thế textarea có id='editor1' bởi CKEditor -->
-								<script src="${url}/js/js-static/ckeditor/ckeditor.js"></script>
-								<script src="${url}/js/js-static/ckeditor/samples/js/sample.js"></script>
-								<script>
-									initSample();
-								</script>
-
-								<!-- 								@@@@@@@@@@@@@@@CKEDITOR@@@@@@@@@@@@@@@@@@ -->
-
-
-
-								</form>
+								<button class="plus">
+									<i class="fas fa-plus"></i>
+								</button>
 							</div>
 
-						</div>
-					</div>
+							<div class="frame-liscen">
+								<div class="form-group space-top">
+
+
+									<!-- 								@@@@@@@@@@@@@@@CKEDITOR@@@@@@@@@@@@@@@@@@ -->
+
+
+									<div
+										style="border: 1px solid #dadada; padding: 0px; border-radius: 5px;">
+										<!-- (2): textarea sẽ được thay thế bởi CKEditor -->
+										<h5 class="spacing_form"
+											style="padding: 10px; background-color: #dfdfdf;">Chính
+											sách</h5>
+										<div>
+											<textarea name="policy" id="editor">${SHOPINFO.policy}</textarea>
+
+										</div>
+									</div>
+
+									<!-- (3): Code Javascript thay thế textarea có id='editor1' bởi CKEditor -->
+									<script src="${url}/js/js-static/ckeditor/ckeditor.js"></script>
+									<script src="${url}/js/js-static/ckeditor/samples/js/sample.js"></script>
+									<script>
+										initSample();
+									</script>
+
+					
+					
+					
+					
+					<button type="submit"> LƯU LẠI !!!!!!!!</button>
+					
+					
+					
+									<!-- 								@@@@@@@@@@@@@@@CKEDITOR@@@@@@@@@@@@@@@@@@ -->
+					</form>
+
+
 				</div>
 
 			</div>
-
 		</div>
+
+
+
+	</div>
+
+
 </body>
 
 </html>
