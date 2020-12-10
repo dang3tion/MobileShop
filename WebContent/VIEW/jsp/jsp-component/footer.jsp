@@ -16,12 +16,15 @@
 					<div class="btn-group">
 						<button type="button" class="btn btn-warning dropdown-toggle"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<fmt:message key="choose-language"></fmt:message></button>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href=" ${pageContext.request.contextPath}/switch-language?lang=en_US"><b>English</b></a> <a
-								class="dropdown-item" href=" ${pageContext.request.contextPath}/switch-language?lang=cn_CN"><b>漢語</b></a> 
-							<a class="dropdown-item" href=" ${pageContext.request.contextPath}/switch-language?lang=vi_VN"><b>Tiếng Việt</b></a>
-						</div>
+							<fmt:message key="choose-language"></fmt:message>
+						</button>
+						<a class="dropdown-item"
+							href=" ${pageContext.request.contextPath}/switch-language?lang=en_US"><b>English</b></a>
+						<a class="dropdown-item"
+							href=" ${pageContext.request.contextPath}/switch-language?lang=cn_CN"><b>漢語</b></a>
+						<a class="dropdown-item"
+							href=" ${pageContext.request.contextPath}/switch-language?lang=vi_VN"><b>Tiếng
+								Việt</b></a>
 					</div>
 					<img class="icon m-2"
 						style="background-color: white; border: solid 1.1px; border-color: rgba(88, 87, 85, 0.233); border-radius: 5px; padding: 5px 1px 5.5px 1px;"

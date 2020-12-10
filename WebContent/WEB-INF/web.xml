@@ -7,17 +7,15 @@
 	<welcome-file-list>
 		<welcome-file>start.jsp</welcome-file>
 	</welcome-file-list>
-	<!-- xử lý lỗi 404 -->
 	<error-page>
 		<error-code>404</error-code>
 		<location>/VIEW/jsp/jsp-component/404.jsp</location>
 	</error-page>
-	<!-- đa ngôn ngữ -->
 	<listener>
-		<listener-class>controller.format.MultiLanguage</listener-class>
+	<listener-class>controller.format.MultiLanguage</listener-class>
 	</listener>
 	<context-param>
-		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
-		<param-value>model.multilanguage.MobileShop</param-value>
+	<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+	<param-value>model.multilanguage.MobileShop</param-value>
 	</context-param>
 </web-app>
