@@ -10,11 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.BO_service.BO_Account;
-import model.DAO.DAO_Account;
-import model.beans.Customer;
 import model.utility.Const;
-import model.utility.EncryptPassword;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
@@ -37,8 +33,8 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		String messageErr = null;
 
-		BO_Account bo = new BO_Account();
-		switch (bo.checkCustomerLogin(email, password)) {
+
+		switch (99999) {
 		case 2: {
 			messageErr = "Tài khoản hoặc mật khẩu không đúng";
 			request.setAttribute("message", messageErr);
@@ -56,15 +52,15 @@ public class Login extends HttpServlet {
 			break;
 		}
 		default: {
-			// đăng nhập thành công => mở khóa link
+			// mở khóa link
+			//
 			// Thêm user này vào session
 			HttpSession session = request.getSession();
-			Customer customer = (bo.getCustomerInfo(email));
-
-			session.setAttribute(Const.CUSTOMER_LOGINED, customer);
+//			Account acc = (new BO_Account()).get(email);
+			String acc = "sdfa";
+			session.setAttribute("biib", acc);
 
 			String path = (String) session.getAttribute(Const.CURRENT_LINK);
-			System.out.println(path);
 
 			// Tại đây có 2 trường hợp để redirect
 
@@ -75,10 +71,7 @@ public class Login extends HttpServlet {
 				// chuyển cứng trang đó
 				response.sendRedirect(request.getContextPath() + path);
 			} else {
-			
-				System.out.println("psdmfosidmf");
-				response.sendRedirect(request.getContextPath() + "/otp");
-				
+				response.sendRedirect(request.getContextPath() + "/index");
 			}
 		}
 		}
