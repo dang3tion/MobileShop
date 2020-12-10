@@ -1,4 +1,4 @@
-package model_product;
+package model_beans;
 
 public class Evaluate_product {
 	private int oneStar;

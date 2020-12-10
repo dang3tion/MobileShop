@@ -12,10 +12,10 @@
 		<location>/VIEW/jsp/jsp-component/404.jsp</location>
 	</error-page>
 	<listener>
-	<listener-class>controller.format.MultiLanguage</listener-class>
+		<listener-class>controller_format.MultiLanguage</listener-class>
 	</listener>
 	<context-param>
-	<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
-	<param-value>model.multilanguage.MobileShop</param-value>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>model.language.MobileShop</param-value>
 	</context-param>
 </web-app>
