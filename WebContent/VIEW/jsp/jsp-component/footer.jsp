@@ -11,6 +11,7 @@
 			<div class="ml-5 col-3">
 				<div class="block">
 					<p>PHƯƠNG THỨC THANH TOÁN</p>
+					<h1>dsd${LANGUAGE}</h1>
 					<p>
 						<!-- Chọn ngôn ngữ-->
 					<div class="btn-group">

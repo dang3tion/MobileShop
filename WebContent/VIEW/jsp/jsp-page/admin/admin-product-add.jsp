@@ -190,6 +190,7 @@
 						</div>
 						<!-- (3): Code Javascript thay thế textarea có id='editor1' bởi CKEditor -->
 						<script src="${url}/js/js-static/ckeditor/ckeditor.js"></script>
+						<h1>${url}</h1>
 						<script src="${url}/js/js-static/ckeditor/samples/js/sample.js"></script>
 						<script>
 							initSample();
@@ -198,177 +199,275 @@
 
 					<hr>
 					<!-- thong so ki thuat -->
-				 <h3 class="text-center">Thông số kĩ thuật</h3>
-          <div class="row">
-            <div class="col-12 space-top">
-              <h5 class="spacing_form">Màn hình</h5>
-              <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-mobile-alt"></i></div>
-                </div>
-                <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập thông số màn hình"> <div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-at"></i></div>
-                </div>
-                <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập giá trị tương đuong">
-                <button class="btn btn-danger" title="Xóa thuộc tính này"><span><i class="fas fa-trash-alt"></i></span></button> 
-              </div>
-          
-            </div>
-            <div class="col-12 space-top">
-              <h5 class="spacing_form">Hệ điều hành</h5>
-              <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-cogs"></i></div>
-                </div>
-                <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập tên hệ điều hành"><div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-at"></i></div>
-                </div>
-                <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập giá trị tương đuong">
-                <button class="btn btn-danger" title="Xóa thuộc tính này"><span><i class="fas fa-trash-alt"></i></span></button> 
-              </div>
-            </div>
-          </div>
+					<h3 class="text-center">Thông số kĩ thuật</h3>
+					<div class="row">
+						<div class="col-12 space-top">
+							<h5 class="spacing_form">Màn hình</h5>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-mobile-alt"></i>
+									</div>
+								</div>
+								<input type="text" class="form-control py-4 mr-4" value=""
+									placeholder="Nhập thông số màn hình">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-at"></i>
+									</div>
+								</div>
+								<input type="text" class="form-control py-4 mr-4" value=""
+									placeholder="Nhập giá trị tương đuong">
+								<button class="btn btn-danger" title="Xóa thuộc tính này">
+									<span><i class="fas fa-trash-alt"></i></span>
+								</button>
+							</div>
 
-          <div class="row">
-            <div class="col-12 space-top">
-              <h5 class="spacing_form">Camera sau</h5>
-              <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-camera"></i></div>
-                </div>
-                <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập thông số camera sau"><div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-at"></i></div>
-                </div>
-                <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập giá trị tương đuong">
-                <button class="btn btn-danger" title="Xóa thuộc tính này"><span><i class="fas fa-trash-alt"></i></span></button> 
-              </div>
-            </div>
-            <div class="col-12 space-top">
-              <h5 class="spacing_form">Camera trước</h5>
-              <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-camera"></i></div>
-                </div>
-                <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập thông số camera trước"><div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-at"></i></div>
-                </div>
-                <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập giá trị tương đuong">
-                <button class="btn btn-danger" title="Xóa thuộc tính này"><span><i class="fas fa-trash-alt"></i></span></button> 
-              </div>
-            </div>
-          </div>
+						</div>
+						<div class="col-12 space-top">
+							<h5 class="spacing_form">Hệ điều hành</h5>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-cogs"></i>
+									</div>
+								</div>
+								<input type="text" class="form-control py-4 mr-4" value=""
+									placeholder="Nhập tên hệ điều hành">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-at"></i>
+									</div>
+								</div>
+								<input type="text" class="form-control py-4 mr-4" value=""
+									placeholder="Nhập giá trị tương đuong">
+								<button class="btn btn-danger" title="Xóa thuộc tính này">
+									<span><i class="fas fa-trash-alt"></i></span>
+								</button>
+							</div>
+						</div>
+					</div>
 
-          <div class="row">
-            <div class="col-12 space-top">
-              <h5 class="spacing_form">CPU</h5>
-              <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-hdd"></i></div>
-                </div>
-                <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập thông số CPU"><div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-at"></i></div>
-                </div>
-                <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập giá trị tương đuong">    <button class="btn btn-danger" title="Xóa thuộc tính này"><span><i class="fas fa-trash-alt"></i></span></button> 
-              </div>
-            </div>
-            <div class="col-12 space-top">
-              <h5 class="spacing_form">Bộ nhớ</h5>
-              <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-sd-card"></i></div>
-                </div>
-                <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập thông số bộ nhớ"><div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-at"></i></div>
-                </div>
-                <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập giá trị tương đuong">    <button class="btn btn-danger" title="Xóa thuộc tính này"><span><i class="fas fa-trash-alt"></i></span></button> 
-              </div>
-            </div>
-          </div>
-          <div class="space-top">
-            <h5 class="spacing_form">Kết nối</h5>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-wifi"></i></div>
-              </div>
-              <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập loại kết nối"><div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-at"></i></div>
-              </div>
-              <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập giá trị tương đuong">    <button class="btn btn-danger" title="Xóa thuộc tính này"><span><i class="fas fa-trash-alt"></i></span></button> 
-            </div>
-          </div>
-          <div class="space-top">
-            <h5 class="spacing_form">Tên thông số kỹ thuật mới</h5>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-cog"></i></div>
-              </div>
-              <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập loại tên thông số kỹ thuật mới"><div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-at"></i></div>
-              </div>
-              <input type="text" class="form-control py-4 mr-4" value="" placeholder="Nhập giá trị tương đuong">    <button data-target="#delete-attribute" data-toggle="modal" data-toggle="tooltip"  class="btn btn-danger" title="Xóa thuộc tính này"><span><i class="fas fa-trash-alt"></i></span></button> 
-            </div>
-          </div>
-          <a  data-target="#add-attribute" data-toggle="modal" data-toggle="tooltip" style="float: right; color: white;" name="1" class="btn icon-btn btn-success mt-2">
-          <span><i style="font-size: 1.2em;" class="fa fa-plus-circle" aria-hidden="true"></i></span>
-          Thêm thông số kĩ thuật
-         </a>
+					<div class="row">
+						<div class="col-12 space-top">
+							<h5 class="spacing_form">Camera sau</h5>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-camera"></i>
+									</div>
+								</div>
+								<input type="text" class="form-control py-4 mr-4" value=""
+									placeholder="Nhập thông số camera sau">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-at"></i>
+									</div>
+								</div>
+								<input type="text" class="form-control py-4 mr-4" value=""
+									placeholder="Nhập giá trị tương đuong">
+								<button class="btn btn-danger" title="Xóa thuộc tính này">
+									<span><i class="fas fa-trash-alt"></i></span>
+								</button>
+							</div>
+						</div>
+						<div class="col-12 space-top">
+							<h5 class="spacing_form">Camera trước</h5>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-camera"></i>
+									</div>
+								</div>
+								<input type="text" class="form-control py-4 mr-4" value=""
+									placeholder="Nhập thông số camera trước">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-at"></i>
+									</div>
+								</div>
+								<input type="text" class="form-control py-4 mr-4" value=""
+									placeholder="Nhập giá trị tương đuong">
+								<button class="btn btn-danger" title="Xóa thuộc tính này">
+									<span><i class="fas fa-trash-alt"></i></span>
+								</button>
+							</div>
+						</div>
+					</div>
 
-         <div class="modal fade" id="add-attribute" tabindex="-1" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-         <div class="modal-dialog"style="max-width: 50%;">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Thêm thuộc tính cho sản phẩm</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-             </div>
-             <div class="modal-body">
-              
-               <h5>Chọn thuộc tính</h5>
-               <div style="float:left"><select style="width: 200px;" class="select-choose" >
-                 <option value="Khác">Hệ điều hành</option>
-                 <option value="Andriod">Kích cỡ màn hình</option>
-                 <option value="Khác">Bộ nhớ trong</option>
-                 <option value="Khác">Dung lượng RAM</option>
-                 <option value="Khác">Camera trước</option>
-                 <option value="Khác">Camera sau</option>
-               
-               </select></div>
-               <div style="float:right">
-            <a href="#">  <button class="btn btn-success "> <span><i style="font-size: 1.2em;margin: 0px 5px;" class="fa fa-plus-circle" aria-hidden="true"></i></span>Tạo thuộc tính mới</button></a></div>
-             </div>
-             <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-               <button type="button" class="btn btn-primary">Lưu</button>
-             </div>
-           </div>
-         </div>
-       </div>
-       <div class="modal fade" id="delete-attribute" tabindex="-1" aria-labelledby="exampleModalLabel"
-       aria-hidden="true">
-       <div class="modal-dialog">
-         <div class="modal-content">
-           <div class="modal-header">
-             <h5 class="modal-title" id="exampleModalLabel">Xóa thông số kỹ thuật</h5>
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">&times;</span>
-             </button>
-           </div>
-           <div class="modal-body">
-            <p>Bạn có muốn xóa thuộc tính này của sản phẩm?</p>
-           
-           </div>
-           <div class="modal-footer">
-             <button type="button" class="btn btn-primary">Xóa</button>
-             <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-           </div>
-         </div>
-       </div>
-     </div>
-         <div class="row" style="margin-top: 60px;">
-          <button class="btn btn-primary col-sm-3 row space-top space-bottom " style="    margin: 15px 10px 20px 10px;" type="submit">Thêm sản phẩm</button>
-        </div>
+					<div class="row">
+						<div class="col-12 space-top">
+							<h5 class="spacing_form">CPU</h5>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-hdd"></i>
+									</div>
+								</div>
+								<input type="text" class="form-control py-4 mr-4" value=""
+									placeholder="Nhập thông số CPU">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-at"></i>
+									</div>
+								</div>
+								<input type="text" class="form-control py-4 mr-4" value=""
+									placeholder="Nhập giá trị tương đuong">
+								<button class="btn btn-danger" title="Xóa thuộc tính này">
+									<span><i class="fas fa-trash-alt"></i></span>
+								</button>
+							</div>
+						</div>
+						<div class="col-12 space-top">
+							<h5 class="spacing_form">Bộ nhớ</h5>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-sd-card"></i>
+									</div>
+								</div>
+								<input type="text" class="form-control py-4 mr-4" value=""
+									placeholder="Nhập thông số bộ nhớ">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-at"></i>
+									</div>
+								</div>
+								<input type="text" class="form-control py-4 mr-4" value=""
+									placeholder="Nhập giá trị tương đuong">
+								<button class="btn btn-danger" title="Xóa thuộc tính này">
+									<span><i class="fas fa-trash-alt"></i></span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="space-top">
+						<h5 class="spacing_form">Kết nối</h5>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-wifi"></i>
+								</div>
+							</div>
+							<input type="text" class="form-control py-4 mr-4" value=""
+								placeholder="Nhập loại kết nối">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-at"></i>
+								</div>
+							</div>
+							<input type="text" class="form-control py-4 mr-4" value=""
+								placeholder="Nhập giá trị tương đuong">
+							<button class="btn btn-danger" title="Xóa thuộc tính này">
+								<span><i class="fas fa-trash-alt"></i></span>
+							</button>
+						</div>
+					</div>
+					<div class="space-top">
+						<h5 class="spacing_form">Tên thông số kỹ thuật mới</h5>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-cog"></i>
+								</div>
+							</div>
+							<input type="text" class="form-control py-4 mr-4" value=""
+								placeholder="Nhập loại tên thông số kỹ thuật mới">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fas fa-at"></i>
+								</div>
+							</div>
+							<input type="text" class="form-control py-4 mr-4" value=""
+								placeholder="Nhập giá trị tương đuong">
+							<button data-target="#delete-attribute" data-toggle="modal"
+								data-toggle="tooltip" class="btn btn-danger"
+								title="Xóa thuộc tính này">
+								<span><i class="fas fa-trash-alt"></i></span>
+							</button>
+						</div>
+					</div>
+					<a data-target="#add-attribute" data-toggle="modal"
+						data-toggle="tooltip" style="float: right; color: white;" name="1"
+						class="btn icon-btn btn-success mt-2"> <span><i
+							style="font-size: 1.2em;" class="fa fa-plus-circle"
+							aria-hidden="true"></i></span> Thêm thông số kĩ thuật
+					</a>
+
+					<div class="modal fade" id="add-attribute" tabindex="-1"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" style="max-width: 50%;">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Thêm thuộc
+										tính cho sản phẩm</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+
+									<h5>Chọn thuộc tính</h5>
+									<div style="float: left">
+										<select style="width: 200px;" class="select-choose">
+											<option value="Khác">Hệ điều hành</option>
+											<option value="Andriod">Kích cỡ màn hình</option>
+											<option value="Khác">Bộ nhớ trong</option>
+											<option value="Khác">Dung lượng RAM</option>
+											<option value="Khác">Camera trước</option>
+											<option value="Khác">Camera sau</option>
+
+										</select>
+									</div>
+									<div style="float: right">
+										<a href="#">
+											<button class="btn btn-success ">
+												<span><i style="font-size: 1.2em; margin: 0px 5px;"
+													class="fa fa-plus-circle" aria-hidden="true"></i></span>Tạo thuộc
+												tính mới
+											</button>
+										</a>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">Đóng</button>
+									<button type="button" class="btn btn-primary">Lưu</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal fade" id="delete-attribute" tabindex="-1"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Xóa thông
+										số kỹ thuật</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<p>Bạn có muốn xóa thuộc tính này của sản phẩm?</p>
+
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary">Xóa</button>
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">Hủy</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row" style="margin-top: 60px;">
+						<button
+							class="btn btn-primary col-sm-3 row space-top space-bottom "
+							style="margin: 15px 10px 20px 10px;" type="submit">Thêm
+							sản phẩm</button>
+					</div>
 				</form>
 			</div>
 		</div>

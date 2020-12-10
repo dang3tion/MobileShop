@@ -16,6 +16,6 @@
 	</listener>
 	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
-		<param-value>model.language.MobileShop</param-value>
+		<param-value>model_language.MobileShop</param-value>
 	</context-param>
 </web-app>
