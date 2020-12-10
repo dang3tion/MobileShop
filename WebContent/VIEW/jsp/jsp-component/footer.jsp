@@ -29,22 +29,7 @@
 							class="icon m-2" src="${url}/image/img-sys/visa.svg"> <img
 							class="icon m-2" src="${url}/image/img-sys/cash.svg">
 					</p>
-					<!-- Chọn ngôn ngữ-->
-					<div class="btn-group">
-						<button type="button" class="btn btn-warning dropdown-toggle"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<fmt:message key="choose-language"></fmt:message>
-						</button>
-						<div class="dropdown-menu">
-							<a class="dropdown-item"
-								href=" ${pageContext.request.contextPath}/switch-language?lang=en_US"><b>English</b></a>
-							<a class="dropdown-item"
-								href=" ${pageContext.request.contextPath}/switch-language?lang=cn_CN"><b>漢語</b></a>
-							<a class="dropdown-item"
-								href=" ${pageContext.request.contextPath}/switch-language?lang=vi_VN"><b>Tiếng
-									Việt</b></a>
-						</div>
-					</div>
+
 
 				</div>
 				<p style="margin-top: -10px; font-size: 1em;">Lượt truy cập</p>
@@ -59,6 +44,7 @@
 					}
 				</script>
 			</div>
+
 
 
 
@@ -108,7 +94,7 @@
 				</c:choose>
 
 
-				<p class="footerIcon">
+				<p class="footerIcon" style="margin-bottom: -30px">
 					<i style="color: rgb(13, 107, 214);"
 						class="fa fa-facebook-official" aria-hidden="true"></i> <i
 						style="color: rgb(214, 18, 18);" class="fa fa-youtube-play mx-2"
@@ -117,6 +103,22 @@
 						style="color: rgb(10, 146, 146);" class="fa fa-twitter mx-2"
 						aria-hidden="true"></i>
 				</p>
+				<!-- Chọn ngôn ngữ-->
+				<div class="btn-group">
+					<button type="button" class="btn btn-warning dropdown-toggle"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<fmt:message key="choose-language"></fmt:message>
+					</button>
+					<div class="dropdown-menu">
+						<a class="dropdown-item"
+							href=" ${pageContext.request.contextPath}/switch-language?lang=en_US"><b>English</b></a>
+						<a class="dropdown-item"
+							href=" ${pageContext.request.contextPath}/switch-language?lang=cn_CN"><b>漢語</b></a>
+						<a class="dropdown-item"
+							href=" ${pageContext.request.contextPath}/switch-language?lang=vi_VN"><b>Tiếng
+								Việt</b></a>
+					</div>
+				</div>
 			</div>
 </footer>
 <script

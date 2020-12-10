@@ -20,117 +20,7 @@
 		<div class="row">
 
 
-			<!--Slider san pham noi bat-->
-			<div class="hot-products row col-12 bordertitle">
-				<div class="col-lg-12">
-					<div class="title ">
-						<div class="title float-left">
-							<h3>Sản phẩm nổi bật</h3>
-
-
-
-						</div>
-						<div class="title float-right">
-							<a href="#">Xem thêm <i class="fas fa-arrow-right"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-12">
-					<div class="content mt-4">
-						<div id="carouselForHorproduct" data-interval="false"
-							class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
-
-								<div class="carousel-item active ">
-									<div class="row d-block ">
-										<c:forEach items="${list}" var="p">
-											<div class="col-3">
-												<div class="card">
-													<div class="card-img text-center">
-														<a href="Product_page/chiTietSanPham.html"> <img
-															src="${url }/image/image-user/product/${p.img}"
-															width="80%" class="" alt="..."></a>
-													</div>
-													<div class="card-content">
-														<div class="card-title" style="min-height: 43px;">
-															<a href="Product_page/chiTietSanPham.html">Iphone 12
-																${p.name } 
-														</div>
-														<div class="card-price">
-															<span>
-																<div class="card-count">
-																	${p.price } <span class="unit">đ</span>
-																</div>
-																<div class="card-discount">
-																	${p.priceSale } <span class="unit">đ</span>
-																</div>
-														</div>
-														<div class="card-stars">
-															<span> <i class="fas fa-star text-warning"></i></span> <span>
-																<i class="fas fa-star text-warning"></i>
-															</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-																<i class="fas fa-star text-warning"></i>
-															</span> <span> <i class="fas fa-star  text-dark"></i></span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</c:forEach>
-
-									</div>
-								</div>
-								<div class="carousel-item ">
-									<div class="row d-block">
-										<c:forEach items="${list2}" var="p2">
-											<div class="col-3">
-												<div class="card">
-													<div class="card-img text-center">
-														<a href="Product_page/chiTietSanPham.html"> <img
-															src="${url }/image/image-user/product/${p2.img}"
-															width="80%" class="" alt="..."></a>
-													</div>
-													<div class="card-content">
-														<div class="card-title" style="min-height: 43px;">
-															<a href="Product_page/chiTietSanPham.html">Iphone 12
-																${p2.name } 
-														</div>
-														<div class="card-price">
-															<span>
-																<div class="card-count">
-																	${p2.price } <span class="unit">đ</span>
-																</div>
-																<div class="card-discount">
-																	${p2.priceSale } <span class="unit">đ</span>
-																</div>
-														</div>
-														<div class="card-stars">
-															<span> <i class="fas fa-star text-warning"></i></span> <span>
-																<i class="fas fa-star text-warning"></i>
-															</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-																<i class="fas fa-star text-warning"></i>
-															</span> <span> <i class="fas fa-star  text-dark"></i></span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</c:forEach>
-									</div>
-
-								</div>
-								<a class="carousel-control-prev" href="#carouselForHorproduct"
-									role="button" data-slide="prev"> <span
-									class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-									class="sr-only">Previous</span>
-								</a> <a class="carousel-control-next" href="#carouselForHorproduct"
-									role="button" data-slide="next"> <span
-									class="carousel-control-next-icon " aria-hidden="true"></span>
-									<span class="sr-only">Next</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+	
 			<!--Slider san pham moi-->
 			<div class="hot-products row col-12 bordertitle">
 				<div class="col-lg-12">
@@ -153,7 +43,7 @@
 										<div class="col-3">
 											<div class="card">
 												<div class="card-img text-center">
-													<a href="#"> <img src="image/img_phone/6.jpg"
+													<a href="#"> <img src="https://picsum.photos/400/400"
 														width="80%" class="" alt="..."></a>
 												</div>
 												<div class="card-content">
@@ -183,7 +73,7 @@
 										<div class="col-3">
 											<div class="card">
 												<div class="card-img text-center">
-													<a href="#"> <img src="image/img_phone/7.jpg"
+													<a href="#"> <img src="https://picsum.photos/400/400"
 														width="80%" class="" alt="..."></a>
 												</div>
 												<div class="card-content">
@@ -213,7 +103,7 @@
 										<div class="col-3">
 											<div class="card">
 												<div class="card-img text-center">
-													<a href="#"> <img src="image/img_phone/8.jpg"
+													<a href="#"> <img src="https://picsum.photos/400/400"
 														width="80%" class="" alt="..."></a>
 												</div>
 												<div class="card-content">
@@ -244,7 +134,7 @@
 										<div class="col-3">
 											<div class="card">
 												<div class="card-img text-center">
-													<a href="#"> <img src="image/img_phone/9.jpg"
+													<a href="#"> <img src="https://picsum.photos/400/400"
 														width="80%" class="" alt="..."></a>
 												</div>
 												<div class="card-content">
