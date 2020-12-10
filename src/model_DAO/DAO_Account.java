@@ -5,12 +5,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model_ConnectDB.ExecuteStatementUtility;
 import model_beans.Admin;
 import model_beans.Customer;
 
 
 
-public class DAO_Account extends ConnectDB {
+public class DAO_Account extends ExecuteStatementUtility {
 
 	// Tên bảng trong database
 	private final String ACCOUNT = "khachhang";
@@ -109,7 +110,7 @@ public class DAO_Account extends ConnectDB {
 
 				listAcc.add(acc);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return listAcc;
@@ -132,7 +133,7 @@ public class DAO_Account extends ConnectDB {
 
 				listAcc.add(acc);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return listAcc.size();
@@ -239,7 +240,7 @@ public class DAO_Account extends ConnectDB {
 			while (rs.next()) {
 				total = rs.getInt(1);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return total;

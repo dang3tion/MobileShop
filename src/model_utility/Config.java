@@ -16,6 +16,7 @@ public class Config {
 	public static final String DATABASE_NAME = "quanlydienthoai";
 	public static final String USERNAME_DB = "bao";
 	public static final String PASSWORD_DB = "12345678";
+	
 //	____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 //	#####public static final String STRING_CONNECTION = "jdbc:sqlserver://localhost:1433;DATABASE_NAME=Demo;user=sa;password=sa";
 

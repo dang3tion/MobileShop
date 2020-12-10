@@ -2,9 +2,10 @@ package model_DAO;
 
 import java.util.ArrayList;
 
+import model_ConnectDB.ExecuteStatementUtility;
 import model_beans.Product;
 
-public class DAO_Product extends ConnectDB {
+public class DAO_Product extends ExecuteStatementUtility {
 
 	public static ArrayList<Product> fakeDatabase = new ArrayList<Product>();
 

@@ -2,9 +2,11 @@ package model_DAO;
 
 import java.sql.ResultSet;
 
+import model_ConnectDB.DataSource;
+import model_ConnectDB.ExecuteStatementUtility;
 import model_beans.ShopInfo;
 
-public class DAO_ShopInfo extends ConnectDB {
+public class DAO_ShopInfo extends ExecuteStatementUtility {
 
 	private final String INFO = "THONGTIN_SHOP";
 	private final String SHOPNAME = "TENSHOP";
@@ -52,6 +54,8 @@ public class DAO_ShopInfo extends ConnectDB {
 		}
 		return null;
 	}
+
+	
 
 
 }

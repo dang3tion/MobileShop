@@ -6,52 +6,29 @@
 // <version>8.4.1.jre11</version>
 // </dependency>
 
-package model_DAO;
+package model_ConnectDB;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import model_utility.Config;
-
-/**
- * @description khi sử dụng method -->AccessDBstr<-- của class này phải đặt
- *              trong câu lệnh "try-with-resource" để đóng kết nối sau
- *              khi kết thúc hàm.
- *
- */
-public class ConnectDB {
-
-	// ===> Dùng Single Connection cho hệ thống nhỏ
-	// ===> Khi nào lượng Customer tăng cao nâng cấp thành Connection Pool
-
-	public String URL = Config.SERVER_NAME + ";databaseName=" + Config.DATABASE_NAME;
-
-	public Connection getConnection() {
-		Connection connection = null;
-		try {
-			Class.forName(Config.DBDRIVER);
-			connection = DriverManager.getConnection(URL, Config.USERNAME_DB, Config.PASSWORD_DB);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return connection;
-	}
+public class ExecuteStatementUtility {
 
 	/**
 	 * @implNote CHỈ DÙNG TRONG TRƯỜNG HỢP DANH SÁCH THAM SỐ ĐỀU LÀ STRING
 	 * @param query      : câu lệnh UDATE chứa "?" làm tham số (String)
 	 * @param parameters : danh sách tham số theo thứ tự.
 	 * @return : trả về 1 ResultSet, null đối với câu lệnh Update, delete
+	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
 	public ResultSet AccessDBstr(String query, Object[] parameters) {
 		ResultSet resultSet = null;
+		Connection con = null;
 		try {
-			Connection con = getConnection();
+			con = DataSource.getConnection();
 			PreparedStatement stmt = con.prepareStatement(query);
 			for (int i = 0; i < parameters.length; i++) {
 				stmt.setString(i + 1, parameters[i].toString());
@@ -62,22 +39,28 @@ public class ConnectDB {
 				stmt.executeUpdate();
 			}
 
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
+		}
+
+		finally {
+			DataSource.returnConnection(con);
 		}
 		return resultSet;
 	}
 
 	/**
 	 * @implNote CHỈ DÙNG TRONG TRƯỜNG HỢP DANH SÁCH THAM SỐ ĐỀU LÀ STRING
-	 * @param query : câu truy vấn không chứa tham số  (String)
+	 * @param query : câu truy vấn không chứa tham số (String)
 	 * @return : trả về 1 ResultSet, null đối với câu lệnh delete
+	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public ResultSet AccessDBstr(String query) {
+	public ResultSet AccessDBstr(String query) throws ClassNotFoundException, SQLException {
 		ResultSet resultSet = null;
+		Connection con = null;
 		try {
-			Connection con = getConnection();
+			con = DataSource.getConnection();
 			Statement stmt = con.createStatement();
 			if (query.toLowerCase().contains("select")) {
 				resultSet = stmt.executeQuery(query);
@@ -87,8 +70,9 @@ public class ConnectDB {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			DataSource.returnConnection(con);
 		}
 		return resultSet;
 	}
-
 }
