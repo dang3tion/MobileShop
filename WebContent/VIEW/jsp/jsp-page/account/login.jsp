@@ -6,7 +6,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
-<%@ page import="model.utility.Config"%>
+<%-- <%@ page import="model.utility.Config"%> --%>
 
 <c:url var="url" scope="application" value="/VIEW"></c:url>
 <link rel="stylesheet" type="text/css"
