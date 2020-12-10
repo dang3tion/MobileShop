@@ -11,7 +11,6 @@
 <link href="${url}/css/css-page/admin-infor.css" type="text/css"
 	rel="stylesheet" />
 </head>
-
 <body>
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar -->

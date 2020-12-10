@@ -21,13 +21,13 @@
 			<!-- 		toggle logout -->
 			<jsp:include page="/VIEW/jsp/jsp-component/toggle-logout-bar.jsp"></jsp:include>
 			<!-- 			main content -->
-			<div class="container-fluid ">
+			<div class="container-fluid " style="padding: 50px;">
 				<div class="mb-5 mt-3 ">
-					<h2 class="text-center mt-3 mb-3">Cấu hình trang web</h2>
+					<h4 class="text-center mt-3 mb-3">Cấu hình trang web</h4>
 
 					<form action="">
 						<div class="row space-r">
-							<h3>1.Màu sắc</h3>
+							<h5>1.Màu sắc</h5>
 						</div>
 						<div class="row space-r">
 							<div class="col-3" style="margin-top: 20px;">
@@ -56,12 +56,12 @@
 
 						</div>
 						<div class="row space-r" style="margin-top: 20px;">
-							<h3>2.Biểu tượng trên thanh menu</h3>
+							<h5>2.Biểu tượng trên thanh menu</h5>
 
 						</div>
 						<div class="row" style="margin-top: 20px; margin: auto;">
-							<div class="card" style="width: 16rem; margin: 5px;">
-								<h4 style="text-align: center;">Icon 1</h4>
+							<div class="card col-3" style="padding: 10px;">
+								<h6 style="text-align: center;">Icon 1</h6>
 								<img class="card-img-top" src="..." alt="Card image cap">
 								<div class="card-body">
 									<input type="text" class="form-control"
@@ -70,8 +70,8 @@
 										placeholder="Nhập tiêu đề">
 								</div>
 							</div>
-							<div class="card" style="width: 16rem; margin: 5px;">
-								<h4 style="text-align: center;">Icon 2</h4>
+							<div class="card  col-3" style="padding: 10px;">
+								<h6 style="text-align: center;">Icon 2</h6>
 								<img class="card-img-top" src="..." alt="Card image cap">
 								<div class="card-body">
 									<input type="text" class="form-control"
@@ -80,8 +80,8 @@
 										placeholder="Nhập tiêu đề">
 								</div>
 							</div>
-							<div class="card" style="width: 16rem; margin: 5px;">
-								<h4 style="text-align: center;">Icon 3</h4>
+							<div class="card col-3" style="padding: 10px;">
+								<h6 style="text-align: center;">Icon 3</h6>
 								<img class="card-img-top" src="..." alt="Card image cap">
 								<div class="card-body">
 									<input type="text" class="form-control"
@@ -90,8 +90,8 @@
 										placeholder="Nhập tiêu đề">
 								</div>
 							</div>
-							<div class="card" style="width: 16rem; margin: 5px;">
-								<h4 style="text-align: center;">Icon 4</h4>
+							<div class="card col-3" style="padding: 10px;">
+								<h6 style="text-align: center;">Icon 4</h6>
 								<img class="card-img-top" src="..." alt="Card image cap">
 								<div class="card-body">
 									<input type="text" class="form-control"
