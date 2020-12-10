@@ -23,7 +23,7 @@
 			<div class="container-fluid">
 				  <div class=" col-8 mb-5" style="background-color: #f1f1f1; margin:auto; margin-top:100px">
         
-              <h2 style="margin:30px auto; text-align: center;">Thay đổi mật khẩu</h2>
+              <h4 style="margin:30px auto; text-align: center;">Thay đổi mật khẩu</h4>
 
               <form>
                 <div class="form-group row">
