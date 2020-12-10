@@ -6,6 +6,7 @@
 <head>
 <c:url var="url" scope="page" value="/VIEW"></c:url>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css-admin.jsp"></jsp:include>
+<link href="${url }/css/css-page/admin1.css" style="sheet">
 </head>
 
 <body>
