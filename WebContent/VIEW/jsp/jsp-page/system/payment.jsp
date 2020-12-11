@@ -86,7 +86,9 @@
 						<label for="cc-name">Địa chỉ giao hàng:</label>
 						<div class="input-group mb-2">
 							<div class="input-group-prepend">
-								<div class="input-group-text">@</div>
+								<div class="input-group-text">
+									<i class="fas fa-map-marked-alt"></i>
+								</div>
 							</div>
 							<input type="text" class="form-control"
 								placeholder="Nhập địa chỉ giao hàng">
@@ -101,7 +103,9 @@
 							<label for="cc-name">Họ tên:</label>
 							<div class="input-group mb-2">
 								<div class="input-group-prepend">
-									<div class="input-group-text">@</div>
+									<div class="input-group-text">
+										<i class="far fa-id-card"></i>
+									</div>
 								</div>
 								<input type="text" class="form-control"
 									placeholder="Nhập họ tên">
@@ -112,7 +116,9 @@
 							<label for="cc-name">SDT:</label>
 							<div class="input-group mb-2">
 								<div class="input-group-prepend">
-									<div class="input-group-text">@</div>
+									<div class="input-group-text">
+										<i class="fas fa-phone-square-alt"></i>
+									</div>
 								</div>
 								<input type="text" class="form-control"
 									placeholder="Nhập số điện thoại">
@@ -120,8 +126,8 @@
 						</div>
 					</div>
 
-					<hr class="mb-4">
-
+					<hr/>
+					<h6 class="mb-4">Chọn phương thức thanh toán:</h6>
 					<div class="d-block my-3">
 						<div class="custom-control custom-radio">
 							<input id="credit" name="paymentMethod" type="radio"
