@@ -33,12 +33,12 @@ public class CheckOTP extends HttpServlet {
 //		// bắt đầu điều hướng
 //		request.removeAttribute(Const.TOKEN_RESETPASS_OTP);
 //		if (token != null) {
-//			RequestDispatcher dispatcher //
-//					= this.getServletContext().getRequestDispatcher("/views/accountHandling/check-otp.jsp");
-//			dispatcher.forward(request, response);
-//			return;
+		RequestDispatcher dispatcher //
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp.jsp");
+		dispatcher.forward(request, response);
+		return;
 //		} else {
-			response.sendRedirect(request.getContextPath() + "/index");
+//			response.sendRedirect(request.getContextPath() + "/index");
 //		}
 //		return;
 	}
@@ -78,8 +78,12 @@ public class CheckOTP extends HttpServlet {
 //				return;
 //			} else {
 //				request.setAttribute("messenger", "Sai mã OTP");
-				response.sendRedirect(request.getContextPath() + "/otp");
+//				response.sendRedirect(request.getContextPath() + "/otp");
 //			}
 //		}
+
+//		##### XÓA DÒNG NÀY ####
+		response.sendRedirect(request.getContextPath() + "/index");
+
 	}
 }

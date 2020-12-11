@@ -28,25 +28,28 @@ public class Register extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");	
+//		String email = request.getParameter("email");
+//		String password = request.getParameter("password");	
+//		
+//
+//		Customer tmpAcc = new Customer(email, password);
+//		if ((new BO_Account()).isExsit(email)) {
+//			request.setAttribute("message", "Email này đã được đăng kí");
+//			RequestDispatcher dispatcher //
+//					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/register.jsp");
+//			dispatcher.forward(request, response);
+//		} else {
+//			request.setAttribute("newUser", tmpAcc);
+//			request.setAttribute(Const.TOKEN_REGISTER_OTP, true);
+
+//		RequestDispatcher dispatcher //
+//				= this.getServletContext().getRequestDispatcher("/otp");
+//		dispatcher.forward(request, response);
 		
+//		#### XÓA LINK NÀY ####
+		response.sendRedirect(request.getContextPath() + "/otp");
 
-		Customer tmpAcc = new Customer(email, password);
-		if ((new BO_Account()).isExsit(email)) {
-			request.setAttribute("message", "Email này đã được đăng kí");
-			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/register.jsp");
-			dispatcher.forward(request, response);
-		} else {
-			request.setAttribute("newUser", tmpAcc);
-			request.setAttribute(Const.TOKEN_REGISTER_OTP, true);
-
-			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/otp");
-			dispatcher.forward(request, response);
-
-		}
+//		}
 	}
 
 }
