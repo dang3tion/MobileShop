@@ -8,7 +8,7 @@
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
 <%-- <%@ page import="model_utility.Config"%> --%>
 
-<c:url var="url" scope="application" value="/VIEW"></c:url>
+<c:url var="url" scope="session" value="/VIEW"></c:url>
 <link rel="stylesheet" type="text/css"
 	href="${url}/css/css-page/signin.css">
 
@@ -74,7 +74,7 @@
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 
-	<c:url var="url" scope="application" value="/VIEW"></c:url>
+	<c:url var="url" scope="session" value="/VIEW"></c:url>
 	<script src="${url}/js/js-page/form-login.js"></script>
 </body>
 

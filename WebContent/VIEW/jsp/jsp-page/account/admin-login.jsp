@@ -53,7 +53,7 @@
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 	<!-- Bootstrap core JavaScript -->
 	<jsp:include page="/VIEW/jsp/jsp-component/footer-admin.jsp"></jsp:include>
-	<c:url var="url" scope="application" value="/VIEW"></c:url>
+	<c:url var="url" scope="session" value="/VIEW"></c:url>
 	<script src="${url}/js/js-page/form-login.js"></script>
 </body>
 

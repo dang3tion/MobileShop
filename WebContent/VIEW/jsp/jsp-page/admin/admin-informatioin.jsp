@@ -83,8 +83,10 @@
 											<p>Biểu tượng</p>
 										</div>
 
-										<div class="input">
-											<input accept="image/png, image/jpeg" type="file" value="">
+										<div style="margin-top: -20px" class="input">
+											<input type="file" id="actual-btn" hidden /> <label
+												class="choose-file" for="actual-btn">Chọn ảnh</label>
+
 										</div>
 
 									</li>
@@ -174,14 +176,14 @@
 										initSample();
 									</script>
 
-					
-					
-					
-					
-					<button type="submit"> LƯU LẠI !!!!!!!!</button>
-					
-					
-					
+
+
+
+
+									<button type="submit">LƯU LẠI !!!!!!!!</button>
+
+
+
 									<!-- 								@@@@@@@@@@@@@@@CKEDITOR@@@@@@@@@@@@@@@@@@ -->
 					</form>
 

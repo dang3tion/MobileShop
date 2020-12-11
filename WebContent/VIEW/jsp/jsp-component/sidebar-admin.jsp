@@ -49,7 +49,7 @@
                     <i class="menu-icon fas fa-desktop"></i></a>
               </li>
                <li>
-                  <a href="${pageContext.request.contextPath}/admin/information" class="list-group-item list-group-item-action ${param.information}"> Thông tin shop
+                  <a href="${pageContext.request.contextPath}/admin/information" class="list-group-item list-group-item-action ${param.information}"> Thông tin cửa hàng
                   <i class="menu-icon fas fa-cogs"></i></a>
               </li>		
 			

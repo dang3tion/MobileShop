@@ -6,7 +6,7 @@
 <head>
     <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp"/>
     <jsp:include page="/VIEW/jsp/jsp-component/head-css-admin.jsp"/>
-    <c:url var="url" scope="application" value="/VIEW"></c:url>
+    <c:url var="url" scope="session" value="/VIEW"></c:url>
     <link rel="stylesheet" type="text/css" href="${url}/css/css-page/profile.css">
 </head>
 

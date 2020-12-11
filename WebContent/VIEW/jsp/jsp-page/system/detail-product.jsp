@@ -7,7 +7,7 @@
 <meta charset="ISO-8859-1">
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
 
-<c:url var="url" scope="application" value="/VIEW"></c:url>
+<c:url var="url" scope="session" value="/VIEW"></c:url>
   <link rel="stylesheet" href="${url }/css/css-page/detail-product.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
   <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
