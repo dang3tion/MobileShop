@@ -121,6 +121,7 @@
 				</div>
 			</div>
 </footer>
+<!-- âsd -->
 <script
 	src="${url}/css/css-static/bootstrap/vendor/jquery/jquery.min.js"></script>
 <script
