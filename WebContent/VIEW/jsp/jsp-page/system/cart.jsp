@@ -22,7 +22,7 @@
 				<div class="col-8">
 					<div class="frame-cart">
 						<ul>
-							<li class="cart-content"><img src="https://picsum.photos/400/400">
+							<li class="cart-content"><img src="https://cdn.tgdd.vn/Products/Images/42/229056/oppo-a93-trang-14-600x600.jpg">
 
 
 								<div class="content-product">
@@ -63,7 +63,7 @@
 										</div>
 									</div>
 								</div></li>
-							<li class="cart-content"><img src="https://picsum.photos/400/400">
+							<li class="cart-content"><img src="https://cdn.tgdd.vn/Products/Images/42/229056/oppo-a93-trang-14-600x600.jpg">
 
 
 								<div class="content-product">
@@ -105,7 +105,7 @@
 									</div>
 								</div></li>
 							<li class="cart-content"><img
-								src="https://picsum.photos/400/400">
+								src="https://cdn.tgdd.vn/Products/Images/42/229056/oppo-a93-trang-14-600x600.jpg">
 
 
 								<div class="content-product">

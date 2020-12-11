@@ -4,47 +4,20 @@
 <html lang="en">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <head>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
 <c:url var="url" scope="session" value="/VIEW"></c:url>
 </head>
+
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 
 
-	<h1>Bị lỗi 404 rồi HAHA</h1>
-	</br>
-	<h1>Bị lỗi 404 rồi HAHA</h1>
-	</br>
-	<h1>Bị lỗi 404 rồi HAHA</h1>
-	</br>
-	<h1>Bị lỗi 404 rồi HAHA</h1>
-	</br>
-	<h1>Bị lỗi 404 rồi HAHA</h1>
-	
-	</br>
-	<h1>Bị lỗi 404 rồi HAHA</h1>
-	</br>
-	<h1>Bị lỗi 404 rồi HAHA</h1>
-	</br>
-	<h1>Bị lỗi 404 rồi HAHA</h1>
-	</br>
-	<h1>Bị lỗi 404 rồi HAHA</h1>
-	</br>
-	<h1>Bị lỗi 404 rồi HAHA</h1>
-	</br>
-	<h1>Bị lỗi 404 rồi HAHA</h1>
-	</br>
-	<h1>Bị lỗi 404 rồi HAHA</h1>
-	</br>
 
-
+	<img style="margin-top: -50px; width: 100%"
+		src="${url}/image/img-sys/404.jpg">
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
-
-
-
-
-
 </body>
 
 </html>

@@ -6,7 +6,7 @@
 
 <div class="card">
 	<div class="card-img text-center">
-		<c:url value="/detail" var="URLdetail">
+		<c:url value="/product-detail" var="URLdetail">
 			<c:param name="id" value="${param.id}" />
 		</c:url>
 		<a href="${URLdetail}"> <img src="${param.image}" width="80%"></a>
@@ -20,7 +20,7 @@
 				${param.price}<span class="unit">đ</span>
 			</div>
 			<div class="card-discount">
-				${param.saleprice} <span class="unit">đ</span>
+				${param.salePrice} <span class="unit">đ</span>
 			</div>
 		</div>
 		<div class="card-stars">

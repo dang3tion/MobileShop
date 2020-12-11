@@ -68,14 +68,16 @@
 			</div>
 
 
-			<div class="col-3 hoptac">
+
+
+			<div  class="col-3 hihi PhoneSupport">
 				<p>HỢP TÁC VÀ LIÊN KẾT</p>
 				<p>
-					<a href="${pageContext.request.contextPath}/contact">Chính sách
+					<a style="color: white;"  href="${pageContext.request.contextPath}/contact">Chính sách
 						bảo hành</a>
 				</p>
 				<p>
-					<a href="${pageContext.request.contextPath}/contact"> Chính
+					<a  style="color: white;" href="${pageContext.request.contextPath}/contact"> Chính
 						sách đổi trả</a>
 				</p>
 
@@ -84,12 +86,12 @@
 					<c:when
 						test="${CUSTOMER_LOGINED!= null && CUSTOMER_LOGINED.role == 'ADMIN'}">
 						<p>
-							<a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+							<a style="color: white;" href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
 						</p>
 					</c:when>
 					<c:otherwise>
 						<p>
-							<a href="${pageContext.request.contextPath}/adminlogin">Admin</a>
+							<a  style="color: white;" href="${pageContext.request.contextPath}/adminlogin">Admin</a>
 						</p>
 					</c:otherwise>
 				</c:choose>

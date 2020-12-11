@@ -152,7 +152,7 @@
 						</button>
 					</div>
 					<div class="col-sm-5">
-						<a href="../GioHang&checkout_Page/gioHang.html">
+						<a href=" ${pageContext.request.contextPath}/cart">
 							<button type="button"
 								class="btnMua btn btn-danger btn-lg btn-block">ĐẶT HÀNG
 							</button>

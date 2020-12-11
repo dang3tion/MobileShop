@@ -7,7 +7,11 @@ import model_beans.Product;
 
 public class DAO_Product extends ExecuteStatementUtility {
 
-	public static ArrayList<Product> fakeDatabase = new ArrayList<Product>();
+	private ArrayList<Product> fakeDatabase = new ArrayList<Product>();
+
+	public DAO_Product() {
+
+	}
 
 	public static int rdItem(int arrSize) {
 		return (int) ((Math.random() * arrSize));
@@ -58,7 +62,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 	public ArrayList<Product> getFakeDatabase() {
 
 		for (int i = 0; i < 50; i++) {
-			fakeDatabase.add(new Product("MSB_01", thumbnail(), name(), price(), price() + 2000000));
+			fakeDatabase.add(new Product("MSB_0"+i, thumbnail(), name(), price(), price() + 2000000));
 
 		}
 
@@ -67,11 +71,12 @@ public class DAO_Product extends ExecuteStatementUtility {
 
 	public Product search(String id) {
 		for (Product p : getFakeDatabase()) {
-			if (p.getIdProduct().equals(id)) {
+			if (p.getId().equals(id)) {
 				return p;
 			}
 		}
 		return null;
 	}
 
+	
 }

@@ -1,8 +1,6 @@
 package temporary_dropdata;
 
-import java.io.Serializable;
-
-public class Product implements Serializable {
+public class Product {
 	private long id;
 	private String name;
 	private String price;
@@ -10,7 +8,6 @@ public class Product implements Serializable {
 	private String img;
 
 	public Product() {
-
 	}
 
 	public Product(long id, String name, String price, String priceSale, String img) {

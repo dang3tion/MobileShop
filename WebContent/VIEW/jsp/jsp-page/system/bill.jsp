@@ -19,8 +19,8 @@
 	<!-- Thanh menu loc du lieu va sap xep-->
 
 	<!-- Page Content -->
-	
-	
+
+
 
 	<div class="center canTop" style="margin-top: 40px;">
 		<table align="center" border="0" cellpadding="0" cellspacing="0"
@@ -217,8 +217,10 @@
 		<table class="main-bg-light text-center top-0" align="center"
 			border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
+
 				<td style="padding: 30px;"><a
 					href=" ${pageContext.request.contextPath}/index">
+						<button type="button" class="btn btn-warning"><i class="fas fa-print"></i> In thành file PDF</button>
 						<button type="submit" class="btn btn-primary">TIẾP TỤC
 							MUA HÀNG</button>
 				</a>

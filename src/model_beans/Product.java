@@ -5,51 +5,83 @@ import java.util.ArrayList;
 public class Product {
 	private String id;
 	private String name;
-	private double price;
-	private double priceSale;
+	private int price;
+	private int salePrice;
 	private String thumbnail;
 
 	private ArrayList<Picture_product> listPicture = new ArrayList<Picture_product>();
 	private ArrayList<Color_product> listColor = new ArrayList<Color_product>();
 	private ArrayList<Configuration> listConfig = new ArrayList<Configuration>();
 	private ArrayList<Evaluate_product> listEvaluate = new ArrayList<Evaluate_product>();
-	private String contentProduct;
+	private String content;
 
-	public Product(String idProduct, String nameProduct, double price, double priceSale, String thumbnail,
+
+
+
+
+
+	public Product(String id, String name, int price, int salePrice, String thumbnail,
 			ArrayList<Picture_product> listPicture, ArrayList<Color_product> listColor,
-			ArrayList<Configuration> listConfi, ArrayList<Evaluate_product> listEvaluate, String contentProduct) {
-		this.id = idProduct;
-		this.name = nameProduct;
+			ArrayList<Configuration> listConfig, ArrayList<Evaluate_product> listEvaluate, String content) {
+		this.id = id;
+		this.name = name;
 		this.price = price;
-		this.priceSale = priceSale;
+		this.salePrice = salePrice;
+		this.thumbnail = thumbnail;
 		this.listPicture = listPicture;
 		this.listColor = listColor;
-		this.listConfig = listConfi;
+		this.listConfig = listConfig;
 		this.listEvaluate = listEvaluate;
-		this.contentProduct = contentProduct;
+		this.content = content;
 	}
 
 	public Product() {
 	}
 
-	public Product(String idProduct, String thumbnail, String nameProduct, double price, double priceSale) {
+	public Product(String id, String thumbnail, String name, int price, int priceSale) {
 		this.thumbnail = thumbnail;
-		this.id = idProduct;
-		this.name = nameProduct;
+		this.id = id;
+		this.name = name;
 		this.price = price;
-		this.priceSale = priceSale;
+		this.salePrice = priceSale;
 	}
 
-	public String getIdProduct() {
+
+	
+
+	
+
+	
+	public String getId() {
 		return id;
 	}
 
-	public void setIdProduct(String idProduct) {
-		this.id = idProduct;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public String getNameProduct() {
+	public String getName() {
 		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getSalePrice() {
+		return salePrice;
+	}
+
+	public void setSalePrice(int salePrice) {
+		this.salePrice = salePrice;
 	}
 
 	public String getThumbnail() {
@@ -58,26 +90,6 @@ public class Product {
 
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
-	}
-
-	public void setNameProduct(String nameProduct) {
-		this.name = nameProduct;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public double getPriceSale() {
-		return priceSale;
-	}
-
-	public void setPriceSale(double priceSale) {
-		this.priceSale = priceSale;
 	}
 
 	public ArrayList<Picture_product> getListPicture() {
@@ -96,12 +108,12 @@ public class Product {
 		this.listColor = listColor;
 	}
 
-	public ArrayList<Configuration> getListConfi() {
+	public ArrayList<Configuration> getListConfig() {
 		return listConfig;
 	}
 
-	public void setListConfi(ArrayList<Configuration> listConfi) {
-		this.listConfig = listConfi;
+	public void setListConfig(ArrayList<Configuration> listConfig) {
+		this.listConfig = listConfig;
 	}
 
 	public ArrayList<Evaluate_product> getListEvaluate() {
@@ -112,19 +124,20 @@ public class Product {
 		this.listEvaluate = listEvaluate;
 	}
 
-	public String getContentProduct() {
-		return contentProduct;
+	public String getContent() {
+		return content;
 	}
 
-	public void setContentProduct(String contentProduct) {
-		this.contentProduct = contentProduct;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", priceSale="
-				+ priceSale + ", listPicture=" + listPicture + ", listColor=" + listColor + ", listConfig=" + listConfig
-				+ ", listEvaluate=" + listEvaluate + ", contentProduct=" + contentProduct + "]\n";
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", salePrice=" + salePrice + ", thumbnail="
+				+ thumbnail + "]\n";
 	}
+
+	
 
 }

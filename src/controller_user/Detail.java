@@ -1,4 +1,4 @@
-package temporary_dropdata;
+package controller_user;
 
 import java.io.IOException;
 
@@ -9,28 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/Detail")
-public class Controller_Detail extends HttpServlet {
+@WebServlet(urlPatterns = "/product-detail")
+public class Detail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String id = (String) request.getParameter("id");
-		
-		
-		Beans_Product pro = (new BO_Product()).search(id);
-		
-		request.setAttribute("pro", pro);
+
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/TEST/detail.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/detail-product.jsp");
 		dispatcher.forward(request, response);
 	}
 
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
 
 }
