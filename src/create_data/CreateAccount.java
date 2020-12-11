@@ -1188,13 +1188,13 @@ public class CreateAccount {
 		return new Customer(fullEmail(), password());
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException {
 
 		DAO_Account daoACC = new DAO_Account();
 
-		for (int i = 0; i < 63; i++) {
-			daoACC.add(acc());
-		}
+//		for (int i = 0; i < 63; i++) {
+//			daoACC.add(acc());
+//		}
 
 		try (ResultSet rs = daoACC.AccessDBstr("SELECT COUNT(*) FROM KHACHHANG")) {
 			while (rs.next()) {

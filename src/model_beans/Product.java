@@ -3,28 +3,28 @@ package model_beans;
 import java.util.ArrayList;
 
 public class Product {
-	private String idProduct;
-	private String nameProduct;
+	private String id;
+	private String name;
 	private double price;
 	private double priceSale;
 	private String thumbnail;
 
 	private ArrayList<Picture_product> listPicture = new ArrayList<Picture_product>();
 	private ArrayList<Color_product> listColor = new ArrayList<Color_product>();
-	private ArrayList<Configuration> listConfi = new ArrayList<Configuration>();
+	private ArrayList<Configuration> listConfig = new ArrayList<Configuration>();
 	private ArrayList<Evaluate_product> listEvaluate = new ArrayList<Evaluate_product>();
 	private String contentProduct;
 
 	public Product(String idProduct, String nameProduct, double price, double priceSale, String thumbnail,
 			ArrayList<Picture_product> listPicture, ArrayList<Color_product> listColor,
 			ArrayList<Configuration> listConfi, ArrayList<Evaluate_product> listEvaluate, String contentProduct) {
-		this.idProduct = idProduct;
-		this.nameProduct = nameProduct;
+		this.id = idProduct;
+		this.name = nameProduct;
 		this.price = price;
 		this.priceSale = priceSale;
 		this.listPicture = listPicture;
 		this.listColor = listColor;
-		this.listConfi = listConfi;
+		this.listConfig = listConfi;
 		this.listEvaluate = listEvaluate;
 		this.contentProduct = contentProduct;
 	}
@@ -34,22 +34,22 @@ public class Product {
 
 	public Product(String idProduct, String thumbnail, String nameProduct, double price, double priceSale) {
 		this.thumbnail = thumbnail;
-		this.idProduct = idProduct;
-		this.nameProduct = nameProduct;
+		this.id = idProduct;
+		this.name = nameProduct;
 		this.price = price;
 		this.priceSale = priceSale;
 	}
 
 	public String getIdProduct() {
-		return idProduct;
+		return id;
 	}
 
 	public void setIdProduct(String idProduct) {
-		this.idProduct = idProduct;
+		this.id = idProduct;
 	}
 
 	public String getNameProduct() {
-		return nameProduct;
+		return name;
 	}
 
 	public String getThumbnail() {
@@ -61,7 +61,7 @@ public class Product {
 	}
 
 	public void setNameProduct(String nameProduct) {
-		this.nameProduct = nameProduct;
+		this.name = nameProduct;
 	}
 
 	public double getPrice() {
@@ -97,11 +97,11 @@ public class Product {
 	}
 
 	public ArrayList<Configuration> getListConfi() {
-		return listConfi;
+		return listConfig;
 	}
 
 	public void setListConfi(ArrayList<Configuration> listConfi) {
-		this.listConfi = listConfi;
+		this.listConfig = listConfi;
 	}
 
 	public ArrayList<Evaluate_product> getListEvaluate() {
@@ -122,9 +122,9 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [idProduct=" + idProduct + ", nameProduct=" + nameProduct + ", price=" + price + ", priceSale="
-				+ priceSale + ", listPicture=" + listPicture + ", listColor=" + listColor + ", listConfi=" + listConfi
-				+ ", listEvaluate=" + listEvaluate + ", contentProduct=" + contentProduct + "]";
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", priceSale="
+				+ priceSale + ", listPicture=" + listPicture + ", listColor=" + listColor + ", listConfig=" + listConfig
+				+ ", listEvaluate=" + listEvaluate + ", contentProduct=" + contentProduct + "]\n";
 	}
 
 }
