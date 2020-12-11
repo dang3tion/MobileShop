@@ -11,7 +11,7 @@ import model_utility.Config;
 public class ConnectionPoolManager {
 
 	
-	private final int DB_MAX_CONNECTIONS = 3;
+	private final int DB_MAX_CONNECTIONS = 5;
 	// danh sách các single connection ĐANG TRỐNG trong một connection Pool
 	private List<Connection> availableConnections = new ArrayList<Connection>();
 
@@ -22,7 +22,7 @@ public class ConnectionPoolManager {
 	}
 
 	public String getAvailableConnections() {
-		return availableConnections.size() + "/" + DB_MAX_CONNECTIONS;
+		return "available:" +availableConnections.size() + "/Max:" + DB_MAX_CONNECTIONS;
 	}
 
 	private synchronized boolean isMaxPool() {

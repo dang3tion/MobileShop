@@ -5,7 +5,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
-<c:url var="url" scope="application" value="/VIEW"></c:url>
+<c:url var="url" scope="session" value="/VIEW"></c:url>
 </head>
 
 <body>
