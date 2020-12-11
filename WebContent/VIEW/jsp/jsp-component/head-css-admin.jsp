@@ -8,7 +8,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<c:url var="url" value="/VIEW/css/css-static"></c:url>
+<c:url var="url" scope="session" value="/VIEW/css/css-static"></c:url>
 <title>Mobile Shop</title>
 
 <!-- Bootstrap core CSS -->
