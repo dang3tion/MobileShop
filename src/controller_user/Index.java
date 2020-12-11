@@ -16,18 +16,13 @@ import model_DAO.DAO_Product;
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public Index() {
-		super();
-
-	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setAttribute("listProducts", new DAO_Product().getFakeDatabase());
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/index.jsp");
 		dispatcher.forward(request, response);
+		return;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

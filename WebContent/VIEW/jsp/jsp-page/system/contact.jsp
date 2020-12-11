@@ -202,12 +202,10 @@
 	</div>
 
 
-	<!-- /.container -->
 
 
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
-	<!-- Bootstrap core JavaScript -->
 
 
 
