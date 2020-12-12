@@ -39,7 +39,7 @@ public class ExecuteStatementUtility {
 				stmt.executeUpdate();
 			}
 
-		} catch (SQLException | ClassNotFoundException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -56,7 +56,7 @@ public class ExecuteStatementUtility {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public ResultSet AccessDBstr(String query) throws ClassNotFoundException, SQLException {
+	public ResultSet AccessDBstr(String query)    {
 		ResultSet resultSet = null;
 		Connection con = null;
 		try {
@@ -68,7 +68,7 @@ public class ExecuteStatementUtility {
 				stmt.executeUpdate(query);
 			}
 
-		} catch (SQLException e) {
+		} catch (SQLException  e) {
 			e.printStackTrace();
 		} finally {
 			DataSource.returnConnection(con);

@@ -13,10 +13,8 @@ public class Logout extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-//		HttpSession session = request.getSession();
-//		request.removeAttribute("");
-
+		
+		request.getSession().invalidate();
 		response.sendRedirect(request.getContextPath() + "/index");
 	}
 

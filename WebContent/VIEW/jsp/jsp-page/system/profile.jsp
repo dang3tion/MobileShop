@@ -13,9 +13,11 @@
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
-	<%--<jsp:include page="/VIEW/jsp/jsp-component/filter.jsp"></jsp:include>--%>
+	<jsp:include page="/VIEW/jsp/jsp-component/filter.jsp"></jsp:include>
 
-	<%--breadcumb--%>
+		<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
+		<c:param name="title" value="Thông tin giao nhận hàng"></c:param>
+	</c:import>
 	<!-- Page Content -->
 	<div class=" container m-2 mb-5">
 
@@ -51,7 +53,7 @@
 											</div>
 										</div>
 										<input type="text" name="name" class="form-control py-4"
-											value="${CUSTOMER_LOGINED.name}">
+											value="${KEY_Logined.name}">
 									</div>
 								</div>
 
@@ -63,8 +65,8 @@
 												<i class="fas fa-mobile-alt"></i>
 											</div>
 										</div>
-										<input type="text" name="phoneNumber" class="form-control py-4"
-											value="${CUSTOMER_LOGINED.phoneNumber}">
+										<input type="text" name="phoneNumber"
+											class="form-control py-4" value="${KEY_Logined.phoneNumber}">
 									</div>
 								</div>
 								<div class="col-12">
@@ -76,7 +78,7 @@
 											</div>
 										</div>
 										<input type="text" name="email" class="form-control py-4"
-											value="${CUSTOMER_LOGINED.email}" disabled>
+											value="${KEY_Logined.email}" disabled>
 									</div>
 								</div>
 
@@ -89,10 +91,9 @@
 											</div>
 										</div>
 										<input type="text" class="form-control py-4"
-											value="${CUSTOMER_LOGINED.timeCreate}" disabled>
+											value="${KEY_Logined.timeCreate}" disabled>
 									</div>
 								</div>
-
 							</div>
 
 							<div class="row">
@@ -106,7 +107,7 @@
 											</div>
 										</div>
 										<input type="text" name="address" class="form-control py-4"
-											value="${CUSTOMER_LOGINED.address}">
+											value="${KEY_Logined.address}">
 									</div>
 								</div>
 							</div>
@@ -152,9 +153,9 @@
 								style="float: right">
 								<i class="far fa-save"></i> Lưu
 							</button>
-							<a role="button" href="${pageContext.request.contextPath}/index" class="btn btn-danger spacing_form px-5 mx-3"
-								style="float: right">
-								<i class="far fa-trash-alt"></i> Hủy
+							<a role="button" href="${pageContext.request.contextPath}/index"
+								class="btn btn-danger spacing_form px-5 mx-3"
+								style="float: right"> <i class="far fa-trash-alt"></i> Hủy
 							</a>
 						</div>
 					</div>

@@ -1,4 +1,4 @@
-package controller_account_handling;
+package controller_user;
 
 import java.io.IOException;
 
@@ -19,11 +19,6 @@ public class Contact extends HttpServlet {
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/contact.jsp");
 		dispatcher.forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }

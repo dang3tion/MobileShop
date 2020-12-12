@@ -14,8 +14,8 @@ public class FirstSetup implements HttpSessionListener {
 		HttpSession session = arg0.getSession();
 		session.setAttribute("LANGUAGE", "vi_VN");
 		session.setAttribute("SHOPINFO", new DAO_ShopInfo().getInfo());
-		System.out.println("____________________________________________-");
-		System.out.println(DataSource.pool.getAvailableConnections());
+		
+
 	}
 
 	@Override

@@ -1,11 +1,10 @@
-package create_data;
+package CREATE_DATA;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 import model_DAO.DAO_Account;
-import model_beans.Customer;
+import model_beans.Account;
 import model_utility.EncryptPassword;
 
 public class CreateAccount {
@@ -1184,24 +1183,16 @@ public class CreateAccount {
 		return EncryptPassword.md5(rdText(3));
 	}
 
-	public static Customer acc() {
-		return new Customer(fullEmail(), password());
+	public static Account acc() {
+		return new Account(fullEmail(), password(), "CUSTOMER", "ENABLE", ngayTao(), fullName(), SDT(), fullDiaChi());
 	}
 
-	public static void main(String[] args) throws ClassNotFoundException {
+	public static void main(String[] args) {
 
-		DAO_Account daoACC = new DAO_Account();
+		DAO_Account daoACC = new DAO_Account();	
 
-//		for (int i = 0; i < 63; i++) {
-//			daoACC.add(acc());
-//		}
-
-		try (ResultSet rs = daoACC.AccessDBstr("SELECT COUNT(*) FROM KHACHHANG")) {
-			while (rs.next()) {
-				System.out.println(rs.getString(1));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+		for (int i = 0; i < 67; i++) {
+			daoACC.add(acc());
 		}
 
 	}

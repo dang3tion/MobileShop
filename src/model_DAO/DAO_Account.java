@@ -1,35 +1,30 @@
 package model_DAO;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model_beans.Account;
+import model_utility.Const;
 import model_ConnectDB.ExecuteStatementUtility;
-import model_beans.Admin;
-import model_beans.Customer;
-
-
 
 public class DAO_Account extends ExecuteStatementUtility {
 
 	// Tên bảng trong database
-	private final String ACCOUNT = "khachhang";
-	private final String ADMIN = "admin";
-	// tên các cột của bảng KhachHang
-	private final String ID = "MaKH";
+	private final String ACCOUNT = "taikhoan";
+	// tên các cột của bảng ACCOUNT
 	private final String EMAIL = "email";
 	private final String ENCRYT_PASSWORD = "matKhau";
+	private final String ROLE = "quyenHan";
 	private final String STATUS = "trangThai";
 	private final String TIMECREATE = "thoiGianTao";
 	private final String NAME = "ten";
 	private final String PHONE = "SDT";
 	private final String ADDRESS = "diaChi";
-	private final String SEARCH = "SEARCH";
-	// bảng admin
-	private final String USERNAME = "tentaikhoan";
 
-	public void add(Customer acc) {
+	public void add(Account acc) {
 		try {
 			String query = "INSERT INTO " + ACCOUNT + " VALUES(?,?,?,?,?,?,?,?)";
 			String[] parameters = { //
@@ -37,6 +32,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 					acc.getPassword(), //
 					acc.getStatus(), //
 					acc.getTimeCreate(), //
+					acc.getRole(), //
 					acc.getName(), //
 					acc.getPhoneNumber(), //
 					acc.getAddress() //
@@ -50,21 +46,12 @@ public class DAO_Account extends ExecuteStatementUtility {
 	}
 
 	public void delete(String id) {
-		try {
-			String query = "DELETE " + ACCOUNT + " WHERE " + EMAIL + " = ? ";
+		// TODO Auto-generated method stub
 
-			try (ResultSet rs = super.AccessDBstr(query, new String[] { id })) {
-			}
-		} catch (
-
-		Exception e) {
-			e.printStackTrace();
-		}
 	}
 
-	public void update(Customer newAcc) {
-		String query = "UPDATE " //
-				+ ACCOUNT + " SET "//
+	public void update(Account newAcc) {
+		String query = "UPDATE " + ACCOUNT + " SET "//
 				+ ENCRYT_PASSWORD + " = ? , " //
 				+ STATUS + " = ? ,"//
 				+ NAME + " = ? , "//
@@ -85,21 +72,12 @@ public class DAO_Account extends ExecuteStatementUtility {
 		}
 	}
 
-	public List<Customer> search(String keyword, int start, int end) {
-		List<Customer> listAcc = new ArrayList<Customer>();
-		String query = "SELECT " //
-				+ ID + "," //
-				+ EMAIL + "," //
-				+ STATUS + ","//
-				+ TIMECREATE + "," //
-				+ NAME + "," //
-				+ PHONE + "," //
-				+ ADDRESS//
-				+ " FROM " + SEARCH + "(N'" + keyword + "'," + start + "," + end + ")";
+	public List<Account> search(String keyword, int start, int end)  {
+		List<Account> listAcc = new ArrayList<Account>();
+		String query = "SELECT * FROM SEARCH1(N'" + keyword + "'," + start + "," + end + ")";
 		try (ResultSet rs = super.AccessDBstr(query)) {
 			while (rs.next()) {
-				Customer acc = new Customer( //
-						rs.getString(ID), //
+				Account acc = new Account( //
 						rs.getString(EMAIL), //
 						rs.getString(STATUS), //
 						rs.getString(TIMECREATE), //
@@ -110,19 +88,18 @@ public class DAO_Account extends ExecuteStatementUtility {
 
 				listAcc.add(acc);
 			}
-		} catch (SQLException | ClassNotFoundException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return listAcc;
 	}
 
-	public int totalSearch(String keyword) {
-		List<Customer> listAcc = new ArrayList<Customer>();
-		String query = "SELECT * FROM " + SEARCH + "(N'" + keyword + "','2','99')";
+	public int totalSearch(String keyword)  {
+		List<Account> listAcc = new ArrayList<Account>();
+		String query = "SELECT * FROM SEARCH(N'" + keyword + "') WHERE " + ROLE + " = '" + Const.CUSTOMER_ROLE + "'";
 		try (ResultSet rs = super.AccessDBstr(query)) {
 			while (rs.next()) {
-				Customer acc = new Customer( //
-						rs.getString(ID), //
+				Account acc = new Account( //
 						rs.getString(EMAIL), //
 						rs.getString(STATUS), //
 						rs.getString(TIMECREATE), //
@@ -133,14 +110,14 @@ public class DAO_Account extends ExecuteStatementUtility {
 
 				listAcc.add(acc);
 			}
-		} catch (SQLException | ClassNotFoundException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return listAcc.size();
 	}
 
 	public boolean isExist(String email) {
-		Customer acc = getCustomerInfo(email);
+		Account acc = get(email);
 		if (acc != null) {
 			return true;
 		}
@@ -149,22 +126,15 @@ public class DAO_Account extends ExecuteStatementUtility {
 
 	}
 
-	public List<Customer> getListAccount(int start, int end) {
-		List<Customer> listAcc = new ArrayList<Customer>();
-		String query = "SELECT "//
-				+ ID + "," //
-				+ EMAIL + "," //
-				+ STATUS + ","//
-				+ TIMECREATE + "," //
-				+ NAME + "," //
-				+ PHONE + "," //
-				+ ADDRESS + " FROM " + " (SELECT ROW_NUMBER() OVER (ORDER BY " + TIMECREATE + " DESC) AS STT ,* FROM "
-				+ ACCOUNT + ") AS X " + " WHERE STT BETWEEN ? AND ? ";
+	public List<Account> get(int start, int end) {
+		List<Account> listAcc = new ArrayList<Account>();
+		String query = "SELECT * FROM " + " (SELECT ROW_NUMBER() OVER (ORDER BY " + TIMECREATE
+				+ " DESC) AS STT ,* FROM " + ACCOUNT + ") AS X " + " WHERE STT BETWEEN ? AND ? AND " + ROLE + " = '"
+				+ Const.CUSTOMER_ROLE + "'";
 		Object[] para = { start, end };
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
-				Customer acc = new Customer( //
-						rs.getString(ID), //
+				Account acc = new Account( //
 						rs.getString(EMAIL), //
 						rs.getString(STATUS), //
 						rs.getString(TIMECREATE), //
@@ -181,22 +151,13 @@ public class DAO_Account extends ExecuteStatementUtility {
 		return listAcc;
 	}
 
-	public List<Customer> getListAcountStatus(String status) {
-		List<Customer> listAcc = new ArrayList<Customer>();
-		String query = "SELECT " //
-				+ ID + "," //
-				+ EMAIL + "," //
-				+ STATUS + ","//
-				+ TIMECREATE + "," //
-				+ NAME + "," //
-				+ PHONE + "," //
-				+ ADDRESS//
-				+ " FROM " + ACCOUNT + " WHERE " + STATUS + " = ? ";
+	public List<Account> getListAcountStatus(String status) {
+		List<Account> listAcc = new ArrayList<Account>();
+		String query = "SELECT * FROM " + ACCOUNT + " WHERE " + STATUS + " = ?";
 		Object[] para = { status };
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
-				Customer acc = new Customer( //
-						rs.getString(ID), //
+				Account acc = new Account( //
 						rs.getString(EMAIL), //
 						rs.getString(STATUS), //
 						rs.getString(TIMECREATE), //
@@ -213,34 +174,41 @@ public class DAO_Account extends ExecuteStatementUtility {
 		return listAcc;
 	}
 
-	public Customer getCustomerInfo(String email) {
+	/**
+	 * Trả về toàn bộ thông tin của user có email là tham số
+	 */
+	public Account get(String email) {
 		String query = "SELECT * FROM " + ACCOUNT + " WHERE " + EMAIL + " = ? ";
-		try (ResultSet rs = super.AccessDBstr(query, new String[] { email })) {
+		String[] para = { email };
+		Account account = null;
+		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
-				return new Customer( //
-						rs.getString(ID), //
+				Account acc = new Account( //
 						rs.getString(EMAIL), //
+						rs.getString(ENCRYT_PASSWORD), //
+						rs.getString(ROLE), //
 						rs.getString(STATUS), //
 						rs.getString(TIMECREATE), //
 						rs.getString(NAME), //
 						rs.getString(PHONE), //
 						rs.getString(ADDRESS)//
 				);//
+				account = acc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return account;
 	}
 
-	public int getTotal() {
+	public int getTotal()  {
 		int total = 0;
 		String query = "SELECT COUNT(*) FROM " + ACCOUNT;
 		try (ResultSet rs = super.AccessDBstr(query)) {
 			while (rs.next()) {
 				total = rs.getInt(1);
 			}
-		} catch (SQLException | ClassNotFoundException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return total;
@@ -260,48 +228,4 @@ public class DAO_Account extends ExecuteStatementUtility {
 		return total;
 	}
 
-	public Admin getAdmin(String username) {
-		String query = "SELECT * FROM " + ADMIN + " WHERE  " + USERNAME + " = ? ";
-		try (ResultSet rs = super.AccessDBstr(query, new String[] { username })) {
-			while (rs.next()) {
-				return new Admin(rs.getString(USERNAME), rs.getString(ENCRYT_PASSWORD));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-
-
-	public Customer getCustomerLoginInfo(String email) {
-		String query = "SELECT "//
-				+ EMAIL + "," //
-				+ ENCRYT_PASSWORD + "," //
-				+ STATUS//
-				+ " FROM " + ACCOUNT + " WHERE " + EMAIL + " = ? ";
-		try (ResultSet rs = super.AccessDBstr(query, new String[] { email })) {
-			while (rs.next()) {
-				return new Customer( //
-						rs.getString(EMAIL), //
-						rs.getString(ENCRYT_PASSWORD), //
-						rs.getString(STATUS));//
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	
-
-	
 }
-
-//-- HÀM TÌM KIẾM THEO TỪ KHÓA
-//CREATE FUNCTION SEARCH(@SEA NVARCHAR(1000),@start int,@end int)
-//RETURNS TABLE 
-//AS
-//RETURN SELECT * FROM (SELECT  ROW_NUMBER() OVER (ORDER BY thoigiantao DESC) AS STT, * FROM KHACHHANG WHERE email LIKE N'%'+@SEA+'%' OR thoiGianTao LIKE N'%'+@SEA+'%'
-//OR KHACHHANG.TEN LIKE N'%'+@SEA+'%' OR SDT LIKE N'%'+@SEA+'%' OR KHACHHANG.diachi LIKE N'%'+@SEA+'%' ) AS RESULT
-//WHERE STT BETWEEN @start AND @END 

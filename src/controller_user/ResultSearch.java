@@ -9,17 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/product-detail")
-public class Detail extends HttpServlet {
+@WebServlet(urlPatterns = "/search")
+public class ResultSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String id = (String) request.getParameter("id");
-		request.setAttribute("PRODUCTID", id);
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/detail-product.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/result-searching.jsp");
 		dispatcher.forward(request, response);
 	}
 

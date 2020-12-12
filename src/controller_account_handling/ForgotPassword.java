@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model_BO_service.BO_Account;
 import model_DAO.DAO_Account;
-import model_beans.Customer;
+import model_beans.Account;
 import model_utility.Const;
 
 @WebServlet(urlPatterns = "/forgot")
@@ -30,42 +30,38 @@ public class ForgotPassword extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 
-//		String email = request.getParameter("email");
-//		String messengeErr = null;
-//		BO_Account BOacc = new BO_Account();
-//		if (BOacc.isExsit(email)) {
-//			HttpSession session = request.getSession();
-//			session.setAttribute(Const.EMAIL_FORGOT_PASS, email);
-//			request.setAttribute(Const.TOKEN_RESETPASS_OTP, true);
-//
-//			if (BOacc.isDisable(email)) {
-//				messengeErr = "Tài khoản này đã bị khóa";
-//				request.setAttribute("message", messengeErr);
-//				RequestDispatcher dispatcher //
-//						= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/forgot-pass.jsp");
-//				dispatcher.forward(request, response);
-//				return;
-//			}
+		String email = request.getParameter("email");
+		String messengeErr = null;
+		BO_Account BOacc = new BO_Account();
+		if (BOacc.isExsit(email)) {
+			HttpSession session = request.getSession();
+			session.setAttribute(Const.EMAIL_FORGOT_PASS, email);
+			request.setAttribute(Const.TOKEN_RESETPASS_OTP, true);
 
-//			RequestDispatcher dispatcher //
-//					= this.getServletContext().getRequestDispatcher("/otpresetpass");
-//			dispatcher.forward(request, response);
-//			return;
-//
-//		} else {
-//			messengeErr = "Email không tồn tại";
-//			request.setAttribute("message", messengeErr);
-//			RequestDispatcher dispatcher //
-//					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/forgot-pass.jsp");
-//			dispatcher.forward(request, response);
-//			return;
-//		}
+			if (BOacc.isDisable(email)) {
+				messengeErr = "Tài khoản này đã bị khóa";
+				request.setAttribute("message", messengeErr);
+				RequestDispatcher dispatcher //
+						= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/forgot-pass.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
 
-		
-//		@@@@@@@@@@@@@@ XÓA DÒNG NÀY @@@@@@@@@@@@@@@@@
-		response.sendRedirect(request.getContextPath() + "/otpresetpass");
+			RequestDispatcher dispatcher //
+					= this.getServletContext().getRequestDispatcher("/otpresetpass");
+			dispatcher.forward(request, response);
+			return;
+
+		} else {
+			messengeErr = "Email không tồn tại";
+			request.setAttribute("message", messengeErr);
+			RequestDispatcher dispatcher //
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/forgot-pass.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+
 	}
 
 }

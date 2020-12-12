@@ -31,13 +31,13 @@
 		<input name="email" id="inputEmail" class="form-control"
 			placeholder="Nhập email" onfocusout=" check_email2(this.id)">
 		<div class="require" style="display: none" id="require-email2">
-		Nhập email theo đúng theo định dạng email <br>Ví dụ:
+			Nhập email theo đúng theo định dạng email <br>Ví dụ:
 			nlumobile@gmail.com
 		</div>
 
 		<br />
 		</div>
-		<h5 style="color: red">${message}</h5>
+		<h5  style="color: red">${message}</h5>
 		<button class="btn btn-lg btn-primary btn-block mt-3" type="submit">OK</button>
 
 	</form>
@@ -48,8 +48,8 @@
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 	<!-- Bootstrap core JavaScript -->
 
-	 
-	   
+
+
 	<c:url var="url" scope="session" value="/VIEW"></c:url>
 	<script src="${url}/js/js-page/form-login.js"></script>
 </body>

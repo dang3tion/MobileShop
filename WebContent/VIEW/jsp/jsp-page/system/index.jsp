@@ -18,6 +18,8 @@
 	<!-- Page Content -->
 	<div class="container">
 
+<h1>${CART}</h1>
+
 		<div class="row">
 
 
@@ -38,6 +40,7 @@
 						<div id="carouselForHorproduct" data-interval="false"
 							class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
+
 
 								<div class="carousel-item active ">
 									<div class="row d-block ">

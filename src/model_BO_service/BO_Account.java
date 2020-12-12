@@ -3,12 +3,10 @@ package model_BO_service;
 import java.util.List;
 
 import model_DAO.DAO_Account;
-import model_beans.Admin;
-import model_beans.Customer;
+import model_beans.Account;
+import model_utility.Config;
 import model_utility.Const;
 import model_utility.EncryptPassword;
-
-
 
 public class BO_Account {
 
@@ -17,35 +15,40 @@ public class BO_Account {
 	private DAO_Account dao = new DAO_Account();
 
 	public BO_Account() {
+
 	}
 
+	// dùng để xuất danh sách tài khoản trong trang ADMIN
 	public BO_Account(String pageNumber_str, String numRowPerPage_str) {
 		this.pageNumber = Integer.parseInt(pageNumber_str);
 		this.numRowPerPage = Integer.parseInt(numRowPerPage_str);
 	}
 
-	public Customer getCustomerInfo(String email) {
-		Customer acc = dao.getCustomerInfo(email);
-		return acc;
+	// chỉ get được thông tin customer
+	public Account get(String email) {
+		Account acc = dao.get(email);
+		if (!acc.getRole().equals(Const.ADMIN_ROLE)) {
+			return acc;
+		}
+		return null;
 	}
 
-	public List<Customer> getListAccount() {
-		List<Customer> listAcc = dao.getListAccount(startRow(), endRow());
+	public List<Account> get() {
+		List<Account> listAcc = dao.get(startRow(), endRow());
 		return listAcc;
 
 	}
 
 	public boolean isExsit(String email) {
-		Customer acc = getCustomerLoginInfo(email);
-		if (acc != null) {
+		Account acc = dao.get(email);
+		if (acc != null && !acc.getRole().equals(Const.ADMIN_ROLE)) {
 			return true;
 		}
 		return false;
 	}
 
-	public void add(Customer customer) {
-		customer.setPassword(EncryptPassword.md5(customer.getPassword()));
-		dao.add(customer);
+	public void add(Account acc) {
+		dao.add(acc);
 
 	}
 
@@ -56,14 +59,21 @@ public class BO_Account {
 	 * @return 1 là đăng nhập thành công. 2 là thông tin tài khoản không đúng. 3 là
 	 *         tài khoản bị khóa
 	 */
-	public int checkCustomerLogin(String email, String passwordPlaintext) {
-		Customer acc = dao.getCustomerLoginInfo(email);
+	public int checkLogin(String email, String passwordPlaintext, String roleCheck) {
+		Account acc = dao.get(email);
 		// kiểm tra mail
 		if (acc != null) {
+			String role = acc.getRole();
 			String encrytPass = acc.getPassword();
 			// kiểm tra trạng thái (có bị khóa không)
-			if (acc.getStatus().equals(Const.ACCONT_DISABLE)) {
-				return 3;
+			if (role.equals(Const.CUSTOMER_ROLE)) {
+				if (acc.getStatus().equals(Const.ACCONT_DISABLE)) {
+					return 3;
+				}
+			}
+			// kiểm tra quyền hạn
+			if (roleCheck.equals(role)) {
+				return 2;
 			}
 			// kiểm tra pass
 			if (EncryptPassword.md5(passwordPlaintext).equals(encrytPass)) {
@@ -73,14 +83,14 @@ public class BO_Account {
 		return 2;
 	}
 
-	public void changePassword(String email, String passpordPlaintext) {
-		Customer acc = dao.getCustomerInfo(email);
-		acc.setPassword(EncryptPassword.md5(passpordPlaintext));
+	public void changePassword(String email, String passwordPlaintext) {
+		Account acc = dao.get(email);
+		acc.setPassword(EncryptPassword.md5(passwordPlaintext));
 		(new DAO_Account()).update(acc);
 	}
 
-	public void update(Customer customer) {
-		(new DAO_Account()).update(customer);
+	public void update(Account acc) {
+		(new DAO_Account()).update(acc);
 	}
 
 	/**
@@ -88,7 +98,7 @@ public class BO_Account {
 	 * @note : thường dùng kết hợp với hàm isExist()
 	 */
 	public boolean isDisable(String email) {
-		Customer acc = getCustomerInfo(email);
+		Account acc = get(email);
 		if (acc.getStatus().equals(Const.ACCONT_DISABLE)) {
 			return true;
 		}
@@ -98,11 +108,15 @@ public class BO_Account {
 	// _____________________________________________________________________________
 	public int getTotalAccount() {
 		int total;
-		total = dao.getTotal();
+		// trừ acc admin
+
+		total = (new DAO_Account()).getTotal() - 1;
+
 		return total;
 	}
 
 	public int getTotalStatusAccount(String status) {
+		// trừ acc admin
 		int total = dao.getTotalStatusAccount(status);
 		return total;
 	}
@@ -140,7 +154,7 @@ public class BO_Account {
 	}
 
 	public void on_off_account(String email) {
-		Customer acc = getCustomerInfo(email);
+		Account acc = get(email);
 		if (acc.getStatus().equals(Const.ACCOUNT_ENABLE)) {
 			acc.setStatus(Const.ACCONT_DISABLE);
 			update(acc);
@@ -151,40 +165,22 @@ public class BO_Account {
 
 	}
 
-	public List<Customer> search(String keyword, int start, int end) {
-		List<Customer> listAcc = dao.search(keyword, start, end);
+	public List<Account> search(String keyword, int start, int end) {
+		List<Account> listAcc = dao.search(keyword, start, end);
 		return listAcc;
 
 	}
 
-	public List<Customer> getListDisableAccount() {
-		List<Customer> listAcc = dao.getListAcountStatus(Const.ACCONT_DISABLE);
+	public List<Account> getListDisableAccount() {
+		List<Account> listAcc = dao.getListAcountStatus(Const.ACCONT_DISABLE);
 		return listAcc;
 	}
 
+	
 //_____________________________________________________________________________
 
-	public boolean checkAdminLogin(String username, String password) {
-		Admin admin = getAdmin(username);
-		if (admin == null) {
-			return false;
-		}
-		if (admin.getPassword().equals(EncryptPassword.md5(password))) {
-			return true;
-		}
-		return false;
-	}
-
-	public Admin getAdmin(String username) {
-		return dao.getAdmin(username);
-	}
-
-	public Customer getCustomerLoginInfo(String email) {
-		return dao.getCustomerLoginInfo(email);
-	}
-
 	public static void main(String[] args) {
-		System.out.println(new BO_Account().getCustomerInfo("1"));
+		System.out.println(new BO_Account());
 	}
 
 }

@@ -17,12 +17,12 @@
 <body>
 	<!-- Page Menu -->
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
-		<!-- Thanh menu loc du lieu va sap xep-->
-	
+	<!-- Thanh menu loc du lieu va sap xep-->
+
 	<jsp:include page="/VIEW/jsp/jsp-component/filterOther.jsp"></jsp:include>
 	<!-- breadcumb -->
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
-		<c:param name="title" value="Xem chi tiết Iphone 12"></c:param>
+		<c:param name="title" value="Xem chi tiết"></c:param>
 	</c:import>
 	<!-- Page Content -->
 	<div class="container" style="max-width: 90%;">
@@ -145,16 +145,17 @@
               </ul>
             </div> -->
 
-
-
 				<div class="row">
 					<div class="col-sm-7">
-						<button type="button"
-							class="btnMua btn btn-primary btn-lg btn-block"
-							onclick="addcart('quantity-cart')">
-							<i class="fas fa-cart-plus" style="color: white;"></i> THÊM VÀO
-							GIỎ HÀNG
-						</button>
+						<form action="${pageContext.request.contextPath}/cart"
+							method="post">
+							<button name="id" value="${PRODUCTID}" type="submit"
+								class="btnMua btn btn-primary btn-lg btn-block"
+								onclick="addcart('quantity-cart')">
+								<i class="fas fa-cart-plus" style="color: white;"></i> THÊM VÀO
+								GIỎ HÀNG
+							</button>
+						</form>
 					</div>
 					<div class="col-sm-5">
 						<a href=" ${pageContext.request.contextPath}/cart">

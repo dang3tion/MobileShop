@@ -1,7 +1,5 @@
 package model_utility;
 
-
-
 public class Config {
 
 //	   _____    ____    _           ____            _   _                
@@ -12,11 +10,11 @@ public class Config {
 //	  |_____/   \___\_\ |______|    \____/  |_| |_| |_| |_| |_| |_|  \___|
 //	___________________________________________________________________________________________  ______________________________________________________ ______________________________________________________ ___________________________________________________________________________________________________________________________________________________                                                                  
 	public static final String DBDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	public static final String SERVER_NAME = "jdbc:sqlserver://mobileshop.civgzrydcxzm.ap-southeast-1.rds.amazonaws.com:1433";
-	public static final String DATABASE_NAME = "quanlydienthoai";
-	public static final String USERNAME_DB = "bao";
-	public static final String PASSWORD_DB = "12345678";
-	
+	public static final String SERVER_NAME = "jdbc:sqlserver://tkbwinfomapp.database.windows.net:1433";
+	public static final String DATABASE_NAME = "Demo2";
+	public static final String USERNAME_DB = "tkbwinfomapp";
+	public static final String PASSWORD_DB = "Admin123@#";
+
 //	____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 //	#####public static final String STRING_CONNECTION = "jdbc:sqlserver://localhost:1433;DATABASE_NAME=Demo;user=sa;password=sa";
 
@@ -48,11 +46,10 @@ public class Config {
 //	public static final String DBDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 //	public static final String SERVER_NAME = "jdbc:sqlserver://localhost:1433";
 //	public static final String DATABASE_NAME = "Demo2";
-//	public static final String USERNAME_DB = "sa";
+//	public static final String USERNAME_DB = "bao";
 //	public static final String PASSWORD_DB = "sa";
 //	_______________________________________________________________________________________________________________________________________________________________________
 }
-
 
 //____                 ____                           _______ _                      
 //|  _ \               / __ \                         |__   __| |                     
@@ -72,7 +69,6 @@ public class Config {
 //                                                          | |    
 //                                                          |_|    
 
-
 //_____  _    _ __  ___  _____ _______ _____ 
 //|  __ \| |  | /_ |/ _ \|  __ \__   __/ ____|
 //| |  | | |__| || | (_) | |  | | | | | |     
@@ -87,9 +83,6 @@ public class Config {
 //  | | | | (_| | | | |    | |  | | | | (_| | | | | | | | | |_) | (_| | (_) |  | | (_) || |___) | |_| | |_| || | / /   
 //  |_|_|  \__,_|_| |_|    |_|  |_| |_|\__,_|_| |_|_| |_| |____/ \__,_|\___/   |_|\___/ |_|____/ \___/ \___/ |_|/_/    
 //                                                                                                                  
-     
-
-
 
 //_   _                                _    _               _____                    
 //| \ | |                              | |  | |             |  __ \                   
@@ -100,8 +93,6 @@ public class Config {
 //       __/ |       __/ |                                                      __/ |
 //      |___/       |___/                                                      |___/ 
 
-
-
 //_   _                               __      __            _____                        
 //| \ | |                              \ \    / /           / ____|                       
 //|  \| | __ _ _   _ _   _  ___ _ __    \ \  / /_ _ _ __   | |    _   _  ___  _ __   __ _ 
@@ -110,4 +101,3 @@ public class Config {
 //|_| \_|\__, |\__,_|\__, |\___|_| |_|     \/ \__,_|_| |_|  \_____\__,_|\___/|_| |_|\__, |
 //       __/ |       __/ |                                                          __/ |
 //      |___/       |___/                                                          |___/ 
-                                           

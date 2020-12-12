@@ -13,7 +13,7 @@
 	<jsp:include page="/VIEW/jsp/jsp-component/filter.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
-		<c:param name="title" value="SỦa lại title nè"></c:param>
+		<c:param name="title" value="Tìm kiếm"></c:param>
 	</c:import>
 	<!-- Page Content -->
 

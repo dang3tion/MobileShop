@@ -19,15 +19,11 @@ import model_utility.Const;
 @WebServlet(urlPatterns = "/cart")
 public class Cart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final int maxAgeCookie = 99999999 * 9999999 * 9999999 * 9999999 * 9999999;
-	private final static String prefixProductID = "MBS_";
+//	private final int maxAgeCookie = 99999999 * 9999999 * 9999999 * 9999999 * 9999999;
+//	private final static String prefixProductID = "MBS_";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		HttpSession session = request.getSession();
-		session.setAttribute(Const.TOKEN_CART_TO_PAY, "TOKEN");
-		
 
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
@@ -40,75 +36,99 @@ public class Cart extends HttpServlet {
 			throws ServletException, IOException {
 		String productID = request.getParameter("id");
 		String choose = request.getParameter("choose");
-	
-		// kiểm tra đã đăng nhập hay chưa
+
 		HttpSession session = request.getSession();
 
-		if (session.getAttribute(Const.CUSTOMER_LOGINED) == null) {
-			for (Cookie c : request.getCookies()) {
-				String name = c.getName();
-				String value = c.getValue();
-				if (name.equals(productID) && checkInt(value)) {
-					int quantity = Integer.parseInt(value) + 1;
-					Cookie newCookie = new Cookie(productID, quantity + "");
-					newCookie.setMaxAge(maxAgeCookie);
-					response.addCookie(newCookie);
-				} else {
-					Cookie newCookie = new Cookie(productID, "1");
-					newCookie.setMaxAge(maxAgeCookie);
-					response.addCookie(newCookie);
-				}
-			}
+		if (session.getAttribute("QUANTITY_ITEMS") != null) {
+			int QuantityItemInCart = (Integer) session.getAttribute("QUANTITY_ITEMS") + 1;
+			session.setAttribute("QUANTITY_ITEMS", QuantityItemInCart);
 		} else {
-			String email = ((Customer) session.getAttribute(Const.CUSTOMER_LOGINED)).getEmail();
-			BO_Cart bo = new BO_Cart(email);
+			session.setAttribute("QUANTITY_ITEMS", 1);
+		}
 
-			switch (choose) {
-			case "add":
-				bo.addProduct(productID);
-				break;
-			case "increase":
-				bo.changeQuantity(productID, bo.currentQuantity(productID) + 1);
-				break;
-			case "decrease":
-				bo.changeQuantity(productID, bo.currentQuantity(productID) - 1);
-				break;
-			case "deleteProduct":
-				bo.deleteProduct(productID);
-				break;
-			case "deleteCart":
-				bo.deleteCart();
-				break;
-
-			default:
-				break;
+		if (session.getAttribute("CART") != null) {
+			HashMap<String, Integer> map = (HashMap<String, Integer>) session.getAttribute("CART");
+			if (map.containsKey(productID)) {
+				int currentQuantity = map.get(productID);
+				map.put(productID, currentQuantity + 1);
+			} else {
+				map.put(productID, 1);
 			}
 
+		} else {
+			HashMap<String, Integer> map = new HashMap<String, Integer>();
+			map.put(productID, 1);
+			session.setAttribute("CART", map);
 		}
 
-		response.sendRedirect(request.getContextPath() + "/views/cart.jsp");
+		// kiểm tra đã đăng nhập hay chưa
+//		HttpSession session = request.getSession();
+//
+//		if (session.getAttribute(Const.ACCOUNT_LOGINED) == null) {
+//			for (Cookie c : request.getCookies()) {
+//				String name = c.getName();
+//				String value = c.getValue();
+//				if (name.equals(productID) && checkInt(value)) {
+//					int quantity = Integer.parseInt(value) + 1;
+//					Cookie newCookie = new Cookie(productID, quantity + "");
+//					newCookie.setMaxAge(maxAgeCookie);
+//					response.addCookie(newCookie);
+//				} else {
+//					Cookie newCookie = new Cookie(productID, "1");
+//					newCookie.setMaxAge(maxAgeCookie);
+//					response.addCookie(newCookie);
+//				}
+//			}
+//		} else {
+//			String email = ((Customer) session.getAttribute(Const.ACCOUNT_LOGINED)).getEmail();
+//			BO_Cart bo = new BO_Cart(email);
+//
+//			switch (choose) {
+//			case "add":
+//				bo.addProduct(productID);
+//				break;
+//			case "increase":
+//				bo.changeQuantity(productID, bo.currentQuantity(productID) + 1);
+//				break;
+//			case "decrease":
+//				bo.changeQuantity(productID, bo.currentQuantity(productID) - 1);
+//				break;
+//			case "deleteProduct":
+//				bo.deleteProduct(productID);
+//				break;
+//			case "deleteCart":
+//				bo.deleteCart();
+//				break;
+//
+//			default:
+//				break;
+//			}
+//
+//		}
+
+		response.sendRedirect(request.getContextPath() + "/product-detail?id=" + productID);
 	}
 
-	public static HashMap<String, Integer> loadCookie(HttpServletRequest request) {
-		HashMap<String, Integer> list = new HashMap<String, Integer>();
-		for (Cookie c : request.getCookies()) {
-			String name = c.getName();
-			String value = c.getValue();
-			if (name.startsWith(prefixProductID) && checkInt(value)) {
-				list.put(name, Integer.parseInt(value));
-			}
-		}
-		return list;
+//	public static HashMap<String, Integer> loadCartFromCookie(HttpServletRequest request) {
+//		HashMap<String, Integer> list = new HashMap<String, Integer>();
+//		for (Cookie c : request.getCookies()) {
+//			String name = c.getName();
+//			String value = c.getValue();
+//			if (name.startsWith(prefixProductID) && checkInt(value)) {
+//				list.put(name, Integer.parseInt(value));
+//			}
+//		}
+//		return list;
+//
+//	}
 
-	}
-
-	private static boolean checkInt(String input) {
-		try {
-			Integer.parseInt(input);
-		} catch (Exception e) {
-			return false;
-		}
-		return true;
-	}
+//	private static boolean checkInt(String input) {
+//		try {
+//			Integer.parseInt(input);
+//		} catch (Exception e) {
+//			return false;
+//		}
+//		return true;
+//	}
 
 }

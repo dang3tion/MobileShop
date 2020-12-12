@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model_BO_service.BO_Account;
-import model_beans.Customer;
+import model_beans.Account;
 import model_utility.Const;
 import model_utility.EncryptPassword;
 
@@ -23,7 +23,7 @@ public class Profile extends HttpServlet {
 			throws ServletException, IOException {
 
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/profile.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/profile.jsp");
 
 		dispatcher.forward(request, response);
 
@@ -38,19 +38,17 @@ public class Profile extends HttpServlet {
 		String password = request.getParameter("password");
 
 		HttpSession session = request.getSession();
-		Customer acc = (Customer) session.getAttribute(Const.CUSTOMER_LOGINED);
+		Account acc = (Account) session.getAttribute(Const.ACCOUNT_LOGINED);
 		acc.setAddress(address);
+		acc.setPassword(EncryptPassword.md5(password));
 		acc.setName(name);
 		acc.setPhoneNumber(phoneNumber);
-		if (password != "") {
-			acc.setPassword(EncryptPassword.md5(password));
-		}
 
 		(new BO_Account()).update(acc);
 
 		request.setAttribute("message", "Đã cập nhập thành công");
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/profile.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/profile.jsp");
 		dispatcher.forward(request, response);
 
 	}

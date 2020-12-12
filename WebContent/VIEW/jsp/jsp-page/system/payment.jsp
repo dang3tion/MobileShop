@@ -69,7 +69,7 @@
 
 				<div class="row" style="margin-top: 20px;">
 					<form method="post"
-						action="${pageContext.request.contextPath}/member/payment"
+						action="${pageContext.request.contextPath}/payment"
 						style="margin: auto;">
 						<button class="btn btn-primary"
 							style="padding: 7px 130px; text-align: center; margin: auto;"

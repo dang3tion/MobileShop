@@ -17,9 +17,7 @@ public class Const {
 	public static final String CURRENT_LINK = "CurrentURL";
 
 	// giá trị xác nhận người dùng đã đăng nhập
-	public static final String CUSTOMER_LOGINED = "CUSTOMER_LOGINED_KEY";
-	public static final String ADMIN_LOGINED = "ADMIN_LOGINED";
-	
+	public static final String ACCOUNT_LOGINED = "KEY_Logined";
 	
 
 }

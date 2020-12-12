@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model_BO_service.BO_Account;
-import model_beans.Admin;
+import model_DAO.DAO_Account;
+import model_beans.Account;
 import model_utility.Const;
 
 @WebServlet(urlPatterns = "/adminlogin")
@@ -23,6 +24,7 @@ public class AdminLogin extends HttpServlet {
 
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/admin-login.jsp");
+
 		dispatcher.forward(request, response);
 
 	}
@@ -30,39 +32,42 @@ public class AdminLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-//		String messageErr = "Sai email hoặc mật khẩu";
-//
-//		String username = request.getParameter("username");
-//		String password = request.getParameter("password");
-//		
-//
-//		BO_Account bo = new BO_Account();
-//		if (bo.checkAdminLogin(username, password)) {
-//			Admin admin = bo.getAdmin(username);
-//			HttpSession session = request.getSession();
-//			session.setAttribute("ADMIN_LOGINED", admin);
-//
-//			String path = (String) session.getAttribute(Const.CURRENT_LINK);
-//
-//			// TH1 : trang khác bị khóa và redirect sang trang login để mở khóa
-//			// TH2 : người dùng tự truy cập vào link
-//
-//			if (path != null) {
-//				// chuyển cứng trang đó
-//				response.sendRedirect(request.getContextPath() + path);
-//			} else {
-//				// người dùng truy cập link ở footer
-		response.sendRedirect(request.getContextPath() + "/admin/index");
-//			}
-//		} else {
-//			request.setAttribute("message", messageErr);
-//
-//			RequestDispatcher dispatcher //
-//					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/admin-login.jsp");
-//			dispatcher.forward(request, response);
-//			return;
-//		}
+		String messageErr = "Sai email hoặc mật khẩu";
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		
+		Account acc = (new DAO_Account()).get(email);
+		if ((new BO_Account()).checkLogin(email, password, Const.ADMIN_ROLE) == 1) {
+			// mở khóa link
+			// Thêm user này vào session
+			HttpSession session = request.getSession();
+			session.setAttribute("KEY_Logined", acc);
+
+			String path = (String) session.getAttribute(Const.CURRENT_LINK);
+
+			// Tại đây có 2 trường hợp để redirect
+
+			// TH1 : trang khác bị khóa và redirect sang trang login để mở khóa
+			// TH2 : người dùng tự truy cập vào link
+
+			if (path != null) {
+				// chuyển cứng trang đó
+				response.sendRedirect(request.getContextPath() + path);
+			} else {
+				// người dùng truy cập link ở footer
+				response.sendRedirect(request.getContextPath() + "/admin/index");
+			}
+		} else {
+			request.setAttribute("message", messageErr);
+
+			RequestDispatcher dispatcher //
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/admin-login.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
 
 	}
+	
+	
 
 }

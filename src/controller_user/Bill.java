@@ -18,7 +18,6 @@ public class Bill extends HttpServlet {
 
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/bill.jsp");
-
 		dispatcher.forward(request, response);
 	}
 
