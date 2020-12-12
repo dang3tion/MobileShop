@@ -16,7 +16,7 @@
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
 
-
+	<!-- breadcumb -->
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
 		<c:param name="title" value="Admin đăng nhập"></c:param>
 	</c:import>

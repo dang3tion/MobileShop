@@ -8,17 +8,21 @@
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
 
 <c:url var="url" scope="session" value="/VIEW"></c:url>
-  <link rel="stylesheet" href="${url }/css/css-page/detail-product.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-  <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
+<link rel="stylesheet" href="${url }/css/css-page/detail-product.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+<link rel='stylesheet prefetch'
+	href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
 </head>
 <body>
 	<!-- Page Menu -->
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
+		<!-- Thanh menu loc du lieu va sap xep-->
 	
-	<!-- Thanh menu loc du lieu va sap xep-->
+	<jsp:include page="/VIEW/jsp/jsp-component/filterOther.jsp"></jsp:include>
+	<!-- breadcumb -->
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
-		<c:param name="title" value="SỦa lại title nè"></c:param>
+		<c:param name="title" value="Xem chi tiết Iphone 12"></c:param>
 	</c:import>
 	<!-- Page Content -->
 	<div class="container" style="max-width: 90%;">
@@ -35,7 +39,8 @@
 
 			<div class=" col-md-7 ">
 				<div class="row space-img">
-					<img id="img" class="" src="${url }/image/image-user/product/i12black.png" alt="">
+					<img id="img" class=""
+						src="${url }/image/image-user/product/i12black.png" alt="">
 					<a class="carousel-control-prev indexP"
 						href="#carouselExampleControls" role="button" data-slide="prev">
 						<span id="pre" class="carousel-control-prev-icon"
@@ -51,29 +56,29 @@
 
 					<div class="col-md-2 col-sm-2 mb-2">
 						<span onclick="change('../image/Product/i12black.png')"> <img
-							id="img1" class="img-fluid" src="${url }/image/image-user/product/i12black.png"
-							alt="">
+							id="img1" class="img-fluid"
+							src="${url }/image/image-user/product/i12black.png" alt="">
 						</span>
 					</div>
 
 					<div class="col-md-2 col-sm-2 mb-2">
 						<span onclick="change('../image/Product/i12blue.png')"> <img
-							id="img2" class="img-fluid" src="${url }/image/image-user/product/i12blue.png"
-							alt="">
+							id="img2" class="img-fluid"
+							src="${url }/image/image-user/product/i12blue.png" alt="">
 						</span>
 					</div>
 
 					<div class="col-md-2 col-sm-2 mb-2">
 						<span onclick="change('../image/Product/i12black.png')"> <img
-							id="img3" class="img-fluid" src="${url }/image/image-user/product/i12black.png"
-							alt="">
+							id="img3" class="img-fluid"
+							src="${url }/image/image-user/product/i12black.png" alt="">
 						</span>
 					</div>
 
 					<div class="col-md-2 col-sm-2 mb-2">
 						<span onclick="change('../image/Product/i12blue.png')"> <img
-							id="img4" class="img-fluid" src="${url }/image/image-user/product/i12blue.png"
-							alt="">
+							id="img4" class="img-fluid"
+							src="${url }/image/image-user/product/i12blue.png" alt="">
 						</span>
 					</div>
 
@@ -99,14 +104,14 @@
 						<form>
 							<label for="btn1" id="label1"
 								class="radio-inline space-radio text-center active"
-								onclick="change('${url }/image/image-user/product/i12black.png')"> <input
-								id="btn1" type="radio" name="optradio" checked class="d-none">
-								<span class="font-color">Đen</span>
+								onclick="change('${url }/image/image-user/product/i12black.png')">
+								<input id="btn1" type="radio" name="optradio" checked
+								class="d-none"> <span class="font-color">Đen</span>
 							</label> <label for="btn2" id="label2"
 								class="radio-inline space-radio  text-center"
-								onclick="change('${url }/image/image-user/product/i12blue.png')"> <input
-								id="btn2" type="radio" name="optradio" class="d-none"> <span
-								class="font-color">Xanh</span>
+								onclick="change('${url }/image/image-user/product/i12blue.png')">
+								<input id="btn2" type="radio" name="optradio" class="d-none">
+								<span class="font-color">Xanh</span>
 							</label>
 
 						</form>
@@ -188,7 +193,8 @@
 						xuất sắc nhất, đặc biệt là camera và pin.
 					</h5>
 					<img class="sizeImg"
-						src="${url }/image/image-user/product/iphone-11-pro-max-4.jpg" alt="">
+						src="${url }/image/image-user/product/iphone-11-pro-max-4.jpg"
+						alt="">
 					<div class="text-center">
 						<button id="send1" class="btn btn-primary btn-center"
 							style="margin-top: 20px;">Xem thêm</button>
@@ -206,8 +212,8 @@
 								cũng đều được thể hiện trơn tru, mượt mà trên iPhone 11 Pro Max
 								64GB.
 							</p>
-							<img class="sizeImg" src="${url }/image/image-user/product/iPhone-112.jpg"
-								alt="">
+							<img class="sizeImg"
+								src="${url }/image/image-user/product/iPhone-112.jpg" alt="">
 						</div>
 						<div>
 							<h4 class="space-t">Tác phẩm nghệ thuật đích thực</h4>
@@ -220,8 +226,8 @@
 								màu thời thượng là Vàng, Xám không gian, Bạc và Xanh Midnight.
 								Dù là một chiếc điện thoại màn hình lớn, nhưng sự hoàn thiện cao
 								cấp giúp iPhone 11 Pro Max vẫn dễ dàng cầm nắm và thao tác.</p>
-							<img class="sizeImg" src="${url }/image/image-user/product/iphone-13.jpg"
-								alt="">
+							<img class="sizeImg"
+								src="${url }/image/image-user/product/iphone-13.jpg" alt="">
 						</div>
 					</div>
 					<div class="text-center">

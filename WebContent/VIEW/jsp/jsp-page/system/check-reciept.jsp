@@ -13,8 +13,13 @@
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
-		<c:param name="title" value="SỦa lại title nè"></c:param>
+		<c:param name="title" value="Kiểm tra đơn hàng"></c:param>
 	</c:import>
+	<!-- Thanh menu loc du lieu va sap xep-->
+	<jsp:include page="/VIEW/jsp/jsp-component/filterOther.jsp"></jsp:include>
+
+	
+	
 	<!-- Page Content -->
 
 

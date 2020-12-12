@@ -5,7 +5,7 @@
 <!--Nav-->
 <div class="side-bar bg-light border-right" id="sidebar-wrapper">
 	<div class="sidebar-heading text-center">
-	<a href="${pageContext.request.contextPath}/admin/index" ><b>${SHOPINFO.name}</b></a>
+	<a href="${pageContext.request.contextPath}/admin/index" ><b>${SHOPINFO.name} Mobile Shop</b></a>
 	</div>
 
 	<div class="list-group list-group-flush">

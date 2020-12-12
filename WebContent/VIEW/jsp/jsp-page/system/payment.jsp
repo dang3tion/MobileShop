@@ -12,7 +12,12 @@
 
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
-	<!-- Thanh menu loc du lieu va sap xep-->
+		<!-- Thanh menu loc du lieu va sap xep-->
+	<jsp:include page="/VIEW/jsp/jsp-component/filterOther.jsp"></jsp:include>
+<!-- breadcumb -->
+	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
+		<c:param name="title" value="Thanh toán"></c:param>
+	</c:import>
 	<div class="container" style="margin: 60px auto; max-width: 80%;">
 		<div class="py-1 text-center">
 			<img class="d-block mx-auto mb-4"

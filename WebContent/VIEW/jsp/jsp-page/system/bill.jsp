@@ -17,6 +17,11 @@
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
+	<jsp:include page="/VIEW/jsp/jsp-component/filterOther.jsp"></jsp:include>
+<!-- breadcumb -->
+	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
+		<c:param name="title" value="Hóa đơn"></c:param>
+	</c:import>
 
 	<!-- Page Content -->
 
@@ -220,7 +225,9 @@
 
 				<td style="padding: 30px;"><a
 					href=" ${pageContext.request.contextPath}/index">
-						<button type="button" class="btn btn-warning"><i class="fas fa-print"></i> In thành file PDF</button>
+						<button type="button" class="btn btn-warning">
+							<i class="fas fa-print"></i> In thành file PDF
+						</button>
 						<button type="submit" class="btn btn-primary">TIẾP TỤC
 							MUA HÀNG</button>
 				</a>
