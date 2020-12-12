@@ -138,7 +138,7 @@
 							<input id="credit" name="paymentMethod" type="radio"
 								class="custom-control-input" onclick="hidenForm(this)" checked
 								required> <label class="custom-control-label"
-								for="credit">Thanh toán Online</label>
+								for="credit">Chuyển khoản</label>
 						</div>
 
 						<div class="custom-control custom-radio "
@@ -146,39 +146,18 @@
 							<input id="COD" name="paymentMethod" type="radio"
 								class="custom-control-input" onclick="hidenForm(this)" required>
 							<label class="custom-control-label " for="COD">Thanh toán
-								khi nhận hàng</label>
+								khi nhận hàng (COD)</label>
 						</div>
 					</div>
 
 					<div id="FormThanhToanBangThe">
-						<div class="row">
-							<div class="col-md-6 mb-3">
-								<label for="cc-name">Tên chủ tài khoản</label> <input
-									type="text" class="form-control" id="cc-name"
-									placeholder="Nhập tên của bạn" required>
-								<div class="invalid-feedback">Không được để trống</div>
-							</div>
-							<div class="col-md-6 mb-3">
-								<label for="cc-number">Số thẻ</label> <input type="text"
-									class="form-control" id="cc-number" placeholder="Nhập số thẻ"
-									required>
-								<div class="invalid-feedback">Không được để trống</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-3 mb-3">
-								<label for="cc-expiration">Thời hạn</label> <input type="date"
-									class="form-control" id="cc-expiration" placeholder=" "
-									required>
-								<div class="invalid-feedback">Không được để trống</div>
-							</div>
-							<div class="col-md-3 mb-3">
-								<label for="cc-cvv">CVV</label> <input type="text"
-									class="form-control" id="cc-cvv" placeholder="Nhập mã CVV"
-									required>
-								<div class="invalid-feedback">Không được để trống</div>
-							</div>
-
+					
+					
+						
+						<div class="row ml-4">
+							<h5>Bạn vui lòng chuyển 200.000.000VND </h5>
+							<h5 class="mx-3"> Vào STK : 045845723873284</h5>
+							<h5>Chủ tài khoản: Trần Thanh Bảo, Chi nhánh: Đông Sài Gòn.</h5>
 						</div>
 
 					</div>
