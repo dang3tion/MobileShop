@@ -8,7 +8,6 @@
 <%-- 	<a href="${pageContext.request.contextPath}/admin/index" ><b>${SHOPINFO.name}</b></a> --%>
 	<a href="${pageContext.request.contextPath}/admin/index" ><b>Mobile Shop</b></a>
 	</div>
-
 	<div class="list-group list-group-flush">
 		<ul>
 			<li><a href="${pageContext.request.contextPath}/admin/index"
