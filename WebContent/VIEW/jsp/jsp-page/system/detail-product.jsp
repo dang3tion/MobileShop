@@ -15,6 +15,7 @@
 	href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
 </head>
 <body>
+
 	<!-- Page Menu -->
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
@@ -28,6 +29,9 @@
 	<div class="container" style="max-width: 90%;">
 
 
+		<h1>${CART}</h1>
+
+		<h1>${CART_QUANTITY}</h1>
 
 		<!-- Portfolio Item Heading -->
 		<h4 class="my-4">
@@ -104,12 +108,12 @@
 						<form>
 							<label for="btn1" id="label1"
 								class="radio-inline space-radio text-center active"
-								onclick="change('${url }/image/image-user/product/i12black.png')">
+								onclick="change('${url}/image/image-user/product/i12black.png')">
 								<input id="btn1" type="radio" name="optradio" checked
 								class="d-none"> <span class="font-color">Đen</span>
 							</label> <label for="btn2" id="label2"
 								class="radio-inline space-radio  text-center"
-								onclick="change('${url }/image/image-user/product/i12blue.png')">
+								onclick="change('${url}/image/image-user/product/i12blue.png')">
 								<input id="btn2" type="radio" name="optradio" class="d-none">
 								<span class="font-color">Xanh</span>
 							</label>
@@ -149,6 +153,7 @@
 					<div class="col-sm-7">
 						<form action="${pageContext.request.contextPath}/cart"
 							method="post">
+							<input name="choose" value="add" hidden="true">
 							<button name="id" value="${PRODUCTID}" type="submit"
 								class="btnMua btn btn-primary btn-lg btn-block"
 								onclick="addcart('quantity-cart')">
@@ -185,6 +190,42 @@
 		<div class="row">
 			<div class="col-sm-8">
 				<div id="f-w" class="hegthTxt">
+					<!-- @@@@@@@@@@ HIỆN THÔNG BÁO KHI VƯỢT QUÁ GIỚI HẠN SẢN PHẨM TRONG GIỎ HÀNG @@@@@@@@@@@@@ -->
+					<c:if test="${message != null}">
+
+						<script>
+							window.onload = function() {
+								document.getElementById('btn-message').click();
+							}
+						</script>
+
+						<!-- Button trigger modal -->
+						<button style="padding: -30px; visibility: hidden; z-index: 99999"
+							type="button" id="btn-message" class="btn btn-white"
+							data-toggle="modal" data-target="#exampleModalCenter"></button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+							role="dialog" aria-labelledby="exampleModalCenterTitle"
+							aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLongTitle">${message}</h5>
+									</div>
+
+									<div class="modal-footer">
+										<a href="${pageContext.request.contextPath}/cart"
+											class="btn btn-primary" role="button" aria-pressed="true">
+											Vào giỏ hàng</a>
+										<button type="button" class="btn btn-danger"
+											data-dismiss="modal">Đóng</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</c:if>
 
 					<h3 class="center-txt">Đánh giá chi tiết iPhone 12</h3>
 					<h5 style="font-size: 18px;">
@@ -445,6 +486,7 @@
 			</span>
 		</div>
 	</div>
+
 
 
 

@@ -8,6 +8,7 @@ import model_utility.EncryptPassword;
 
 public class Account {
 
+	private String id;
 	private String email;
 	private String password;
 	private String role;
@@ -34,12 +35,10 @@ public class Account {
 		this.address = "";
 
 	}
-	
-	
+
 //	CREATE TABLE TAIKHOAN
 //	(
-//	    ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-//	    MAKH AS 'KH0' + RIGHT(CAST(ID AS VARCHAR(3)), 3) PERSISTED,
+//	    MAKH INT NOT NULL IDENTITY PRIMARY KEY,
 //	    EMAIL NVARCHAR(200) NOT NULL,
 //	    MATKHAU NVARCHAR(200) NOT NULL,
 //	    TRANGTHAI NVARCHAR(20) NOT NULL,
@@ -49,10 +48,8 @@ public class Account {
 //	    SDT NVARCHAR(12),
 //	    DIACHI NVARCHAR(400)
 //	)
-	
-	
 
-	// Dành để load User từ database lên
+	// Dành để load 1 User từ database lên
 	public Account(String email, String password, String role, String status, String timeCreate, String name,
 			String phoneNumber, String address) {
 		this.email = email;
@@ -66,7 +63,9 @@ public class Account {
 	}
 
 	// Dành để load User thành danh sách
-	public Account(String email, String status, String timeCreate, String name, String phoneNumber, String address) {
+	public Account(String id, String email, String status, String timeCreate, String name, String phoneNumber,
+			String address) {
+		this.id = id;
 		this.email = email;
 		this.status = status;
 		this.timeCreate = timeCreate;
@@ -75,8 +74,22 @@ public class Account {
 		this.address = address;
 	}
 
+	
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public String getEmail() {
 		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -89,6 +102,10 @@ public class Account {
 
 	public String getRole() {
 		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public String getStatus() {
@@ -144,11 +161,11 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [email=" + email + ", password=" + password + ", role=" + role + ", status=" + status
-				+ ", timeCreate=" + timeCreate + ", name=" + name + ", phoneNumber=" + phoneNumber + ", address="
-				+ address + "]\n";
+		return "Account [id=" + id + ", email=" + email + ", password=" + password + ", role=" + role + ", status="
+				+ status + ", timeCreate=" + timeCreate + ", name=" + name + ", phoneNumber=" + phoneNumber
+				+ ", address=" + address + "]\n";
 	}
 
-	
+
 
 }

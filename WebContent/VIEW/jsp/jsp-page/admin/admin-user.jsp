@@ -10,8 +10,9 @@
 <jsp:include page="/VIEW/jsp/jsp-component/head-css-admin.jsp"></jsp:include>
 </head>
 
-<body>
 
+
+<body>
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar left -->
 		<c:import url="/VIEW/jsp/jsp-component/sidebar-admin.jsp">
@@ -39,10 +40,10 @@
 						</thead>
 						<tbody>
 							<tr class="">
-								<th scope="row">${totalPage}</th>
-								<td>10,000,000</td>
-								<td>123</td>
-								<td>23</td>
+								<th scope="row">${totalAccount}</th>
+								<td>${TongSoAccDangHoatDong}</td>
+								<td>${TongSoAccBiKhoa}</td>
+								<td><h1>${totalPage}</h1></td>
 							</tr>
 						</tbody>
 					</table>
@@ -51,15 +52,16 @@
 				<div class="border mb-2">
 					<h4 class="text-center mt-3 mb-3"></h4>
 					<div class="row">
-						<div class="show-page mb-3 ml-3" style="padding-left: 10px">
-							Hiển thị <span> <select id="show" onclick="select_page()">
-									<option value="10">10</option>
-									<option value="20">20</option>
-									<option value="50">50</option>
-							</select></span>
+
+						<!-- 												<div class="show-page mb-3 ml-3" style="padding-left: 10px"> -->
+						<!-- 													Hiển thị <span> <select id="rowsPerPage"> -->
+						<!-- 															<option value="10">10</option> -->
+						<!-- 															<option value="20">20</option> -->
+						<!-- 															<option value="50">50</option> -->
+						<!-- 													</select></span> -->
 
 
-						</div>
+						<!-- 												</div> -->
 						<div class="show-page" style="margin-left: 50px">
 							Tìm kiếm <span> <input id="myInput"
 								style="padding-left: 15px; border: 0.5px solid grey" type="text"
@@ -69,67 +71,44 @@
 					<table class="table table-hover">
 						<thead class="thead-light">
 							<tr>
-								<th scope="col">Thời gian</th>
-								<th scope="col">Doang thu</th>
+								<th scope="col">Số TT</th>
+								<th scope="col">Mã KH</th>
+								<th scope="col">Tên</th>
 								<th scope="col" data-toggle="tooltip" data-placement="top"
-									title="Số lượng sản phẩm được thêm"><span
-									title="Số lượng sản phẩm"> SLSP</span> bán được</th>
+									title=""><span title=""> Số</span> điện thoại</th>
 								<th scope="col" data-toggle="tooltip" data-placement="top"
-									title="Số lượng sản phẩm tồn kho"><span
-									title="Số lượng sản phẩm"> SLSP</span> được thêm</th>
-								<th scope="col">Số lượng tồn kho</th>
-								<th scope="col">Số lượng truy cập</th>
+									title=""><span title="Địa chỉ giao hàng mặc định">
+										Địa</span> chỉ</th>
+								<th scope="col">Email</th>
+								<th scope="col">Thời gian tạo</th>
+								<th scope="col">Trạng thái</th>
 							</tr>
 						</thead>
+
+
 						<tbody id="content-table">
-							<tr>
-								<th scope="row">9/2020</th>
-								<td>30,000,00</td>
-								<td>4</td>
-								<td>2</td>
-								<td>42</td>
-								<td>400</td>
-							</tr>
-							<tr>
-								<th scope="row">8/2020</th>
-								<td>24,000,00</td>
-								<td>3</td>
-								<td>4</td>
-								<td>46</td>
-								<td>200</td>
-							</tr>
-							<tr>
-								<th scope="row">7/2020</th>
-								<td>12,000,00</td>
-								<td>2</td>
-								<td>5</td>
-								<td>49</td>
-								<td>502</td>
-							</tr>
-							<tr>
-								<th scope="row">6/2020</th>
-								<td>22,000,00</td>
-								<td>7</td>
-								<td>2</td>
-								<td>51</td>
-								<td>420</td>
-							</tr>
-							<tr>
-								<th scope="row">5/2020</th>
-								<td>30,000,00</td>
-								<td>5</td>
-								<td>8</td>
-								<td>58</td>
-								<td>492</td>
-							</tr>
-							<tr>
-								<th scope="row">4/2020</th>
-								<td>25,000,00</td>
-								<td>2</td>
-								<td>4</td>
-								<td>63</td>
-								<td>100</td>
-							</tr>
+							<!-- 	############ AJAX TRẢ DỮ LIỆU TẠI ĐÂY #################### -->
+
+							<!--          @@@@ trong đây nè -->
+
+
+							<c:if test="${DEFAUTL_TABLE !=null }">						
+								<c:forEach var="user" items="${listUser}" varStatus="i">
+									<tr>
+										<td>${STTstart+i.index}</td>
+										<th scope="row">${user.id}</th>
+										<td>${user.name}</td>
+										<td>${user.phoneNumber}</td>
+										<td>${user.address}</td>
+										<td>${user.email}</td>
+										<td>${user.timeCreate}</td>
+										<td>${user.status}</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+
+
+							<!-- 	############ AJAX TRẢ DỮ LIỆU TẠI ĐÂY #################### -->
 						</tbody>
 					</table>
 				</div>
@@ -144,7 +123,11 @@
 									previous</a>
 							</div>
 							<div class="col-4" style="width: 10%; margin-left: -60px;">
-								<select class="form-control SendData">
+								<select onchange="SendDataToServlet()" id="page"
+									class="form-control SendData">
+									<!-- 									số mặc định -->
+									<!-- 									<option value="1" selected hidden>1</option> -->
+
 									<c:forEach var="i" begin="1" end="${totalPage}">
 										<option>${i}</option>
 									</c:forEach>
@@ -162,6 +145,7 @@
 			</div>
 			<!-- 				PHÂN TRANG -->
 
+
 		</div>
 
 	</div>
@@ -171,23 +155,25 @@
 	<!-- 	@@@@@@@@@ GỬI DỮ LIỆU XUỐNG SERVER @@@@@@@@@@@@@@@@@ -->
 
 
-	<script >
-		$(document).ready(function() {
-			$(".SendData").click(function() {
-				$.ajax({
-					type : 'GET',
-					url : 'GetUserServlet',
-					data : {
-						PageNumber : $('#userName').val(),
-						hihi : 'sfsfas'
-					},
-					success : function(responseText) {
-						$('#ajaxGetUserServletResponse').text(responseText);
-					}
-				});
-			});
-		});
+	<script>
+		function SendDataToServlet() {
+			$
+					.ajax({
+						type : 'GET',
+						url : '${pageContext.request.contextPath}/AJAXAdminUserManager',
+						data : {
+							page : document.getElementById("page").value
+						},
+						success : function(responseText) {
+							$('#content-table').html(responseText);
+						}
+
+					});
+		}
 	</script>
+
+
+
 
 
 	<!-- 	@@@@@@@@@ GỬI DỮ LIỆU XUỐNG SERVER @@@@@@@@@@@@@@@@@ -->

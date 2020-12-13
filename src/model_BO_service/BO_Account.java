@@ -32,8 +32,6 @@ public class BO_Account {
 		}
 		return null;
 	}
-	
-
 
 	public List<Account> getList() {
 		List<Account> listAcc = dao.get(startRow(), endRow());
@@ -63,7 +61,7 @@ public class BO_Account {
 	 */
 	public int checkLogin(String email, String passwordPlaintext, String roleCheck) {
 		Account acc = dao.get(email);
-		
+
 		// kiểm tra mail
 		if (acc != null) {
 			String role = acc.getRole();
@@ -179,11 +177,8 @@ public class BO_Account {
 		return listAcc;
 	}
 
-	
 //_____________________________________________________________________________
 
-	public static void main(String[] args) {
-		System.out.println(new BO_Account("1","20").totalPage());
-	}
+
 
 }

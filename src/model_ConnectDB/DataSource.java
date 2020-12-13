@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class DataSource {
 
 	// POOL Này dùng cho toàn web size
-	public static ConnectionPoolManager pool = new ConnectionPoolManager();
+	private static final ConnectionPoolManager pool = new ConnectionPoolManager();
 
 	public static Connection getConnection() {
 		Connection connection = pool.getSingleConnectionFromPool();

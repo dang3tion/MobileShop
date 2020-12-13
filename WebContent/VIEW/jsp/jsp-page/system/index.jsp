@@ -18,7 +18,6 @@
 	<!-- Page Content -->
 	<div class="container">
 
-<h1>${CART}</h1>
 
 		<div class="row">
 

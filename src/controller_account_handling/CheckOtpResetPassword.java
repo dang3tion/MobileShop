@@ -21,7 +21,7 @@ import model_utility.SendMail;
  *
  */
 @WebServlet(urlPatterns = "/otpresetpass")
-public class checkOtpResetPassword extends HttpServlet {
+public class CheckOtpResetPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	OTP otp = new OTP();

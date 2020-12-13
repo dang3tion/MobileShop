@@ -68,8 +68,6 @@ public class AdminLogin extends HttpServlet {
 
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(new BO_Account().checkLogin("admin", "123", Const.ADMIN_ROLE));
-	}
+	
 
 }

@@ -126,8 +126,8 @@
 									<div class="item-menu-text">
 										<p>Giỏ hàng</p>
 									</div>
-									<c:if test="${QUANTITY_ITEMS!=null}">
-										<label class="quantity-cart" id="quantity-cart123">${QUANTITY_ITEMS}</label>
+									<c:if test="${CART_QUANTITY!=0}">
+										<label class="quantity-cart" id="quantity-cart123">${CART_QUANTITY}</label>
 								</div> </c:if>
 								<style>
 #quantity-cart123 {

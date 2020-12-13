@@ -1,12 +1,12 @@
 package model_DAO;
 
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import model_beans.Account;
+import model_utility.Config;
 import model_utility.Const;
 import model_ConnectDB.ExecuteStatementUtility;
 
@@ -15,6 +15,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 	// Tên bảng trong database
 	private final String ACCOUNT = "taikhoan";
 	// tên các cột của bảng ACCOUNT
+	private final String ID = "MAKH";
 	private final String EMAIL = "email";
 	private final String ENCRYT_PASSWORD = "matKhau";
 	private final String ROLE = "quyenHan";
@@ -72,12 +73,13 @@ public class DAO_Account extends ExecuteStatementUtility {
 		}
 	}
 
-	public List<Account> search(String keyword, int start, int end)  {
+	public List<Account> search(String keyword, int start, int end) {
 		List<Account> listAcc = new ArrayList<Account>();
 		String query = "SELECT * FROM SEARCH1(N'" + keyword + "'," + start + "," + end + ")";
 		try (ResultSet rs = super.AccessDBstr(query)) {
 			while (rs.next()) {
 				Account acc = new Account( //
+						rs.getString(ID), //
 						rs.getString(EMAIL), //
 						rs.getString(STATUS), //
 						rs.getString(TIMECREATE), //
@@ -94,12 +96,13 @@ public class DAO_Account extends ExecuteStatementUtility {
 		return listAcc;
 	}
 
-	public int totalSearch(String keyword)  {
+	public int totalSearch(String keyword) {
 		List<Account> listAcc = new ArrayList<Account>();
 		String query = "SELECT * FROM SEARCH(N'" + keyword + "') WHERE " + ROLE + " = '" + Const.CUSTOMER_ROLE + "'";
 		try (ResultSet rs = super.AccessDBstr(query)) {
 			while (rs.next()) {
 				Account acc = new Account( //
+						rs.getString(ID), //
 						rs.getString(EMAIL), //
 						rs.getString(STATUS), //
 						rs.getString(TIMECREATE), //
@@ -135,11 +138,10 @@ public class DAO_Account extends ExecuteStatementUtility {
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				Account acc = new Account( //
+						rs.getString(ID), //
 						rs.getString(EMAIL), //
-						rs.getString(ENCRYT_PASSWORD), //
 						rs.getString(STATUS), //
 						rs.getString(TIMECREATE), //
-						rs.getString(ROLE), //
 						rs.getString(NAME), //
 						rs.getString(PHONE), //
 						rs.getString(ADDRESS)//
@@ -160,6 +162,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				Account acc = new Account( //
+						rs.getString(ID), //
 						rs.getString(EMAIL), //
 						rs.getString(STATUS), //
 						rs.getString(TIMECREATE), //
@@ -203,7 +206,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 		return account;
 	}
 
-	public int getTotal()  {
+	public int getTotal() {
 		int total = 0;
 		String query = "SELECT COUNT(*) FROM " + ACCOUNT;
 		try (ResultSet rs = super.AccessDBstr(query)) {
@@ -218,7 +221,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 
 	public int getTotalStatusAccount(String status) {
 		int total = 0;
-		String query = "SELECT COUNT(*) FROM " + ACCOUNT + " WHERE  " + STATUS + " = ?";
+		String query = "SELECT COUNT(*) FROM " + ACCOUNT + " WHERE  " + STATUS + " = ? AND  "+ROLE+"  = '"+Const.CUSTOMER_ROLE+"' ";
 		Object[] para = { status };
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
@@ -230,6 +233,4 @@ public class DAO_Account extends ExecuteStatementUtility {
 		return total;
 	}
 
-	
-	
 }
