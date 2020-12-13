@@ -136,8 +136,10 @@ public class DAO_Account extends ExecuteStatementUtility {
 			while (rs.next()) {
 				Account acc = new Account( //
 						rs.getString(EMAIL), //
+						rs.getString(ENCRYT_PASSWORD), //
 						rs.getString(STATUS), //
 						rs.getString(TIMECREATE), //
+						rs.getString(ROLE), //
 						rs.getString(NAME), //
 						rs.getString(PHONE), //
 						rs.getString(ADDRESS)//
@@ -228,4 +230,6 @@ public class DAO_Account extends ExecuteStatementUtility {
 		return total;
 	}
 
+	
+	
 }

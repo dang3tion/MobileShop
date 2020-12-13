@@ -61,11 +61,13 @@ public class ConnectionPoolManager {
 	}
 
 	// Hoàn trả single Connection về Pool sau khi sử dụng xong ( list avail tăng lên
-	// 1 )
+	// 1 ).
 	public synchronized void returnConnectionToPool(Connection connection) {
 		if (connection != null) {
 			availableConnections.add(connection);
 		}
 	}
+	
+
 
 }

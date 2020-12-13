@@ -32,8 +32,10 @@ public class BO_Account {
 		}
 		return null;
 	}
+	
 
-	public List<Account> get() {
+
+	public List<Account> getList() {
 		List<Account> listAcc = dao.get(startRow(), endRow());
 		return listAcc;
 
@@ -61,6 +63,7 @@ public class BO_Account {
 	 */
 	public int checkLogin(String email, String passwordPlaintext, String roleCheck) {
 		Account acc = dao.get(email);
+		
 		// kiểm tra mail
 		if (acc != null) {
 			String role = acc.getRole();
@@ -72,7 +75,7 @@ public class BO_Account {
 				}
 			}
 			// kiểm tra quyền hạn
-			if (roleCheck.equals(role)) {
+			if (!roleCheck.equals(role)) {
 				return 2;
 			}
 			// kiểm tra pass
@@ -180,7 +183,7 @@ public class BO_Account {
 //_____________________________________________________________________________
 
 	public static void main(String[] args) {
-		System.out.println(new BO_Account());
+		System.out.println(new BO_Account("1","20").totalPage());
 	}
 
 }
