@@ -43,7 +43,7 @@
 								<th scope="row">${totalAccount}</th>
 								<td>${TongSoAccDangHoatDong}</td>
 								<td>${TongSoAccBiKhoa}</td>
-								<td><h1>${totalPage}</h1></td>
+								<td>${totalPage}</td>
 							</tr>
 						</tbody>
 					</table>
