@@ -1,4 +1,4 @@
-package controller_admin_AJAX;
+package controller_AJAX_admin;
 
 import java.io.IOException;
 
@@ -23,7 +23,7 @@ public class AJAXAdminUserManager extends HttpServlet {
 		request.setAttribute("listUser", bo.getList());
 		request.setAttribute("STTstart", bo.startRow());
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-component/UserTable.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-component/user-table.jsp");
 		dispatcher.forward(request, response);
 
 	}

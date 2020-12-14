@@ -11,9 +11,9 @@
 
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
-		<!-- Thanh menu loc du lieu va sap xep-->
+	<!-- Thanh menu loc du lieu va sap xep-->
 	<jsp:include page="/VIEW/jsp/jsp-component/filterOther.jsp"></jsp:include>
-<!-- breadcumb -->
+	<!-- breadcumb -->
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
 		<c:param name="title" value="Giỏ hàng"></c:param>
 	</c:import>
@@ -24,190 +24,108 @@
 	<section class="pt-5 pb-5 ">
 		<div class="container">
 			<div class="row">
-				<div class="col-8">
-					<div class="frame-cart">
-						<ul>
-							<li class="cart-content"><img src="https://cdn.tgdd.vn/Products/Images/42/229056/oppo-a93-trang-14-600x600.jpg">
 
 
-								<div class="content-product">
-									<div class="alpha">
-										<div class="mb-4">
-											<a href="../Product_page/chiTietSanPham.html"> iPhone 12
-												Pro Max 123GB</a>
-										</div>
-										<p>
-											Màu sắc: <span>Đen</span>
-										</p>
-										<p>
-											Thương hiệu: <span>Apple</span>
-										</p>
-									</div>
-									<div class="beta">
-										<div class="price">
-											<p>
-												23.000.00 <span class="unit">đ </span>
-											</p>
-											<p class="discount-price">
-												23.000.00 <span class="unit">đ </span>
-											</p>
-										</div>
-										<div class="quantity">
-											<div class="quantity-content">
-												<button class="btn minus">
-													<i class="fas fa-minus"></i>
-												</button>
-												<input type="number" min="1" value="1" max="5">
-												<button class="btn plus">
-													<i class="fas fa-plus"></i>
-												</button>
-											</div>
-											<div class="delete-content">
-												<button class="btn btn-danger">Xóa</button>
-											</div>
-										</div>
-									</div>
-								</div></li>
-							<li class="cart-content"><img src="https://cdn.tgdd.vn/Products/Images/42/229056/oppo-a93-trang-14-600x600.jpg">
+				<c:choose>
+					<c:when test="${ LIST_PRODUCT_IN_CART != null}">
+						<div class="col-8">
 
 
-								<div class="content-product">
-									<div class="alpha">
-										<div class="mb-4">
-											<a href="../Product_page/chiTietSanPham.html"> Vivo S8
-												64GB</a>
-										</div>
-										<p>
-											Màu sắc: <span>Tím</span>
-										</p>
-										<p>
-											Thương hiệu: <span>Vivo</span>
-										</p>
-									</div>
-									<div class="beta">
-										<div class="price">
-											<p>
-												17.000.00 <span class="unit">đ </span>
-											</p>
-											<p class="discount-price">
-												17.000.00 <span class="unit">đ </span>
-											</p>
-										</div>
-										<div class="quantity">
-											<div class="quantity-content">
-												<button class="btn minus">
-													<i class="fas fa-minus"></i>
-												</button>
-												<input type="number" min="1" value="1" max="5">
-												<button class="btn plus">
-													<i class="fas fa-plus"></i>
-												</button>
-											</div>
-											<div class="delete-content">
-												<button class="btn btn-danger">Xóa</button>
-											</div>
-										</div>
-									</div>
-								</div></li>
-							<li class="cart-content"><img
-								src="https://cdn.tgdd.vn/Products/Images/42/229056/oppo-a93-trang-14-600x600.jpg">
+							<div class="frame-cart">
+								<ul>
 
-
-								<div class="content-product">
-									<div class="alpha">
-										<div class="mb-4">
-											<a href="../Product_page/chiTietSanPham.html"> Samsung
-												galaxy S10</a>
+									<c:forEach items="${listSanPham}" var="pro" begin="0" end="3">
+										<div class="col-3">
+											<c:import url="/VIEW/jsp/jsp-component/cart-product.jsp">
+												<c:param name="id" value="${pro.id}"></c:param>
+												<c:param name="image" value="${pro.thumbnail}"></c:param>
+												<c:param name="name" value="${pro.name}"></c:param>
+												<c:param name="price" value="${pro.price}"></c:param>
+												<c:param name="salePrice" value="${pro.salePrice}"></c:param>
+											</c:import>
 										</div>
-										<p>
-											Màu sắc: <span>Trắng</span>
-										</p>
-										<p>
-											Thương hiệu: <span>Samsung</span>
-										</p>
-									</div>
-									<div class="beta">
-										<div class="price">
-											<p>
-												26.000.00 <span class="unit">đ </span>
-											</p>
-											<p class="discount-price">
-												26.000.00 <span class="unit">đ </span>
-											</p>
-										</div>
-										<div class="quantity">
-											<div class="quantity-content">
-												<button class="btn minus">
-													<i class="fas fa-minus"></i>
-												</button>
-												<input type="number" min="1" value="1" max="5">
-												<button class="btn plus">
-													<i class="fas fa-plus"></i>
-												</button>
-											</div>
-											<div class="delete-content">
-												<button class="btn btn-danger  ">Xóa</button>
-											</div>
-										</div>
-									</div>
-								</div></li>
-						</ul>
-					</div>
+									</c:forEach>
 
-				</div>
-				<div class="col-4">
-					<h5 class="mb-3 text-left ml-5">Tạm tính</h5>
-					<div class="receipt">
-
-						<ul>
-							<li class="price-product">
-								<h5>
-									iPhone 12 Pro Max 123GB<span>x</span> 1
-								</h5>
-								<p>
-									23.000.000 <span class="unit"> đ</span>
-								</p>
-
-							</li>
-							<li class="price-product">
-								<h5>
-									Samsung Galayxy S10 <span>x</span> 1
-								</h5>
-								<p>
-									17.000.000 <span class="unit"> đ</span>
-								</p>
-							</li>
-							<li class="price-product">
-								<h5>
-									Vivo S8 64G<span>x</span> 1
-								</h5>
-								<p>
-									26.000.000 <span class="unit"> đ</span>
-								</p>
-							</li>
-						</ul>
-						<div class="sum-price">
-							<div class="title">
-								<p>Tổng tiền</p>
+								</ul>
 							</div>
-							<div class="price-sum">
-								<p class="price">
-									66.000.000 <span class="unit"> đ</span>
-								</p>
-								<p>(Đã bao gồm VAT nếu có)</p>
-							</div>
-							
-							
-							 <a class="text-none" style="color:rgb(255, 255, 255)" href="${pageContext.request.contextPath}/member/payment"> <button
-                                    class="btn-primary btn-receipt">Thanh toán</button></a>
-							
-							
-							
 
 						</div>
-					</div>
+						<div class="col-4">
+							<h5 class="mb-3 text-left ml-5">Tạm tính</h5>
+							<div class="receipt">
 
-				</div>
+								<ul>
+									<li class="price-product">
+										<h5>
+											iPhone 12 Pro Max 123GB<span>x</span> 1
+										</h5>
+										<p>
+											23.000.000 <span class="unit"> đ</span>
+										</p>
+
+									</li>
+									<li class="price-product">
+										<h5>
+											Samsung Galayxy S10 <span>x</span> 1
+										</h5>
+										<p>
+											17.000.000 <span class="unit"> đ</span>
+										</p>
+									</li>
+									<li class="price-product">
+										<h5>
+											Vivo S8 64G<span>x</span> 1
+										</h5>
+										<p>
+											26.000.000 <span class="unit"> đ</span>
+										</p>
+									</li>
+								</ul>
+								<div class="sum-price">
+									<div class="title">
+										<p>Tổng tiền</p>
+									</div>
+									<div class="price-sum">
+										<p class="price">
+											66.000.000 <span class="unit"> đ</span>
+										</p>
+										<p>(Đã bao gồm VAT nếu có)</p>
+									</div>
+
+
+									<a class="text-none" style="color: rgb(255, 255, 255)"
+										href="${pageContext.request.contextPath}/payment">
+										<button class="btn-primary btn-receipt">Thanh toán</button>
+									</a>
+
+
+
+
+								</div>
+							</div>
+
+						</div>
+
+					</c:when>
+					<c:otherwise>
+
+						<div style="margin-top: -50px" class="container">
+							<div class="row mb-2  text-center">
+								<div class="col-12">
+
+									<img style="" src="${url}/image/img-sys/emptycart.webp">
+									<h2 style="margin-top: -50px" >Giỏ hàng trống</h2>
+									
+								<a href=" ${pageContext.request.contextPath}/index" class="btn btn-primary b" role="button" aria-disabled="true">Trang chủ</a>
+								</div>
+							</div>
+						</div>
+
+
+					</c:otherwise>
+				</c:choose>
+
+
 
 			</div>
 		</div>

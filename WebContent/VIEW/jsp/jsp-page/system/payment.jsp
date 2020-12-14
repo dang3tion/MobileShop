@@ -157,7 +157,7 @@
 						<div class="row ml-4">
 							<h5>Bạn vui lòng chuyển 200.000.000VND </h5>
 							<h5 class="mx-3"> Vào STK : 045845723873284</h5>
-							<h5>Chủ tài khoản: Trần Thanh Bảo, Chi nhánh: Đông Sài Gòn.</h5>
+							<h5>Chủ tài khoản: Trần Thanh Bảo, Chi nhánh: BIDV Đông Sài Gòn.</h5>
 						</div>
 
 					</div>

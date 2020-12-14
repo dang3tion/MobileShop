@@ -1,29 +1,45 @@
 package controller_user;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model_BO_service.BO_Cart;
-import model_beans.Customer;
-import model_utility.Const;
+import model_BO_service.BO_Product;
+import model_beans.Product;
 
 @WebServlet(urlPatterns = "/cart")
 public class Cart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	HashMap<String, Integer> cart;
+	BO_Product bo = new BO_Product();
+
 //	private final int maxAgeCookie = 99999999 * 9999999 * 9999999 * 9999999 * 9999999;
 //	private final static String prefixProductID = "MBS_";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		cart = (HashMap<String, Integer>) session.getAttribute("CART");
+
+		ArrayList<Product> listProduct = new ArrayList<Product>();
+
+		// display Cart
+		if (cart != null) {
+			for (String ProductID : cart.keySet()) {
+				listProduct.add(bo.getProduct(ProductID));
+			}
+
+			request.setAttribute("LIST_PRODUCT_IN_CART", listProduct);
+		}
+
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
 		dispatcher.forward(request, response);
@@ -43,10 +59,10 @@ public class Cart extends HttpServlet {
 		switch (choose) {
 		case "add":
 			if (session.getAttribute("CART") != null) {
-				HashMap<String, Integer> map = (HashMap<String, Integer>) session.getAttribute("CART");
+				cart = (HashMap<String, Integer>) session.getAttribute("CART");
 
 				// XỬ LÝ SỐ LƯỢNG MODEL SẢN PHẨM
-				if (map.size() == 5  && QuantityItemInCart == 25) {
+				if (cart.size() == 5 && QuantityItemInCart == 25) {
 					request.setAttribute("message", "Tối đa 10 sản phẩm");
 					RequestDispatcher dispatcher //
 							= this.getServletContext().getRequestDispatcher("/product-detail?id=" + productID);
@@ -55,16 +71,16 @@ public class Cart extends HttpServlet {
 				}
 
 				// XỬ LÝ SỐ LƯỢNG MỖI LOẠI SẢN PHẨM
-				if (map.containsKey(productID)) {
-					int currentQuantity = map.get(productID);
+				if (cart.containsKey(productID)) {
+					int currentQuantity = cart.get(productID);
 					if (currentQuantity <= 4) {
-						map.put(productID, currentQuantity + 1);
+						cart.put(productID, currentQuantity + 1);
 						session.setAttribute("CART_QUANTITY", QuantityItemInCart + 1);
 					} else {
 						request.setAttribute("message", "Tối đa 5 sản phẩm cho mỗi mẫu điện thoại");
 					}
 				} else {
-					map.put(productID, 1);
+					cart.put(productID, 1);
 					session.setAttribute("CART_QUANTITY", QuantityItemInCart + 1);
 				}
 

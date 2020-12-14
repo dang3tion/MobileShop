@@ -59,18 +59,18 @@ public class DAO_Product extends ExecuteStatementUtility {
 		return i.get(rdItem(i.size()));
 	}
 
-	public ArrayList<Product> getFakeDatabase() {
+	public ArrayList<Product> getList(int start, int end) {
 
 		for (int i = 0; i < 50; i++) {
-			fakeDatabase.add(new Product("MSB_0"+i, thumbnail(), name(), price(), price() + 2000000));
+			fakeDatabase.add(new Product("MSB_0" + i, thumbnail(), name(), price(), price() + 2000000));
 
 		}
 
 		return fakeDatabase;
 	}
 
-	public Product search(String id) {
-		for (Product p : getFakeDatabase()) {
+	public Product getProduct(String id) {
+		for (Product p : getList(1, 10)) {
 			if (p.getId().equals(id)) {
 				return p;
 			}
@@ -78,5 +78,4 @@ public class DAO_Product extends ExecuteStatementUtility {
 		return null;
 	}
 
-	
 }
