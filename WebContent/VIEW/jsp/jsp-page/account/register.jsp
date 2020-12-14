@@ -12,7 +12,8 @@
 
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
-
+<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
+	</c:import>
 
 	<%--breadcumb--%>
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">

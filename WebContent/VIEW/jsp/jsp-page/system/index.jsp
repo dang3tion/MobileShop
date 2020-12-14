@@ -12,7 +12,10 @@
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
-	<jsp:include page="/VIEW/jsp/jsp-component/filter.jsp"></jsp:include>
+	<!-- Thanh menu loc du lieu va sap xep-->
+		<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
+		<c:param name="display" value="on"></c:param>
+	</c:import>
 
 
 	<!-- Page Content -->

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import model_BO_service.BO_Product;
 import model_beans.Product;
+import model_utility.CodeOrder;
 
 @WebServlet(urlPatterns = "/cart")
 public class Cart extends HttpServlet {
@@ -22,6 +23,7 @@ public class Cart extends HttpServlet {
 	BO_Product bo = new BO_Product();
 	String productID;
 	RequestDispatcher dispatcher;
+	
 
 //	private final int maxAgeCookie = 99999999 * 9999999 * 9999999 * 9999999 * 9999999;
 //	private final static String prefixProductID = "MBS_";
@@ -43,8 +45,8 @@ public class Cart extends HttpServlet {
 				sumCart += pro.getPrice() * cart.get(ProductID);
 			}
 
-			request.setAttribute("LIST_PRODUCT_IN_CART", listProduct);
-			request.setAttribute("SUM_CART", sumCart);
+			session.setAttribute("LIST_PRODUCT_IN_CART", listProduct);
+			session.setAttribute("SUM_CART", sumCart);
 		}
 
 		dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
@@ -59,6 +61,7 @@ public class Cart extends HttpServlet {
 		productID = request.getParameter("id");
 		String choose = request.getParameter("choose");
 		String page = request.getParameter("page");
+		String datHang = request.getParameter("datHang");
 
 		HttpSession session = request.getSession();
 
@@ -99,8 +102,13 @@ public class Cart extends HttpServlet {
 				session.setAttribute("CART_QUANTITY", QuantityItemInCart + 1);
 			}
 
-			if (page != null) {
+			if (datHang != null) {
 				response.sendRedirect(request.getContextPath() + "/cart");
+				return;
+			}
+
+			if (page != null) {
+				doGet(request, response);
 				return;
 			}
 
@@ -109,10 +117,6 @@ public class Cart extends HttpServlet {
 
 			break;
 		case "decrease":
-//			<input name="page" value="cart-page" hidden="true">
-
-//			map.put(key, map.get(key) + 1);
-
 			if (cart.get(productID) > 1) {
 				cart.put(productID, cart.get(productID) - 1);
 
@@ -120,7 +124,7 @@ public class Cart extends HttpServlet {
 
 				session.setAttribute("CART_QUANTITY", QuantityItemInCart - 1);
 			}
-			
+
 			response.sendRedirect(request.getContextPath() + "/cart");
 			break;
 		case "remove":

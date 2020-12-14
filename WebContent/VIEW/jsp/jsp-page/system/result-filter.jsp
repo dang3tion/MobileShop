@@ -10,7 +10,8 @@
 
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
-		<jsp:include page="/VIEW/jsp/jsp-component/filter.jsp"></jsp:include>
+		<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
+	</c:import>
 	<!-- Thanh menu loc du lieu va sap xep-->
 	
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">

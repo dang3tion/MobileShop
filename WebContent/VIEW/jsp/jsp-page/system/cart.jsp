@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <head>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
 <c:url var="url" scope="session" value="/VIEW"></c:url>
@@ -12,8 +13,8 @@
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
-	<jsp:include page="/VIEW/jsp/jsp-component/filterOther.jsp"></jsp:include>
-	<!-- breadcumb -->
+	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
+	</c:import>
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
 		<c:param name="title" value="Giỏ hàng"></c:param>
 	</c:import>
@@ -22,43 +23,40 @@
 
 
 	<!-- @@@@@@@@@@ HIỆN THÔNG BÁO KHI VƯỢT QUÁ GIỚI HẠN SẢN PHẨM TRONG GIỎ HÀNG @@@@@@@@@@@@@ -->
-					<c:if test="${message != null}">
+	<c:if test="${message != null}">
 
-						<script>
-							window.onload = function() {
-								document.getElementById('btn-message').click();
-							}
-						</script>
+		<script>
+			window.onload = function() {
+				document.getElementById('btn-message').click();
+			}
+		</script>
 
-						<!-- Button trigger modal -->
-						<button style="padding: -30px; visibility: hidden; z-index: 99999"
-							type="button" id="btn-message" class="btn btn-white"
-							data-toggle="modal" data-target="#exampleModalCenter"></button>
+		<!-- Button trigger modal -->
+		<button style="padding: -30px; visibility: hidden; z-index: 99999"
+			type="button" id="btn-message" class="btn btn-white"
+			data-toggle="modal" data-target="#exampleModalCenter"></button>
 
-						<!-- Modal -->
-						<div class="modal fade" id="exampleModalCenter" tabindex="-1"
-							role="dialog" aria-labelledby="exampleModalCenterTitle"
-							aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLongTitle">${message}</h5>
-									</div>
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">${message}</h5>
+					</div>
 
-									<div class="modal-footer">
-										<a href="${pageContext.request.contextPath}/cart"
-											class="btn btn-primary" role="button" aria-pressed="true">
-											Vào giỏ hàng</a>
-										<button type="button" class="btn btn-danger"
-											data-dismiss="modal">Đóng</button>
-									</div>
-								</div>
-							</div>
-						</div>
+					<div class="modal-footer">
 
-					</c:if>
-					<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO KHI VƯỢT QUÁ GIỚI HẠN SẢN PHẨM TRONG GIỎ HÀNG @@@@@@@@@@@@@ -->
-				
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</c:if>
+	<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO KHI VƯỢT QUÁ GIỚI HẠN SẢN PHẨM TRONG GIỎ HÀNG @@@@@@@@@@@@@ -->
+
 
 
 	<section class="pt-5 pb-5 ">
@@ -107,7 +105,9 @@
 													</span>
 												</h6>
 											</div> <span style="color: #C41111; font-weight: bolder;"
-											class="price">${pro.price * pro.quantityInCart } <span
+											class="price"> <fmt:formatNumber type="number"
+													maxFractionDigits="3"
+													value="${pro.price * pro.quantityInCart }" /> <span
 												class='unit'>đ</span></span>
 										</li>
 									</c:forEach>
@@ -119,7 +119,9 @@
 									</div>
 									<div class="price-sum">
 										<p class="price">
-											${SUM_CART} <span class="unit"> đ</span>
+											<fmt:formatNumber type="number" maxFractionDigits="3"
+												value="${SUM_CART}" />
+											<span class="unit"> đ</span>
 										</p>
 										<p>(Đã bao gồm VAT)</p>
 									</div>

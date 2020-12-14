@@ -12,7 +12,8 @@
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
-	<jsp:include page="/VIEW/jsp/jsp-component/filterOther.jsp"></jsp:include>
+		<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
+	</c:import>
 
 
 	<img style="margin-top: -50px; width: 100%"
