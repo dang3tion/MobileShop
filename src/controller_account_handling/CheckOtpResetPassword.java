@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model_BO_service.BO_Account;
-import model_BO_service.OTP;
 import model_beans.Account;
 import model_utility.Const;
+import model_utility.OTP;
 import model_utility.SendMail;
 
 /**

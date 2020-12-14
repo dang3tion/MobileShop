@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 <%-- <%@ page import="model_utility.Const"%> --%>
@@ -124,7 +125,7 @@
 								<div class="item-menu" id="cart">
 									<i class="fas fa-shopping-cart"></i>
 									<div class="item-menu-text">
-										<p>Giỏ hàng</p>
+										<p><fmt:message key="cart-menu-item"></fmt:message></p>
 									</div>
 									<c:if test="${CART_QUANTITY!=0}">
 										<label class="quantity-cart" id="quantity-cart123">${CART_QUANTITY}</label>

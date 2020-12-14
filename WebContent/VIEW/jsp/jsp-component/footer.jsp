@@ -110,7 +110,7 @@
 				<div class="btn-group">
 					<button type="button" class="btn btn-warning dropdown-toggle"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<fmt:message key="choose-language"></fmt:message>
+						<fmt:message key="choose-language"></fmt:message> 
 					</button>
 					<div class="dropdown-menu">
 						<a class="dropdown-item"

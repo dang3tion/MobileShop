@@ -20,6 +20,8 @@ public class Cart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	HashMap<String, Integer> cart;
 	BO_Product bo = new BO_Product();
+	String productID;
+	RequestDispatcher dispatcher;
 
 //	private final int maxAgeCookie = 99999999 * 9999999 * 9999999 * 9999999 * 9999999;
 //	private final static String prefixProductID = "MBS_";
@@ -33,33 +35,38 @@ public class Cart extends HttpServlet {
 
 		// display Cart
 		if (cart != null) {
+			int sumCart = 0;
 			for (String ProductID : cart.keySet()) {
-				listProduct.add(bo.getProduct(ProductID));
+				Product pro = bo.getProduct(ProductID);
+				pro.setQuantityInCart(cart.get(ProductID));
+				listProduct.add(pro);
+				sumCart += pro.getPrice() * cart.get(ProductID);
 			}
 
 			request.setAttribute("LIST_PRODUCT_IN_CART", listProduct);
+			request.setAttribute("SUM_CART", sumCart);
 		}
 
-		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
+		dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
 		dispatcher.forward(request, response);
+		return;
 
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String productID = request.getParameter("id");
+		productID = request.getParameter("id");
 		String choose = request.getParameter("choose");
 
 		HttpSession session = request.getSession();
 
 		int QuantityItemInCart = (Integer) session.getAttribute("CART_QUANTITY");
+		cart = (HashMap<String, Integer>) session.getAttribute("CART");
 
 		switch (choose) {
 		case "add":
 			if (session.getAttribute("CART") != null) {
-				cart = (HashMap<String, Integer>) session.getAttribute("CART");
 
 				// XỬ LÝ SỐ LƯỢNG MODEL SẢN PHẨM
 				if (cart.size() == 5 && QuantityItemInCart == 25) {
@@ -90,11 +97,28 @@ public class Cart extends HttpServlet {
 				session.setAttribute("CART", map);
 				session.setAttribute("CART_QUANTITY", QuantityItemInCart + 1);
 			}
-			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/product-detail?id=" + productID);
+			dispatcher = this.getServletContext().getRequestDispatcher("/product-detail?id=" + productID);
 			dispatcher.forward(request, response);
+
+			break;
+		case "decrease":
+
+			break;
+		case "remove":
+			cart = (HashMap<String, Integer>) session.getAttribute("CART");
+			session.setAttribute("CART_QUANTITY", QuantityItemInCart - cart.get(productID));
+			cart.remove(productID);
+			if ((Integer) session.getAttribute("CART_QUANTITY") == 0) {
+				session.removeAttribute("CART");
+			}
+			response.sendRedirect(request.getContextPath() + "/cart");
 			break;
 
+		case "remove-all":
+			session.removeAttribute("CART");
+			session.setAttribute("CART_QUANTITY", 0);
+			response.sendRedirect(request.getContextPath() + "/cart");
+			break;
 		default:
 			break;
 		}

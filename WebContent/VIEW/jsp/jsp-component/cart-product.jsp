@@ -6,7 +6,7 @@
 <li class="cart-content"><c:url value="/product-detail"
 		var="URLdetail">
 		<c:param name="id" value="${param.id}" />
-	</c:url> <img src="${param.image}">
+	</c:url> <a href="${URLdetail}" target="_blank"><img src="${param.image}"></a>
 
 
 	<div class="content-product">
@@ -16,12 +16,9 @@
 				<a href="${URLdetail}"> ${param.name}</a>
 			</div>
 			<p>
-				Màu sắc: <span>Đen</span>
+				Màu sắc: <span class="mr-3">Đen</span> Thương hiệu: <span>Apple</span>
 			</p>
-			<p>
-				Thương hiệu: <span>Apple</span>
-			</p>
-			<a href="${URLdetail}">xem chi tiết</a>
+			<a href="${URLdetail}" target="_blank">xem chi tiết</a>
 		</div>
 
 		<div class="beta">
@@ -38,13 +35,18 @@
 					<button class="btn minus">
 						<i class="fas fa-minus"></i>
 					</button>
-					<input type="number" min="1" value="1" max="5">
+					<input type="number" min="1" value="${param.quantity}" max="5" disabled>
 					<button class="btn plus">
 						<i class="fas fa-plus"></i>
 					</button>
 				</div>
 				<div class="delete-content">
-					<button class="btn btn-danger">Xóa</button>
+
+					<form method="POST"
+						action="${pageContext.request.contextPath}/cart">
+						<input name="id" value="${param.id}" hidden="true">
+						<button name="choose" value="remove" class="btn btn-danger">Xóa</button>
+					</form>
 				</div>
 			</div>
 		</div>

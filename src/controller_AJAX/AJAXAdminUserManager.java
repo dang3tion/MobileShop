@@ -1,4 +1,4 @@
-package controller_AJAX_admin;
+package controller_AJAX;
 
 import java.io.IOException;
 

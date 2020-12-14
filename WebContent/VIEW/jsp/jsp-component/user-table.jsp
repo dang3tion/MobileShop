@@ -3,11 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-
-
-
-
-
 <c:forEach var="user" items="${listUser}" varStatus="i">
 	<tr>
 		<td>${STTstart+i.index}</td>

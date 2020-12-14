@@ -8,17 +8,12 @@ public class Product {
 	private int price;
 	private int salePrice;
 	private String thumbnail;
-
+	private String content;
+	private int quantityInCart;
 	private ArrayList<Picture_product> listPicture = new ArrayList<Picture_product>();
 	private ArrayList<Color_product> listColor = new ArrayList<Color_product>();
 	private ArrayList<Configuration> listConfig = new ArrayList<Configuration>();
 	private ArrayList<Evaluate_product> listEvaluate = new ArrayList<Evaluate_product>();
-	private String content;
-
-
-
-
-
 
 	public Product(String id, String name, int price, int salePrice, String thumbnail,
 			ArrayList<Picture_product> listPicture, ArrayList<Color_product> listColor,
@@ -46,12 +41,14 @@ public class Product {
 		this.salePrice = priceSale;
 	}
 
+	public int getQuantityInCart() {
+		return quantityInCart;
+	}
 
-	
+	public void setQuantityInCart(int quantityInCart) {
+		this.quantityInCart = quantityInCart;
+	}
 
-	
-
-	
 	public String getId() {
 		return id;
 	}
@@ -137,7 +134,5 @@ public class Product {
 		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", salePrice=" + salePrice + ", thumbnail="
 				+ thumbnail + "]\n";
 	}
-
-	
 
 }

@@ -156,7 +156,7 @@
 							<input name="choose" value="add" hidden="true">
 							<button name="id" value="${PRODUCTID}" type="submit"
 								class="btnMua btn btn-primary btn-lg btn-block"
-								onclick="addcart('quantity-cart')">
+								>
 								<i class="fas fa-cart-plus" style="color: white;"></i> THÊM VÀO
 								GIỎ HÀNG
 							</button>

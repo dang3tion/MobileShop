@@ -7,6 +7,7 @@
 <fmt:setLocale value="${sessionScope.LANGUAGE}" scope="session" />
 
 <meta charset="utf-8" />
+<link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/2/2d/Mobile-Smartphone-icon.png">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />

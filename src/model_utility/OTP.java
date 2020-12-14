@@ -1,4 +1,4 @@
-package model_BO_service;
+package model_utility;
 
 public class OTP {
 

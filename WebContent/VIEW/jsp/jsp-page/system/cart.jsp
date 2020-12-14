@@ -21,32 +21,40 @@
 	<!-- Page Content -->
 
 
+	<%
+		String a = "dsdf";
+	%>
+
+
 	<section class="pt-5 pb-5 ">
 		<div class="container">
 			<div class="row">
 
 
 				<c:choose>
-					<c:when test="${ LIST_PRODUCT_IN_CART != null}">
+					<c:when test="${ LIST_PRODUCT_IN_CART != null }">
 						<div class="col-8">
-
-
 							<div class="frame-cart">
 								<ul>
-
-									<c:forEach items="${listSanPham}" var="pro" begin="0" end="3">
-										<div class="col-3">
-											<c:import url="/VIEW/jsp/jsp-component/cart-product.jsp">
-												<c:param name="id" value="${pro.id}"></c:param>
-												<c:param name="image" value="${pro.thumbnail}"></c:param>
-												<c:param name="name" value="${pro.name}"></c:param>
-												<c:param name="price" value="${pro.price}"></c:param>
-												<c:param name="salePrice" value="${pro.salePrice}"></c:param>
-											</c:import>
-										</div>
+									<c:forEach items="${LIST_PRODUCT_IN_CART}" var="pro">
+										<c:import url="/VIEW/jsp/jsp-component/cart-product.jsp">
+											<c:param name="id" value="${pro.id}"></c:param>
+											<c:param name="image" value="${pro.thumbnail}"></c:param>
+											<c:param name="name" value="${pro.name}"></c:param>
+											<c:param name="price" value="${pro.price}"></c:param>
+											<c:param name="salePrice" value="${pro.salePrice}"></c:param>
+											<c:param name="quantity" value="${pro.quantityInCart}"></c:param>
+										</c:import>
 									</c:forEach>
 
 								</ul>
+								<form method="POST"
+									action="${pageContext.request.contextPath}/cart">
+									<button type="submit" name="choose" value="remove-all"
+										class="ml-5 btn btn-danger">
+										<i class="fas fa-trash-alt"></i> Xóa tất cả
+									</button>
+								</form>
 							</div>
 
 						</div>
@@ -54,32 +62,21 @@
 							<h5 class="mb-3 text-left ml-5">Tạm tính</h5>
 							<div class="receipt">
 
-								<ul>
-									<li class="price-product">
-										<h5>
-											iPhone 12 Pro Max 123GB<span>x</span> 1
-										</h5>
-										<p>
-											23.000.000 <span class="unit"> đ</span>
-										</p>
+								<ul class="list-group mb-3">
+									<c:forEach items="${LIST_PRODUCT_IN_CART}" var="pro">
+										<li
+											class="list-group-item d-flex justify-content-between lh-condensed">
+											<div>
+												<h6 class="my-0">${pro.name}
+													<span style="color: blue;"> x ${pro.quantityInCart}
+													</span>
+												</h6>
+											</div> <span style="color: #C41111; font-weight: bolder;"
+											class="price">${pro.price * pro.quantityInCart } <span
+												class='unit'>đ</span></span>
+										</li>
+									</c:forEach>
 
-									</li>
-									<li class="price-product">
-										<h5>
-											Samsung Galayxy S10 <span>x</span> 1
-										</h5>
-										<p>
-											17.000.000 <span class="unit"> đ</span>
-										</p>
-									</li>
-									<li class="price-product">
-										<h5>
-											Vivo S8 64G<span>x</span> 1
-										</h5>
-										<p>
-											26.000.000 <span class="unit"> đ</span>
-										</p>
-									</li>
 								</ul>
 								<div class="sum-price">
 									<div class="title">
@@ -87,9 +84,9 @@
 									</div>
 									<div class="price-sum">
 										<p class="price">
-											66.000.000 <span class="unit"> đ</span>
+											${SUM_CART} <span class="unit"> đ</span>
 										</p>
-										<p>(Đã bao gồm VAT nếu có)</p>
+										<p>(Đã bao gồm VAT)</p>
 									</div>
 
 
@@ -110,13 +107,15 @@
 					<c:otherwise>
 
 						<div style="margin-top: -50px" class="container">
-							<div class="row mb-2  text-center">
+							<div class="row mb-4  text-center">
 								<div class="col-12">
 
 									<img style="" src="${url}/image/img-sys/emptycart.webp">
-									<h2 style="margin-top: -50px" >Giỏ hàng trống</h2>
-									
-								<a href=" ${pageContext.request.contextPath}/index" class="btn btn-primary b" role="button" aria-disabled="true">Trang chủ</a>
+									<h2 style="margin-top: -50px">Giỏ hàng trống</h2>
+
+									<a href=" ${pageContext.request.contextPath}/index"
+										class="btn btn-primary b" role="button" aria-disabled="true">Trang
+										chủ</a>
 								</div>
 							</div>
 						</div>
