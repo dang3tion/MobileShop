@@ -153,9 +153,9 @@
 								type="number" maxFractionDigits="3"
 								value="${SUM_CART }" /> VNĐ</h5>
 							<h5 class="mx-3">Vào STK : 045845723873284</h5>
-							<h5>Chủ tài khoản: Trần Thanh Bảo, Chi nhánh: BIDV Đông Sài
+							<h5>Chủ tài khoản: CTY TNHH MobileShop, Chi nhánh: BIDV Đông Sài
 								Gòn.</h5>
-								<h5> Với nội dung: ${CODE_ODER}</h5>
+								<h5> Với nội dung là mã đơn hàng: ${CODE_ODER}</h5>
 
 						</div>
 
