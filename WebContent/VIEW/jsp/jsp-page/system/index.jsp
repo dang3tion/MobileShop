@@ -40,9 +40,11 @@
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLongTitle">${messageSuccess}</h5>
 					</div>
-
+					<div class="modal-body"><p>Vui lòng cập nhật thông tin cá nhân<p>
+					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-success" data-dismiss="modal">Đóng</button>
+					<a href="${pageContext.request.contextPath}/member/profile" class="btn btn-primary" role="button">Cập nhật</a>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Cập nhật sau</button>
 					</div>
 				</div>
 			</div>
@@ -53,7 +55,7 @@
 
 
 
-	
+
 	<!-- Page Content -->
 	<div class="container">
 

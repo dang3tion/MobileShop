@@ -15,6 +15,40 @@
 </head>
 
 <body>
+<!-- @@@@@@@@@@ HIỆN THÔNG BÁO  @@@@@@@@@@@@@ -->
+	<c:if test="${message != null}">
+
+		<script>
+			window.onload = function() {
+				document.getElementById('btn-message').click();
+			}
+		</script>
+
+		<!-- Button trigger modal -->
+		<button style="padding: -30px; visibility: hidden; z-index: 99999"
+			type="button" id="btn-message" class="btn btn-white"
+			data-toggle="modal" data-target="#exampleModalCenter"></button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">${message}</h5>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal">Đóng</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</c:if>
+	<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO  @@@@@@@@@@@@@ -->
+
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
 	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
@@ -45,7 +79,6 @@
 				onfocusout="check_password(this)">
 			<div class="require" id="require-password">Mật khẩu phải có ít
 				nhất 8 ký tự</div>
-			<h5 style="color: red">${message}</h5>
 			<div class="checkbox mb-3">
 				<a href="${pageContext.request.contextPath}/forgot" class="mx-2">Quên
 					mật khẩu</a> <a href="${pageContext.request.contextPath}/register"

@@ -70,7 +70,9 @@ public class CheckOTP extends HttpServlet {
 		} else {
 
 			String userOTP = request.getParameter("OTP");		
-			
+			System.out.println("sys "+otp.getSysOTP());
+			System.out.println("user "+userOTP);
+			System.out.println(otp.checkLiveOTP(LocalDateTime.now()));
 			if (!otp.checkLiveOTP(LocalDateTime.now())) {
 				request.setAttribute("message", "Mã OTP đã hết hiệu lực");
 				RequestDispatcher dispatcher //

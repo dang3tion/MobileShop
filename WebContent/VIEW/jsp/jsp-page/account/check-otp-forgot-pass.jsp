@@ -14,6 +14,39 @@
 </head>
 
 <body>
+<!-- @@@@@@@@@@ HIỆN THÔNG BÁO  @@@@@@@@@@@@@ -->
+	<c:if test="${message != null}">
+
+		<script>
+			window.onload = function() {
+				document.getElementById('btn-message').click();
+			}
+		</script>
+
+		<!-- Button trigger modal -->
+		<button style="padding: -30px; visibility: hidden; z-index: 99999"
+			type="button" id="btn-message" class="btn btn-white"
+			data-toggle="modal" data-target="#exampleModalCenter"></button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">${message}</h5>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal">Đóng</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</c:if>
+	<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO  @@@@@@@@@@@@@ -->
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
 	</c:import>
@@ -36,7 +69,6 @@
 		<p style="display: none; color: red" id="check_OTP">Vui lòng không
 			nhập chữ và kí tự đặc biệt.</p>
 		</div>
-		<h5 style="color: red">${message}</h5>
 		<button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Tiếp
 			tục</button>
 
