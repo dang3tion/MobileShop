@@ -16,11 +16,10 @@
 		<c:param name="title" value="Kiểm tra đơn hàng"></c:param>
 	</c:import>
 	<!-- Thanh menu loc du lieu va sap xep-->
-	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
-	</c:import>
+	<jsp:include page="/VIEW/jsp/jsp-component/filterOther.jsp"></jsp:include>
 
-
-
+	
+	
 	<!-- Page Content -->
 
 

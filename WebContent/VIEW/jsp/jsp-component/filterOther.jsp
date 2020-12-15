@@ -101,62 +101,7 @@
 						</li>
 					</ul>
 				</div>
-				<!--Noi dung sap xep-->
-				<div class="col-6 beta">
-					<ul class="list-menu">
-						<li class="item-menu" id="order">
-							<div class="header">
-								<a href="#">Xếp theo <i class="fas fa-caret-down"></i></a>
-							</div>
-							<div class="content-dropdown" id="content-order">
-								<div class="row">
-									<div class="col-12">
-										<div class="list-group">
-											<a href="#" class="list-group-item list-group-item-action">Mới
-												cập nhật</a> <a href="#"
-												class="list-group-item list-group-item-action">Sản phẩm
-												Mới-Cũ</a> <a href="#"
-												class="list-group-item list-group-item-action">Sản phẩm
-												Cũ-Mới</a> <a href="#"
-												class="list-group-item list-group-item-action">Tên A-Z</a> <a
-												href="#" class="list-group-item list-group-item-action">Tên
-												Z-A</a> <a href="#"
-												class="list-group-item list-group-item-action">Được xem
-												nhiều nhất</a> <a href="#"
-												class="list-group-item list-group-item-action">Đánh giá
-												cao</a>
-
-										</div>
-									</div>
-
-								</div>
-							</div>
-						<li class="item-menu"><a href="#">
-								<div class="filter-check">
-									<input type="checkbox" name="check" onclick="onlyOne(this)"
-										value="thapcao" id="thapcao"> <label for="thapcao">
-										Giá cao đến thấp<i class="fas fa-arrow-up"></i>
-									</label>
-								</div>
-						</a></li>
-						<li class="item-menu"><a href="#">
-								<div class="filter-check">
-									<input type="checkbox" name="check" onclick="onlyOne(this)"
-										value="caothap" id="caothap"> <label for="caothap">
-										Giá thấp đến cao<i class="fas fa-arrow-down"></i>
-									</label>
-								</div>
-						</a></li>
-						<script>
-              function onlyOne(checkbox) {
-                var checkboxes = document.getElementsByName('check')
-                checkboxes.forEach((item) => {
-                  if (item !== checkbox) item.checked = false
-                })
-              }
-            </script>
-					</ul>
-				</div>
+			
 			</div>
 		</div>
 	</div>

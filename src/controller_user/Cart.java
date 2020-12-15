@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import model_BO_service.BO_Product;
 import model_beans.Product;
-import model_utility.CodeOrder;
 
 @WebServlet(urlPatterns = "/cart")
 public class Cart extends HttpServlet {
@@ -23,7 +22,6 @@ public class Cart extends HttpServlet {
 	BO_Product bo = new BO_Product();
 	String productID;
 	RequestDispatcher dispatcher;
-	
 
 //	private final int maxAgeCookie = 99999999 * 9999999 * 9999999 * 9999999 * 9999999;
 //	private final static String prefixProductID = "MBS_";
@@ -45,8 +43,8 @@ public class Cart extends HttpServlet {
 				sumCart += pro.getPrice() * cart.get(ProductID);
 			}
 
-			session.setAttribute("LIST_PRODUCT_IN_CART", listProduct);
-			session.setAttribute("SUM_CART", sumCart);
+			request.setAttribute("LIST_PRODUCT_IN_CART", listProduct);
+			request.setAttribute("SUM_CART", sumCart);
 		}
 
 		dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
@@ -60,8 +58,6 @@ public class Cart extends HttpServlet {
 			throws ServletException, IOException {
 		productID = request.getParameter("id");
 		String choose = request.getParameter("choose");
-		String page = request.getParameter("page");
-		String datHang = request.getParameter("datHang");
 
 		HttpSession session = request.getSession();
 
@@ -83,9 +79,9 @@ public class Cart extends HttpServlet {
 
 				// XỬ LÝ SỐ LƯỢNG MỖI LOẠI SẢN PHẨM
 				if (cart.containsKey(productID)) {
-					int currentQuantityPro = cart.get(productID);
-					if (currentQuantityPro <= 4) {
-						cart.put(productID, currentQuantityPro + 1);
+					int currentQuantity = cart.get(productID);
+					if (currentQuantity <= 4) {
+						cart.put(productID, currentQuantity + 1);
 						session.setAttribute("CART_QUANTITY", QuantityItemInCart + 1);
 					} else {
 						request.setAttribute("message", "Tối đa 5 sản phẩm cho mỗi mẫu điện thoại");
@@ -101,31 +97,12 @@ public class Cart extends HttpServlet {
 				session.setAttribute("CART", map);
 				session.setAttribute("CART_QUANTITY", QuantityItemInCart + 1);
 			}
-
-			if (datHang != null) {
-				response.sendRedirect(request.getContextPath() + "/cart");
-				return;
-			}
-
-			if (page != null) {
-				doGet(request, response);
-				return;
-			}
-
 			dispatcher = this.getServletContext().getRequestDispatcher("/product-detail?id=" + productID);
 			dispatcher.forward(request, response);
 
 			break;
 		case "decrease":
-			if (cart.get(productID) > 1) {
-				cart.put(productID, cart.get(productID) - 1);
 
-				session.setAttribute("CART", cart);
-
-				session.setAttribute("CART_QUANTITY", QuantityItemInCart - 1);
-			}
-
-			response.sendRedirect(request.getContextPath() + "/cart");
 			break;
 		case "remove":
 			cart = (HashMap<String, Integer>) session.getAttribute("CART");

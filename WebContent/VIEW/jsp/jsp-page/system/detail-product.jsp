@@ -4,7 +4,6 @@
 <html>
 <head>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <meta charset="ISO-8859-1">
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
 
@@ -20,11 +19,11 @@
 	<!-- Page Menu -->
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
-	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
-	</c:import>
+
+	<jsp:include page="/VIEW/jsp/jsp-component/filterOther.jsp"></jsp:include>
 	<!-- breadcumb -->
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
-		<c:param name="title" value="${PRODUCT.name}"></c:param>
+		<c:param name="title" value="Xem chi tiết"></c:param>
 	</c:import>
 	<!-- Page Content -->
 	<div class="container" style="max-width: 90%;">
@@ -36,7 +35,7 @@
 
 		<!-- Portfolio Item Heading -->
 		<h4 class="my-4">
-			<small>Điện thoại</small> ${PRODUCT.name}
+			<small>Điện thoại</small> Apple iPhone 12 - 256GB - Chính hãng VN/A
 		</h4>
 
 		<!-- Portfolio Item Row -->
@@ -94,16 +93,11 @@
 			<div class="col-md-5">
 				<div class="" style="margin-bottom: 30px; margin-top: 15px">
 					<h2 class="my-3 bg-price color-price d-inline mr-5">
-						<small style="color: black; font-weight: bold;">Giá: </small>
-						<fmt:formatNumber type="number" maxFractionDigits="3"
-							value="${PRODUCT.price}" />
+						<small style="color: black; font-weight: bold;">Giá: </small>21.890.000
 						₫
 					</h2>
-					<h3 class="my-3 bg-price price d-inline" style="color: #3D3D3D;">
-						<fmt:formatNumber type="number" maxFractionDigits="3"
-							value="${PRODUCT.salePrice}" />
-						₫
-					</h3>
+					<h3 class="my-3 bg-price price d-inline" style="color: #3D3D3D;">24.890.000
+						₫</h3>
 
 				</div>
 				<div class="block">
@@ -160,23 +154,20 @@
 						<form action="${pageContext.request.contextPath}/cart"
 							method="post">
 							<input name="choose" value="add" hidden="true">
-							<button name="id" value="${PRODUCT.id}" type="submit"
-								class="btnMua btn btn-primary btn-lg btn-block">
+							<button name="id" value="${PRODUCTID}" type="submit"
+								class="btnMua btn btn-primary btn-lg btn-block"
+								>
 								<i class="fas fa-cart-plus" style="color: white;"></i> THÊM VÀO
 								GIỎ HÀNG
 							</button>
 						</form>
 					</div>
 					<div class="col-sm-5">
-						<form action="${pageContext.request.contextPath}/cart"
-							method="post">
-							<input name="choose" value="add" hidden="true">
-							<input name="datHang" value="true" hidden="true">
-							<button name="id" value="${PRODUCT.id}" type="submit"
-								class="btnMua btn btn-warning btn-lg btn-block">
-								<strong>ĐẶT HÀNG</strong>
+						<a href=" ${pageContext.request.contextPath}/cart">
+							<button type="button"
+								class="btnMua btn btn-danger btn-lg btn-block">ĐẶT HÀNG
 							</button>
-						</form>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -235,7 +226,7 @@
 						</div>
 
 					</c:if>
-					<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO KHI VƯỢT QUÁ GIỚI HẠN SẢN PHẨM TRONG GIỎ HÀNG @@@@@@@@@@@@@ -->
+
 					<h3 class="center-txt">Đánh giá chi tiết iPhone 12</h3>
 					<h5 style="font-size: 18px;">
 						Chiếc iPhone mạnh mẽ nhất, lớn nhất,zz thời lượng pin tốt nhất đã
