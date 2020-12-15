@@ -17,6 +17,4 @@ public class BO_Product {
 		return dao.getList(start, end);
 	}
 	
-	
-	
 }
