@@ -34,7 +34,7 @@
 			<h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
 
 			<input type="text" name="email" id="inputEmail" class="form-control"
-				placeholder="Email hoặc số điện thoại" value=""
+				placeholder="Email hoặc số điện thoại" value="${messEmail}"
 				onfocusout=" check_email(this.id)">
 			<div class="require" id="require-email">
 				Yêu cầu nhập email theo đúng theo định dạng email <br>Ví dụ:

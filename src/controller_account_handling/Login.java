@@ -45,6 +45,7 @@ public class Login extends HttpServlet {
 		case 2: {
 			
 			messageErr = "Tài khoản hoặc mật khẩu không đúng";
+			request.setAttribute("messEmail", email);
 			request.setAttribute("message", messageErr);
 			RequestDispatcher dispatcher //
 					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/login.jsp");
