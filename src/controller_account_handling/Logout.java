@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model_utility.Const;
 
 @WebServlet(urlPatterns = "/logout")
 public class Logout extends HttpServlet {
@@ -13,8 +16,9 @@ public class Logout extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		request.getSession().invalidate();
+
+		HttpSession session = request.getSession();
+		session.removeAttribute(Const.ACCOUNT_LOGINED);
 		response.sendRedirect(request.getContextPath() + "/index");
 	}
 

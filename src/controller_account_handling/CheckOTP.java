@@ -68,7 +68,7 @@ public class CheckOTP extends HttpServlet {
 
 			// xử lý dữ liệu khách hàng gửi OTP lên
 		} else {
-
+			
 			String userOTP = request.getParameter("OTP");		
 			System.out.println("sys "+otp.getSysOTP());
 			System.out.println("user "+userOTP);
