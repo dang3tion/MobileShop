@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <head>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
 <c:url var="url" scope="session" value="/VIEW"></c:url>
@@ -11,10 +12,13 @@
 </head>
 
 <body>
+
+
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
-		<!-- Thanh menu loc du lieu va sap xep-->
-	<jsp:include page="/VIEW/jsp/jsp-component/filterOther.jsp"></jsp:include>
-<!-- breadcumb -->
+	<!-- Thanh menu loc du lieu va sap xep-->
+	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
+	</c:import>
+	<!-- breadcumb -->
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
 		<c:param name="title" value="Thanh toán"></c:param>
 	</c:import>
@@ -27,44 +31,33 @@
 		</div>
 
 		<div class="row mt-5">
-		
+
 			<div class="col-md-4 order-md-2 mb-4">
 				<h4 class="d-flex justify-content-between align-items-center mb-3">
 					<span class="text-muted">Sản phẩm của bạn</span> <span
 						class="badge badge-secondary badge-pill">3</span>
 				</h4>
 				<ul class="list-group mb-3">
-					<li
-						class="list-group-item d-flex justify-content-between lh-condensed">
-						<div>
-							<h6 class="my-0">Iphone 8S</h6>
-						</div> <span class=" price">9.000.000 <span class='unit'>đ</span></span>
-					</li>
-					<li
-						class="list-group-item d-flex justify-content-between lh-condensed">
-						<div>
-							<h6 class="my-0">Sony Xpreria</h6>
-						</div> <span class=" price">8.000.000 <span class='unit'>đ</span></span>
-					</li>
-					<li
-						class="list-group-item d-flex justify-content-between lh-condensed">
-						<div>
-							<h6 class="my-0">Oppo A8 Plus</h6>
-						</div> <span class=" price" style="color: red;">5.000.000 <span
-							class='unit'>đ</span></span>
-					</li>
-					<li
-						class="list-group-item d-flex justify-content-between lh-condensed">
-						<div>
-							<h6 class="my-0">Phí giao hàng</h6>
-							<!-- <small class="text-muted">Phiên bản limited edition</small> -->
-						</div> <span class=" price" style="color: red;">500.000 <span
-							class='unit'>đ</span></span>
-					</li>
+					<c:forEach items="${LIST_PRODUCT_IN_CART}" var="pro">
+						<li
+							class="list-group-item d-flex justify-content-between lh-condensed">
+							<div>
+								<h6 class="my-0">${pro.name}
+									<span style="color: blue;"> x ${pro.quantityInCart} </span>
+								</h6>
+							</div> <span style="color: #C41111; font-weight: bolder;" class="price">
+								<fmt:formatNumber type="number" maxFractionDigits="3"
+									value="${pro.price * pro.quantityInCart }" /> <span
+								class='unit'>đ</span>
+						</span>
+						</li>
+					</c:forEach>
 
 					<li class="list-group-item d-flex justify-content-between"><span>Tổng
-							cộng</span> <strong class="price">19.000.000 <span class='unit'>đ</span></strong>
-					</li>
+							cộng</span> <strong class="price"><fmt:formatNumber
+								type="number" maxFractionDigits="3"
+								value="${SUM_CART }" /> <span
+							class='unit'>đ</span></strong></li>
 				</ul>
 
 
@@ -132,7 +125,7 @@
 						</div>
 					</div>
 
-					<hr/>
+					<hr />
 					<h6 class="mb-4">Chọn phương thức thanh toán:</h6>
 					<div class="d-block my-3">
 						<div class="custom-control custom-radio">
@@ -152,13 +145,18 @@
 					</div>
 
 					<div id="FormThanhToanBangThe">
-					
-					
-						
+
+
+
 						<div class="row ml-4">
-							<h5>Bạn vui lòng chuyển 200.000.000VND </h5>
-							<h5 class="mx-3"> Vào STK : 045845723873284</h5>
-							<h5>Chủ tài khoản: Trần Thanh Bảo, Chi nhánh: BIDV Đông Sài Gòn.</h5>
+							<h5>Bạn vui lòng chuyển  <span class="text-danger"><fmt:formatNumber
+								type="number" maxFractionDigits="3"
+								value="${SUM_CART }" /> VNĐ</span></h5>
+							<h5 class="mx-3">Vào STK : 045845723873284</h5>
+							<h5>Chủ tài khoản: Trần Thanh Bảo, Chi nhánh: BIDV Đông Sài
+								Gòn.</h5>
+								<h5> Với nội dung là mã đơn hàng: <span class="text-danger">${CODE_ODER}</span></h5>
+
 						</div>
 
 					</div>

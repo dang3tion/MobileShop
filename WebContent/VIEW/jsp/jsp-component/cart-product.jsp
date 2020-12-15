@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 <li class="cart-content"><c:url value="/product-detail"
@@ -30,11 +31,14 @@
 				<div>
 					<p>
 						<del>
-							${param.salePrice} <span class="unit">đ </span>
+						<fmt:formatNumber type="number" maxFractionDigits="3"
+			value="${param.salePrice}" />
+							<span class="unit">đ </span>
 						</del>
 					</p>
 					<p>
-						<strong>${param.price} <span class="unit">đ</span></strong>
+						<strong><fmt:formatNumber type="number" maxFractionDigits="3"
+			value="${param.price}" /> <span class="unit">đ</span></strong>
 					</p>
 				</div>
 			</div>

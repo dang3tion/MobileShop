@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 
@@ -17,10 +18,12 @@
 		</div>
 		<div class="card-price">
 			<div class="card-count">
-				${param.price}<span class="unit">đ</span>
+			<fmt:formatNumber type="number" maxFractionDigits="3"
+			value="${param.price}" /><span class="unit">đ</span>
 			</div>
-			<div class="card-discount">
-				${param.salePrice} <span class="unit">đ</span>
+			<div class="card-discount"><fmt:formatNumber type="number" maxFractionDigits="3"
+			value="${param.salePrice}" />
+				 <span class="unit">đ</span>
 			</div>
 		</div>
 		<div class="card-stars">
