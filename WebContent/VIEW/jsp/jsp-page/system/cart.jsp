@@ -21,9 +21,44 @@
 	<!-- Page Content -->
 
 
-	<%
-		String a = "dsdf";
-	%>
+	<!-- @@@@@@@@@@ HIỆN THÔNG BÁO KHI VƯỢT QUÁ GIỚI HẠN SẢN PHẨM TRONG GIỎ HÀNG @@@@@@@@@@@@@ -->
+					<c:if test="${message != null}">
+
+						<script>
+							window.onload = function() {
+								document.getElementById('btn-message').click();
+							}
+						</script>
+
+						<!-- Button trigger modal -->
+						<button style="padding: -30px; visibility: hidden; z-index: 99999"
+							type="button" id="btn-message" class="btn btn-white"
+							data-toggle="modal" data-target="#exampleModalCenter"></button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+							role="dialog" aria-labelledby="exampleModalCenterTitle"
+							aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLongTitle">${message}</h5>
+									</div>
+
+									<div class="modal-footer">
+										<a href="${pageContext.request.contextPath}/cart"
+											class="btn btn-primary" role="button" aria-pressed="true">
+											Vào giỏ hàng</a>
+										<button type="button" class="btn btn-danger"
+											data-dismiss="modal">Đóng</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</c:if>
+					<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO KHI VƯỢT QUÁ GIỚI HẠN SẢN PHẨM TRONG GIỎ HÀNG @@@@@@@@@@@@@ -->
+				
 
 
 	<section class="pt-5 pb-5 ">
@@ -128,10 +163,6 @@
 
 			</div>
 		</div>
-
-
-
-
 
 
 	</section>

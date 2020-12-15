@@ -58,6 +58,7 @@ public class Cart extends HttpServlet {
 			throws ServletException, IOException {
 		productID = request.getParameter("id");
 		String choose = request.getParameter("choose");
+		String page = request.getParameter("page");
 
 		HttpSession session = request.getSession();
 
@@ -79,9 +80,9 @@ public class Cart extends HttpServlet {
 
 				// XỬ LÝ SỐ LƯỢNG MỖI LOẠI SẢN PHẨM
 				if (cart.containsKey(productID)) {
-					int currentQuantity = cart.get(productID);
-					if (currentQuantity <= 4) {
-						cart.put(productID, currentQuantity + 1);
+					int currentQuantityPro = cart.get(productID);
+					if (currentQuantityPro <= 4) {
+						cart.put(productID, currentQuantityPro + 1);
 						session.setAttribute("CART_QUANTITY", QuantityItemInCart + 1);
 					} else {
 						request.setAttribute("message", "Tối đa 5 sản phẩm cho mỗi mẫu điện thoại");
@@ -97,12 +98,30 @@ public class Cart extends HttpServlet {
 				session.setAttribute("CART", map);
 				session.setAttribute("CART_QUANTITY", QuantityItemInCart + 1);
 			}
+
+			if (page != null) {
+				response.sendRedirect(request.getContextPath() + "/cart");
+				return;
+			}
+
 			dispatcher = this.getServletContext().getRequestDispatcher("/product-detail?id=" + productID);
 			dispatcher.forward(request, response);
 
 			break;
 		case "decrease":
+//			<input name="page" value="cart-page" hidden="true">
 
+//			map.put(key, map.get(key) + 1);
+
+			if (cart.get(productID) > 1) {
+				cart.put(productID, cart.get(productID) - 1);
+
+				session.setAttribute("CART", cart);
+
+				session.setAttribute("CART_QUANTITY", QuantityItemInCart - 1);
+			}
+			
+			response.sendRedirect(request.getContextPath() + "/cart");
 			break;
 		case "remove":
 			cart = (HashMap<String, Integer>) session.getAttribute("CART");

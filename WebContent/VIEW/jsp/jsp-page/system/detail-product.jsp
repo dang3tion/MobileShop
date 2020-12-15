@@ -155,8 +155,7 @@
 							method="post">
 							<input name="choose" value="add" hidden="true">
 							<button name="id" value="${PRODUCTID}" type="submit"
-								class="btnMua btn btn-primary btn-lg btn-block"
-								>
+								class="btnMua btn btn-primary btn-lg btn-block">
 								<i class="fas fa-cart-plus" style="color: white;"></i> THÊM VÀO
 								GIỎ HÀNG
 							</button>
@@ -226,7 +225,7 @@
 						</div>
 
 					</c:if>
-
+					<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO KHI VƯỢT QUÁ GIỚI HẠN SẢN PHẨM TRONG GIỎ HÀNG @@@@@@@@@@@@@ -->
 					<h3 class="center-txt">Đánh giá chi tiết iPhone 12</h3>
 					<h5 style="font-size: 18px;">
 						Chiếc iPhone mạnh mẽ nhất, lớn nhất,zz thời lượng pin tốt nhất đã
