@@ -16,5 +16,7 @@ public class BO_Product {
 	public ArrayList<Product> getList(int start, int end) {
 		return dao.getList(start, end);
 	}
-
+	
+	
+	
 }
