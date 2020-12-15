@@ -13,11 +13,47 @@
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
 	<!-- Thanh menu loc du lieu va sap xep-->
-		<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
+	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
 		<c:param name="display" value="on"></c:param>
 	</c:import>
 
+	<!-- @@@@@@@@@@ HIỆN THÔNG BÁO KHI ĐĂNG KÍ THÀNH CÔNG @@@@@@@@@@@@@ -->
+	<c:if test="${messageSuccess != null}">
 
+		<script>
+			window.onload = function() {
+				document.getElementById('btn-message').click();
+			}
+		</script>
+
+		<!-- Button trigger modal -->
+		<button style="padding: -30px; visibility: hidden; z-index: 99999"
+			type="button" id="btn-message" class="btn btn-white"
+			data-toggle="modal" data-target="#exampleModalCenter"></button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">${messageSuccess}</h5>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal">Đóng</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</c:if>
+	<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO KHI ĐĂNG KÍ THÀNH CÔNG @@@@@@@@@@@@@ -->
+
+
+
+	
 	<!-- Page Content -->
 	<div class="container">
 

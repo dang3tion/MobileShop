@@ -1,6 +1,7 @@
 package controller_account_handling;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,12 +23,12 @@ public class CheckOTP extends HttpServlet {
 
 	OTP otp = new OTP();
 	Account newUser = null;
-	Object token = null;
+	String token = null;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		token = request.getAttribute(Const.TOKEN_REGISTER_OTP);
+		token = (String) request.getAttribute(Const.TOKEN_REGISTER_OTP);
 		// bắt đầu điều hướng
 		request.removeAttribute(Const.TOKEN_RESETPASS_OTP);
 		if (token != null) {
@@ -45,43 +46,60 @@ public class CheckOTP extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
+		newUser = (Account) session.getAttribute("newUser_register");
+		String email = newUser.getEmail();
+
 		// // TRANG NÀY CHỈ ĐƯỢC CHUYỂN QUA TỪ TRANG REGISTER
 		// lấy token
-		token = request.getAttribute(Const.TOKEN_REGISTER_OTP);
+		token = (String) request.getAttribute(Const.TOKEN_REGISTER_OTP);
+		
+		String tokenClient = (String) request.getParameter("TOKENKEY");
 
-		if (token != null) {
-			token = (Boolean) request.getAttribute(Const.TOKEN_REGISTER_OTP);
-			request.removeAttribute(Const.TOKEN_RESETPASS_OTP);
-			newUser = (Account) request.getAttribute("newUser");
-			String email = newUser.getEmail();
-			SendMail.send(email, otp.getSysOTP());
+
+		if (token != null |  tokenClient !=null) {
+			token = (String) request.getAttribute(Const.TOKEN_REGISTER_OTP);
+			request.removeAttribute(Const.TOKEN_REGISTER_OTP);
+						SendMail.send(email, otp.getSysOTP());
 			RequestDispatcher dispatcher //
 					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp.jsp");
 			dispatcher.forward(request, response);
 			return;
 
-		} else {
 			// xử lý dữ liệu khách hàng gửi OTP lên
-			String userOTP = request.getParameter("OTP");
+		} else {
 
-			if (otp.checkOTP(userOTP)) {
-				// ĐÃ XÁC THỰC MAIL THÀNH CÔNG THÊM VÀO DATABASE
-				(new BO_Account()).add(newUser);
-//
-//				// Thêm user này vào session
-				HttpSession session = request.getSession();
-				session.setAttribute(Const.ACCOUNT_LOGINED, newUser);
+			String userOTP = request.getParameter("OTP");		
+			
+			if (!otp.checkLiveOTP(LocalDateTime.now())) {
+				request.setAttribute("message", "Mã OTP đã hết hiệu lực");
 				RequestDispatcher dispatcher //
-						= this.getServletContext().getRequestDispatcher("/index");
+						= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp.jsp");
 				dispatcher.forward(request, response);
 				return;
-			} else {
+			}
+			
+			if (!otp.checkOTP(userOTP)) {
 				request.setAttribute("message", "Sai mã OTP");
 				RequestDispatcher dispatcher //
 						= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp.jsp");
 				dispatcher.forward(request, response);
+				return;
 
 			}
+
+
+			// ĐÃ XÁC THỰC MAIL THÀNH CÔNG THÊM VÀO DATABASE
+			(new BO_Account()).add(newUser);
+//
+//			// Thêm user này vào session
+			session.setAttribute(Const.ACCOUNT_LOGINED, newUser);
+
+			request.setAttribute("messageSuccess", "Đăng kí tài khoản thành công");
+			RequestDispatcher dispatcher //
+					= this.getServletContext().getRequestDispatcher("/index");
+			dispatcher.forward(request, response);
+			return;
 		}
 	}
 }

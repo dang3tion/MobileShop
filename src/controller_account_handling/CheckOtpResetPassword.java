@@ -1,6 +1,7 @@
 package controller_account_handling;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model_BO_service.BO_Account;
 import model_beans.Account;
 import model_utility.Const;
 import model_utility.OTP;
@@ -38,7 +38,8 @@ public class CheckOtpResetPassword extends HttpServlet {
 		if (token != null) {
 			request.removeAttribute(Const.TOKEN_RESETPASS_OTP);
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp-forgot-pass.jsp");
+					= this.getServletContext()
+							.getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp-forgot-pass.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} else {
@@ -53,36 +54,49 @@ public class CheckOtpResetPassword extends HttpServlet {
 		HttpSession session = request.getSession();
 		// xử lý có phải trang RESET chuyển qua đây hay người dùng submit form
 		token = request.getAttribute(Const.TOKEN_RESETPASS_OTP);
-		if (token != null) {
+		
+		String tokenClient = (String) request.getParameter("TOKENKEY");
+		if (token != null |  tokenClient !=null) {
 			request.removeAttribute(Const.TOKEN_RESETPASS_OTP);
 
 			email = (String) session.getAttribute(Const.EMAIL_FORGOT_PASS);
 			SendMail.send(email, otp.getSysOTP());
 
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp-forgot-pass.jsp");
+					= this.getServletContext()
+							.getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp-forgot-pass.jsp");
 			dispatcher.forward(request, response);
 			return;
 
-		} else {
 			// xử lý dữ liệu khách hàng gửi OTP lên
+		} else {
+
 			String userOTP = (String) request.getParameter("OTP");
-			if (otp.checkOTP(userOTP)) {
-				// nếu đúng mã OTP thì chuyển qua cho servlet retypepassword xử lý tiếp
-				// có kèm theo token
-				request.setAttribute(Const.TOKEN_OTP_RETYPE_PASS, true);
+
+			if (!otp.checkLiveOTP(LocalDateTime.now())) {
+				request.setAttribute("message", "Mã OTP đã hết hiệu lực");
 				RequestDispatcher dispatcher //
-						= this.getServletContext().getRequestDispatcher("/retype");
+						= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp.jsp");
 				dispatcher.forward(request, response);
 				return;
+			}
 
-			} else {
+			if (!otp.checkOTP(userOTP)) {
 				request.setAttribute("message", "Sai mã OTP");
 				RequestDispatcher dispatcher //
 						= this.getServletContext()
 								.getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp-forgot-pass.jsp");
 				dispatcher.forward(request, response);
 			}
+
+			// nếu đúng mã OTP thì chuyển qua cho servlet retypepassword xử lý tiếp
+			// có kèm theo token
+			request.setAttribute(Const.TOKEN_OTP_RETYPE_PASS, true);
+			RequestDispatcher dispatcher //
+					= this.getServletContext().getRequestDispatcher("/retype");
+			dispatcher.forward(request, response);
+			return;
+
 		}
 
 	}

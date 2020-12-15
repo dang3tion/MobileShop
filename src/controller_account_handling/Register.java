@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model_BO_service.BO_Account;
 import model_DAO.DAO_Account;
@@ -30,8 +31,9 @@ public class Register extends HttpServlet {
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
-		
+		OTP sysOtp = new OTP();
+		HttpSession session = request.getSession();
+		session.setAttribute(Const.KEY_SYSTEM_OTP, sysOtp.getSysOTP());
 
 		Account tmpAcc = new Account(email, password);
 		if ((new BO_Account()).isExsit(email)) {
@@ -40,8 +42,8 @@ public class Register extends HttpServlet {
 					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/register.jsp");
 			dispatcher.forward(request, response);
 		} else {
-			request.setAttribute("newUser", tmpAcc);
-			request.setAttribute(Const.TOKEN_REGISTER_OTP, true);
+			session.setAttribute("newUser_register", tmpAcc);
+			request.setAttribute(Const.TOKEN_REGISTER_OTP, "register");
 
 			RequestDispatcher dispatcher //
 					= this.getServletContext().getRequestDispatcher("/otp");

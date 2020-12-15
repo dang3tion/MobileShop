@@ -32,7 +32,7 @@ public class ForgotPassword extends HttpServlet {
 			throws ServletException, IOException {
 
 		String email = request.getParameter("email");
-		String messengeErr = null;
+//		String messengeErr = null;
 
 		HttpSession session = request.getSession();
 		session.setAttribute(Const.EMAIL_FORGOT_PASS, email);

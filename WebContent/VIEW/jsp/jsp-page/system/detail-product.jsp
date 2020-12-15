@@ -42,7 +42,7 @@
 			<div class=" col-md-7 ">
 				<div class="row space-img">
 					<img id="img" class=""
-						src="${url }/image/image-user/product/i12black.png" alt="">
+						src="${url}/image/image-user/product/i12black.png" alt="">
 					<a class="carousel-control-prev indexP"
 						href="#carouselExampleControls" role="button" data-slide="prev">
 						<span id="pre" class="carousel-control-prev-icon"

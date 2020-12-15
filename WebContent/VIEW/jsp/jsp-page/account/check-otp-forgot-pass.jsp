@@ -42,14 +42,35 @@
 
 	</form>
 
+	<div class="container">
+		<div class="row text-center">
+			<div class="col-12">
+				<script>
+					var timeleft = 4;
+					var downloadTimer = setInterval(
+							function() {
+								if (timeleft <= 0) {
+									clearInterval(downloadTimer);
+									document.getElementById("countdown").innerHTML = "<form style='margin : -80px;' class='mb-3' action='${pageContext.request.contextPath}/otpresetpass' method='POST'><input name='TOKENKEY' value='register' hidden='true'><button type='submit' class='btn btn-link'><strong>Gửi lại OTP</strong></button></form>";
+								} else {
+									document.getElementById("countdown").innerHTML = "<div style='margin : -80px; font-weight: bold;'>Mã OTP có hiệu lực trong : "
+											+ timeleft + " giây<div>";
+								}
+								timeleft -= 1;
+							}, 1000);
+				</script>
+				<div id="countdown"></div>
+			</div>
+		</div>
+	</div>
 	<!-- /.container -->
 
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 	<!-- Bootstrap core JavaScript -->
 
-	 
-	   
+
+
 	<c:url var="url" scope="session" value="/VIEW"></c:url>
 	<script src="${url}/js/js-page/form-login.js"></script>
 </body>
