@@ -62,10 +62,23 @@
 
 
 						<!-- 												</div> -->
-						<div class="show-page" style="margin-left: 50px">
-							Tìm kiếm <span> <input id="myInput"
-								style="padding-left: 15px; border: 0.5px solid grey" type="text"
-								placeholder="Search.." /></span>
+						<div class="show-page row" style="margin-left: 50px">
+							
+
+     <div class="col-auto">
+      <h4 class="" ><strong>Tìm Kiếm</strong></h4>
+      </div>
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fas fa-search"></i></div>
+          </div>
+          <input type="text" class="form-control" placeholder="Nhập từ khóa ">
+        </div>
+      </div>
+       <div class="col-auto">
+      <button type="submit" class="btn btn-primary mb-2">Tìm</button>
+    </div>
 						</div>
 					</div>
 					<table class="table table-hover">
