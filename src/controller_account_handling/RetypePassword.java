@@ -63,7 +63,10 @@ public class RetypePassword extends HttpServlet {
 			HttpSession session = request.getSession();
 			userEmail = (String) session.getAttribute(Const.EMAIL_FORGOT_PASS);
 
-			(new BO_Account()).changePassword(userEmail, password);
+			BO_Account bo = new BO_Account();
+			if (bo.isExsit(userEmail)) {
+				bo.changePassword(userEmail, password);
+			}
 
 			request.setAttribute("message", "Đổi mật khẩu thành công, vui lòng đăng nhập lại");
 

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model_BO_service.BO_Account;
 import model_beans.Account;
 import model_utility.Const;
 import model_utility.OTP;
@@ -54,9 +55,9 @@ public class CheckOtpResetPassword extends HttpServlet {
 		HttpSession session = request.getSession();
 		// xử lý có phải trang RESET chuyển qua đây hay người dùng submit form
 		token = request.getAttribute(Const.TOKEN_RESETPASS_OTP);
-		
+
 		String tokenClient = (String) request.getParameter("TOKENKEY");
-		if (token != null |  tokenClient !=null) {
+		if (token != null | tokenClient != null) {
 			request.removeAttribute(Const.TOKEN_RESETPASS_OTP);
 
 			email = (String) session.getAttribute(Const.EMAIL_FORGOT_PASS);
@@ -91,11 +92,21 @@ public class CheckOtpResetPassword extends HttpServlet {
 
 			// nếu đúng mã OTP thì chuyển qua cho servlet retypepassword xử lý tiếp
 			// có kèm theo token
-			request.setAttribute(Const.TOKEN_OTP_RETYPE_PASS, true);
+			String userEmail = (String) session.getAttribute(Const.EMAIL_FORGOT_PASS);
+			BO_Account bo = new BO_Account();
+			if (bo.isExsit(userEmail)) {
+				request.setAttribute(Const.TOKEN_OTP_RETYPE_PASS, true);
+				RequestDispatcher dispatcher //
+						= this.getServletContext().getRequestDispatcher("/retype");
+				dispatcher.forward(request, response);
+				return;
+			}
+
+			request.setAttribute("message", "Mail Không tồn tại Vui lòng đăng kí tài khoản mới");
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/retype");
+					= this.getServletContext()
+							.getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp-forgot-pass.jsp");
 			dispatcher.forward(request, response);
-			return;
 
 		}
 
