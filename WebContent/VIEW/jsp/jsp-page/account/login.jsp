@@ -26,7 +26,7 @@
 		
 
 	<!-- Page Content -->
-	<form onsubmit="" action="${pageContext.request.contextPath}/login"
+	<form onsubmit="return checkVali()" action="${pageContext.request.contextPath}/login"
 		method="POST">
 		<div class="form-signin color_tt" id="login">
 			<img class="mb-4" src="${url}/image/img-sys/user.png" width="72"
