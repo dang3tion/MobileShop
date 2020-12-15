@@ -19,5 +19,7 @@ public class Const {
 	// giá trị xác nhận người dùng đã đăng nhập
 	public static final String ACCOUNT_LOGINED = "KEY_Logined";
 	
+	public static final String SYSTEM_OTP = "SYS_OTP";
+	
 
 }
