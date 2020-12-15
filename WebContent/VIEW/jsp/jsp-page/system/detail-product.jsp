@@ -170,7 +170,7 @@
 							<input name="choose" value="add" hidden="true">
 							<input name="datHang" value="true" hidden="true">
 							<button name="id" value="${PRODUCT.id}" type="submit"
-								class="btnMua btn btn-warning btn-lg btn-block">
+								class="btnMua btn btn-danger btn-lg btn-block">
 								<strong>ĐẶT HÀNG</strong>
 							</button>
 						</form>
