@@ -17,33 +17,31 @@
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
-<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
+	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
 	</c:import>
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
 		<c:param name="title" value="Đăng nhập"></c:param>
 	</c:import>
-	
-		
+
+
 
 	<!-- Page Content -->
-	<form onsubmit="return checkVali()" action="${pageContext.request.contextPath}/login"
-		method="POST">
+	<form onsubmit="return checkVali()"
+		action="${pageContext.request.contextPath}/login" method="POST">
 		<div class="form-signin color_tt" id="login">
 			<img class="mb-4" src="${url}/image/img-sys/user.png" width="72"
 				height="72">
 			<h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
-			<label style="margin-bottom: -25px" for="recipient-name"
-				class="d-flex justify-content-start align-baseline col-form-label">Email:</label>
+
 			<input type="text" name="email" id="inputEmail" class="form-control"
-				placeholder="nhập email" value="" onfocusout=" check_email(this.id)">
+				placeholder="Email hoặc số điện thoại" value=""
+				onfocusout=" check_email(this.id)">
 			<div class="require" id="require-email">
 				Yêu cầu nhập email theo đúng theo định dạng email <br>Ví dụ:
 				nlumobile@gmail.com
 			</div>
-			<label style="margin-bottom: -25px" for="recipient-name"
-				class="d-flex justify-content-start align-baseline col-form-label">Mật
-				khẩu:</label> <input type="password" id="inputPassword" name="password"
-				class="form-control " placeholder="Nhập mật khẩu" value=""
+			<input type="password" id="inputPassword" name="password"
+				class="form-control " placeholder="Mật khẩu" value=""
 				onfocusout="check_password(this)">
 			<div class="require" id="require-password">Mật khẩu phải có ít
 				nhất 8 ký tự</div>
