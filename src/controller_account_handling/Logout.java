@@ -18,7 +18,7 @@ public class Logout extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		session.removeAttribute(Const.ACCOUNT_LOGINED);
+		session.removeAttribute(Const.CUSTOMER_LOGINED);
 		response.sendRedirect(request.getContextPath() + "/index");
 	}
 

@@ -7,11 +7,33 @@
 	<tr>
 		<td>${STTstart+i.index}</td>
 		<th scope="row">${user.id}</th>
-		<td>${user.name}</td>
-		<td>${user.phoneNumber}</td>
-		<td>${user.address}</td>
+		<c:choose>
+			<c:when test="${user.name != '' }">
+				<td>${user.name}</td>
+			</c:when>
+			<c:otherwise>
+				<td>chưa cập nhật</td>
+			</c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${user.phoneNumber != '' }">
+				<td>${user.phoneNumber}</td>
+			</c:when>
+			<c:otherwise>
+				<td>chưa cập nhật</td>
+			</c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${user.address != '' }">
+				<td>${user.address}</td>
+			</c:when>
+			<c:otherwise>
+				<td>khách hàng chưa cập nhật</td>
+			</c:otherwise>
+		</c:choose>
 		<td>${user.email}</td>
 		<td>${user.timeCreate}</td>
 		<td>${user.status}</td>
 	</tr>
 </c:forEach>
+

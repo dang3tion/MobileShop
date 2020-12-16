@@ -92,19 +92,8 @@
 							<!--          @@@@ trong đây nè -->
 
 
-							<c:if test="${DEFAUTL_TABLE !=null }">						
-								<c:forEach var="user" items="${listUser}" varStatus="i">
-									<tr>
-										<td>${STTstart+i.index}</td>
-										<th scope="row">${user.id}</th>
-										<td>${user.name}</td>
-										<td>${user.phoneNumber}</td>
-										<td>${user.address}</td>
-										<td>${user.email}</td>
-										<td>${user.timeCreate}</td>
-										<td>${user.status}</td>
-									</tr>
-								</c:forEach>
+							<c:if test="${DEFAUTL_TABLE !=null }">
+								<jsp:include page="/VIEW/jsp/jsp-component/user-table.jsp"></jsp:include>
 							</c:if>
 
 

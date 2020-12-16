@@ -38,7 +38,7 @@ public class Profile extends HttpServlet {
 		String password = request.getParameter("password");
 
 		HttpSession session = request.getSession();
-		Account acc = (Account) session.getAttribute(Const.ACCOUNT_LOGINED);
+		Account acc = (Account) session.getAttribute(Const.CUSTOMER_LOGINED);
 		acc.setAddress(address);
 		acc.setPassword(EncryptPassword.md5(password));
 		acc.setName(name);

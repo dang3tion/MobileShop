@@ -35,13 +35,13 @@ public class AdminLogin extends HttpServlet {
 		String messageErr = "Sai email hoặc mật khẩu";
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
+
 		Account acc = (new DAO_Account()).get(email);
 		if ((new BO_Account()).checkLogin(email, password, Const.ADMIN_ROLE) == 1) {
 			// mở khóa link
 			// Thêm user này vào session
 			HttpSession session = request.getSession();
-			session.setAttribute("KEY_Logined", acc);
+			session.setAttribute(Const.ADMIN_LOGINED, acc);
 
 			String path = (String) session.getAttribute(Const.CURRENT_LINK);
 
@@ -67,7 +67,5 @@ public class AdminLogin extends HttpServlet {
 		}
 
 	}
-	
-	
 
 }

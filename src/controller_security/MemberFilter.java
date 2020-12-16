@@ -31,9 +31,10 @@ public class MemberFilter implements Filter {
 
 		HttpSession session = ((HttpServletRequest) request).getSession();
 
-		Account acc = (Account) session.getAttribute("KEY_Logined");
+		Account CustomerAcc = (Account) session.getAttribute(Const.CUSTOMER_LOGINED);
+		Account AdminAcc = (Account) session.getAttribute(Const.ADMIN_LOGINED);
 
-		if (acc == null) {
+		if (CustomerAcc == null | AdminAcc == null) {
 			// lưu url của trang hiện tại.
 			// để sau khi đăng nhập thì tiếp tục vào trang này
 			// VD : link thanh toán bị khóa ===> hệ thống chuyển qua trang login ===> login

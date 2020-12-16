@@ -66,7 +66,7 @@ public class Login extends HttpServlet {
 			// Thêm user này vào session
 			HttpSession session = request.getSession();
 			Account acc = (new BO_Account()).get(email);
-			session.setAttribute(Const.ACCOUNT_LOGINED, acc);
+			session.setAttribute(Const.CUSTOMER_LOGINED, acc);
 			String path = (String) session.getAttribute(Const.CURRENT_LINK);
 
 			// Tại đây có 2 trường hợp để redirect

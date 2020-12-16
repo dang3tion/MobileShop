@@ -57,22 +57,9 @@
 
 				<!-- xử lý nút login - START -->
 				<c:choose>
-					<c:when test="${KEY_Logined!=null && KEY_Logined.role == 'ADMIN'}">
-						<li class="nav-item"><a
-							href="${pageContext.request.contextPath}/member/profile">
-								<div class="item-menu">
-									<i class="fas fa-user"></i>
-									<div class="item-menu-text">
-										<p>Chào ADMIN !</p>
-									</div>
-
-								</div>
-						</a></li>
-					</c:when>
-
 
 					<c:when
-						test="${KEY_Logined!=null && KEY_Logined.role == 'CUSTOMER' && KEY_Logined.name == '' }">
+						test="${CUSTOMER_LOGINED!=null && CUSTOMER_LOGINED.name == '' }">
 						<li class="nav-item"><a
 							href="${pageContext.request.contextPath}/member/profile">
 								<div class="item-menu">
@@ -86,13 +73,13 @@
 					</c:when>
 
 					<c:when
-						test="${KEY_Logined!=null && KEY_Logined.role == 'CUSTOMER'}">
+						test="${CUSTOMER_LOGINED!=null }">
 						<li class="nav-item"><a
 							href="${pageContext.request.contextPath}/member/profile">
 								<div class="item-menu">
 									<i class="fas fa-user"></i>
 									<div class="item-menu-text">
-										<p>Chào, ${KEY_Logined.getFirstName()} !</p>
+										<p>Chào, ${CUSTOMER_LOGINED.getFirstName()} !</p>
 									</div>
 
 								</div>
@@ -117,7 +104,7 @@
 
 				<!--  xử lý nút giỏ hàng START > -->
 				<c:choose>
-					<c:when test="${KEY_Logined.role == 'ADMIN'}">
+					<c:when test="${CUSTOMER_LOGINED.role == 'ADMIN'}">
 					</c:when>
 					<c:otherwise>
 						<li class="nav-item"><a

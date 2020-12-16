@@ -54,7 +54,7 @@
 											</div>
 										</div>
 										<input type="text" name="name" class="form-control py-4"
-											value="${KEY_Logined.name}">
+											value="${CUSTOMER_LOGINED.name}">
 									</div>
 								</div>
 
@@ -67,7 +67,7 @@
 											</div>
 										</div>
 										<input type="text" name="phoneNumber"
-											class="form-control py-4" value="${KEY_Logined.phoneNumber}">
+											class="form-control py-4" value="${CUSTOMER_LOGINED.phoneNumber}">
 									</div>
 								</div>
 								<div class="col-12">
@@ -79,7 +79,7 @@
 											</div>
 										</div>
 										<input type="text" name="email" class="form-control py-4"
-											value="${KEY_Logined.email}" disabled>
+											value="${CUSTOMER_LOGINED.email}" disabled>
 									</div>
 								</div>
 
@@ -92,7 +92,7 @@
 											</div>
 										</div>
 										<input type="text" class="form-control py-4"
-											value="${KEY_Logined.timeCreate}" disabled>
+											value="${CUSTOMER_LOGINED.timeCreate}" disabled>
 									</div>
 								</div>
 							</div>
@@ -108,7 +108,7 @@
 											</div>
 										</div>
 										<input type="text" name="address" class="form-control py-4"
-											value="${KEY_Logined.address}">
+											value="${CUSTOMER_LOGINED.address}">
 									</div>
 								</div>
 							</div>

@@ -95,7 +95,7 @@ public class CheckOTP extends HttpServlet {
 			(new BO_Account()).add(newUser);
 //
 //			// Thêm user này vào session
-			session.setAttribute(Const.ACCOUNT_LOGINED, newUser);
+			session.setAttribute(Const.CUSTOMER_LOGINED, newUser);
 
 			request.setAttribute("messageSuccess", "Đăng kí tài khoản thành công");
 			RequestDispatcher dispatcher //

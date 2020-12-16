@@ -30,7 +30,7 @@ public class AdminFilter implements Filter {
 
 		HttpSession session = ((HttpServletRequest) request).getSession();
 
-		Account acc = (Account) session.getAttribute("KEY_Logined");
+		Account acc = (Account) session.getAttribute(Const.ADMIN_LOGINED);
 
 		// lấy quyền hạn của acc nếu đã đăng nhập
 		String currentRole = "empty";
