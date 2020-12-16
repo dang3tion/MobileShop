@@ -8,6 +8,7 @@ import java.util.List;
 import model_beans.Account;
 import model_utility.Config;
 import model_utility.Const;
+import model_utility.Encrypt;
 import model_ConnectDB.ExecuteStatementUtility;
 
 public class DAO_Account extends ExecuteStatementUtility {
@@ -37,7 +38,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 					acc.getRole(), //
 					acc.getName(), //
 					acc.getPhoneNumber(), //
-					acc.getAddress(),//
+					acc.getAddress(), //
 					acc.getTokenLogin() //
 			};
 
@@ -53,7 +54,6 @@ public class DAO_Account extends ExecuteStatementUtility {
 
 	}
 
-	
 	public Account getAccountByToken(String token) {
 		String query = "SELECT * FROM " + ACCOUNT + " WHERE " + TOKEN + " = ? ";
 		String[] para = { token };
@@ -68,7 +68,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 						rs.getString(TIMECREATE), //
 						rs.getString(NAME), //
 						rs.getString(PHONE), //
-						rs.getString(ADDRESS),//
+						rs.getString(ADDRESS), //
 						rs.getString(TOKEN)//
 				);//
 				account = acc;
@@ -78,8 +78,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 		}
 		return account;
 	}
-	
-	
+
 	public void update(Account newAcc) {
 		String query = "UPDATE " + ACCOUNT + " SET "//
 				+ ENCRYT_PASSWORD + " = ? , " //
@@ -94,6 +93,21 @@ public class DAO_Account extends ExecuteStatementUtility {
 				newAcc.getPhoneNumber(), //
 				newAcc.getAddress(), //
 				newAcc.getEmail()//
+		};
+		try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void changeToken(Account Acc) {
+		Acc.setTokenLogin(Encrypt.MD5(Encrypt.SHA1(Encrypt.rdText(99))));
+		String query = "UPDATE " + ACCOUNT + " SET "//
+				+ TOKEN + " = ? WHERE " + EMAIL + " = ? "; //
+		Object[] parameters = { //
+				Acc.getTokenLogin(), //
+				Acc.getEmail() //
 		};
 		try (ResultSet rs = super.AccessDBstr(query, parameters)) {
 
@@ -225,7 +239,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 						rs.getString(TIMECREATE), //
 						rs.getString(NAME), //
 						rs.getString(PHONE), //
-						rs.getString(ADDRESS),//
+						rs.getString(ADDRESS), //
 						rs.getString(TOKEN)//
 				);//
 				account = acc;
@@ -251,7 +265,8 @@ public class DAO_Account extends ExecuteStatementUtility {
 
 	public int getTotalStatusAccount(String status) {
 		int total = 0;
-		String query = "SELECT COUNT(*) FROM " + ACCOUNT + " WHERE  " + STATUS + " = ? AND  "+ROLE+"  = '"+Const.CUSTOMER_ROLE+"' ";
+		String query = "SELECT COUNT(*) FROM " + ACCOUNT + " WHERE  " + STATUS + " = ? AND  " + ROLE + "  = '"
+				+ Const.CUSTOMER_ROLE + "' ";
 		Object[] para = { status };
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {

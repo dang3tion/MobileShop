@@ -8,17 +8,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model_BO_service.BO_Account;
+import model_beans.Account;
 import model_utility.Const;
 
-@WebServlet(urlPatterns = {"/logout"})
+@WebServlet(urlPatterns = { "/logout" })
 public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	BO_Account bo = new BO_Account();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession();		
-		session.removeAttribute(Const.CUSTOMER_LOGINED);	
+		HttpSession session = request.getSession();
+
+		Account acc = (Account) session.getAttribute(Const.CUSTOMER_LOGINED);
+
+		
+		if (acc != null) {
+			bo.changeToken(acc);
+		}
+
+		session.removeAttribute(Const.CUSTOMER_LOGINED);
 		response.sendRedirect(request.getContextPath() + "/index");
 	}
 

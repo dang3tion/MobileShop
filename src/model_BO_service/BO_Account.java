@@ -41,7 +41,9 @@ public class BO_Account {
 		return dao.getAccountByToken(token);
 	}
 	
-	
+	public void changeToken(Account acc) {
+		dao.changeToken(acc);
+	}
 	
 	public List<Account> getList() {
 		List<Account> listAcc = dao.get(startRow(), endRow());

@@ -39,6 +39,8 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+	
+		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String rememberMe = request.getParameter("remember-me");
@@ -73,11 +75,14 @@ public class Login extends HttpServlet {
 			Account acc = (new BO_Account()).get(email);
 			session.setAttribute(Const.CUSTOMER_LOGINED, acc);
 			// Thêm token ghi nhớ đăng nhập
+			
+			
 			if (rememberMe != null) {
 				Cookie newCookie = new Cookie(Const.NAME_TOKEN_REMEMBER_LOGIN, acc.getTokenLogin());
-				newCookie.setMaxAge(Const.MAX_TIME_REMEMBER_LOGIN);
+				newCookie.setMaxAge(9999);
 				response.addCookie(newCookie);
 			}
+			
 			String path = (String) session.getAttribute(Const.CURRENT_LINK);
 
 			// Tại đây có 3 trường hợp để redirect
