@@ -34,16 +34,16 @@
 		<!-- Button trigger modal -->
 		<button style="padding: -30px; visibility: hidden; z-index: 99999"
 			type="button" id="btn-message" class="btn btn-white"
-			data-toggle="modal" data-target="#exampleModalCenter"></button>
+			data-toggle="modal" data-target="#thongBaoMax"></button>
 
 		<!-- Modal -->
-		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
-			role="dialog" aria-labelledby="exampleModalCenterTitle"
+		<div class="modal fade" id="thongBaoMax" tabindex="-1"
+			role="dialog" aria-labelledby="thongBaoMaxTitle"
 			aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLongTitle">${message}</h5>
+						<h5 class="modal-title" id="thongBaoMaxTitle">${message}</h5>
 					</div>
 
 					<div class="modal-footer">
@@ -111,7 +111,6 @@
 												class='unit'>đ</span></span>
 										</li>
 									</c:forEach>
-
 								</ul>
 								<div class="sum-price">
 									<div class="title">
@@ -125,13 +124,61 @@
 										</p>
 										<p>(Đã bao gồm VAT)</p>
 									</div>
+									<!-- 								########## START XỬ LÝ NÚT THANH TOÁN ############## -->
+									<c:choose>
+										<c:when test="${CUSTOMER_LOGINED == null }">
+
+											<!-- 			 Button trigger modal -->
+											<button class="btn-primary btn-receipt" type="button"
+												data-toggle="modal" data-target="#xacNhanThanhToan">Thanh
+												toán</button>
+
+											<!-- 		 Modal -->
+											<div class="modal fade" id="xacNhanThanhToan" tabindex="-1"
+												role="dialog" aria-labelledby="xacNhanThanhToanTitle"
+												aria-hidden="true">
+												<div class="modal-dialog modal-dialog-centered"
+													role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="xacNhanThanhToanTitle">Bạn
+																chưa đăng nhập !</h5>
+														</div>
+														<div class="modal-body text-left">
+															<p>Đăng nhập để dễ dàng quản lý đơn hàng, xem lại
+																lịch sử mua hàng.</p>
+															<p style="font-weight: bold;">
+																Bạn có muốn đăng nhập hoặc <a
+																	href="${pageContext.request.contextPath}/register"
+																	class="mx-2">Đăng kí</a> ?
+															</p>
+														</div>
+														<div class="modal-footer">
+															<a href="${pageContext.request.contextPath}/login"
+																class="btn btn-success" role="button"><i
+																class="fas fa-sign-in-alt"></i> Đăng nhập</a> 
+																<a
+																href="${pageContext.request.contextPath}/payment"
+																class="btn btn-danger" role="button"><i
+																class="fas fa-chevron-circle-right"></i> Tiếp tục mua không đăng nhập</a>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</c:when>
+										<c:otherwise>
+											<a class="text-none" style="color: rgb(255, 255, 255)"
+												href="${pageContext.request.contextPath}/payment">
+												<button class="btn-primary btn-receipt">Thanh toán</button>
+											</a>
+
+										</c:otherwise>
+									</c:choose>
 
 
-									<a class="text-none" style="color: rgb(255, 255, 255)"
-										href="${pageContext.request.contextPath}/payment">
-										<button class="btn-primary btn-receipt">Thanh toán</button>
-									</a>
-
+									<!-- 								########## END XỬ LÝ NÚT THANH TOÁN ############## -->
 
 
 
@@ -150,9 +197,6 @@
 									<img style="" src="${url}/image/img-sys/emptycart.webp">
 									<h2 style="margin-top: -50px">Giỏ hàng trống</h2>
 
-									<a href=" ${pageContext.request.contextPath}/index"
-										class="btn btn-primary b" role="button" aria-disabled="true">Trang
-										chủ</a>
 								</div>
 							</div>
 						</div>
@@ -169,17 +213,7 @@
 
 	</section>
 
-
-
-	<!-- /.container -->
-
-
-
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
-
-	<!-- Bootstrap core JavaScript -->
-
-
 
 	<script src="${url }/js/js-static/cart.js"></script>
 </body>
