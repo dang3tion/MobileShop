@@ -23,18 +23,21 @@ public class RememberLogin implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-
-		for (Cookie c : req.getCookies()) {
-			String name = c.getName();
-			if (name.equals(Const.NAME_TOKEN_REMEMBER_LOGIN)) {
-				token = c.getValue();
+		Cookie[] arrCookie = req.getCookies();
+		
+		if (arrCookie != null) {
+			for (Cookie c : arrCookie) {
+				String name = c.getName();
+				if (name.equals(Const.NAME_TOKEN_REMEMBER_LOGIN)) {
+					token = c.getValue();
+				}
 			}
-		}
-		Account tempAcc = new BO_Account().getAccountByToken(token);
+			Account tempAcc = new BO_Account().getAccountByToken(token);
 
-		if (tempAcc != null) {
-			HttpSession session = req.getSession();
-			session.setAttribute(Const.CUSTOMER_LOGINED, tempAcc);
+			if (tempAcc != null) {
+				HttpSession session = req.getSession();
+				session.setAttribute(Const.CUSTOMER_LOGINED, tempAcc);
+			}
 		}
 
 		chain.doFilter(request, response);
