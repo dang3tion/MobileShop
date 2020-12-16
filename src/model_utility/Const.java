@@ -21,6 +21,7 @@ public class Const {
 	public static final String ADMIN_LOGINED = "KEY_ADMIN_LOGIN";
 	
 	public static final String KEY_SYSTEM_OTP = "SYS_OTP";
+	public static final String KEY_SYSTEM_OTP_FORGOT = "SYS_OTP_FORGOT";
 	
 	public static final int OTP_LIVE_MINUTES = 1;
 	

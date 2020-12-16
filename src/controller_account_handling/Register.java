@@ -31,10 +31,7 @@ public class Register extends HttpServlet {
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		OTP sysOtp = new OTP();
 		HttpSession session = request.getSession();
-		session.setAttribute(Const.KEY_SYSTEM_OTP, sysOtp.getSysOTP());
-
 		Account tmpAcc = new Account(email, password);
 		if ((new BO_Account()).isExsit(email)) {
 			request.setAttribute("message", "Email này đã được đăng kí");
@@ -44,6 +41,10 @@ public class Register extends HttpServlet {
 		} else {
 			session.setAttribute("newUser_register", tmpAcc);
 			request.setAttribute(Const.TOKEN_REGISTER_OTP, "register");
+			
+			OTP sysOtp = new OTP();
+			session.setAttribute(Const.KEY_SYSTEM_OTP, sysOtp);
+			
 
 			RequestDispatcher dispatcher //
 					= this.getServletContext().getRequestDispatcher("/otp");

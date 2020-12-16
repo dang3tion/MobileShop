@@ -16,7 +16,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 	// Tên bảng trong database
 	private final String ACCOUNT = "taikhoan";
 	// tên các cột của bảng ACCOUNT
-	private final String ID = "MAKH";
+	private final String CUSTOMERID = "MAKH";
 	private final String EMAIL = "email";
 	private final String ENCRYT_PASSWORD = "matKhau";
 	private final String ROLE = "quyenHan";
@@ -122,7 +122,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 		try (ResultSet rs = super.AccessDBstr(query)) {
 			while (rs.next()) {
 				Account acc = new Account( //
-						rs.getString(ID), //
+						rs.getString(CUSTOMERID), //
 						rs.getString(EMAIL), //
 						rs.getString(STATUS), //
 						rs.getString(TIMECREATE), //
@@ -145,7 +145,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 		try (ResultSet rs = super.AccessDBstr(query)) {
 			while (rs.next()) {
 				Account acc = new Account( //
-						rs.getString(ID), //
+						rs.getString(CUSTOMERID), //
 						rs.getString(EMAIL), //
 						rs.getString(STATUS), //
 						rs.getString(TIMECREATE), //
@@ -174,14 +174,13 @@ public class DAO_Account extends ExecuteStatementUtility {
 
 	public List<Account> get(int start, int end) {
 		List<Account> listAcc = new ArrayList<Account>();
-		String query = "SELECT * FROM " + " (SELECT ROW_NUMBER() OVER (ORDER BY " + TIMECREATE
-				+ " DESC) AS STT ,* FROM " + ACCOUNT + ") AS X " + " WHERE STT BETWEEN ? AND ? AND " + ROLE + " = '"
+		String query = "SELECT * FROM " + " (SELECT ROW_NUMBER() OVER (ORDER BY ID DESC) AS STT ,* FROM " + ACCOUNT + ") AS X " + " WHERE STT BETWEEN ? AND ? AND " + ROLE + " = '"
 				+ Const.CUSTOMER_ROLE + "'";
 		Object[] para = { start, end };
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				Account acc = new Account( //
-						rs.getString(ID), //
+						rs.getString(CUSTOMERID), //
 						rs.getString(EMAIL), //
 						rs.getString(STATUS), //
 						rs.getString(TIMECREATE), //
@@ -205,7 +204,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				Account acc = new Account( //
-						rs.getString(ID), //
+						rs.getString(CUSTOMERID), //
 						rs.getString(EMAIL), //
 						rs.getString(STATUS), //
 						rs.getString(TIMECREATE), //

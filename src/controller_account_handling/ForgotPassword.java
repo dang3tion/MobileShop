@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model_BO_service.BO_Account;
-import model_DAO.DAO_Account;
-import model_beans.Account;
 import model_utility.Const;
+import model_utility.OTP;
 
 @WebServlet(urlPatterns = "/forgot")
 public class ForgotPassword extends HttpServlet {
@@ -31,12 +29,16 @@ public class ForgotPassword extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		
+		
 		String email = request.getParameter("email");
 //		String messengeErr = null;
 
 		HttpSession session = request.getSession();
 		session.setAttribute(Const.EMAIL_FORGOT_PASS, email);
-		request.setAttribute(Const.TOKEN_RESETPASS_OTP, true);
+		request.setAttribute(Const.TOKEN_RESETPASS_OTP, "KEY_TOKEN_UNIQUE");
+		OTP otp = new OTP();
+		session.setAttribute(Const.KEY_SYSTEM_OTP_FORGOT, otp);
 
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/otpresetpass");

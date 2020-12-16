@@ -21,14 +21,12 @@ import model_utility.SendMail;
 public class CheckOTP extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	OTP otp = new OTP();
-	Account newUser = null;
-	String token = null;
+	 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		token = (String) request.getAttribute(Const.TOKEN_REGISTER_OTP);
+		String token = (String) request.getAttribute(Const.TOKEN_REGISTER_OTP);
 		// bắt đầu điều hướng
 		request.removeAttribute(Const.TOKEN_RESETPASS_OTP);
 		if (token != null) {
@@ -47,12 +45,14 @@ public class CheckOTP extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		newUser = (Account) session.getAttribute("newUser_register");
+		Account newUser = (Account) session.getAttribute("newUser_register");
 		String email = newUser.getEmail();
+		
+		OTP otp = (OTP) session.getAttribute(Const.KEY_SYSTEM_OTP);
 
 		// // TRANG NÀY CHỈ ĐƯỢC CHUYỂN QUA TỪ TRANG REGISTER
 		// lấy token
-		token = (String) request.getAttribute(Const.TOKEN_REGISTER_OTP);
+		String token = (String) request.getAttribute(Const.TOKEN_REGISTER_OTP);
 		
 		String tokenClient = (String) request.getParameter("TOKENKEY");
 
@@ -70,9 +70,6 @@ public class CheckOTP extends HttpServlet {
 		} else {
 			
 			String userOTP = request.getParameter("OTP");		
-			System.out.println("sys "+otp.getSysOTP());
-			System.out.println("user "+userOTP);
-			System.out.println(otp.checkLiveOTP(LocalDateTime.now()));
 			if (!otp.checkLiveOTP(LocalDateTime.now())) {
 				request.setAttribute("message", "Mã OTP đã hết hiệu lực");
 				RequestDispatcher dispatcher //
@@ -96,6 +93,8 @@ public class CheckOTP extends HttpServlet {
 //
 //			// Thêm user này vào session
 			session.setAttribute(Const.CUSTOMER_LOGINED, newUser);
+			session.removeAttribute(Const.KEY_SYSTEM_OTP);
+
 
 			request.setAttribute("messageSuccess", "Đăng kí tài khoản thành công");
 			RequestDispatcher dispatcher //

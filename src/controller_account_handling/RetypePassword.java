@@ -19,8 +19,7 @@ import model_utility.Encrypt;
 @WebServlet(urlPatterns = "/retype")
 public class RetypePassword extends HttpServlet {
 
-	Object token = null;
-	String userEmail = "empty";
+	
 
 	private static final long serialVersionUID = 1L;
 
@@ -31,7 +30,7 @@ public class RetypePassword extends HttpServlet {
 		// thứ tự : nhập mail ==> nhập password ==> gõ lại password
 		// KHÔNG THỂ TRUY CẬP BẤT KỲ NƠI NÀO KHÁC
 		// xử lý khi trang RESET PASS chuyển qua đây
-		token = request.getAttribute(Const.TOKEN_OTP_RETYPE_PASS);
+	String	token = (String) request.getAttribute(Const.TOKEN_OTP_RETYPE_PASS);
 		if (token != null) {
 			request.removeAttribute(Const.TOKEN_OTP_RETYPE_PASS);
 			RequestDispatcher dispatcher //
@@ -49,7 +48,7 @@ public class RetypePassword extends HttpServlet {
 			throws ServletException, IOException {
 
 		// kiểm tra có phải trang OTP chuyển qua không
-		token = (Boolean) request.getAttribute(Const.TOKEN_OTP_RETYPE_PASS);
+		String token = (String) request.getAttribute(Const.TOKEN_OTP_RETYPE_PASS);
 		if (token != null) {
 			request.removeAttribute(Const.TOKEN_OTP_RETYPE_PASS);
 			RequestDispatcher dispatcher //
@@ -61,7 +60,7 @@ public class RetypePassword extends HttpServlet {
 			// xử lý đổi mật khẩu mật khẩu
 			String password = request.getParameter("password");
 			HttpSession session = request.getSession();
-			userEmail = (String) session.getAttribute(Const.EMAIL_FORGOT_PASS);
+			String userEmail = (String) session.getAttribute(Const.EMAIL_FORGOT_PASS);
 
 			BO_Account bo = new BO_Account();
 			if (bo.isExsit(userEmail)) {
