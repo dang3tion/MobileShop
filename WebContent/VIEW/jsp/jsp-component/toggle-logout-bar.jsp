@@ -36,7 +36,7 @@
 					<div class="modal-body">Bạn có muốn đăng xuất?</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-success" data-dismiss="modal">Hủy</button>
-						<a href="${pageContext.request.contextPath}/logout"
+						<a href="${pageContext.request.contextPath}/AdminLogout"
 							class="btn btn-danger" role="button" aria-pressed="true">Đăng
 							xuất</a>
 					</div>

@@ -21,9 +21,14 @@ import model_utility.Encrypt;
 @WebServlet("/login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private String enterPaymentPageFlag = null;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		enterPaymentPageFlag = request.getParameter("payment");
+		
+		
 
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/login.jsp");
@@ -68,23 +73,30 @@ public class Login extends HttpServlet {
 			Account acc = (new BO_Account()).get(email);
 			session.setAttribute(Const.CUSTOMER_LOGINED, acc);
 			// Thêm token ghi nhớ đăng nhập
-			if (rememberMe != null ) {
+			if (rememberMe != null) {
 				Cookie newCookie = new Cookie(Const.NAME_TOKEN_REMEMBER_LOGIN, acc.getTokenLogin());
 				newCookie.setMaxAge(Const.MAX_TIME_REMEMBER_LOGIN);
 				response.addCookie(newCookie);
 			}
 			String path = (String) session.getAttribute(Const.CURRENT_LINK);
 
-			// Tại đây có 2 trường hợp để redirect
+			// Tại đây có 3 trường hợp để redirect
 
-			// TH1 : trang khác bị khóa và redirect sang trang login để mở khóa
-			// TH2 : người dùng tự truy cập vào link
-
-			if (path != null) {
-				response.sendRedirect(request.getContextPath() + path);
-			} else {
-				response.sendRedirect(request.getContextPath() + "/index");
+			if( enterPaymentPageFlag != null) {
+				// TH1 : đăng nhập trước khi thanh toán
+				response.sendRedirect(request.getContextPath() + "/payment");
+				return;
 			}
+			
+			if (path != null) {
+				// TH2 : trang khác bị khóa và redirect sang trang login để mở khóa
+				response.sendRedirect(request.getContextPath() + path);
+				return;
+			}
+			// TH2 : người dùng tự truy cập vào link
+			response.sendRedirect(request.getContextPath() + "/index");
+			return;
+
 		}
 		}
 

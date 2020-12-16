@@ -154,7 +154,7 @@
 															</p>
 														</div>
 														<div class="modal-footer">
-															<a href="${pageContext.request.contextPath}/login"
+															<a href="${pageContext.request.contextPath}/login?payment=on"
 																class="btn btn-success" role="button"><i
 																class="fas fa-sign-in-alt"></i> Đăng nhập</a> 
 																<a

@@ -22,6 +22,12 @@
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
 		<c:param name="title" value="Thanh toán"></c:param>
 	</c:import>
+	
+	
+	<c:choose>
+			<c:when test="${ LIST_PRODUCT_IN_CART != null }">
+				
+				
 	<div class="container" style="margin: 60px auto; max-width: 80%;">
 		<div class="py-1 text-center">
 			<img class="d-block mx-auto mb-4"
@@ -175,8 +181,24 @@
 	</div>
 
 
-	<!-- /.container -->
+				
+				
+			</c:when>
+			<c:otherwise>
+				<div style="margin-top: -10px; margin-bottom: 70px" class="container">
+							<div class="row mb-4  text-center">
+								<div class="col-12">
 
+									<img style="" src="${url}/image/img-sys/emptycart.webp">
+									<h2 style="margin-top: -20px">Giỏ hàng trống</h2>
+
+								</div>
+							</div>
+						</div>
+			</c:otherwise>
+		</c:choose>
+	
+	
 
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
