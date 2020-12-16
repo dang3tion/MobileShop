@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +16,7 @@ import model_BO_service.BO_Account;
 import model_DAO.DAO_Account;
 import model_beans.Account;
 import model_utility.Const;
-import model_utility.EncryptPassword;
+import model_utility.Encrypt;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
@@ -35,15 +36,14 @@ public class Login extends HttpServlet {
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
-		
+		String rememberMe = request.getParameter("remember-me");
+
 		String messageErr = null;
 
-
 		switch ((new BO_Account()).checkLogin(email, password, Const.CUSTOMER_ROLE)) {
-		
+
 		case 2: {
-			
+
 			messageErr = "Tài khoản hoặc mật khẩu không đúng";
 			request.setAttribute("messEmail", email);
 			request.setAttribute("message", messageErr);
@@ -67,6 +67,12 @@ public class Login extends HttpServlet {
 			HttpSession session = request.getSession();
 			Account acc = (new BO_Account()).get(email);
 			session.setAttribute(Const.CUSTOMER_LOGINED, acc);
+			// Thêm token ghi nhớ đăng nhập
+			if (rememberMe != null ) {
+				Cookie newCookie = new Cookie(Const.NAME_TOKEN_REMEMBER_LOGIN, acc.getTokenLogin());
+				newCookie.setMaxAge(Const.MAX_TIME_REMEMBER_LOGIN);
+				response.addCookie(newCookie);
+			}
 			String path = (String) session.getAttribute(Const.CURRENT_LINK);
 
 			// Tại đây có 2 trường hợp để redirect

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import model_utility.Const;
-import model_utility.EncryptPassword;
+import model_utility.Encrypt;
 
 public class Account {
 
@@ -18,6 +18,7 @@ public class Account {
 	private String name;
 	private String phoneNumber;
 	private String address;
+	private String tokenLogin;
 
 	// Dành cho JSTL
 	public Account() {
@@ -26,15 +27,18 @@ public class Account {
 	// Dành cho lúc đăng kí
 	public Account(String email, String passwordPlaintext) {
 		this.email = email;
-		this.password = EncryptPassword.md5(passwordPlaintext);
+		this.password = Encrypt.MD5(passwordPlaintext);
 		this.status = Const.ACCOUNT_ENABLE;
 		this.timeCreate = LocalDate.now().toString();
 		this.role = Const.CUSTOMER_ROLE;
 		this.name = "";
 		this.phoneNumber = "";
 		this.address = "";
+		this.tokenLogin = Encrypt.MD5(Encrypt.SHA1(Encrypt.rdText(99)));
 
 	}
+	
+	
 
 //	CREATE TABLE TAIKHOAN
 //	(
@@ -51,7 +55,7 @@ public class Account {
 
 	// Dành để load 1 User từ database lên
 	public Account(String email, String password, String role, String status, String timeCreate, String name,
-			String phoneNumber, String address) {
+			String phoneNumber, String address, String token) {
 		this.email = email;
 		this.password = password;
 		this.role = role;
@@ -60,6 +64,7 @@ public class Account {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
+		this.tokenLogin = token;
 	}
 
 	// Dành để load User thành danh sách
@@ -76,13 +81,19 @@ public class Account {
 
 	
 
+	public String getTokenLogin() {
+		return tokenLogin;
+	}
+
+	public void setTokenLogin(String tokenLogin) {
+		this.tokenLogin = tokenLogin;
+	}
+
 	public String getId() {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
+	
 
 	public String getEmail() {
 		return email;
@@ -120,9 +131,6 @@ public class Account {
 		return timeCreate;
 	}
 
-	public void setTimeCreate(String timeCreate) {
-		this.timeCreate = timeCreate;
-	}
 
 	public String getName() {
 		return name;
@@ -159,13 +167,14 @@ public class Account {
 		return arrName.get(arrName.size() - 1);
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", email=" + email + ", password=" + password + ", role=" + role + ", status="
 				+ status + ", timeCreate=" + timeCreate + ", name=" + name + ", phoneNumber=" + phoneNumber
-				+ ", address=" + address + "]\n";
+				+ ", address=" + address + ", tokenLogin=" + tokenLogin + "]\n";
 	}
-
 
 
 }

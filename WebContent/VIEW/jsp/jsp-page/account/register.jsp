@@ -47,7 +47,7 @@
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
 	</c:import>
-
+<div style="margin-top: 40px"></div>
 	<%--breadcumb--%>
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
 		<c:param name="title" value="Đăng ký"></c:param>

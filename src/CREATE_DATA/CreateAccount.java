@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import model_DAO.DAO_Account;
 import model_beans.Account;
-import model_utility.EncryptPassword;
+import model_utility.Encrypt;
 
 public class CreateAccount {
 
@@ -1116,25 +1116,7 @@ public class CreateAccount {
 		return duong.get(rdItem(duong.size()));
 	}
 
-	static String rdText(int n) {
-		// chose a Character random from this String
-		String AlphaNumericString = "0123456789" + "abcdefghijklmnopqrstuvxyz";
-
-		// create StringBuffer size of AlphaNumericString
-		StringBuilder sb = new StringBuilder(n);
-
-		for (int i = 0; i < n; i++) {
-
-			// generate a random number between
-			// 0 to AlphaNumericString variable length
-			int index = (int) (AlphaNumericString.length() * Math.random());
-
-			// add Character one by one in end of sb
-			sb.append(AlphaNumericString.charAt(index));
-		}
-
-		return sb.toString();
-	}
+	
 
 	public static String domain() {
 		ArrayList<String> domain = new ArrayList<String>();
@@ -1172,7 +1154,7 @@ public class CreateAccount {
 	}
 
 	public static String fullEmail() {
-		return rdText(10) + "@" + domain();
+		return Encrypt.rdText(10) + "@" + domain();
 	}
 
 	public static String ngayTao() {
@@ -1180,11 +1162,16 @@ public class CreateAccount {
 	}
 
 	public static String password() {
-		return EncryptPassword.md5(rdText(3));
+		return Encrypt.MD5(Encrypt.rdText(3));
 	}
+	
+	public static String token() {
+		return Encrypt.MD5(Encrypt.SHA1(Encrypt.rdText(9)));
+	}
+	
 
 	public static Account acc() {
-		return new Account(fullEmail(), password(), "CUSTOMER", "ENABLE", ngayTao(), fullName(), SDT(), fullDiaChi());
+		return new Account(fullEmail(), password(), "CUSTOMER", "ENABLE", ngayTao(), fullName(), SDT(), fullDiaChi(),token());
 	}
 
 	public static void main(String[] args) {

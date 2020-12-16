@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import model_BO_service.BO_Account;
 import model_beans.Account;
 import model_utility.Const;
-import model_utility.EncryptPassword;
+import model_utility.Encrypt;
 
 @WebServlet(urlPatterns = "/member/profile")
 public class Profile extends HttpServlet {
@@ -40,7 +40,7 @@ public class Profile extends HttpServlet {
 		HttpSession session = request.getSession();
 		Account acc = (Account) session.getAttribute(Const.CUSTOMER_LOGINED);
 		acc.setAddress(address);
-		acc.setPassword(EncryptPassword.md5(password));
+		acc.setPassword(Encrypt.MD5(password));
 		acc.setName(name);
 		acc.setPhoneNumber(phoneNumber);
 

@@ -6,7 +6,7 @@ import model_DAO.DAO_Account;
 import model_beans.Account;
 import model_utility.Config;
 import model_utility.Const;
-import model_utility.EncryptPassword;
+import model_utility.Encrypt;
 
 public class BO_Account {
 
@@ -18,6 +18,9 @@ public class BO_Account {
 
 	}
 
+	
+	
+	
 	// dùng để xuất danh sách tài khoản trong trang ADMIN
 	public BO_Account(String pageNumber_str, String numRowPerPage_str) {
 		this.pageNumber = Integer.parseInt(pageNumber_str);
@@ -33,6 +36,13 @@ public class BO_Account {
 		return null;
 	}
 
+	
+	public Account getAccountByToken(String token) {
+		return dao.getAccountByToken(token);
+	}
+	
+	
+	
 	public List<Account> getList() {
 		List<Account> listAcc = dao.get(startRow(), endRow());
 		return listAcc;
@@ -77,7 +87,7 @@ public class BO_Account {
 				return 2;
 			}
 			// kiểm tra pass
-			if (EncryptPassword.md5(passwordPlaintext).equals(encrytPass)) {
+			if (Encrypt.MD5(passwordPlaintext).equals(encrytPass)) {
 				return 1;
 			}
 		}
@@ -86,7 +96,7 @@ public class BO_Account {
 
 	public void changePassword(String email, String passwordPlaintext) {
 		Account acc = dao.get(email);
-		acc.setPassword(EncryptPassword.md5(passwordPlaintext));
+		acc.setPassword(Encrypt.MD5(passwordPlaintext));
 		(new DAO_Account()).update(acc);
 	}
 

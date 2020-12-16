@@ -24,10 +24,11 @@ public class DAO_Account extends ExecuteStatementUtility {
 	private final String NAME = "ten";
 	private final String PHONE = "SDT";
 	private final String ADDRESS = "diaChi";
+	private final String TOKEN = "TOKENREMEMBER";
 
 	public void add(Account acc) {
 		try {
-			String query = "INSERT INTO " + ACCOUNT + " VALUES(?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO " + ACCOUNT + " VALUES(?,?,?,?,?,?,?,?,?)";
 			String[] parameters = { //
 					acc.getEmail(), //
 					acc.getPassword(), //
@@ -36,7 +37,8 @@ public class DAO_Account extends ExecuteStatementUtility {
 					acc.getRole(), //
 					acc.getName(), //
 					acc.getPhoneNumber(), //
-					acc.getAddress() //
+					acc.getAddress(),//
+					acc.getTokenLogin() //
 			};
 
 			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
@@ -51,6 +53,33 @@ public class DAO_Account extends ExecuteStatementUtility {
 
 	}
 
+	
+	public Account getAccountByToken(String token) {
+		String query = "SELECT * FROM " + ACCOUNT + " WHERE " + TOKEN + " = ? ";
+		String[] para = { token };
+		Account account = null;
+		try (ResultSet rs = super.AccessDBstr(query, para)) {
+			while (rs.next()) {
+				Account acc = new Account( //
+						rs.getString(EMAIL), //
+						rs.getString(ENCRYT_PASSWORD), //
+						rs.getString(ROLE), //
+						rs.getString(STATUS), //
+						rs.getString(TIMECREATE), //
+						rs.getString(NAME), //
+						rs.getString(PHONE), //
+						rs.getString(ADDRESS),//
+						rs.getString(TOKEN)//
+				);//
+				account = acc;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return account;
+	}
+	
+	
 	public void update(Account newAcc) {
 		String query = "UPDATE " + ACCOUNT + " SET "//
 				+ ENCRYT_PASSWORD + " = ? , " //
@@ -196,7 +225,8 @@ public class DAO_Account extends ExecuteStatementUtility {
 						rs.getString(TIMECREATE), //
 						rs.getString(NAME), //
 						rs.getString(PHONE), //
-						rs.getString(ADDRESS)//
+						rs.getString(ADDRESS),//
+						rs.getString(TOKEN)//
 				);//
 				account = acc;
 			}

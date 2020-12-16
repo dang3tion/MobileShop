@@ -33,8 +33,10 @@ public class MemberFilter implements Filter {
 
 		Account CustomerAcc = (Account) session.getAttribute(Const.CUSTOMER_LOGINED);
 		Account AdminAcc = (Account) session.getAttribute(Const.ADMIN_LOGINED);
+		
+		
 
-		if (CustomerAcc == null | AdminAcc == null) {
+		if (CustomerAcc == null || (CustomerAcc == null && AdminAcc !=null)) {
 			// lưu url của trang hiện tại.
 			// để sau khi đăng nhập thì tiếp tục vào trang này
 			// VD : link thanh toán bị khóa ===> hệ thống chuyển qua trang login ===> login
@@ -42,7 +44,7 @@ public class MemberFilter implements Filter {
 			session.setAttribute(Const.CURRENT_LINK, servletPath);
 
 			// chuyển qua login kèm theo thông báo
-			request.setAttribute("messenger", "Bạn cần đăng nhập để thanh toán");
+			request.setAttribute("message", "Bạn cần đăng nhập để tiếp tục");
 			RequestDispatcher dispatcher //
 					= request.getServletContext().getRequestDispatcher("/login");
 			dispatcher.forward(request, response);

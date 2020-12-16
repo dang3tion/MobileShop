@@ -24,5 +24,9 @@ public class Const {
 	
 	public static final int OTP_LIVE_MINUTES = 1;
 	
+	// tên token ghi nhớ đăng nhập lưu trong cookie browser
+	public static final String NAME_TOKEN_REMEMBER_LOGIN = "0h5rg67";
+	public static final int MAX_TIME_REMEMBER_LOGIN = 1000 * 3600 * 24 * 30;
+	
 
 }

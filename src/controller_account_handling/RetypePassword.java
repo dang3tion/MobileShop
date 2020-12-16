@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import model_BO_service.BO_Account;
 import model_DAO.DAO_Account;
 import model_utility.Const;
-import model_utility.EncryptPassword;
+import model_utility.Encrypt;
 
 @WebServlet(urlPatterns = "/retype")
 public class RetypePassword extends HttpServlet {
