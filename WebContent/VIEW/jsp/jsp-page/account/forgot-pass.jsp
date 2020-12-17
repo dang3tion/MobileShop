@@ -23,18 +23,15 @@
 	</c:import>
 
 	<!-- Page Content -->
-	<form method="post" onsubmit="return checkMail2()"
+	<form method="post" 
 		action="${pageContext.request.contextPath}/forgot" class="form-signin"
 		id="forget">
 		<img class="mb-4" src="${url}/image/img-sys/QMK.png" alt="" width="72"
 			height="72">
 		<h1 class="h3 mb-3 font-weight-normal">Nhập email đã đăng kí</h1>
 		<input name="email" id="inputEmail" class="form-control"
-			placeholder="Nhập email" onfocusout=" check_email2(this.id)">
-		<div class="require" style="display: none" id="require-email2">
-			Nhập email theo đúng theo định dạng email <br>Ví dụ:
-			nlumobile@gmail.com
-		</div>
+			placeholder="Nhập email">
+	
 
 		<br />
 		</div>
@@ -51,7 +48,6 @@
 
 
 	<c:url var="url" scope="session" value="/VIEW"></c:url>
-	<script src="${url}/js/js-page/form-login.js"></script>
 </body>
 
 </html>

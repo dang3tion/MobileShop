@@ -31,25 +31,17 @@
 
 
 	<!-- Page Content -->
-	<form onsubmit="return checkVali()"
-		action="${pageContext.request.contextPath}/login" method="POST">
-		<div class="form-signin color_tt" id="login">
+	<form action="${pageContext.request.contextPath}/login" method="POST">
+		<div class="form-signin color_tt">
 			<img class="mb-4" src="${url}/image/img-sys/user.png" width="72"
 				height="72">
 			<h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
 
 			<input type="text" name="email" id="inputEmail" class="form-control"
-				placeholder="Email hoặc số điện thoại" value="${messEmail}"
-				onfocusout=" check_email(this.id)">
-			<div class="require" id="require-email">
-				Yêu cầu nhập email theo đúng theo định dạng email <br>Ví dụ:
-				nlumobile@gmail.com
-			</div>
+				placeholder="Email hoặc số điện thoại" value="${messEmail}">
+
 			<input type="password" id="inputPassword" name="password"
-				class="form-control " placeholder="Mật khẩu" value=""
-				onfocusout="check_password(this)">
-			<div class="require" id="require-password">Mật khẩu phải đủ 8
-				kí tự(bao gồm cả chữ và số)</div>
+				class="form-control " placeholder="Mật khẩu">
 			<div class="checkbox mb-3">
 				<a href="${pageContext.request.contextPath}/forgot" class="mx-2">Quên
 					mật khẩu</a> <a href="${pageContext.request.contextPath}/register"
@@ -68,18 +60,11 @@
 				<b>hoặc</b>
 			</div>
 
-<%-- 			<a id="google-login-button" href="${Config.GOOGLE_URL_HREF_JSP}" --%>
-<!-- 				class="btn btn-danger btn-lg  btn-block" role="button" -->
-<!-- 				aria-pressed="true"><i id="icon-google" -->
-<!-- 				class="fab fa-google-plus-g mr-3" aria-hidden="true"></i> Đăng nhập -->
-<!-- 				bằng google</a> -->
-				
-				 <a id="google-login-button"
-				class="btn btn-danger btn-lg  btn-block" role="button"
-				aria-pressed="true"
-				href="${Config.GOOGLE_URL_HREF_JSP}"><i
-				id="icon-google" class="fab fa-google-plus-g mr-3"
-				aria-hidden="true"></i> Login With Google</a>
+			<a id="google-login-button" class="btn btn-danger btn-lg  btn-block"
+				role="button" aria-pressed="true"
+				href="${Config.GOOGLE_URL_HREF_JSP}"><i id="icon-google"
+				class="fab fa-google-plus-g mr-3" aria-hidden="true"></i> Login With
+				Google</a>
 
 
 		</div>
@@ -123,7 +108,6 @@
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 
 	<c:url var="url" scope="session" value="/VIEW"></c:url>
-	<script src="${url}/js/js-page/form-login.js"></script>
 </body>
 
 </html>

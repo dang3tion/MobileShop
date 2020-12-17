@@ -108,7 +108,7 @@ public class Account {
 	}
 
 	public void setPassword(String passwordPlaintext) {
-		this.password = Encrypt.MD5(passwordPlaintext);
+		this.password = passwordPlaintext;
 	}
 
 	public String getRole() {

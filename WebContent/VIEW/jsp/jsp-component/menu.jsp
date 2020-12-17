@@ -96,6 +96,16 @@
 
 								</div>
 						</a></li>
+						<li class="nav-item"><a
+							href="${pageContext.request.contextPath}/register">
+								<div class="item-menu">
+									<i class="fas fa-user-plus"></i>
+									<div class="item-menu-text">
+										<p>Đăng ký</p>
+									</div>
+
+								</div>
+						</a></li>
 					</c:otherwise>
 				</c:choose>
 

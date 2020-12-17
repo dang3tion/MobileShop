@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<!-- @@@@@@@@@@ HIỆN THÔNG BÁO  @@@@@@@@@@@@@ -->
+	<!-- @@@@@@@@@@ HIỆN THÔNG BÁO  @@@@@@@@@@@@@ -->
 	<c:if test="${message != null}">
 
 		<script>
@@ -58,17 +58,16 @@
 
 
 	<!-- Page Content -->
-	<form onsubmit="return checkNum()" method="post"
+	<form method="post"
 		action="${pageContext.request.contextPath}/otpresetpass"
 		class="form-signin" id="otp">
 		<img class="mb-4" src="${url}/image/img-sys/OTP.png" alt="" width="72"
 			height="72">
 		<h1 class="h3 mb-3 font-weight-normal">Nhập mã OTP</h1>
 		<label class="sr-only">OTP</label> <input name="OTP" id="checkOTP"
-			class="form-control" placeholder="Nhập mã OTP đã được gửi trong mail"
-			value="" onfocusout=" check_OTP(this.id)"> <br />
-		<p style="display: none; color: red" id="check_OTP">Vui lòng không
-			nhập chữ và kí tự đặc biệt.</p>
+			class="form-control" placeholder="Nhập mã OTP đã được gửi trong mail">
+		<br />
+
 		</div>
 		<button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Tiếp
 			tục</button>
@@ -79,7 +78,7 @@
 		<div class="row text-center">
 			<div class="col-12">
 				<script>
-					var timeleft = 4;
+					var timeleft = 120;
 					var downloadTimer = setInterval(
 							function() {
 								if (timeleft <= 0) {
@@ -105,7 +104,6 @@
 
 
 	<c:url var="url" scope="session" value="/VIEW"></c:url>
-	<script src="${url}/js/js-page/form-login.js"></script>
 </body>
 
 </html>

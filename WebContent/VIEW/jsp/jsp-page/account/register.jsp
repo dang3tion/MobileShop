@@ -56,7 +56,7 @@
 
 
 	<!-- Page Content -->
-	<form style="margin-top: -55px" onsubmit="return checkRegisterABCDEFGH()"
+	<form style="margin-top: -55px"
 		action="${pageContext.request.contextPath}/register" method="post"
 		 class="form-signin" id="register">
 
@@ -69,22 +69,14 @@
 				class="d-flex justify-content-start align-baseline col-form-label">Email:</label>
 			<input name="email" type="text" id="inputemail" class="form-control"
 				onfocusout="check_email(this.id)" placeholder="Email">
-			<div class="require mt-1 ml-5" id="require-email">Vui lòng nhập
-				đúng định dạng email</div>
 			<label style="margin-bottom: -25px" for="recipient-name"
 				class="d-flex justify-content-start align-baseline col-form-label">Mật
 				khẩu:</label> <input name="password" type="password" id="inputPassword"
-				class="form-control" placeholder="Mật Khẩu"
-				onfocusout="check_password(this.id)">
-			<div class="require" id="require-password">Mật khẩu tối thiểu 8
-				ký tự, bao gồm chữ và số</div>
+				class="form-control" placeholder="Mật Khẩu">
 			<label style="margin-bottom: -25px" for="recipient-name"
 				class="d-flex justify-content-start align-baseline col-form-label">Nhập
 				lại mật khẩu:</label> <input type="password" id="inputPassword-confirm"
-				class="form-control" placeholder="Nhập lại mật khẩu"
-				onfocusout="check_password2(this.id,'inputPassword')">
-			<div class=" require" id="require-password2">Nhập lại mật khẩu
-				không khớp</div>
+				class="form-control" placeholder="Nhập lại mật khẩu">
 			<br /> <a href="${pageContext.request.contextPath}/login">Quay
 				lại trang đăng nhập</a>
 			<button class="btn btn-lg btn-primary btn-block">Đăng kí</button>
@@ -93,7 +85,6 @@
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 
-	<script src="${url}/js/js-page/form-register.js"></script>
 </body>
 
 </html>

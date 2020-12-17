@@ -58,7 +58,7 @@
 	</c:import>
 
 	<!-- Page Content -->
-	<form onsubmit="return checkNum()" method="post"
+	<form  method="post"
 		action="${pageContext.request.contextPath}/otp" class="form-signin"
 		id="otp">
 		<img class="mb-4" src="${url}/image/img-sys/OTP.png" alt="" width="72"
@@ -66,9 +66,7 @@
 		<h1 class="h3 mb-3 font-weight-normal">Nhập mã OTP</h1>
 		<label class="sr-only">OTP</label> <input name="OTP" id="checkOTP"
 			class="form-control" placeholder="Nhập mã OTP đã được gửi trong mail"
-			value="" onfocusout=" check_OTP(this.id)"> <br />
-		<p style="display: none; color: red" id="check_OTP">Vui lòng không
-			nhập chữ và kí tự đặc biệt.</p>
+		> <br />
 		</div>
 		<button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Tiếp
 			tục</button>
@@ -103,7 +101,6 @@
 
 
 	<c:url var="url" scope="session" value="/VIEW"></c:url>
-	<script src="${url}/js/js-page/form-login.js"></script>
 </body>
 
 </html>
