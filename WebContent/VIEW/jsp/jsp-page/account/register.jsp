@@ -56,9 +56,9 @@
 
 
 	<!-- Page Content -->
-	<form style="margin-top: -55px"
+	<form style="margin-top: -55px" onsubmit="return checkRegisterABCDEFGH()"
 		action="${pageContext.request.contextPath}/register" method="post"
-		onsubmit="return checkRegister()" class="form-signin" id="register">
+		 class="form-signin" id="register">
 
 		<div class="form-signin color_tt" id="login">
 

@@ -5,7 +5,7 @@ function vali_isEmail(text) {
 }
 
 function vali_isPassword(text) {
-  const regex = /^(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/g;
+  const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/g;
   const result = regex.test(text);
   return result;
 }
@@ -20,9 +20,7 @@ function vali_PhoneNumber(text) {
   return result;
 }
 
-var checkName = false;
 
-var checkPhone = false;
 var checkPass = false;
 var ckeckEmail = false;
 var checkRepass = false;
@@ -68,9 +66,11 @@ function check_password2(id, id2) {
   if (s != s2) {
     document.getElementById("require-password2").style.display = "block";
     checkRepass = false;
+    return true;
   } else {
     document.getElementById("require-password2").style.display = "none";
     checkRepass = true;
+    return false;
   }
 }
 function check_phone(id) {
@@ -109,18 +109,19 @@ function check_name(id) {
 
 
 function checkRegisterABCDEFGH() {
-  if (ckeckEmail&&checkFristName&&checkLastName&&checkPhone&&checkRepass&&checkPass){
+  if (ckeckEmail&&checkRepass&&checkPass){
       return true;
   }else {
-    alert("Vui lòng nhập đầy đủ thông tin.")
     return  false;
   }
 }
 function checkRegister() {
-  if (checkEmailcheckPass){
+  if (checkEmail&&checkPass&&checkRepass){
+      console.log("123");
       return true;
   }else {
     alert("Vui lòng nhập đầy đủ thông tin.")
+    console.log("false")
     return  false;
   }
 }
