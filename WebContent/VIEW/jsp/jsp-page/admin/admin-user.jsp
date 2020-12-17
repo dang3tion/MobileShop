@@ -103,32 +103,11 @@
 				</div>
 
 				<!-- 				PHÂN TRANG -->
-				<div class="container-fluid d-flex justify-content-end">
-					<div class="col-6">
-						<div class="row">
-							<div class="col-4">
-								<a href="#" class="btn btn-primary active" role="button"
-									aria-pressed="true"><i class="fas fa-arrow-circle-left"></i>
-									previous</a>
-							</div>
-							<div class="col-4" style="width: 10%; margin-left: -60px;">
-								<select onchange="SendDataToServlet()" id="page"
-									class="form-control SendData">
-									<!-- 									số mặc định -->
-									<!-- 									<option value="1" selected hidden>1</option> -->
-
-									<c:forEach var="i" begin="1" end="${totalPage}">
-										<option>${i}</option>
-									</c:forEach>
-
-								</select>
-							</div>
-							<div class="col-4">
-								<a href="#" class="btn btn-primary active" role="button"
-									aria-pressed="true">next <i
-									class="fas fa-arrow-circle-right"></i></a>
-							</div>
-						</div>
+				<div class="page-navigation" id="page-navigation" value="20">
+					<div class="beta">
+						<button onclick="previousPage()">Trước</button>
+						<span id="page-number"> </span>
+						<button onclick="nextPage()">Sau</button>
 					</div>
 				</div>
 			</div>
@@ -145,23 +124,29 @@
 
 
 	<script>
-		function SendDataToServlet() {
+		
+		function SendDataToServlet(number) {
+			getNumberPageDefault(number);
 			$
 					.ajax({
 						type : 'GET',
 						url : '${pageContext.request.contextPath}/AJAXAdminUserManager',
 						data : {
-							page : document.getElementById("page").value
+
+							page : parseInt(number)
+
 						},
 						success : function(responseText) {
 							$('#content-table').html(responseText);
 						}
 
 					});
+
 		}
+	
 	</script>
 
-
+<script src="${url}/js/js-page/devide-page-admin.js"></script>
 
 
 

@@ -133,7 +133,7 @@ button {
 	float: right;
 }
 
-.page-navigation .beta button {
+.page-navigation .beta button {    min-width: 45px;
 	color: #6c757d;
 	cursor: pointer;
 	background-color: #fff;

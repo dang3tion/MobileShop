@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
 	<button class="btn btn-primary" id="menu-toggle">
@@ -54,6 +54,7 @@
 <script
 	src="${url}/css/css-static/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+
 <!-- Menu Toggle Script -->
 <script>
 	$("#menu-toggle").click(function(e) {
@@ -61,7 +62,7 @@
 		$("#wrapper").toggleClass("toggled");
 	});
 </script>
-<script src="${url}/js/js-page/divide-page.js"></script>
+
 
 <!-- search -->
 <script>
