@@ -21,10 +21,12 @@ function showPage(numberStart, numberEnd) {
   }
   for (let i = numberStart; i <= numberEnd; i++) {
     var btn = document.createElement("button");
-
-   
+    containerPage.appendChild(btn);
     btn.innerHTML = i;
   }
+}
+function onclickPage(id){
+	
 }
 function activePage(pageNumber) {
   var page = document.getElementById("page-number");
