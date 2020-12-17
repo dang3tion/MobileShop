@@ -37,9 +37,8 @@
 			data-toggle="modal" data-target="#thongBaoMax"></button>
 
 		<!-- Modal -->
-		<div class="modal fade" id="thongBaoMax" tabindex="-1"
-			role="dialog" aria-labelledby="thongBaoMaxTitle"
-			aria-hidden="true">
+		<div class="modal fade" id="thongBaoMax" tabindex="-1" role="dialog"
+			aria-labelledby="thongBaoMaxTitle" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -81,13 +80,50 @@
 									</c:forEach>
 
 								</ul>
-								<form method="POST"
-									action="${pageContext.request.contextPath}/cart">
-									<button type="submit" name="choose" value="remove-all"
-										class="ml-5 btn btn-danger">
-										<i class="fas fa-trash-alt"></i> Xóa tất cả
+								<!-- 								### NÚT XÓA TẤT CẢ GIỎ HÀNG ### -->
+								<c:if test="${PRODUCT_QUANTITY > 1}">
+
+
+									<!-- Button trigger modal -->
+									<button type="button" class="btn btn-danger"
+										data-toggle="modal" data-target="#xacNhanXoaGioHang">
+										<i class="far fa-trash-alt"></i> Xóa tất cả
 									</button>
-								</form>
+
+									<!-- Modal -->
+									<div class="ml-5 modal fade" id="xacNhanXoaGioHang"
+										tabindex="-1" role="dialog" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered"
+											role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title">Bạn có muốn xóa toàn bộ giỏ
+														hàng ?</h5>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+
+												<div class="modal-footer">
+													<button type="button" class="btn btn-success"
+														data-dismiss="modal">
+														<i class="fas fa-share"></i> Trở về
+													</button>
+													<form method="POST"
+														action="${pageContext.request.contextPath}/cart">
+														<button type="submit" name="choose" value="remove-all"
+															class="btn btn-danger">
+															<i class="fas fa-trash-alt"></i> Tiếp tục xóa
+														</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</c:if>
+								<!-- 								### NÚT XÓA TẤT CẢ GIỎ HÀNG ### -->
 							</div>
 
 						</div>
@@ -154,14 +190,15 @@
 															</p>
 														</div>
 														<div class="modal-footer">
-															<a href="${pageContext.request.contextPath}/login?payment=on"
+															<a
+																href="${pageContext.request.contextPath}/login?payment=on"
 																class="btn btn-success" role="button"><i
-																class="fas fa-sign-in-alt"></i> Đăng nhập</a> 
-																<a
+																class="fas fa-sign-in-alt"></i> Đăng nhập</a> <a
 																href="${pageContext.request.contextPath}/payment"
 																class="btn btn-danger" role="button"><i
-																class="fas fa-chevron-circle-right"></i> Tiếp tục mua không đăng nhập</a>
-															
+																class="fas fa-chevron-circle-right"></i> Tiếp tục mua
+																không đăng nhập</a>
+
 														</div>
 													</div>
 												</div>

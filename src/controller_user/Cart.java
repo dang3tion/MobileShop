@@ -66,6 +66,7 @@ public class Cart extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		int QuantityItemInCart = (Integer) session.getAttribute("CART_QUANTITY");
+		int productQuantity = (Integer) session.getAttribute("PRODUCT_QUANTITY");
 		cart = (HashMap<String, Integer>) session.getAttribute("CART");
 
 		switch (choose) {
@@ -92,6 +93,7 @@ public class Cart extends HttpServlet {
 					}
 				} else {
 					cart.put(productID, 1);
+					session.setAttribute("PRODUCT_QUANTITY", productQuantity +1);
 					session.setAttribute("CART_QUANTITY", QuantityItemInCart + 1);
 				}
 
@@ -99,6 +101,7 @@ public class Cart extends HttpServlet {
 				HashMap<String, Integer> map = new HashMap<String, Integer>();
 				map.put(productID, 1);
 				session.setAttribute("CART", map);
+				session.setAttribute("PRODUCT_QUANTITY", productQuantity +1);
 				session.setAttribute("CART_QUANTITY", QuantityItemInCart + 1);
 			}
 
@@ -130,6 +133,7 @@ public class Cart extends HttpServlet {
 		case "remove":
 			cart = (HashMap<String, Integer>) session.getAttribute("CART");
 			session.setAttribute("CART_QUANTITY", QuantityItemInCart - cart.get(productID));
+			session.setAttribute("PRODUCT_QUANTITY", productQuantity -1);
 			cart.remove(productID);
 			if ((Integer) session.getAttribute("CART_QUANTITY") == 0) {
 				session.removeAttribute("CART");

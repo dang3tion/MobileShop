@@ -14,6 +14,7 @@ public class FirstSetup implements HttpSessionListener {
 		HttpSession session = arg0.getSession();
 		session.setAttribute("LANGUAGE", "vi_VN");
 		session.setAttribute("CART_QUANTITY", 0);
+		session.setAttribute("PRODUCT_QUANTITY", 0);
 	}
 
 	@Override
