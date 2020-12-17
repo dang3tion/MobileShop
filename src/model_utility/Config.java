@@ -40,6 +40,7 @@ public class Config {
 	public static final String MAIL_PASSWORD = "Admin123@#";
 //	___________________________________________________________________________________________________________________________________________________________________________________________________
 	// Login bằng google
+//	https://console.developers.google.com/apis/credentials/oauthclient/513013153147-13nhsbm8a1gtp4i1vq2l9j228f1q8691.apps.googleusercontent.com?project=demologinservlet&supportedpurview=project
 	private static final String LINK_WEB = "localhost:8080/MobileShop";
 
 	public static final String GOOGLE_CLIENT_ID = "513013153147-13nhsbm8a1gtp4i1vq2l9j228f1q8691.apps.googleusercontent.com";
