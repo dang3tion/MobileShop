@@ -16,7 +16,7 @@ public class ConnectionPoolManager {
 
 	public ConnectionPoolManager() {
 		while (!isMaxPool()) {
-			availableConnections.add(createNewConnectionPool());
+			availableConnections.add(createNewSingleConnectionToDB());
 		}
 	}
 
@@ -35,7 +35,7 @@ public class ConnectionPoolManager {
 	}
 
 	// Tạo mới 1 single connection
-	private Connection createNewConnectionPool() {
+	private Connection createNewSingleConnectionToDB() {
 		String URL = Config.SERVER_NAME + ";databaseName=" + Config.DATABASE_NAME;
 		Connection connection = null;
 		try {
@@ -68,6 +68,4 @@ public class ConnectionPoolManager {
 		}
 	}
 	
-
-
 }
