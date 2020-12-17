@@ -43,12 +43,12 @@ function check_email(id) {
   var s = document.getElementById(id).value;
   if (!vali_isEmail(s)) {
     document.getElementById("require-email").style.display = "block";
-    checkEmail = false;
+    check = false;
     return true;
   }
   if (vali_isEmail(s)) {
     document.getElementById("require-email").style.display = "none";
-    checkEmail = true;
+    check = true;
     return false;
   }
 }
@@ -100,9 +100,7 @@ function check_password(id) {
 function checkVali(){
   if (checkPass&&checkEmail){
     return true;
-    console.log("12333");
   }else{
-    console.log("stupid")
     return false;
   }
 }

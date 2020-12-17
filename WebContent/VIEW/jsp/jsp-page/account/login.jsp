@@ -31,8 +31,7 @@
 
 
 	<!-- Page Content -->
-	<form 
-		action="${pageContext.request.contextPath}/login" method="POST">
+	<form onsubmit="return checkVali()"	action="${pageContext.request.contextPath}/login" method="POST">
 		<div class="form-signin color_tt" id="login">
 			<img class="mb-4" src="${url}/image/img-sys/user.png" width="72"
 				height="72">
@@ -48,8 +47,7 @@
 			<input type="password" id="inputPassword" name="password"
 				class="form-control " placeholder="Mật khẩu" value=""
 				onfocusout="check_password(this)">
-			<div class="require" id="require-password">Mật khẩu phải có ít
-				nhất 8 ký tự</div>
+			<div class="require" id="require-password">Mật khẩu phải đủ 8 kí tự(bao gồm cả chữ và số)</div>
 			<div class="checkbox mb-3">
 				<a href="${pageContext.request.contextPath}/forgot" class="mx-2">Quên
 					mật khẩu</a> <a href="${pageContext.request.contextPath}/register"
