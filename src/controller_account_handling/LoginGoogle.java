@@ -24,27 +24,30 @@ public class LoginGoogle extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String code = request.getParameter("code");
+		HttpSession session = request.getSession();
 
 		if (code == null || code.isEmpty()) {
-			RequestDispatcher dis = request.getRequestDispatcher("login.jsp");
+			request.setAttribute("message", "Lỗi đăng nhập bằng google");
+			RequestDispatcher dis = request.getRequestDispatcher("/VIEW/jsp/jsp-page/account/login.jsp");
 			dis.forward(request, response);
 		} else {
 			String accessToken = GoogleUtils.getToken(code);
-			Account account = GoogleUtils.getUserInfo(accessToken);
+			Account Googleaccount = GoogleUtils.getUserInfo(accessToken);
+			String email =  Googleaccount.getEmail();
+			Account account = new Account(email, Encrypt.MD5(Encrypt.rdText(99)));
 
-			String email = account.getEmail();
 
 			// KIỂM TRA MAIL CÓ TRONG DATABASE CHƯA
 			if (!(new DAO_Account().isExist(email))) {
 				// NẾU CHƯA CÓ TẠO MỚI.
-				account.setName(getNameFromEmail(email));
-				account.setPassword(Encrypt.rdText(99));
+				account.setName(getNameFromEmail(email));			
 				(new DAO_Account()).add(account);
 			} else {
 				// Mail đã tồn tại thì load từ database
 				account = (new DAO_Account()).get(email);
 			}
 
+			
 			if (account.getStatus().equals(Const.ACCONT_DISABLE)) {
 				String messageErr = "Tài khoản của bạn đã bị khóa";
 				request.setAttribute("message", messageErr);
@@ -55,12 +58,12 @@ public class LoginGoogle extends HttpServlet {
 			}
 
 			// Thêm user này vào session
-			HttpSession session = request.getSession();
+			
 			session.setAttribute(Const.CUSTOMER_LOGINED, account);
 
 			String path = (String) session.getAttribute(Const.CURRENT_LINK);
 
-			// Tại đây có 2 trường hợp để redirect
+			// Tại đây có 3 trường hợp để redirect
 
 			// TH1 : trang khác bị khóa và redirect sang trang login để mở khóa
 			// TH2 : người dùng tự truy cập vào link

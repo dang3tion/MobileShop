@@ -138,6 +138,11 @@ public class BO_Account {
 // dùng làm pagination
 	public int totalPage() {
 		int num = getTotalAccount() / numRowPerPage;
+		
+		if (getTotalAccount() % numRowPerPage > 1) {
+			num+=1;
+		}
+		
 		return num;
 	}
 

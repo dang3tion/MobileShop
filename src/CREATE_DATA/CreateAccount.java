@@ -1178,7 +1178,7 @@ public class CreateAccount {
 
 		DAO_Account daoACC = new DAO_Account();	
 
-		for (int i = 0; i < 401; i++) {
+		for (int i = 0; i < 45; i++) {
 			daoACC.add(acc());
 		}
 

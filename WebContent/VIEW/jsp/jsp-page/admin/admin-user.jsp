@@ -61,12 +61,27 @@
 						<!-- 													</select></span> -->
 
 
-						<!-- 												</div> -->
-						<div class="show-page" style="margin-left: 50px">
-							Tìm kiếm <span> <input id="myInput"
-								style="padding-left: 15px; border: 0.5px solid grey" type="text"
-								placeholder="Search.." /></span>
-						</div>
+
+						<form>
+							<div class="ml-5 mb-2 form-row align-items-center">
+								<div class="col-auto">
+									<div class="input-group mb-2">
+										<div class="input-group-prepend">
+											<div class="input-group-text">
+												<i class="fas fa-search"></i>
+											</div>
+										</div>
+										<input type="text" class="form-control"
+											placeholder="nhập từ khóa">
+									</div>
+								</div>
+								<div class="col-auto">
+									<button type="submit" class="btn btn-primary mb-2">Tìm
+										kiếm</button>
+								</div>
+							</div>
+						</form>
+
 					</div>
 					<table class="table table-hover">
 						<thead class="thead-light">
@@ -103,7 +118,8 @@
 				</div>
 
 				<!-- 				PHÂN TRANG -->
-				<div class="page-navigation" id="page-navigation" value="20">
+				<div class="page-navigation" id="page-navigation"
+					value="${totalPage}">
 					<div class="beta">
 						<button onclick="previousPage()">Trước</button>
 						<span id="page-number"> </span>
@@ -124,7 +140,6 @@
 
 
 	<script>
-		
 		function SendDataToServlet(number) {
 			getNumberPageDefault(number);
 			$
@@ -143,10 +158,9 @@
 					});
 
 		}
-	
 	</script>
 
-<script src="${url}/js/js-page/devide-page-admin.js"></script>
+	<script src="${url}/js/js-page/devide-page-admin.js"></script>
 
 
 

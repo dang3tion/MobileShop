@@ -32,7 +32,7 @@
 
 	<!-- Page Content -->
 	<form action="${pageContext.request.contextPath}/login" method="POST">
-		<div class="form-signin color_tt">
+		<div class="form-signin color_tt" id="login">
 			<img class="mb-4" src="${url}/image/img-sys/user.png" width="72"
 				height="72">
 			<h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>

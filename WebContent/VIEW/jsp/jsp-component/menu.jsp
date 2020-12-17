@@ -89,14 +89,16 @@
 						<li class="nav-item"><a
 							href="${pageContext.request.contextPath}/login">
 								<div class="item-menu">
-									<i class="fas fa-user"></i>
+									<i class="fas fa-sign-in-alt"></i>
 									<div class="item-menu-text">
 										<p>Đăng nhập</p>
 									</div>
 
 								</div>
 						</a></li>
-						<li class="nav-item"><a
+						<li class="nav-item">
+						
+						<a
 							href="${pageContext.request.contextPath}/register">
 								<div class="item-menu">
 									<i class="fas fa-user-plus"></i>
@@ -105,7 +107,11 @@
 									</div>
 
 								</div>
-						</a></li>
+						</a>
+						
+						
+						
+						</li>
 					</c:otherwise>
 				</c:choose>
 
