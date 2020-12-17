@@ -14,6 +14,7 @@
 
 </script>
 <script src="${url}/js/js-page/divide-page.js"></script>
+<script src="${url}/js/js-page/divide-page-admin.js"></script>
 
 <!-- search -->
 <script>
