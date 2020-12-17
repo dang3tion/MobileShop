@@ -107,8 +107,8 @@ public class Account {
 		return password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword(String passwordPlaintext) {
+		this.password = Encrypt.MD5(passwordPlaintext);
 	}
 
 	public String getRole() {

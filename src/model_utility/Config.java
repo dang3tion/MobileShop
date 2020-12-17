@@ -27,7 +27,7 @@ public class Config {
 	public static final String USERNAME_DB = "sa";
 	public static final String PASSWORD_DB = "sa";
 //	_______________________________________________________________________________________________________________________________________________________________________
-	
+
 	public static final String DBDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 //	Số kết nối đồng thời
 	public static final int DB_MAX_CONNECTIONS = 10;
@@ -41,20 +41,17 @@ public class Config {
 //	___________________________________________________________________________________________________________________________________________________________________________________________________
 	// Login bằng google
 //	https://console.developers.google.com/apis/credentials/oauthclient/513013153147-13nhsbm8a1gtp4i1vq2l9j228f1q8691.apps.googleusercontent.com?project=demologinservlet&supportedpurview=project
-	private static final String LINK_WEB = "localhost:8080/MobileShop";
 
-	public static final String GOOGLE_CLIENT_ID = "513013153147-13nhsbm8a1gtp4i1vq2l9j228f1q8691.apps.googleusercontent.com";
-	public static final String GOOGLE_CLIENT_SECRET = "TxX1vWUkUE-YCZRCqBcqhqiG";
-	public static final String GOOGLE_REDIRECT_URI = "http://" + LINK_WEB + "/login-google";
-	public static final String GOOGLE_LINK_GET_TOKEN = "https://accounts.google.com/o/oauth2/token";
-	public static final String GOOGLE_LINK_GET_USER_INFO = "https://www.googleapis.com/oauth2/v1/userinfo?access_token=";
-	public static final String GOOGLE_GRANT_TYPE = "authorization_code";
-
-	public static final String GOOGLE_URL_HREF_JSP = "https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri="
-			+ GOOGLE_REDIRECT_URI + "&response_type=code&client_id=" + GOOGLE_CLIENT_ID + "&approval_prompt=force";
-
-
+	public static String GOOGLE_CLIENT_ID = "513013153147-13nhsbm8a1gtp4i1vq2l9j228f1q8691.apps.googleusercontent.com";
+	public static String GOOGLE_CLIENT_SECRET = "9vMjUVMMfYB3PfMxU4FD6heb";
+	public static String GOOGLE_REDIRECT_URI = "http://localhost:8080/MobileShop/login-google";
+	public static String GOOGLE_URL_HREF_JSP = "https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/MobileShop/login-google&response_type=code&client_id=513013153147-13nhsbm8a1gtp4i1vq2l9j228f1q8691.apps.googleusercontent.com&approval_prompt=force";
 	
+	public static String GOOGLE_LINK_GET_TOKEN = "https://accounts.google.com/o/oauth2/token";
+	public static String GOOGLE_LINK_GET_USER_INFO = "https://www.googleapis.com/oauth2/v1/userinfo?access_token=";
+	public static String GOOGLE_GRANT_TYPE = "authorization_code";
+	
+
 }
 
 //____                 ____                           _______ _                      
