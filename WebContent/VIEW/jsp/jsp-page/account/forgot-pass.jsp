@@ -23,20 +23,25 @@
 	</c:import>
 
 	<!-- Page Content -->
-	<form method="post" 
+	<form onsubmit="return checkMail2()" method="post" 
 		action="${pageContext.request.contextPath}/forgot" class="form-signin"
 		id="forget">
 		<img class="mb-4" src="${url}/image/img-sys/QMK.png" alt="" width="72"
 			height="72">
 		<h1 class="h3 mb-3 font-weight-normal">Nhập email đã đăng kí</h1>
-		<input name="email" id="inputEmail" class="form-control"
-			placeholder="Nhập email">
+	<input name="email" id="inputEmail" class="form-control"
+			placeholder="Nhập email" onfocusout=" check_email2(this.id)" value="">
+			<div class="require" style="display: none" id="require-email2">
+			Nhập email theo đúng theo định dạng email <br>Ví dụ:
+			nlumobile@gmail.com
+		</div>
+			
 	
 
 		<br />
 		</div>
 		<h5  style="color: red">${message}</h5>
-		<button class="btn btn-lg btn-primary btn-block mt-3" type="submit">OK</button>
+		<button onclick="clickEmail()" class="btn btn-lg btn-primary btn-block mt-3" type="submit">OK</button>
 
 	</form>
 	<!-- /.container -->

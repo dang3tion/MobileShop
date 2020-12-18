@@ -76,6 +76,13 @@ function checkMail2(){
   }
 }
 
+function clickEmail(){
+  var id = 'inputEmail';
+  if (check_email2(id)||check_email2(id)==null){
+    document.getElementById("require-email2").style.display = "block";
+  }
+}
+
 
 
 
@@ -114,6 +121,8 @@ function check11(){
 
 }
 
+
+
 function checkVali(){
   if (checkPass&&checkEmail){
     console.log("true");
@@ -124,5 +133,3 @@ function checkVali(){
     return false;
   }
 }
-
-
