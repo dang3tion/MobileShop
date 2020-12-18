@@ -57,7 +57,6 @@ public class CheckOTP extends HttpServlet {
 
 		String tokenClient = (String) request.getParameter("TOKENKEY");
 
-		System.out.println("0----------- " + tokenClient);
 
 		if (token != null | tokenClient != null) {
 			
@@ -81,7 +80,7 @@ public class CheckOTP extends HttpServlet {
 
 			String userOTP = request.getParameter("OTP");
 
-			if (!otp.checkOTP(userOTP) && Validation.isNumeric(userOTP) && (userOTP.length()< 10)) {
+			if (!Validation.isNumeric(userOTP) || (userOTP.length() > 10) || !otp.checkOTP(userOTP)) {
 				request.setAttribute("message", "Mã OTP không đúng");
 				request.setAttribute("COUNTDOWN", Math.abs(
 						Config.OTP_LIVE_SECOND - ChronoUnit.SECONDS.between(otp.getTimeCreate(), LocalDateTime.now())));
