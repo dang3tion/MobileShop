@@ -10,7 +10,15 @@ public class Detail_Config {
     public Detail_Config() {
     }
 
-    public Detail_Config(String idConfig, String idPropertie, ArrayList<Detail_Propertie> listProper) {
+    
+    public Detail_Config(String idConfig, String idPropertie) {
+		super();
+		this.idConfig = idConfig;
+		this.idPropertie = idPropertie;
+	}
+
+
+	public Detail_Config(String idConfig, String idPropertie, ArrayList<Detail_Propertie> listProper) {
         this.idConfig = idConfig;
         this.idPropertie = idPropertie;
         this.listProper = listProper;
