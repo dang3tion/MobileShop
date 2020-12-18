@@ -17,7 +17,19 @@ public class Detail_Propertie {
         this.listPropr = listPropr;
     }
 
-    public Detail_Propertie() {
+    
+    
+    public Detail_Propertie(String idDetail, String value, String content, String idTT) {
+		super();
+		this.idDetail = idDetail;
+		this.value = value;
+		this.content = content;
+		this.idTT = idTT;
+	}
+
+
+
+	public Detail_Propertie() {
     }
 
     public String getIdDetail() {
