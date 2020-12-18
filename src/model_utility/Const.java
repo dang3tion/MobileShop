@@ -23,7 +23,7 @@ public class Const {
 	public static final String KEY_SYSTEM_OTP = "SYS_OTP";
 	public static final String KEY_SYSTEM_OTP_FORGOT = "SYS_OTP_FORGOT";
 	
-	public static final int OTP_LIVE_MINUTES = 1;
+	
 	
 	// tên token ghi nhớ đăng nhập lưu trong cookie browser
 	public static final String NAME_TOKEN_REMEMBER_LOGIN = "0h5rg67";
