@@ -10,7 +10,6 @@ public class DataSource {
 
 	public static Connection getConnection() {
 		Connection connection = pool.getSingleConnectionFromPool();
-		System.out.println(pool.getAvailableConnections());
 		return connection;
 	}
 

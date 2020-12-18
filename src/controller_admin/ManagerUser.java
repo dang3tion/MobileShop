@@ -19,19 +19,34 @@ public class ManagerUser extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		BO_Account bo = new BO_Account("1", "20");
+		BO_Account bo = new BO_Account(1, 20);
+
+		String keyword = (String) request.getParameter("keyword");
+
+		System.out.println(keyword);
 
 		request.setAttribute("STTstart", bo.startRow());
-		request.setAttribute("listUser", bo.getList());
-		request.setAttribute("DEFAUTL_TABLE", true);
-		request.setAttribute("totalPage", bo.totalPage());
 		request.setAttribute("totalAccount", bo.getTotalAccount());
 		request.setAttribute("TongSoAccDangHoatDong", bo.getTotalStatusAccount(Const.ACCOUNT_ENABLE));
 		request.setAttribute("TongSoAccBiKhoa", bo.getTotalStatusAccount(Const.ACCONT_DISABLE));
 
+		if (keyword != null) {
+			request.setAttribute("listUser", bo.search("a", 1, 20));
+			request.setAttribute("DEFAUTL_TABLE", true);
+			request.setAttribute("totalPage", bo.totalSearch(keyword));
+			RequestDispatcher dispatcher //
+					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-user.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+
+		request.setAttribute("listUser", bo.getList());
+		request.setAttribute("DEFAUTL_TABLE", true);
+		request.setAttribute("totalPage", bo.totalPage());
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-user.jsp");
 		dispatcher.forward(request, response);
+		return;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

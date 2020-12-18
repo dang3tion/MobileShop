@@ -83,6 +83,7 @@ public class CheckOtpResetPassword extends HttpServlet {
 		} else {
 
 			String userOTP = (String) request.getParameter("OTP");
+			userOTP.trim();
 
 			 otp = (OTP) session.getAttribute(Const.KEY_SYSTEM_OTP_FORGOT);
 

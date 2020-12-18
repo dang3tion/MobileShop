@@ -62,7 +62,7 @@
 
 
 
-						<form>
+						<form action="${pageContext.request.contextPath}/admin/user" method="POST">
 							<div class="ml-5 mb-2 form-row align-items-center">
 								<div class="col-auto">
 									<div class="input-group mb-2">
@@ -71,7 +71,7 @@
 												<i class="fas fa-search"></i>
 											</div>
 										</div>
-										<input type="text" class="form-control"
+										<input name="keyword" value="9999" type="text" class="form-control"
 											placeholder="nhập từ khóa">
 									</div>
 								</div>

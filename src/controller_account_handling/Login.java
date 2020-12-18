@@ -15,6 +15,7 @@ import controller_user.Cart;
 import model_BO_service.BO_Account;
 import model_DAO.DAO_Account;
 import model_beans.Account;
+import model_utility.Config;
 import model_utility.Const;
 import model_utility.Encrypt;
 
@@ -78,7 +79,7 @@ public class Login extends HttpServlet {
 			
 			
 			if (rememberMe != null) {
-				Cookie newCookie = new Cookie(Const.NAME_TOKEN_REMEMBER_LOGIN, acc.getTokenLogin());
+				Cookie newCookie = new Cookie(Config.NAME_TOKEN_REMEMBER_LOGIN, acc.getTokenLogin());
 				newCookie.setMaxAge(9999);
 				response.addCookie(newCookie);
 			}

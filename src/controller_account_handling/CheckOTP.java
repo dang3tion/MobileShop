@@ -79,6 +79,7 @@ public class CheckOTP extends HttpServlet {
 		} else {
 
 			String userOTP = request.getParameter("OTP");
+			userOTP.trim();
 
 			if (!Validation.isNumeric(userOTP) || (userOTP.length() > 10) || !otp.checkOTP(userOTP)) {
 				request.setAttribute("message", "Mã OTP không đúng");

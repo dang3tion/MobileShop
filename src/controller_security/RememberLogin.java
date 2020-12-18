@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import model_BO_service.BO_Account;
 import model_beans.Account;
+import model_utility.Config;
 import model_utility.Const;
 
 @WebFilter(urlPatterns = "/*")
@@ -30,7 +31,7 @@ public class RememberLogin implements Filter {
 			if (arrCookie != null) {
 				for (Cookie c : arrCookie) {
 					String name = c.getName();
-					if (name.equals(Const.NAME_TOKEN_REMEMBER_LOGIN)) {
+					if (name.equals(Config.NAME_TOKEN_REMEMBER_LOGIN)) {
 						token = c.getValue();
 					}
 				}

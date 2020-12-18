@@ -46,16 +46,19 @@ public class Config {
 	public static String GOOGLE_CLIENT_SECRET = "9vMjUVMMfYB3PfMxU4FD6heb";
 	public static String GOOGLE_REDIRECT_URI = "http://localhost:8080/MobileShop/login-google";
 	public static String GOOGLE_URL_HREF_JSP = "https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/MobileShop/login-google&response_type=code&client_id=513013153147-13nhsbm8a1gtp4i1vq2l9j228f1q8691.apps.googleusercontent.com&approval_prompt=force";
-	
+
 	public static String GOOGLE_LINK_GET_TOKEN = "https://accounts.google.com/o/oauth2/token";
 	public static String GOOGLE_LINK_GET_USER_INFO = "https://www.googleapis.com/oauth2/v1/userinfo?access_token=";
 	public static String GOOGLE_GRANT_TYPE = "authorization_code";
-	
 
-	
 	// CẤU HÌNH OTP
 	public static final int OTP_LIVE_SECOND = 60;
-	
+
+	// CẤU HÌNH COOKIE GHI NHỚ ĐĂNG NHẬP
+	// tên token ghi nhớ đăng nhập lưu trong cookie browser
+	public static final String NAME_TOKEN_REMEMBER_LOGIN = "0h5rg67";
+	public static final int MAX_TIME_REMEMBER_LOGIN = 1000 * 3600 * 24 * 30;
+
 }
 
 //____                 ____                           _______ _                      

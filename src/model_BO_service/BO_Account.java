@@ -27,15 +27,22 @@ public class BO_Account {
 	}
 
 	// dùng để xuất danh sách tài khoản trong trang ADMIN
-	public BO_Account(String pageNumber_str, String numRowPerPage_str) {
-		this.pageNumber = Integer.parseInt(pageNumber_str);
-		this.numRowPerPage = Integer.parseInt(numRowPerPage_str);
+	public BO_Account(int pageNumber_str, int numRowPerPage_str) {
+		this.pageNumber = pageNumber_str;
+		this.numRowPerPage = numRowPerPage_str;
 	}
 
 	// chỉ get được thông tin customer
 	public Account get(String email) {
 		Account acc = dao.get(email);
 		if (!acc.getRole().equals(Const.ADMIN_ROLE)) {
+			return acc;
+		}
+		return null;
+	}
+	public Account getAdmin(String username) {
+		Account acc = dao.get(username);
+		if (acc.getRole().equals(Const.ADMIN_ROLE)) {
 			return acc;
 		}
 		return null;
@@ -201,4 +208,10 @@ public class BO_Account {
 
 //_____________________________________________________________________________
 
+	public static void main(String[] args) {
+		System.out.println(BO_Account.getBoAccount().totalSearch("a"));
+	}
+	
+	
+	
 }

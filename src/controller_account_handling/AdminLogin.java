@@ -32,11 +32,12 @@ public class AdminLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String messageErr = "Sai email hoặc mật khẩu";
+		String messageErr = "Sai tên tài khoản hoặc mật khẩu";
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		
 
-		Account acc =BO_Account.getBoAccount().get(email);
+		Account acc =BO_Account.getBoAccount().getAdmin(email);
 		if (BO_Account.getBoAccount().checkLogin(email, password, Const.ADMIN_ROLE) == 1) {
 			// mở khóa link
 			// Thêm user này vào session
