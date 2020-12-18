@@ -72,8 +72,7 @@
 						</a></li>
 					</c:when>
 
-					<c:when
-						test="${CUSTOMER_LOGINED!=null }">
+					<c:when test="${CUSTOMER_LOGINED!=null }">
 						<li class="nav-item"><a
 							href="${pageContext.request.contextPath}/member/profile">
 								<div class="item-menu">
@@ -96,9 +95,7 @@
 
 								</div>
 						</a></li>
-						<li class="nav-item">
-						
-						<a
+						<li class="nav-item"><a
 							href="${pageContext.request.contextPath}/register">
 								<div class="item-menu">
 									<i class="fas fa-user-plus"></i>
@@ -107,11 +104,7 @@
 									</div>
 
 								</div>
-						</a>
-						
-						
-						
-						</li>
+						</a></li>
 					</c:otherwise>
 				</c:choose>
 
@@ -128,11 +121,15 @@
 								<div class="item-menu" id="cart">
 									<i class="fas fa-shopping-cart"></i>
 									<div class="item-menu-text">
-										<p><fmt:message key="cart-menu-item"></fmt:message></p>
+										<p>
+											<fmt:message key="cart-menu-item"></fmt:message>
+										</p>
+
 									</div>
 									<c:if test="${CART_QUANTITY!=0}">
 										<label class="quantity-cart" id="quantity-cart123">${CART_QUANTITY}</label>
 								</div> </c:if>
+
 								<style>
 #quantity-cart123 {
 	position: absolute;
@@ -146,11 +143,26 @@
 	font-weight: 700;
 }
 </style>
+
+						</a></li>
 					</c:otherwise>
 				</c:choose>
 				<!--  xử lý nút giỏ hàng END > -->
 
+				<c:if test="${CART_QUANTITY !=0}">
+					<!-- <nút thanh toán -->
+					<li class="nav-item"><a
+						href="${pageContext.request.contextPath}/payment">
+							<div class="item-menu">
+								<i class="fas fa-dollar-sign"></i>
+								<div class="item-menu-text">
+									<p>Thanh toán</p>
+								</div>
 
+							</div>
+					</a></li>
+
+				</c:if>
 
 			</ul>
 		</div>

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import model_BO_service.BO_Product;
 import model_beans.Product;
 import model_utility.CodeOrder;
+import model_utility.VerifyCaptcha;
 
 @WebServlet(urlPatterns = "/payment")
 public class Payment extends HttpServlet {
@@ -54,6 +55,22 @@ public class Payment extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		String address = request.getParameter("address");
+		String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+
+		System.out.println(address);
+
+
+		// Verify CAPTCHA.
+		if (VerifyCaptcha.verify(gRecaptchaResponse) == false) {
+			request.setAttribute("message", "Sai mã captcha !");
+			RequestDispatcher dispatcher = //
+					request.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/payment.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/bill.jsp");
 		dispatcher.forward(request, response);
