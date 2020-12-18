@@ -27,6 +27,18 @@ public class DAO_Account extends ExecuteStatementUtility {
 	private final String ADDRESS = "diaChi";
 	private final String TOKEN = "TOKENREMEMBER";
 
+	private static DAO_Account daoAccount = null;
+
+	public static DAO_Account getDaoAccount() {
+		if (daoAccount == null) {
+			daoAccount = new DAO_Account();
+		}
+		return daoAccount;
+	}
+
+	protected DAO_Account() {
+	}
+
 	public void add(Account acc) {
 		try {
 			String query = "INSERT INTO " + ACCOUNT + " VALUES(?,?,?,?,?,?,?,?,?)";
@@ -174,8 +186,8 @@ public class DAO_Account extends ExecuteStatementUtility {
 
 	public List<Account> get(int start, int end) {
 		List<Account> listAcc = new ArrayList<Account>();
-		String query = "SELECT * FROM " + " (SELECT ROW_NUMBER() OVER (ORDER BY ID DESC) AS STT ,* FROM " + ACCOUNT + ") AS X " + " WHERE STT BETWEEN ? AND ? AND " + ROLE + " = '"
-				+ Const.CUSTOMER_ROLE + "'";
+		String query = "SELECT * FROM " + " (SELECT ROW_NUMBER() OVER (ORDER BY ID DESC) AS STT ,* FROM " + ACCOUNT
+				+ ") AS X " + " WHERE STT BETWEEN ? AND ? AND " + ROLE + " = '" + Const.CUSTOMER_ROLE + "'";
 		Object[] para = { start, end };
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {

@@ -36,8 +36,8 @@ public class AdminLogin extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 
-		Account acc = (new DAO_Account()).get(email);
-		if ((new BO_Account()).checkLogin(email, password, Const.ADMIN_ROLE) == 1) {
+		Account acc =BO_Account.getBoAccount().get(email);
+		if (BO_Account.getBoAccount().checkLogin(email, password, Const.ADMIN_ROLE) == 1) {
 			// mở khóa link
 			// Thêm user này vào session
 			HttpSession session = request.getSession();

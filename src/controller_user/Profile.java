@@ -44,7 +44,7 @@ public class Profile extends HttpServlet {
 		acc.setName(name);
 		acc.setPhoneNumber(phoneNumber);
 
-		(new BO_Account()).update(acc);
+		BO_Account.getBoAccount().update(acc);
 
 		request.setAttribute("message", "Đã cập nhập thành công");
 		RequestDispatcher dispatcher //

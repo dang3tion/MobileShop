@@ -15,7 +15,6 @@ import model_utility.Const;
 @WebServlet(urlPatterns = { "/logout" })
 public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	BO_Account bo = new BO_Account();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -26,7 +25,7 @@ public class Logout extends HttpServlet {
 
 		
 		if (acc != null) {
-			bo.changeToken(acc);
+			BO_Account.getBoAccount().changeToken(acc);
 		}
 
 		session.removeAttribute(Const.CUSTOMER_LOGINED);

@@ -34,7 +34,7 @@ public class RememberLogin implements Filter {
 						token = c.getValue();
 					}
 				}
-				Account tempAcc = new BO_Account().getAccountByToken(token);
+				Account tempAcc = BO_Account.getBoAccount().getAccountByToken(token);
 
 				if (tempAcc != null) {
 					session.setAttribute(Const.CUSTOMER_LOGINED, tempAcc);

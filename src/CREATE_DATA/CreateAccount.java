@@ -1,6 +1,5 @@
 package CREATE_DATA;
 
-
 import java.util.ArrayList;
 
 import model_DAO.DAO_Account;
@@ -1116,8 +1115,6 @@ public class CreateAccount {
 		return duong.get(rdItem(duong.size()));
 	}
 
-	
-
 	public static String domain() {
 		ArrayList<String> domain = new ArrayList<String>();
 		domain.add("gmail.com");
@@ -1164,19 +1161,19 @@ public class CreateAccount {
 	public static String password() {
 		return Encrypt.MD5(Encrypt.rdText(3));
 	}
-	
+
 	public static String token() {
 		return Encrypt.MD5(Encrypt.SHA1(Encrypt.rdText(9)));
 	}
-	
 
 	public static Account acc() {
-		return new Account(fullEmail(), password(), "CUSTOMER", "ENABLE", ngayTao(), fullName(), SDT(), fullDiaChi(),token());
+		return new Account(fullEmail(), password(), "CUSTOMER", "ENABLE", ngayTao(), fullName(), SDT(), fullDiaChi(),
+				token());
 	}
 
 	public static void main(String[] args) {
 
-		DAO_Account daoACC = new DAO_Account();	
+		DAO_Account daoACC = DAO_Account.getDaoAccount();
 
 		for (int i = 0; i < 45; i++) {
 			daoACC.add(acc());

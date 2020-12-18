@@ -18,6 +18,7 @@ import model_utility.Config;
 import model_utility.Const;
 import model_utility.OTP;
 import model_utility.SendMail;
+import model_utility.Validation;
 
 /**
  * @author XỬ LÝ GỬI MÃ OTP XÁC NHẬN RESET PASS
@@ -86,7 +87,7 @@ public class CheckOtpResetPassword extends HttpServlet {
 			 otp = (OTP) session.getAttribute(Const.KEY_SYSTEM_OTP_FORGOT);
 
 
-			if (!otp.checkOTP(userOTP)) {
+			if (!otp.checkOTP(userOTP) && Validation.isNumeric(userOTP) && (userOTP.length()< 10)) {
 				request.setAttribute("message", "Mã OTP không đúng");
 				request.setAttribute("COUNTDOWN",
 						Math.abs(Config.OTP_LIVE_SECOND  - ChronoUnit.SECONDS.between(otp.getTimeCreate(), LocalDateTime.now())));
@@ -113,8 +114,8 @@ public class CheckOtpResetPassword extends HttpServlet {
 			session.removeAttribute(Const.KEY_SYSTEM_OTP);
 
 			String userEmail = (String) session.getAttribute(Const.EMAIL_FORGOT_PASS);
-			BO_Account bo = new BO_Account();
-			if (bo.isExsit(userEmail)) {
+			BO_Account bo = BO_Account.getBoAccount();
+			if (bo.isExist(userEmail)) {
 				request.setAttribute(Const.TOKEN_OTP_RETYPE_PASS, "TOKEN_KEY_HIHI");
 				RequestDispatcher dispatcher //
 						= this.getServletContext().getRequestDispatcher("/retype");

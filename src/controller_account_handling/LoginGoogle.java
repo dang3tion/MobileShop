@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model_BO_service.BO_Account;
 import model_DAO.DAO_Account;
 import model_beans.Account;
 import model_utility.Const;
@@ -38,13 +39,13 @@ public class LoginGoogle extends HttpServlet {
 
 
 			// KIỂM TRA MAIL CÓ TRONG DATABASE CHƯA
-			if (!(new DAO_Account().isExist(email))) {
+			if (!BO_Account.getBoAccount().isExist(email)) {
 				// NẾU CHƯA CÓ TẠO MỚI.
 				account.setName(getNameFromEmail(email));			
-				(new DAO_Account()).add(account);
+				BO_Account.getBoAccount().add(account);
 			} else {
 				// Mail đã tồn tại thì load từ database
-				account = (new DAO_Account()).get(email);
+				account = BO_Account.getBoAccount().get(email);
 			}
 
 			

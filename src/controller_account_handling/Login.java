@@ -47,7 +47,7 @@ public class Login extends HttpServlet {
 
 		String messageErr = null;
 
-		switch ((new BO_Account()).checkLogin(email, password, Const.CUSTOMER_ROLE)) {
+		switch (BO_Account.getBoAccount().checkLogin(email, password, Const.CUSTOMER_ROLE)) {
 
 		case 2: {
 
@@ -72,7 +72,7 @@ public class Login extends HttpServlet {
 			//
 			// Thêm user này vào session
 			HttpSession session = request.getSession();
-			Account acc = (new BO_Account()).get(email);
+			Account acc = BO_Account.getBoAccount().get(email);
 			session.setAttribute(Const.CUSTOMER_LOGINED, acc);
 			// Thêm token ghi nhớ đăng nhập
 			

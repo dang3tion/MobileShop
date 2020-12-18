@@ -12,15 +12,20 @@ public class BO_Account {
 
 	private int pageNumber;
 	private int numRowPerPage;
-	private DAO_Account dao = new DAO_Account();
+	private DAO_Account dao = DAO_Account.getDaoAccount();
 
-	public BO_Account() {
+	private static BO_Account boAccount = null;
 
+	public static BO_Account getBoAccount() {
+		if (boAccount == null) {
+			boAccount = new BO_Account();
+		}
+		return boAccount;
 	}
 
-	
-	
-	
+	protected BO_Account() {
+	}
+
 	// dùng để xuất danh sách tài khoản trong trang ADMIN
 	public BO_Account(String pageNumber_str, String numRowPerPage_str) {
 		this.pageNumber = Integer.parseInt(pageNumber_str);
@@ -36,22 +41,21 @@ public class BO_Account {
 		return null;
 	}
 
-	
 	public Account getAccountByToken(String token) {
 		return dao.getAccountByToken(token);
 	}
-	
+
 	public void changeToken(Account acc) {
 		dao.changeToken(acc);
 	}
-	
+
 	public List<Account> getList() {
 		List<Account> listAcc = dao.get(startRow(), endRow());
 		return listAcc;
 
 	}
 
-	public boolean isExsit(String email) {
+	public boolean isExist(String email) {
 		Account acc = dao.get(email);
 		if (acc != null && !acc.getRole().equals(Const.ADMIN_ROLE)) {
 			return true;
@@ -99,11 +103,11 @@ public class BO_Account {
 	public void changePassword(String email, String passwordPlaintext) {
 		Account acc = dao.get(email);
 		acc.setPassword(Encrypt.MD5(passwordPlaintext));
-		(new DAO_Account()).update(acc);
+		DAO_Account.getDaoAccount().update(acc);
 	}
 
 	public void update(Account acc) {
-		(new DAO_Account()).update(acc);
+		DAO_Account.getDaoAccount().update(acc);
 	}
 
 	/**
@@ -124,7 +128,7 @@ public class BO_Account {
 		int total;
 		// trừ acc admin
 
-		total = (new DAO_Account()).getTotal() - 1;
+		total = DAO_Account.getDaoAccount().getTotal() - 1;
 
 		return total;
 	}
@@ -138,11 +142,11 @@ public class BO_Account {
 // dùng làm pagination
 	public int totalPage() {
 		int num = getTotalAccount() / numRowPerPage;
-		
+
 		if (getTotalAccount() % numRowPerPage > 1) {
-			num+=1;
+			num += 1;
 		}
-		
+
 		return num;
 	}
 
@@ -196,6 +200,5 @@ public class BO_Account {
 	}
 
 //_____________________________________________________________________________
-
 
 }

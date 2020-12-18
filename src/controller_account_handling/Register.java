@@ -33,7 +33,7 @@ public class Register extends HttpServlet {
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
 		Account tmpAcc = new Account(email, password);
-		if ((new BO_Account()).isExsit(email)) {
+		if (BO_Account.getBoAccount().isExist(email)) {
 			request.setAttribute("message", "Email này đã được đăng kí");
 			RequestDispatcher dispatcher //
 					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/register.jsp");

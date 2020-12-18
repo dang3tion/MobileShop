@@ -18,6 +18,7 @@ import model_utility.Config;
 import model_utility.Const;
 import model_utility.OTP;
 import model_utility.SendMail;
+import model_utility.Validation;
 
 @WebServlet(urlPatterns = "/otp")
 public class CheckOTP extends HttpServlet {
@@ -80,7 +81,7 @@ public class CheckOTP extends HttpServlet {
 
 			String userOTP = request.getParameter("OTP");
 
-			if (!otp.checkOTP(userOTP)) {
+			if (!otp.checkOTP(userOTP) && Validation.isNumeric(userOTP) && (userOTP.length()< 10)) {
 				request.setAttribute("message", "Mã OTP không đúng");
 				request.setAttribute("COUNTDOWN", Math.abs(
 						Config.OTP_LIVE_SECOND - ChronoUnit.SECONDS.between(otp.getTimeCreate(), LocalDateTime.now())));
@@ -103,7 +104,7 @@ public class CheckOTP extends HttpServlet {
 			
 
 			// ĐÃ XÁC THỰC MAIL THÀNH CÔNG THÊM VÀO DATABASE
-			(new BO_Account()).add(newUser);
+			BO_Account.getBoAccount().add(newUser);
 //
 //			// Thêm user này vào session
 			session.setAttribute(Const.CUSTOMER_LOGINED, newUser);
@@ -116,4 +117,7 @@ public class CheckOTP extends HttpServlet {
 			return;
 		}
 	}
+	
+	
+	
 }
