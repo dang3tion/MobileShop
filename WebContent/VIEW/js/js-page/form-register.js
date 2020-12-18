@@ -145,8 +145,3 @@ function checkRegister() {
   
 }
 
-
-
-
-
-alert("1233");

@@ -48,6 +48,7 @@
 
 
 	<c:url var="url" scope="session" value="/VIEW"></c:url>
+	<script src="${url}/js/js-page/form-login.js"></script>
 </body>
 
 </html>
