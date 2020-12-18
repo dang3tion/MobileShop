@@ -47,7 +47,7 @@
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
 	</c:import>
-<div style="margin-top: 40px"></div>
+	<div style="margin-top: 40px"></div>
 	<%--breadcumb--%>
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
 		<c:param name="title" value="Đăng ký"></c:param>
@@ -56,9 +56,10 @@
 
 
 	<!-- Page Content -->
-	<form style="margin-top: -55px"
+	<form onsubmit="return checkRegisterABCDEFGH()"
+		style="margin-top: -55px"
 		action="${pageContext.request.contextPath}/register" method="post"
-		 class="form-signin" id="register">
+		class="form-signin" id="register">
 
 		<div class="form-signin color_tt" id="login">
 
@@ -67,24 +68,34 @@
 			<h1 class="h3 mb-3 font-weight-normal">Đăng kí tài khoản mới</h1>
 			<label style="margin-bottom: -25px" for="recipient-name"
 				class="d-flex justify-content-start align-baseline col-form-label">Email:</label>
-			<input name="email" type="text" id="inputemail" class="form-control"
-				onfocusout="check_email(this.id)" placeholder="Email">
+			<input name="email" type="text" id="inputemail" value=""
+				class="form-control" onfocusout="check_email(this.id)"
+				placeholder="Email">
+			<div class="require" id="require-email">
+				Yêu cầu nhập email theo đúng theo định dạng email <br>Ví dụ:
+				nlumobile@gmail.com
+			</div>
 			<label style="margin-bottom: -25px" for="recipient-name"
 				class="d-flex justify-content-start align-baseline col-form-label">Mật
 				khẩu:</label> <input name="password" type="password" id="inputPassword"
-				class="form-control" placeholder="Mật Khẩu">
+				class="form-control" value="" placeholder="Mật Khẩu">
+			<div class="require" id="require-password">Mật khẩu tối thiểu 8
+				ký tự, bao gồm chữ và số</div>
 			<label style="margin-bottom: -25px" for="recipient-name"
 				class="d-flex justify-content-start align-baseline col-form-label">Nhập
 				lại mật khẩu:</label> <input type="password" id="inputPassword-confirm"
-				class="form-control" placeholder="Nhập lại mật khẩu">
+				class="form-control" value="" placeholder="Nhập lại mật khẩu">
+			<div class=" require" id="require-password2">Nhập lại mật khẩu
+				không khớp</div>
 			<br /> <a href="${pageContext.request.contextPath}/login">Quay
 				lại trang đăng nhập</a>
-			<button class="btn btn-lg btn-primary btn-block">Đăng kí</button>
+			<button onclick="checkEmpty()"
+				class="btn btn-lg btn-primary btn-block">Đăng kí</button>
 		</div>
 	</form>
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
-
+	<script src="${url}/js/js-page/form-register.js"></script>
 </body>
 
 </html>

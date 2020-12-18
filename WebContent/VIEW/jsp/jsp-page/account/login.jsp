@@ -31,17 +31,25 @@
 
 
 	<!-- Page Content -->
-	<form action="${pageContext.request.contextPath}/login" method="POST">
+	<form onsubmit="return checkVali()" action="${pageContext.request.contextPath}/login" method="POST">
 		<div class="form-signin color_tt" id="login">
 			<img class="mb-4" src="${url}/image/img-sys/user.png" width="72"
 				height="72">
 			<h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
 
+<!-- 			<input type="text" name="email" id="inputEmail" class="form-control" -->
+<%-- 				placeholder="Email hoặc số điện thoại" value="${messEmail}"> --%>
 			<input type="text" name="email" id="inputEmail" class="form-control"
-				placeholder="Email hoặc số điện thoại" value="${messEmail}">
-
+				placeholder="nhập email" value="${messEmail}" onfocusout=" check_email(this.id)">
+			<div class="require" id="require-email">
+				Yêu cầu nhập email theo đúng theo định dạng email <br>Ví dụ:
+				nlumobile@gmail.com
+			</div>
 			<input type="password" id="inputPassword" name="password"
-				class="form-control " placeholder="Mật khẩu">
+				class="form-control " placeholder="Nhập mật khẩu" value=""
+				onfocusout="check_password(this)">
+			<div class="require" id="require-password">Mật khẩu phải có ít
+				nhất 8 ký tự</div>
 			<div class="checkbox mb-3">
 				<a href="${pageContext.request.contextPath}/forgot" class="mx-2">Quên
 					mật khẩu</a> <a href="${pageContext.request.contextPath}/register"
@@ -53,7 +61,7 @@
 					class=" mt-3 form-check-label">Ghi nhớ đăng nhập</label>
 			</div>
 
-			<button class="btn btn-lg btn-primary btn-block" type="submit">
+			<button onclick="check11()" class="btn btn-lg btn-primary btn-block" type="submit">
 				Đăng nhập</button>
 
 			<div class="or-seperator">
@@ -106,8 +114,10 @@
 
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
-
+	
 	<c:url var="url" scope="session" value="/VIEW"></c:url>
+	<script src="${url}/js/js-page/form-login.js"></script>
+	
 </body>
 
 </html>
