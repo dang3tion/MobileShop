@@ -1,15 +1,18 @@
 package model_utility;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class OTP {
 
 	private int sysOTP;
-	private LocalDateTime timeout;
+	private LocalDateTime timeCreate;
+	private int timeLive; // Minute
 
 	public OTP() {
 		this.sysOTP = randomOTP();
-		timeout = LocalDateTime.now().plusMinutes(Const.OTP_LIVE_MINUTES);
+		timeCreate = LocalDateTime.now();
+		this.timeLive = Config.OTP_LIVE_SECOND;
 	}
 
 	public int getSysOTP() {
@@ -21,8 +24,8 @@ public class OTP {
 		return (int) ((Math.random() * (999999 - 100000)) + 100000);
 	}
 
-	public LocalDateTime getTimeout() {
-		return timeout;
+	public LocalDateTime getTimeCreate() {
+		return timeCreate;
 	}
 
 	public boolean checkOTP(String userOTP) {
@@ -34,23 +37,12 @@ public class OTP {
 	}
 
 	public boolean checkLiveOTP(LocalDateTime userTime) {
-		if (userTime.getYear() != timeout.getYear()) {
-			return false;
-		}
-		if (userTime.getMonth() != timeout.getMonth()) {
-			return false;
-		}
-		if (userTime.getDayOfMonth() != timeout.getDayOfMonth()) {
-			return false;
-		}
-		if (userTime.getHour() != timeout.getHour()) {
-			return false;
-		}
-		if (userTime.getMinute() - timeout.getMinute() > 2) {
-			return false;
+		
+		if (Math.abs(ChronoUnit.SECONDS.between(timeCreate, userTime)) < timeLive) {
+			return true;
 		}
 
-		return true;
+		return false;
 	}
 
 }

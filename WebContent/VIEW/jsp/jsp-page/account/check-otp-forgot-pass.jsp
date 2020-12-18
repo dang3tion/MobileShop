@@ -78,7 +78,7 @@
 		<div class="row text-center">
 			<div class="col-12">
 				<script>
-					var timeleft = 120;
+				var timeleft = ${COUNTDOWN};
 					var downloadTimer = setInterval(
 							function() {
 								if (timeleft <= 0) {

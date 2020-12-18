@@ -52,6 +52,10 @@ public class Config {
 	public static String GOOGLE_GRANT_TYPE = "authorization_code";
 	
 
+	
+	// CẤU HÌNH OTP
+	public static final int OTP_LIVE_SECOND = 60;
+	
 }
 
 //____                 ____                           _______ _                      

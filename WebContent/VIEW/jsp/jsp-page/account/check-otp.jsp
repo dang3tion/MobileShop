@@ -52,7 +52,7 @@
 
 	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
 	</c:import>
-<div style="margin-top: 40px"></div>
+<div style="margin-top: 15px"></div>
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
 		<c:param name="title" value="Nhập OTP"></c:param>
 	</c:import>
@@ -75,8 +75,15 @@
 	<div class="container">
 		<div class="row text-center">
 			<div class="col-12">
+		
 				<script>
-					var timeleft = 120;
+				
+					var timeleft = ${COUNTDOWN};
+
+					if (timeleft === 0) {
+						
+					}
+					
 					var downloadTimer = setInterval(
 							function() {
 								if (timeleft <= 0) {

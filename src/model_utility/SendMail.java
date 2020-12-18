@@ -77,8 +77,8 @@ public class SendMail {
 
 		});
 
-		// Used to debug SMTP issues
-		session.setDebug(true);
+//		// Used to debug SMTP issues
+//		session.setDebug(true);
 
 		try {
 			// Create a default MimeMessage object.
