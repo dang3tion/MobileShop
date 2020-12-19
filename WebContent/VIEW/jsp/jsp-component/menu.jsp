@@ -85,27 +85,41 @@
 						</a></li>
 					</c:when>
 					<c:otherwise>
-						<li class="nav-item"><a
+					
+						<li class="nav-item hover-account"><a
 							href="${pageContext.request.contextPath}/login">
 								<div class="item-menu">
-									<i class="fas fa-sign-in-alt"></i>
+									<i class="fas fa-user"></i>
 									<div class="item-menu-text">
-										<p>Đăng nhập</p>
+										<p>Tài khoản</p>
 									</div>
-
 								</div>
-						</a></li>
-						<li class="nav-item"><a
-							href="${pageContext.request.contextPath}/register">
-								<div class="item-menu">
-									<i class="fas fa-user-plus"></i>
-									<div class="item-menu-text">
-										<p>Đăng ký</p>
-									</div>
-
+						</a>
+							<div class="frame-account">
+								<div class="triangle">
+									<i class=" fas fa-caret-up"></i>
 								</div>
-						</a></li>
+								<ul>
+									<li class="item-acc"><a
+										href="${pageContext.request.contextPath}/login">
+											<div class="acc">Đăng nhập</div>
+									</a></li>
+									<li class="item-acc"><a
+										href="${pageContext.request.contextPath}/register">
+											<div class="acc">Tạo tài khoản</div>
+									</a></li>
+									<li class="item-acc"><a href="#">
+											<div class=" login-google">
+												<i class="fab fa-google-plus-g"
+													style="font-size: 20px; float: left; padding: 2px 6px;"></i>Đăng
+												nhập bằng Google
+											</div>
+									</a></li>
+								</ul>
+							</div></li>
+
 					</c:otherwise>
+		
 				</c:choose>
 
 				<!-- xử lý nút login END -->
