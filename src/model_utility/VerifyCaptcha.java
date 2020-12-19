@@ -5,10 +5,9 @@ import java.io.OutputStream;
 import java.net.URL;
 
 import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
 import javax.net.ssl.HttpsURLConnection;
-
-import com.google.gson.JsonObject;
-import com.google.gson.stream.JsonReader;
 
 public class VerifyCaptcha {
 
@@ -36,8 +35,7 @@ public class VerifyCaptcha {
 			conn.setDoOutput(true);
 
 			// Láº¥y Output Stream (Luá»“ng Ä‘áº§u ra) cá»§a káº¿t ná»‘i tá»›i Server.
-			// Ghi dá»¯ liá»‡u vÃ o Output Stream, cÃ³ nghÄ©a lÃ  gá»­i thÃ´ng tin Ä‘áº¿n
-			// Server.
+			// Ghi dá»¯ liá»‡u vÃ o Output Stream, cÃ³ nghÄ©a lÃ  gá»­i thÃ´ng tin Ä‘áº¿n Server.
 			OutputStream outStream = conn.getOutputStream();
 			outStream.write(postParams.getBytes());
 
@@ -51,7 +49,7 @@ public class VerifyCaptcha {
 			// Ä‘á»ƒ Ä‘á»�c dá»¯ liá»‡u gá»­i Ä‘áº¿n tá»« Server.
 			InputStream is = conn.getInputStream();
 
-			JsonReader jsonReader = (JsonReader) Json.createReader(is);
+			JsonReader jsonReader = Json.createReader(is);
 			JsonObject jsonObject = jsonReader.readObject();
 			jsonReader.close();
 
