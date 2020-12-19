@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ page import="model_utility.Config"%>
 
 <%-- <%@ page import="model_utility.Const"%> --%>
 <!-- Thanh navigation Bar cho khach hang -->
@@ -85,7 +85,7 @@
 						</a></li>
 					</c:when>
 					<c:otherwise>
-					
+
 						<li class="nav-item hover-account"><a
 							href="${pageContext.request.contextPath}/login">
 								<div class="item-menu">
@@ -108,7 +108,8 @@
 										href="${pageContext.request.contextPath}/register">
 											<div class="acc">Tạo tài khoản</div>
 									</a></li>
-									<li class="item-acc"><a href="${Config.GOOGLE_URL_HREF_JSP}">
+									<li class="item-acc"><a
+										href="${Config.GOOGLE_URL_HREF_JSP}">
 											<div class=" login-google">
 												<i class="fab fa-google-plus-g"
 													style="font-size: 20px; float: left; padding: 2px 6px;"></i>Đăng
@@ -119,7 +120,7 @@
 							</div></li>
 
 					</c:otherwise>
-		
+
 				</c:choose>
 
 				<!-- xử lý nút login END -->
