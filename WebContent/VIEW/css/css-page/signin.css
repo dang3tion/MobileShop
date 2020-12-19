@@ -13,7 +13,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 .or-seperator {
-	margin: 40px 0 5px;
+	margin: 30px 0 5px;
 	text-align: center;
 	border-top: 1px solid #e0e0e0;
 }
@@ -144,7 +144,7 @@ html, body {
 }
 
 #login button {
-	margin-top: 25px;
+	margin-top: 20px;
 }
 
 #login .with-login {

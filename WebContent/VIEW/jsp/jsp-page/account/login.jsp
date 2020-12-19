@@ -58,21 +58,20 @@
 			<div class="form-check">
 				<input type="checkbox" name="remember-me" value="on"
 					class="form-check-input"> <label
-					class=" mt-3 form-check-label">Ghi nhớ đăng nhập</label>
+					class=" mt-2 form-check-label">Ghi nhớ đăng nhập</label>
 			</div>
 
-			<button onclick="check11()" class="btn btn-lg btn-primary btn-block" type="submit">
+			<button onclick="check11()" class="btn btn-lg btn-primary btn-block" style="font-size:18px;" type="submit">
 				Đăng nhập</button>
 
 			<div class="or-seperator">
 				<b>hoặc</b>
 			</div>
 
-			<a id="google-login-button" class="btn btn-danger btn-lg  btn-block"
+			<a id="google-login-button" class="btn btn-danger btn-lg  btn-block" style="font-size:18px;"
 				role="button" aria-pressed="true"
 				href="${Config.GOOGLE_URL_HREF_JSP}"><i id="icon-google"
-				class="fab fa-google-plus-g mr-3" aria-hidden="true"></i> Login With
-				Google</a>
+				class="fab fa-google-plus-g mr-3" aria-hidden="true"></i> Đăng nhập bằng Google</a>
 
 
 		</div>

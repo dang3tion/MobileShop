@@ -108,7 +108,7 @@
 										href="${pageContext.request.contextPath}/register">
 											<div class="acc">Tạo tài khoản</div>
 									</a></li>
-									<li class="item-acc"><a href="#">
+									<li class="item-acc"><a href="${Config.GOOGLE_URL_HREF_JSP}">
 											<div class=" login-google">
 												<i class="fab fa-google-plus-g"
 													style="font-size: 20px; float: left; padding: 2px 6px;"></i>Đăng
