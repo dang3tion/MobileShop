@@ -35,24 +35,4 @@ function change(path){
 
 
 
-var send1 =document.getElementById("send1");
-var checkClick1 = true;
-send1.onclick=function send1(){
-  var dg = document.getElementById("formReview1");
-  if(checkClick1==true){
-  dg.style.display="block";
-  var send =document.getElementById("send1").style.display="none";
-  document.getElementById("close").style.display="block"
-  checkClick1 = false;
-}
-}
-document.getElementById("close").onclick = function closeTxt(){
-  var dg = document.getElementById("formReview1");
-  if(checkClick1==false){
-  dg.style.display="none";
-  var send =document.getElementById("send1").style.display="block";
-  document.getElementById("close").style.display="none"
-  checkClick1 = true;
-}
-}
 

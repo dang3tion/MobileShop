@@ -42,8 +42,8 @@
 			<div class=" col-md-7 ">
 				<div class="row space-img">
 					<img id="img" class=""
-						src="${url}/image/image-user/product/i12black.png" alt="">
-					<a class="carousel-control-prev indexP"
+						src="${url}/image/image-user/product/i12black.png" alt=""> <a
+						class="carousel-control-prev indexP"
 						href="#carouselExampleControls" role="button" data-slide="prev">
 						<span id="pre" class="carousel-control-prev-icon"
 						aria-hidden="true"></span> <span class="sr-only">Previous</span>
@@ -167,8 +167,8 @@
 					<div class="col-sm-5">
 						<form action="${pageContext.request.contextPath}/cart"
 							method="post">
-							<input name="choose" value="add" hidden="true">
-							<input name="datHang" value="true" hidden="true">
+							<input name="choose" value="add" hidden="true"> <input
+								name="datHang" value="true" hidden="true">
 							<button name="id" value="${PRODUCT.id}" type="submit"
 								class="btnMua btn btn-danger btn-lg btn-block">
 								<strong>ĐẶT HÀNG</strong>
@@ -234,54 +234,23 @@
 					</c:if>
 					<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO KHI VƯỢT QUÁ GIỚI HẠN SẢN PHẨM TRONG GIỎ HÀNG @@@@@@@@@@@@@ -->
 					<h3 class="center-txt">Đánh giá chi tiết ${PRODUCT.name}</h3>
-					<h3>${PRODUCT.content}</h3>>
-					<h5 style="font-size: 18px;">
-						Chiếc iPhone mạnh mẽ nhất, lớn nhất,zz thời lượng pin tốt nhất đã
-						xuất hiện. <span class="text-primary">Iphone 12</span> chắc chắn
-						là chiếc điện thoại mà ai cũng ao ước khi sở hữu những tính năng
-						xuất sắc nhất, đặc biệt là camera và pin.
-					</h5>
-					<img class="sizeImg"
-						src="${url }/image/image-user/product/iphone-11-pro-max-4.jpg"
-						alt="">
-					<div class="text-center">
-						<button id="send1" class="btn btn-primary btn-center"
-							style="margin-top: 20px;">Xem thêm</button>
-					</div>
-					<div id="formReview1">
-						<div>
-							<h4 class="space-t">Sức mạnh hàng đầu của Pro</h4>
-							<p>
-								Được trang bị bộ vi xử lý <span class="text-primary"> A13
-									Bionic</span>, iPhone 11 Pro Max tự tin thể hiện đẳng cấp hiệu năng
-								“Pro”. So với thế hệ trước, Apple A13 Bionic nhanh hơn 20% và
-								tiêu thụ năng lượng ít hơn tới 40% cả về CPU lẫn GPU. iPhone 11
-								Pro Max mạnh mẽ vượt trội khi đặt cạnh bất cứ đối thủ nào trên
-								thị trường hiện nay. Mọi tác vụ kể cả những tựa game nặng nhất
-								cũng đều được thể hiện trơn tru, mượt mà trên iPhone 11 Pro Max
-								64GB.
-							</p>
-							<img class="sizeImg"
-								src="${url }/image/image-user/product/iPhone-112.jpg" alt="">
-						</div>
-						<div>
-							<h4 class="space-t">Tác phẩm nghệ thuật đích thực</h4>
-							<p>Không chỉ đơn thuần là một chiếc điện thoại, iPhone 11 Pro
-								Max là một tác phẩm nghệ thuật đích thực. Sự kết hợp hoàn hảo
-								giữa những vật liệu cao cấp là khung thép không gỉ và hai mặt
-								kính cường lực giúp iPhone 11 Pro Max rất sang trọng, đẳng cấp.
-								iPhone mới đã chuyển sang mặt lưng sơn nhám độc đáo, đẹp mắt hơn
-								đồng thời không bị bám bẩn hay dấu vân tay. iPhone Pro Max có 4
-								màu thời thượng là Vàng, Xám không gian, Bạc và Xanh Midnight.
-								Dù là một chiếc điện thoại màn hình lớn, nhưng sự hoàn thiện cao
-								cấp giúp iPhone 11 Pro Max vẫn dễ dàng cầm nắm và thao tác.</p>
-							<img class="sizeImg"
-								src="${url }/image/image-user/product/iphone-13.jpg" alt="">
-						</div>
+
+
+					<div id="content" style="max-height: 50em; overflow: hidden;">
+						${PRODUCT.content}
+
+
 					</div>
 					<div class="text-center">
-						<button id="close" class="btn btn-primary btn-center"
-							style="display: none;">Đóng</button>
+						<button id="send1" onclick="ttOpen()"
+							class="btn btn-primary btn-center" style="margin-top: 20px;">Xem
+							thêm</button>
+					</div>
+
+
+					<div class="text-center">
+						<button id="close" onclick="ttClose()"
+							class="btn btn-primary btn-center" style="display: none;">Đóng</button>
 					</div>
 				</div>
 			</div>
@@ -290,15 +259,15 @@
 					<h4>Thông số kĩ thuật</h4>
 					<tbody>
 						<c:forEach items="${config}" var="t">
-						<tr>
-							<th scope="row">${t.proper.content}</th>
-							<c:forEach items="${t.proper.listPropr}" var = "pp">
-								<td>
-									<p>${pp.content}</p>
-								</td>
-							</c:forEach>
-						</tr>
-					</c:forEach>
+							<tr>
+								<th scope="row">${t.proper.content}</th>
+								<c:forEach items="${t.proper.listPropr}" var="pp">
+									<td>
+										<p>${pp.content}</p>
+									</td>
+								</c:forEach>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -319,7 +288,7 @@
 			<div class="diem  col-md-3 text-center">
 				<h3 style="font-size: 1.2em; margin-top: 10%;">Sao trung bình</h3>
 				<p class="averageRatings">
-					 ${star.avg} <i class="fa fa-star checked" style="font-size: 30px"></i>
+					${star.avg} <i class="fa fa-star checked" style="font-size: 30px"></i>
 				</p>
 			</div>
 			<div class="diem text-center col-md-6">
@@ -331,12 +300,12 @@
 						<div class="col-sm-6">
 							<div class="progress space-t5">
 								<div class="progress-bar bg-warning" role="progressbar"
-									style="width: ${star.percent5}%" aria-valuenow="75" aria-valuemin="0"
-									aria-valuemax="100"></div>
+									style="width: ${star.percent5}%" aria-valuenow="75"
+									aria-valuemin="0" aria-valuemax="100"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p> ${star.star5} đánh giá</p>
+							<p>${star.star5}đánh giá</p>
 						</div>
 					</div>
 					<div style="margin-top: -15px;" class="side row">
@@ -346,12 +315,12 @@
 						<div class="col-sm-6">
 							<div class="progress space-t5">
 								<div class="progress-bar bg-warning" role="progressbar"
-									style="width: ${star.percent4}%" aria-valuenow="75" aria-valuemin="0"
-									aria-valuemax="100"></div>
+									style="width: ${star.percent4}%" aria-valuenow="75"
+									aria-valuemin="0" aria-valuemax="100"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p> ${star.star4} đánh giá</p>
+							<p>${star.star4}đánh giá</p>
 						</div>
 					</div>
 					<div style="margin-top: -15px;" class="side row">
@@ -361,12 +330,12 @@
 						<div class="col-sm-6">
 							<div class="progress space-t5">
 								<div class="progress-bar bg-warning" role="progressbar"
-									style="width: ${star.percent3}%" aria-valuenow="75" aria-valuemin="0"
-									aria-valuemax="100"></div>
+									style="width: ${star.percent3}%" aria-valuenow="75"
+									aria-valuemin="0" aria-valuemax="100"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p>  ${star.star3} đánh giá</p>
+							<p>${star.star3}đánh giá</p>
 						</div>
 					</div>
 					<div style="margin-top: -15px;" class="side row">
@@ -376,12 +345,12 @@
 						<div class="col-sm-6">
 							<div class="progress space-t5">
 								<div class="progress-bar bg-warning" role="progressbar"
-									style="width: ${star.percent2}%" aria-valuenow="75" aria-valuemin="0"
-									aria-valuemax="100"></div>
+									style="width: ${star.percent2}%" aria-valuenow="75"
+									aria-valuemin="0" aria-valuemax="100"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p> ${star.star2} đánh giá</p>
+							<p>${star.star2}đánh giá</p>
 						</div>
 					</div>
 					<div style="margin-top: -15px;" class="side row">
@@ -391,12 +360,12 @@
 						<div class="col-sm-6">
 							<div class="progress space-t5">
 								<div class="progress-bar bg-warning" role="progressbar"
-									style="width: ${star.percent1}%" aria-valuenow="75" aria-valuemin="0"
-									aria-valuemax="100"></div>
+									style="width: ${star.percent1}%" aria-valuenow="75"
+									aria-valuemin="0" aria-valuemax="100"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p> ${star.star1} đánh giá</p>
+							<p>${star.star1}đánh giá</p>
 						</div>
 					</div>
 				</div>
@@ -465,6 +434,21 @@
 	<!-- Page Footer -->
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 </body>
+
+<script>
+	function ttOpen() {
+		var tt = document.getElementById('send1');
+
+		tt.style.display = 'none';
+		document.getElementById('close').style.display = 'block';
+		document.getElementById('content').style.maxHeight = '100%';
+	}
+	function ttClose() {
+		document.getElementById('close').style.display = 'none';
+		document.getElementById('send1').style.display = 'block';
+		document.getElementById('content').style.maxHeight = '50em';
+	}
+</script>
 <script src="${url }/js/js-page/slide-product.js"></script>
 
 <script src="${url }/js/js-static/cart.js"></script>
