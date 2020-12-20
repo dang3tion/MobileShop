@@ -128,22 +128,22 @@ public class CreateDataProduct {
 	public static String config() {
 		ArrayList<String> config = new ArrayList<String>();
 		for (int i = 0; i < 20; i++) {
-			config.add("ch" + i);
+			config.add("ch"+ i);
 		}
 
 		return config.get(rdItem(config.size()));
 	}
 
-	public static Product product() {
+	public static Product product1() {
 		return new Product(idProduct(), name(), piece(), brand(), state(), dateUp(), introduce(), amount(),
 				amount_Sale(), config());
 	}
 
 	public static void main(String[] args) {
 		Dao_Product2 dao = new Dao_Product2();
-		System.out.println(product().toString());
+//		System.out.println(product().toString());
 		for (int i = 0; i < 45; i++) {
-			dao.add(product());
+			dao.add(product1());
 		}
 	}
 

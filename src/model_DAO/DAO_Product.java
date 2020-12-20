@@ -1,7 +1,13 @@
 package model_DAO;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import BeanProduct.Config;
+import BeanProduct.Detail_Config;
+import BeanProduct.Detail_Propertie;
+import BeanProduct.Propertie;
 import model_ConnectDB.ExecuteStatementUtility;
 import model_beans.Product;
 
@@ -56,34 +62,149 @@ public class DAO_Product extends ExecuteStatementUtility {
 
 	public ArrayList<Product> getList(int start, int end) {
 
-		fakeDatabase.add(new Product("MSB_0" + 1, thumbnail(1), name(1), 9000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 2, thumbnail(2), name(2), 8000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 3, thumbnail(3), name(3), 7000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 4, thumbnail(4), name(4), 6000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 5, thumbnail(5), name(5), 5000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 6, thumbnail(6), name(6), 4000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 7, thumbnail(7), name(7), 3000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 8, thumbnail(8), name(8), 2000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 9, thumbnail(9), name(9), 1000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 10, thumbnail(10), name(10), 9000000, 2000000));
+		fakeDatabase.add(new Product("sp1", thumbnail(1), name(1), "sản phẩm 1", 9000000, 2000000));
+		fakeDatabase.add(new Product("MSB_0" + 2, thumbnail(2), name(2), "sản phẩm 2", 8000000, 2000000));
+
+		fakeDatabase.add(new Product("MSB_0" + 3, thumbnail(3), name(3), "sản phẩm 1", 7000000, 2000000));
+		fakeDatabase.add(new Product("MSB_0" + 4, thumbnail(4), name(4), "sản phẩm 1", 6000000, 2000000));
+		fakeDatabase.add(new Product("MSB_0" + 5, thumbnail(5), name(5), "sản phẩm 1", 5000000, 2000000));
+		fakeDatabase.add(new Product("MSB_0" + 6, thumbnail(6), name(6), "sản phẩm 1", 4000000, 2000000));
+		fakeDatabase.add(new Product("MSB_0" + 7, thumbnail(7), name(7), "sản phẩm 1", 3000000, 2000000));
+		fakeDatabase.add(new Product("MSB_0" + 8, thumbnail(8), name(8), "sản phẩm 1", 2000000, 2000000));
+		fakeDatabase.add(new Product("MSB_0" + 9, thumbnail(9), name(9), "sản phẩm 1", 1000000, 2000000));
+		fakeDatabase.add(new Product("MSB_0" + 10, thumbnail(10), name(10), "sản phẩm 1", 9000000, 2000000));
 
 		return fakeDatabase;
 	}
 
+	private final String PRODUCT = "SANPHAM";
+	// tên các cột của bảng ACCOUNT
+	private final String MASP1 = "SANPHAM.MASP";
+	private final String MASP = "MASP";
+	private final String TENSP = "TENSP";
+	private final String LOAI_SP = "LOAI_SP";
+	private final String MATH = "MATH";
+	private final String TINHTRANG = "TINHTRANG";
+	private final String NGAYCAPNHAT = "NGAYCAPNHAT";
+	private final String GIOITHIEU = "GIOITHIEU";
+	private final String SOLUONG = "SOLUONG";
+	private final String SL_DABAN = "SL_DABAN";
+	private final String MACH = "MACH";
+
 	public Product getProduct(String id) {
-		for (Product p : getList(1, 10)) {
-			if (p.getId().equals(id)) {
-				return p;
+		String query = "select SANPHAM.TENSP,SANPHAM.GIOITHIEU,GIA,GIA_KM,MACH FROM " + PRODUCT
+				+ " inner join GIA_SP on SANPHAM.MASP = GIA_SP.MASP WHERE " + MASP1 + " = ? ";
+		String[] para = { id };
+		Product product = null;
+		try (ResultSet rs = super.AccessDBstr(query, para)) {
+			while (rs.next()) {
+				Product pro = new Product(id, thumbnail(2), rs.getString(1), rs.getString(2), rs.getInt(3),
+						rs.getInt(4), rs.getString(5));
+				product = pro;
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		return null;
+		return product;
 	}
 
+	private final String CONFIG = "CAUHINH";
+
+	public Config getConfig(String id) {
+		String query = "SELECT * FROM " + CONFIG + " WHERE " + MACH + " = ? ";
+		String[] para = { getProduct(id).getIdConfig() };
+		Config conf = null;
+		try (ResultSet rs = super.AccessDBstr(query, para)) {
+			while (rs.next()) {
+				conf = new Config( //
+						rs.getString(MACH), //
+						Integer.parseInt(rs.getString("SLTT")) //
+
+				);//
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return conf;
+	}
+
+	private final String DETAIL_CONFIG = "CH_CTTT";
+
+	public ArrayList<Detail_Config> getDetailConfig(String id) {
+		ArrayList<Detail_Config> detail = new ArrayList<Detail_Config>();
+		String query = "SELECT * FROM " + DETAIL_CONFIG + " WHERE " + MACH + " = ? ";
+		String[] para = { getConfig(id).getId() };
+		try (ResultSet rs = super.AccessDBstr(query, para)) {
+			while (rs.next()) {
+				detail.add(new Detail_Config( //
+						rs.getString(MACH), //
+						rs.getString("MACT"), //
+						listDetailPro(rs.getString("MACT"))
+				));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return detail;
+	}
+
+	private final String PROPERTIES = "THUOCTINH";
+
+	public ArrayList<Propertie> listProper(String idTT) {
+		ArrayList<Propertie> proper = new ArrayList<Propertie>();
+		String query = "SELECT * FROM " + PROPERTIES + " WHERE " + "MATT" + " = ? ";
+		String[] para = { idTT };
+		try (ResultSet rs = super.AccessDBstr(query, para)) {
+			while (rs.next()) {
+				proper.add(new Propertie(rs.getString("MATT"), rs.getString("LOAI_GIATRI"), rs.getString("NOIDUNG") //
+
+				));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return proper;
+	}
+
+	private final String DETAIL_PRO = "CHITIET_THUOCTINH";
+
+	public Detail_Propertie listDetailPro(String idCT) {
+	Detail_Propertie proper = null;
+		String query = "SELECT * FROM " + DETAIL_PRO + " WHERE " + "MACT" + " = ? ";
+		String[] para = { idCT };
+		try (ResultSet rs = super.AccessDBstr(query, para)) {
+			while (rs.next()) {
+				proper = (new Detail_Propertie(rs.getString("MACT"), rs.getString("GIATRI"), rs.getString("NOIDUNG"), //
+						rs.getString("MATT"), listProper(rs.getString("MATT"))));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return proper;
+	}
+	
+	private final String DANHGIA = "DANHGIA";
+	public int countStar(String numberStar,String id) {
+		String query = "SELECT  COUNT(MUCDANHGIA) FROM " + DANHGIA + " WHERE " + "MASP" + " = ? AND " +"MUCDANHGIA =?";
+		String[] para = { id,numberStar };
+		int star = 0;
+		try (ResultSet rs = super.AccessDBstr(query, para)) {
+			while (rs.next()) {
+				star = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return star;
+	}
+	
+	
+	
+	
 }
-
-
-
-
 
 // _   _                               _       _                     _                     
 //| | | |                             (_)     | |                   | |                    

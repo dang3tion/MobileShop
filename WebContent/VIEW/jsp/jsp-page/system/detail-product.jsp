@@ -233,7 +233,8 @@
 
 					</c:if>
 					<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO KHI VƯỢT QUÁ GIỚI HẠN SẢN PHẨM TRONG GIỎ HÀNG @@@@@@@@@@@@@ -->
-					<h3 class="center-txt">Đánh giá chi tiết iPhone 12</h3>
+					<h3 class="center-txt">Đánh giá chi tiết ${PRODUCT.name}</h3>
+					<h3>${PRODUCT.content}</h3>>
 					<h5 style="font-size: 18px;">
 						Chiếc iPhone mạnh mẽ nhất, lớn nhất,zz thời lượng pin tốt nhất đã
 						xuất hiện. <span class="text-primary">Iphone 12</span> chắc chắn
@@ -288,52 +289,16 @@
 				<table class="table">
 					<h4>Thông số kĩ thuật</h4>
 					<tbody>
+						<c:forEach items="${config}" var="t">
 						<tr>
-							<th scope="row">Màn hình:</th>
-							<td>
-								<p>Độ phân giải: 1284 x 2778 pixels</p>
-								<p>Công nghệ màn hình: Super Retina XDR OLED</p>
-							</td>
-
-
+							<th scope="row">${t.proper.content}</th>
+							<c:forEach items="${t.proper.listPropr}" var = "pp">
+								<td>
+									<p>${pp.content}</p>
+								</td>
+							</c:forEach>
 						</tr>
-						<tr>
-							<th scope="row">Hệ điều hành:</th>
-							<td>IOS 14</td>
-
-						</tr>
-						<tr>
-							<th scope="row">Camera sau:</th>
-							<td>
-								<p>Độ phân giải: 12 MP + 12 MP + 12 MP + TOF</p>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">Camera trước:</th>
-							<td>Độ phân giải: 12 MP</td>
-						</tr>
-						<tr>
-							<th scope="row">CPU:</th>
-							<td>
-								<p>Chipset (hãng SX CPU): Apple A14 Bionic (5 nm)</p>
-								<p>Tốc độ CPU: Hexa-core</p>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">Bộ nhớ:</th>
-							<td>
-								<p>Bộ nhớ trong: 256 GB</p>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">Kết nối:</th>
-							<td>
-								<p>Mạng di động: Hỗ trợ 5G</p>
-								<p>Wifi: Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, hotspot</p>
-								<p>Bluetooth: 5.0, A2DP, LE</p>
-								<p>Cổng kết nối/sạc: Lightning, USB 2.0</p>
-							</td>
-						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -354,7 +319,7 @@
 			<div class="diem  col-md-3 text-center">
 				<h3 style="font-size: 1.2em; margin-top: 10%;">Sao trung bình</h3>
 				<p class="averageRatings">
-					5 <i class="fa fa-star checked" style="font-size: 30px"></i>
+					 ${star.avg} <i class="fa fa-star checked" style="font-size: 30px"></i>
 				</p>
 			</div>
 			<div class="diem text-center col-md-6">
@@ -366,12 +331,12 @@
 						<div class="col-sm-6">
 							<div class="progress space-t5">
 								<div class="progress-bar bg-warning" role="progressbar"
-									style="width: 100%" aria-valuenow="75" aria-valuemin="0"
+									style="width: ${star.percent5}%" aria-valuenow="75" aria-valuemin="0"
 									aria-valuemax="100"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p>6 đánh giá</p>
+							<p> ${star.star5} đánh giá</p>
 						</div>
 					</div>
 					<div style="margin-top: -15px;" class="side row">
@@ -381,12 +346,12 @@
 						<div class="col-sm-6">
 							<div class="progress space-t5">
 								<div class="progress-bar bg-warning" role="progressbar"
-									style="width: 0%" aria-valuenow="75" aria-valuemin="0"
+									style="width: ${star.percent4}%" aria-valuenow="75" aria-valuemin="0"
 									aria-valuemax="100"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p>0 đánh giá</p>
+							<p> ${star.star4} đánh giá</p>
 						</div>
 					</div>
 					<div style="margin-top: -15px;" class="side row">
@@ -396,12 +361,12 @@
 						<div class="col-sm-6">
 							<div class="progress space-t5">
 								<div class="progress-bar bg-warning" role="progressbar"
-									style="width: 0%" aria-valuenow="75" aria-valuemin="0"
+									style="width: ${star.percent3}%" aria-valuenow="75" aria-valuemin="0"
 									aria-valuemax="100"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p>0 đánh giá</p>
+							<p>  ${star.star3} đánh giá</p>
 						</div>
 					</div>
 					<div style="margin-top: -15px;" class="side row">
@@ -411,12 +376,12 @@
 						<div class="col-sm-6">
 							<div class="progress space-t5">
 								<div class="progress-bar bg-warning" role="progressbar"
-									style="width: 0%" aria-valuenow="75" aria-valuemin="0"
+									style="width: ${star.percent2}%" aria-valuenow="75" aria-valuemin="0"
 									aria-valuemax="100"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p>0 đánh giá</p>
+							<p> ${star.star2} đánh giá</p>
 						</div>
 					</div>
 					<div style="margin-top: -15px;" class="side row">
@@ -426,12 +391,12 @@
 						<div class="col-sm-6">
 							<div class="progress space-t5">
 								<div class="progress-bar bg-warning" role="progressbar"
-									style="width: 0%" aria-valuenow="75" aria-valuemin="0"
+									style="width: ${star.percent1}%" aria-valuenow="75" aria-valuemin="0"
 									aria-valuemax="100"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p>0 đánh giá</p>
+							<p> ${star.star1} đánh giá</p>
 						</div>
 					</div>
 				</div>

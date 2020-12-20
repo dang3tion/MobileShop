@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Detail_Config {
     private String idConfig;
     private String idPropertie;
-    private ArrayList<Detail_Propertie> listProper;
+    private Detail_Propertie proper;
 
     public Detail_Config() {
     }
@@ -18,14 +18,29 @@ public class Detail_Config {
 	}
 
 
-	public Detail_Config(String idConfig, String idPropertie, ArrayList<Detail_Propertie> listProper) {
-        this.idConfig = idConfig;
-        this.idPropertie = idPropertie;
-        this.listProper = listProper;
-    }
+	
+  
 
 
-    public String getIdConfig() {
+	public Detail_Config(String idConfig, String idPropertie, Detail_Propertie proper) {
+		super();
+		this.idConfig = idConfig;
+		this.idPropertie = idPropertie;
+		this.proper = proper;
+	}
+
+
+	public Detail_Propertie getProper() {
+		return proper;
+	}
+
+
+	public void setProper(Detail_Propertie proper) {
+		this.proper = proper;
+	}
+
+
+	public String getIdConfig() {
         return idConfig;
     }
 
@@ -41,20 +56,12 @@ public class Detail_Config {
         this.idPropertie = idPropertie;
     }
 
-    public ArrayList<Detail_Propertie> getListProper() {
-        return listProper;
-    }
 
-    public void setListProper(ArrayList<Detail_Propertie> listProper) {
-        this.listProper = listProper;
-    }
+	@Override
+	public String toString() {
+		return "Detail_Config [idConfig=" + idConfig + ", idPropertie=" + idPropertie + ", proper=" + proper + "]";
+	}
 
-    @Override
-    public String toString() {
-        return "Detail_Config{" +
-                "idConfig='" + idConfig + '\'' +
-                ", idPropertie='" + idPropertie + '\'' +
-                ", listProper=" + listProper +
-                '}';
-    }
+  
+   
 }

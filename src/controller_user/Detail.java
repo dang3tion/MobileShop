@@ -16,12 +16,14 @@ public class Detail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	BO_Product bo = new BO_Product();
 	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String id = (String) request.getParameter("id");
-		
 		request.setAttribute("PRODUCT", bo.getProduct(id));
+		request.setAttribute("config", bo.config(id));
+		request.setAttribute("star", bo.star(id));
 		String message = (String) request.getAttribute("message");
 		request.setAttribute("message", message);
 		RequestDispatcher dispatcher //

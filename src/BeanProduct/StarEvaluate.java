@@ -1,6 +1,6 @@
 package BeanProduct;
 
-public class StartEvaluate {
+public class StarEvaluate {
     private String idProduct;
     private int star1;
     private int star2;
@@ -8,10 +8,10 @@ public class StartEvaluate {
     private int star4;
     private int star5;
 
-    public StartEvaluate() {
+    public StarEvaluate() {
     }
 
-    public StartEvaluate(String idProduct, int star1, int star2, int star3, int star4, int star5) {
+    public StarEvaluate(String idProduct, int star1, int star2, int star3, int star4, int star5) {
         this.idProduct = idProduct;
         this.star1 = star1;
         this.star2 = star2;
@@ -80,8 +80,28 @@ public class StartEvaluate {
                 '}';
     }
 
-    public double avgStar(){
-        return 0;
+    public double getAvg(){
+       return (star1*1+star2*2+star3*3+star4*4+star5*5)/sum();
     }
-
+     
+    public double sum() {
+    	return star1+star2+star3+star4+star5;
+    }
+    public double getPercent1() {
+		return ((double)star1/sum())*100;
+	}
+ 
+    public double getPercent2() {
+		return ((double)star2/sum())*100;
+	}
+    public double getPercent3() {
+		return ((double)star3/sum())*100;
+	}
+    public double getPercent4() {
+		return ((double)star4/sum())*100;
+	}
+    public double getPercent5() {
+		return ((double)star5/sum())*100;
+	}
+    
 }

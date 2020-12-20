@@ -10,10 +10,8 @@ public class Product {
 	private String thumbnail;
 	private String content;
 	private int quantityInCart;
-	private ArrayList<Picture_product> listPicture = new ArrayList<Picture_product>();
-	private ArrayList<Color_product> listColor = new ArrayList<Color_product>();
-	private ArrayList<Configuration> listConfig = new ArrayList<Configuration>();
-	private ArrayList<Evaluate_product> listEvaluate = new ArrayList<Evaluate_product>();
+	private String idConfig;
+
 
 	public Product(String id, String name, int price, int salePrice, String thumbnail,
 			ArrayList<Picture_product> listPicture, ArrayList<Color_product> listColor,
@@ -23,20 +21,29 @@ public class Product {
 		this.price = price;
 		this.salePrice = salePrice;
 		this.thumbnail = thumbnail;
-		this.listPicture = listPicture;
-		this.listColor = listColor;
-		this.listConfig = listConfig;
-		this.listEvaluate = listEvaluate;
+	
 		this.content = content;
 	}
 
 	public Product() {
 	}
 
-	public Product(String id, String thumbnail, String name, int price, int priceSale) {
+	public Product(String id, String thumbnail, String name,String content, int price, int priceSale,String idConfig) {
 		this.thumbnail = thumbnail;
 		this.id = id;
 		this.name = name;
+		this.content = content;
+		this.price = price;
+		this.salePrice = priceSale;
+		this.idConfig = idConfig;
+	}
+
+	
+	public Product(String id, String thumbnail, String name,String content, int price, int priceSale) {
+		this.thumbnail = thumbnail;
+		this.id = id;
+		this.name = name;
+		this.content = content;
 		this.price = price;
 		this.salePrice = priceSale;
 	}
@@ -55,6 +62,14 @@ public class Product {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public String getIdConfig() {
+		return idConfig;
+	}
+
+	public void setIdConfig(String idConfig) {
+		this.idConfig = idConfig;
 	}
 
 	public String getName() {
@@ -89,37 +104,7 @@ public class Product {
 		this.thumbnail = thumbnail;
 	}
 
-	public ArrayList<Picture_product> getListPicture() {
-		return listPicture;
-	}
-
-	public void setListPicture(ArrayList<Picture_product> listPicture) {
-		this.listPicture = listPicture;
-	}
-
-	public ArrayList<Color_product> getListColor() {
-		return listColor;
-	}
-
-	public void setListColor(ArrayList<Color_product> listColor) {
-		this.listColor = listColor;
-	}
-
-	public ArrayList<Configuration> getListConfig() {
-		return listConfig;
-	}
-
-	public void setListConfig(ArrayList<Configuration> listConfig) {
-		this.listConfig = listConfig;
-	}
-
-	public ArrayList<Evaluate_product> getListEvaluate() {
-		return listEvaluate;
-	}
-
-	public void setListEvaluate(ArrayList<Evaluate_product> listEvaluate) {
-		this.listEvaluate = listEvaluate;
-	}
+	
 
 	public String getContent() {
 		return content;
