@@ -29,7 +29,9 @@
 		<c:when test="${ LIST_PRODUCT_IN_CART != null }">
 
 			<div class="container" style="margin: 60px auto; max-width: 80%;">
-				<form method="post"
+
+
+				<form onsubmit="return checkSubmit()" method="post"
 					action="${pageContext.request.contextPath}/payment"
 					style="margin: auto;">
 
@@ -77,7 +79,7 @@
 
 
 
-								<button class="btn btn-primary"
+								<button onclick="checkClick()" class="btn btn-primary"
 									style="padding: 7px 130px; text-align: center; margin: auto;"
 									type="submit">Thanh Toán</button>
 
@@ -106,7 +108,6 @@
 									<input name="address" type="text" class="form-control"
 										placeholder="Nhập địa chỉ giao hàng" value="${address}">
 								</div>
-								<div class="invalid-feedback">Không được để trống</div>
 							</div>
 
 
@@ -136,6 +137,14 @@
 										<input name="phoneNumber" type="text" class="form-control"
 											placeholder="Nhập số điện thoại" value="${phoneNumber}">
 									</div>
+								</div>
+								<div style="color: red;" class="col-6">
+									<p id="name" style="display: none">Vui lòng nhập tên không
+										dấu và số.</p>
+								</div>
+								<div style="color: red; float: right">
+									<p id="checkphone" style="display: none;">Vui lòng nhập
+										đúng định dạng số điện thoại.</p>
 								</div>
 							</div>
 
@@ -249,6 +258,89 @@
 		}
 	</script>
 
+	<script>
+		function vali_PhoneNumber(text) {
+			const regex = /^(09|03|01[2|6|8|9])+([0-9]{8})/g;
+			const result = regex.test(text);
+			return result;
+		}
+		function vali_name(text) {
+			const regex = /^[a-zA-Z]+[\-'\s]?[a-zA-Z ]+$/g;
+			const result = regex.test(text);
+			return result;
+		}
+		function vali_address(text) {
+			const regex = /^\s*$/g;
+			const result = regex.test(text);
+			return result;
+		}
+
+		var checkPhone = false;
+		var checkName = false;
+		var checkAddress = false;
+		function check_phone(id) {
+			var s = document.getElementById(id).value;
+			if (!vali_PhoneNumber(s)) {
+				document.getElementById("checkphone").style.display = "block";
+				checkPhone = false;
+				return true;
+			}
+			if (vali_PhoneNumber(s)) {
+				document.getElementById("checkphone").style.display = "none";
+				checkPhone = true;
+				return false;
+			}
+		}
+
+		function check_address(id) {
+			var s = document.getElementById(id).value;
+			if (vali_address(s)) {
+				document.getElementById("address").style.display = "block";
+				checkAddress = false;
+				return true;
+			}
+			if (!vali_address(s)) {
+				document.getElementById("address").style.display = "none";
+				checkAddress = true;
+				return false;
+			}
+		}
+
+		function check_name(id) {
+			var s = document.getElementById(id).value;
+			if (!vali_name(s)) {
+				document.getElementById("name").style.display = "block";
+				checkName = false;
+				return true;
+			}
+			if (vali_name(s)) {
+				document.getElementById("name").style.display = "none";
+				checkName = true;
+				return false;
+			}
+		}
+		function checkSubmit() {
+			if (checkName && checkAddress && checkPhone) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		function checkClick() {
+			var name = document.getElementById("inName").value;
+			var phone = document.getElementById("phone").value;
+			var address = document.getElementById("inAddress").value;
+			if (!vali_name(name)) {
+				document.getElementById("name").style.display = "block";
+			}
+			if (!vali_PhoneNumber(phone)) {
+				document.getElementById("checkphone").style.display = "block";
+			}
+			if (vali_address(address)) {
+				document.getElementById("address").style.display = "block";
+			}
+		}
+	</script>
 
 	<script src="${url }/js/js-page/form-validation.js"></script>
 </body>
