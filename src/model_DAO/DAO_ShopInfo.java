@@ -2,7 +2,6 @@ package model_DAO;
 
 import java.sql.ResultSet;
 
-import model_ConnectDB.DataSource;
 import model_ConnectDB.ExecuteStatementUtility;
 import model_beans.ShopInfo;
 
@@ -14,9 +13,6 @@ public class DAO_ShopInfo extends ExecuteStatementUtility {
 	private final String URL_FB = "DC_FB";
 	private final String URL_YT = "DC_YTB";
 	private final String ADDRESS = "DC_THUC";
-
-
-
 
 	public void setInfo(ShopInfo info) {
 		try {
@@ -55,7 +51,13 @@ public class DAO_ShopInfo extends ExecuteStatementUtility {
 		return null;
 	}
 
-	
-
-
+	public static void main(String[] args) {
+		for (int i = 1; i < 38; i++) {
+			if (i < 10) {
+				System.out.println("INSERT INTO THUOCTINH VALUES(\'TT0" + i + "\',)");
+			} else {
+				System.out.println("INSERT INTO THUOCTINH VALUES(\'TT" + i + "\',)");
+			}
+		}
+	}
 }
