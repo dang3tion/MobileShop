@@ -209,7 +209,7 @@ public class BO_Account {
 //_____________________________________________________________________________
 
 	public static void main(String[] args) {
-		System.out.println(BO_Account.getBoAccount().totalSearch("a"));
+		System.out.println(BO_Account.getBoAccount().getAdmin("admin"));
 	}
 	
 	

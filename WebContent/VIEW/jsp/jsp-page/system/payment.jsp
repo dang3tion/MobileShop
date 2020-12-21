@@ -28,13 +28,7 @@
 	<c:choose>
 		<c:when test="${ LIST_PRODUCT_IN_CART != null }">
 
-
-
-
-
 			<div class="container" style="margin: 60px auto; max-width: 80%;">
-
-
 				<form method="post"
 					action="${pageContext.request.contextPath}/payment"
 					style="margin: auto;">
@@ -110,7 +104,7 @@
 										</div>
 									</div>
 									<input name="address" type="text" class="form-control"
-										placeholder="Nhập địa chỉ giao hàng">
+										placeholder="Nhập địa chỉ giao hàng" value="${address}">
 								</div>
 								<div class="invalid-feedback">Không được để trống</div>
 							</div>
@@ -126,8 +120,8 @@
 												<i class="far fa-id-card"></i>
 											</div>
 										</div>
-										<input type="text" class="form-control"
-											placeholder="Nhập họ tên">
+										<input name="name" type="text" class="form-control"
+											placeholder="Nhập họ tên" value="${name}">
 									</div>
 								</div>
 
@@ -139,8 +133,8 @@
 												<i class="fas fa-phone-square-alt"></i>
 											</div>
 										</div>
-										<input type="text" class="form-control"
-											placeholder="Nhập số điện thoại">
+										<input name="phoneNumber" type="text" class="form-control"
+											placeholder="Nhập số điện thoại" value="${phoneNumber}">
 									</div>
 								</div>
 							</div>
@@ -152,7 +146,7 @@
 									<script src='https://www.google.com/recaptcha/api.js?hl=vi'></script>
 
 									<div class="g-recaptcha" data-sitekey="${Config.SITE_KEY}"></div>
-									<h3 class="ml-4" style="color: red">${message}</h3>
+									<h5 style="color: red">${message}</h5>
 
 									<!-- 					#### captcha #### -->
 								</div>
@@ -163,7 +157,7 @@
 							<h6 class="mb-4">Chọn phương thức thanh toán:</h6>
 							<div class="d-block my-3">
 								<div class="custom-control custom-radio">
-									<input id="credit" name="paymentMethod" type="radio"
+									<input ${CHECKED_TRANFER} id="credit" name="paymentMethod" value="tranfer" type="radio"
 										class="custom-control-input" onclick="hidenForm(this)" checked
 										required> <label class="custom-control-label"
 										for="credit">Chuyển khoản</label>
@@ -171,12 +165,11 @@
 
 								<div class="custom-control custom-radio "
 									style="margin-top: 20px;">
-									<input id="COD" name="paymentMethod" type="radio"
+									<input ${CHECKED_COD} id="COD" name="paymentMethod" type="radio" value="COD"
 										class="custom-control-input" onclick="hidenForm(this)"
 										required> <label class="custom-control-label "
 										for="COD">Thanh toán khi nhận hàng (COD)</label>
 								</div>
-
 
 
 
@@ -194,8 +187,8 @@
 											VNĐ</span>
 									</h5>
 									<h5 class="mx-3">Vào STK : 045845723873284</h5>
-									<h5>Chủ tài khoản: Trần Thanh Bảo, Chi nhánh: BIDV Đông
-										Sài Gòn.</h5>
+									<h5>Chủ tài khoản: CTY TNHH Mobile Shop, Chi nhánh: BIDV
+										Đông Sài Gòn.</h5>
 									<h5>
 										Với nội dung là mã đơn hàng: <span class="text-danger">${CODE_ODER}</span>
 									</h5>
@@ -215,6 +208,9 @@
 
 			</div>
 
+
+
+			
 
 
 

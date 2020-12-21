@@ -21,8 +21,8 @@ public class DAO_Account extends ExecuteStatementUtility {
 	private final String ENCRYT_PASSWORD = "matKhau";
 	private final String ROLE = "quyenHan";
 	private final String STATUS = "trangThai";
-	private final String TIMECREATE = "thoiGianTao";
-	private final String NAME = "ten";
+	private final String TIMECREATE = "ngaytao";
+	private final String NAME = "tenND";
 	private final String PHONE = "SDT";
 	private final String ADDRESS = "diaChi";
 	private final String TOKEN = "TOKENREMEMBER";
