@@ -31,7 +31,7 @@
 			<div class="container" style="margin: 60px auto; max-width: 80%;">
 
 
-				<form onsubmit="return checkSubmit()" method="post"
+				<form  method="post"
 					action="${pageContext.request.contextPath}/payment"
 					style="margin: auto;">
 
@@ -79,7 +79,7 @@
 
 
 
-								<button onclick="checkClick()" class="btn btn-primary"
+								<button  class="btn btn-primary"
 									style="padding: 7px 130px; text-align: center; margin: auto;"
 									type="submit">Thanh Toán</button>
 
@@ -106,7 +106,7 @@
 										</div>
 									</div>
 									<input name="address" type="text" class="form-control"
-										placeholder="Nhập địa chỉ giao hàng" value="${address}">
+										placeholder="Nhập địa chỉ giao hàng" value="${CUSTOMER_LOGINED.address}">
 								</div>
 							</div>
 
@@ -121,7 +121,7 @@
 												<i class="far fa-id-card"></i>
 											</div>
 										</div>
-										<input name="name" type="text" class="form-control"
+										<input value="${CUSTOMER_LOGINED.name}" name="name" type="text" class="form-control"
 											placeholder="Nhập họ tên" value="${name}">
 									</div>
 								</div>
@@ -134,7 +134,7 @@
 												<i class="fas fa-phone-square-alt"></i>
 											</div>
 										</div>
-										<input name="phoneNumber" type="text" class="form-control"
+										<input value="${CUSTOMER_LOGINED.phoneNumber}" name="phoneNumber" type="text" class="form-control"
 											placeholder="Nhập số điện thoại" value="${phoneNumber}">
 									</div>
 								</div>

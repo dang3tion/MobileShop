@@ -53,7 +53,7 @@
 												<i class="fas fa-user-circle"></i>
 											</div>
 										</div>
-										<input type="text" name="name" class="form-control py-4"
+										<input placeholder="hãy nhập họ tên" type="text" name="name" class="form-control py-4"
 											value="${CUSTOMER_LOGINED.name}">
 									</div>
 								</div>
@@ -66,7 +66,7 @@
 												<i class="fas fa-mobile-alt"></i>
 											</div>
 										</div>
-										<input type="text" name="phoneNumber"
+										<input placeholder="Hãy nhập số điện thoại để giao nhận hàng" type="text" name="phoneNumber"
 											class="form-control py-4" value="${CUSTOMER_LOGINED.phoneNumber}">
 									</div>
 								</div>
@@ -107,7 +107,7 @@
 												<i class="fas fa-map-marked-alt"></i>
 											</div>
 										</div>
-										<input type="text" name="address" class="form-control py-4"
+										<input placeholder="Hãy nhập địa chỉ giao hàng" type="text" name="address" class="form-control py-4"
 											value="${CUSTOMER_LOGINED.address}">
 									</div>
 								</div>

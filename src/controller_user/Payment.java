@@ -63,10 +63,10 @@ public class Payment extends HttpServlet {
 		String phoneNumber = request.getParameter("phoneNumber");
 		String paymentMethod = request.getParameter("paymentMethod");
 
-//		System.out.println("dia chi " + address);
-//		System.out.println("ho ten" + name);
-//		System.out.println("SDT " + phoneNumber);
-//		System.out.println("paymentMethod ? " + paymentMethod);
+		System.out.println("dia chi " + address);
+		System.out.println("ho ten" + name);
+		System.out.println("SDT " + phoneNumber);
+		System.out.println("paymentMethod ? " + paymentMethod);
 
 		HttpSession session = request.getSession();
 
