@@ -13,17 +13,7 @@ public class Product {
 	private String idConfig;
 
 
-	public Product(String id, String name, int price, int salePrice, String thumbnail,
-			ArrayList<Picture_product> listPicture, ArrayList<Color_product> listColor,
-			ArrayList<Configuration> listConfig, ArrayList<Evaluate_product> listEvaluate, String content) {
-		this.id = id;
-		this.name = name;
-		this.price = price;
-		this.salePrice = salePrice;
-		this.thumbnail = thumbnail;
-	
-		this.content = content;
-	}
+
 
 	public Product() {
 	}

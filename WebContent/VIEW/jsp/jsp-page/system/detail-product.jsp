@@ -409,10 +409,10 @@
 		<h4 class="text-center">Bình luận</h4>
 		<div
 			class="fb-comments fb_iframe_widget fb_iframe_widget_fluid_desktop"
-			data-href="file:///C:/Users/vancu/Google%20Drive/Giuaky/Product_page/chiTietSanPham.html"
+			data-href="http://localhost:8080/MobileShop/product-detail?id=sp1"
 			data-numposts="20" data-width="900" data-mobile="Auto-detected"
 			fb-xfbml-state="rendered"
-			fb-iframe-plugin-query="app_id=&amp;container_width=1108&amp;height=100&amp;href=http%3A%2F%2Flocalhost%3A3000%2FThanh-pho-phia-dong-tpHCM&amp;locale=en_GB&amp;mobile=false&amp;numposts=10&amp;sdk=joey&amp;version=v7.0&amp;width="
+			fb-iframe-plugin-query="app_id=&amp;container_width=1108&amp;height=100&amp;href=http://localhost:8080/MobileShop/product-detail?id=sp1"
 			style="width: 100%;">
 			<span style="vertical-align: bottom; width: 100%; height: 508px;">
 				<iframe name="f42318e5e4d28c" width="1000px" height="100px"

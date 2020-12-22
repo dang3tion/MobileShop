@@ -13,7 +13,7 @@ import model_beans.Product;
 
 public class DAO_Product extends ExecuteStatementUtility {
 
-	private ArrayList<Product> fakeDatabase = new ArrayList<Product>();
+
 
 	public DAO_Product() {
 
@@ -60,20 +60,20 @@ public class DAO_Product extends ExecuteStatementUtility {
 		return i.get(index);
 	}
 
-	public ArrayList<Product> getList(int start, int end) {
-
-		fakeDatabase.add(new Product("sp1", thumbnail(1), name(1), "sản phẩm 1", 9000000, 2000000));
-		fakeDatabase.add(new Product("sp" + 6, thumbnail(6), name(6), "sản phẩm 1", 4000000, 2000000));
-		fakeDatabase.add(new Product("sp" + 0, thumbnail(2), name(2), "sản phẩm 2", 8000000, 2000000));
-
-		fakeDatabase.add(new Product("sp" + 5, thumbnail(3), name(3), "sản phẩm 1", 7000000, 2000000));
-		fakeDatabase.add(new Product("sp" + 13, thumbnail(4), name(4), "sản phẩm 1", 6000000, 2000000));
-		fakeDatabase.add(new Product("sp" + 16, thumbnail(5), name(5), "sản phẩm 1", 5000000, 2000000));
-		
-		fakeDatabase.add(new Product("sp" + 7, thumbnail(7), name(7), "sản phẩm 1", 3000000, 2000000));
-		fakeDatabase.add(new Product("sp" + 8, thumbnail(8), name(8), "sản phẩm 1", 2000000, 2000000));
-		fakeDatabase.add(new Product("sp" + 9, thumbnail(9), name(9), "sản phẩm 1", 1000000, 2000000));
-		fakeDatabase.add(new Product("sp" + 10, thumbnail(10), name(10), "sản phẩm 1", 9000000, 2000000));
+	public ArrayList<Product> getList(int start,int end) {
+	 ArrayList<Product> fakeDatabase = new ArrayList<Product>();
+		String[] para = { start+"",end+"" };
+		String query = "WITH X AS (select ROW_NUMBER() OVER (ORDER BY SANPHAM.MASP DESC) AS STT,SANPHAM.MASP, SANPHAM.TENSP,SANPHAM.GIOITHIEU,GIA,GIA_KM,MACH FROM  SANPHAM\r\n"
+				+ "				inner join GIA_SP on SANPHAM.MASP = GIA_SP.MASP) SELECT * FROM X WHERE STT BETWEEN ? AND ?";
+		Product product = null;
+		try (ResultSet rs = super.AccessDBstr(query,para)) {
+			while (rs.next()) {
+				fakeDatabase.add(new Product(rs.getString("MASP"), thumbnail(2), rs.getString("TENSP"), rs.getString("GIOITHIEU"), rs.getInt("GIA"),
+						rs.getInt("GIA_KM"), rs.getString("MACH")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 		return fakeDatabase;
 	}
@@ -201,7 +201,12 @@ public class DAO_Product extends ExecuteStatementUtility {
 		}
 		return star;
 	}
-
+	public static void main(String[] args) {
+		DAO_Product dao = new DAO_Product();
+		for (int i = 0; i < dao.getList(1,3).size(); i++) {
+			System.out.println(dao.getList(1,3).get(i).getId());
+		}
+	}
 }
 
 // _   _                               _       _                     _                     

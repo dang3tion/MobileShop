@@ -18,7 +18,7 @@ public class BO_Product {
 	}
 
 	public ArrayList<Product> getList(int start, int end) {
-		return dao.getList(start, end);
+		return dao.getList(start,end);
 	}
 
 	public ArrayList<Detail_Config> config(String id) {
@@ -32,7 +32,9 @@ public class BO_Product {
 
 	public static void main(String[] args) {
 		BO_Product bo = new BO_Product();
-		System.out.println(bo.star("sp1").getAvg());
+		for (int i = 0; i < bo.getList(0, 20).size(); i++) {
+			System.out.println(bo.getList(0,20).get(i).toString());
+		}
 		
 	}
 
