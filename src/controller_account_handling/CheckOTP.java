@@ -46,7 +46,7 @@ public class CheckOTP extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		Account newUser = (Account) session.getAttribute("newUser_register");
+		Account newUser = (Account) session.getAttribute(Const.NEW_USER_REGISTER);
 		String email = newUser.getEmail();
 
 		OTP otp = (OTP) session.getAttribute(Const.KEY_SYSTEM_OTP);
@@ -69,7 +69,7 @@ public class CheckOTP extends HttpServlet {
 			request.removeAttribute(Const.TOKEN_REGISTER_OTP);
 			SendMail.send(email, otp.getSysOTP());
 			request.setAttribute("COUNTDOWN", Math.abs(
-					Config.OTP_LIVE_SECOND +3 - ChronoUnit.SECONDS.between(otp.getTimeCreate(), LocalDateTime.now())));
+					Config.OTP_LIVE_SECOND  - ChronoUnit.SECONDS.between(otp.getTimeCreate(), LocalDateTime.now())));
 			RequestDispatcher dispatcher //
 					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp.jsp");
 			dispatcher.forward(request, response);
@@ -77,14 +77,19 @@ public class CheckOTP extends HttpServlet {
 
 			// xử lý dữ liệu khách hàng gửi OTP lên
 		} else {
+			
+			
 
 			String userOTP = request.getParameter("OTP");
 			userOTP.trim();
 
 			if (!Validation.isNumeric(userOTP) || (userOTP.length() > 10) || !otp.checkOTP(userOTP)) {
 				request.setAttribute("message", "Mã OTP không đúng");
-				request.setAttribute("COUNTDOWN", Math.abs(
-						Config.OTP_LIVE_SECOND - ChronoUnit.SECONDS.between(otp.getTimeCreate(), LocalDateTime.now())));
+				
+				long diffOTPTime = ChronoUnit.SECONDS.between(otp.getTimeCreate(), LocalDateTime.now());
+				long countDown = Math.abs(Config.OTP_LIVE_SECOND - diffOTPTime);
+					
+				request.setAttribute("COUNTDOWN", (otp.checkLiveOTP(LocalDateTime.now())) ? countDown : 0);
 				RequestDispatcher dispatcher //
 						= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp.jsp");
 				dispatcher.forward(request, response);

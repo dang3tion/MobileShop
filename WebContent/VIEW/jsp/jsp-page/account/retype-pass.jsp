@@ -26,32 +26,28 @@
 		<img class="mb-4" src="${url}/image/img-sys/pass.png" width="72"
 			height="72">
 		<h1 class="h3 mb-3 font-weight-normal">Nhập mật khẩu mới</h1>
-		<div class="row">
 
 			<div class="col-lg-7 col-md-7 col-sm-12" style="margin: auto">
+			
 				<div class="frame-register">
-
 					<div class="form-input">
 						<i class="fas fa-key"></i> <input name="password" type="password"
-							id="inputPassword" class="form-control" placeholder="Mật Khẩu">
+							id="inputPassword" class="form-control" placeholder="Nhập mật Khẩu">
 					</div>
-
 				</div>
-				<div class="col-lg-7 col-md-7 col-sm-12" style="margin: auto">
-					<div class="frame-register">
-
-						<div class="form-input">
-							<i class="fas fa-key"></i> <input type="password"
-								id="inputPassword-confirm" class="form-control"
-								placeholder="Nhập lại mật khẩu">
-						</div>
+				<div class="frame-register">
+					<div class="form-input">
+						<i class="fas fa-key"></i> <input type="password"
+							id="inputPassword" class="form-control" placeholder="Nhập lại mật khẩu">
 					</div>
-
-
 				</div>
+				
+				
 
 
 			</div>
+
+
 			<h5 style="color: red">${message}</h5>
 
 			<button class="btn btn-lg btn-primary btn-block">OK</button>

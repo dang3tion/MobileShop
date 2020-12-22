@@ -102,7 +102,10 @@ public class CheckOtpResetPassword extends HttpServlet {
 			
 			if (!otp.checkLiveOTP(LocalDateTime.now())) {
 				request.setAttribute("message", "Mã OTP đã hết hiệu lực");
-				request.setAttribute("COUNTDOWN", 0);
+				long diffOTPTime = ChronoUnit.SECONDS.between(otp.getTimeCreate(), LocalDateTime.now());
+				long countDown = Math.abs(Config.OTP_LIVE_SECOND - diffOTPTime);
+					
+				request.setAttribute("COUNTDOWN", (otp.checkLiveOTP(LocalDateTime.now())) ? countDown : 0);
 				RequestDispatcher dispatcher //
 						= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp.jsp");
 				dispatcher.forward(request, response);
