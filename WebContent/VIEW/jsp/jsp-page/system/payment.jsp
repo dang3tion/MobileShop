@@ -28,10 +28,14 @@
 	<c:choose>
 		<c:when test="${ LIST_PRODUCT_IN_CART != null }">
 
+
+
+
+
 			<div class="container" style="margin: 60px auto; max-width: 80%;">
 
 
-				<form  method="post"
+				<form onsubmit="return checkSubmit()" method="post"
 					action="${pageContext.request.contextPath}/payment"
 					style="margin: auto;">
 
@@ -79,7 +83,7 @@
 
 
 
-								<button  class="btn btn-primary"
+								<button onclick="checkClick()" class="btn btn-primary"
 									style="padding: 7px 130px; text-align: center; margin: auto;"
 									type="submit">Thanh Toán</button>
 
@@ -105,8 +109,13 @@
 											<i class="fas fa-map-marked-alt"></i>
 										</div>
 									</div>
-									<input name="address" type="text" class="form-control"
-										placeholder="Nhập địa chỉ giao hàng" value="${CUSTOMER_LOGINED.address}">
+									<input id="inAddress" name="address" type="text"
+										class="form-control" placeholder="Nhập địa chỉ giao hàng"
+										value="" onfocusout="check_address(this.id)">
+								</div>
+								<div style="color: red;" class="col-6">
+									<p id="address" style="display: none">Vui lòng nhập đúng
+										địa chỉ.</p>
 								</div>
 							</div>
 
@@ -121,8 +130,9 @@
 												<i class="far fa-id-card"></i>
 											</div>
 										</div>
-										<input value="${CUSTOMER_LOGINED.name}" name="name" type="text" class="form-control"
-											placeholder="Nhập họ tên" value="${name}">
+										<input id="inName" type="text" class="form-control"
+											placeholder="Nhập họ tên không dấu"
+											onfocusout="check_name(this.id)">
 									</div>
 								</div>
 
@@ -134,8 +144,9 @@
 												<i class="fas fa-phone-square-alt"></i>
 											</div>
 										</div>
-										<input value="${CUSTOMER_LOGINED.phoneNumber}" name="phoneNumber" type="text" class="form-control"
-											placeholder="Nhập số điện thoại" value="${phoneNumber}">
+										<input id="phone" type="text" class="form-control"
+											placeholder="Nhập số điện thoại" value=""
+											onfocusout="check_phone(this.id)">
 									</div>
 								</div>
 								<div style="color: red;" class="col-6">
@@ -155,7 +166,7 @@
 									<script src='https://www.google.com/recaptcha/api.js?hl=vi'></script>
 
 									<div class="g-recaptcha" data-sitekey="${Config.SITE_KEY}"></div>
-									<h5 style="color: red">${message}</h5>
+									<h3 class="ml-4" style="color: red">${message}</h3>
 
 									<!-- 					#### captcha #### -->
 								</div>
@@ -166,7 +177,7 @@
 							<h6 class="mb-4">Chọn phương thức thanh toán:</h6>
 							<div class="d-block my-3">
 								<div class="custom-control custom-radio">
-									<input ${CHECKED_TRANFER} id="credit" name="paymentMethod" value="tranfer" type="radio"
+									<input id="credit" name="paymentMethod" type="radio"
 										class="custom-control-input" onclick="hidenForm(this)" checked
 										required> <label class="custom-control-label"
 										for="credit">Chuyển khoản</label>
@@ -174,11 +185,12 @@
 
 								<div class="custom-control custom-radio "
 									style="margin-top: 20px;">
-									<input ${CHECKED_COD} id="COD" name="paymentMethod" type="radio" value="COD"
+									<input id="COD" name="paymentMethod" type="radio"
 										class="custom-control-input" onclick="hidenForm(this)"
 										required> <label class="custom-control-label "
 										for="COD">Thanh toán khi nhận hàng (COD)</label>
 								</div>
+
 
 
 
@@ -196,8 +208,8 @@
 											VNĐ</span>
 									</h5>
 									<h5 class="mx-3">Vào STK : 045845723873284</h5>
-									<h5>Chủ tài khoản: CTY TNHH Mobile Shop, Chi nhánh: BIDV
-										Đông Sài Gòn.</h5>
+									<h5>Chủ tài khoản: Trần Thanh Bảo, Chi nhánh: BIDV Đông
+										Sài Gòn.</h5>
 									<h5>
 										Với nội dung là mã đơn hàng: <span class="text-danger">${CODE_ODER}</span>
 									</h5>
@@ -217,9 +229,6 @@
 
 			</div>
 
-
-
-			
 
 
 
