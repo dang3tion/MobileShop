@@ -8,7 +8,7 @@ import model_DAO.DAO_Product;
 import model_DAO.Dao_Product2;
 import model_beans.Account;
 
-public class CreateDataProduct {
+public class CreateDataProduct1 {
 	public static int rdINT(int start, int end) {
 		return (int) ((Math.random() * (end - start)) + start);
 	}

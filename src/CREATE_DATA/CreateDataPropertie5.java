@@ -7,7 +7,7 @@ import BeanProduct.Detail_Propertie;
 import BeanProduct.Propertie;
 import model_ConnectDB.ExecuteStatementUtility;
 
-public class CreateDataPropertie extends ExecuteStatementUtility{
+public class CreateDataPropertie5 extends ExecuteStatementUtility{
 	public static int rdINT(int start, int end) {
 		return (int) ((Math.random() * (end - start)) + start);
 	}
@@ -72,7 +72,7 @@ public class CreateDataPropertie extends ExecuteStatementUtility{
 	}
 	
 	public static void main(String[] args) {
-		CreateDataPropertie pro = new CreateDataPropertie();
+		CreateDataPropertie5 pro = new CreateDataPropertie5();
 		for (int i = 0; i < 45; i++) {
 			pro.add(proper());
 		}

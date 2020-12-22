@@ -23,8 +23,6 @@ public class Cart extends HttpServlet {
 	BO_Product bo = new BO_Product();
 	String productID;
 	RequestDispatcher dispatcher;
-	
-
 //	private final int maxAgeCookie = 99999999 * 9999999 * 9999999 * 9999999 * 9999999;
 //	private final static String prefixProductID = "MBS_";
 

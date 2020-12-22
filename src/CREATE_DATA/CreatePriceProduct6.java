@@ -7,7 +7,7 @@ import BeanProduct.Price;
 import BeanProduct.Product;
 import model_ConnectDB.ExecuteStatementUtility;
 
-public class CreatePriceProduct extends ExecuteStatementUtility{
+public class CreatePriceProduct6 extends ExecuteStatementUtility{
 	public static int rdINT(int start, int end) {
 		return (int) ((Math.random() * (end - start)) + start);
 	}
@@ -86,7 +86,7 @@ public class CreatePriceProduct extends ExecuteStatementUtility{
 	}
 	
 	public static void main(String[] args) {
-		CreatePriceProduct price = new CreatePriceProduct();
+		CreatePriceProduct6 price = new CreatePriceProduct6();
 		for (int i = 0; i < 45; i++) {
 			price.add(priceUp());
 		}

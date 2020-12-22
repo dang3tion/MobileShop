@@ -63,16 +63,17 @@ public class DAO_Product extends ExecuteStatementUtility {
 	public ArrayList<Product> getList(int start, int end) {
 
 		fakeDatabase.add(new Product("sp1", thumbnail(1), name(1), "sản phẩm 1", 9000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 2, thumbnail(2), name(2), "sản phẩm 2", 8000000, 2000000));
+		fakeDatabase.add(new Product("sp" + 6, thumbnail(6), name(6), "sản phẩm 1", 4000000, 2000000));
+		fakeDatabase.add(new Product("sp" + 0, thumbnail(2), name(2), "sản phẩm 2", 8000000, 2000000));
 
-		fakeDatabase.add(new Product("MSB_0" + 3, thumbnail(3), name(3), "sản phẩm 1", 7000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 4, thumbnail(4), name(4), "sản phẩm 1", 6000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 5, thumbnail(5), name(5), "sản phẩm 1", 5000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 6, thumbnail(6), name(6), "sản phẩm 1", 4000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 7, thumbnail(7), name(7), "sản phẩm 1", 3000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 8, thumbnail(8), name(8), "sản phẩm 1", 2000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 9, thumbnail(9), name(9), "sản phẩm 1", 1000000, 2000000));
-		fakeDatabase.add(new Product("MSB_0" + 10, thumbnail(10), name(10), "sản phẩm 1", 9000000, 2000000));
+		fakeDatabase.add(new Product("sp" + 5, thumbnail(3), name(3), "sản phẩm 1", 7000000, 2000000));
+		fakeDatabase.add(new Product("sp" + 13, thumbnail(4), name(4), "sản phẩm 1", 6000000, 2000000));
+		fakeDatabase.add(new Product("sp" + 16, thumbnail(5), name(5), "sản phẩm 1", 5000000, 2000000));
+		
+		fakeDatabase.add(new Product("sp" + 7, thumbnail(7), name(7), "sản phẩm 1", 3000000, 2000000));
+		fakeDatabase.add(new Product("sp" + 8, thumbnail(8), name(8), "sản phẩm 1", 2000000, 2000000));
+		fakeDatabase.add(new Product("sp" + 9, thumbnail(9), name(9), "sản phẩm 1", 1000000, 2000000));
+		fakeDatabase.add(new Product("sp" + 10, thumbnail(10), name(10), "sản phẩm 1", 9000000, 2000000));
 
 		return fakeDatabase;
 	}

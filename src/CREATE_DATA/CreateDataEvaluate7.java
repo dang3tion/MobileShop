@@ -8,7 +8,7 @@ import BeanProduct.Product;
 import model_ConnectDB.ExecuteStatementUtility;
 import model_DAO.Dao_Product2;
 
-public class CreateDataEvaluate extends ExecuteStatementUtility{
+public class CreateDataEvaluate7 extends ExecuteStatementUtility{
 	public static int rdINT(int start, int end) {
 		return (int) ((Math.random() * (end - start)) + start);
 	}
@@ -77,7 +77,7 @@ public class CreateDataEvaluate extends ExecuteStatementUtility{
 		}
 	}
 	public static void main(String[] args) {
-		CreateDataEvaluate creta= new CreateDataEvaluate();
+		CreateDataEvaluate7 creta= new CreateDataEvaluate7();
 
 		for (int i = 0; i < 45; i++) {
 			creta.add();

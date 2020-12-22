@@ -7,7 +7,7 @@ import BeanProduct.Config;
 import BeanProduct.Price;
 import model_ConnectDB.ExecuteStatementUtility;
 
-public class CreateDataConfig extends ExecuteStatementUtility{
+public class CreateDataConfig2 extends ExecuteStatementUtility{
 	public static int rdINT(int start, int end) {
 		return (int) ((Math.random() * (end - start)) + start);
 	}
@@ -61,7 +61,7 @@ public class CreateDataConfig extends ExecuteStatementUtility{
 	}
 	
 	public static void main(String[] args) {
-		CreateDataConfig con = new CreateDataConfig();
+		CreateDataConfig2 con = new CreateDataConfig2();
 		for (int i = 0; i < 45; i++) {
 			con.add(config());
 		}

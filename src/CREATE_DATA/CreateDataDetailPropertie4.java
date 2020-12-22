@@ -8,7 +8,7 @@ import BeanProduct.Detail_Propertie;
 import BeanProduct.Product;
 import model_ConnectDB.ExecuteStatementUtility;
 
-public class CreateDataDetailPropertie extends ExecuteStatementUtility{
+public class CreateDataDetailPropertie4 extends ExecuteStatementUtility{
 	public static int rdINT(int start, int end) {
 		return (int) ((Math.random() * (end - start)) + start);
 	}
@@ -86,7 +86,7 @@ public class CreateDataDetailPropertie extends ExecuteStatementUtility{
 	
 	public static void main(String[] args) {
 		System.out.println("123");
-		CreateDataDetailPropertie pro = new CreateDataDetailPropertie();
+		CreateDataDetailPropertie4 pro = new CreateDataDetailPropertie4();
 		for (int i = 0; i < 45; i++) {
 			pro.add(detail_Propertie());
 		}
