@@ -86,17 +86,18 @@
 					<table class="table table-hover">
 						<thead class="thead-light">
 							<tr>
-								<th scope="col">Số TT</th>
+								<th width="2" scope="col">Số TT</th>
 								<th scope="col">Mã KH</th>
 								<th scope="col">Tên</th>
 								<th scope="col" data-toggle="tooltip" data-placement="top"
 									title=""><span title=""> Số</span> điện thoại</th>
-								<th scope="col" data-toggle="tooltip" data-placement="top"
+								<th width="200" scope="col" data-toggle="tooltip" data-placement="top"
 									title=""><span title="Địa chỉ giao hàng mặc định">
 										Địa</span> chỉ</th>
 								<th scope="col">Email</th>
 								<th scope="col">Thời gian tạo</th>
-								<th scope="col">Trạng thái</th>
+								<th width="100" scope="col">Trạng thái</th>
+								<th width="100" scope="col">Khóa/Mở khóa</th>
 							</tr>
 						</thead>
 

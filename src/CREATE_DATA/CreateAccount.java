@@ -1173,6 +1173,7 @@ public class CreateAccount {
 
 	public static void main(String[] args) {
 
+		
 		DAO_Account daoACC = DAO_Account.getDaoAccount();
 
 		for (int i = 0; i < 45; i++) {
