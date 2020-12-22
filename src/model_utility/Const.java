@@ -23,6 +23,8 @@ public class Const {
 	public static final String KEY_SYSTEM_OTP = "SYS_OTP";
 	public static final String KEY_SYSTEM_OTP_FORGOT = "SYS_OTP_FORGOT";
 	
+	public static final String NEW_USER_REGISTER = "NEW_USER_REGISTER";
+	
 	
 	
 	

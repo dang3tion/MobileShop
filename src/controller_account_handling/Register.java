@@ -39,7 +39,7 @@ public class Register extends HttpServlet {
 					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/register.jsp");
 			dispatcher.forward(request, response);
 		} else {
-			session.setAttribute("newUser_register", tmpAcc);
+			session.setAttribute(Const.NEW_USER_REGISTER, tmpAcc);
 			request.setAttribute(Const.TOKEN_REGISTER_OTP, "register");
 			
 			OTP sysOtp = new OTP();
