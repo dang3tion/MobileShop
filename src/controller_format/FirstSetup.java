@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSessionListener;
 
 import model_ConnectDB.DataSource;
 import model_DAO.DAO_ShopInfo;
+import model_beans.Cart;
 
 public class FirstSetup implements HttpSessionListener {
 
@@ -13,8 +14,10 @@ public class FirstSetup implements HttpSessionListener {
 	public void sessionCreated(HttpSessionEvent arg0) {
 		HttpSession session = arg0.getSession();
 		session.setAttribute("LANGUAGE", "vi_VN");
-		session.setAttribute("CART_QUANTITY", 0);
-		session.setAttribute("PRODUCT_QUANTITY", 0);
+
+		session.setAttribute("CART", new Cart());
+
+
 	}
 
 	@Override

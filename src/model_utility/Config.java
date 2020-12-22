@@ -64,6 +64,12 @@ public class Config {
 	// recaptcha google 
 	   public static final String SITE_KEY ="6LelZAsTAAAAAAv1ADYDnq8AzbmPmbMvjh-xhfgB";
 	   public static final String SECRET_KEY ="6LelZAsTAAAAAKa_s6g2yuJzByYlk0FH_6iTkZJC";
+	   
+	   
+	// Giới hạn số lượng sản phẩm giỏ hàng
+	   public static final int MAX_PRODUCT = 5 ;
+	   public static final int MAX_QUANTITY_OF_PRODUCT = 5 ;
+	   
 
 }
 

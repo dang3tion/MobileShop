@@ -3,7 +3,7 @@ package model_utility;
 public class CodeOrder {
 	private String codeOder;
 
-	public String getCodeOder() {
+	public String getCode() {
 		return codeOder;
 	}
 

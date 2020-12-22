@@ -141,9 +141,11 @@
 										</p>
 
 									</div>
-									<c:if test="${CART_QUANTITY!=0}">
+									<c:if test="${CART_QUANTITY != 0 && CART_QUANTITY != null }">
 										<label class="quantity-cart" id="quantity-cart123">${CART_QUANTITY}</label>
-								</div> </c:if>
+									</c:if>
+								</div>
+
 
 								<style>
 #quantity-cart123 {

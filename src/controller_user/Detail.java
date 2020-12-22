@@ -14,7 +14,7 @@ import model_BO_service.BO_Product;
 @WebServlet(urlPatterns = "/product-detail")
 public class Detail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	BO_Product bo = new BO_Product();
+	BO_Product bo = BO_Product.getBoProduct();
 	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

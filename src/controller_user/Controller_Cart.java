@@ -13,38 +13,33 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model_BO_service.BO_Product;
+import model_beans.Cart;
 import model_beans.Product;
 import model_utility.CodeOrder;
+import model_utility.Config;
 
 @WebServlet(urlPatterns = "/cart")
-public class Cart extends HttpServlet {
+public class Controller_Cart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	HashMap<String, Integer> cart;
-	BO_Product bo = new BO_Product();
-	String productID;
+	BO_Product bo = BO_Product.getBoProduct();
 	RequestDispatcher dispatcher;
-//	private final int maxAgeCookie = 99999999 * 9999999 * 9999999 * 9999999 * 9999999;
-//	private final static String prefixProductID = "MBS_";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		cart = (HashMap<String, Integer>) session.getAttribute("CART");
 
-		ArrayList<Product> listProduct = new ArrayList<Product>();
+		Cart cart = (Cart) session.getAttribute("CART");
 
 		// display Cart
-		if (cart != null) {
-			int sumCart = 0;
-			for (String ProductID : cart.keySet()) {
-				Product pro = bo.getProduct(ProductID);
-				pro.setQuantityInCart(cart.get(ProductID));
-				listProduct.add(pro);
-				sumCart += pro.getPrice() * cart.get(ProductID);
-			}
+		ArrayList<Product> listProduct = new ArrayList<Product>();
+		for (String productID : cart.getListProductID()) {
+			Product pro = bo.getProduct(productID);
+			pro.setQuantityInCart(cart.getQuantityEveryProduct(productID));
+			listProduct.add(pro);
 
 			request.setAttribute("LIST_PRODUCT_IN_CART", listProduct);
-			request.setAttribute("SUM_CART", sumCart);
+			request.setAttribute("SUM_CART", cart.getQuantityOfProductInCart());
+			request.setAttribute("message", request.getAttribute("message"));
 		}
 
 		dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
@@ -56,97 +51,72 @@ public class Cart extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		productID = request.getParameter("id");
+		String productID = request.getParameter("id");
 		String choose = request.getParameter("choose");
 		String page = request.getParameter("page");
 		String datHang = request.getParameter("datHang");
 
 		HttpSession session = request.getSession();
 
-		int QuantityItemInCart = (Integer) session.getAttribute("CART_QUANTITY");
-		int productQuantity = (Integer) session.getAttribute("PRODUCT_QUANTITY");
-		cart = (HashMap<String, Integer>) session.getAttribute("CART");
+		Cart cart = (Cart) session.getAttribute("CART");
 
 		switch (choose) {
 		case "add":
-			if (session.getAttribute("CART") != null) {
-
-				// XỬ LÝ SỐ LƯỢNG MODEL SẢN PHẨM
-				if (cart.size() == 5 && QuantityItemInCart == 25) {
-					request.setAttribute("message", "Tối đa 10 sản phẩm");
-					RequestDispatcher dispatcher //
-							= this.getServletContext().getRequestDispatcher("/product-detail?id=" + productID);
-					dispatcher.forward(request, response);
-					return;
-				}
-
-				// XỬ LÝ SỐ LƯỢNG MỖI LOẠI SẢN PHẨM
-				if (cart.containsKey(productID)) {
-					int currentQuantityPro = cart.get(productID);
-					if (currentQuantityPro <= 4) {
-						cart.put(productID, currentQuantityPro + 1);
-						session.setAttribute("CART_QUANTITY", QuantityItemInCart + 1);
-					} else {
-						request.setAttribute("message", "Tối đa 5 sản phẩm cho mỗi mẫu điện thoại");
-					}
-				} else {
-					cart.put(productID, 1);
-					session.setAttribute("PRODUCT_QUANTITY", productQuantity +1);
-					session.setAttribute("CART_QUANTITY", QuantityItemInCart + 1);
-				}
-
-			} else {
-				HashMap<String, Integer> map = new HashMap<String, Integer>();
-				map.put(productID, 1);
-				session.setAttribute("CART", map);
-				session.setAttribute("PRODUCT_QUANTITY", productQuantity +1);
-				session.setAttribute("CART_QUANTITY", QuantityItemInCart + 1);
+			String message = null;
+			switch (cart.add(productID)) {
+			case 1:
+				message = "tối đa "+Config.MAX_QUANTITY_OF_PRODUCT +" sản phẩm mỗi mẫu điện thoại";
+				break;
+			case 2:
+				message = "tối đa "+Config.MAX_PRODUCT +" mẫu điện thoại trong giỏ hàng";
+				break;
 			}
 
 			if (datHang != null) {
+				updateCart(cart, session);
 				response.sendRedirect(request.getContextPath() + "/cart");
 				return;
 			}
 
 			if (page != null) {
+				updateCart(cart, session);
+				request.setAttribute("message", message);
 				doGet(request, response);
 				return;
 			}
 
+			updateCart(cart, session);
+			request.setAttribute("message", message);
 			dispatcher = this.getServletContext().getRequestDispatcher("/product-detail?id=" + productID);
 			dispatcher.forward(request, response);
 
 			break;
 		case "decrease":
-			if (cart.get(productID) > 1) {
-				cart.put(productID, cart.get(productID) - 1);
-
-				session.setAttribute("CART", cart);
-
-				session.setAttribute("CART_QUANTITY", QuantityItemInCart - 1);
-			}
-
+			cart.removeProductItem(productID);
+			updateCart(cart, session);
 			response.sendRedirect(request.getContextPath() + "/cart");
 			break;
 		case "remove":
-			cart = (HashMap<String, Integer>) session.getAttribute("CART");
-			session.setAttribute("CART_QUANTITY", QuantityItemInCart - cart.get(productID));
-			session.setAttribute("PRODUCT_QUANTITY", productQuantity -1);
-			cart.remove(productID);
-			if ((Integer) session.getAttribute("CART_QUANTITY") == 0) {
-				session.removeAttribute("CART");
-			}
+			cart.removeProductModel(productID);
+			updateCart(cart, session);
 			response.sendRedirect(request.getContextPath() + "/cart");
 			break;
 
 		case "remove-all":
-			session.removeAttribute("CART");
-			session.setAttribute("CART_QUANTITY", 0);
+			cart.removeAll();
+			updateCart(cart, session);
 			response.sendRedirect(request.getContextPath() + "/cart");
 			break;
 		default:
 			break;
 		}
+
+	}
+
+	private void updateCart(Cart cart, HttpSession session) {
+		session.setAttribute("CART", cart);
+		session.setAttribute("CART_QUANTITY", cart.getQuantityOfProductInCart());
+		session.setAttribute("PRODUCT_QUANTITY", cart.getListProduct().size());
 
 	}
 

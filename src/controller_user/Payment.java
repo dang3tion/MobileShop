@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model_BO_service.BO_Product;
+import model_beans.Cart;
 import model_beans.Product;
 import model_utility.CodeOrder;
 import model_utility.Const;
@@ -21,30 +22,24 @@ import model_utility.VerifyCaptcha;
 @WebServlet(urlPatterns = "/payment")
 public class Payment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	String codeOder = new CodeOrder().getCodeOder();
-	HashMap<String, Integer> cart;
-	BO_Product bo = new BO_Product();
+	BO_Product bo = BO_Product.getBoProduct();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		HttpSession session = request.getSession();
-		cart = (HashMap<String, Integer>) session.getAttribute("CART");
 
-		ArrayList<Product> listProduct = new ArrayList<Product>();
+		Cart cart = (Cart) session.getAttribute("CART");
+		String codeOder = cart.getCodeOder().getCode();
 
 		// display Cart
-		if (cart != null) {
-			int sumCart = 0;
-			for (String ProductID : cart.keySet()) {
-				Product pro = bo.getProduct(ProductID);
-				pro.setQuantityInCart(cart.get(ProductID));
-				listProduct.add(pro);
-				sumCart += pro.getPrice() * cart.get(ProductID);
-			}
+		ArrayList<Product> listProduct = new ArrayList<Product>();
+		for (String productID : cart.getListProductID()) {
+			Product pro = bo.getProduct(productID);
+			pro.setQuantityInCart(cart.getQuantityEveryProduct(productID));
+			listProduct.add(pro);
 
 			request.setAttribute("LIST_PRODUCT_IN_CART", listProduct);
-			request.setAttribute("SUM_CART", sumCart);
+			request.setAttribute("SUM_CART", cart.getQuantityOfProductInCart());
 		}
 
 		request.setAttribute("CODE_ODER", codeOder);
@@ -56,7 +51,10 @@ public class Payment extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
 
+		Cart cart = (Cart) session.getAttribute("CART");
+		String codeOder = cart.getCodeOder().getCode();
 		String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 		String address = request.getParameter("address");
 		String name = request.getParameter("name");
@@ -68,22 +66,17 @@ public class Payment extends HttpServlet {
 		System.out.println("SDT " + phoneNumber);
 		System.out.println("paymentMethod ? " + paymentMethod);
 
-		HttpSession session = request.getSession();
-
-		cart = (HashMap<String, Integer>) session.getAttribute("CART");
-		ArrayList<Product> listProduct = new ArrayList<Product>();
 		// display Cart
-		if (cart != null) {
-			int sumCart = 0;
-			for (String ProductID : cart.keySet()) {
-				Product pro = bo.getProduct(ProductID);
-				pro.setQuantityInCart(cart.get(ProductID));
-				listProduct.add(pro);
-				sumCart += pro.getPrice() * cart.get(ProductID);
-			}
+		ArrayList<Product> listProduct = new ArrayList<Product>();
+		for (String productID : cart.getListProductID()) {
+			Product pro = bo.getProduct(productID);
+			pro.setQuantityInCart(cart.getQuantityEveryProduct(productID));
+			listProduct.add(pro);
+
 			request.setAttribute("LIST_PRODUCT_IN_CART", listProduct);
-			request.setAttribute("SUM_CART", sumCart);
+			request.setAttribute("SUM_CART", cart.getQuantityOfProductInCart());
 		}
+
 		request.setAttribute("CODE_ODER", codeOder);
 
 		if (session.getAttribute(Const.CUSTOMER_LOGINED) == null) {

@@ -12,6 +12,19 @@ import model_beans.Product;
 public class BO_Product {
 //	Dao_Product2 dao2 = new Dao_Product2();
 	DAO_Product dao = new DAO_Product();
+	
+	private static BO_Product boProduct = null;
+	
+	public static BO_Product getBoProduct() {
+		if (boProduct == null) {
+			boProduct = new BO_Product();
+		}
+		return boProduct;
+	}
+
+	protected BO_Product() {
+	}
+	
 
 	public Product getProduct(String id) {
 		return dao.getProduct(id);
@@ -30,13 +43,6 @@ public class BO_Product {
 				dao.countStar("4", id), dao.countStar("5", id));
 	}
 
-	public static void main(String[] args) {
-		BO_Product bo = new BO_Product();
-		for (int i = 0; i < bo.getList(0, 20).size(); i++) {
-			System.out.println(bo.getList(0,20).get(i).toString());
-		}
-		
-	}
 
 	
 }
