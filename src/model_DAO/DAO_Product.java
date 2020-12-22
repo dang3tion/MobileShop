@@ -139,8 +139,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 				detail.add(new Detail_Config( //
 						rs.getString(MACH), //
 						rs.getString("MACT"), //
-						listDetailPro(rs.getString("MACT"))
-				));
+						listDetailPro(rs.getString("MACT"))));
 
 			}
 		} catch (SQLException e) {
@@ -171,7 +170,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 	private final String DETAIL_PRO = "CHITIET_THUOCTINH";
 
 	public Detail_Propertie listDetailPro(String idCT) {
-	Detail_Propertie proper = null;
+		Detail_Propertie proper = null;
 		String query = "SELECT * FROM " + DETAIL_PRO + " WHERE " + "MACT" + " = ? ";
 		String[] para = { idCT };
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
@@ -185,11 +184,12 @@ public class DAO_Product extends ExecuteStatementUtility {
 		}
 		return proper;
 	}
-	
+
 	private final String DANHGIA = "DANHGIA";
-	public int countStar(String numberStar,String id) {
-		String query = "SELECT  COUNT(MUCDANHGIA) FROM " + DANHGIA + " WHERE " + "MASP" + " = ? AND " +"MUCDANHGIA =?";
-		String[] para = { id,numberStar };
+
+	public int countStar(String numberStar, String id) {
+		String query = "SELECT  COUNT(MUCDANHGIA) FROM " + DANHGIA + " WHERE " + "MASP" + " = ? AND " + "MUCDANHGIA =?";
+		String[] para = { id, numberStar };
 		int star = 0;
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
@@ -200,10 +200,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 		}
 		return star;
 	}
-	
-	
-	
-	
+
 }
 
 // _   _                               _       _                     _                     
