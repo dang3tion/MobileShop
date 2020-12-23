@@ -1,5 +1,7 @@
 package BeanProduct;
 
+import java.text.DecimalFormat;
+
 public class StarEvaluate {
     private String idProduct;
     private int star1;
@@ -81,7 +83,9 @@ public class StarEvaluate {
     }
 
     public double getAvg(){
-       return (star1*1+star2*2+star3*3+star4*4+star5*5)/sum();
+       double avg = (star1*1+star2*2+star3*3+star4*4+star5*5)/sum();
+       avg = Double.valueOf(new DecimalFormat("#.#").format(avg));
+       return avg;
     }
      
     public double sum() {
@@ -103,5 +107,4 @@ public class StarEvaluate {
     public double getPercent5() {
 		return ((double)star5/sum())*100;
 	}
-    
 }

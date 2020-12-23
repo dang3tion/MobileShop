@@ -68,7 +68,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 		Product product = null;
 		try (ResultSet rs = super.AccessDBstr(query,para)) {
 			while (rs.next()) {
-				fakeDatabase.add(new Product(rs.getString("MASP"), thumbnail(2), rs.getString("TENSP"), rs.getString("GIOITHIEU"), rs.getInt("GIA"),
+				fakeDatabase.add(new Product(rs.getString("MASP").trim(), thumbnail(2), rs.getString("TENSP"), rs.getString("GIOITHIEU"), rs.getInt("GIA"),
 						rs.getInt("GIA_KM"), rs.getString("MACH")));
 			}
 		} catch (SQLException e) {
