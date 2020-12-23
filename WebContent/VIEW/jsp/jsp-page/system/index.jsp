@@ -86,7 +86,7 @@
 									<div class="row d-block ">
 										<c:forEach items="${listSanPham}" var="pro" begin="0" end="3">
 											<div class="col-3">
-												<c:import url="/VIEW/jsp/jsp-component/CardProduct.jsp">
+												<c:import url="/VIEW/jsp/jsp-component/card-product-index.jsp">
 													<c:param name="id" value="${pro.id}"></c:param>
 													<c:param name="image" value="${pro.thumbnail}"></c:param>
 													<c:param name="name" value="${pro.name}"></c:param>
@@ -101,7 +101,7 @@
 									<div class="row d-block">
 										<c:forEach items="${listSanPham}" var="pro" begin="4" end="7">
 											<div class="col-3">
-												<c:import url="/VIEW/jsp/jsp-component/CardProduct.jsp">
+												<c:import url="/VIEW/jsp/jsp-component/card-product-index.jsp">
 													<c:param name="id" value="${pro.id}"></c:param>
 													<c:param name="image" value="${pro.thumbnail}"></c:param>
 													<c:param name="name" value="${pro.name}"></c:param>
@@ -149,7 +149,7 @@
 
 										<c:forEach items="${listSanPham}" var="pro" begin="0" end="3">
 											<div class="col-3">
-												<c:import url="/VIEW/jsp/jsp-component/CardProduct.jsp">
+												<c:import url="/VIEW/jsp/jsp-component/card-product-index.jsp">
 													<c:param name="id" value="${pro.id}"></c:param>
 													<c:param name="image" value="${pro.thumbnail}"></c:param>
 													<c:param name="name" value="${pro.name}"></c:param>
@@ -165,7 +165,7 @@
 									<div class="row d-block">
 										<c:forEach items="${listSanPham}" var="pro" begin="4" end="7">
 											<div class="col-3">
-												<c:import url="/VIEW/jsp/jsp-component/CardProduct.jsp">
+												<c:import url="/VIEW/jsp/jsp-component/card-product-index.jsp">
 													<c:param name="id" value="${pro.id}"></c:param>
 													<c:param name="image" value="${pro.thumbnail}"></c:param>
 													<c:param name="name" value="${pro.name}"></c:param>
@@ -215,7 +215,7 @@
 
 					<c:forEach items="${listSanPham}" var="pro" begin="0" end="8">
 						<div class="col-4">
-							<c:import url="/VIEW/jsp/jsp-component/CardProduct.jsp">
+							<c:import url="/VIEW/jsp/jsp-component/card-product-index.jsp">
 								<c:param name="id" value="${pro.id}"></c:param>
 								<c:param name="image" value="${pro.thumbnail}"></c:param>
 								<c:param name="name" value="${pro.name}"></c:param>

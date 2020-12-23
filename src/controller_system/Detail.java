@@ -1,4 +1,4 @@
-package controller_user;
+package controller_system;
 
 import java.io.IOException;
 
@@ -15,15 +15,20 @@ import model_BO_service.BO_Product;
 public class Detail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	BO_Product bo = BO_Product.getBoProduct();
-	
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String id = (String) request.getParameter("id");
-		request.setAttribute("PRODUCT", bo.getProduct(id));
-		request.setAttribute("config", bo.config(id));
-		request.setAttribute("star", bo.star(id));
+		try {
+			request.setAttribute("PRODUCT", bo.getProduct(id));
+			request.setAttribute("config", bo.config(id));
+			request.setAttribute("star", bo.star(id));
+		} catch (Exception e) {
+			response.sendRedirect(request.getContextPath() + "/KhongTimThaySanPham");
+			return;
+		}
+
 		String message = (String) request.getAttribute("message");
 		request.setAttribute("message", message);
 		RequestDispatcher dispatcher //

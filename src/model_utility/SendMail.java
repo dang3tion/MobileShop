@@ -83,7 +83,6 @@ public class SendMail {
 		try {
 			// Create a default MimeMessage object.
 			MimeMessage message = new MimeMessage(session);
-			
 
 			// Set From: header field of the header.
 			message.setFrom(new InternetAddress(from));
@@ -92,18 +91,19 @@ public class SendMail {
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(CustomerMail));
 
 			// Tiêu Đề
-			message.setSubject("Xác thực tài khoản mobile Shop","UTF-8");
+			message.setSubject("Xác thực tài khoản mobile Shop", "UTF-8");
 
 			// Nội dung
-			message.setText("Mã OTP của bạn là : " + OTPcode + "  .Mã có hiệu lực trong 2 phút.", "UTF-8");
+			message.setText("Mã OTP của bạn là : " + OTPcode + "  .Mã có hiệu lực trong " + Config.OTP_LIVE_SECOND / 60
+					+ " phút.", "UTF-8");
 			// Send message
 			Transport.send(message);
 		} catch (MessagingException mex) {
 			mex.printStackTrace();
 		}
 
-	}	
-	
+	}
+
 }
 
 //	

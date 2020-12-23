@@ -1,4 +1,4 @@
-package controller_user;
+package controller_system;
 
 import java.io.IOException;
 
@@ -9,24 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model_BO_service.BO_Account;
-import model_BO_service.BO_Product;
-import model_DAO.DAO_Product;
-
-@WebServlet(urlPatterns = "/index")
-public class Index extends HttpServlet {
+@WebServlet(urlPatterns = "/member/receipted")
+public class Recepted extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private BO_Product bo = BO_Product.getBoProduct();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setAttribute("listSanPham", bo.getList(1,9));
-
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/index.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/profile-receipt.jsp");
 		dispatcher.forward(request, response);
-		return;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -34,6 +26,4 @@ public class Index extends HttpServlet {
 		doGet(request, response);
 	}
 
-
-	
 }

@@ -10,6 +10,7 @@ import model_utility.Config;
 public class Cart {
 
 	private HashMap<String, Integer> listProduct = new HashMap<String, Integer>();
+	private HashMap<String, ArrayList<String>> listColorEveryProduct = new HashMap<String, ArrayList<String>>();
 	CodeOrder codeOder = new CodeOrder();
 
 	public CodeOrder getCodeOder() {
@@ -24,6 +25,10 @@ public class Cart {
 		return listProduct.keySet();
 	}
 
+	public  ArrayList<String> getListColorOfProduct(String productID) {
+		return listColorEveryProduct.get(productID);
+	}
+
 	public int getQuantityOfProductInCart() {
 		int total = 0;
 		for (String productID : listProduct.keySet()) {
@@ -34,13 +39,10 @@ public class Cart {
 
 	public int getQuantityEveryProduct(String productID) {
 		if (listProduct.containsKey(productID)) {
-			return listProduct.get(productID);			
+			return listProduct.get(productID);
 		}
 		return 0;
 	}
-	
-	
-
 
 	public HashMap<String, Integer> getListProduct() {
 		return listProduct;
@@ -48,8 +50,8 @@ public class Cart {
 
 	/**
 	 * @param productID
-	 * @return 1 đạt đến số lượng sản phẩm tối đa mỗi model. 2 đạt đến số model
-	 *         sản phẩm tối đa. 0 là đã thêm thành công.
+	 * @return 1 đạt đến số lượng sản phẩm tối đa mỗi model. 2 đạt đến số model sản
+	 *         phẩm tối đa. 0 là đã thêm thành công.
 	 */
 	public int add(String productID) {
 		int resultCheckLimit = checkLimit(productID);
@@ -89,6 +91,4 @@ public class Cart {
 		return 0;
 	}
 
-	
-	
 }

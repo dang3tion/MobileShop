@@ -166,7 +166,7 @@
 				</c:choose>
 				<!--  xử lý nút giỏ hàng END > -->
 
-				<c:if test="${CART_QUANTITY !=0}">
+				<c:if test="${CART_QUANTITY !=0 && CART_QUANTITY != null }">
 					<!-- <nút thanh toán -->
 					<li class="nav-item"><a
 						href="${pageContext.request.contextPath}/payment">

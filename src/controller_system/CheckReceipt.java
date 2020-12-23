@@ -1,4 +1,6 @@
-package controller_user;
+package controller_system;
+
+
 
 import java.io.IOException;
 
@@ -9,15 +11,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/member/receipted")
-public class Recepted extends HttpServlet {
+@WebServlet(urlPatterns = "/check-receipt")
+public class CheckReceipt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/profile-receipt.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/check-reciept.jsp");
+
 		dispatcher.forward(request, response);
 	}
 
