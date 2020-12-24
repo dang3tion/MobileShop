@@ -88,75 +88,74 @@
 						<div class="outframe-2">
 							<div class="frame-contact">
 								<h4>Gửi phản hồi của bạn</h4>
-
-								<div class="collumn">
-									<div class="form-2">
-										<div class="form-input-2">
-											<div class="title">
-												<p>Họ tên</p>
-											</div>
-											<input type="name" placeholder="Nhập tên của bạn"
-												onfocusout="fullname(this,name3)">
-										</div>
-										<div class=" fillText3" id='name3'></div>
-									</div>
-								</div>
-								<div class="collumn">
-									<div class="alpha">
+								<form action="${pageContext.request.contextPath}/contact" method="post">
+									<div class="collumn">
 										<div class="form-2">
 											<div class="form-input-2">
 												<div class="title">
-													<p>Email*</p>
+													<p>Họ tên</p>
 												</div>
-												<input type="email" placeholder="Nhập email" id="email"
-													onfocusout="email(this,text2)">
+												<input type="name" placeholder="Nhập tên của bạn"
+													onfocusout="fullname(this,name3)" name = "name">
 											</div>
-											<div class=" fillText3" id="text2">Email must have the
-												@ characters</div>
+											<div class=" fillText3" id='name3'></div>
 										</div>
 									</div>
-									<div class="omega">
-										<div class="form-2">
-											<div class="form-input-2">
+									<div class="collumn">
+										<div class="alpha">
+											<div class="form-2">
+												<div class="form-input-2">
+													<div class="title">
+														<p>Email*</p>
+													</div>
+													<input type="email" placeholder="Nhập email" id="email"
+														onfocusout="email(this,text2)" name = "email">
+												</div>
+												<div class=" fillText3" id="text2">Email must have the
+													@ characters</div>
+											</div>
+										</div>
+										<div class="omega">
+											<div class="form-2">
+												<div class="form-input-2">
+													<div class="title">
+														<p>Số điện thoại</p>
+													</div>
+													<input class="input-2" type="text" outf
+														placeholder="Nhập số điện thoại"
+														onfocusout="number(this,phone)" name = "phone">
+												</div>
+												<div class=" fillText3" id="phone">Only number input</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="collumn">
+										<div class="form-3">
+											<div class="form-input-3">
 												<div class="title">
-													<p>Số điện thoại</p>
+													<p>Lời nhắn</p>
 												</div>
-												<input class="input-2" type="text" outf
-													placeholder="Nhập số điện thoại"
-													onfocusout="number(this,phone)">
+												<textarea cols="40" placeholder="Nhập lời nhắn của bạn" name = "content"></textarea>
 											</div>
-											<div class=" fillText3" id="phone">Only number input</div>
 										</div>
-									</div>
-								</div>
 
-								<div class="collumn">
-									<div class="form-3">
-										<div class="form-input-3">
-											<div class="title">
-												<p>Lời nhắn</p>
-											</div>
-											<textarea cols="40" placeholder="Nhập lời nhắn của bạn"></textarea>
+									</div>
+									<div class="collumn">
+										<div class="">
+											<button type="submit" class="btn-submit">
+												Gửi <i class="fas fa-long-arrow-alt-right"></i>
+											</button>
 										</div>
+
 									</div>
-
-								</div>
-								<div class="collumn">
-									<div class="">
-										<button class="btn-submit">
-											Gửi <i class="fas fa-long-arrow-alt-right"></i>
-										</button>
-									</div>
-
-								</div>
-
+								</form>
 							</div>
 						</div>
 					</div>
 
 				</div>
 			</div>
-
 		</div>
 	</div>
 

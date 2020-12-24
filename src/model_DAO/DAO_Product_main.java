@@ -6,11 +6,8 @@ import java.util.ArrayList;
 
 import model_ConnectDB.ExecuteStatementUtility;
 import model_beans.Attribute;
-import model_beans.Attribute_class;
 import model_beans.Branch;
 import model_beans.Color_main;
-import model_beans.Color_product_main;
-import model_beans.Price_product;
 import model_beans.Price_product_main;
 import model_beans.Product_main;
 
