@@ -237,10 +237,7 @@
 
 
 					<div id="content" style="max-height: 50em; overflow: hidden;">
-						${PRODUCT.content}
-
-
-					</div>
+						${PRODUCT.content}</div>
 					<div class="text-center">
 						<button id="send1" onclick="ttOpen()"
 							class="btn btn-primary btn-center" style="margin-top: 20px;">Xem
@@ -254,11 +251,100 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-4">
-					<h4>Thông số kĩ thuật</h4>
-					
-				</table>
-			</div>
+			    <div class="col-sm-4">
+        <h4>Thông số kĩ thuật</h4>
+        <ul class="attribute">
+          <li class="item">
+            <div class="title">
+              <p>Màn hình:</p>
+            </div>
+            <div class="value"> IPS LCD,6.5", HD+</div>
+          </li>
+          <li class="item">
+            <div class="title">
+              <p>Hệ điều hành:</p>
+            </div>
+            <div class="value">IOS 14</div>
+          </li>
+          <li class="item">
+            <div class="title">
+              <p>Camera sau:</p>
+            </div>
+            <div class="value">Độ phân giải: 12 MP + 12 MP + 12 MP + TOF</div>
+          </li>
+        </ul>
+        <button class="show-detail" data-toggle="modal" data-target="#detail-attribute">Xem thêm chi tiết</button>
+    <div class="modal fade" id="detail-attribute" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document"style="min-width:60%">
+         <div class="modal-content modal-attribute">
+              <div class="modal-header" style="text-align: center;">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="
+            font-size: 20px;
+            padding-left: 20px;
+            font-size: 21px;
+            ">Thông số kỹ thuật</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ul class="modal-attribute">
+                  <div class="title-attribute">Màn hình</div>
+                  <li class="item">
+                    <div class="title">Công nghệ màn hình</div>
+                    <div class="value">
+                      <p> IPS LCD</p>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="title">Độ phân giải</div>
+                    <div class="value">
+                      <p> HD+ (720 x 1600 Pixels)</p>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="title">Màn hình rộng</div>
+                    <div class="value">
+                      <p> 6.5"</p>
+                    </div>
+                  </li>
+                </ul>
+                <ul class="modal-attribute">
+                  <div class="title-attribute">Màn hình</div>
+                  <li class="item">
+                    <div class="title">Công nghệ màn hình</div>
+                    <div class="value">
+                      <p> IPS LCD</p>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="title">Tính năng</div>
+                    <div class="value">
+                      <p>
+                        Ban đêm (Night Mode)
+
+                      </p>
+                      <p>
+                        Ban đêm (Night Mode)
+
+                      </p>
+                      <p>
+                        Ban đêm (Night Mode)
+
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+
+              </div>
+            </div>
+  </div>
+</div>
+
+
 		</div>
 
 	</div>
@@ -293,7 +379,7 @@
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p>${star.star5}đánh giá</p>
+							<p>${star.star5}đánhgiá</p>
 						</div>
 					</div>
 					<div style="margin-top: -15px;" class="side row">
@@ -308,7 +394,7 @@
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p>${star.star4}đánh giá</p>
+							<p>${star.star4}đánhgiá</p>
 						</div>
 					</div>
 					<div style="margin-top: -15px;" class="side row">
@@ -323,7 +409,7 @@
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p>${star.star3}đánh giá</p>
+							<p>${star.star3}đánhgiá</p>
 						</div>
 					</div>
 					<div style="margin-top: -15px;" class="side row">
@@ -338,7 +424,7 @@
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p>${star.star2}đánh giá</p>
+							<p>${star.star2}đánhgiá</p>
 						</div>
 					</div>
 					<div style="margin-top: -15px;" class="side row">
@@ -353,7 +439,7 @@
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p>${star.star1}đánh giá</p>
+							<p>${star.star1}đánhgiá</p>
 						</div>
 					</div>
 				</div>

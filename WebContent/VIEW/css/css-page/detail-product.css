@@ -207,4 +207,59 @@ label.star:before {
 }
 #img {
   max-width: 360px;
+}.attribute{
+  margin: 0;
+  padding: 0;
+  margin-top: 30px;
 }
+.attribute .item{
+    display: flex;
+  width: 100%;
+  padding: 5px;
+  border-top: 1px solid #e0e0e0;
+}
+.attribute .item .title{
+width: 33%;
+}
+.attribute .item .value{    width: 60%;}
+.show-detail{
+    text-align: center;
+  margin: auto;
+  width: 100%;
+  outline: 0;
+  padding: 10px;
+  color: white;
+  border: 0;
+  margin-top: 20px;
+  border-radius: 4px;
+  background-color: #007bff;
+
+
+  }.modal-attribute{    padding-left: 0;
+    margin-bottom: 0;
+    padding: 0px 15px;
+
+  } .modal-attribute .title-attribute{
+    display: block;
+    font-size: 18px;
+    color: #ee370a;
+    padding: 4px;
+    padding-left: 10px;
+    background: #dcdcdc85;
+    border-bottom: 1px solid #a7a7a78a;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+  .modal-attribute .item{
+     border-bottom: 1px solid #d2d2d2;
+    display: flex;
+    padding-left: 10px;
+
+    margin-top: 5px;
+  }
+  .modal-attribute .item .title{
+width: 33%;
+  }.modal-attribute .item .value{
+    width: 60%;
+    color: cornflowerblue;
+  }
