@@ -15,7 +15,7 @@ import model_ConnectDB.ExecuteStatementUtility;
 public class DAO_Account extends ExecuteStatementUtility {
 
 	// Tên bảng trong database
-	private final String ACCOUNT = "taikhoan";
+	private final String ACCOUNT = "taikhoan15235325";
 	// tên các cột của bảng ACCOUNT
 	private final String CUSTOMERID = "id";
 	private final String EMAIL = "email";
