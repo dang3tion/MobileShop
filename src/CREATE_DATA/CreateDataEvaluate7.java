@@ -6,7 +6,7 @@ import java.util.Random;
 
 import BeanProduct.Product;
 import model_ConnectDB.ExecuteStatementUtility;
-import model_DAO.Dao_Product2;
+
 
 public class CreateDataEvaluate7 extends ExecuteStatementUtility{
 	public static int rdINT(int start, int end) {

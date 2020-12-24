@@ -6,7 +6,6 @@ import BeanProduct.Config;
 import BeanProduct.Detail_Config;
 import BeanProduct.StarEvaluate;
 import model_DAO.DAO_Product;
-import model_DAO.Dao_Product2;
 import model_beans.Product;
 
 public class BO_Product {

@@ -19,45 +19,21 @@ public class DAO_Product extends ExecuteStatementUtility {
 
 	}
 
-	public static int rdItem(int arrSize) {
-		return (int) ((Math.random() * arrSize));
-	}
 
-	public static String name(int index) {
-		ArrayList<String> name = new ArrayList<String>();
-		name.add("Iphone 8");
-		name.add("Samsung galaxy S9");
-		name.add("Nokia Limilted 8");
-		name.add("Xiaomi mi max 3");
-		name.add("One plus 8");
-		name.add("Samsung galaxy note");
-		name.add("Iphone 6S");
-		name.add("Iphone 7S");
-		name.add("Iphone 8S");
-		name.add("Iphone 9S");
-		name.add("Iphone 10S");
-		name.add("Iphone 11S");
-		name.add("Iphone 12S");
-		name.add("Iphone 13S");
-		return name.get(index);
-	}
 
-	public static String thumbnail(int index) {
-		ArrayList<String> i = new ArrayList<String>();
-		i.add("https://cdn.tgdd.vn/Products/Images/42/229056/oppo-a93-trang-14-600x600.jpg");
-		i.add("https://cdn.tgdd.vn/Products/Images/42/228453/vivo-v20-600-xanh-hong-2-600x600.jpg");
-		i.add("https://cdn.tgdd.vn/Products/Images/42/227681/realme-c17-green-600x600-200x200.jpg");
-		i.add("https://cdn.tgdd.vn/Products/Images/42/222596/oppo-reno4-xanh-600x600.jpg");
-		i.add("https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-new-600x600-600x600.jpg");
-		i.add("https://cdn.tgdd.vn/Products/Images/42/230867/samsunggalaxynote20ultratrangnew-600x600-600x600.jpg");
-		i.add("https://cdn.tgdd.vn/Products/Images/42/217936/samsung-galaxy-s20-plus-xanh-600x600-400x400.jpg");
-		i.add("https://cdn.tgdd.vn/Products/Images/42/213031/TimerThumb/iphone-12-blue-600x600-thumb-hen-gio.jpg");
-		i.add("https://cdn.tgdd.vn/Products/Images/42/213032/iphone-12-pro-260020-110014-200x200.jpg");
-		i.add("https://cdn.tgdd.vn/Products/Images/42/228738/iphone-12-pro-256gb-190120-020118-200x200.jpg");
-		i.add("https://cdn.tgdd.vn/Products/Images/42/228738/iphone-12-pro-256gb-190120-020118-200x200.jpg");
-		i.add("https://cdn.tgdd.vn/Products/Images/42/228738/iphone-12-pro-256gb-190120-020118-200x200.jpg");
-
-		return i.get(index);
+	public String thumbnail(String id) {
+		String query = "SELECT ANH FROM HINHANH WHERE MASP = '?' AND LOAIANH = 'NEN'";
+		String link = "";
+		String[] para = {id};
+		System.out.println(query);
+		try (ResultSet rs = super.AccessDBstr(query,para)) {
+			while (rs.next()) {
+				link = rs.getString("ANH");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return link;
 	}
 
 	public ArrayList<Product> getList(int start,int end) {
@@ -68,7 +44,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 		Product product = null;
 		try (ResultSet rs = super.AccessDBstr(query,para)) {
 			while (rs.next()) {
-				fakeDatabase.add(new Product(rs.getString("MASP").trim(), thumbnail(2), rs.getString("TENSP"), rs.getString("GIOITHIEU"), rs.getInt("GIA"),
+				fakeDatabase.add(new Product(rs.getString("MASP").trim(), thumbnail(rs.getString("MASP").trim()), rs.getString("TENSP"), rs.getString("GIOITHIEU"), rs.getInt("GIA"),
 						rs.getInt("GIA_KM"), rs.getString("MACH")));
 			}
 		} catch (SQLException e) {
@@ -99,7 +75,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 		Product product = null;
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
-				Product pro = new Product(id, thumbnail(2), rs.getString(1), rs.getString(2), rs.getInt(3),
+				Product pro = new Product(id, thumbnail(id), rs.getString(1), rs.getString(2), rs.getInt(3),
 						rs.getInt(4), rs.getString(5));
 				product = pro;
 			}
@@ -203,9 +179,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 	}
 	public static void main(String[] args) {
 		DAO_Product dao = new DAO_Product();
-		for (int i = 0; i < dao.getList(1,3).size(); i++) {
-			System.out.println(dao.getList(1,3).get(i).getId());
-		}
+		dao.thumbnail("sp01");
 	}
 }
 
