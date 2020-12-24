@@ -1167,7 +1167,16 @@ public class CreateAccount {
 	}
 
 	public static Account acc() {
-		return new Account(fullEmail(), password(), "CUSTOMER", "ENABLE", ngayTao(), fullName(), SDT(), fullDiaChi(),
+		return new Account(
+				fullEmail()
+				, password()
+				, "ENABLE",
+				ngayTao(),
+				 "CUSTOMER",
+				 
+				fullName(),
+				SDT(), 
+				fullDiaChi(),
 				token());
 	}
 
