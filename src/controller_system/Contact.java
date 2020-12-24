@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model_BO_service.BO_Contact;
-import model_BO_service.BO_Content;
+
 
 @WebServlet(urlPatterns = "/contact")
 public class Contact extends HttpServlet {

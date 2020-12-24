@@ -7,7 +7,7 @@ public class Bean_Contact {
 	private String name;
 	private String email;
 	private String numberPhone;
-	private LocalDate date;
+	private String date;
 	private String content;
 	
 	public Bean_Contact() {
@@ -17,7 +17,7 @@ public class Bean_Contact {
 
 	
 
-	public Bean_Contact(String name, String email, String numberPhone, LocalDate date, String content) {
+	public Bean_Contact(String name, String email, String numberPhone, String date, String content) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -27,15 +27,16 @@ public class Bean_Contact {
 	}
 
 
-
+	
 	public Bean_Contact(String name, String email, String numberPhone, String content) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.numberPhone = numberPhone;
 		this.content = content;
-		this.date = LocalDate.now();
 	}
+
+
 
 	public String getName() {
 		return name;
@@ -63,13 +64,16 @@ public class Bean_Contact {
 
 
 
-	public LocalDate getDate() {
+
+
+
+	public String getDate() {
 		return date;
 	}
 
 
 
-	public void setDate(LocalDate date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
