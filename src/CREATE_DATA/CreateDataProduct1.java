@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import BeanProduct.Product;
 import model_DAO.DAO_Account;
 import model_DAO.DAO_Product;
-import model_DAO.Dao_Product2;
 import model_beans.Account;
 
 public class CreateDataProduct1 {
@@ -139,12 +138,6 @@ public class CreateDataProduct1 {
 				amount_Sale(), config());
 	}
 
-	public static void main(String[] args) {
-		Dao_Product2 dao = new Dao_Product2();
-//		System.out.println(product().toString());
-		for (int i = 0; i < 45; i++) {
-			dao.add(product1());
-		}
-	}
+
 
 }
