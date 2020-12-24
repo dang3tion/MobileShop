@@ -75,15 +75,15 @@
 
 														<c:forEach items="${listContact}" var="c">
 															<tr>
-																<td> ${c.name} </td>
-																<td> ${c.email}</td>
-																<td> ${c.numberPhone} </td>
-																<td> ${c.date} </td>
+																<td>${c.name}</td>
+																<td>${c.email}</td>
+																<td>${c.numberPhone}</td>
+																<td>${c.date}</td>
 																<td class="feedback">${c.content}</td>
 																<td class="row" style="border: none;">
 																	<div style="margin: auto;">
 																		<button type="button" class="btn btn-primary"
-																			data-toggle="modal" data-target="#exampleModal"
+																			data-toggle="modal" data-target="#${c.name}"
 																			data-whatever="@mdo">
 																			<i class="text-center fas fa-paper-plane"></i>
 																		</button>
@@ -102,15 +102,17 @@
 
 
 															<!--Modal add-->
-															<div class="modal fade" id="exampleModal" tabindex="-1"
+															<div class="modal fade" id="${c.name}" tabindex="-1"
 																role="dialog" aria-labelledby="exampleModalLabel"
 																aria-hidden="true">
-																<form action="${pageContext.request.contextPath}" method="post">
+																<form
+																	action="${pageContext.request.contextPath}/admin/feedback"
+																	method="get">
 																	<div class="modal-dialog" role="document">
 																		<div class="modal-content">
 																			<div class="modal-header">
 																				<h5 class="modal-title" id="exampleModalLabel">Phản
-																					hồi</h5>
+																					hồi ${c.name}</h5>
 																				<button type="button" class="close"
 																					data-dismiss="modal" aria-label="Close">
 																					<span aria-hidden="true">&times;</span>
@@ -120,21 +122,23 @@
 																				<div class="form-group">
 																					<label for="recipient-name" class="col-form-label">Gửi
 																						tới: <b><input style="font-weight: bold;"
-																							value="${c.email}" disabled="disabled" name="email"></b>
+																							value="${c.email}" disabled="disabled"
+																							name="emailFeedback"></b>
 																					</label>
 																				</div>
 																				<div class="form-group">
 																					<label for="message-text" class="col-form-label">Phản
 																						hồi:</label>
 																					<textarea class="form-control" rows="10"
-																						id="message-text" name = "content"></textarea>
+																						id="message-text" name="content"></textarea>
 																				</div>
 																			</div>
 																			<div class="modal-footer">
 																				<button type="button" class="btn btn-secondary"
 																					data-dismiss="modal">Đóng</button>
-																				<button type="button" type = "submit" class="btn btn-primary"
-																					data-dismiss="modal">Gửi phản hồi</button>
+																				<button  type="submit"
+																					class="btn btn-primary">Gửi
+																					phản hồi</button>
 																			</div>
 																		</div>
 																	</div>

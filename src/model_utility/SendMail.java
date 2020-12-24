@@ -51,8 +51,7 @@ public class SendMail {
 
 	
 	public static void sendFeekBack(String customerMail, String content) {
-
-		// Mail chủ Shop
+	
 		String from = "lazadamimax3@gmail.com";
 
 		// Assuming you are sending email from through gmails smtp
@@ -92,7 +91,7 @@ public class SendMail {
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(customerMail));
 
 			// Tiêu Đề
-			message.setSubject("Xác thực tài khoản mobile Shop", "UTF-8");
+			message.setSubject("Phản hồi của Mobile Shop", "UTF-8");
 
 			// Nội dung
 			message.setText(content, "UTF-8");
@@ -147,7 +146,7 @@ public class SendMail {
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(CustomerMail));
 
 			// Tiêu Đề
-			message.setSubject("Xác thực tài khoản mobile Shop", "UTF-8");
+			message.setSubject("Xác thực tài khoản Mobile Shop", "UTF-8");
 
 			// Nội dung
 			message.setText("Mã OTP của bạn là : " + OTPcode + "  .Mã có hiệu lực trong " + Config.OTP_LIVE_SECOND / 60
@@ -161,7 +160,7 @@ public class SendMail {
 	}
 
 	public static void main(String[] args) {
-		SendMail.sendFeekBack("pexot55396@ailiking.com", "123");
+		SendMail.sendFeekBack("vancuong13032000@gmail.com", "123");
 	}
 	
 }

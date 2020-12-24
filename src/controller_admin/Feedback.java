@@ -27,13 +27,12 @@ public class Feedback extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String email  = request.getParameter("email");
+		String email  = request.getParameter("emailFeedback");
 		String content = request.getParameter("content");
+		
 		SendMail.sendFeekBack(email, content);
 		
-		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-feedback.jsp");
-		dispatcher.forward(request, response);
+		doGet(request, response);
 		
 	}
 
