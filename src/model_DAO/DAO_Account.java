@@ -150,7 +150,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 		}
 		return listAcc;
 	}
-
+	
 	public int totalSearch(String keyword) {
 		List<Account> listAcc = new ArrayList<Account>();
 		String query = "SELECT * FROM SEARCH(N'" + keyword + "')";
