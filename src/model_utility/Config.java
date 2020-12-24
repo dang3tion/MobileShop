@@ -1,5 +1,7 @@
 package model_utility;
 
+import model_ConnectDB.DataSource;
+
 public class Config {
 
 //	   _____    ____    _           ____            _   _                
@@ -22,7 +24,7 @@ public class Config {
 //	  ____) | | |__| | | |____        | | | (_) | | (__  | (_| | | | | | | | | (_) | \__ \ | |_ 
 //	 |_____/   \___\_\ |______|       |_|  \___/   \___|  \__,_| |_| |_| |_|  \___/  |___/  \__|
 //	___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
-	public static final String SERVER_NAME = "jdbc:sqlserver://10.5.50.66:1433";
+	public static final String SERVER_NAME = "jdbc:sqlserver://localhost:1433";
 	public static final String DATABASE_NAME = "MOBILESHOP3";
 	public static final String USERNAME_DB = "sa";
 	public static final String PASSWORD_DB = "sa";
@@ -71,6 +73,8 @@ public class Config {
 	   public static final int MAX_QUANTITY_OF_PRODUCT = 5 ;
 	   
 
+
+	   
 }
 
 //____                 ____                           _______ _                      
