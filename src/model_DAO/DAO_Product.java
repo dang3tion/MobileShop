@@ -174,10 +174,29 @@ public class DAO_Product extends ExecuteStatementUtility {
 		}
 		return star;
 	}
+	
+	public void addEvaluate(String idProduct,String idUser, String mountStar,String content,String date) {
+		try {
+			String query = "INSERT INTO " + "DANHGIA" + " VALUES(?,?,?,?,?)";
+			String[] parameters = { //
+					idProduct, //
+					idUser, //
+					mountStar, //
+					content, //
+					date
+			};
 
+			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	public static void main(String[] args) {
 		DAO_Product dao = new DAO_Product();
-		System.out.println(dao.thumbnail("sp01"));
+		dao.addEvaluate("sp01", "2fsdf", "3fdskl", "jlkdsaf", "2000/03/3");
 	}
 }
 
