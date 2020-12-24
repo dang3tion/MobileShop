@@ -16,7 +16,6 @@ public class Color_main {
 		this.imgSubs = imgSubs;
 	}
 
-
 	public Color_main() {
 		super();
 	}
@@ -24,6 +23,7 @@ public class Color_main {
 	public void addImgSubs(String img) {
 		imgSubs.add(img);
 	}
+
 	public String getId() {
 		return id;
 	}

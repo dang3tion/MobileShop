@@ -28,6 +28,7 @@ public class Price_product_main {
 	public int getPriceSales() {
 		return priceSales;
 	}
+
 	public void setPriceSales(int priceSales) {
 		this.priceSales = priceSales;
 	}

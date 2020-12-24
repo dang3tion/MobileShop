@@ -134,4 +134,12 @@ public class Product_main {
 		this.colors = colors;
 	}
 
+	@Override
+	public String toString() {
+		return "Product_main [ID=" + ID + ", name=" + name + ", type=" + type + ", branch=" + branch + ", status="
+				+ status + ", update_date=" + update_date + ", posts=" + posts + ", quantity=" + quantity
+				+ ", sale_quantity=" + sale_quantity + ", view=" + view + ", attributes=" + attributes + ", colors="
+				+ colors + "]/n";
+	}
+
 }
