@@ -71,7 +71,7 @@
 												<i class="fas fa-search"></i>
 											</div>
 										</div>
-										<input name="keyword" value="9999" type="text" class="form-control"
+										<input name="keyword" type="text" class="form-control"
 											placeholder="nhập từ khóa">
 									</div>
 								</div>

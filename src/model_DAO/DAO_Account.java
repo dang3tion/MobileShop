@@ -151,29 +151,19 @@ public class DAO_Account extends ExecuteStatementUtility {
 		}
 		return listAcc;
 	}
-	
-	public int totalSearch(String keyword) {
-		List<Account> listAcc = new ArrayList<Account>();
-		String query = "SELECT * FROM SEARCH(N'" + keyword + "')";
-		try (ResultSet rs = super.AccessDBstr(query)) {
-			while (rs.next()) {
-				Account acc = new Account( //
-						rs.getString(CUSTOMERID), //
-						rs.getString(EMAIL), //
-						rs.getString(STATUS), //
-						rs.getString(TIMECREATE), //
-						rs.getString(NAME), //
-						rs.getString(PHONE), //
-						rs.getString(ADDRESS)//
-				);//
 
-				listAcc.add(acc);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return listAcc.size();
-	}
+//	public int totalSearch(String keyword) {
+//		String query = "SELECT COUNT(*) FROM SEARCH(N'" + keyword + "')";
+//		int total = 0;
+//		try (ResultSet rs = super.AccessDBstr(query)) {
+//			while (rs.next()) {
+//				rs.getInt(1);
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return total;
+//	}
 
 	public boolean isExist(String email) {
 		Account acc = get(email);
@@ -290,5 +280,5 @@ public class DAO_Account extends ExecuteStatementUtility {
 		return total;
 	}
 
-	
+
 }

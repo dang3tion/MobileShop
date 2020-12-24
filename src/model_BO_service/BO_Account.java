@@ -173,15 +173,15 @@ public class BO_Account {
 		return endRow;
 	}
 
-	public int totalSearch(String keyword) {
-		int total = dao.totalSearch(keyword);
-		return total;
-	}
+//	public int totalSearch(String keyword) {
+//		int total = dao.totalSearch(keyword);
+//		return total;
+//	}
 
-	public int totalPageSearch(String keyword) {
-		int num = totalSearch(keyword) / numRowPerPage;
-		return num;
-	}
+//	public int totalPageSearch(String keyword) {
+//		int num = totalSearch(keyword) / numRowPerPage;
+//		return num;
+//	}
 
 	public void on_off_account(String email) {
 		Account acc = get(email);
@@ -208,9 +208,7 @@ public class BO_Account {
 
 //_____________________________________________________________________________
 
-	public static void main(String[] args) {
-		System.out.println(BO_Account.getBoAccount().getAdmin("admin"));
-	}
+	
 	
 	
 	
