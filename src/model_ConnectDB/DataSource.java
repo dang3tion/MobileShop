@@ -3,6 +3,8 @@ package model_ConnectDB;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import model_DAO.DAO_Product;
+
 public class DataSource {
 
 	// POOL Này dùng cho toàn web size
@@ -17,4 +19,7 @@ public class DataSource {
 		pool.returnConnectionToPool(connection);
 	}
 
+	
+	
+	
 }

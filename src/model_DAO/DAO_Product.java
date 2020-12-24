@@ -8,6 +8,7 @@ import BeanProduct.Config;
 import BeanProduct.Detail_Config;
 import BeanProduct.Detail_Propertie;
 import BeanProduct.Propertie;
+import model_ConnectDB.DataSource;
 import model_ConnectDB.ExecuteStatementUtility;
 import model_beans.Product;
 
@@ -177,10 +178,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 		}
 		return star;
 	}
-	public static void main(String[] args) {
-		DAO_Product dao = new DAO_Product();
-		dao.thumbnail("sp01");
-	}
+	
 }
 
 // _   _                               _       _                     _                     

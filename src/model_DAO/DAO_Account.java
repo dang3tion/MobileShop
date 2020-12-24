@@ -9,6 +9,7 @@ import model_beans.Account;
 import model_utility.Config;
 import model_utility.Const;
 import model_utility.Encrypt;
+import model_ConnectDB.DataSource;
 import model_ConnectDB.ExecuteStatementUtility;
 
 public class DAO_Account extends ExecuteStatementUtility {
@@ -16,13 +17,13 @@ public class DAO_Account extends ExecuteStatementUtility {
 	// Tên bảng trong database
 	private final String ACCOUNT = "taikhoan";
 	// tên các cột của bảng ACCOUNT
-	private final String CUSTOMERID = "MAKH";
+	private final String CUSTOMERID = "id";
 	private final String EMAIL = "email";
 	private final String ENCRYT_PASSWORD = "matKhau";
 	private final String ROLE = "quyenHan";
 	private final String STATUS = "trangThai";
-	private final String TIMECREATE = "THOIGIANTAO";
-	private final String NAME = "ten";
+	private final String TIMECREATE = "ngaytao";
+	private final String NAME = "tennd";
 	private final String PHONE = "SDT";
 	private final String ADDRESS = "diaChi";
 	private final String TOKEN = "TOKENREMEMBER";
@@ -289,6 +290,5 @@ public class DAO_Account extends ExecuteStatementUtility {
 		return total;
 	}
 
-	
 	
 }
