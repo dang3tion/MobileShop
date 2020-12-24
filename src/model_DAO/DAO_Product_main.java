@@ -72,12 +72,13 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 						+ "JOIN THUOCTINH TT ON TT.MATT=CTT.MATT JOIN LOP_THUOCTINH LTT ON LTT.MALOP=TT.MALOP WHERE SP.MASP=? AND LTT.MALOP=? \r\n"
 						+ "GROUP BY SP.MASP, LTT.MALOP,tt.MATT,tt.NOIDUNG,ctt.NOIDUNG,ctt.MACT ORDER BY TT.MATT ASC";
 				String[] para2 = { id, idAtt };
-				try (ResultSet rs2 = super.AccessDBstr(query2, para2)) {
+				ResultSet rs2 = super.AccessDBstr(query2, para2);
+				while (rs2.next()) {
 					att.addAttribute(rs2.getString(4), rs2.getString(5));
-				} catch (Exception e) {
-					// TODO: handle exception
+					System.out.println(att.getLstAtribute());
 				}
 				lstAtt.add(att);
+
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -92,16 +93,17 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 				String idColor = rs.getString(2);
 				String query2 = "SELECT * FROM HINHANH HA JOIN MAUSAC MS ON MS.MAMAU=HA.MAMAU WHERE HA.MASP=? AND HA.MAMAU=? ";
 				String[] para2 = { id, idColor };
-				try (ResultSet rs2 = super.AccessDBstr(query2, para2)) {
-					String type = rs2.getString(4);
+				ResultSet rs2 = super.AccessDBstr(query2, para2);
+				while (rs2.next()) {
+					String type = rs2.getString(4).trim();
+					System.out.println(type);
 					if (type.equals("NEN")) {
 						cl.setImgMain(rs2.getString(3));
 					} else {
 						cl.addImgSubs(rs2.getString(3));
 					}
-				} catch (Exception e) {
-					// TODO: handle exception
 				}
+
 				lstColor.add(cl);
 			}
 		} catch (SQLException e) {
@@ -125,6 +127,7 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 			}
 			product.setAttributes(lstAtt);
 			product.setColors(lstColor);
+			product.setBranch(branch);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
