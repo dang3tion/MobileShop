@@ -72,134 +72,107 @@
 													</thead>
 
 													<tbody id="content-table">
-														<tr>
 
-															<td>Trần Thanh Bảo</td>
-															<td>baoCute@gmail.com</td>
-															<td>0122333333</td>
-															<td>20/1/2019</td>
-															<td class="feedback">Dịch vụ chăm sóc khách hàng rất
-																tốt, sản phẩm như mong đợi.</td>
-															<td class="row" style="border: none;">
-																<div style="margin: auto;">
-																	<button type="button" class="btn btn-primary"
-																		data-toggle="modal" data-target="#exampleModal"
-																		data-whatever="@mdo">
-																		<i class="text-center fas fa-paper-plane"></i>
-																	</button>
+														<c:forEach items="${listContact}" var="c">
+															<tr>
+																<td> ${c.name} </td>
+																<td> ${c.email}</td>
+																<td> ${c.numberPhone} </td>
+																<td> ${c.date} </td>
+																<td class="feedback">${c.content}</td>
+																<td class="row" style="border: none;">
+																	<div style="margin: auto;">
+																		<button type="button" class="btn btn-primary"
+																			data-toggle="modal" data-target="#exampleModal"
+																			data-whatever="@mdo">
+																			<i class="text-center fas fa-paper-plane"></i>
+																		</button>
 
-																	<button class="btn btn-danger sizeTh1"
-																		data-toggle="modal" data-target="#delete"
-																		data-toggle="tooltip" data-placement="top" title="Xóa">
-																		<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																	</button>
+																		<button class="btn btn-danger sizeTh1"
+																			data-toggle="modal" data-target="#delete"
+																			data-toggle="tooltip" data-placement="top"
+																			title="Xóa">
+																			<i class="txt-center menu-icon fas fa-trash-alt"></i>
+																		</button>
+																	</div>
+
+																</td>
+
+															</tr>
+
+
+															<!--Modal add-->
+															<div class="modal fade" id="exampleModal" tabindex="-1"
+																role="dialog" aria-labelledby="exampleModalLabel"
+																aria-hidden="true">
+																<form action="${pageContext.request.contextPath}" method="post">
+																	<div class="modal-dialog" role="document">
+																		<div class="modal-content">
+																			<div class="modal-header">
+																				<h5 class="modal-title" id="exampleModalLabel">Phản
+																					hồi</h5>
+																				<button type="button" class="close"
+																					data-dismiss="modal" aria-label="Close">
+																					<span aria-hidden="true">&times;</span>
+																				</button>
+																			</div>
+																			<div class="modal-body">
+																				<div class="form-group">
+																					<label for="recipient-name" class="col-form-label">Gửi
+																						tới: <b><input style="font-weight: bold;"
+																							value="${c.email}" disabled="disabled" name="email"></b>
+																					</label>
+																				</div>
+																				<div class="form-group">
+																					<label for="message-text" class="col-form-label">Phản
+																						hồi:</label>
+																					<textarea class="form-control" rows="10"
+																						id="message-text" name = "content"></textarea>
+																				</div>
+																			</div>
+																			<div class="modal-footer">
+																				<button type="button" class="btn btn-secondary"
+																					data-dismiss="modal">Đóng</button>
+																				<button type="button" type = "submit" class="btn btn-primary"
+																					data-dismiss="modal">Gửi phản hồi</button>
+																			</div>
+																		</div>
+																	</div>
+																</form>
+															</div>
+
+
+
+
+															<!-- Modal -->
+															<div class="modal fade" id="delete" tabindex="-1"
+																role="dialog" aria-labelledby="exampleModalLabel"
+																aria-hidden="true">
+																<div class="modal-dialog" role="document">
+																	<div class="modal-content">
+																		<div class="modal-header">
+																			<h5 class="modal-title" id="exampleModalLabel">Xác
+																				nhận xóa phản hồi của khách hàng</h5>
+																			<button type="button" class="close"
+																				data-dismiss="modal" aria-label="Close">
+																				<span aria-hidden="true">&times;</span>
+																			</button>
+																		</div>
+																		<div class="modal-body">Bạn có muốn xóa phản hồi
+																			này.</div>
+																		<div class="modal-footer">
+																			<button type="button" class="btn btn-secondary"
+																				data-dismiss="modal">Không</button>
+																			<button type="button" data-dismiss="modal"
+																				class="btn btn-primary">Đồng ý</button>
+																		</div>
+																	</div>
 																</div>
-
-															</td>
-														</tr>
-
-
-														<td>Trần Đăng</td>
-														<td>dang@gmail.com</td>
-														<td>01223332</td>
-														<td>20/1/2019</td>
-														<td class="feedback">Mặc hàng tốt,giao nhanh</td>
-														<td class="row" style="border: none;">
-															<div style="margin: auto;">
-																<button type="button" class="btn btn-primary"
-																	data-toggle="modal" data-target="#exampleModal"
-																	data-whatever="@mdo">
-																	<i class="text-center fas fa-paper-plane"></i>
-																</button>
-
-																<button class="btn btn-danger sizeTh1"
-																	data-toggle="modal" data-target="#delete"
-																	data-toggle="tooltip" data-placement="top" title="Xóa">
-																	<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																</button>
 															</div>
 
-														</td>
-														</tr>
 
 
-														<td>Nguyễn thị hoa hồng</td>
-														<td>baoCute@gmail.com</td>
-														<td>0122333333</td>
-														<td>20/1/2019</td>
-														<td class="feedback">Dịch vụ chăm sóc khách hàng rất
-															tốt, sản phẩm như mong đợi.</td>
-														<td class="row" style="border: none;">
-															<div style="margin: auto;">
-																<button type="button" class="btn btn-primary"
-																	data-toggle="modal" data-target="#exampleModal"
-																	data-whatever="@mdo">
-																	<i class="text-center fas fa-paper-plane"></i>
-																</button>
-
-																<button class="btn btn-danger sizeTh1"
-																	data-toggle="modal" data-target="#delete"
-																	data-toggle="tooltip" data-placement="top" title="Xóa">
-																	<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																</button>
-															</div>
-
-														</td>
-														</tr>
-
-														<td>YangHo</td>
-														<td>ho@gmail.com</td>
-														<td>0122333333</td>
-														<td>20/1/2019</td>
-														<td class="feedback">Admin cho e hỏi e mua Note 9 bản
-															3Gb-64 bây giờ em muốn đổi để lên cơn Note 9 Pro 6Gb-64
-															này thì bên cellphone thu mua con note 9 của em giá bao
-															nhiêu ạ. E cảm ơn</td>
-														<td class="row" style="border: none;">
-															<div style="margin: auto;">
-																<button type="button" class="btn btn-primary"
-																	data-toggle="modal" data-target="#exampleModal"
-																	data-whatever="@mdo">
-																	<i class="text-center fas fa-paper-plane"></i>
-																</button>
-
-																<button class="btn btn-danger sizeTh1"
-																	data-toggle="modal" data-target="#delete"
-																	data-toggle="tooltip" data-placement="top" title="Xóa">
-																	<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																</button>
-															</div>
-
-														</td>
-														</tr>
-
-
-														<td>Trần Thanh Trung</td>
-														<td>trung@gmail.com</td>
-														<td>0122333333</td>
-														<td>20/1/2019</td>
-														<td class="feedback">trong tầm giá 5 đến 6tr5 thì máy
-															nào là sự lựa chọn tốt nhất ạ</td>
-														<td class="row" style="border: none;">
-															<div style="margin: auto;">
-																<button type="button" class="btn btn-primary"
-																	data-toggle="modal" data-target="#exampleModal"
-																	data-whatever="@mdo">
-																	<i class="text-center fas fa-paper-plane"></i>
-																</button>
-
-																<button class="btn btn-danger sizeTh1"
-																	data-toggle="modal" data-target="#delete"
-																	data-toggle="tooltip" data-placement="top" title="Xóa">
-																	<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																</button>
-															</div>
-
-														</td>
-														</tr>
-
-
-
+														</c:forEach>
 													</tbody>
 												</table>
 
@@ -220,69 +193,10 @@
 							<!-- .animated -->
 						</div>
 						<!-- .content -->
-						<!--Modal add-->
-						<div class="modal fade" id="exampleModal" tabindex="-1"
-							role="dialog" aria-labelledby="exampleModalLabel"
-							aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Phản hồi</h5>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<form>
-											<div class="form-group">
-												<label for="recipient-name" class="col-form-label">Gửi
-													tới: <b>baoCute@gmail.com</b>
-												</label>
-											</div>
-											<div class="form-group">
-												<label for="message-text" class="col-form-label">Phản
-													hồi:</label>
-												<textarea class="form-control" rows="10" id="message-text"></textarea>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Đóng</button>
-										<button type="button" class="btn btn-primary"
-											data-dismiss="modal">Gửi phản hồi</button>
-									</div>
-								</div>
-							</div>
-						</div>
-
 
 
 						<!-- delete product -->
-						<!-- Modal -->
-						<div class="modal fade" id="delete" tabindex="-1" role="dialog"
-							aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Xác nhận
-											xóa phản hồi của khách hàng</h5>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">Bạn có muốn xóa phản hồi này.</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Không</button>
-										<button type="button" data-dismiss="modal"
-											class="btn btn-primary">Đồng ý</button>
-									</div>
-								</div>
-							</div>
-						</div>
+
 					</div>
 				</div>
 			</div>
