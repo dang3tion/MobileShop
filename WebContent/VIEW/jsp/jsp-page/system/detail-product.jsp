@@ -255,20 +255,8 @@
 				</div>
 			</div>
 			<div class="col-sm-4">
-				<table class="table">
 					<h4>Thông số kĩ thuật</h4>
-					<tbody>
-						<c:forEach items="${config}" var="t">
-							<tr>
-								<th scope="row">${t.proper.content}</th>
-								<c:forEach items="${t.proper.listPropr}" var="pp">
-									<td>
-										<p>${pp.content}</p>
-									</td>
-								</c:forEach>
-							</tr>
-						</c:forEach>
-					</tbody>
+					
 				</table>
 			</div>
 		</div>
