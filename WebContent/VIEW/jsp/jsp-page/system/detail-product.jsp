@@ -44,78 +44,120 @@
 		<div class="row">
 
 			<div class=" col-md-7 ">
-				<div class="row space-img">
-					<c:forEach items="${product.colors}" var="i" begin="0" end="0">
-						<img id="img" class="" src="${i.imgMain}" alt="">
-					</c:forEach>
-					<a class="carousel-control-prev indexP"
-						href="#carouselExampleControls" role="button" data-slide="prev">
-						<span id="pre" class="carousel-control-prev-icon"
-						aria-hidden="true"></span> <span class="sr-only">Previous</span>
-					</a> <a class="carousel-control-next indexN"
-						href="#carouselExampleControls" role="button" data-slide="next">
-						<span id="next" class="carousel-control-next-icon"
-						aria-hidden="true"></span> <span class="sr-only">Next</span>
-					</a>
-				</div>
+				<c:forEach items="${product.colors}" var="x" begin="0" end="0">
+					<div class="container">
 
-				<div class="row space-img1">
-					<c:forEach items="${product.colors}" var="i" begin="0" end="0">
-						<c:forEach items="${i.imgSubs}" var="c">
-							<div class="col-md-2 col-sm-2 mb-2">
-								<span onclick="change('../image/Product/i12black.png')">
-									<img id="img1" class="img-fluid" src="${c}" alt="">
-								</span>
+						<div class="mySlides">
+							<img src="${x.imgMain}" style="width: 100%">
+						</div>
+						<c:forEach items="${x.imgSubs}" var="i">
+							<div class="mySlides">
+								<img src="${i}" style="width: 100%">
 							</div>
-
-
 						</c:forEach>
-					</c:forEach>
-				</div>
-				<!-- /.row -->
+
+
+						<a class="prev" onclick="plusSlides(-1)">❮</a> <a class="next"
+							onclick="plusSlides(1)">❯</a>
+
+
+
+						<div class="row">
+							<div class="column">
+								<img class="demo cursor" src="${x.imgMain }" style="width: 100%"
+									onclick="currentSlide(1)" alt="The Woods">
+							</div>
+							<c:forEach items="${x.imgSubs}" var="i">
+								<div class="column">
+									<img class="demo cursor" src="${i }" style="width: 100%"
+										onclick="currentSlide(2)" alt="">
+								</div>
+							</c:forEach>
+
+						</div>
+				</c:forEach>
 			</div>
 
-			<div class="col-md-5">
-				<div class="" style="margin-bottom: 30px; margin-top: 15px">
-					<h2 class="my-3 bg-price color-price d-inline mr-5">
-						<small style="color: black; font-weight: bold;">Giá: </small>
-						<fmt:formatNumber type="number" maxFractionDigits="3" value="" />
-						₫
-					</h2>
-					<h3 class="my-3 bg-price price d-inline" style="color: #3D3D3D;">
-						<fmt:formatNumber type="number" maxFractionDigits="3" value="" />
-						₫
-					</h3>
+			<script>
+				var slideIndex = 1;
+				showSlides(slideIndex);
+
+				function plusSlides(n) {
+					showSlides(slideIndex += n);
+				}
+
+				function currentSlide(n) {
+					showSlides(slideIndex = n);
+				}
+
+				function showSlides(n) {
+					var i;
+					var slides = document.getElementsByClassName("mySlides");
+					var dots = document.getElementsByClassName("demo");
+			
+					if (n > slides.length) {
+						slideIndex = 1
+					}
+					if (n < 1) {
+						slideIndex = slides.length
+					}
+					for (i = 0; i < slides.length; i++) {
+						slides[i].style.display = "none";
+					}
+					for (i = 0; i < dots.length; i++) {
+						dots[i].className = dots[i].className.replace(
+								" active", "");
+					}
+					slides[slideIndex - 1].style.display = "block";
+					dots[slideIndex - 1].className += " active";
+					
+				}
+			</script>
+
+			<!-- /.row -->
+		</div>
+
+		<div class="col-md-5">
+			<div class="" style="margin-bottom: 30px; margin-top: 15px">
+				<h2 class="my-3 bg-price color-price d-inline mr-5">
+					<small style="color: black; font-weight: bold;">Giá: </small>
+					<fmt:formatNumber type="number" maxFractionDigits="3" value="" />
+					₫
+				</h2>
+				<h3 class="my-3 bg-price price d-inline" style="color: #3D3D3D;">
+					<fmt:formatNumber type="number" maxFractionDigits="3" value="" />
+					₫
+				</h3>
+
+			</div>
+			<div class="block">
+				<p class="" style="font-size: 20px; font-style: normal;">Chọn
+					màu ưa thích của bạn</p>
+
+				<div class="row">
+					<form>
+						<label for="btn1" id="label1"
+							class="radio-inline space-radio text-center active"
+							onclick="change('${url}/image/image-user/product/i12black.png')">
+							<input id="btn1" type="radio" name="optradio" checked
+							class="d-none"> <span class="font-color">Đen</span>
+						</label> <label for="btn2" id="label2"
+							class="radio-inline space-radio  text-center"
+							onclick="change('${url}/image/image-user/product/i12blue.png')">
+							<input id="btn2" type="radio" name="optradio" class="d-none">
+							<span class="font-color">Xanh</span>
+						</label>
+
+					</form>
 
 				</div>
-				<div class="block">
-					<p class="" style="font-size: 20px; font-style: normal;">Chọn
-						màu ưa thích của bạn</p>
-
-					<div class="row">
-						<form>
-							<label for="btn1" id="label1"
-								class="radio-inline space-radio text-center active"
-								onclick="change('${url}/image/image-user/product/i12black.png')">
-								<input id="btn1" type="radio" name="optradio" checked
-								class="d-none"> <span class="font-color">Đen</span>
-							</label> <label for="btn2" id="label2"
-								class="radio-inline space-radio  text-center"
-								onclick="change('${url}/image/image-user/product/i12blue.png')">
-								<input id="btn2" type="radio" name="optradio" class="d-none">
-								<span class="font-color">Xanh</span>
-							</label>
-
-						</form>
-
-					</div>
-					<div style="margin-top: 40px;">
-						<p class="block">Bảo hành 12 tháng chính hãng.</p>
-						<p class="block">Đổi trả trong vòng 15 ngày đầu.</p>
-					</div>
-
+				<div style="margin-top: 40px;">
+					<p class="block">Bảo hành 12 tháng chính hãng.</p>
+					<p class="block">Đổi trả trong vòng 15 ngày đầu.</p>
 				</div>
-				<!-- <h4><strong>Khuyến mại</strong></h4>
+
+			</div>
+			<!-- <h4><strong>Khuyến mại</strong></h4>
             <div class="space-l">
               <ul class="ltsPromote">
                 <li class="space-t"><i class="color-price fa fa-gift"></i>
@@ -137,33 +179,33 @@
               </ul>
             </div> -->
 
-				<div class="row">
-					<div class="col-sm-7">
-						<form action="${pageContext.request.contextPath}/cart"
-							method="post">
-							<input name="choose" value="add" hidden="true">
-							<button name="id" value="${PRODUCT.id}" type="submit"
-								class="btnMua btn btn-primary btn-lg btn-block">
-								<i class="fas fa-cart-plus" style="color: white;"></i> THÊM VÀO
-								GIỎ HÀNG
-							</button>
-						</form>
-					</div>
-					<div class="col-sm-5">
-						<form action="${pageContext.request.contextPath}/cart"
-							method="post">
-							<input name="choose" value="add" hidden="true"> <input
-								name="datHang" value="true" hidden="true">
-							<button name="id" value="${PRODUCT.id}" type="submit"
-								class="btnMua btn btn-danger btn-lg btn-block">
-								<strong>ĐẶT HÀNG</strong>
-							</button>
-						</form>
-					</div>
+			<div class="row">
+				<div class="col-sm-7">
+					<form action="${pageContext.request.contextPath}/cart"
+						method="post">
+						<input name="choose" value="add" hidden="true">
+						<button name="id" value="${PRODUCT.id}" type="submit"
+							class="btnMua btn btn-primary btn-lg btn-block">
+							<i class="fas fa-cart-plus" style="color: white;"></i> THÊM VÀO
+							GIỎ HÀNG
+						</button>
+					</form>
+				</div>
+				<div class="col-sm-5">
+					<form action="${pageContext.request.contextPath}/cart"
+						method="post">
+						<input name="choose" value="add" hidden="true"> <input
+							name="datHang" value="true" hidden="true">
+						<button name="id" value="${PRODUCT.id}" type="submit"
+							class="btnMua btn btn-danger btn-lg btn-block">
+							<strong>ĐẶT HÀNG</strong>
+						</button>
+					</form>
 				</div>
 			</div>
-
 		</div>
+
+	</div>
 
 	</div>
 	<!-- /.row -->
