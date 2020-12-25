@@ -244,7 +244,13 @@
 							<div class="title">
 								<p>${x.name}</p>
 							</div>
-							<div class="value"></div>
+							<div class="value">
+								<c:forEach items="${x.lstAtribute }" var="map" begin="0" end="0">
+									<c:forEach items="${map.value }" var="att" begin="0" end="2">
+									${att}<br>
+									</c:forEach>
+								</c:forEach>
+							</div>
 						</li>
 					</c:forEach>
 
@@ -267,44 +273,24 @@
 								</button>
 							</div>
 							<div class="modal-body" style="padding-bottom: 0px">
-								<ul class="modal-attribute">
-									<div class="title-attribute">Màn hình</div>
-									<li class="item">
-										<div class="title">Công nghệ màn hình</div>
-										<div class="value">
-											<p>IPS LCD</p>
-										</div>
-									</li>
-									<li class="item">
-										<div class="title">Độ phân giải</div>
-										<div class="value">
-											<p>HD+ (720 x 1600 Pixels)</p>
-										</div>
-									</li>
-									<li class="item">
-										<div class="title">Màn hình rộng</div>
-										<div class="value">
-											<p>6.5"</p>
-										</div>
-									</li>
-								</ul>
-								<ul class="modal-attribute">
-									<div class="title-attribute">Màn hình</div>
-									<li class="item">
-										<div class="title">Công nghệ màn hình</div>
-										<div class="value">
-											<p>IPS LCD</p>
-										</div>
-									</li>
-									<li class="item">
-										<div class="title">Tính năng</div>
-										<div class="value">
-											<p>Ban đêm (Night Mode)</p>
-											<p>Ban đêm (Night Mode)</p>
-											<p>Ban đêm (Night Mode)</p>
-										</div>
-									</li>
-								</ul>
+								<c:forEach items="${product.attributes}" var="i">
+									<ul class="modal-attribute">
+										<div class="title-attribute">${i.name}</div>
+										<c:forEach items="${i.lstAtribute}" var="att">
+											<li class="item">
+												<div class="title">${att.key}</div>
+												<div class="value">
+													<c:forEach items="${att.value}" var="va">
+														<p>${va}</p>
+													</c:forEach>
+												</div>
+
+											</li>
+										</c:forEach>
+
+									</ul>
+								</c:forEach>
+
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
@@ -474,10 +460,10 @@
 
 
 
+	</div>
 
-
-		<!-- Page Footer -->
-		<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
+	<!-- Page Footer -->
+	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 </body>
 
 <script>
