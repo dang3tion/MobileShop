@@ -47,7 +47,7 @@ public class Dao_Contact extends ExecuteStatementUtility {
 	public ArrayList<Bean_Contact> listContact(int start, int end) {
 		ArrayList<Bean_Contact> list = new ArrayList<Bean_Contact>();
 		String[] para = { start + "", end + "" };
-		String query = "WITH X AS (select ROW_NUMBER() OVER (ORDER BY PHANHOI.EMAIL DESC) AS STT,* FROM PHANHOI) SELECT * FROM X WHERE STT BETWEEN ? AND ?\r\n"
+		String query = " WITH X AS (select ROW_NUMBER() OVER (ORDER BY PHANHOI.trangthai ASC, THOIGIAN DESC) AS STT,* FROM PHANHOI ) SELECT * FROM X WHERE STT BETWEEN ? AND ?\r\n"
 				+ "";
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
@@ -60,13 +60,23 @@ public class Dao_Contact extends ExecuteStatementUtility {
 		return list;
 	}
 
+	public void updateState(String id) {
+		try {
+			String query = " UPDATE PHANHOI SET TRANGTHAI = N'Đã phản hồi' WHERE MAPH = ?";
+			String[] para= {id};
+			try (ResultSet rs = super.AccessDBstr(query,para)) {
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
 		Dao_Contact dao = new Dao_Contact();
 //		for (int i = 0; i < dao.listContact(1, 3).size(); i++) {
 //			System.out.println(dao.listContact(1, 3).get(i).toString());
 //		}
-		dao.addEvaluate(new Bean_Contact("cuong", "123", "nguyen", "nooij dung"));
-		System.out.println(dao.createId());
+		dao.updateState("PH2");
 	}
 
 }

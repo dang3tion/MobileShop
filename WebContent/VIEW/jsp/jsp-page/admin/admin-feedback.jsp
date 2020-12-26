@@ -110,7 +110,9 @@
 																<form
 																	action="${pageContext.request.contextPath}/admin/feedback"
 																	method="post">
+																	<input style="display: none" value="${c.id}" name ="idUpdate">
 																	<div class="modal-dialog" role="document">
+																	
 																		<div class="modal-content">
 																			<div class="modal-header">
 																				<h5 class="modal-title" id="exampleModalLabel">Phản
