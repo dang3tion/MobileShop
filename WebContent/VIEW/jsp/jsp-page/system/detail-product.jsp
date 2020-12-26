@@ -44,198 +44,202 @@
 		<div class="row">
 
 			<div class=" col-md-7 ">
-			
+				<div class="frame-img">
+					<div class="img-main">
+						<div class="img-frame-main">
+							<img id="img-main"
+								src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-new-600x600-600x600.jpg">
+						</div>
+					</div>
+					<div class="img-slide" id="img-slide">
+						<div class="img-container" id="img-container">
+							<div class="img-card">
+								<div class="cardi">
+									<img id="img1" class="active"
+										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-new-600x600-600x600.jpg">
+								</div>
+							</div>
+							<div class="img-card">
+								<div class="cardi">
+									<img id="img2"
+										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-3-org.jpg">
+								</div>
+							</div>
+							<div class="img-card">
+								<div class="cardi">
+									<img id="img3"
+										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-2-org.jpg">
+								</div>
+							</div>
+							<div class="img-card">
+								<div class="cardi">
+									<img id="img4"
+										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
+								</div>
+							</div>
+							<div class="img-card">
+								<div class="cardi">
+									<img id="img5"
+										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
+								</div>
+							</div>
+							<div class="img-card">
+								<div class="cardi">
+									<img id="img5"
+										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
+								</div>
+							</div>
+							<div class="img-card">
+								<div class="cardi">
+									<img id="img5"
+										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
+								</div>
+							</div>
 
-			<div class="frame-img">
-  <div class="img-main">
-    <div class="img-frame-main">
-      <img id="img-main" src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-new-600x600-600x600.jpg">
-    </div>
-  </div>
-  <div class="img-slide" id="img-slide">
-    <div class="img-container" id="img-container">
-      <div class="img-card">
-        <div class="cardi"><img id="img1"  class="active"
-              src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-new-600x600-600x600.jpg">
-        </div>
-      </div>
-      <div class="img-card">
-        <div class="cardi"><img id="img2" 
-              src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-3-org.jpg"></div>
-      </div>
-      <div class="img-card">
-        <div class="cardi"><img id="img3" 
-              src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-2-org.jpg"></div>
-      </div>
-      <div class="img-card">
-        <div class="cardi"><img id="img4" 
-              src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg"></div>
-      </div>
-      <div class="img-card">
-        <div class="cardi"><img id="img5" 
-              src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg"></div>
-      </div> <div class="img-card">
-        <div class="cardi"><img id="img5" 
-              src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg"></div>
-      </div> <div class="img-card">
-        <div class="cardi"><img id="img5" 
-              src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg"></div>
-      </div>
-
-    </div> <button id="pre" onclick="previouseSlide()"class="btn-previouse"><i   class="fas fa-chevron-left"></i></button>
-    <button id="nex"onclick="nextSlide()" class="btn-next"><i class="fas fa-chevron-right"></i></button>
-  </div>
-</div><script>
-  var index=1;
-  var width=document.getElementById('img-container').offsetWidth-480;
-  var length=document.getElementsByClassName('img-card').length;
-  var step=-120;
-  var loc=0;
-  function translate_container(deg){
-    loc=deg;
-    console.log(loc);
-    if(deg==0){
-   document.getElementById('img-slide').style.borderLeft="2px solid #9e9e9e";
-   document.getElementById('pre').style.display="none";
-       document.getElementById('nex').style.display="block";
-  }else if(deg==-width){
-     document.getElementById('img-slide').style.borderRight="2px solid #9e9e9e";
-        document.getElementById('nex').style.display="none";document.getElementById('pre').style.display="block";
-  } 
-else{
-   document.getElementById('img-slide').style.borderLeft="";
-   document.getElementById('img-slide').style.borderRight="";
-      document.getElementById('nex').style.display="block";
-         document.getElementById('pre').style.display="block";
-}
-
-  document.getElementById('img-container').style.transform="translateX("+deg+"px)";
-}
-function setImg(n){
-  var img=document.getElementsByClassName('img-card');
-  for (var i = 0; i < length; i++) {
-    if(i+1==n){
-      var src=img[i].getElementsByClassName('cardi')[0].getElementsByTagName('img')[0];
-      document.getElementById('img-main').src=src.src;
-      src.className ="active";
-    }else{
-   img[i].getElementsByClassName('cardi')[0].getElementsByTagName('img')[0].className="";}
-  }
-}
-
-translate_container(0);
-function nextSlide(){
-    console.log(loc);
-translate_container(loc+step);
-
-}
-function previouseSlide(){
-  console.log(loc);
-translate_container(loc-step);
-}
-function setClick(){
-  var img=document.getElementsByClassName('cardi');
-  var leg=img.length;
-  for (var i = 0; i < leg; i++) {
-   img[i].getElementsByTagName('img')[0].setAttribute('onclick', "setImg("+(i+1)+")");
-  }
-}
-setImg(2);
-setImg(3);
-setClick();
-</script>
-			<!-- /.row -->
-		</div>
-
-		<div class="col-md-5">
-			<div class="" style="margin-bottom: 30px; margin-top: 15px">
-				<h2 class="my-3 bg-price color-price d-inline mr-5">
-					<small style="color: black; font-weight: bold;">Giá: </small>
-					<fmt:formatNumber type="number" maxFractionDigits="3" value="" />
-					₫
-				</h2>
-				<h3 class="my-3 bg-price price d-inline" style="color: #3D3D3D;">
-					<fmt:formatNumber type="number" maxFractionDigits="3" value="" />
-					₫
-				</h3>
-
-			</div>
-			<div class="block">
-				<p class="" style="font-size: 20px; font-style: normal;">Chọn
-					màu ưa thích của bạn</p>
-
-				<div class="row">
-					<form>
-						<label for="btn1" id="label1"
-							class="radio-inline space-radio text-center active"
-							onclick="change('${url}/image/image-user/product/i12black.png')">
-							<input id="btn1" type="radio" name="optradio" checked
-							class="d-none"> <span class="font-color">Đen</span>
-						</label> <label for="btn2" id="label2"
-							class="radio-inline space-radio  text-center"
-							onclick="change('${url}/image/image-user/product/i12blue.png')">
-							<input id="btn2" type="radio" name="optradio" class="d-none">
-							<span class="font-color">Xanh</span>
-						</label>
-
-					</form>
-
-				</div>
-				<div style="margin-top: 40px;">
-					<p class="block">Bảo hành 12 tháng chính hãng.</p>
-					<p class="block">Đổi trả trong vòng 15 ngày đầu.</p>
-				</div>
-
-			</div>
-			<!-- <h4><strong>Khuyến mại</strong></h4>
-            <div class="space-l">
-              <ul class="ltsPromote">
-                <li class="space-t"><i class="color-price fa fa-gift"></i>
-                  <a href="">Máy mới 100% chính hãng Apple Việt Nam - Hoanghamobile nhà bán lẻ ủy quyền chính thức của
-                    Apple tại Việt Nam</a>
-                  </li>
-                  <li class="space-t"><i class="color-price fa fa-gift"></i>
-                    <a href="">Khuyến mại mua Tai nghe Apple AirPods 2 - Chính hãng VN/A - Case sạc thường (MV7N2VN/A) với
-                      giá chỉ 3.350.000đ</a>
-                    </li>
-                    <li class="space-t"><i class="color-price fa fa-gift"></i>
-                      <a href="">Thu cũ - Lên đời giảm ngay 1.000.000đ (trừ thẳng vào giá).</a>
-                    </li>
-                    <li class="space-t">
-                      <i class="color-price fa fa-gift"></i>
-                      <a href="">Khuyến mãi mua thêm Củ sạc 20W chính hãng với giá chỉ 490.000đ + Tai nghe Earpods lightning
-                        chính hãng với giá chỉ 490.000đ</a>
-                </li>
-              </ul>
-            </div> -->
-
-			<div class="row">
-				<div class="col-sm-7">
-					<form action="${pageContext.request.contextPath}/cart"
-						method="post">
-						<input name="choose" value="add" hidden="true">
-						<button name="id" value="${PRODUCT.id}" type="submit"
-							class="btnMua btn btn-primary btn-lg btn-block">
-							<i class="fas fa-cart-plus" style="color: white;"></i> THÊM VÀO
-							GIỎ HÀNG
+						</div>
+						<button id="pre" onclick="previouseSlide()" class="btn-previouse">
+							<i class="fas fa-chevron-left"></i>
 						</button>
-					</form>
-				</div>
-				<div class="col-sm-5">
-					<form action="${pageContext.request.contextPath}/cart"
-						method="post">
-						<input name="choose" value="add" hidden="true"> <input
-							name="datHang" value="true" hidden="true">
-						<button name="id" value="${PRODUCT.id}" type="submit"
-							class="btnMua btn btn-danger btn-lg btn-block">
-							<strong>ĐẶT HÀNG</strong>
+						<button id="nex" onclick="nextSlide()" class="btn-next">
+							<i class="fas fa-chevron-right"></i>
 						</button>
-					</form>
+					</div>
+				</div>
+				<script>
+					var index = 1;
+					var width = document.getElementById('img-container').offsetWidth - 480;
+					var length = document.getElementsByClassName('img-card').length;
+					var step = -120;
+					var loc = 0;
+					function translate_container(deg) {
+						loc = deg;
+						console.log(loc);
+						if (deg == 0) {
+							document.getElementById('img-slide').style.borderLeft = "2px solid #9e9e9e";
+							document.getElementById('pre').style.display = "none";
+							document.getElementById('nex').style.display = "block";
+						} else if (deg == -width) {
+							document.getElementById('img-slide').style.borderRight = "2px solid #9e9e9e";
+							document.getElementById('nex').style.display = "none";
+							document.getElementById('pre').style.display = "block";
+						} else {
+							document.getElementById('img-slide').style.borderLeft = "";
+							document.getElementById('img-slide').style.borderRight = "";
+							document.getElementById('nex').style.display = "block";
+							document.getElementById('pre').style.display = "block";
+						}
+
+						document.getElementById('img-container').style.transform = "translateX("
+								+ deg + "px)";
+					}
+					function setImg(n) {
+						var img = document.getElementsByClassName('img-card');
+						for (var i = 0; i < length; i++) {
+							if (i + 1 == n) {
+								var src = img[i]
+										.getElementsByClassName('cardi')[0]
+										.getElementsByTagName('img')[0];
+								document.getElementById('img-main').src = src.src;
+								src.className = "active";
+							} else {
+								img[i].getElementsByClassName('cardi')[0]
+										.getElementsByTagName('img')[0].className = "";
+							}
+						}
+					}
+
+					translate_container(0);
+					function nextSlide() {
+						console.log(loc);
+						translate_container(loc + step);
+
+					}
+					function previouseSlide() {
+						console.log(loc);
+						translate_container(loc - step);
+					}
+					function setClick() {
+						var img = document.getElementsByClassName('cardi');
+						var leg = img.length;
+						for (var i = 0; i < leg; i++) {
+							img[i].getElementsByTagName('img')[0].setAttribute(
+									'onclick', "setImg(" + (i + 1) + ")");
+						}
+					}
+
+					setClick();
+				</script>
+				<!-- /.row -->
+			</div>
+
+			<div class="col-md-5">
+				<div class="" style="margin-bottom: 30px; margin-top: 15px">
+					<h2 class="my-3 bg-price color-price d-inline mr-5">
+
+						<fmt:formatNumber type="number" maxFractionDigits="3" value="" />
+						10.000.000₫
+					</h2>
+					<h3 class="my-3 bg-price price d-inline" style="color: #3D3D3D;">
+						<fmt:formatNumber type="number" maxFractionDigits="3" value="" />
+						<strike style="color: #bbbbbb; font-size: 20px; font-weight: 400;">
+							10.000.000 ₫</strike>
+					</h3>
+
+				</div>
+				<div class="block">
+					<p class=""
+						style="font-size: 16px; font-style: normal; font-weight: 400;">Chọn
+						màu ưa thích của bạn</p>
+
+					<div class="row">
+						<label class="color-card" for="xanh">
+						<div class="frame-color"><img
+							src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
+							<div class="title">xanh</div><i class="fas fa-check"></i></div> </label>
+						<input type="radio" class="choose-color" name="color" id="xanh">
+						<label class="color-card" for="do">
+						<div class="frame-color"><img
+							src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
+							<div class="title">đỏ</div><i class="fas fa-check"></i></div> </label>
+<input type="radio" class="choose-color" name="color" id="do">
+					</div>
+					<div style="margin-top: 40px;">
+						<p class="block">
+							<span>Thương hiệu:</span><a href="#">Apple</a>
+						</p>
+						<p class="block">Đổi trả trong vòng 15 ngày đầu.</p>
+					</div>
+
+				</div>
+
+
+				<div class="row" style="margin-top: 40px;">
+					<div class="col-sm-7">
+						<form action="${pageContext.request.contextPath}/cart"
+							method="post">
+							<input name="choose" value="add" hidden="true">
+							<button name="id" value="${PRODUCT.id}" type="submit"
+								class="btnMua btn btn-primary btn-lg btn-block">
+								<i class="fas fa-cart-plus" style="color: white;"></i> THÊM VÀO
+								GIỎ HÀNG
+							</button>
+						</form>
+					</div>
+					<div class="col-sm-5">
+						<form action="${pageContext.request.contextPath}/cart"
+							method="post">
+							<input name="choose" value="add" hidden="true"> <input
+								name="datHang" value="true" hidden="true">
+							<button name="id" value="${PRODUCT.id}" type="submit"
+								class="btnMua btn btn-danger btn-lg btn-block">
+								<strong>ĐẶT HÀNG</strong>
+							</button>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
 
-	</div>
+		</div>
 
 	</div>
 	<!-- /.row -->
