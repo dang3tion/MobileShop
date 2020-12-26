@@ -67,6 +67,7 @@
 															<th>Số điện thoại</th>
 															<th>Thời gian</th>
 															<th>Lời nhắn</th>
+															<th>Trạng thái</th>
 															<th></th>
 														</tr>
 													</thead>
@@ -80,10 +81,11 @@
 																<td>${c.numberPhone}</td>
 																<td>${c.date}</td>
 																<td class="feedback">${c.content}</td>
+																<td>${c.state}</td>
 																<td class="row" style="border: none;">
 																	<div style="margin: auto;">
 																		<button type="button" class="btn btn-primary"
-																			data-toggle="modal" data-target="#${c.name}"
+																			data-toggle="modal" data-target="#${c.id}"
 																			data-whatever="@mdo">
 																			<i class="text-center fas fa-paper-plane"></i>
 																		</button>
@@ -102,12 +104,12 @@
 
 
 															<!--Modal add-->
-															<div class="modal fade" id="${c.name}" tabindex="-1"
+															<div class="modal fade" id="${c.id}" tabindex="-1"
 																role="dialog" aria-labelledby="exampleModalLabel"
 																aria-hidden="true">
 																<form
 																	action="${pageContext.request.contextPath}/admin/feedback"
-																	method="get">
+																	method="post">
 																	<div class="modal-dialog" role="document">
 																		<div class="modal-content">
 																			<div class="modal-header">
@@ -121,10 +123,12 @@
 																			<div class="modal-body">
 																				<div class="form-group">
 																					<label for="recipient-name" class="col-form-label">Gửi
-																						tới: <b><input style="font-weight: bold;"
-																							value="${c.email}" disabled="disabled"
-																							name="emailFeedback"></b>
-																					</label>
+																						tới:</label> <input
+																						style="font-weight: bold; width: 300em;"
+																						type="email" class="form-control"
+																						id="exampleFormControlInput1" value="${c.email}"
+																						name="emailFeedback">
+
 																				</div>
 																				<div class="form-group">
 																					<label for="message-text" class="col-form-label">Phản
@@ -136,8 +140,7 @@
 																			<div class="modal-footer">
 																				<button type="button" class="btn btn-secondary"
 																					data-dismiss="modal">Đóng</button>
-																				<button  type="submit"
-																					class="btn btn-primary">Gửi
+																				<button type="submit" class="btn btn-primary">Gửi
 																					phản hồi</button>
 																			</div>
 																		</div>
@@ -173,8 +176,6 @@
 																	</div>
 																</div>
 															</div>
-
-
 
 														</c:forEach>
 													</tbody>

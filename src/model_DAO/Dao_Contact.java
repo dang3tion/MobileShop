@@ -8,18 +8,34 @@ import java.util.ArrayList;
 
 import model_ConnectDB.ExecuteStatementUtility;
 import model_beans.Bean_Contact;
-import model_beans.Product;
 
 public class Dao_Contact extends ExecuteStatementUtility {
+	
+	public String createId() {
+		int count = 0;
+		try {
+			String query = "SELECT * FROM PHANHOI";
+			try (ResultSet rs = super.AccessDBstr(query)) {
+				while (rs.next()) {
+					count++;
+				}
+				count++;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "PH"+count;
+	}
+	
 	public void addEvaluate(Bean_Contact contact) {
 		LocalDate localDate = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		String date = localDate.format(formatter);
 		try {
-			String query = "INSERT INTO " + "PHANHOI" + " VALUES(?,?,?,?,?)";
+			String query = "INSERT INTO " + "PHANHOI" + " VALUES(?,?,?,?,?,?,?)";
 			System.out.println(query);
-			String[] parameters = { //
-					contact.getEmail(), contact.getName(), contact.getNumberPhone(), date, contact.getContent() };
+			String[] parameters = { createId(),
+					contact.getEmail(), contact.getName(), contact.getNumberPhone(), date, contact.getContent(),"Chưa phản hồi" };
 
 			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
 			}
@@ -35,7 +51,7 @@ public class Dao_Contact extends ExecuteStatementUtility {
 				+ "";
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
-				list.add(new Bean_Contact(rs.getString("HOTEN"),rs.getString("EMAIL"),rs.getString("SDT"),rs.getString("THOIGIAN"),rs.getString("LOINHAN")));
+				list.add(new Bean_Contact(rs.getString("MAPH").trim(),rs.getString("HOTEN"),rs.getString("EMAIL"),rs.getString("SDT"),rs.getString("THOIGIAN"),rs.getString("LOINHAN"),rs.getString("TRANGTHAI")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -50,7 +66,7 @@ public class Dao_Contact extends ExecuteStatementUtility {
 //			System.out.println(dao.listContact(1, 3).get(i).toString());
 //		}
 		dao.addEvaluate(new Bean_Contact("cuong", "123", "nguyen", "nooij dung"));
-		
+		System.out.println(dao.createId());
 	}
 
 }

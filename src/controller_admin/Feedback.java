@@ -29,6 +29,8 @@ public class Feedback extends HttpServlet {
 		
 		String email  = request.getParameter("emailFeedback");
 		String content = request.getParameter("content");
+		System.out.println(email);
+		System.out.println(content);
 		
 		SendMail.sendFeekBack(email, content);
 		
