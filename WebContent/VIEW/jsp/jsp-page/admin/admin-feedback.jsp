@@ -91,7 +91,7 @@
 																		</button>
 
 																		<button class="btn btn-danger sizeTh1"
-																			data-toggle="modal" data-target="#delete"
+																			data-toggle="modal" data-target="#delete${c.id}"
 																			data-toggle="tooltip" data-placement="top"
 																			title="Xóa">
 																			<i class="txt-center menu-icon fas fa-trash-alt"></i>
@@ -110,9 +110,10 @@
 																<form
 																	action="${pageContext.request.contextPath}/admin/feedback"
 																	method="post">
-																	<input style="display: none" value="${c.id}" name ="idUpdate">
+																	<input style="display: none" value="${c.id}"
+																		name="idUpdate">
 																	<div class="modal-dialog" role="document">
-																	
+
 																		<div class="modal-content">
 																			<div class="modal-header">
 																				<h5 class="modal-title" id="exampleModalLabel">Phản
@@ -154,27 +155,30 @@
 
 
 															<!-- Modal -->
-															<div class="modal fade" id="delete" tabindex="-1"
+															<div class="modal fade" id="delete${c.id}" tabindex="-1"
 																role="dialog" aria-labelledby="exampleModalLabel"
 																aria-hidden="true">
 																<div class="modal-dialog" role="document">
 																	<div class="modal-content">
-																		<div class="modal-header">
-																			<h5 class="modal-title" id="exampleModalLabel">Xác
-																				nhận xóa phản hồi của khách hàng</h5>
-																			<button type="button" class="close"
-																				data-dismiss="modal" aria-label="Close">
-																				<span aria-hidden="true">&times;</span>
-																			</button>
-																		</div>
-																		<div class="modal-body">Bạn có muốn xóa phản hồi
-																			này.</div>
-																		<div class="modal-footer">
-																			<button type="button" class="btn btn-secondary"
-																				data-dismiss="modal">Không</button>
-																			<button type="button" data-dismiss="modal"
-																				class="btn btn-primary">Đồng ý</button>
-																		</div>
+																		<form action="${pageContext.request.contextPath}/admin/feedback" method="post">
+																			<input style="display: none" value="${c.id}" name="delete">
+																			<div class="modal-header">
+																				<h5 class="modal-title" id="exampleModalLabel">Xác
+																					nhận xóa phản hồi của khách hàng</h5>
+																				<button type="button" class="close"
+																					data-dismiss="modal" aria-label="Close">
+																					<span aria-hidden="true">&times;</span>
+																				</button>
+																			</div>
+																			<div class="modal-body">Bạn có muốn xóa phản
+																				hồi của ${c.name}.</div>
+																			<div class="modal-footer">
+																				<button type="button" class="btn btn-secondary"
+																					data-dismiss="modal">Không</button>
+																				<button type="submit"
+																					class="btn btn-primary">Đồng ý</button>
+																			</div>
+																		</form>
 																	</div>
 																</div>
 															</div>

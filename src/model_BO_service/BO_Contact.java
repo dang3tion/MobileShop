@@ -19,5 +19,9 @@ public class BO_Contact {
 	public void updateState(String id) {
 		dao.updateState(id);
 	}
+	
+	public void delete(String id) {
+		dao.deleteFeedback(id);
+	}
 
 }

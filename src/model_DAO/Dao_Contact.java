@@ -11,20 +11,20 @@ import model_beans.Bean_Contact;
 
 public class Dao_Contact extends ExecuteStatementUtility {
 	
-	public String createId() {
+	public int createId() {
 		int count = 0;
 		try {
-			String query = "SELECT * FROM PHANHOI";
+			String query = "SELECT TOP 1 MAPH FROM PHANHOI \r\n"
+					+ "\r\n"
+					+ "ORDER BY MAPH DESC";
 			try (ResultSet rs = super.AccessDBstr(query)) {
-				while (rs.next()) {
-					count++;
-				}
+				 count = Integer.parseInt("1");
 				count++;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "PH"+count;
+		return count;
 	}
 	
 	public void addEvaluate(Bean_Contact contact) {
@@ -34,7 +34,7 @@ public class Dao_Contact extends ExecuteStatementUtility {
 		try {
 			String query = "INSERT INTO " + "PHANHOI" + " VALUES(?,?,?,?,?,?,?)";
 			System.out.println(query);
-			String[] parameters = { createId(),
+			String[] parameters = { createId()+"",
 					contact.getEmail(), contact.getName(), contact.getNumberPhone(), date, contact.getContent(),"Chưa phản hồi" };
 
 			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
@@ -70,6 +70,18 @@ public class Dao_Contact extends ExecuteStatementUtility {
 			e.printStackTrace();
 		}
 	}
+	
+	public void deleteFeedback(String id) {
+		try {
+			String query = "DELETE FROM PHANHOI WHERE MAPH = ?";
+			String[] para= {id};
+			try (ResultSet rs = super.AccessDBstr(query,para)) {
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public static void main(String[] args) {
 		Dao_Contact dao = new Dao_Contact();

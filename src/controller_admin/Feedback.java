@@ -30,14 +30,22 @@ public class Feedback extends HttpServlet {
 		String email  = request.getParameter("emailFeedback");
 		String content = request.getParameter("content");
 		String id = request.getParameter("idUpdate");
-		System.out.println(email);
-		System.out.println(content);
+		String idDelete = request.getParameter("delete");
 		
-		SendMail.sendFeekBack(email, content);
-		bo.updateState(id);
+		System.out.println(idDelete);
 		
+		if (idDelete==null||idDelete.equals("")) {
+			System.out.println(email);
+			System.out.println(content);
+			
+			SendMail.sendFeekBack(email, content);
+			bo.updateState(id);
+			
+			doGet(request, response);
+		}else {
+			bo.delete(idDelete);
+		}
 		doGet(request, response);
-		
 	}
-
+	
 }
