@@ -69,7 +69,7 @@ public class CheckOtpResetPassword extends HttpServlet {
 			String email = (String) session.getAttribute(Const.EMAIL_FORGOT_PASS);
 
 
-			SendMail.send(email, otp.getSysOTP());
+			SendMail.sendOTP(email, otp.getSysOTP());
 
 			request.setAttribute("COUNTDOWN", Config.OTP_LIVE_SECOND + 3
 					- Math.abs(ChronoUnit.SECONDS.between(otp.getTimeCreate(), LocalDateTime.now())));

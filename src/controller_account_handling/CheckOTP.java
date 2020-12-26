@@ -67,7 +67,7 @@ public class CheckOTP extends HttpServlet {
 			
 			token = (String) request.getAttribute(Const.TOKEN_REGISTER_OTP);
 			request.removeAttribute(Const.TOKEN_REGISTER_OTP);
-			SendMail.send(email, otp.getSysOTP());
+			SendMail.sendOTP(email, otp.getSysOTP());
 			request.setAttribute("COUNTDOWN", Math.abs(
 					Config.OTP_LIVE_SECOND  - ChronoUnit.SECONDS.between(otp.getTimeCreate(), LocalDateTime.now())));
 			RequestDispatcher dispatcher //

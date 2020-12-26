@@ -49,10 +49,9 @@ public class SendMail {
 //		}
 //	}
 
-	
 	public static void sendFeekBack(String customerMail, String content) {
-	
-		String from = "lazadamimax3@gmail.com";
+
+		String from = Config.OWNER_EMAIL;
 
 		// Assuming you are sending email from through gmails smtp
 		String host = "smtp.gmail.com";
@@ -102,12 +101,11 @@ public class SendMail {
 		}
 
 	}
-	
-	
-	public static void send(String CustomerMail, int OTPcode) {
+
+	public static void sendOTP(String CustomerMail, int OTPcode) {
 
 		// Mail chủ Shop
-		String from = "lazadamimax3@gmail.com";
+		String from = Config.OWNER_EMAIL;
 
 		// Assuming you are sending email from through gmails smtp
 		String host = "smtp.gmail.com";
@@ -159,10 +157,6 @@ public class SendMail {
 
 	}
 
-	public static void main(String[] args) {
-		SendMail.sendFeekBack("vancuong13032000@gmail.com", "123");
-	}
-	
 }
 
 //	
