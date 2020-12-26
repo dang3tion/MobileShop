@@ -44,76 +44,106 @@
 		<div class="row">
 
 			<div class=" col-md-7 ">
-				<c:forEach items="${product.colors}" var="x" begin="0" end="0">
-					<div class="container">
-
-						<div class="mySlides">
-							<img src="${x.imgMain}" style="width: 100%">
-						</div>
-						<c:forEach items="${x.imgSubs}" var="i">
-							<div class="mySlides">
-								<img src="${i}" style="width: 100%">
-							</div>
-						</c:forEach>
-
-
-						<a class="prev" onclick="plusSlides(-1)">❮</a> <a class="next"
-							onclick="plusSlides(1)">❯</a>
-
-
-
-						<div class="row">
-							<div class="column">
-								<img class="demo cursor" src="${x.imgMain }" style="width: 100%"
-									onclick="currentSlide(1)" alt="The Woods">
-							</div>
-							<c:forEach items="${x.imgSubs}" var="i">
-								<div class="column">
-									<img class="demo cursor" src="${i }" style="width: 100%"
-										onclick="currentSlide(2)" alt="">
-								</div>
-							</c:forEach>
-
-						</div>
-				</c:forEach>
-			</div>
-
-			<script>
-				var slideIndex = 1;
-				showSlides(slideIndex);
-
-				function plusSlides(n) {
-					showSlides(slideIndex += n);
-				}
-
-				function currentSlide(n) {
-					showSlides(slideIndex = n);
-				}
-
-				function showSlides(n) {
-					var i;
-					var slides = document.getElementsByClassName("mySlides");
-					var dots = document.getElementsByClassName("demo");
 			
-					if (n > slides.length) {
-						slideIndex = 1
-					}
-					if (n < 1) {
-						slideIndex = slides.length
-					}
-					for (i = 0; i < slides.length; i++) {
-						slides[i].style.display = "none";
-					}
-					for (i = 0; i < dots.length; i++) {
-						dots[i].className = dots[i].className.replace(
-								" active", "");
-					}
-					slides[slideIndex - 1].style.display = "block";
-					dots[slideIndex - 1].className += " active";
-					
-				}
-			</script>
 
+			<div class="frame-img">
+  <div class="img-main">
+    <div class="img-frame-main">
+      <img id="img-main" src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-new-600x600-600x600.jpg">
+    </div>
+  </div>
+  <div class="img-slide" id="img-slide">
+    <div class="img-container" id="img-container">
+      <div class="img-card">
+        <div class="cardi"><img id="img1"  class="active"
+              src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-new-600x600-600x600.jpg">
+        </div>
+      </div>
+      <div class="img-card">
+        <div class="cardi"><img id="img2" 
+              src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-3-org.jpg"></div>
+      </div>
+      <div class="img-card">
+        <div class="cardi"><img id="img3" 
+              src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-2-org.jpg"></div>
+      </div>
+      <div class="img-card">
+        <div class="cardi"><img id="img4" 
+              src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg"></div>
+      </div>
+      <div class="img-card">
+        <div class="cardi"><img id="img5" 
+              src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg"></div>
+      </div> <div class="img-card">
+        <div class="cardi"><img id="img5" 
+              src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg"></div>
+      </div> <div class="img-card">
+        <div class="cardi"><img id="img5" 
+              src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg"></div>
+      </div>
+
+    </div> <button id="pre" onclick="previouseSlide()"class="btn-previouse"><i   class="fas fa-chevron-left"></i></button>
+    <button id="nex"onclick="nextSlide()" class="btn-next"><i class="fas fa-chevron-right"></i></button>
+  </div>
+</div><script>
+  var index=1;
+  var width=document.getElementById('img-container').offsetWidth-480;
+  var length=document.getElementsByClassName('img-card').length;
+  var step=-120;
+  var loc=0;
+  function translate_container(deg){
+    loc=deg;
+    console.log(loc);
+    if(deg==0){
+   document.getElementById('img-slide').style.borderLeft="2px solid #9e9e9e";
+   document.getElementById('pre').style.display="none";
+       document.getElementById('nex').style.display="block";
+  }else if(deg==-width){
+     document.getElementById('img-slide').style.borderRight="2px solid #9e9e9e";
+        document.getElementById('nex').style.display="none";document.getElementById('pre').style.display="block";
+  } 
+else{
+   document.getElementById('img-slide').style.borderLeft="";
+   document.getElementById('img-slide').style.borderRight="";
+      document.getElementById('nex').style.display="block";
+         document.getElementById('pre').style.display="block";
+}
+
+  document.getElementById('img-container').style.transform="translateX("+deg+"px)";
+}
+function setImg(n){
+  var img=document.getElementsByClassName('img-card');
+  for (var i = 0; i < length; i++) {
+    if(i+1==n){
+      var src=img[i].getElementsByClassName('cardi')[0].getElementsByTagName('img')[0];
+      document.getElementById('img-main').src=src.src;
+      src.className ="active";
+    }else{
+   img[i].getElementsByClassName('cardi')[0].getElementsByTagName('img')[0].className="";}
+  }
+}
+
+translate_container(0);
+function nextSlide(){
+    console.log(loc);
+translate_container(loc+step);
+
+}
+function previouseSlide(){
+  console.log(loc);
+translate_container(loc-step);
+}
+function setClick(){
+  var img=document.getElementsByClassName('cardi');
+  var leg=img.length;
+  for (var i = 0; i < leg; i++) {
+   img[i].getElementsByTagName('img')[0].setAttribute('onclick', "setImg("+(i+1)+")");
+  }
+}
+setImg(2);
+setImg(3);
+setClick();
+</script>
 			<!-- /.row -->
 		</div>
 
