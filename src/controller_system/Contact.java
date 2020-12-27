@@ -31,8 +31,10 @@ public class Contact extends HttpServlet {
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 		String content = request.getParameter("content");
-		
+		String messageFeedback = "Phản hồi của bạn đã được gửi.";
 		insert.addFeedback(name, email, phone, content);
+		request.setAttribute("message", messageFeedback);
+		System.out.println(messageFeedback);
 		
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/contact.jsp");
