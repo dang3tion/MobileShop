@@ -512,161 +512,163 @@
 		<!--/information product-->
 
 		<!--evualuate-->
-
-		<div style="width: 80%;" class="container evalueH">
-			<h3 style="font-size: 1.5em;" class="text-center">Đánh giá, bình
-				luận sản phẩm</h3>
-
-			<div class="row reviews_detail">
-
-				<div class="diem  col-md-3 text-center">
-					<h3 style="font-size: 1.2em; margin-top: 10%;">Sao trung bình</h3>
-					<p class="averageRatings">
-						${star.avg} <i class="fa fa-star checked" style="font-size: 30px"></i>
-					</p>
+		<div class="evaluate-frame">
+			<div class="row">
+				<div class="col-3">
+					<div class="avg-star">
+						<span></span><i class="fas fa-star"></i>
+					</div>
 				</div>
-				<div class="diem text-center col-md-6">
-					<div>
-						<div class="side row mt-3">
-							<div class="col-sm-2">
-								5 <i class="fa fa-star checked pp"></i>
-							</div>
-							<div class="col-sm-6">
-								<div class="progress space-t5">
-									<div class="progress-bar bg-warning" role="progressbar"
-										style="width: ${star.percent5}%" aria-valuenow="75"
-										aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<p>${star.star5}đánhgiá</p>
-							</div>
-						</div>
-						<div style="margin-top: -15px;" class="side row">
-							<div class="col-sm-2">
-								4 <i class="fa fa-star checked"></i>
-							</div>
-							<div class="col-sm-6">
-								<div class="progress space-t5">
-									<div class="progress-bar bg-warning" role="progressbar"
-										style="width: ${star.percent4}%" aria-valuenow="75"
-										aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<p>${star.star4}đánhgiá</p>
-							</div>
-						</div>
-						<div style="margin-top: -15px;" class="side row">
-							<div class="col-sm-2">
-								3 <i class="fa fa-star checked"></i>
-							</div>
-							<div class="col-sm-6">
-								<div class="progress space-t5">
-									<div class="progress-bar bg-warning" role="progressbar"
-										style="width: ${star.percent3}%" aria-valuenow="75"
-										aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<p>${star.star3}đánhgiá</p>
-							</div>
-						</div>
-						<div style="margin-top: -15px;" class="side row">
-							<div class="col-sm-2">
-								2 <i class="fa fa-star checked"></i>
-							</div>
-							<div class="col-sm-6">
-								<div class="progress space-t5">
-									<div class="progress-bar bg-warning" role="progressbar"
-										style="width: ${star.percent2}%" aria-valuenow="75"
-										aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<p>${star.star2}đánhgiá</p>
-							</div>
-						</div>
-						<div style="margin-top: -15px;" class="side row">
-							<div class="col-sm-2">
-								1 <i class="fa fa-star checked"></i>
-							</div>
-							<div class="col-sm-6">
-								<div class="progress space-t5">
-									<div class="progress-bar bg-warning" role="progressbar"
-										style="width: ${star.percent1}%" aria-valuenow="75"
-										aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<p>${star.star1}đánhgiá</p>
-							</div>
+				<div class="col-5">
+					<ul class="star-evaluate">
+						<li><span class="star">5<i class="fas fa-star"></i></span>
+							<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="0"
+									aria-valuemin="25" aria-valuemax="100"></div>
+							</div> <span class="title">3 đánh giá</span></li>
+						<li><span class="star">5<i class="fas fa-star"></i></span>
+							<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="0"
+									aria-valuemin="25" aria-valuemax="100"></div>
+							</div> <span class="title">3 đánh giá</span></li>
+						<li><span class="star">5<i class="fas fa-star"></i></span>
+							<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="0"
+									aria-valuemin="25" aria-valuemax="100"></div>
+							</div> <span class="title">3 đánh giá</span></li>
+						<li><span class="star">5<i class="fas fa-star"></i></span>
+							<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="0"
+									aria-valuemin="25" aria-valuemax="100"></div>
+							</div> <span class="title">3 đánh giá</span></li>
+						<li><span class="star">5<i class="fas fa-star"></i></span>
+							<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="0"
+									aria-valuemin="25" aria-valuemax="100"></div>
+							</div> <span class="title">3 đánh giá</span></li>
+					</ul>
+				</div>
+				<div class="col-4">
+					<div class="btn-evaluate">
+						<button>Gửi đánh giá của bạn</button>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="evaluate">
+						<span>Chọn đánh giá của bạn</span>
+						<ul class="evaluating-start">
+							<li><i class="fas fa-star"></i></li>
+							<li><i class="fas fa-star"></i></li>
+							<li><i class="fas fa-star"></i></li>
+							<li><i class="fas fa-star"></i></li>
+							<li><i class="fas fa-star"></i></li>
+						</ul>
+						<div class="detail-star">
+							<i class="fas fa-caret-left"></i>Tuyệt vời quá
 						</div>
 					</div>
 				</div>
+				<div class="col-12" id="send-evaluate">
+					<div class="input-evaluate">
+						<textarea></textarea>
 
-				<div class="danhgia text-center col-md-3">
+					</div>
 
-					<h5>Vui lòng chọn đánh giá</h5>
-
-					<div class="stars row">
-						<form action="">
-							<div class="col-12">
-								<div class="align-star">
-									<input class="star star-5" id="star-5" type="radio" name="star" />
-									<label class="star star-5" for="star-5"></label> <input
-										class="star star-4" id="star-4" type="radio" name="star" /> <label
-										class="star star-4" for="star-4"></label> <input
-										class="star star-3" id="star-3" type="radio" name="star" /> <label
-										class="star star-3" for="star-3"></label> <input
-										class="star star-2" id="star-2" type="radio" name="star" /> <label
-										class="star star-2" for="star-2"></label> <input
-										class="star star-1" id="star-1" type="radio" name="star" /> <label
-										class="star star-1" for="star-1"></label>
+					<div class="btn-send">
+						<button>Gửi đánh giá</button>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="content-evaluate">
+						<div class="title">
+							<h5>Thanh Bảo</h5>
+							<div class="confirm">
+								<i></i> Xác nhận đã mua hàng
+								<div class="confirm-content">
+									<p>MobileShop xác nhận :</p>
+									<p>
+										<span><i></i></span>Khách hàng
+									<h5>Thanh Bảo</h5>
+									</p>
+									<p>
+										<span><i></i></span>Mua online trên website Thegioididong.com
+									</p>
+									<p>
+										<span><i></i></span>Mua
+									<h5>2 tháng</h5>
+									trước
+									</p>
 								</div>
 							</div>
-						</form>
+						</div>
+						<ul class="evaluating-start">
+							<li><i class="fas fa-star"></i></li>
+							<li><i class="fas fa-star"></i></li>
+							<li><i class="fas fa-star"></i></li>
+							<li><i class="fas fa-star"></i></li>
+							<li><i class="fas fa-star"></i></li>
+						</ul>
+						<div class="content">
+
+							<p>Máy tốt nhưng mới mua gặp hiện tượng kết nối wifi không đc
+								hay do lỗi của ổ wifi</p>
+						</div>
 					</div>
-					<button type="submit" class="btn btn-danger guiDanhGia">Đánh
-						giá của bạn</button>
 				</div>
 			</div>
 
 		</div>
-
-
-		<!--end evualuate-->
-		<hr width="80%">
-		<!--Comment-->
-
-		<div class="col-lg-10 col-sm-10 mb-10" style="margin: auto;">
-			<h4 class="text-center">Bình luận</h4>
-			<div
-				class="fb-comments fb_iframe_widget fb_iframe_widget_fluid_desktop"
-				data-href="http://localhost:8080/MobileShop/product-detail?id=sp1"
-				data-numposts="20" data-width="900" data-mobile="Auto-detected"
-				fb-xfbml-state="rendered"
-				fb-iframe-plugin-query="app_id=&amp;container_width=1108&amp;height=100&amp;href=http://localhost:8080/MobileShop/product-detail?id=sp1"
-				style="width: 100%;">
-				<span style="vertical-align: bottom; width: 100%; height: 508px;">
-					<iframe name="f42318e5e4d28c" width="1000px" height="100px"
-						data-testid="fb:comments Facebook Social Plugin"
-						title="fb:comments Facebook Social Plugin" frameborder="0"
-						allowtransparency="true" allowfullscreen="true" scrolling="yes"
-						allow="encrypted-media"
-						src="https://www.facebook.com/v7.0/plugins/comments.php?app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df16d35e09c52114%26domain%3Dgroup01-tintucbatdongsan.tk%26origin%3Dhttps%253A%252F%252Fgroup01-tintucbatdongsan.tk%252Ff1350c038078a8c%26relation%3Dparent.parent&amp;container_width=1108&amp;height=100&amp;href=http%3A%2F%2Flocalhost%3A3000%2FThanh-pho-phia-dong-tpHCM&amp;locale=en_GB&amp;mobile=false&amp;numposts=10&amp;sdk=joey&amp;version=v7.0&amp;width="
-						style="border: none; visibility: visible; width: 100%; height: 250px; overflow: scroll;"
-						class=""></iframe>
-				</span>
+		<div class="comment-frame row">
+			<div class="col-8">
+				<div class="comment-title">
+					<span>B</span>
+					<h5>Thanh Bảo</h5>
+				</div>
+				<div class="comment-content">
+					<p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s rồi .
+						Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc k vậy .
+						Mình chưa có hộ khẩu . Xin cảm ơn</p>
+				</div>
+				<div class="respone-cmt">
+					<button class="respone-btn">Trả lời</button>
+					<span class="cmt-time"></span>
+				</div>
+				<ul class="respone">
+					<li>
+						<div class="comment-title">
+							<span>B</span>
+							<h5>Thanh Bảo</h5>
+						</div>
+						<div class="comment-content">
+							<p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s rồi
+								. Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc k vậy
+								. Mình chưa có hộ khẩu . Xin cảm ơn</p>
+						</div>
+						<div class="respone-cmt">
+							<button class="respone-btn">Trả lời</button>
+							<span class="cmt-time">- 5 ngày trước</span>
+						</div>
+					</li>
+					<li>
+						<div class="comment-title">
+							<span>B</span>
+							<h5>Thanh Bảo</h5>
+						</div>
+						<div class="comment-content">
+							<p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s rồi
+								. Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc k vậy
+								. Mình chưa có hộ khẩu . Xin cảm ơn</p>
+						</div>
+						<div class="respone-cmt">
+							<button class="respone-btn">Trả lời</button>
+							<span class="cmt-time">- 4 ngày trước</span>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
-
-
-
-	</div>
-
-	<!-- Page Footer -->
-	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
+		<!-- Page Footer -->
+		<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 </body>
 
 <script>
