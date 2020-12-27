@@ -425,9 +425,11 @@ label.star:before {
 	margin-left: 30px;
 	width:100%;
 }
-
-.frame-choose input[type="radio"]:checked+label {
-	border: 1px solid black;
+.color-card .frame-color i{
+	display:none;
+}
+.frame-choose input[type="radio"]:checked+.color-card .frame-color i {
+	display:block;
 }
 
 .color-card {
@@ -440,11 +442,11 @@ label.star:before {
 }
 
 .color-card .frame-color i {
-	position: absolute;
-	top: 30%;
-	font-size: 20px;
-	left: 25%;
-	color: #007bff;
+	    position: absolute;
+    top: 35%;
+    font-size: 20px;
+    left: 30%;
+    color: #ffffff;
 }
 
 .color-card .frame-color img {
