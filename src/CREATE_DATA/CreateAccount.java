@@ -1177,7 +1177,6 @@ public class CreateAccount {
 		newAcc.setStatus(Const.ACCOUNT_ENABLE);
 		newAcc.setTokenLogin(rdToken());
 		newAcc.setPhoneNumber(rdPhoneNumber());
-		newAcc.setAddress(rdPassword());
 		
 		return newAcc;
 	}
@@ -1186,10 +1185,9 @@ public class CreateAccount {
 
 		DAO_Account daoACC = DAO_Account.getDaoAccount();
 
-		Scanner scanner = new Scanner(System.in);
 		
 		
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 50; i++) {
 
 			Account newAcc = createAccount();
 			daoACC.add(newAcc);
