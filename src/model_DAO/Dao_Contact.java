@@ -11,23 +11,22 @@ import model_beans.Bean_Contact;
 
 public class Dao_Contact extends ExecuteStatementUtility {
 	
-	public int createId() {
+	public String createId() {
 		int count = 0;
 		try {
-			String query = "SELECT TOP 1 MAPH FROM PHANHOI \r\n"
-					+ "\r\n"
-					+ "ORDER BY MAPH DESC";
+			String query = "SELECT TOP 1 MAPH FROM PHANHOI ORDER BY MAPH DESC";
 			try (ResultSet rs = super.AccessDBstr(query)) {
-				 count = Integer.parseInt("1");
+				rs.next();
+				 count = Integer.parseInt(rs.getString(1).replace("PH","").trim());
 				count++;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return count;
+		return "PH"+count;
 	}
 	
-	public void addEvaluate(Bean_Contact contact) {
+	public void addContact(Bean_Contact contact) {
 		LocalDate localDate = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		String date = localDate.format(formatter);
@@ -60,6 +59,22 @@ public class Dao_Contact extends ExecuteStatementUtility {
 		return list;
 	}
 
+	public ArrayList<Bean_Contact> listSearch(String keyword,int start, int end) {
+		ArrayList<Bean_Contact> list = new ArrayList<Bean_Contact>();
+		String[] para = { keyword,start + "", end + "" };
+		String query = "WITH X AS (select ROW_NUMBER() OVER (ORDER BY trangthai ASC, THOIGIAN DESC) AS STT,* FROM SEARCHFBACK('?') ) SELECT * FROM X WHERE STT BETWEEN ? AND ?\r\n"
+				+ "";
+		try (ResultSet rs = super.AccessDBstr(query, para)) {
+			while (rs.next()) {
+				list.add(new Bean_Contact(rs.getString("MAPH").trim(),rs.getString("HOTEN"),rs.getString("EMAIL"),rs.getString("SDT"),rs.getString("THOIGIAN"),rs.getString("LOINHAN"),rs.getString("TRANGTHAI")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
 	public void updateState(String id) {
 		try {
 			String query = " UPDATE PHANHOI SET TRANGTHAI = N'Đã phản hồi' WHERE MAPH = ?";
@@ -83,12 +98,14 @@ public class Dao_Contact extends ExecuteStatementUtility {
 	}
 	
 	
+	
 	public static void main(String[] args) {
 		Dao_Contact dao = new Dao_Contact();
-//		for (int i = 0; i < dao.listContact(1, 3).size(); i++) {
-//			System.out.println(dao.listContact(1, 3).get(i).toString());
-//		}
-		dao.updateState("PH2");
+		for (int i = 0; i < dao.listSearch("com",1,10).size(); i++) {
+			System.out.println(dao.listSearch("com",1,10).get(i).toString());
+		}
+//		dao.addContact(new Bean_Contact("cương", "123", "00011", "1lksjkdf"));
+		
 	}
 
 }

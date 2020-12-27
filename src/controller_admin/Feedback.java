@@ -40,7 +40,6 @@ public class Feedback extends HttpServlet {
 			
 			SendMail.sendFeekBack(email, content);
 			bo.updateState(id);
-			
 			doGet(request, response);
 		}else {
 			bo.delete(idDelete);
