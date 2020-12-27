@@ -4,12 +4,29 @@ public class Branch {
 	private String id;
 	private String name;
 	private int quantity_product;
+	private String state;
 
 	public Branch(String id, String name, int quantity_product) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.quantity_product = quantity_product;
+	}
+	
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public Branch(String id, String name, int quantity_product, String state) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.quantity_product = quantity_product;
+		this.state = state;
 	}
 
 	public Branch() {
@@ -40,4 +57,10 @@ public class Branch {
 		this.quantity_product = quantity_product;
 	}
 
+	@Override
+	public String toString() {
+		return "Branch [id=" + id + ", name=" + name + ", quantity_product=" + quantity_product + ", state=" + state
+				+ "]";
+	}
+	
 }

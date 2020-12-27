@@ -8,13 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model_BO_service.BO_Branch;
+
 @WebServlet(urlPatterns = "/admin/branch")
 public class Branch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private BO_Branch bo = new BO_Branch();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		request.setAttribute("listBranch", bo.getListBranch(1, 1000));
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-branch.jsp");
 		dispatcher.forward(request, response);

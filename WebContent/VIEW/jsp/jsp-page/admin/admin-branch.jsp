@@ -55,116 +55,53 @@
 															<th>Mã thương hiệu</th>
 															<th>Tên thương hiệu</th>
 															<th>Số lượng điện thoại</th>
+															<th>Trạng thái</th>
 															<th></th>
 														</tr>
 													</thead>
 													<tbody id="content-table">
-														<tr>
-															<td>TH01</td>
-															<td>Apple</td>
+														<c:forEach items="${listBranch}" var="pp">
+															<tr>
+																<td>${pp.id}</td>
+																<td>${pp.name}</td>
 
 
-															<td>10</td>
-
-															<td class="row" style="border: none;">
-																<button class="edit3 btn btn-danger" data-toggle="modal"
-																	data-target="#del" style="margin: auto;"
-																	title='Xóa thương hiệu'>
-																	<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																</button>
-															</td>
-														</tr>
-														<tr>
-															<td>TH02</td>
-															<td>Samsung</td>
-
-
-															<td>10</td>
-
-															<td class="row" style="border: none;">
-																<button class="edit3 btn btn-danger" data-toggle="modal"
-																	data-target="#del" style="margin: auto;"
-																	title='Xóa thương hiệu'>
-																	<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																</button>
-															</td>
-														</tr>
-														<tr>
-															<td>TH03</td>
-															<td>Huawei</td>
-
-
-															<td>10</td>
-
-															<td class="row" style="border: none;">
-																<button class="edit3 btn btn-danger" data-toggle="modal"
-																	data-target="#del" style="margin: auto;"
-																	title='Xóa thương hiệu'>
-																	<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																</button>
-															</td>
-														</tr>
-														<tr>
-															<td>TH04</td>
-															<td>Vivo</td>
-
-
-															<td>10</td>
-
-															<td class="row" style="border: none;">
-																<button class="edit3 btn btn-danger" data-toggle="modal"
-																	data-target="#del" style="margin: auto;"
-																	title='Xóa thương hiệu'>
-																	<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																</button>
-															</td>
-														</tr>
-
-														<tr>
-															<td>TH05</td>
-															<td>OPPO</td>
-
-
-															<td>10</td>
-
-															<td class="row" style="border: none;">
-																<button class="edit3 btn btn-danger" data-toggle="modal"
-																	data-target="#del" style="margin: auto;"
-																	title='Xóa thương hiệu'>
-																	<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																</button>
-															</td>
-														</tr>
-														<tr>
-															<td>TH06</td>
-															<td>Xiaomi</td>
-
-
-															<td>10</td>
-
-															<td class="row" style="border: none;">
-																<button class="edit3 btn btn-danger" data-toggle="modal"
-																	data-target="#del" style="margin: auto;"
-																	title='Xóa thương hiệu'>
-																	<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																</button>
-															</td>
-														</tr>
-														<tr>
-															<td>TH07</td>
-															<td>Realmi</td>
-
-
-															<td>10</td>
-
-															<td class="row" style="border: none;">
-																<button class="edit3 btn btn-danger" data-toggle="modal"
-																	data-target="#del" style="margin: auto;"
-																	title='Xóa thương hiệu'>
-																	<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																</button>
-															</td>
-														</tr>
+																<td>${pp.quantity_product}</td>
+																<td>${pp.state}</td>
+																<td class="row" style="border: none;">
+																	<button class="edit3 btn btn-danger"
+																		data-toggle="modal" data-target="#del${pp.id}"
+																		style="margin: auto;" title='Xóa thương hiệu'>
+																		<i class="txt-center menu-icon fas fa-lock"></i>
+																	</button>
+																</td>
+															</tr>
+															<div class="modal fade" id="del${pp.id}" tabindex="-1"
+																role="dialog" aria-labelledby="exampleModalLabel"
+																aria-hidden="true">
+																<div class="modal-dialog" role="document">
+																	<div class="modal-content">
+																		<div class="modal-header">
+																			<h5 class="modal-title" id="exampleModalLabel">Xác
+																				nhận thay đổi thương hiệu ${pp.name}.</h5>
+																			<button type="button" class="close"
+																				data-dismiss="modal" aria-label="Close">
+																				<span aria-hidden="true">&times;</span>
+																			</button>
+																		</div>
+																		<div class="modal-body">Bạn có muốn xóa thương
+																			hiệu này.</div>
+																		<div class="modal-footer">
+																			<button type="button" class="btn btn-secondary"
+																				data-dismiss="modal">Không</button>
+																			<button type="button" class="btn btn-primary"
+																				data-dismiss="modal">Đồng ý</button>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</c:forEach>
+													</tbody>
 												</table>
 
 												<div class="page-navigation">
@@ -210,28 +147,6 @@
 						</div>
 					</div>
 					<!-- /#right-panel -->
-				</div>
-			</div>
-		</div>
-		<div class="modal fade" id="del" tabindex="-1" role="dialog"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa
-							thương hiệu.</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">Bạn có muốn xóa thương hiệu này.</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Không</button>
-						<button type="button" class="btn btn-primary" data-dismiss="modal">Đồng
-							ý</button>
-					</div>
 				</div>
 			</div>
 		</div>
