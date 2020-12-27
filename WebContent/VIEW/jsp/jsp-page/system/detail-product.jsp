@@ -192,28 +192,44 @@
 						màu ưa thích của bạn</p>
 
 					<div class="row">
-						<label class="color-card" for="xanh">
-						<div class="frame-color"><img
-							src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
-							<div class="title">xanh</div><i class="fas fa-check"></i></div> </label>
-						<input type="radio" class="choose-color" name="color" id="xanh">
-						<label class="color-card" for="do">
-						<div class="frame-color"><img
-							src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
-							<div class="title">đỏ</div><i class="fas fa-check"></i></div> </label>
-<input type="radio" class="choose-color" name="color" id="do">
-					</div>
-					<div style="margin-top: 40px;">
-						<p class="block">
-							<span>Thương hiệu:</span><a href="#">Apple</a>
-						</p>
-						<p class="block">Đổi trả trong vòng 15 ngày đầu.</p>
-					</div>
+						<div class="frame-choose">
+							<input type="radio" class="choose-color" name="color" id="xanh">
+							<label class="color-card" for="xanh">
+								<div class="frame-color">
+								<div>
+									<img
+										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg"></div>
+									<div class="title">xanhxanhxanhxanh</div>
+									<i class="fas fa-check"></i>
+								</div>
+							</label> <input type="radio" class="choose-color" name="color" id="do">
+							<label class="color-card" for="do">
+								<div class="frame-color">
+									<img
+										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
+									<div class="title">đỏ</div>
+									<i class="fas fa-check"></i>
+								</div>
+							</label>
 
+						</div>
+						<div style="margin-top: 0px; margin-left: 10px;">
+							<p class="block" style="font-size: 16px; font-weight: 400;">
+								<span style="margin-right: 10px;">Thương hiệu:</span><a href="#">Samsung</a>
+							</p>
+							<p class="block" style="font-style: italic;
+    font-size: 15px;
+    font-weight: 400;">Đổi
+								trả trong vòng 15 ngày đầu.</p>
+								<p class="block" style="font-style: italic;
+    font-size: 15px;
+    font-weight: 400;">Bảo hành chính hãng 12 tháng.</p>
+						</div>
+					</div>
 				</div>
 
 
-				<div class="row" style="margin-top: 40px;">
+				<div class="row" style="">
 					<div class="col-sm-7">
 						<form action="${pageContext.request.contextPath}/cart"
 							method="post">
