@@ -38,24 +38,25 @@
 											<div class=" mb-2">
 												<h4 class="text-center mt-3 mb-3">Phản hồi của khách
 													hàng</h4>
-												<div class="ml-5 mb-2 form-row align-items-center">
-													<div class="col-auto">
-														<div class="input-group mb-2">
-															<div class="input-group-prepend">
-																<div class="input-group-text">
-																	<i class="fas fa-search"></i>
+												<form action="${pageContext.request.contextPath}/admin/feedback" method="post">
+													<div class="ml-5 mb-2 form-row align-items-center">
+														<div class="col-auto">
+															<div class="input-group mb-2">
+																<div class="input-group-prepend">
+																	<div class="input-group-text">
+																		<i class="fas fa-search"></i>
+																	</div>
 																</div>
+																<input name="searchContact" type="text" class="form-control"
+																	placeholder="Nhập từ khóa" >
 															</div>
-															<input name="keyword" type="text" class="form-control"
-																placeholder="nhập từ khóa">
+														</div>
+														<div class="col-auto">
+															<button type="submit" class="btn btn-primary mb-2">Tìm
+																kiếm</button>
 														</div>
 													</div>
-													<div class="col-auto">
-														<button type="submit" class="btn btn-primary mb-2">Tìm
-															kiếm</button>
-													</div>
-												</div>
-
+												</form>
 											</div>
 
 											<table id="bootstrap-data-table" class="table table-hover ">

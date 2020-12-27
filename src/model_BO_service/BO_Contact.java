@@ -23,5 +23,7 @@ public class BO_Contact {
 	public void delete(String id) {
 		dao.deleteFeedback(id);
 	}
-
+	public ArrayList<Bean_Contact> listSearch(String key,int start, int end) {
+		return dao.listSearch(key, start, end);
+	}
 }
