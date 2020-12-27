@@ -1,9 +1,12 @@
 package CREATE_DATA;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import model_DAO.DAO_Account;
 import model_beans.Account;
+import model_utility.Config;
+import model_utility.Const;
 import model_utility.Encrypt;
 
 public class CreateAccount {
@@ -1136,21 +1139,21 @@ public class CreateAccount {
 	}
 
 	///// HỌ TÊN ĐẦY ĐỦ
-	public static String fullName() {
+	public static String rdName() {
 		return ho() + " " + tenDem() + " " + ten();
 	}
 
 ///// SỐ ĐIỆN THOẠI
-	public static String SDT() {
+	public static String rdPhoneNumber() {
 		return "09" + rdINT(12345678, 98763456);
 	}
 
 ///// ĐỊA CHỈ ĐẦY ĐỦ
-	public static String fullDiaChi() {
+	public static String rdAddress() {
 		return soNha() + "," + duong() + "," + xa() + "," + huyen_tinh();
 	}
 
-	public static String fullEmail() {
+	public static String rdEmail() {
 		return Encrypt.rdText(10) + "@" + domain();
 	}
 
@@ -1158,35 +1161,39 @@ public class CreateAccount {
 		return rdINT(2011, 2021) + "-0" + rdINT(1, 9) + "-" + rdINT(10, 28);
 	}
 
-	public static String password() {
+	public static String rdPassword() {
 		return Encrypt.MD5(Encrypt.rdText(3));
 	}
 
-	public static String token() {
+	public static String rdToken() {
 		return Encrypt.MD5(Encrypt.SHA1(Encrypt.rdText(9)));
 	}
 
-	public static Account acc() {
-		return new Account(
-				fullEmail()
-				, password()
-				, "ENABLE",
-				ngayTao(),
-				 "CUSTOMER",
-				 
-				fullName(),
-				SDT(), 
-				fullDiaChi(),
-				token());
+	public static Account createAccount() {
+		Account newAcc = new Account(rdEmail(),rdPassword());
+		newAcc.setAddress(rdAddress());
+		newAcc.setName(rdName());
+		newAcc.setRole(Const.CUSTOMER_ROLE);
+		newAcc.setStatus(Const.ACCOUNT_ENABLE);
+		newAcc.setTokenLogin(rdToken());
+		newAcc.setPhoneNumber(rdPhoneNumber());
+		newAcc.setAddress(rdPassword());
+		
+		return newAcc;
 	}
 
 	public static void main(String[] args) {
 
-		
 		DAO_Account daoACC = DAO_Account.getDaoAccount();
 
-		for (int i = 0; i < 45; i++) {
-			daoACC.add(acc());
+		Scanner scanner = new Scanner(System.in);
+		
+		
+		for (int i = 0; i < 30; i++) {
+
+			Account newAcc = createAccount();
+			daoACC.add(newAcc);
+			System.out.println(newAcc);
 		}
 
 	}

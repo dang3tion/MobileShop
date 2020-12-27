@@ -16,8 +16,7 @@ public class Dao_Contact extends ExecuteStatementUtility {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		String date = localDate.format(formatter);
 		try {
-			String query = "INSERT INTO " + "PHANHOI" + " VALUES(?,?,?,?,?)";
-			System.out.println(query);
+			String query = "INSERT INTO PHANHOI VALUES(?,?,?,?,?)";
 			String[] parameters = { //
 					contact.getEmail(), contact.getName(), contact.getNumberPhone(), date, contact.getContent() };
 
