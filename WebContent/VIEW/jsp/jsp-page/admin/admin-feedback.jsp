@@ -85,7 +85,7 @@
 															<td class="row" style="border: none;">
 																<div style="margin: auto;">
 																	<button type="button" class="btn btn-primary"
-																		data-toggle="modal" data-target="#${c.id}"
+																		data-toggle="modal" data-target="#pp${c.id}"
 																		data-whatever="@mdo">
 																		<i class="text-center fas fa-paper-plane"></i>
 																	</button>
@@ -103,7 +103,7 @@
 
 
 														<!--Modal add-->
-														<div class="modal fade" id="${c.id}" tabindex="-1"
+														<div class="modal fade" id="pp${c.id}" tabindex="-1"
 															role="dialog" aria-labelledby="exampleModalLabel"
 															aria-hidden="true">
 															<form

@@ -11,29 +11,15 @@ import model_beans.Bean_Contact;
 
 public class Dao_Contact extends ExecuteStatementUtility {
 	
-	public String createId() {
-		int count = 0;
-		try {
-			String query = "WITH X AS (select ROW_NUMBER() OVER (ORDER BY MAPH) AS STT,* FROM PHANHOI ) SELECT * FROM X ORDER BY STT DESC";
-			try (ResultSet rs = super.AccessDBstr(query)) {
-				rs.next();
-				 count = Integer.parseInt(rs.getString("STT"));
-				count++;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "PH"+count;
-	}
 	
 	public void addContact(Bean_Contact contact) {
 		LocalDate localDate = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		String date = localDate.format(formatter);
 		try {
-			String query = "INSERT INTO " + "PHANHOI" + " VALUES(?,?,?,?,?,?,?)";
+			String query = "INSERT INTO " + "PHANHOI" + " VALUES(?,?,?,?,?,?)";
 			System.out.println(query);
-			String[] parameters = { createId()+"",
+			String[] parameters = { 
 					contact.getEmail(), contact.getName(), contact.getNumberPhone(), date, contact.getContent(),"Chưa phản hồi" };
 
 			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
@@ -99,10 +85,5 @@ public class Dao_Contact extends ExecuteStatementUtility {
 	
 	
 	
-	public static void main(String[] args) {
-		Dao_Contact dao = new Dao_Contact();
-		System.out.println(dao.createId());
-		
-	}
-
+	
 }

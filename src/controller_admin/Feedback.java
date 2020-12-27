@@ -33,18 +33,25 @@ public class Feedback extends HttpServlet {
 		String id = request.getParameter("idUpdate");
 		String idDelete = request.getParameter("delete");
 		String search = request.getParameter("searchContact");
-		System.out.println(idDelete);
 		
-		if (idDelete==null||idDelete.equals("")) {
+		if (idDelete != null) {
+			System.out.println(idDelete);
+
+			bo.delete(idDelete);
+			request.setAttribute("listContact", bo.listContact(1, 1000));
+		}
+		if (email != null||content != null) {
+			
 			System.out.println(email);
 			System.out.println(content);
-			
 			SendMail.sendFeekBack(email, content);
 			bo.updateState(id);
 			request.setAttribute("listContact", bo.listContact(1, 1000));
-			}else {
-			bo.delete(idDelete);
-			request.setAttribute("listContact", bo.listContact(1, 1000));
+		}
+		if (search != null) {
+			System.out.println(search);
+			System.out.println("sdafsdf");
+			request.setAttribute("listContact", bo.listSearch(search, 1, 1000));
 		}
 		
 		RequestDispatcher dispatcher //
