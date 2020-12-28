@@ -514,38 +514,38 @@
 		<!--evualuate-->
 		<div class="evaluate-frame">
 			<div class="row">
-				<div class="col-3">
+				<div class="col-3" style="    box-shadow: 4px 0px 5px -5px #767676;">
 					<div class="avg-star">
-						<span></span><i class="fas fa-star"></i>
+						<span>3</span><i class="fas fa-star"></i>
 					</div>
 				</div>
-				<div class="col-5">
+				<div class="col-5" style="    box-shadow: 4px 0px 5px -5px #767676;">
 					<ul class="star-evaluate">
 						<li><span class="star">5<i class="fas fa-star"></i></span>
 							<div class="progress">
-								<div class="progress-bar" role="progressbar" aria-valuenow="0"
+								<div class="progress-bar"style="width: 25%" role="progressbar" aria-valuenow="25
 									aria-valuemin="25" aria-valuemax="100"></div>
-							</div> <span class="title">3 đánh giá</span></li>
+							</div> <span class="title">3 </span>đánh giá</li>
 						<li><span class="star">5<i class="fas fa-star"></i></span>
 							<div class="progress">
 								<div class="progress-bar" role="progressbar" aria-valuenow="0"
 									aria-valuemin="25" aria-valuemax="100"></div>
-							</div> <span class="title">3 đánh giá</span></li>
+							</div> <span class="title">3 </span>đánh giá</li>
 						<li><span class="star">5<i class="fas fa-star"></i></span>
 							<div class="progress">
 								<div class="progress-bar" role="progressbar" aria-valuenow="0"
 									aria-valuemin="25" aria-valuemax="100"></div>
-							</div> <span class="title">3 đánh giá</span></li>
+							</div> <span class="title">3</span> đánh giá</li>
 						<li><span class="star">5<i class="fas fa-star"></i></span>
 							<div class="progress">
 								<div class="progress-bar" role="progressbar" aria-valuenow="0"
 									aria-valuemin="25" aria-valuemax="100"></div>
-							</div> <span class="title">3 đánh giá</span></li>
+							</div> <span class="title">3 </span>đánh giá</li>
 						<li><span class="star">5<i class="fas fa-star"></i></span>
 							<div class="progress">
 								<div class="progress-bar" role="progressbar" aria-valuenow="0"
 									aria-valuemin="25" aria-valuemax="100"></div>
-							</div> <span class="title">3 đánh giá</span></li>
+							</div> <span class="title">3 </span>đánh giá</li>
 					</ul>
 				</div>
 				<div class="col-4">
@@ -553,10 +553,10 @@
 						<button>Gửi đánh giá của bạn</button>
 					</div>
 				</div>
-				<div class="col-12">
+				<div class="col-12" style="    margin: 20px 30px;">
 					<div class="evaluate">
 						<span>Chọn đánh giá của bạn</span>
-						<ul class="evaluating-start">
+						<ul class="evaluating-star">
 							<li><i class="fas fa-star"></i></li>
 							<li><i class="fas fa-star"></i></li>
 							<li><i class="fas fa-star"></i></li>
@@ -568,7 +568,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-12" id="send-evaluate">
+				<div class="col-12" id="send-evaluate" style="    margin-left: 30px;
+    display: flex;">
 					<div class="input-evaluate">
 						<textarea></textarea>
 
@@ -578,95 +579,185 @@
 						<button>Gửi đánh giá</button>
 					</div>
 				</div>
-				<div class="col-12">
-					<div class="content-evaluate">
-						<div class="title">
-							<h5>Thanh Bảo</h5>
-							<div class="confirm">
-								<i></i> Xác nhận đã mua hàng
-								<div class="confirm-content">
-									<p>MobileShop xác nhận :</p>
-									<p>
-										<span><i></i></span>Khách hàng
-									<h5>Thanh Bảo</h5>
-									</p>
-									<p>
-										<span><i></i></span>Mua online trên website Thegioididong.com
-									</p>
-									<p>
-										<span><i></i></span>Mua
-									<h5>2 tháng</h5>
-									trước
-									</p>
-								</div>
-							</div>
-						</div>
-						<ul class="evaluating-start">
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-						</ul>
-						<div class="content">
-
-							<p>Máy tốt nhưng mới mua gặp hiện tượng kết nối wifi không đc
-								hay do lỗi của ổ wifi</p>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 
 		</div>
+    <div class="content-evaluate-frame">
+      <div class="header">Đánh giá của khách hàng</div>
+      <div class="stick"></div>
+          <div class="content-evaluate">
+            <div class="title">
+              <span class="name-title" style="float: left;" 
+   >Thanh Bảo</span>  <ul class="evaluating-star">
+              <li><i class="fas fa-star"></i></li>
+              <li><i class="fas fa-star"></i></li>
+              <li><i class="fas fa-star"></i></li>
+              <li><i class="fas fa-star"></i></li>
+              <li><i class="fas fa-star"></i></li>
+            </ul>
+              <div class="confirm">
+             <i class="far fa-check-circle"></i> Xác nhận đã mua hàng
+                <div class="confirm-content">
+                  <p>MobileShop xác nhận :</p>
+                  <p>
+                    <span><i class="far fa-user"></i></span>Khách hàng
+                  <span class="var-title">Thanh Bảo</span>
+                  </p>
+                  <p>
+                    <span><i class="fas fa-location-arrow"></i></span>Mua online trên website Thegioididong.com
+                  </p>
+                  <p>
+                    <span><i class="far fa-clock"></i></span>Mua
+                  <span class="var-title">2 tháng</span>
+                  trước
+                  </p>
+                </div>
+              </div>
+            </div>
+           
+            <div class="content">
+
+              <p>Máy tốt nhưng mới mua gặp hiện tượng kết nối wifi không đc
+                hay do lỗi của ổ wifi</p>
+            </div>
+          </div>    <div class="content-evaluate">
+            <div class="title">
+              <span class="name-title" style="float: left;" 
+   >Thanh Bảo</span> <ul class="evaluating-star">
+              <li><i class="fas fa-star"></i></li>
+              <li><i class="fas fa-star"></i></li>
+              <li><i class="fas fa-star"></i></li>
+              <li><i class="fas fa-star"></i></li>
+              <li><i class="fas fa-star"></i></li>
+            </ul>
+              <div class="confirm">
+             <i class="far fa-check-circle"></i> Xác nhận đã mua hàng
+                <div class="confirm-content">
+                  <p>MobileShop xác nhận :</p>
+                  <p>
+                    <span><i class="far fa-user"></i></span>Khách hàng
+                  <span class="var-title">Thanh Bảo</span>
+                  </p>
+                  <p>
+                    <span><i class="fas fa-location-arrow"></i></span>Mua online trên website Thegioididong.com
+                  </p>
+                  <p>
+                    <span><i class="far fa-clock"></i></span>Mua
+                  <span class="var-title">2 tháng</span>
+                  trước
+                  </p>
+                </div>
+              </div>
+            </div>
+           
+            <div class="content">
+
+              <p>Máy tốt nhưng mới mua gặp hiện tượng kết nối wifi không đc
+                hay do lỗi của ổ wifi</p>
+            </div>
+          </div>  </div>
+          <div class="frame-border-comment">
 		<div class="comment-frame row">
-			<div class="col-8">
-				<div class="comment-title">
-					<span>B</span>
-					<h5>Thanh Bảo</h5>
+       <div class="header">Thảo luận về sản phẩm</div>
+      <div class="stick"></div>
+			<div class="col-12">
+				<div class="comment">
+					<div class="comment-title">
+						<span class="ico-user">B</span>
+						   <span class="name-title">Thanh Bảo</span> 
+					</div>
+					<div class="comment-content">
+						<p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s rồi
+							. Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc k vậy
+							. Mình chưa có hộ khẩu . Xin cảm ơn</p>
+					</div>
+					<div class="respone-cmt">
+						<button class="respone-btn"><i class="fas fa-reply"  style="margin-right: 5px;"></i>Trả lời</button>
+						<span class="cmt-time">- 5 ngày trước</span>
+					</div>
+					<ul class="respone">
+						<li>
+							<div class="comment-title">
+								<span  class="ico-user">B</span>
+								 <span class="name-title">Thanh Bảo</span>
+							</div>
+							<div class="comment-content">
+								<p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s
+									rồi . Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc
+									k vậy . Mình chưa có hộ khẩu . Xin cảm ơn</p>
+							</div>
+							<div class="respone-cmt">
+								<button class="respone-btn"><i class="fas fa-reply"  style="margin-right: 5px;"></i>Trả lời</button>
+								<span class="cmt-time">- 5 ngày trước</span>
+							</div>
+						</li>
+						<li>
+							<div class="comment-title">
+								<span  class="ico-user">B</span>
+							 <span class="name-title">Thanh Bảo</span>
+							</div>
+							<div class="comment-content">
+								<p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s
+									rồi . Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc
+									k vậy . Mình chưa có hộ khẩu . Xin cảm ơn</p>
+							</div>
+							<div class="respone-cmt">
+								<button class="respone-btn"><i class="fas fa-reply" style="margin-right: 5px;"></i>Trả lời</button>
+								<span class="cmt-time">- 4 ngày trước</span>
+							</div>
+						</li>
+					</ul>
 				</div>
-				<div class="comment-content">
-					<p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s rồi .
-						Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc k vậy .
-						Mình chưa có hộ khẩu . Xin cảm ơn</p>
-				</div>
-				<div class="respone-cmt">
-					<button class="respone-btn">Trả lời</button>
-					<span class="cmt-time"></span>
-				</div>
-				<ul class="respone">
-					<li>
-						<div class="comment-title">
-							<span>B</span>
-							<h5>Thanh Bảo</h5>
-						</div>
-						<div class="comment-content">
-							<p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s rồi
-								. Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc k vậy
-								. Mình chưa có hộ khẩu . Xin cảm ơn</p>
-						</div>
-						<div class="respone-cmt">
-							<button class="respone-btn">Trả lời</button>
-							<span class="cmt-time">- 5 ngày trước</span>
-						</div>
-					</li>
-					<li>
-						<div class="comment-title">
-							<span>B</span>
-							<h5>Thanh Bảo</h5>
-						</div>
-						<div class="comment-content">
-							<p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s rồi
-								. Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc k vậy
-								. Mình chưa có hộ khẩu . Xin cảm ơn</p>
-						</div>
-						<div class="respone-cmt">
-							<button class="respone-btn">Trả lời</button>
-							<span class="cmt-time">- 4 ngày trước</span>
-						</div>
-					</li>
-				</ul>
+        <div class="comment">
+          <div class="comment-title">
+            <span class="ico-user">B</span>
+               <span class="name-title">Thanh Bảo</span> 
+          </div>
+          <div class="comment-content">
+            <p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s rồi
+              . Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc k vậy
+              . Mình chưa có hộ khẩu . Xin cảm ơn</p>
+          </div>
+          <div class="respone-cmt">
+            <button class="respone-btn"><i class="fas fa-reply"  style="margin-right: 5px;"></i>Trả lời</button>
+            <span class="cmt-time">- 5 ngày trước</span>
+          </div>
+          <ul class="respone">
+            <li>
+              <div class="comment-title">
+                <span  class="ico-user">B</span>
+                 <span class="name-title">Thanh Bảo</span>
+              </div>
+              <div class="comment-content">
+                <p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s
+                  rồi . Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc
+                  k vậy . Mình chưa có hộ khẩu . Xin cảm ơn</p>
+              </div>
+              <div class="respone-cmt">
+                <button class="respone-btn"><i class="fas fa-reply"  style="margin-right: 5px;"></i>Trả lời</button>
+                <span class="cmt-time">- 5 ngày trước</span>
+              </div>
+            </li>
+            <li>
+              <div class="comment-title">
+                <span  class="ico-user">B</span>
+               <span class="name-title">Thanh Bảo</span>
+              </div>
+              <div class="comment-content">
+                <p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s
+                  rồi . Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc
+                  k vậy . Mình chưa có hộ khẩu . Xin cảm ơn</p>
+              </div>
+              <div class="respone-cmt">
+                <button class="respone-btn"><i class="fas fa-reply" style="margin-right: 5px;"></i>Trả lời</button>
+                <span class="cmt-time">- 4 ngày trước</span>
+              </div>
+            </li>
+          </ul>
+        </div></div>
 			</div>
-		</div>
+		</div>	</div>
 		<!-- Page Footer -->
 		<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 </body>
