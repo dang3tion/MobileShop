@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model_utility.Config;
-import model_utility.Const;
 
 public class ConnectionPoolManager {
 
@@ -18,10 +17,6 @@ public class ConnectionPoolManager {
 		while (!isMaxPool()) {
 			availableConnections.add(createNewSingleConnectionToDB());
 		}
-	}
-
-	public String getAvailableConnections() {
-		return "available:" + availableConnections.size() + "/Max:" + Config.DB_MAX_CONNECTIONS;
 	}
 
 	private synchronized boolean isMaxPool() {
