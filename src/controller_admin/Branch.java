@@ -36,8 +36,8 @@ public class Branch extends HttpServlet {
 			request.setAttribute("listBranch", bo.getListSearch(search,1, 1000));
 		}
 		if (id != null) {
-			request.setAttribute("messageblock", id);
-			request.setAttribute("colorblock", "background-color: green");
+			request.setAttribute("messageblock", "Thay đổi của bạn đã được cập nhật.");
+			bo.updateState(id);
 			request.setAttribute("listBranch", bo.getListBranch(1, 1000));
 		}
 

@@ -13,6 +13,9 @@ public class BO_Branch {
 	public ArrayList<Branch> getListSearch(String keyword,int start, int end){
 		return dao.listSeach(keyword, start, end);
 	}
+	public void updateState(String id) {
+		dao.updateState(id);
+	}
 	
 	public static void main(String[] args) {
 		BO_Branch dao = new BO_Branch();

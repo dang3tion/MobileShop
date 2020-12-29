@@ -2,6 +2,7 @@ package model_beans;
 
 
 public class Bean_Contact {
+	private String numericalOrder;
 	private String id;
 	private String name;
 	private String email;
@@ -17,12 +18,10 @@ public class Bean_Contact {
 	
 
 
-
-
-	
-	public Bean_Contact(String id, String name, String email, String numberPhone, String date, String content,
-			String state) {
+	public Bean_Contact(String numericalOrder, String id, String name, String email, String numberPhone, String date,
+			String content, String state) {
 		super();
+		this.numericalOrder = numericalOrder;
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -31,9 +30,6 @@ public class Bean_Contact {
 		this.content = content;
 		this.state = state;
 	}
-
-
-
 
 
 
@@ -136,6 +132,20 @@ public class Bean_Contact {
 	public void setState(String state) {
 		this.state = state;
 	}
+
+
+	public String getNumericalOrder() {
+		return numericalOrder;
+	}
+
+
+
+
+	public void setNumericalOrder(String numericalOrder) {
+		this.numericalOrder = numericalOrder;
+	}
+
+
 
 
 	@Override

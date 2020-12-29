@@ -67,6 +67,7 @@
 												<table id="bootstrap-data-table" class="table table-hover ">
 													<thead class="thead-light">
 														<tr>
+															<th>STT</th>
 															<th>Mã thương hiệu</th>
 															<th>Tên thương hiệu</th>
 															<th>Số lượng điện thoại</th>
@@ -77,6 +78,7 @@
 													<tbody id="content-table">
 														<c:forEach items="${listBranch}" var="pp">
 															<tr>
+																<td>${pp.numOrder}</td>
 																<td>${pp.id}</td>
 																<td>${pp.name}</td>
 
@@ -112,7 +114,7 @@
 																				<span aria-hidden="true">&times;</span>
 																			</button>
 																		</div>
-																		<div class="modal-body">Bạn có muốn xóa thương
+																		<div class="modal-body">Bạn có muốn thay đổi trạng thái thương hiệu
 																			hiệu này.</div>
 																		<div class="modal-footer">
 																			<form
@@ -132,88 +134,92 @@
 														</c:forEach>
 													</tbody>
 												</table>
-												
-												
-												<div class="page-navigation">
+
+
+												<!-- 				PHÂN TRANG -->
+												<div class="page-navigation" id="page-navigation"
+													value="3">
 													<div class="beta">
-														<button onclick="previous_page()">Trước</button>
+														<button onclick="previousPage()">Trước</button>
 														<span id="page-number"> </span>
-														<button onclick="next_page()">Sau</button>
+														<button onclick="nextPage()">Sau</button>
 													</div>
 												</div>
 											</div>
+											<!-- 				PHÂN TRANG -->
+											
 										</div>
 									</div>
-
-
 								</div>
+
+
 							</div>
-							<!-- .animated -->
 						</div>
-						<!-- .content -->
+						<!-- .animated -->
+					</div>
+					<!-- .content -->
 
 
-						<!-- Add -->
-						<div class="modal fade" id="add" tabindex="-1" role="dialog"
-							aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLongTitle">Thêm
-											User</h5>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">...</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Đóng</button>
-										<button type="button" class="btn btn-primary">Lưu</button>
-									</div>
+					<!-- Add -->
+					<div class="modal fade" id="add" tabindex="-1" role="dialog"
+						aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLongTitle">Thêm
+										User</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">...</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">Đóng</button>
+									<button type="button" class="btn btn-primary">Lưu</button>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- /#right-panel -->
+				</div>
+				<!-- /#right-panel -->
+			</div>
+		</div>
+	</div>
+	<!-- @@@@@@@@@@ HIỆN THÔNG BÁO NGƯNG KINH DOANH  @@@@@@@@@@@@@ -->
+	<c:if test="${messageblock != null}">
+
+		<script>
+			window.onload = function() {
+				document.getElementById('btn-message').click();
+			}
+		</script>
+
+		<!-- Button trigger modal -->
+		<button style="display: none" type="button" id="btn-message"
+			class="btn btn-white" data-toggle="modal"
+			data-target="#exampleModalCenter"></button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">${messageblock}</h5>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal">Đóng</button>
+					</div>
 				</div>
 			</div>
 		</div>
-		<!-- @@@@@@@@@@ HIỆN THÔNG BÁO NGƯNG KINH DOANH  @@@@@@@@@@@@@ -->
-		<c:if test="${messageblock != null}">
 
-			<script>
-				window.onload = function() {
-					document.getElementById('btn-message').click();
-				}
-			</script>
-
-			<!-- Button trigger modal -->
-			<button style="display: none" type="button" id="btn-message"
-				class="btn btn-white" data-toggle="modal"
-				data-target="#exampleModalCenter"></button>
-
-			<!-- Modal -->
-			<div class="modal fade" id="exampleModalCenter" tabindex="-1"
-				role="dialog" aria-labelledby="exampleModalCenterTitle"
-				aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLongTitle">${messageblock}</h5>
-						</div>
-
-						<div class="modal-footer">
-							<button type="button" class="btn btn-success"
-								data-dismiss="modal">Đóng</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</c:if>
-		<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO NGƯNG KINH DOANH @@@@@@@@@@@@@ -->
+	</c:if>
+	<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO NGƯNG KINH DOANH @@@@@@@@@@@@@ -->
 </body>
 
 </html>

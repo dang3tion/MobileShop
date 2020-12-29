@@ -36,7 +36,7 @@ public class Dao_Contact extends ExecuteStatementUtility {
 				+ "";
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
-				list.add(new Bean_Contact(rs.getString("MAPH").trim(),rs.getString("HOTEN"),rs.getString("EMAIL"),rs.getString("SDT"),rs.getString("THOIGIAN"),rs.getString("LOINHAN"),rs.getString("TRANGTHAI")));
+				list.add(new Bean_Contact(rs.getString("STT"),rs.getString("MAPH").trim(),rs.getString("HOTEN"),rs.getString("EMAIL"),rs.getString("SDT"),rs.getString("THOIGIAN"),rs.getString("LOINHAN"),rs.getString("TRANGTHAI")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -52,7 +52,7 @@ public class Dao_Contact extends ExecuteStatementUtility {
 				+ "";
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
-				list.add(new Bean_Contact(rs.getString("MAPH").trim(),rs.getString("HOTEN"),rs.getString("EMAIL"),rs.getString("SDT"),rs.getString("THOIGIAN"),rs.getString("LOINHAN"),rs.getString("TRANGTHAI")));
+				list.add(new Bean_Contact(rs.getString("STT"),rs.getString("MAPH").trim(),rs.getString("HOTEN"),rs.getString("EMAIL"),rs.getString("SDT"),rs.getString("THOIGIAN"),rs.getString("LOINHAN"),rs.getString("TRANGTHAI")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
