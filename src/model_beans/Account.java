@@ -54,8 +54,9 @@ public class Account {
 //	)
 
 	// Dành để load 1 User từ database lên
-	public Account(String email, String password, String role, String status, String timeCreate, String name,
+	public Account(String id, String email, String password, String role, String status, String timeCreate, String name,
 			String phoneNumber, String address, String token) {
+		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.role = role;

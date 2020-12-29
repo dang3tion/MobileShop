@@ -74,6 +74,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				Account acc = new Account( //
+						rs.getString(CUSTOMERID),
 						rs.getString(EMAIL), //
 						rs.getString(ENCRYT_PASSWORD), //
 						rs.getString(ROLE), //
@@ -234,6 +235,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				Account acc = new Account( //
+						rs.getString(CUSTOMERID),
 						rs.getString(EMAIL), //
 						rs.getString(ENCRYT_PASSWORD), //
 						rs.getString(ROLE), //

@@ -17,7 +17,9 @@
 </head>
 <body>
 
-
+	<%
+		request.setCharacterEncoding("UTF-8");
+	%>
 
 
 	<!-- Page Menu -->
@@ -37,7 +39,7 @@
 
 		<!-- Portfolio Item Heading -->
 		<h4 class="my-4">
-			<small>Điện thoại </small> ${product.name}
+			<small>Điện thoại  </small> ${product.name}
 		</h4>
 
 		<!-- Portfolio Item Row -->
@@ -278,7 +280,7 @@
 					<div class="row">
 						<div class="frame-choose">
 							<input type="radio" class="choose-color" onclick="chooseColor()"
-								checked name="color" id="xanh"> <label
+								checked id="MS01" name="color" id="xanh"> <label
 								class="color-card" for="xanh">
 								<div class="frame-color">
 									<div
@@ -290,8 +292,9 @@
 									<div class="title">xanhxanhxanhxanh</div>
 
 								</div>
-							</label> <input type="radio" class="choose-color" onclick="chooseColor()"
-								name="color" id="do"> <label class="color-card" for="do">
+							</label> <input type="radio" id="MS02" class="choose-color"
+								onclick="chooseColor()" name="color" id="do"> <label
+								class="color-card" for="do">
 								<div class="frame-color">
 									<div
 										style="width: fit-content; margin: auto; position: relative;">
@@ -345,13 +348,30 @@
 						<form action="${pageContext.request.contextPath}/cart"
 							method="post">
 							<input name="choose" value="add" hidden="true">
-							<button name="id" value="${PRODUCT.id}" type="submit"
-								class="btnMua btn btn-primary btn-lg btn-block">
+							 <input
+								name="color" id="color-input" value=""
+								hidden="true">
+							<button name="id" onclick="addCart()" value="${PRODUCT.id}"
+								type="submit" class="btnMua btn btn-primary btn-lg btn-block">
 								<i class="fas fa-cart-plus" style="color: white;"></i> THÊM VÀO
 								GIỎ HÀNG
 							</button>
 						</form>
 					</div>
+					<script>
+						function addCart() {
+							var btn = document
+									.getElementsByClassName("choose-color");
+							var length = btn.length;
+							for (var i = 0; i < length; i++) {
+								var check = btn[i].checked;
+								if (check == true) {
+									document.getElementById('color-input').value = btn[i].id;
+								}
+							}
+						}
+					</script>
+
 					<div class="col-sm-5">
 						<form action="${pageContext.request.contextPath}/cart"
 							method="post">
@@ -553,36 +573,64 @@
 				</div>
 				<div class="col-4">
 					<div class="btn-evaluate">
-						<button>Gửi đánh giá của bạn</button>
+
+						<c:if test="${CUSTOMER_LOGINED != null}">
+							<button onclick="clickSend()" id="showup-btn">Gửi đánh
+								giá của bạn</button>
+						</c:if>
 					</div>
 				</div>
-				<div class="col-12" style="margin: 20px 30px;">
-					<div class="evaluate">
-						<span>Chọn đánh giá của bạn</span>
-						<ul class="evaluating-star">
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-							<li><i class="fas fa-star"></i></li>
-						</ul>
-						<div class="detail-star">
-							<i class="fas fa-caret-left"></i>Tuyệt vời quá
+				<div id="showup-evaluate" style="display: none;">
+					<div class="col-12" style="margin: 20px 30px;">
+						<div class="evaluate">
+							<span>Chọn đánh giá của bạn</span>
+							<h3>${CUSTOMER_LOGINED.id}xxxx</h3>
+
+
+							<c:if test="${CUSTOMER_LOGINED==null }">
+								<div class="ml-3 col-12">
+									<!-- 					#### captcha #### -->
+									<!-- reCAPTCHA with Vietnamese language -->
+									<script src='https://www.google.com/recaptcha/api.js?hl=vi'></script>
+
+									<div class="g-recaptcha" data-sitekey="${Config.SITE_KEY}"></div>
+									<h3 class="ml-4" style="color: red">${message}</h3>
+
+									<!-- 					#### captcha #### -->
+								</div>
+							</c:if>
+
+							<ul class="evaluating-star" id="star-evaluate">
+								<li><i onmouseover="hoverStar(0)" onmouseout="checkValue()"
+									onclick="getValue(1)" class="fas fa-star"></i></li>
+								<li><i onmouseover="hoverStar(1)" onmouseout="checkValue()"
+									onclick="getValue(2)" class="fas fa-star"></i></li>
+								<li><i onmouseover="hoverStar(2)" onmouseout="checkValue()"
+									onclick="getValue(3)" class="fas fa-star"></i></li>
+								<li><i onmouseover="hoverStar(3)" onmouseout="checkValue()"
+									onclick="getValue(4)" class="fas fa-star"></i></li>
+								<li><i onmouseover="hoverStar(4)" onmouseout="checkValue()"
+									onclick="getValue(5)" class="fas fa-star"></i></li>
+							</ul>
+							<div id="score-star" style="display: none;"></div>
+							<div class="detail-star">
+								<i class="fas fa-caret-left"></i><span id="capture">Tuyệt
+									vời quá</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-12" id="send-evaluate"
+						style="margin-left: 30px; display: flex;">
+						<div class="input-evaluate">
+							<textarea placeholder="Mời bạn nhập nội dung đánh giá"></textarea>
+
+						</div>
+
+						<div class="btn-send">
+							<button>Gửi đánh giá</button>
 						</div>
 					</div>
 				</div>
-				<div class="col-12" id="send-evaluate"
-					style="margin-left: 30px; display: flex;">
-					<div class="input-evaluate">
-						<textarea placeholder="Mời bạn nhập nội dung đánh giá"></textarea>
-
-					</div>
-
-					<div class="btn-send">
-						<button>Gửi bình luận</button>
-					</div>
-				</div>
-
 			</div>
 
 		</div>
@@ -681,7 +729,7 @@
 							</div>
 
 							<div class="btn-cmt">
-								<button>Gửi đánh giá</button>
+								<button>Gửi bình luận</button>
 							</div>
 						</div>
 					</div>
@@ -795,25 +843,77 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- Page Footer -->
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 </body>
-
-<script>
-	function ttOpen() {
-		var tt = document.getElementById('send1');
-
-		tt.style.display = 'none';
-		document.getElementById('close').style.display = 'block';
-		document.getElementById('content').style.maxHeight = '100%';
+<script charset="UTF-8">
+	var value = 0;
+	function hoverStar(n) {
+		var stars = document.getElementById("star-evaluate")
+				.getElementsByClassName("fa-star");
+		console.log(stars.length);
+		cap(n);
+		for (let i = 0; i < stars.length; i++) {
+			var el = stars[i];
+			if (n == i) {
+				for (let j = 0; j <= n; j++) {
+					stars[j].style.color = "#FFC107";
+				}
+			} else {
+				stars[i].style.color = "#bbbbbb";
+			}
+		}
 	}
-	function ttClose() {
-		document.getElementById('close').style.display = 'none';
-		document.getElementById('send1').style.display = 'block';
-		document.getElementById('content').style.maxHeight = '50em';
+	function checkValue() {
+		var stars = document.getElementById("star-evaluate")
+				.getElementsByClassName("fa-star");
+		cap(value - 1);
+		for (let i = 0; i < stars.length; i++) {
+			if (i + 1 == value) {
+				for (let j = 0; j <= i; j++) {
+					stars[j].style.color = "#FFC107";
+				}
+			} else {
+				stars[i].style.color = "#bbbbbb";
+			}
+		}
+	}
+	function getValue(n) {
+		value = n;
+		document.getElementById("score-star").innerHTML = value;
+	}
+	function cap(n) {
+		var x = document.getElementById("capture");
+		if (n == 0) {
+			x.innerHTML = "Quá tệ";
+		}
+		if (n == 1) {
+			x.innerHTML = "Tạm được";
+		}
+		if (n == 2) {
+			x.innerHTML = "Tốt";
+		}
+		if (n == 3) {
+			x.innerHTML = "Quá tốt";
+		}
+		if (n == 4) {
+			x.innerHTML = "Tuyệt vời";
+		}
+	}
+	function clickSend() {
+		var s = document.getElementById('showup-btn').innerHTML;
+		if (s != 'Đóng lại') {
+			document.getElementById('showup-evaluate').style.display = 'block';
+			document.getElementById('showup-btn').innerHTML = 'Đóng lại';
+		} else {
+			document.getElementById('showup-evaluate').style.display = 'none';
+			document.getElementById('showup-btn').innerHTML = 'Gửi đánh giá của bạn';
+		}
 	}
 </script>
 <script src="${url }/js/js-page/slide-product.js"></script>
-
+<script src="${url }/js/js-page/comment.js" charset="utf-8"></script>
 <script src="${url }/js/js-static/cart.js"></script>
+
 </html>

@@ -55,11 +55,17 @@ public class Controller_Cart extends HttpServlet {
 		String choose = request.getParameter("choose");
 		String page = request.getParameter("page");
 		String datHang = request.getParameter("datHang");
+		
+		String color = request.getParameter("color");
+		System.out.println(color + "xxx");
 
 		HttpSession session = request.getSession();
 
 		Cart cart = (Cart) session.getAttribute("CART");
 
+		
+		
+		
 		switch (choose) {
 		case "add":
 			String message = null;

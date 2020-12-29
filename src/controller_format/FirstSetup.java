@@ -17,7 +17,6 @@ public class FirstSetup implements HttpSessionListener {
 
 		session.setAttribute("CART", new Cart());
 
-
 	}
 
 	@Override
