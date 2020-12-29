@@ -19,7 +19,7 @@
 }
 
 .btnMua {
-	margin-top: 30px;
+	margin-top: 30px;box-shadow: -1px 2px 4px 0px #3a3a3a;
 }
 
 .space-img {
@@ -276,7 +276,7 @@ label.star:before {
 	border: 0;
 	margin-top: 20px;
 	border-radius: 4px;
-	background-color: #007bff;
+	background-color: #007bff;box-shadow: -1px 2px 4px 0px #3a3a3a;
 }
 
 .modal-attribute {
@@ -476,74 +476,76 @@ label.star:before {
 
 /* evaluate product*/
 .evaluate-frame {
-    border: 1px solid #d2d2d2bd;
-    padding: 10px 10px 20px 10px;
-    border-radius: 4px;
-    margin: 30px 0px;
+	border: 1px solid #d2d2d2bd;
+	padding: 10px 10px 20px 10px;
+	border-radius: 4px;
+	margin: 30px 0px;
 }
 
 .evaluate-frame .avg-star {
 	width: 30%;
-    margin: auto;
-    text-align: center;
-    margin-top: 25%;
+	margin: auto;
+	text-align: center;
+	margin-top: 25%;
 }
 
 .evaluate-frame .avg-star span {
-    font-size: 25px;
-    font-weight: 500;
+	font-size: 25px;
+	font-weight: 500;
 }
 
 .evaluate-frame .avg-star i {
-	    font-size: 30px;
-    margin-left: 5px;
-    color: #FFC107;
+	font-size: 30px;
+	margin-left: 5px;
+	color: #FFC107;
 }
 
 .evaluate-frame .star-evaluate {
 	
 }
 
-.progress{
-          height: 5px;
-    width: 65%;
-    margin-top: 10px;
+.progress {
+	height: 5px;
+	width: 65%;
+	margin-top: 10px;
 }
+
 .star-evaluate li {
-	display: flex;    margin: 10px 0px;
+	display: flex;
+	margin: 10px 0px;
 }
 
 .star-evaluate li .star {
-	font-weight: 660;    font-size:17px;
+	font-weight: 660;
+	font-size: 17px;
 }
 
 .star-evaluate li .star i {
-	 color: #FFEB3B;
-    margin: 0px 5px;
-    font-size: 20px;
+	color: #FFEB3B;
+	margin: 0px 5px;
+	font-size: 20px;
 }
 
 .star-evaluate li .title {
-	    margin: 0px 10px;
-    font-weight: 660;
+	margin: 0px 10px;
+	font-weight: 660;
 }
 
 .btn-evaluate {
-	    width: fit-content;
-    margin: auto;
-    margin-top: 20%;
+	width: fit-content;
+	margin: auto;
+	margin-top: 20%;
 }
 
 .btn-evaluate button {
-	    border: 0;
-    border-radius: 5px;
-    padding: 15px;
-    background: #007bff;
-    color: white;
-   
-    box-shadow: -1px 2px 4px 0px #3a3a3a;
-     /* border: 1px solid #b9b9b9; */
-    /* border-bottom: 1px solid #464646; */
+	border: 0;
+	border-radius: 5px;
+	padding: 15px;
+	background: #007bff;
+	color: white;
+	box-shadow: -1px 2px 4px 0px #3a3a3a;
+	/* border: 1px solid #b9b9b9; */
+	/* border-bottom: 1px solid #464646; */
 }
 
 .evaluate {
@@ -551,14 +553,14 @@ label.star:before {
 }
 
 .evaluate span {
-	    font-size: 18px;
+	font-size: 18px;
 }
 
 .evaluate  .evaluating-star {
-	    display: flex;
-    margin: 0;
-    padding: 0;
-    margin-left: 20px;
+	display: flex;
+	margin: 0;
+	padding: 0;
+	margin-left: 20px;
 }
 
 .evaluate  .evaluating-star li {
@@ -566,69 +568,68 @@ label.star:before {
 }
 
 .evaluate  .evaluating-star li i {
-	    font-size: 20px;
-    color: #bbbbbb;
+	font-size: 20px;
+	color: #bbbbbb;
 }
 
 .evaluate .detail-star {
-	 margin-top: -3px;
-    position: relative;
-    color: white;
-    padding: 5px 10px;
-    margin-left: 25px;
-    border-radius: 5px;
-    background-color: #03A9F4;
+	margin-top: -3px;
+	position: relative;
+	color: white;
+	padding: 5px 10px;
+	margin-left: 25px;
+	border-radius: 5px;
+	background-color: #03A9F4;
 }
 
 .evaluate .detail-star i {
-position: absolute;
-    font-size: 40px;
-    color: #03A9F4;
-    left: -13px;
-    top: -10%;
-
+	position: absolute;
+	font-size: 40px;
+	color: #03A9F4;
+	left: -13px;
+	top: -10%;
 }
 
 .input-evaluate {
-padding-bottom: 30px;
-    border: 1px solid #b1b1b18c;
-    width: fit-content;
-    border-radius: 4px;
-    background: #f5f5f5;
+	padding-bottom: 30px;
+	border: 1px solid #b1b1b18c;
+	width: fit-content;
+	border-radius: 4px;
+	background: #f5f5f5;
 }
 
 .input-evaluate textarea {
-	       padding: 10px;
-    background-color: white;
-    border: 0;
-    border-bottom: 1px solid #b1b1b18c;
-    width: 850px;
-    outline: 0;
-    resize: none;
-    height: 100px;
+	padding: 10px;
+	background-color: white;
+	border: 0;
+	border-bottom: 1px solid #b1b1b18c;
+	width: 850px;
+	outline: 0;
+	resize: none;
+	height: 100px;
 }
 
 .btn-send {
-	   
-  
+	
 }
 
 .btn-send button {
-    color: white;
-    background: #03a9f4;
-    border: 0;
-    padding: 10px;
-    /* float: right; */
-    box-shadow: -1px 2px 4px 0px #3a3a3a;
-    border-radius: 4px;
-    margin: 40px 100px;
+	color: white;
+	background: #03a9f4;
+	border: 0;
+	padding: 10px;
+	/* float: right; */
+	box-shadow: -1px 2px 4px 0px #3a3a3a;
+	border-radius: 4px;
+	margin: 40px 100px;
 }
 
 .content-evaluate {
-padding: 10px;
-    border-bottom:1px solid #b7b7b7;
-    margin-bottom: 30px;
-    width: 80%;}
+	padding: 10px;
+	border-bottom: 1px solid #b7b7b7;
+	margin-bottom: 30px;
+	width: 80%;
+}
 
 .content-evaluate .title {
 	
@@ -638,11 +639,12 @@ padding: 10px;
 	
 }
 
-.content-evaluate .title .confirm {    font-size: 16px;
-    font-style: italic;
-    color: #8BC34A;
-    width: fit-content;
-    margin-bottom: 30px;
+.content-evaluate .title .confirm {
+	font-size: 16px;
+	font-style: italic;
+	color: #8BC34A;
+	width: fit-content;
+	margin-bottom: 30px;
 }
 
 .content-evaluate .title .confirm i {
@@ -650,49 +652,54 @@ padding: 10px;
 }
 
 .content-evaluate .title .confirm .confirm-content {
-   color: black;
-    font-style: normal;
-    position: absolute;
-    background: #ffffff;
-    z-index: 100;
-    /* top: 30px; */
-    font-size: 14px;
-    box-shadow: 1px 2px 3px -1px #16161659;
-    border-radius: 3px;
-    padding: 15px;
-    border: 1px solid #b9b9b9c9;
-    display: none;
+	color: black;
+	font-style: normal;
+	position: absolute;
+	background: #ffffff;
+	z-index: 100;
+	/* top: 30px; */
+	font-size: 14px;
+	box-shadow: 1px 2px 3px -1px #16161659;
+	border-radius: 3px;
+	padding: 15px;
+	border: 1px solid #b9b9b9c9;
+	display: none;
 }
-.content-evaluate .title .confirm:hover  .confirm-content  {
-    display: block;
+
+.content-evaluate .title .confirm:hover  .confirm-content {
+	display: block;
 }
-.content-evaluate-frame{
-  padding: 20px 40px;
-    margin: 40px 0px;
-    border-top: 1px solid #e1e1e1;
- 
-    } .content-evaluate-frame .header{
-        font-size: 25px;
-    margin-bottom: 10px;
-    }
 
-  .content-evaluate-frame  .stick{
-        width: 300px;
-    border-radius: 3px;
-    height: 3px;
-    margin-bottom: 35px;
-    background: #5fb100;
-  }
+.content-evaluate-frame {
+	padding: 20px 40px;
+	margin: 40px 0px;
+	border-top: 1px solid #e1e1e1;
+}
 
-  .name-title{
-     margin-right: 10px;
-    font-size: 19px;
-    font-weight: 550;
-    }.var-title{
-     
-    font-size: 14px;
-    font-weight: 550;
-    }
+.content-evaluate-frame .header {
+	font-size: 25px;
+	margin-bottom: 10px;
+}
+
+.content-evaluate-frame  .stick {
+	width: 300px;
+	border-radius: 3px;
+	height: 3px;
+	margin-bottom: 35px;
+	background: #5fb100;
+}
+
+.name-title {
+	margin-right: 10px;
+	font-size: 19px;
+	font-weight: 550;
+}
+
+.var-title {
+	font-size: 14px;
+	font-weight: 550;
+}
+
 .content-evaluate .title .confirm .confirm-content p {
 	
 }
@@ -702,7 +709,7 @@ padding: 10px;
 }
 
 .content-evaluate .title .confirm .confirm-content p span i {
-	    margin: 0px 10px;
+	margin: 0px 10px;
 }
 
 .content-evaluate .title .confirm .confirm-content p h5 {
@@ -711,12 +718,12 @@ padding: 10px;
 
 .content-evaluate .evaluating-star {
 	display: flex;
-    margin: 5px 10px;
-    padding: 0px;
+	margin: 5px 10px;
+	padding: 0px;
 }
 
 .content-evaluate .evaluating-star li {
-	    margin-right: 5px;
+	margin-right: 5px;
 }
 
 .content-evaluate .evaluating-star li i {
@@ -733,29 +740,31 @@ padding: 10px;
 
 /*Comment*/
 .comment {
-	    width: 80%;
-    margin-bottom: 60px;
-}
-.frame-border-comment{
-  border-top: 1px solid #b7b7b7;padding: 10px 0px; 
-}
-.comment-frame {
-    width: 100%;
-    margin-left: 25px;
-    padding: 10px;
+	width: 80%;
+	margin-bottom: 60px;
 }
 
-.comment-title {    margin: 20px 0px; 
-	
+.frame-border-comment {
+	border-top: 1px solid #b7b7b7;
+	padding: 10px 0px;
+}
+
+.comment-frame {
+	width: 100%;
+	margin-left: 25px;
+	padding: 10px;
+}
+
+.comment-title {
+	margin: 20px 0px;
 }
 
 .comment-title .ico-user {
-    margin-right: 5px;
-    color: white;
-    background: #1b5fa7;
-    padding: 2px 9px;}
-
-
+	margin-right: 5px;
+	color: white;
+	background: #1b5fa7;
+	padding: 2px 9px;
+}
 
 .comment-content {
 	
@@ -770,29 +779,29 @@ padding: 10px;
 }
 
 .respone-cmt button {
-	 outline: 0;
-    border: 0;
-    background: white;
-    border-radius: 5px;
-    padding: 0px 5px;
-}.respone-cmt button:hover {
+	outline: 0;
+	border: 0;
+	background: white;
+	border-radius: 5px;
+	padding: 0px 5px;
+}
 
-    background: #f0f0f0;
-   
+.respone-cmt button:hover {
+	background: #f0f0f0;
 }
 
 .respone-cmt span {
 	font-style: italic;
-    font-size: 14px;
+	font-size: 14px;
 }
 
 .respone {
-	     padding: 0;
-    padding: 10px 30px;
-    border-radius: 3px;
-    background: #fdfdfd;
-    margin: 20px;
-    border: 1px solid #dbdbdb;
+	padding: 0;
+	padding: 10px 30px;
+	border-radius: 3px;
+	background: #fdfdfd;
+	margin: 20px;
+	border: 1px solid #dbdbdb;
 }
 
 .respone li {
@@ -824,19 +833,65 @@ padding: 10px;
 }
 
 .respone li .respone-cmt button {
-
+	
 }
 
 .respone li .respone-cmt span {
 	
-}.comment-frame .header{
-    font-size: 25px;
-    width: 100%;
-    margin-bottom: 10px;
-  }.comment-frame .stick{
-   width: 300px;
+}
+
+.comment-frame .header {
+	font-size: 25px;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.comment-frame .stick {
+	width: 300px;
+	border-radius: 3px;
+	height: 3px;
+	margin-bottom: 35px;
+	background: #1b5fa7;
+}
+
+.create-cmt {
+	    padding: 10px;
+    border-bottom: 1px solid #a1a1a1;
+    overflow: hidden;
+    width: 75%;
+}
+
+.create-cmt .input-cmt {
+    width: 50%;
+    background-color: white;
+    border: 0;
     border-radius: 3px;
-    height: 3px;
-    margin-bottom: 35px;
-       background: #1b5fa7;
+    border: 1px solid #b1b1b18c;
+    outline: 0;
+    padding: 5px 10px;
+}
+
+.create-cmt .name {
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+
+.btn-cmt button{
+    color: white;
+    background: #1b5fa7;
+    border: 0;
+    padding: 10px;
+    /* float: right; */
+    width: fit-content;
+    box-shadow: -1px 2px 4px 0px #3a3a3a;
+    border-radius: 4px;
+    float: right;
+    margin-top: 15px;
+}
+.create-cmt .email {
+	
+}
+
+.craete-cmt .content-cmt {
+	
 }
