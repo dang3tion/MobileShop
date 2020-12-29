@@ -26,10 +26,29 @@ public class DAO_Branch extends ExecuteStatementUtility{
 		return list;
 	}
 	
+
+	public ArrayList<Branch> listSeach(String keyword,int start, int end) {
+		ArrayList<Branch> list = new ArrayList<Branch>();
+		String[] para = { keyword,start + "", end + "" };
+		String query = "SELECT * FROM SEARCHBRANCH(?,?,?)";
+		try (ResultSet rs = super.AccessDBstr(query, para)) {
+			while (rs.next()) {
+				list.add(new Branch(rs.getString("MATH").trim(), rs.getString("TENTH"), rs.getInt("SLDT"), rs.getString("TRANGTHAI")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
 	public static void main(String[] args) {
 		DAO_Branch dao = new DAO_Branch();
-		for (int i = 0; i < dao.listBranch(1, 10).size(); i++) {
-			System.out.println(dao.listBranch(1, 10).get(i).toString());
+//		for (int i = 0; i < dao.listBranch(1, 10).size(); i++) {
+//			System.out.println(dao.listBranch(1, 10).get(i).toString());
+//		}
+		for (int i = 0; i < dao.listSeach("còn kinh doanh", 1, 2).size(); i++) {
+			System.out.println(dao.listSeach("còn kinh doanh", 1, 2).get(i).toString());
 		}
 	}
 

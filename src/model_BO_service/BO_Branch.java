@@ -10,10 +10,15 @@ public class BO_Branch {
 	public ArrayList<Branch> getListBranch(int start, int end) {
 		return dao.listBranch(start, end);
 	}
+	public ArrayList<Branch> getListSearch(String keyword,int start, int end){
+		return dao.listSeach(keyword, start, end);
+	}
+	
 	public static void main(String[] args) {
 		BO_Branch dao = new BO_Branch();
 		for (int i = 0; i < dao.getListBranch(1, 10).size(); i++) {
 			System.out.println(dao.getListBranch(1, 10).get(i).toString());
 		}
 	}
+	
 }
