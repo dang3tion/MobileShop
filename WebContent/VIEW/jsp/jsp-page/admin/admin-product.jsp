@@ -63,25 +63,31 @@
 													</div>
 
 												</div>
-												<a href=" ${pageContext.request.contextPath}/admin/product-add"><button
+												<a
+													href=" ${pageContext.request.contextPath}/admin/product-add"><button
 														data-toggle="tooltip" data-placement="top"
-														title="Thêm một sản phẩm mới vào danh sách" class="btn btn-success btn-add">
+														title="Thêm một sản phẩm mới vào danh sách"
+														class="btn btn-success btn-add">
 														<i class="fas fa-plus-square"></i> Thêm sản phẩm
 													</button></a>
 												<table id="bootstrap-data-table" class="table table-hover ">
 													<thead class="thead-light">
 														<tr>
-															<th>Hình ảnh</th>
-															<th>Mã sản phẩm</th>
+															<th>STT</th>
+															<th>Ảnh</th>
+															<th data-toggle="tooltip" data-placement="top"
+																title="Mã sản phẩm">Mã SP</th>
 															<th>Tên</th>
 															<th data-toggle="tooltip" data-placement="top"
 																title="Hãng sản xuất">Hãng SX</th>
-															<th>Ngày ra mắt</th>
+															<th>Ngày cập nhật</th>
 															<th data-toggle="tooltip" data-placement="top"
 																title="Số lượng còn lại">SL còn lại</th>
 															<th data-toggle="tooltip" data-placement="top"
 																title="Số lượng đã bán">SL đã bán</th>
-															<th>Giá bán</th>
+															<th>Giá gốc</th>
+															<th>Giá KM</th>
+															<th>Trạng thái</th>
 															<th></th>
 
 														</tr>
@@ -89,201 +95,70 @@
 
 													<tbody id="content-table">
 														<tr>
-															<td style="max-width: 140px;"><img
-																src="../image/Product/i12black.png" width="100px"
-																height="100px" alt=""></td>
-															<td>iphone12S</td>
-															<td>Iphone 12</td>
-															<td>Apple</td>
-															<td>09/09/2020</td>
-															<td>200</td>
+															<c:forEach items="${listProduct}" var="pro">
+																<td>${pro.numOrder}</td>
+																<td style="max-width: 140px;"><img
+																	src="${pro.img}" width="100px"
+																	height="100px" alt=""></td>
+																<td>${pro.id}</td>
+																<td>${pro.name}</td>
+																<td>${pro.branch}</td>
+																<td>${pro.date}</td>
+																<td>${pro.quatity}</td>
 
 
-															<td>190</td>
-															<td class="color-price">30.000.000 VND</td>
-															<td class="row" style="border: none;">
-																<div style="margin: auto;">
-																	<a href="${pageContext.request.contextPath}/product-edit"><button
-																			class="m-wTD btn btn-primary" data-toggle="tooltip"
-																			data-placement="top" title="Chỉnh sửa"
-																			data-toggle="modal" data-target="#editUser">
-																			<i class="txt-center fas fa-edit"></i>
-																		</button></a>
-																	<button class="btn btn-danger sizeTh1"
-																		data-toggle="modal" data-target="#delete"
-																		data-toggle="tooltip" data-placement="top" title="Xóa">
-																		<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																	</button>
-																</div>
+																<td>${pro.quatityRemain}</td>
+																<td class="color-price">${pro.price}</td>
+																<td class="color-price">${pro.priceSale}</td>
+																<td class="color-price">${pro.state}</td>
+																
+								
+																<td class="row" style="border: none;">
+																	<div style="margin: auto;">
+																		<a
+																			href="${pageContext.request.contextPath}/product-edit"><button
+																				class="m-wTD btn btn-primary" data-toggle="tooltip"
+																				data-placement="top" title="Chỉnh sửa"
+																				data-toggle="modal" data-target="#editUser">
+																				<i class="txt-center fas fa-edit"></i>
+																			</button></a>
+																		<button class="btn btn-danger sizeTh1"
+																			data-toggle="modal" data-target="#delete${pro.id}"
+																			data-toggle="tooltip" data-placement="top"
+																			title="Xóa">
+																			<i class="txt-center menu-icon fas fa-trash-alt"></i>
+																		</button>
+																	</div>
 
-															</td>
+																</td>
 														</tr>
 
-														<tr>
-															<td style="max-width: 140px;"><img
-																src="../image/Product/IPhone8.jpg" width="100px"
-																height="100px" alt=""></td>
-															<td>iphone8</td>
-															<td>Iphone 8</td>
-															<td>Apple</td>
-															<td>09/01/2018</td>
-
-
-
-
-															<td>10</td>
-															<td>190</td>
-															<td class="color-price">15.000.000 VND</td>
-															<td class="row" style="border: none;">
-																<div style="margin: auto;">
-																	<a href="${pageContext.request.contextPath}/admin/product-edit"><button
-																			class="m-wTD btn btn-primary" data-toggle="tooltip"
-																			data-placement="top" title="Chỉnh sửa"
-																			data-toggle="modal" data-target="#editUser">
-																			<i class="txt-center fas fa-edit"></i>
-																		</button></a>
-																	<button class="btn btn-danger sizeTh1"
-																		data-toggle="modal" data-target="#delete"
-																		data-toggle="tooltip" data-placement="top" title="Xóa">
-																		<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																	</button>
+														<!-- Modal -->
+														<div class="modal fade" id="delete${pro.id}" tabindex="-1"
+															role="dialog" aria-labelledby="exampleModalLabel"
+															aria-hidden="true">
+															<div class="modal-dialog" role="document">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<h5 class="modal-title" id="exampleModalLabel">Xác
+																			nhận thay đổi trạng thái sản phẩm</h5>
+																		<button type="button" class="close"
+																			data-dismiss="modal" aria-label="Close">
+																			<span aria-hidden="true">&times;</span>
+																		</button>
+																	</div>
+																	<div class="modal-body">Bạn có muốn thay đổi trạng thái sản phẩm ${pro.name}.
+																		 </div>
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-secondary"
+																			data-dismiss="modal">Không</button>
+																		<button type="button" 
+																			class="btn btn-primary">Đồng ý</button>
+																	</div>
 																</div>
-
-															</td>
-														</tr>
-
-
-														<tr>
-															<td style="max-width: 140px;"><img
-																src="../image/Product/samsung.png" width="100px"
-																height="100px" alt=""></td>
-															<td>samJ10</td>
-															<td>Samsung J10</td>
-															<td>Samsung</td>
-															<td>09/01/2018</td>
-
-
-
-
-															<td>100</td>
-															<td>60</td>
-															<td class="color-price">20.000.000 VND</td>
-															<td class="row" style="border: none;">
-																<div style="margin: auto;">
-																	<a href="${pageContext.request.contextPath}/admin/product-edit"><button
-																			class="m-wTD btn btn-primary" data-toggle="tooltip"
-																			data-placement="top" title="Chỉnh sửa"
-																			data-toggle="modal" data-target="#editUser">
-																			<i class="txt-center fas fa-edit"></i>
-																		</button></a>
-																	<button class="btn btn-danger sizeTh1"
-																		data-toggle="modal" data-target="#delete"
-																		data-toggle="tooltip" data-placement="top" title="Xóa">
-																		<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																	</button>
-																</div>
-
-															</td>
-														</tr>
-
-														<tr>
-															<td style="max-width: 140px;"><img
-																src="../image/Product/sony.jpg" width="100px"
-																height="100px" alt=""></td>
-															<td>sonyX1</td>
-															<td>Sony Xperia 1</td>
-															<td>Sony</td>
-															<td>09/09/2020</td>
-															<td>200</td>
-
-
-															<td>190</td>
-															<td class="color-price">20.000.000 VND</td>
-															<td class="row" style="border: none;">
-																<div style="margin: auto;">
-																	<a href="${pageContext.request.contextPath}/admin/product-edit"><button
-																			class="m-wTD btn btn-primary" data-toggle="tooltip"
-																			data-placement="top" title="Chỉnh sửa"
-																			data-toggle="modal" data-target="#editUser">
-																			<i class="txt-center fas fa-edit"></i>
-																		</button></a>
-																	<button class="btn btn-danger sizeTh1"
-																		data-toggle="modal" data-target="#delete"
-																		data-toggle="tooltip" data-placement="top" title="Xóa">
-																		<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																	</button>
-																</div>
-
-															</td>
-														</tr>
-
-														<tr>
-															<td style="max-width: 140px;"><img
-																src="../image/Product/oppo.png" width="100px"
-																height="100px" alt=""></td>
-															<td>oppo</td>
-															<td>Oppo A92</td>
-															<td>Oppo</td>
-															<td>09/09/2020</td>
-															<td>200</td>
-
-
-															<td>190</td>
-															<td class="color-price">20.000.000 VND</td>
-															<td class="row" style="border: none;">
-																<div style="margin: auto;">
-																	<a href="${pageContext.request.contextPath}/admin/product-edit"><button
-																			class="m-wTD btn btn-primary" data-toggle="tooltip"
-																			data-placement="top" title="Chỉnh sửa"
-																			data-toggle="modal" data-target="#editUser">
-																			<i class="txt-center fas fa-edit"></i>
-																		</button></a>
-																	<button class="btn btn-danger sizeTh1"
-																		data-toggle="modal" data-target="#delete"
-																		data-toggle="tooltip" data-placement="top" title="Xóa">
-																		<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																	</button>
-																</div>
-
-															</td>
-														</tr>
-
-
-														<tr>
-															<td style="max-width: 140px;"><img
-																src="../image/Product/i12black.png" width="100px"
-																height="100px" alt=""></td>
-															<td>iphone12S</td>
-															<td>Iphone 12</td>
-															<td>Apple</td>
-															<td>09/09/2020</td>
-															<td>200</td>
-
-
-															<td>190</td>
-															<td class="color-price">30.000.000 VND</td>
-															<td class="row" style="border: none;">
-																<div style="margin: auto;">
-																	<a href="${pageContext.request.contextPath}/admin/product-edit"><button
-																			class="m-wTD btn btn-primary" data-toggle="tooltip"
-																			data-placement="top" title="Chỉnh sửa"
-																			data-toggle="modal" data-target="#editUser">
-																			<i class="txt-center fas fa-edit"></i>
-																		</button></a>
-																	<button class="btn btn-danger sizeTh1"
-																		data-toggle="modal" data-target="#delete"
-																		data-toggle="tooltip" data-placement="top" title="Xóa">
-																		<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																	</button>
-																</div>
-
-															</td>
-														</tr>
-
-
-
-
-
+															</div>
+														</div>
+														</c:forEach>
 
 
 

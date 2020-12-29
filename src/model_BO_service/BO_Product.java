@@ -7,6 +7,7 @@ import BeanProduct.Detail_Config;
 import BeanProduct.StarEvaluate;
 import model_DAO.DAO_Product;
 import model_beans.Product;
+import model_beans.ProductAdmin;
 
 public class BO_Product {
 //	Dao_Product2 dao2 = new Dao_Product2();
@@ -21,7 +22,7 @@ public class BO_Product {
 		return boProduct;
 	}
 
-	protected BO_Product() {
+	public BO_Product() {
 	}
 	
 
@@ -40,6 +41,10 @@ public class BO_Product {
 	public StarEvaluate star(String id) {
 		return new StarEvaluate(id, dao.countStar("1", id), dao.countStar("2", id), dao.countStar("3", id),
 				dao.countStar("4", id), dao.countStar("5", id));
+	}
+	
+	public ArrayList<ProductAdmin> listProductAdmin(int start,int end){
+		return dao.listProductAdmin(start, end);
 	}
 
 
