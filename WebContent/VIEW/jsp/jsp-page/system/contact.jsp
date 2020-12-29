@@ -88,7 +88,8 @@
 						<div class="outframe-2">
 							<div class="frame-contact">
 								<h4>Gửi phản hồi của bạn</h4>
-								<form action="${pageContext.request.contextPath}/contact" method="post">
+								<form onsubmit="return checkVali()" action="${pageContext.request.contextPath}/contact"
+									method="post">
 									<div class="collumn">
 										<div class="form-2">
 											<div class="form-input-2">
@@ -96,7 +97,7 @@
 													<p>Họ tên</p>
 												</div>
 												<input type="name" placeholder="Nhập tên của bạn"
-													onfocusout="fullname(this,name3)" name = "name">
+													onfocusout="fullname(this,name3)" name="name">
 											</div>
 											<div class=" fillText3" id='name3'></div>
 										</div>
@@ -108,9 +109,11 @@
 													<div class="title">
 														<p>Email*</p>
 													</div>
-													<input type="email" placeholder="Nhập email" id="email"
-														onfocusout="email(this,text2)" name = "email">
+													<input placeholder="Nhập email" id="email"
+														onfocusout="email(this,text2)" name="email">
+													
 												</div>
+												<p id="require-email" style="display: none;color: red; margin-left: -1em">Vui lòng nhập đúng email</p>
 												<div class=" fillText3" id="text2">Email must have the
 													@ characters</div>
 											</div>
@@ -123,7 +126,7 @@
 													</div>
 													<input class="input-2" type="text" outf
 														placeholder="Nhập số điện thoại"
-														onfocusout="number(this,phone)" name = "phone">
+														onfocusout="number(this,phone)" name="phone">
 												</div>
 												<div class=" fillText3" id="phone">Only number input</div>
 											</div>
@@ -136,14 +139,15 @@
 												<div class="title">
 													<p>Lời nhắn</p>
 												</div>
-												<textarea cols="40" placeholder="Nhập lời nhắn của bạn" name = "content"></textarea>
+												<textarea cols="40" placeholder="Nhập lời nhắn của bạn"
+													name="content"></textarea>
 											</div>
 										</div>
 
 									</div>
 									<div class="collumn">
 										<div class="">
-											<button type="submit" class="btn-submit">
+											<button onclick="checkClick()" type="submit" class="btn-submit">
 												Gửi <i class="fas fa-long-arrow-alt-right"></i>
 											</button>
 										</div>
@@ -159,7 +163,7 @@
 		</div>
 	</div>
 
-<!-- @@@@@@@@@@ HIỆN THÔNG BÁO  @@@@@@@@@@@@@ -->
+	<!-- @@@@@@@@@@ HIỆN THÔNG BÁO  @@@@@@@@@@@@@ -->
 	<c:if test="${message != null}">
 
 		<script>
@@ -169,9 +173,9 @@
 		</script>
 
 		<!-- Button trigger modal -->
-		<button style="display: none"
-			type="button" id="btn-message" class="btn btn-white"
-			data-toggle="modal" data-target="#exampleModalCenter"></button>
+		<button style="display: none" type="button" id="btn-message"
+			class="btn btn-white" data-toggle="modal"
+			data-target="#exampleModalCenter"></button>
 
 		<!-- Modal -->
 		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
@@ -196,7 +200,42 @@
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 
-
+	<script type="text/javascript">
+		function vali_isEmail(text) {
+			const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+			const result = regex.test(text);
+			return result;
+		}
+		var checkEmail = false;
+		function check_email(id) {
+			var s = document.getElementById(id).value;
+			if (!vali_isEmail(s)) {
+				document.getElementById("require-email").style.display = "block";
+				checkEmail = false;
+				return true;
+			}
+			if (vali_isEmail(s)) {
+				document.getElementById("require-email").style.display = "none";
+				checkEmail = true;
+				return false;
+			}
+		}
+		function checkVali() {
+			if (checkEmail) {
+				console.log("true");
+				return true;
+			} else {
+				// alert("KKKKKK");
+				console.log("false");
+				return false;
+			}
+		}
+		function checkClick() {
+			if (check_email("email")) {
+				document.getElementById("require-email").style.display = "block";
+			}
+		}
+	</script>
 
 
 </body>
