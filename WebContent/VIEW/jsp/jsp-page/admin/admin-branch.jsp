@@ -34,20 +34,33 @@
 											<div class=" mb-2">
 												<h4 class="text-center mt-3 mb-3">Danh sách thương hiệu</h4>
 												<div class="row">
-													<div class="show-page mb-3 ml-3">
-														Hiển thị <span> <select id="show"
-															onclick="select_page()">
-																<option value="10">10</option>
-																<option value="20">20</option>
-																<option value="50">50</option>
-														</select></span> cột
+<!-- 													<div class="show-page mb-3 ml-3"> -->
+<!-- 														Hiển thị <span> <select id="show" -->
+<!-- 															onclick="select_page()"> -->
+<!-- 																<option value="10">10</option> -->
+<!-- 																<option value="20">20</option> -->
+<!-- 																<option value="50">50</option> -->
+<!-- 														</select></span> cột -->
+<!-- 													</div> -->
+													<form action="${pageContext.request.contextPath}/admin/branch" method="post">
+													<div class="ml-5 mb-2 form-row align-items-center">
+														<div class="col-auto">
+															<div class="input-group mb-2">
+																<div class="input-group-prepend">
+																	<div class="input-group-text">
+																		<i class="fas fa-search"></i>
+																	</div>
+																</div>
+																<input name="searchContact" type="text" class="form-control"
+																	placeholder="Nhập từ khóa" >
+															</div>
+														</div>
+														<div class="col-auto">
+															<button type="submit" class="btn btn-primary mb-2">Tìm
+																kiếm</button>
+														</div>
 													</div>
-													<div class="show-page " style="margin-left: 50px;">
-
-														Tìm kiếm <span> <input id="myInput"
-															style="padding-left: 15px; border: 0.5px solid grey;"
-															type="text" placeholder="Search.."></span>
-													</div>
+												</form>
 												</div>
 												<table id="bootstrap-data-table" class="table table-hover ">
 													<thead class="thead-light">
@@ -83,7 +96,7 @@
 																	<div class="modal-content">
 																		<div class="modal-header">
 																			<h5 class="modal-title" id="exampleModalLabel">Xác
-																				nhận thay đổi thương hiệu ${pp.name}.</h5>
+																				nhận thay đổi trạng thái thương hiệu ${pp.name}.</h5>
 																			<button type="button" class="close"
 																				data-dismiss="modal" aria-label="Close">
 																				<span aria-hidden="true">&times;</span>
@@ -92,11 +105,13 @@
 																		<div class="modal-body">Bạn có muốn xóa thương
 																			hiệu này.</div>
 																		<div class="modal-footer">
+																		<form action="${pageContext.request.contextPath}/admin/branch" method="post">
+																			<input style="display: none" name = "id" value="${pp.id}">
 																			<button type="button" class="btn btn-secondary"
 																				data-dismiss="modal">Không</button>
-																			<button type="button" class="btn btn-primary"
-																				data-dismiss="modal">Đồng ý</button>
-																		</div>
+																			<button type="submit" class="btn btn-primary">Đồng ý</button>
+																			</div>
+																		</form>
 																	</div>
 																</div>
 															</div>
@@ -150,6 +165,40 @@
 				</div>
 			</div>
 		</div>
+		<!-- @@@@@@@@@@ HIỆN THÔNG BÁO NGƯNG KINH DOANH  @@@@@@@@@@@@@ -->
+	<c:if test="${messageblock != null}">
+
+		<script>
+			window.onload = function() {
+				document.getElementById('btn-message').click();
+			}
+		</script>
+
+		<!-- Button trigger modal -->
+		<button style="display: none"
+			type="button" id="btn-message" class="btn btn-white"
+			data-toggle="modal" data-target="#exampleModalCenter"></button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">${messageblock}</h5>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal">Đóng</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</c:if>
+	<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO NGƯNG KINH DOANH @@@@@@@@@@@@@ -->
+		
 </body>
 
 </html>

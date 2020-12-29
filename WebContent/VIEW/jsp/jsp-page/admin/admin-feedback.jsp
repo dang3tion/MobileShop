@@ -206,7 +206,7 @@
 						<!-- .animated -->
 					</div>
 					<!-- .content -->
-
+	
 
 					<!-- delete product -->
 
@@ -215,7 +215,75 @@
 		</div>
 	</div>
 
-	</div>
+<!-- @@@@@@@@@@ HIỆN THÔNG BÁO XÓA  @@@@@@@@@@@@@ -->
+	<c:if test="${messagedelete != null}">
+
+		<script>
+			window.onload = function() {
+				document.getElementById('btn-message').click();
+			}
+		</script>
+
+		<!-- Button trigger modal -->
+		<button style="display: none"
+			type="button" id="btn-message" class="btn btn-white"
+			data-toggle="modal" data-target="#exampleModalCenter"></button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">${messagedelete}</h5>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal">Đóng</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</c:if>
+	<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO XÓA @@@@@@@@@@@@@ -->
+
+<!-- @@@@@@@@@@ HIỆN THÔNG GỬI  @@@@@@@@@@@@@ -->
+	<c:if test="${messagesend != null}">
+
+		<script>
+			window.onload = function() {
+				document.getElementById('btn-message').click();
+			}
+		</script>
+
+		<!-- Button trigger modal -->
+		<button style="display: none"
+			type="button" id="btn-message" class="btn btn-white"
+			data-toggle="modal" data-target="#exampleModalCenter"></button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">${messagesend}</h5>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal">Đóng</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</c:if>
+	<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO GỬI @@@@@@@@@@@@@ -->
+
+
 </body>
 
 

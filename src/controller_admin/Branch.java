@@ -24,6 +24,19 @@ public class Branch extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String search = request.getParameter("searchContact");
+		String id = request.getParameter("id");
+		if (search != null) {
+			System.out.println(search);
+			System.out.println("sdafsdf");
+			//hàm search
+			
+		}
+		if (id != null) {
+			request.setAttribute("messageblock", id);
+			request.setAttribute("colorblock", "background-color: green");
+		}
+		
 		doGet(request, response);
 	}
 

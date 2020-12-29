@@ -39,6 +39,7 @@ public class Feedback extends HttpServlet {
 
 			bo.delete(idDelete);
 			request.setAttribute("listContact", bo.listContact(1, 1000));
+			request.setAttribute("messagedelete", "Phản hồi đã được xóa.");
 		}
 		if (email != null||content != null) {
 			
@@ -47,6 +48,7 @@ public class Feedback extends HttpServlet {
 			SendMail.sendFeekBack(email, content);
 			bo.updateState(id);
 			request.setAttribute("listContact", bo.listContact(1, 1000));
+			request.setAttribute("messagesend", "Phản hồi của bạn đã được gửi.");
 		}
 		if (search != null) {
 			System.out.println(search);
