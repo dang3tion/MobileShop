@@ -1,6 +1,7 @@
 package model_beans;
 
 public class Branch {
+	private String numOrder;
 	private String id;
 	private String name;
 	private int quantity_product;
@@ -12,12 +13,21 @@ public class Branch {
 		this.name = name;
 		this.quantity_product = quantity_product;
 	}
-	
+
 	public String getState() {
 		return state;
 	}
 
 	public void setState(String state) {
+		this.state = state;
+	}
+
+	public Branch(String numOrder, String id, String name, int quantity_product, String state) {
+		super();
+		this.numOrder = numOrder;
+		this.id = id;
+		this.name = name;
+		this.quantity_product = quantity_product;
 		this.state = state;
 	}
 
@@ -57,10 +67,18 @@ public class Branch {
 		this.quantity_product = quantity_product;
 	}
 
+	public String getNumOrder() {
+		return numOrder;
+	}
+
+	public void setNumOrder(String numOrder) {
+		this.numOrder = numOrder;
+	}
+
 	@Override
 	public String toString() {
 		return "Branch [id=" + id + ", name=" + name + ", quantity_product=" + quantity_product + ", state=" + state
 				+ "]";
 	}
-	
+
 }

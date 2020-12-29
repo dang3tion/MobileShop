@@ -8,8 +8,8 @@ import model_ConnectDB.ExecuteStatementUtility;
 
 import model_beans.Branch;
 
-public class DAO_Branch extends ExecuteStatementUtility{
-	
+public class DAO_Branch extends ExecuteStatementUtility {
+
 	public ArrayList<Branch> listBranch(int start, int end) {
 		ArrayList<Branch> list = new ArrayList<Branch>();
 		String[] para = { start + "", end + "" };
@@ -17,7 +17,8 @@ public class DAO_Branch extends ExecuteStatementUtility{
 				+ "";
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
-				list.add(new Branch(rs.getString("MATH").trim(), rs.getString("TENTH"), rs.getInt("SLDT"), rs.getString("TRANGTHAI")));
+				list.add(new Branch(rs.getString("STT"), rs.getString("MATH").trim(), rs.getString("TENTH"),
+						rs.getInt("SLDT"), rs.getString("TRANGTHAI")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -25,15 +26,15 @@ public class DAO_Branch extends ExecuteStatementUtility{
 
 		return list;
 	}
-	
 
-	public ArrayList<Branch> listSeach(String keyword,int start, int end) {
+	public ArrayList<Branch> listSeach(String keyword, int start, int end) {
 		ArrayList<Branch> list = new ArrayList<Branch>();
-		String[] para = { keyword,start + "", end + "" };
+		String[] para = { keyword, start + "", end + "" };
 		String query = "SELECT * FROM SEARCHBRANCH(?,?,?)";
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
-				list.add(new Branch(rs.getString("MATH").trim(), rs.getString("TENTH"), rs.getInt("SLDT"), rs.getString("TRANGTHAI")));
+				list.add(new Branch(rs.getString("STT"), rs.getString("MATH").trim(), rs.getString("TENTH"),
+						rs.getInt("SLDT"), rs.getString("TRANGTHAI")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -41,15 +42,59 @@ public class DAO_Branch extends ExecuteStatementUtility{
 
 		return list;
 	}
+
+	public Branch branch(String id) {
+		String[] para = { id };
+		String query = "SELECT * FROM THUONGHIEU WHERE MATH = ?";
+		Branch branch = null;
+		try (ResultSet rs = super.AccessDBstr(query, para)) {
+			while (rs.next()) {
+				branch = new Branch(rs.getString("MATH").trim(), rs.getString("TENTH"), rs.getInt("SLDT"),
+						rs.getString("TRANGTHAI"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return branch;
+	}
+
+	public void updateState(String id) {
+		String check = branch(id).getState();
+		if (check.equals("Còn kinh doanh")) {
+			try {
+				System.out.println("Ngưng");
+				String query = "UPDATE THUONGHIEU SET TRANGTHAI = N'Ngừng kinh doanh' WHERE MATH = ?";
+				String query1 = "UPDATE SANPHAM SET TINHTRANG = N'Ngưng kinh doanh' WHERE MATH = ? AND TINHTRANG = N'Đang bán'";
+				String[] para = { id };
+				try (ResultSet rs = super.AccessDBstr(query, para)) {
+				}
+				try (ResultSet rs = super.AccessDBstr(query1, para)) {
+				}
 	
-	public static void main(String[] args) {
-		DAO_Branch dao = new DAO_Branch();
-//		for (int i = 0; i < dao.listBranch(1, 10).size(); i++) {
-//			System.out.println(dao.listBranch(1, 10).get(i).toString());
-//		}
-		for (int i = 0; i < dao.listSeach("còn kinh doanh", 1, 2).size(); i++) {
-			System.out.println(dao.listSeach("còn kinh doanh", 1, 2).get(i).toString());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if (check.equals("Ngừng kinh doanh")) {
+			try {
+				System.out.println("còn");
+				String query = "UPDATE THUONGHIEU SET TRANGTHAI = N'Còn kinh doanh' WHERE MATH = ?";
+				String query1 = "UPDATE SANPHAM SET TINHTRANG = N'Đang bán' WHERE MATH = ? AND TINHTRANG = N'Ngưng kinh doanh'";
+				String[] para = { id };
+				try (ResultSet rs = super.AccessDBstr(query, para)) {
+				}
+				try (ResultSet rs = super.AccessDBstr(query1, para)) {
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
-}	
+	public static void main(String[] args) {
+		DAO_Branch dao = new DAO_Branch();
+		dao.updateState("TH01");
+	}
+
+}

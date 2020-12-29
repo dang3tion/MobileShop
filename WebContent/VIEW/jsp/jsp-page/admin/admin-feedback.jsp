@@ -62,6 +62,7 @@
 											<table id="bootstrap-data-table" class="table table-hover ">
 												<thead class="thead-light">
 													<tr>
+														<th>STT</th>
 														<th>Họ tên</th>
 														<th>Email</th>
 														<th>Số điện thoại</th>
@@ -76,6 +77,7 @@
 
 													<c:forEach items="${listContact}" var="c">
 														<tr>
+															<td>${c.numericalOrder}</td>
 															<td>${c.name}</td>
 															<td>${c.email}</td>
 															<td>${c.numberPhone}</td>
