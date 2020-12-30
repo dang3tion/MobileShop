@@ -35,7 +35,6 @@ public class Product_main {
 	}
 
 	public Product_main() {
-		super();
 	}
 
 	public String getID() {

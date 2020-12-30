@@ -32,15 +32,16 @@ public class Controller_Cart extends HttpServlet {
 
 		// display Cart
 		ArrayList<Product> listProduct = new ArrayList<Product>();
+		
 		for (String productID : cart.getListProductID()) {
 			Product pro = bo.getProduct(productID);
 			pro.setQuantityInCart(cart.getQuantityEveryProduct(productID));
 			listProduct.add(pro);
-
-			request.setAttribute("LIST_PRODUCT_IN_CART", listProduct);
-			request.setAttribute("SUM_CART", cart.getQuantityOfProductInCart());
-			request.setAttribute("message", request.getAttribute("message"));
 		}
+		
+		request.setAttribute("LIST_PRODUCT_IN_CART", listProduct);
+		request.setAttribute("SUM_CART", cart.getQuantityOfProductInCart());
+		request.setAttribute("message", request.getAttribute("message"));
 
 		dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
 		dispatcher.forward(request, response);
@@ -55,26 +56,22 @@ public class Controller_Cart extends HttpServlet {
 		String choose = request.getParameter("choose");
 		String page = request.getParameter("page");
 		String datHang = request.getParameter("datHang");
-		
-		String color = request.getParameter("color");
-		System.out.println(color + "xxx");
+
+		String colorID = request.getParameter("color");
 
 		HttpSession session = request.getSession();
 
 		Cart cart = (Cart) session.getAttribute("CART");
 
-		
-		
-		
 		switch (choose) {
 		case "add":
 			String message = null;
-			switch (cart.add(productID)) {
+			switch (cart.add(productID, colorID)) {
 			case 1:
-				message = "tối đa "+Config.MAX_QUANTITY_OF_PRODUCT +" sản phẩm mỗi mẫu điện thoại";
+				message = "tối đa " + Config.MAX_QUANTITY_OF_PRODUCT + " sản phẩm mỗi mẫu điện thoại";
 				break;
 			case 2:
-				message = "tối đa "+Config.MAX_PRODUCT +" mẫu điện thoại trong giỏ hàng";
+				message = "tối đa " + Config.MAX_PRODUCT + " mẫu điện thoại trong giỏ hàng";
 				break;
 			}
 
@@ -98,7 +95,7 @@ public class Controller_Cart extends HttpServlet {
 
 			break;
 		case "decrease":
-			cart.removeProductItem(productID);
+			cart.removeProductItem(productID, colorID);
 			updateCart(cart, session);
 			response.sendRedirect(request.getContextPath() + "/cart");
 			break;
