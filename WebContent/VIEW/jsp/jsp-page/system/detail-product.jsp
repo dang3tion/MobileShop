@@ -39,7 +39,8 @@
 
 		<!-- Portfolio Item Heading -->
 		<h4 class="my-4">
-			<small>Điện thoại  </small> ${product.name}
+			<small>Điện thoại  		
+			  </small> ${product.name}
 		</h4>
 
 		<!-- Portfolio Item Row -->
@@ -280,8 +281,8 @@
 					<div class="row">
 						<div class="frame-choose">
 							<input type="radio" class="choose-color" onclick="chooseColor()"
-								checked id="MS01" name="color" id="xanh"> <label
-								class="color-card" for="xanh">
+								checked id="MS01" name="color" > <label
+								class="color-card" for="MS01">
 								<div class="frame-color">
 									<div
 										style="width: fit-content; margin: auto; position: relative;">
@@ -293,8 +294,8 @@
 
 								</div>
 							</label> <input type="radio" id="MS02" class="choose-color"
-								onclick="chooseColor()" name="color" id="do"> <label
-								class="color-card" for="do">
+								onclick="chooseColor()" name="color"> <label
+								class="color-card" for="MS02">
 								<div class="frame-color">
 									<div
 										style="width: fit-content; margin: auto; position: relative;">
@@ -584,21 +585,6 @@
 					<div class="col-12" style="margin: 20px 30px;">
 						<div class="evaluate">
 							<span>Chọn đánh giá của bạn</span>
-							<h3>${CUSTOMER_LOGINED.id}xxxx</h3>
-
-
-							<c:if test="${CUSTOMER_LOGINED==null }">
-								<div class="ml-3 col-12">
-									<!-- 					#### captcha #### -->
-									<!-- reCAPTCHA with Vietnamese language -->
-									<script src='https://www.google.com/recaptcha/api.js?hl=vi'></script>
-
-									<div class="g-recaptcha" data-sitekey="${Config.SITE_KEY}"></div>
-									<h3 class="ml-4" style="color: red">${message}</h3>
-
-									<!-- 					#### captcha #### -->
-								</div>
-							</c:if>
 
 							<ul class="evaluating-star" id="star-evaluate">
 								<li><i onmouseover="hoverStar(0)" onmouseout="checkValue()"
