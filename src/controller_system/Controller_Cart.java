@@ -3,6 +3,7 @@ package controller_system;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,20 +30,24 @@ public class Controller_Cart extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		Cart cart = (Cart) session.getAttribute("CART");
-
+		System.out.println();
 		// display Cart
-		ArrayList<Product> listProduct = new ArrayList<Product>();
+		Map<String, HashMap<String, Integer>> map = cart.getListProduct();
+//		HashMap<String, Integer> color = new HashMap<String, Integer>();
+//		color.put("MS01", 1);
+//		color.put("MS02", 3);
+//		map.put("SP01", color);
+//		color = new HashMap<String, Integer>();
+//		color.put("MS01", 3);
+//		color.put("MS04", 1);
+//		map.put("SP02", color);
+
 		
-		for (String productID : cart.getListProductID()) {
-			Product pro = bo.getProduct(productID);
-			pro.setQuantityInCart(cart.getQuantityEveryProduct(productID));
-			listProduct.add(pro);
-		}
-		
-		request.setAttribute("LIST_PRODUCT_IN_CART", listProduct);
+
 		request.setAttribute("SUM_CART", cart.getQuantityOfProductInCart());
 		request.setAttribute("message", request.getAttribute("message"));
 
+		request.setAttribute("map", map);
 		dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
 		dispatcher.forward(request, response);
 		return;

@@ -49,7 +49,7 @@ public class Cart {
 	}
 
 	public HashMap<String, HashMap<String, Integer>> getListProduct() {
-		return listProduct;
+		return this.listProduct;
 	}
 
 	/**

@@ -68,7 +68,8 @@
 						<div class="col-8">
 							<div class="frame-cart">
 								<ul>
-									<c:forEach items="${LIST_PRODUCT_IN_CART}" var="pro">
+									
+									<%-- 	<c:forEach items="${LIST_PRODUCT_IN_CART}" var="pro">
 										<c:import url="/VIEW/jsp/jsp-component/cart-product.jsp">
 											<c:param name="id" value="${pro.id}"></c:param>
 											<c:param name="image" value="${pro.thumbnail}"></c:param>
@@ -78,6 +79,11 @@
 											<c:param name="quantity" value="${pro.quantityInCart}"></c:param>
 										</c:import>
 									</c:forEach>
+ --%>
+
+
+
+
 
 								</ul>
 								<!-- 								### NÚT XÓA TẤT CẢ GIỎ HÀNG ### -->

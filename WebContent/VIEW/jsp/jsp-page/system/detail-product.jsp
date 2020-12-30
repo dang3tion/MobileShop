@@ -39,8 +39,16 @@
 
 		<!-- Portfolio Item Heading -->
 		<h4 class="my-4">
-			<small>Điện thoại  		
-			  </small> ${product.name}
+			<small>Điện thoại </small> ${product.name}
+			<c:forEach items="${map }" var="i">
+				<c:forEach items="${i.value}" var="j">
+					<h5>Sản phẩm: ${i.key }, Màu sắc: ${j.key},Số lượng: ${j.value }</h5>
+
+				</c:forEach>
+
+
+
+			</c:forEach>
 		</h4>
 
 		<!-- Portfolio Item Row -->
@@ -281,7 +289,7 @@
 					<div class="row">
 						<div class="frame-choose">
 							<input type="radio" class="choose-color" onclick="chooseColor()"
-								checked id="MS01" name="color" > <label
+								checked id="MS01" name="color"> <label
 								class="color-card" for="MS01">
 								<div class="frame-color">
 									<div
@@ -348,10 +356,8 @@
 					<div class="col-sm-7">
 						<form action="${pageContext.request.contextPath}/cart"
 							method="post">
-							<input name="choose" value="add" hidden="true">
-							 <input
-								name="color" id="color-input" value=""
-								hidden="true">
+							<input name="choose" value="add" hidden="true"> <input
+								name="color" id="color-input" value="" hidden="true">
 							<button name="id" onclick="addCart()" value="${PRODUCT.id}"
 								type="submit" class="btnMua btn btn-primary btn-lg btn-block">
 								<i class="fas fa-cart-plus" style="color: white;"></i> THÊM VÀO
