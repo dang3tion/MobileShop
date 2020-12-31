@@ -33,7 +33,8 @@ public class Feedback extends HttpServlet {
 		String id = request.getParameter("idUpdate");
 		String idDelete = request.getParameter("delete");
 		String search = request.getParameter("searchContact");
-		
+		String date = request.getParameter("date");
+		String contentOld = request.getParameter("contentOld");
 		if (idDelete != null) {
 			System.out.println(idDelete);
 
@@ -45,7 +46,7 @@ public class Feedback extends HttpServlet {
 			
 			System.out.println(email);
 			System.out.println(content);
-			SendMail.sendFeekBack(email, content);
+			SendMail.sendFeekBack(email, content,contentOld,date);
 			bo.updateState(id);
 			request.setAttribute("listContact", bo.listContact(1, 1000));
 			request.setAttribute("messagesend", "Phản hồi của bạn đã được gửi.");

@@ -49,7 +49,7 @@ public class SendMail {
 //		}
 //	}
 
-	public static void sendFeekBack(String customerMail, String content) {
+	public static void sendFeekBack(String customerMail, String content,String contentOfCus, String time) {
 
 		String from = Config.OWNER_EMAIL;
 
@@ -93,7 +93,7 @@ public class SendMail {
 			message.setSubject("Phản hồi của Mobile Shop", "UTF-8");
 
 			// Nội dung
-			message.setText(content, "UTF-8");
+			message.setText("Trả lời:["+contentOfCus+"("+time+")] của bạn."+"\n"+"Phản hồi của Shop:"+content, "UTF-8");
 			// Send message
 			Transport.send(message);
 		} catch (MessagingException mex) {
