@@ -62,7 +62,8 @@
 
 
 
-						<form action="${pageContext.request.contextPath}/admin/user" method="POST">
+						<form action="${pageContext.request.contextPath}/admin/user"
+							method="POST">
 							<div class="ml-5 mb-2 form-row align-items-center">
 								<div class="col-auto">
 									<div class="input-group mb-2">
@@ -91,9 +92,9 @@
 								<th scope="col">Tên</th>
 								<th scope="col" data-toggle="tooltip" data-placement="top"
 									title=""><span title=""> Số</span> điện thoại</th>
-								<th width="200" scope="col" data-toggle="tooltip" data-placement="top"
-									title=""><span title="Địa chỉ giao hàng mặc định">
-										Địa</span> chỉ</th>
+								<th width="200" scope="col" data-toggle="tooltip"
+									data-placement="top" title=""><span
+									title="Địa chỉ giao hàng mặc định"> Địa</span> chỉ</th>
 								<th scope="col">Email</th>
 								<th scope="col">Thời gian tạo</th>
 								<th width="100" scope="col">Trạng thái</th>
@@ -150,6 +151,23 @@
 						data : {
 
 							page : parseInt(number)
+
+						},
+						success : function(responseText) {
+							$('#content-table').html(responseText);
+						}
+
+					});
+
+		}
+		function SendDataBlock() {
+			$
+					.ajax({
+						type : 'POST',
+						url : '${pageContext.request.contextPath}/AJAXAdminUserManager',
+						data : {
+
+							page : move
 
 						},
 						success : function(responseText) {

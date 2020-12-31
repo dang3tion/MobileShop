@@ -18,7 +18,7 @@ public class ProductDetail extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Product_main pm = DAO_Product_main.getDao_Product_main().getProduct_main("SP01");
+		Product_main pm = DAO_Product_main.getDao_Product_main().getProduct_main("SP03");
 		request.setAttribute("product", pm);
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/detail-product.jsp");

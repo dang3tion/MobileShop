@@ -40,15 +40,15 @@
 		<!-- Portfolio Item Heading -->
 		<h4 class="my-4">
 			<small>Điện thoại </small> ${product.name}
-			<c:forEach items="${map }" var="i">
-				<c:forEach items="${i.value}" var="j">
-					<h5>Sản phẩm: ${i.key }, Màu sắc: ${j.key},Số lượng: ${j.value }</h5>
+<%-- 			<c:forEach items="${map }" var="i"> --%>
+<%-- 				<c:forEach items="${i.value}" var="j"> --%>
+<%-- 					<h5>Sản phẩm: ${i.key }, Màu sắc: ${j.key},Số lượng: ${j.value }</h5> --%>
 
-				</c:forEach>
+<%-- 				</c:forEach> --%>
 
 
 
-			</c:forEach>
+<%-- 			</c:forEach> --%>
 		</h4>
 
 		<!-- Portfolio Item Row -->

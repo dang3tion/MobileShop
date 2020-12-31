@@ -76,3 +76,20 @@ function previousPage() {
 	}
 }
 SendDataToServlet(move);
+function SendDataBlock() {
+	$
+		.ajax({
+			type: 'POST',
+			url: '${pageContext.request.contextPath}/AJAXAdminUserManager',
+			data: {
+
+				page: move
+
+			},
+			success: function(responseText) {
+				$('#content-table').html(responseText);
+			}
+
+		});
+
+}

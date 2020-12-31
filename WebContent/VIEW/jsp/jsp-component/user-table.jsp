@@ -98,34 +98,18 @@
 
 								<c:choose>
 									<c:when test="${user.status == 'ENABLE'}">
-										<button onclick="SendDataToServlet(123)" type="button" class="btn btn-danger">khóa</button>
+										<button onclick="SendDataToServlet()" type="button"
+											class="btn btn-danger">khóa</button>
 									</c:when>
 									<c:otherwise>
-										<button onclick="SendDataToServlet(123)" type="button" class="btn btn-sucess">Mở
-											khóa</button>
+										<button onclick="SendDataToServlet()" type="button"
+											class="btn btn-sucess">Mở khóa</button>
 									</c:otherwise>
 								</c:choose>
 
-<script>
-		function SendDataToServlet(number) {
-			getNumberPageDefault(number);
-			$
-					.ajax({
-						type : 'GET',
-						url : '${pageContext.request.contextPath}/AJAXAdminUserManager',
-						data : {
-
-							page : parseInt(number)
-
-						},
-						success : function(responseText) {
-							$('#content-table').html(responseText);
-						}
-
-					});
-
-		}
-	</script>
+								<script>
+									
+								</script>
 							</div>
 						</div>
 					</div>
