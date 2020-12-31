@@ -74,22 +74,8 @@ function previousPage() {
 	if (move != 1) {
 		SendDataToServlet(move - 1);
 	}
+} function getMove() {
+	return move;
 }
 SendDataToServlet(move);
-function SendDataBlock() {
-	$
-		.ajax({
-			type: 'POST',
-			url: '${pageContext.request.contextPath}/AJAXAdminUserManager',
-			data: {
 
-				page: move
-
-			},
-			success: function(responseText) {
-				$('#content-table').html(responseText);
-			}
-
-		});
-
-}

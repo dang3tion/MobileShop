@@ -19,12 +19,25 @@ public class AJAXAdminUserManager extends HttpServlet {
 			throws ServletException, IOException {
 
 		String page = (String) request.getParameter("page");
-		BO_Account bo = new BO_Account(Integer.parseInt(page),20 );
+		
+		
+		
+		BO_Account bo = new BO_Account(Integer.parseInt(page), 20);
 		request.setAttribute("listUser", bo.getList());
 		request.setAttribute("STTstart", bo.startRow());
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-component/user-table.jsp");
 		dispatcher.forward(request, response);
+
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String page = (String) request.getParameter("page");
+
+		System.out.println("=====>" + page);
 
 	}
 
