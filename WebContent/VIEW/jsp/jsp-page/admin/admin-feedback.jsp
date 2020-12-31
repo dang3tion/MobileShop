@@ -132,7 +132,8 @@
 																					type="email" class="form-control"
 																					id="exampleFormControlInput1" value="${c.email}"
 																					name="emailFeedback">
-
+																					<input style="display: none" value="${c.content}" name="contentOld">
+																					<input style="display: none" value="${c.date}" name="date">
 																			</div>
 																			<div class="form-group">
 																				<label for="message-text" class="col-form-label">Phản
