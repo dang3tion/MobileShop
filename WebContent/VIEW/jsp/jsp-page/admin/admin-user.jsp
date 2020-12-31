@@ -160,23 +160,7 @@
 					});
 
 		}
-		function SendDataBlock() {
-			$
-					.ajax({
-						type : 'POST',
-						url : '${pageContext.request.contextPath}/AJAXAdminUserManager',
-						data : {
-
-							page : move
-
-						},
-						success : function(responseText) {
-							$('#content-table').html(responseText);
-						}
-
-					});
-
-		}
+	
 	</script>
 
 	<script src="${url}/js/js-page/devide-page-admin.js"></script>
