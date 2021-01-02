@@ -193,49 +193,70 @@ public class DAO_Product extends ExecuteStatementUtility {
 		}
 	}
 
-	
-	//lấy giá ngày cập nhật gần nhất
-	public ArrayList<String> price(String id){
+	// lấy giá ngày cập nhật gần nhất
+	public ArrayList<String> price(String id) {
 		ArrayList<String> pri = new ArrayList<String>();
-		String[] para = {id,id};
+		String[] para = { id, id };
 		String price = "";
 		String priceSale = "";
 		String query = "SELECT * FROM GIA_SP WHERE MASP = ? AND NGAYCAPNHAT = (SELECT MAX(NGAYCAPNHAT) FROM GIA_SP WHERE MASP = ?)";
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
-				price=	rs.getString("GIA").replace(".0000", "");
+				price = rs.getString("GIA").replace(".0000", "");
 				priceSale = (rs.getString("GIA_KM"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		if (priceSale != null) {
-		priceSale =	priceSale.replace(".0000", "");
-		}else {
+			priceSale = priceSale.replace(".0000", "");
+		} else {
 			priceSale = "Không";
 		}
 		pri.add(price);
 		pri.add(priceSale);
 		return pri;
 	}
-	
-	
+
+	public String stateProduct(String id) {
+		String state = "";
+		String[] para = { id };
+		String query = "select TINHTRANG from sanpham where masp = ?";
+		try (ResultSet rs = super.AccessDBstr(query, para)) {
+			while (rs.next()) {
+				state = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return state;
+	}
+
+	public String stateBrand(String id) {
+		String state = "";
+		String[] para = { id };
+		String query = "select THUONGHIEU.TRANGTHAI from THUONGHIEU inner join SANPHAM on THUONGHIEU.MATH = SANPHAM.MATH where SANPHAM.MASP = ?\r\n"
+				+ "";
+		try (ResultSet rs = super.AccessDBstr(query, para)) {
+			while (rs.next()) {
+				state = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return state;
+	}
+
 	public ArrayList<ProductAdmin> listProductAdmin(int start, int end) {
 		ArrayList<ProductAdmin> product = new ArrayList<ProductAdmin>();
 		String[] para = { start + "", end + "" };
 		String query = "WITH X AS (select ROW_NUMBER() OVER (ORDER BY SANPHAM.MASP DESC) AS STT, SANPHAM.*,THUONGHIEU.TENTH,HINHANH.ANH FROM ((SANPHAM INNER JOIN HINHANH ON SANPHAM.MASP = HINHANH.MASP)) INNER JOIN THUONGHIEU ON THUONGHIEU.MATH = SANPHAM.MATH WHERE HINHANH.LOAIANH = 'NEN') SELECT * FROM X WHERE STT BETWEEN ? AND ?";
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
-				product.add(new ProductAdmin(rs.getString("STT"),
-						rs.getString("MASP").trim(),
-						rs.getString("ANH"),
-						rs.getString("TENSP"),
-						rs.getString("TENTH"), 
-						rs.getString("NGAYCAPNHAT"),
-						 rs.getInt("SOLUONG")-rs.getInt("SL_DABAN"),
-						rs.getInt("SL_DABAN"), 
-						price(rs.getString("MASP").trim()).get(0),
-						price(rs.getString("MASP").trim()).get(1), 
+				product.add(new ProductAdmin(rs.getString("STT"), rs.getString("MASP").trim(), rs.getString("ANH"),
+						rs.getString("TENSP"), rs.getString("TENTH"), rs.getString("NGAYCAPNHAT"),
+						rs.getInt("SOLUONG") - rs.getInt("SL_DABAN"), rs.getInt("SL_DABAN"),
+						price(rs.getString("MASP").trim()).get(0), price(rs.getString("MASP").trim()).get(1),
 						rs.getString("TINHTRANG")));
 			}
 		} catch (SQLException e) {
@@ -244,11 +265,41 @@ public class DAO_Product extends ExecuteStatementUtility {
 		return product;
 	}
 
+	public boolean updateState(String id) {
+		String state = stateProduct(id);
+		String stateBrand = stateBrand(id);
+		if (state.equals("Đang bán")) {
+			try {
+				String query = "UPDATE SANPHAM SET TINHTRANG = N'Ngừng bán' WHERE MASP = ?";
+
+				String[] para = { id };
+				try (ResultSet rs = super.AccessDBstr(query, para)) {
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return true;
+		}
+		if (state.equals("Ngừng bán") && !stateBrand.equals("Ngừng kinh doanh")) {
+			try {
+				String query = "UPDATE SANPHAM SET TINHTRANG = N'Đang bán' WHERE MASP = ?";
+
+				String[] para = { id };
+				try (ResultSet rs = super.AccessDBstr(query, para)) {
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return true;
+		}
+		return false;
+	}
+
 	public static void main(String[] args) {
 		DAO_Product dao = new DAO_Product();
-		for (int i = 0; i < dao.listProductAdmin(1, 5).size(); i++) {
-			System.out.println(dao.listProductAdmin(1, 5).get(i).toString());
-		}
+//		System.out.println(dao.stateProduct("SP08"));
+		System.out.println(dao.updateState("SP01"));
 	}
 }
 
