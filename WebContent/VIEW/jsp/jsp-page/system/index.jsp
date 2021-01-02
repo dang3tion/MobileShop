@@ -40,11 +40,15 @@
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLongTitle">${messageSuccess}</h5>
 					</div>
-					<div class="modal-body"><p>Vui lòng cập nhật thông tin cá nhân<p>
+					<div class="modal-body">
+						<p>Vui lòng cập nhật thông tin cá nhân
+						<p>
 					</div>
 					<div class="modal-footer">
-					<a href="${pageContext.request.contextPath}/member/profile" class="btn btn-primary" role="button">Cập nhật</a>
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Cập nhật sau</button>
+						<a href="${pageContext.request.contextPath}/member/profile"
+							class="btn btn-primary" role="button">Cập nhật</a>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Cập
+							nhật sau</button>
 					</div>
 				</div>
 			</div>
@@ -69,12 +73,11 @@
 					<div class="title ">
 						<div class="title float-left">
 							<h3>Sản phẩm nổi bật</h3>
-							
-							<h1>${CART} 123</h1>
-							
-							
-							
-							
+
+
+
+
+
 						</div>
 						<div class="title float-right">
 							<a href="#">Xem thêm <i class="fas fa-arrow-right"></i></a>
@@ -90,14 +93,22 @@
 
 								<div class="carousel-item active ">
 									<div class="row d-block ">
-										<c:forEach items="${listSanPham}" var="pro" begin="0" end="3">
+
+
+
+
+
+
+										<c:forEach items="${lstProduct }" var="pro" begin="0" end="3">
 											<div class="col-3">
-												<c:import url="/VIEW/jsp/jsp-component/card-product-index.jsp">
-													<c:param name="id" value="${pro.id}"></c:param>
-													<c:param name="image" value="${pro.thumbnail}"></c:param>
+												<c:import
+													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
+													<c:param name="id" value="0"></c:param>
+
+													<c:param name="image" value="${pro.img}"></c:param>
 													<c:param name="name" value="${pro.name}"></c:param>
 													<c:param name="price" value="${pro.price}"></c:param>
-													<c:param name="salePrice" value="${pro.salePrice}"></c:param>
+													<c:param name="salePrice" value="${pro.priceSales}"></c:param>
 												</c:import>
 											</div>
 										</c:forEach>
@@ -105,14 +116,16 @@
 								</div>
 								<div class="carousel-item ">
 									<div class="row d-block">
-										<c:forEach items="${listSanPham}" var="pro" begin="4" end="7">
+										<c:forEach items="${lstProduct }" var="pro" begin="0" end="3">
 											<div class="col-3">
-												<c:import url="/VIEW/jsp/jsp-component/card-product-index.jsp">
-													<c:param name="id" value="${pro.id}"></c:param>
-													<c:param name="image" value="${pro.thumbnail}"></c:param>
+											<c:import
+													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
+													<c:param name="id" value="0"></c:param>
+
+													<c:param name="image" value="${pro.img}"></c:param>
 													<c:param name="name" value="${pro.name}"></c:param>
 													<c:param name="price" value="${pro.price}"></c:param>
-													<c:param name="salePrice" value="${pro.salePrice}"></c:param>
+													<c:param name="salePrice" value="${pro.priceSales}"></c:param>
 												</c:import>
 											</div>
 										</c:forEach>
@@ -153,14 +166,16 @@
 								<div class="carousel-item active ">
 									<div class="row d-block ">
 
-										<c:forEach items="${listSanPham}" var="pro" begin="0" end="3">
+										<c:forEach items="${lstProduct }" var="pro" begin="0" end="3">
 											<div class="col-3">
-												<c:import url="/VIEW/jsp/jsp-component/card-product-index.jsp">
-													<c:param name="id" value="${pro.id}"></c:param>
-													<c:param name="image" value="${pro.thumbnail}"></c:param>
+												<c:import
+													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
+													<c:param name="id" value="0"></c:param>
+
+													<c:param name="image" value="${pro.img}"></c:param>
 													<c:param name="name" value="${pro.name}"></c:param>
 													<c:param name="price" value="${pro.price}"></c:param>
-													<c:param name="salePrice" value="${pro.salePrice}"></c:param>
+													<c:param name="salePrice" value="${pro.priceSales}"></c:param>
 												</c:import>
 											</div>
 										</c:forEach>
@@ -169,14 +184,16 @@
 								</div>
 								<div class="carousel-item ">
 									<div class="row d-block">
-										<c:forEach items="${listSanPham}" var="pro" begin="4" end="7">
+										<c:forEach items="${lstProduct }" var="pro" begin="0" end="3">
 											<div class="col-3">
-												<c:import url="/VIEW/jsp/jsp-component/card-product-index.jsp">
-													<c:param name="id" value="${pro.id}"></c:param>
-													<c:param name="image" value="${pro.thumbnail}"></c:param>
+											<c:import
+													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
+													<c:param name="id" value="0"></c:param>
+
+													<c:param name="image" value="${pro.img}"></c:param>
 													<c:param name="name" value="${pro.name}"></c:param>
 													<c:param name="price" value="${pro.price}"></c:param>
-													<c:param name="salePrice" value="${pro.salePrice}"></c:param>
+													<c:param name="salePrice" value="${pro.priceSales}"></c:param>
 												</c:import>
 											</div>
 										</c:forEach>
@@ -219,17 +236,17 @@
 				<div class="row">
 
 
-					<c:forEach items="${listSanPham}" var="pro" begin="0" end="8">
-						<div class="col-4">
-							<c:import url="/VIEW/jsp/jsp-component/card-product-index.jsp">
-								<c:param name="id" value="${pro.id}"></c:param>
-								<c:param name="image" value="${pro.thumbnail}"></c:param>
-								<c:param name="name" value="${pro.name}"></c:param>
-								<c:param name="price" value="${pro.price}"></c:param>
-								<c:param name="salePrice" value="${pro.salePrice}"></c:param>
-							</c:import>
-						</div>
-					</c:forEach>
+					<%-- 					<c:forEach items="${listSanPham}" var="pro" begin="0" end="8"> --%>
+					<!-- 						<div class="col-4"> -->
+					<%-- 							<c:import url="/VIEW/jsp/jsp-component/card-product-index.jsp"> --%>
+					<%-- 								<c:param name="id" value="${pro.id}"></c:param> --%>
+					<%-- 								<c:param name="image" value="${pro.thumbnail}"></c:param> --%>
+					<%-- 								<c:param name="name" value="${pro.name}"></c:param> --%>
+					<%-- 								<c:param name="price" value="${pro.price}"></c:param> --%>
+					<%-- 								<c:param name="salePrice" value="${pro.salePrice}"></c:param> --%>
+					<%-- 							</c:import> --%>
+					<!-- 						</div> -->
+					<%-- 					</c:forEach> --%>
 
 
 
@@ -266,7 +283,6 @@
 
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
-
 </body>
 
 </html>

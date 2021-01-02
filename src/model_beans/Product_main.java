@@ -13,14 +13,16 @@ public class Product_main {
 	private int quantity;
 	private int sale_quantity;
 	private int view;
+	private Price_product_main prices;
 	private ArrayList<Attribute> attributes = new ArrayList<Attribute>();
 	private ArrayList<Color_main> colors = new ArrayList<Color_main>();
+	private StarEvaluate evaluate;
 
 	public Product_main(String iD, String name, String type, Branch branch, String status, String update_date,
-			String posts, int quantity, int sale_quantity, int view, ArrayList<Attribute> attributes,
-			ArrayList<Color_main> colors) {
+			String posts, int quantity, int sale_quantity, int view, Price_product_main prices,
+			ArrayList<Attribute> attributes, ArrayList<Color_main> colors, StarEvaluate evaluate) {
 		super();
-		this.ID = iD;
+		ID = iD;
 		this.name = name;
 		this.type = type;
 		this.branch = branch;
@@ -30,8 +32,26 @@ public class Product_main {
 		this.quantity = quantity;
 		this.sale_quantity = sale_quantity;
 		this.view = view;
+		this.prices = prices;
 		this.attributes = attributes;
 		this.colors = colors;
+		this.evaluate = evaluate;
+	}
+
+	public StarEvaluate getEvaluate() {
+		return evaluate;
+	}
+
+	public void setEvaluate(StarEvaluate evaluate) {
+		this.evaluate = evaluate;
+	}
+
+	public Price_product_main getPrices() {
+		return prices;
+	}
+
+	public void setPrices(Price_product_main prices) {
+		this.prices = prices;
 	}
 
 	public Product_main() {
