@@ -43,7 +43,7 @@
 								<th scope="row">${totalAccount}</th>
 								<td>${TongSoAccDangHoatDong}</td>
 								<td>${TongSoAccBiKhoa}</td>
-								<td>${totalPage}</td>
+								<td>${totalAccountCreateToday}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -160,7 +160,7 @@
 					});
 
 		}
-		function SendDataBlock() {
+		function SendDataLock(emailvalue) {
 
 			$
 				.ajax({
@@ -168,8 +168,8 @@
 					url: '${pageContext.request.contextPath}/AJAXAdminUserManager',
 					data: {
 
-						page :getMove()
-
+						page :getMove(),
+						email : emailvalue
 					},
 					success: function(responseText) {
 						$('#content-table').html(responseText);

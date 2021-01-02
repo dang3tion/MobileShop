@@ -8,6 +8,10 @@ README.md
 WebContent/WEB-INF/lib/
 WebContent/META-INF/*
 
+
+src/model_utility/Config.java
+
+
 *.md
 *.zip
 

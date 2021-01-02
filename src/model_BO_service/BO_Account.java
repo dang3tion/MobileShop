@@ -40,6 +40,7 @@ public class BO_Account {
 		}
 		return null;
 	}
+
 	public Account getAdmin(String username) {
 		Account acc = dao.get(username);
 		if (acc.getRole().equals(Const.ADMIN_ROLE)) {
@@ -133,10 +134,7 @@ public class BO_Account {
 	// _____________________________________________________________________________
 	public int getTotalAccount() {
 		int total;
-		// trừ acc admin
-
-		total = DAO_Account.getDaoAccount().getTotal() - 1;
-
+		total = DAO_Account.getDaoAccount().getTotal();
 		return total;
 	}
 
@@ -183,6 +181,10 @@ public class BO_Account {
 //		return num;
 //	}
 
+	public int getTotalAccountCreatedToday() {
+		return dao.getTotalAccountCreatedToday();
+	}
+
 	public void on_off_account(String email) {
 		Account acc = get(email);
 		if (acc.getStatus().equals(Const.ACCOUNT_ENABLE)) {
@@ -208,8 +210,4 @@ public class BO_Account {
 
 //_____________________________________________________________________________
 
-	
-	
-	
-	
 }

@@ -28,7 +28,7 @@ public class Config {
 	public static final String DATABASE_NAME = "MOBILESHOP";
 	public static final String USERNAME_DB = "lazadamimax3_SQLLogin_1";
 	public static final String PASSWORD_DB = "p5crwl1u5s";
-//	_______________________________________________________________________________________________________________________________________________________________________
+///	_______________________________________________________________________________________________________________________________________________________________________
 
 	public static final String DBDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 //	Số kết nối đồng thời

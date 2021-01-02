@@ -27,6 +27,7 @@ public class ManagerUser extends HttpServlet {
 		request.setAttribute("TongSoAccBiKhoa", bo.getTotalStatusAccount(Const.ACCONT_DISABLE));
 
 		request.setAttribute("listUser", bo.getList());
+		request.setAttribute("totalAccountCreateToday", bo.getTotalAccountCreatedToday());
 		request.setAttribute("DEFAUTL_TABLE", true);
 		request.setAttribute("totalPage", bo.totalPage());
 		RequestDispatcher dispatcher //

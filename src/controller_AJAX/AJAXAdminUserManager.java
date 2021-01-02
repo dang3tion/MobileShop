@@ -19,9 +19,7 @@ public class AJAXAdminUserManager extends HttpServlet {
 			throws ServletException, IOException {
 
 		String page = (String) request.getParameter("page");
-		
-		
-		
+
 		BO_Account bo = new BO_Account(Integer.parseInt(page), 20);
 		request.setAttribute("listUser", bo.getList());
 		request.setAttribute("STTstart", bo.startRow());
@@ -36,8 +34,16 @@ public class AJAXAdminUserManager extends HttpServlet {
 			throws ServletException, IOException {
 
 		String page = (String) request.getParameter("page");
+		String email = (String) request.getParameter("email");
 
-		System.out.println("=====>" + page);
+		BO_Account.getBoAccount().on_off_account(email);
+
+		BO_Account bo = new BO_Account(Integer.parseInt(page), 20);
+		request.setAttribute("listUser", bo.getList());
+		request.setAttribute("STTstart", bo.startRow());
+		RequestDispatcher dispatcher //
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-component/user-table.jsp");
+		dispatcher.forward(request, response);
 
 	}
 

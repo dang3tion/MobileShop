@@ -2,6 +2,8 @@ package model_DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,8 +76,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				Account acc = new Account( //
-						rs.getString(CUSTOMERID),
-						rs.getString(EMAIL), //
+						rs.getString(CUSTOMERID), rs.getString(EMAIL), //
 						rs.getString(ENCRYT_PASSWORD), //
 						rs.getString(ROLE), //
 						rs.getString(STATUS), //
@@ -235,8 +236,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				Account acc = new Account( //
-						rs.getString(CUSTOMERID),
-						rs.getString(EMAIL), //
+						rs.getString(CUSTOMERID), rs.getString(EMAIL), //
 						rs.getString(ENCRYT_PASSWORD), //
 						rs.getString(ROLE), //
 						rs.getString(STATUS), //
@@ -256,14 +256,31 @@ public class DAO_Account extends ExecuteStatementUtility {
 
 	public int getTotal() {
 		int total = 0;
-		String query = "SELECT COUNT(*) FROM " + ACCOUNT;
+		String query = "SELECT COUNT(*) FROM " + ACCOUNT + " WHERE " + ROLE + " = '" + Const.CUSTOMER_ROLE + "' ;";
 		try (ResultSet rs = super.AccessDBstr(query)) {
-			while (rs.next()) {
+			if (rs.next()) {
 				total = rs.getInt(1);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return total;
+	}
+
+	public int getTotalAccountCreatedToday() {
+		int total = 0;
+		LocalDate localDate = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		String today = localDate.format(formatter);
+		String query = "SELECT COUNT(*) FROM " + ACCOUNT + " WHERE " + TIMECREATE + " = '" + today + "' ;";
+		try (ResultSet rs = super.AccessDBstr(query)) {
+			if (rs.next()) {
+				total = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return total;
 	}
 
@@ -273,7 +290,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 				+ Const.CUSTOMER_ROLE + "' ";
 		Object[] para = { status };
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
-			while (rs.next()) {
+			if (rs.next()) {
 				total = rs.getInt(1);
 			}
 		} catch (SQLException e) {
@@ -281,6 +298,5 @@ public class DAO_Account extends ExecuteStatementUtility {
 		}
 		return total;
 	}
-
 
 }
