@@ -130,13 +130,13 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 		Price_product_main price = getPrices_Product(id);
 		StarEvaluate stars = new StarEvaluate();
 		Product_main product = new Product_main();
+		product.setID(id);
 		query = "SELECT * FROM dbo.GETPRODUCT_FORM(?)	";
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			if (rs.next()) {
 				product.setName(rs.getString("TENSP"));
 				price.setPrice(Integer.parseInt(rs.getString("GIA")));
 				if (rs.getString("GIA_KM") != null) {
-
 					price.setPriceSales(Integer.parseInt(rs.getString("GIA_KM")));
 				}
 				System.out.println("Ádasdsad");

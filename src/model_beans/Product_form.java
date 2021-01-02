@@ -1,17 +1,41 @@
 package model_beans;
 
 public class Product_form {
+	private String id;
 	private String name;
 	private String img;
 	private int price;
 	private int priceSales;
+	private double avgEvaluate;
 
-	public Product_form(String name, String img, int price, int priceSales) {
+	public Product_form(String id, String name, String img, int price, int priceSales, double avgEvaluate) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.img = img;
 		this.price = price;
 		this.priceSales = priceSales;
+		this.avgEvaluate = avgEvaluate;
+	}
+
+	public Product_form() {
+		super();
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public double getAvgEvaluate() {
+		return avgEvaluate;
+	}
+
+	public void setAvgEvaluate(double avgEvaluate) {
+		this.avgEvaluate = avgEvaluate;
 	}
 
 	public String getName() {

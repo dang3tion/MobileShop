@@ -62,7 +62,7 @@
 
 
 
-						<form action="${pageContext.request.contextPath}/admin/searchUser"
+						<form onsubmit="return checkSubmit()" action="${pageContext.request.contextPath}/admin/searchUser"
 							method="GET">
 							<div class="ml-5 mb-2 form-row align-items-center">
 								<div class="col-auto">
@@ -72,12 +72,13 @@
 												<i class="fas fa-search"></i>
 											</div>
 										</div>
-										<input name="keyword" type="text" class="form-control"
+										<input name="keyword" type="text" id = "check" class="form-control"
 											placeholder="nhập từ khóa">
+										
 									</div>
 								</div>
 								<div class="col-auto">
-									<button type="submit" class="btn btn-primary mb-2">Tìm
+									<button onclick="checkClick()" type="submit" class="btn btn-primary mb-2">Tìm
 										kiếm</button>
 								</div>
 							</div>
@@ -316,7 +317,29 @@
 	background: white;
 }
 </style>
+ <script>
+      
+ function checkClick(){
+     var check = document.getElementById("check").value;
+     if(check == ""){
+    
+       return false;
+     }else{
+       return true;
+     }
+   }
+ 
+   function checkSubmit(){
+     console.log(checkClick());
+     if(checkClick()==false){
+       alert("Vui lòng nhập thông tin cần tìm");
+       return false;
+     }else{
+       return true;
+     }
 
+   }
+    </script>
 </body>
 </html>
 

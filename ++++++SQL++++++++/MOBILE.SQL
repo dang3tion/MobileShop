@@ -353,6 +353,7 @@ INSERT INTO MAUSAC VALUES('MS06','#ff3f80;',N'Hồng')
 INSERT INTO MAUSAC VALUES('MS07','#ff3fss;',N'Tím')
 INSERT INTO MAUSAC VALUES('MS08','#ffa3fss;',N'Xám')
 INSERT INTO MAUSAC VALUES('MS09','rgb(0 128 0)',N'Xanh Lá')
+
 --CAUHINH 
 INSERT INTO CAUHINH VALUES('CH01',0)
 INSERT INTO CAUHINH VALUES('CH02',0)
@@ -1120,14 +1121,14 @@ INSERT INTO CH_CTTT VALUES('CH07','CT396')
 select * from THUONGHIEU
 INSERT INTO SANPHAM VALUES('SP07','Huawei Nova 7i',N'Mới',N'TH06',N'Đang bán','1/10/2020',N'Giới thiệu',10,2,0,'CH07')
 INSERT INTO GIA_SP VALUES('SP07','1/10/2020','6990000','7290000')
-INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-pink-600x600-1-600x600.jpg','NEN')
-INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-1-org.jpg','PHU')
-INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-2-org.jpg','PHU')
-INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-3-org.jpg','PHU')
-INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-4-org.jpg','PHU')
-INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-5-org.jpg','PHU')
-INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-6-org.jpg','PHU')
-
+INSERT INTO HINHANH VALUES('SP07','MS06','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-pink-600x600-1-600x600.jpg','NEN')
+INSERT INTO HINHANH VALUES('SP07','MS06','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-1-org.jpg','PHU')
+INSERT INTO HINHANH VALUES('SP07','MS06','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-2-org.jpg','PHU')
+INSERT INTO HINHANH VALUES('SP07','MS06','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-3-org.jpg','PHU')
+INSERT INTO HINHANH VALUES('SP07','MS06','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-4-org.jpg','PHU')
+INSERT INTO HINHANH VALUES('SP07','MS06','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-5-org.jpg','PHU')
+INSERT INTO HINHANH VALUES('SP07','MS06','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-6-org.jpg','PHU')
+SELECT * FROM MAUSAC
 INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-green-600x600-1-600x600.jpg','NEN')
 INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-xanh-la-1-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-xanh-la-2-org.jpg','PHU')
@@ -1436,6 +1437,48 @@ SELECT TK.MASP,round(CONVERT(FLOAT,SUM(TK.SOLUOT*TK.MUCDANHGIA))/CONVERT(FLOAT,S
 					GROUP BY TK.MASP	
 					
 GO
+CREATE FUNCTION GET_PRODUCT_BRANCH(@MATH CHAR(10))
+RETURNS TABLE
+AS RETURN
+SELECT SP.MASP,SP.TENSP,GIA.GIA,GIA.GIA_KM,HA.
+		 
+		 SELECT  GIA.GIA,GIA.GIA_KM,SP.MASP,GIA.NGAYCAPNHAT
+		 FROM SANPHAM SP JOIN GIA_SP GIA ON GIA.MASP=SP.MASP
+		GROUP BY SP.MASP,GIA.GIA,GIA.GIA_KM,GIA.NGAYCAPNHAT
+		ORDER BY GIA.NGAYCAPNHAT DESC
+		
+	SELECT G1.*
+	FROM GIA_SP G1 
+	JOIN (SELECT MASP, MAX(NGAYCAPNHAT) NGAYCAPNHAT
+							FROM GIA_SP
+							GROUP BY MASP
+							) TK ON TK.MASP=G1.MASP
+							 AND TK.NGAYCAPNHAT=G1.NGAYCAPNHAT
+	
+	SELECT HA.*
+	FROM HINHANH HA JOIN (SELECT MASP,MAX(MAMAU) MAMAU
+								FROM HINHANH
+								GROUP BY MASP
+								) TK ON TK.MASP=HA.MASP AND TK.MAMAU=HA.MAMAU
+	 WHERE HA.LOAIANH='NEN'
+		
 SELECT * FROM dbo.GETEVALUATE_AVG('SP02')		
 
-SELECT * FROM dbo.GETPRODUCT_FORM('sp01')		
+SELECT * FROM dbo.GETPRODUCT_FORM('sp01')	
+
+
+
+UPDATE THUONGHIEU SET TRANGTHAI = 'Còn kinh doanh' WHERE MATH = 'TH01'
+UPDATE THUONGHIEU SET TRANGTHAI = 'Còn kinh doanh' WHERE MATH = 'TH02'
+UPDATE THUONGHIEU SET TRANGTHAI = 'Còn kinh doanh' WHERE MATH = 'TH03'
+UPDATE THUONGHIEU SET TRANGTHAI = 'Còn kinh doanh' WHERE MATH = 'TH04'
+UPDATE THUONGHIEU SET TRANGTHAI = 'Còn kinh doanh' WHERE MATH = 'TH05'
+UPDATE THUONGHIEU SET TRANGTHAI = 'Còn kinh doanh' WHERE MATH = 'TH06'
+UPDATE THUONGHIEU SET TRANGTHAI = 'Còn kinh doanh' WHERE MATH = 'TH07'
+
+UPDATE THUONGHIEU SET TRANGTHAI = 'Còn kinh doanh' WHERE MATH = 'TH08'
+UPDATE THUONGHIEU SET TRANGTHAI = 'Còn kinh doanh' WHERE MATH = 'TH09'
+UPDATE THUONGHIEU SET TRANGTHAI = 'Còn kinh doanh' WHERE MATH = 'TH10'
+UPDATE THUONGHIEU SET TRANGTHAI = 'Còn kinh doanh' WHERE MATH = 'TH01'
+
+UPDATE THUONGHIEU SET TRANGTHAI = 'Còn kinh doanh' WHERE MATH = 'TH01'

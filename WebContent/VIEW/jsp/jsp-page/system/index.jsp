@@ -99,7 +99,7 @@
 
 
 
-										<c:forEach items="${lstProduct }" var="pro" begin="0" end="3">
+										<c:forEach items="${lstProduct }" var="pro" begin="0" end="2">
 											<div class="col-3">
 												<c:import
 													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
@@ -116,7 +116,7 @@
 								</div>
 								<div class="carousel-item ">
 									<div class="row d-block">
-										<c:forEach items="${lstProduct }" var="pro" begin="0" end="3">
+										<c:forEach items="${lstProduct }" var="pro" begin="0" end="2">
 											<div class="col-3">
 											<c:import
 													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
@@ -166,7 +166,7 @@
 								<div class="carousel-item active ">
 									<div class="row d-block ">
 
-										<c:forEach items="${lstProduct }" var="pro" begin="0" end="3">
+										<c:forEach items="${lstProduct }" var="pro" begin="0" end="2">
 											<div class="col-3">
 												<c:import
 													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
@@ -184,7 +184,7 @@
 								</div>
 								<div class="carousel-item ">
 									<div class="row d-block">
-										<c:forEach items="${lstProduct }" var="pro" begin="0" end="3">
+										<c:forEach items="${lstProduct }" var="pro" begin="0" end="2">
 											<div class="col-3">
 											<c:import
 													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
