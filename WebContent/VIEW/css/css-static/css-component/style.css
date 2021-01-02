@@ -16,16 +16,11 @@
 	font-size: 0.8em;
 }
 
-
-
 .footerIcon {
 	font-size: 1.4em;
 }
 
 /*______________________ for footer ______________________*/
-
-
-
 body {
 	padding-top: 100px;
 }
@@ -107,13 +102,13 @@ a:hover {
 }
 /* filter menu */
 .filter-menu {
-    background-color: #000000c2;
-    width: 100%;
-    position: fixed;
-    top: 55px;
-    z-index: 1029;
-    backdrop-filter: blur(4px);
-    box-shadow: 0px 4px 4px -1px black;
+	background-color: #000000c2;
+	width: 100%;
+	position: fixed;
+	top: 55px;
+	z-index: 1029;
+	backdrop-filter: blur(4px);
+	box-shadow: 0px 4px 4px -1px black;
 }
 
 .filter-menu1 {
@@ -192,8 +187,7 @@ a:hover {
 	right: -20px;
 }
 
-@keyframes display {
-	100% {
+@keyframes display { 100% {
 	background-color: rgb(255, 255, 255);
 }
 
@@ -290,6 +284,12 @@ a:hover {
 	width: 100%;
 	padding: 10px;
 	transition: all ease-out 0.2s;
+}
+
+.card .card-img a img {
+	height: 200px;
+	width: 200px;
+	object-fit: cover;
 }
 
 .card .card-img:hover {
@@ -477,76 +477,75 @@ a:hover {
 	display: none;
 }
 /*css for menu*/
- .hover-account {
-    position: relative;
-  }
+.hover-account {
+	position: relative;
+}
 
-  .hover-account:hover>.frame-account {
-    display: block;
-  }
+.hover-account:hover>.frame-account {
+	display: block;
+}
 
-  .frame-account {
-    display: none;
-    min-width: 300px;
+.frame-account {
+	display: none;
+	min-width: 300px;
+	text-align: center;
+	position: absolute;
+	border: 1px solid #9696964f;
+	top: 55px;
+	right: -70px;
+	background-color: white;
+	padding: 10px 20px;
+	box-shadow: 1px 2px 3px 0px #c3c3c36b;
+	animation: all ease-in 3s;
+}
 
-    text-align: center;
-    position: absolute;
-    border: 1px solid #9696964f;
-    top: 55px;
-    right: -70px;
-    background-color: white;
-    padding: 10px 20px;
-    box-shadow: 1px 2px 3px 0px #c3c3c36b;
-    animation: all ease-in 3s;
-  }
+.frame-account ul {
+	margin: 0;
+	padding: 0;
+	min-width: 200px;
+}
 
-  .frame-account ul {
-    margin: 0;
-    padding: 0;
-    min-width: 200px;
-  }
+.frame-account ul .item-acc {
+	
+}
 
-  .frame-account ul .item-acc {}
+.frame-account ul .item-acc a {
+	
+}
 
-  .frame-account ul .item-acc a {}
+.frame-account ul .item-acc .acc {
+	color: black;
+	padding: 10px;
+	margin: 15px 0px;
+	background: #ffc107;
+	border-radius: 3px;
+	min-width: 144px;
+	font-size: 15px;
+	text-shadow: rgb(255 193 8/ 69%) 0px 0px 1px;
+}
 
+.frame-account ul .item-acc .acc:hover {
+	background: #ffc107d4;
+}
 
+.triangle {
+	font-size: 30px;
+	position: absolute;
+	top: -27px;
+	color: white;
+	right: 100px;
+}
 
-  .frame-account ul .item-acc .acc {
-    color: black;
-    padding: 10px;
-    margin: 15px 0px;
-    background: #ffc107;
-    border-radius: 3px;
-    min-width: 144px;
-    font-size: 15px;
-    text-shadow: rgb(255 193 8 / 69%) 0px 0px 1px;
-  }
+.login-google {
+	color: white;
+	background-color: #d0021b;
+	padding: 10px;
+	margin: 15px 0px;
+	border-radius: 3px;
+	min-width: 144px;
+	font-size: 15px;
+}
 
-  .frame-account ul .item-acc .acc:hover {
-    background: #ffc107d4;
-  }
-
-  .triangle {
-    font-size: 30px;
-    position: absolute;
-    top: -27px;
-    color: white;
-    right: 100px;
-  }
-
-  .login-google {
-    color: white;
-    background-color: #d0021b;
-
-    padding: 10px;
-    margin: 15px 0px;
-
-    border-radius: 3px;
-    min-width: 144px;
-    font-size: 15px;
-  }
-
-  .login-google:hover {
-    background-color: #d0021bde;
-  }
+.login-google:hover {
+	background-color: #d0021bde;
+}
