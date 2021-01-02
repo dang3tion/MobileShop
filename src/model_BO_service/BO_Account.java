@@ -203,8 +203,8 @@ public class BO_Account {
 
 	}
 
-	public List<Account> getListAccountStatus(String status) {
-		List<Account> listAcc = dao.getListAcountStatus(status);
+	public List<Account> getListDisableAccount() {
+		List<Account> listAcc = dao.getListAcountStatus(Const.ACCONT_DISABLE);
 		return listAcc;
 	}
 

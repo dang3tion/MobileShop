@@ -154,19 +154,18 @@ public class DAO_Account extends ExecuteStatementUtility {
 		return listAcc;
 	}
 
-	public int totalSearch(String keyword) {
-		String query = "SELECT COUNT(*) FROM SEARCH(N'" + keyword + "',1,9999999)";
-		int total = 0;
-		try (ResultSet rs = super.AccessDBstr(query)) {
-			if (rs.next()) {
-				total = rs.getInt(1);
-				
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return total;
-	}
+//	public int totalSearch(String keyword) {
+//		String query = "SELECT COUNT(*) FROM SEARCH(N'" + keyword + "')";
+//		int total = 0;
+//		try (ResultSet rs = super.AccessDBstr(query)) {
+//			while (rs.next()) {
+//				rs.getInt(1);
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return total;
+//	}
 
 	public boolean isExist(String email) {
 		Account acc = get(email);
@@ -205,8 +204,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 
 	public List<Account> getListAcountStatus(String status) {
 		List<Account> listAcc = new ArrayList<Account>();
-		String query = "SELECT * FROM " + ACCOUNT + " WHERE " + STATUS + " = ? AND " + ROLE + " = '" + Const.CUSTOMER_ROLE
-				+ "';";
+		String query = "SELECT * FROM " + ACCOUNT + " WHERE " + STATUS + " = ?";
 		Object[] para = { status };
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
@@ -282,7 +280,7 @@ public class DAO_Account extends ExecuteStatementUtility {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		
 		return total;
 	}
 
@@ -301,6 +299,4 @@ public class DAO_Account extends ExecuteStatementUtility {
 		return total;
 	}
 
-
-	
 }

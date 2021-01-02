@@ -83,33 +83,6 @@
 							</div>
 						</form>
 
-
-						<!-- 						Chế độ Xem -->
-
-						<form>
-							<div class=" mx-2 row">
-								<span class="container-che-do-xem"><strong>Chế
-										độ xem :</strong></span> <label class="mx-2  container-che-do-xem">Xem
-									tất cả (${totalAccount})<input
-									 type="radio" onclick="location.reload();"
-									class="mx-2" checked="checked" name="radio"> <span
-									class="checkmark"></span>
-								</label> <label class="mx-2 container-che-do-xem"> Đang hoạt
-									động(${TongSoAccDangHoatDong}) <input class="mx-2" name="radio"
-									value="enable" type="radio"
-									onclick="switchChedoXem(this.value)"> <span
-									class="checkmark"></span>
-								</label> <label class="mx-2 container-che-do-xem">Đã bị khóa
-									(${TongSoAccBiKhoa})<input onclick="switchChedoXem(this.value)"
-									class="mx-2" value="disable" type="radio" name="radio">
-									<span class="checkmark"></span>
-								</label>
-							</div>
-						</form>
-						<!-- 						Chế độ Xem -->
-
-
-
 					</div>
 					<table class="table table-hover">
 						<thead class="thead-light">
@@ -133,7 +106,12 @@
 						<tbody id="content-table">
 							<!-- 	############ AJAX TRẢ DỮ LIỆU TẠI ĐÂY #################### -->
 
+							<!--          @@@@ trong đây nè -->
 
+
+							<c:if test="${DEFAUTL_TABLE !=null }">
+								<jsp:include page="/VIEW/jsp/jsp-component/user-table.jsp"></jsp:include>
+							</c:if>
 
 
 							<!-- 	############ AJAX TRẢ DỮ LIỆU TẠI ĐÂY #################### -->
@@ -162,16 +140,8 @@
 
 	<!-- 	@@@@@@@@@ GỬI DỮ LIỆU XUỐNG SERVER @@@@@@@@@@@@@@@@@ -->
 
-	<input id="curent-home-page-admin-management-user"
-		value="${CURRENT_PAGE_MANAGEMENT_USER}"></input>
-
 
 	<script>
-		function getCurrentPage() {
-			return document
-					.getElementById("curent-home-page-admin-management-user").value;
-		}
-
 		function SendDataToServlet(number) {
 			getNumberPageDefault(number);
 			$
@@ -193,55 +163,19 @@
 		function SendDataLock(emailvalue) {
 
 			$
-					.ajax({
-						type : 'POST',
-						url : '${pageContext.request.contextPath}/AJAXAdminUserManager',
-						data : {
+				.ajax({
+					type: 'POST',
+					url: '${pageContext.request.contextPath}/AJAXAdminUserManager',
+					data: {
 
-							page : getMove(),
-							email : emailvalue
-						},
-						success : function(responseText) {
-							$('#content-table').html(responseText);
-						}
+						page :getMove(),
+						email : emailvalue
+					},
+					success: function(responseText) {
+						$('#content-table').html(responseText);
+					}
 
-					});
-
-		}
-		function switchChedoXem(value) {
-			
-			$
-			.ajax({
-				type : 'GET',
-				url : '${pageContext.request.contextPath}/AJAXswitchChedoXemAdminManageUser',
-				data : {
-
-					statusAccount : value
-				
-				},
-				success : function(responseText) {					
-					document.getElementById('page-navigation').value = responseText;
-// 					alert(responseText);
-				}
-
-			});
-			
-			
-
-			$
-					.ajax({
-						type : 'GET',
-						url : '${pageContext.request.contextPath}/AJAXAdminUserManager',
-						data : {
-
-							cheDoXem : value
-						
-						},
-						success : function(responseText) {
-							$('#content-table').html(responseText);
-						}
-
-					});
+				});
 
 		}
 	</script>
@@ -251,71 +185,7 @@
 
 
 	<!-- 	@@@@@@@@@ GỬI DỮ LIỆU XUỐNG SERVER @@@@@@@@@@@@@@@@@ -->
-	<style>
-/* The container-che-do-xem */
-.container-che-do-xem {
-	display: block;
-	position: relative;
-	padding-left: 35px;
-	margin-bottom: 12px;
-	cursor: pointer;
-	font-size: 18px;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
 
-/* Hide the browser's default radio button */
-.container-che-do-xem input {
-	position: absolute;
-	opacity: 0;
-	cursor: pointer;
-}
-
-/* Create a custom radio button */
-.checkmark {
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 25px;
-	width: 25px;
-	background-color: #eee;
-	border-radius: 50%;
-}
-
-/* On mouse-over, add a grey background color */
-.container-che-do-xem:hover input ~ .checkmark {
-	background-color: #ccc;
-}
-
-/* When the radio button is checked, add a blue background */
-.container-che-do-xem input:checked ~ .checkmark {
-	background-color: #2196F3;
-}
-
-/* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark:after {
-	content: "";
-	position: absolute;
-	display: none;
-}
-
-/* Show the indicator (dot/circle) when checked */
-.container-che-do-xem input:checked ~ .checkmark:after {
-	display: block;
-}
-
-/* Style the indicator (dot/circle) */
-.container-che-do-xem .checkmark:after {
-	top: 9px;
-	left: 9px;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background: white;
-}
-</style>
 
 </body>
 </html>

@@ -3,7 +3,6 @@ package model_DAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import model_ConnectDB.ExecuteStatementUtility;
 import model_beans.Attribute;
@@ -11,7 +10,6 @@ import model_beans.Branch;
 import model_beans.Color_main;
 import model_beans.Price_product_main;
 import model_beans.Product_main;
-import model_beans.StarEvaluate;
 
 public class DAO_Product_main extends ExecuteStatementUtility {
 	private final String PRODUCT = "SANPHAM";
@@ -19,7 +17,6 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 	private final String PRICE = "GIA_SP";
 	private final String PRICE_DATE = "NGAYCAPNHAT";
 	private static DAO_Product_main dao_product_main = null;
-	private String query;
 
 	private DAO_Product_main() {
 
@@ -32,10 +29,17 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 		return dao_product_main;
 	}
 
-	public Price_product_main getPrices_Product(String id) {
-		Price_product_main price = new Price_product_main();
-		query = "SELECT TOP 1 *  FROM " + PRICE + " WHERE " + ID + " = ? ORDER BY " + PRICE_DATE + " DESC";
+	public Product_main getProduct_main(String id) {
 		String[] para = { id };
+		Branch branch = new Branch();
+		Price_product_main price = new Price_product_main();
+		ArrayList<Attribute> lstAtt = new ArrayList<Attribute>();
+		ArrayList<Color_main> lstColor = new ArrayList<Color_main>();
+		// set gia
+		String query = "SELECT TOP 1 *  FROM " + PRICE + " WHERE " + ID + " = ? ORDER BY " + PRICE_DATE + " DESC";
+
+		System.out.println(query);
+
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				price.setPrice(rs.getInt(3));
@@ -45,13 +49,8 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return price;
-	}
-
-	public Branch getBranch_Product(String id) {
-		Branch branch = new Branch();
+		// set thuong hieu
 		query = "SELECT TH.MATH,TH.TENTH,TH.SLDT FROM THUONGHIEU TH JOIN SANPHAM SP ON SP.MATH=TH.MATH WHERE SP.MASP= ? ";
-		String[] para = { id };
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				branch.setId(rs.getString(1));
@@ -61,13 +60,7 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return branch;
-	}
-
-	public List<Attribute> getAttribute_Product(String id) {
-		ArrayList<Attribute> lstAtt = new ArrayList<Attribute>();
 		query = "  SELECT SP.MASP, LTT.MALOP,LTT.NOIDUNG FROM SANPHAM SP JOIN CAUHINH CH ON CH.MACH=SP.MACH JOIN CH_CTTT CT ON CT.MACH=CH.MACH JOIN CHITIET_THUOCTINH CTT ON CTT.MACT=CT.MACT JOIN THUOCTINH TT ON TT.MATT=CTT.MATT JOIN LOP_THUOCTINH LTT ON LTT.MALOP=TT.MALOP WHERE SP.MASP= ? GROUP BY SP.MASP, LTT.MALOP,LTT.NOIDUNG";
-		String[] para = { id };
 		// set thuoc tinh
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
@@ -90,12 +83,7 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return lstAtt;
-	}
-
-	public List<Color_main> getColors_Product(String id) {
-		ArrayList<Color_main> lstColor = new ArrayList<Color_main>();
-		String[] para = { id };
+		// set mau
 		query = "SELECT HA.MASP,HA.MAMAU,MS.TENMAU FROM HINHANH HA JOIN MAUSAC MS ON MS.MAMAU=HA.MAMAU WHERE HA.MASP=? GROUP BY HA.MASP,HA.MAMAU,MS.TENMAU";
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
@@ -108,6 +96,7 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 				ResultSet rs2 = super.AccessDBstr(query2, para2);
 				while (rs2.next()) {
 					String type = rs2.getString(4).trim();
+					System.out.println(type);
 					if (type.equals("NEN")) {
 						cl.setImgMain(rs2.getString(3));
 					} else {
@@ -121,55 +110,10 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return lstColor;
-	}
-
-	public Product_main getProduct_Form(String id) {
-		String[] para = { id };
-		ArrayList<Color_main> lstColor = (ArrayList<Color_main>) getColors_Product(id);
-		Price_product_main price = getPrices_Product(id);
-		StarEvaluate stars = new StarEvaluate();
-		Product_main product = new Product_main();
-		query = "SELECT * FROM dbo.GETPRODUCT_FORM(?)	";
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
-			if (rs.next()) {
-				product.setName(rs.getString("TENSP"));
-				price.setPrice(Integer.parseInt(rs.getString("GIA")));
-				if (rs.getString("GIA_KM") != null) {
-
-					price.setPriceSales(Integer.parseInt(rs.getString("GIA_KM")));
-				}
-				System.out.println("Ádasdsad");
-				product.setPrices(price);
-				Color_main color = new Color_main();
-				color.setImgMain(rs.getString("ANH"));
-				lstColor.add(color);
-				product.setColors(lstColor);
-				System.out.println(color.getImgMain());
-				query = "SELECT * FROM dbo.GETEVALUATE_AVG(?)	";
-				ResultSet rs2 = super.AccessDBstr(query, para);
-				if (rs2.next()) {
-					stars.setAvgStars(Double.parseDouble(rs2.getString("STB")));
-					product.setEvaluate(stars);
-				}
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-
-		return product;
-	}
-
-	public Product_main getProduct_main(String id) {
-		String[] para = { id };
-		Branch branch = getBranch_Product(id);
-		ArrayList<Color_main> lstColor = (ArrayList<Color_main>) getColors_Product(id);
-		Price_product_main price = getPrices_Product(id);
-		ArrayList<Attribute> lstAtt = (ArrayList<Attribute>) getAttribute_Product(id);
 		query = "SELECT * FROM SANPHAM WHERE MASP=?";
 		Product_main product = new Product_main();
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
-			if (rs.next()) {
+			while (rs.next()) {
 				product.setID(rs.getString(1));
 				product.setName(rs.getString(2));
 				product.setType(rs.getString(3));
@@ -179,12 +123,11 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 				product.setQuantity(rs.getInt(8));
 				product.setSale_quantity(rs.getInt(9));
 				product.setView(rs.getInt(10));
-				product.setAttributes(lstAtt);
-				product.setColors(lstColor);
-				product.setBranch(branch);
-				product.setPrices(price);
-			}
 
+			}
+			product.setAttributes(lstAtt);
+			product.setColors(lstColor);
+			product.setBranch(branch);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -193,7 +136,6 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(getDao_Product_main().getProduct_Form("SP01").getName());
-
+		System.out.println(getDao_Product_main().getProduct_main("SP01"));
 	}
 }
