@@ -1,6 +1,7 @@
 package controller_system;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model_BO_service.BO_Product;
+import model_DAO.DAO_ListProduct;
 import model_DAO.DAO_Product_main;
 import model_beans.Color_main;
 import model_beans.Product_form;
@@ -24,12 +26,15 @@ public class Index extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<Product_form> lst = new ArrayList<Product_form>();
-		for (int i = 1; i < 10; i++) {
-			Product_main p = DAO_Product_main.getDao_Product_main().getProduct_Form("SP0" + i);
+		List<Product_form> lst = null;
 
-			lst.add(new Product_form(p.getName(), p.getColors().get(0).getImgMain(), p.getPrices().getPrice(),
-					p.getPrices().getPriceSales()));
+		try {
+			DAO_ListProduct.getDao_ListProduct()
+					.setQuery("\r\n" + "SELECT * FROM dbo.GET_PRODUCT_BRANCH(?)	order by GIA desc");
+			lst = DAO_ListProduct.getDao_ListProduct().getListFollowBranch("TH03");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		request.setAttribute("lstProduct", lst);
@@ -37,7 +42,6 @@ public class Index extends HttpServlet {
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/index.jsp");
 		dispatcher.forward(request, response);
-		return;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
