@@ -97,9 +97,8 @@
 														<tr>
 															<c:forEach items="${listProduct}" var="pro">
 																<td>${pro.numOrder}</td>
-																<td style="max-width: 140px;"><img
-																	src="${pro.img}" width="100px"
-																	height="100px" alt=""></td>
+																<td style="max-width: 140px;"><img src="${pro.img}"
+																	width="100px" height="100px" alt=""></td>
 																<td>${pro.id}</td>
 																<td>${pro.name}</td>
 																<td>${pro.branch}</td>
@@ -111,8 +110,8 @@
 																<td class="color-price">${pro.price}</td>
 																<td class="color-price">${pro.priceSale}</td>
 																<td class="color-price">${pro.state}</td>
-																
-								
+
+
 																<td class="row" style="border: none;">
 																	<div style="margin: auto;">
 																		<a
@@ -122,11 +121,24 @@
 																				data-toggle="modal" data-target="#editUser">
 																				<i class="txt-center fas fa-edit"></i>
 																			</button></a>
-																		<button class="btn btn-danger sizeTh1"
+																		<button
+																			class="btn <c:if test ="${pro.state == 'Đang bán'}">
+																				 btn-success
+																	</c:if>
+																	<c:if test ="${pro.state == 'Ngừng bán' ||pro.state == 'Ngưng kinh doanh'}">
+																		 btn-danger
+																	</c:if> sizeTh1"
 																			data-toggle="modal" data-target="#delete${pro.id}"
 																			data-toggle="tooltip" data-placement="top"
-																			title="Xóa">
-																			<i class="txt-center menu-icon fas fa-trash-alt"></i>
+																			title="Thay đổi trạng thái sản phẩm">
+																			<i
+																				class="txt-center menu-icon <c:if test ="${pro.state == 'Đang bán'}">
+																				fas fa-lock-open
+																	</c:if>
+																	<c:if test ="${pro.state == 'Ngừng bán' ||pro.state == 'Ngưng kinh doanh'}">
+																		 
+																		 	fas fa-lock
+																	</c:if>"></i>
 																		</button>
 																	</div>
 
@@ -147,13 +159,13 @@
 																			<span aria-hidden="true">&times;</span>
 																		</button>
 																	</div>
-																	<div class="modal-body">Bạn có muốn thay đổi trạng thái sản phẩm ${pro.name}.
-																		 </div>
+																	<div class="modal-body">Bạn có muốn thay đổi
+																		trạng thái sản phẩm ${pro.name}.</div>
 																	<div class="modal-footer">
 																		<button type="button" class="btn btn-secondary"
 																			data-dismiss="modal">Không</button>
-																		<button type="button" 
-																			class="btn btn-primary">Đồng ý</button>
+																		<button type="button" class="btn btn-primary">Đồng
+																			ý</button>
 																	</div>
 																</div>
 															</div>

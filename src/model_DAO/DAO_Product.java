@@ -250,7 +250,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 	public ArrayList<ProductAdmin> listProductAdmin(int start, int end) {
 		ArrayList<ProductAdmin> product = new ArrayList<ProductAdmin>();
 		String[] para = { start + "", end + "" };
-		String query = "WITH X AS (select ROW_NUMBER() OVER (ORDER BY SANPHAM.MASP DESC) AS STT, SANPHAM.*,THUONGHIEU.TENTH,HINHANH.ANH FROM ((SANPHAM INNER JOIN HINHANH ON SANPHAM.MASP = HINHANH.MASP)) INNER JOIN THUONGHIEU ON THUONGHIEU.MATH = SANPHAM.MATH WHERE HINHANH.LOAIANH = 'NEN') SELECT * FROM X WHERE STT BETWEEN ? AND ?";
+		String query = "WITH X AS (select ROW_NUMBER() OVER (ORDER BY SANPHAM.NGAYCAPNHAT DESC) AS STT, SANPHAM.*,THUONGHIEU.TENTH,HINHANH.ANH FROM ((SANPHAM INNER JOIN HINHANH ON SANPHAM.MASP = HINHANH.MASP)) INNER JOIN THUONGHIEU ON THUONGHIEU.MATH = SANPHAM.MATH WHERE HINHANH.LOAIANH = 'NEN') SELECT * FROM X WHERE STT BETWEEN ? AND ?";
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				product.add(new ProductAdmin(rs.getString("STT"), rs.getString("MASP").trim(), rs.getString("ANH"),

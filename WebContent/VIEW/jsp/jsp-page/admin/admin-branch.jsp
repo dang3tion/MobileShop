@@ -96,8 +96,15 @@
 																	</c:if>
 																	"
 																		data-toggle="modal" data-target="#del${pp.id}"
-																		style="margin: auto;" title='Xóa thương hiệu'>
-																		<i class="txt-center menu-icon fas fa-lock"></i>
+																		style="margin: auto;" title='Thay đổi trạng thái'>
+																		<i
+																			class="txt-center menu-icon <c:if test ="${pp.state == 'Còn kinh doanh'}">
+																			fas fa-lock-open
+																	</c:if>
+																	<c:if test ="${pp.state == 'Ngừng kinh doanh'}">
+																		 	
+																		 	fas fa-lock
+																	</c:if>"></i>
 																	</button>
 																</td>
 															</tr>
@@ -114,8 +121,8 @@
 																				<span aria-hidden="true">&times;</span>
 																			</button>
 																		</div>
-																		<div class="modal-body">Bạn có muốn thay đổi trạng thái thương hiệu
-																			hiệu này.</div>
+																		<div class="modal-body">Bạn có muốn thay đổi
+																			trạng thái thương hiệu hiệu này.</div>
 																		<div class="modal-footer">
 																			<form
 																				action="${pageContext.request.contextPath}/admin/branch"
@@ -137,8 +144,7 @@
 
 
 												<!-- 				PHÂN TRANG -->
-												<div class="page-navigation" id="page-navigation"
-													value="3">
+												<div class="page-navigation" id="page-navigation" value="3">
 													<div class="beta">
 														<button onclick="previousPage()">Trước</button>
 														<span id="page-number"> </span>
@@ -147,7 +153,7 @@
 												</div>
 											</div>
 											<!-- 				PHÂN TRANG -->
-											
+
 										</div>
 									</div>
 								</div>

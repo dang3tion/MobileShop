@@ -46,7 +46,9 @@ public class BO_Product {
 	public ArrayList<ProductAdmin> listProductAdmin(int start,int end){
 		return dao.listProductAdmin(start, end);
 	}
-
+	public void updateStateProduct(String id) {
+		dao.updateState(id);
+	}
 
 	
 }
