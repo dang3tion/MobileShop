@@ -28,10 +28,14 @@ public class ShopInfo extends HttpServlet {
 
 		String name = request.getParameter("name");
 		String policy = request.getParameter("policy");
+		String realAddress = request.getParameter("realAddress");
+		String youtubeURL = request.getParameter("youtubeURL");
+		String facebookURL = request.getParameter("facebookURL");
 
-		model_beans.ShopInfo newInfo = new model_beans.ShopInfo(name, policy, "hihi", "hihi", "hihi");
+		
+		model_beans.ShopInfo newInfo = new model_beans.ShopInfo(name, policy, facebookURL , youtubeURL , realAddress );
 
-		(new DAO_ShopInfo()).setInfo(newInfo);
+		DAO_ShopInfo.getDaoShopInfo().setInfo(newInfo);
 
 		HttpSession session = request.getSession();
 		session.setAttribute("SHOPINFO", newInfo);

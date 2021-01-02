@@ -10,9 +10,8 @@
 	<div class="container">
 		<a class="navbar-brand"
 			href="${pageContext.request.contextPath}/index"><i
-			<%-- 			class="fas fa-mobile-alt"></i> ${SHOPINFO.name}</a> --%>
-			class="fas fa-mobile-alt"></i>Mobile
-			Shop</a>
+						class="fas fa-mobile-alt"></i> ${SHOPINFO.name}</a>
+			
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive"
 			aria-expanded="false" aria-label="Toggle navigation">

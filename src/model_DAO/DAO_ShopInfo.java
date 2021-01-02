@@ -14,6 +14,21 @@ public class DAO_ShopInfo extends ExecuteStatementUtility {
 	private final String URL_YT = "DC_YTB";
 	private final String ADDRESS = "DC_THUC";
 
+	
+	private static DAO_ShopInfo daoShopInfo = null;
+
+	public static DAO_ShopInfo getDaoShopInfo() {
+		if ( daoShopInfo == null) {
+			 daoShopInfo = new DAO_ShopInfo();
+		}
+		return  daoShopInfo;
+	}
+
+	protected DAO_ShopInfo() {
+	}
+
+	
+	
 	public void setInfo(ShopInfo info) {
 		try {
 			String query = "UPDATE " //
@@ -22,7 +37,7 @@ public class DAO_ShopInfo extends ExecuteStatementUtility {
 					+ POLICY + " = ? , "//
 					+ URL_FB + " = ? , "//
 					+ URL_YT + " = ? , "//
-					+ ADDRESS + " = ? WHERE ID = 'const'";
+					+ ADDRESS + " = ? WHERE ID = '00'";
 
 			String[] param = { info.getName(), info.getPolicy(), info.getURL_facebook(), info.getURL_youtube(),
 					info.getAddress() };
@@ -51,7 +66,5 @@ public class DAO_ShopInfo extends ExecuteStatementUtility {
 		return null;
 	}
 
-	public static void main(String[] args) {
 	
-	}
 }

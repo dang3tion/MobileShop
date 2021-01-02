@@ -16,6 +16,7 @@ public class FirstSetup implements HttpSessionListener {
 		session.setAttribute("LANGUAGE", "vi_VN");
 
 		session.setAttribute("CART", new Cart());
+		session.setAttribute("SHOPINFO", DAO_ShopInfo.getDaoShopInfo().getInfo());
 
 	}
 

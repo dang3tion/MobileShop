@@ -28,42 +28,39 @@
 
 			<!-- 		toggle logout -->
 			<jsp:include page="/VIEW/jsp/jsp-component/toggle-logout-bar.jsp"></jsp:include>
-
-			<!-- main content page -->
-			<div class="container-fluid">
-				<div class="frame-cog">
-					<h3>Thông tin cửa hàng</h3>
-					<div class="save">
-						<button data-toggle="modal" data-target="#save">Lưu lại
-							toàn bộ</button>
-						<div class="modal fade" id="save" tabindex="-1" role="dialog"
-							aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLongTitle">Xác
-											nhận thay đổi</h5>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">Bạn có muốn xác nhận thay đổi
-										này?</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Không</button>
-										<button type="button" onclick="themMau()" id="btnAddColor"
-											data-dismiss="modal" class="btn btn-primary">Đồng ý</button>
-									</div>
-								</div>
-							</div>
+			<form action="${pageContext.request.contextPath}/admin/information"
+				method="POST">
+				<!-- main content page -->
+				<div class="container-fluid">
+					<div class="frame-cog">
+						<h3>Thông tin cửa hàng</h3>
+						<div class="save">
+							<button type="submit">Lưu lại
+								toàn bộ</button>
+<!-- 							<div class="modal fade" id="save" tabindex="-1" role="dialog" -->
+<!-- 								aria-labelledby="exampleModalCenterTitle" aria-hidden="true"> -->
+<!-- 								<div class="modal-dialog modal-dialog-centered" role="document"> -->
+<!-- 									<div class="modal-content"> -->
+<!-- 										<div class="modal-header"> -->
+<!-- 											<h5 class="modal-title" id="exampleModalLongTitle">Xác -->
+<!-- 												nhận thay đổi</h5> -->
+<!-- 											<button type="button" class="close" data-dismiss="modal" -->
+<!-- 												aria-label="Close"> -->
+<!-- 												<span aria-hidden="true">&times;</span> -->
+<!-- 											</button> -->
+<!-- 										</div> -->
+<!-- 										<div class="modal-body">Bạn có muốn xác nhận thay đổi -->
+<!-- 											này?</div> -->
+<!-- 										<div class="modal-footer"> -->
+<!-- 											<button type="button" class="btn btn-secondary" -->
+<!-- 												data-dismiss="modal">Không</button> -->
+<!-- 											<button type="button" onclick="themMau()" id="btnAddColor" -->
+<!-- 												data-dismiss="modal" class="btn btn-primary">Đồng ý</button> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
 						</div>
-					</div>
-
-					<form action="${pageContext.request.contextPath}/admin/information"
-						method="POST">
-
 						<div class="frame-cog-content">
 							<div class="frame">
 								<h5>Thông tin chung</h5>
@@ -95,7 +92,7 @@
 											<p>Địa chỉ thực</p>
 										</div>
 										<div class="input">
-											<input type="text">
+											<input value="${SHOPINFO.address}" name="realAddress" type="text">
 										</div>
 									</li>
 									<li class="content-input">
@@ -103,15 +100,15 @@
 											<p>Địa chỉ Facebook</p>
 										</div>
 										<div class="input">
-											<input type="text">
+											<input name="facebookURL" value="${SHOPINFO.URL_facebook}"  type="text">
 										</div>
 									</li>
 									<li class="content-input">
 										<div class="title">
 											<p>Địa chỉ Youtube</p>
 										</div>
-										<div class="input">
-											<input type="text">
+										<div  class="input">
+											<input name="youtubeURL" value="${SHOPINFO.URL_youtube}" type="text">
 										</div>
 									</li>
 								</ul>
@@ -177,21 +174,14 @@
 									</script>
 
 
-
-
-
-									<button type="submit">LƯU LẠI !!!!!!!!</button>
-
-
-
 									<!-- 								@@@@@@@@@@@@@@@CKEDITOR@@@@@@@@@@@@@@@@@@ -->
-					</form>
+			</form>
 
 
-				</div>
-
-			</div>
 		</div>
+
+	</div>
+	</div>
 
 
 

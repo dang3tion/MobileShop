@@ -76,9 +76,4 @@ public class ExecuteStatementUtility {
 		return resultSet;
 	}
 	
-	
-	public static void main(String[] args) {
-		new ExecuteStatementUtility().AccessDBstr("INSERT INTO TEST VALUES( ? )", new String[] {"2020-12-15"});
-	}
-	
 }
