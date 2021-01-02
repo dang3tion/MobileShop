@@ -54,7 +54,7 @@
 						type="button" onclick="onOffAccount('${user.email}')"
 						class="btn btn-success">
 						<span>Mở</span> <i class="fas fa-lock-open"></i>
-					</button>
+					</button> 
 				</c:otherwise>
 			</c:choose> <!-- 			   Khóa Button trigger modal --> <%--     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalCenter${user.id}"> --%>
 			<!--         Khóa --> <!--     </button> --> <!--     Khóa Modal -->
