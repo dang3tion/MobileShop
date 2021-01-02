@@ -144,7 +144,6 @@
 				<!-- 				PHÂN TRANG -->
 				<div class="page-navigation" id="page-navigation"
 					value="${totalPage}">
-					<div id="total-page">${totalPage}</div>
 					<div class="beta">
 						<button onclick="previousPage()">Trước</button>
 						<span id="page-number"> </span>
@@ -221,8 +220,8 @@
 				
 				},
 				success : function(responseText) {					
-					document.getElementById('page-navigation').setAttribute("value", responseText);
-					alert(responseText);
+					document.getElementById('page-navigation').value = responseText;
+// 					alert(responseText);
 				}
 
 			});
