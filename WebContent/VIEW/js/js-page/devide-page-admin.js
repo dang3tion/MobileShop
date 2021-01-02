@@ -1,4 +1,4 @@
-var move = 1;
+var move = getCurrentPage();
 
 function getNumberPageDefault(page) {
 	move = page;
