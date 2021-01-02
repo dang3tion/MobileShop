@@ -11,10 +11,10 @@ public class Config {
 //	   ____) | | |__| | | |____    | |__| | | | | | | | | | | | | | |  __/
 //	  |_____/   \___\_\ |______|    \____/  |_| |_| |_| |_| |_| |_|  \___|
 //	___________________________________________________________________________________________  ______________________________________________________ ______________________________________________________ ___________________________________________________________________________________________________________________________________________________                                                                  
-//	public static final String SERVER_NAME = "jdbc:sqlserver://tkbwinfomapp.database.windows.net:1433";
-//	public static final String DATABASE_NAME = "Demo2";
-//	public static final String USERNAME_DB = "tkbwinfomapp";
-//	public static final String PASSWORD_DB = "Admin123@#";
+//	public static final String SERVER_NAME = "jdbc:sqlserver://MOBILESHOP.mssql.somee.com:1433";
+//	public static final String DATABASE_NAME = "MOBILESHOP";
+//	public static final String USERNAME_DB = "lazadamimax3_SQLLogin_1";
+//	public static final String PASSWORD_DB = "p5crwl1u5s";
 
 //	__________________________________________________________________________________________________________________________________________________________________________________________________________________
 //	  _____    ____    _              _                          _   _                     _   
@@ -24,10 +24,10 @@ public class Config {
 //	  ____) | | |__| | | |____        | | | (_) | | (__  | (_| | | | | | | | | (_) | \__ \ | |_ 
 //	 |_____/   \___\_\ |______|       |_|  \___/   \___|  \__,_| |_| |_| |_|  \___/  |___/  \__|
 //	___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
-	public static final String SERVER_NAME = "jdbc:sqlserver://MOBILESHOP.mssql.somee.com:1433";
+	public static final String SERVER_NAME = "jdbc:sqlserver://192.168.137.164:1433";
 	public static final String DATABASE_NAME = "MOBILESHOP";
-	public static final String USERNAME_DB = "lazadamimax3_SQLLogin_1";
-	public static final String PASSWORD_DB = "p5crwl1u5s";
+	public static final String USERNAME_DB = "sa";
+	public static final String PASSWORD_DB = "sa";
 ///	_______________________________________________________________________________________________________________________________________________________________________
 
 	public static final String DBDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
