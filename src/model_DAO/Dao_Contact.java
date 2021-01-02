@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+
 import model_ConnectDB.ExecuteStatementUtility;
 import model_beans.Bean_Contact;
 
@@ -82,7 +83,14 @@ public class Dao_Contact extends ExecuteStatementUtility {
 			e.printStackTrace();
 		}
 	}
-	
+	public static void main(String[] args) {
+		Dao_Contact dao = new Dao_Contact();
+		System.out.println("hello");
+		System.out.println(dao.listContact(1, 10).size());
+//		for (int i = 0; i < dao.listContact(1, 10).size(); i++) {
+//			System.out.println(dao.listContact(1, 10).get(i).toString());
+//		}
+	}
 	
 	
 	
