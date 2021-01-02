@@ -73,7 +73,7 @@
 											</div>
 										</div>
 										<input name="keyword" type="text" class="form-control"
-											placeholder="nhập từ khóa">
+											placeholder="nhập từ khóa" value="${keyword}">
 									</div>
 								</div>
 								<div class="col-auto">
@@ -91,8 +91,8 @@
 						<!-- 						Chế độ Xem -->
 
 						<div>
-							<h3 style="margin-left: 100px">Đã tìm thấy phù hợp với từ
-								khóa</h3>
+							<h3 style="margin-left: 100px">Đã tìm thấy <strong>${totalSearch}</strong> tài khoản phù hợp với từ 
+								khóa "<strong>${keyword}</strong>"</h3>
 
 						</div>
 					</div>
@@ -121,6 +121,99 @@
 
 
 
+<c:forEach var="user" items="${listUser}" varStatus="i">
+	<tr>
+		<td>${STTstart+i.index}</td>
+		<th scope="row">${user.id}</th>
+		<c:choose>
+			<c:when test="${user.name != '' }">
+				<td>${user.name}</td>
+			</c:when>
+			<c:otherwise>
+				<td>chưa cập nhật</td>
+			</c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${user.phoneNumber != '' }">
+				<td>${user.phoneNumber}</td>
+			</c:when>
+			<c:otherwise>
+				<td>chưa cập nhật</td>
+			</c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${user.address != '' }">
+				<td>${user.address}</td>
+			</c:when>
+			<c:otherwise>
+				<td>khách hàng chưa cập nhật</td>
+			</c:otherwise>
+		</c:choose>
+		<td>${user.email}</td>
+		<td>${user.timeCreate}</td>
+		<td><c:choose>
+				<c:when test="${user.status == 'ENABLE'}">
+				Đang hoạt động
+			</c:when>
+				<c:otherwise>
+					<span style="color: red">Đã bị khóa</span>
+				</c:otherwise>
+			</c:choose></td>
+		<td class="row" style="border: none;"><c:choose>
+				<c:when test="${user.status == 'ENABLE'}">
+					<button id="lock-or-unlock-user-${user.email}" value=""
+						type="button" onclick="onOffAccount('${user.email}')"
+						class="btn btn-danger">
+						Khóa <i class="fas fa-lock"></i>
+					</button>
+				</c:when>
+				<c:otherwise>
+					<button id="lock-or-unlock-user-${user.email}" value=""
+						type="button" onclick="onOffAccount('${user.email}')"
+						class="btn btn-success">
+						<span>Mở</span> <i class="fas fa-lock-open"></i>
+					</button> 
+				</c:otherwise>
+			</c:choose> 
+		</td>
+
+	</tr>
+</c:forEach>
+<script>
+	function onOffAccount(email) {
+		
+		
+		
+		var accept = confirm("Xác nhận hành động !");
+
+		if (accept) {
+			SendDataLock(email);
+		}
+	}
+	
+	
+	
+	function SendDataLock(emailvalue) {
+
+		$
+				.ajax({
+					type : 'POST',
+					url : '${pageContext.request.contextPath}/admin/searchUser',
+					data : {
+
+						email : emailvalue
+					},
+					success : function(responseText) {
+						$('#content-table').html(responseText);
+					}
+
+				});
+		
+		location.reload();
+
+	}
+	
+</script>
 
 							<!-- 	############ AJAX TRẢ DỮ LIỆU TẠI ĐÂY #################### -->
 						</tbody>
@@ -148,53 +241,8 @@
 
 	<!-- 	@@@@@@@@@ GỬI DỮ LIỆU XUỐNG SERVER @@@@@@@@@@@@@@@@@ -->
 
-	<input id="curent-home-page-admin-management-user"
-		value="${CURRENT_PAGE_MANAGEMENT_USER}"></input>
 
 
-	<script>
-		function getCurrentPage() {
-			return document
-					.getElementById("curent-home-page-admin-management-user").value;
-		}
-
-		function SendDataToServlet(number) {
-			getNumberPageDefault(number);
-			$
-					.ajax({
-						type : 'GET',
-						url : '${pageContext.request.contextPath}/AJAXAdminUserManager',
-						data : {
-
-							page : parseInt(number)
-
-						},
-						success : function(responseText) {
-							$('#content-table').html(responseText);
-						}
-
-					});
-
-		}
-		function SendDataLock(emailvalue) {
-
-			$
-					.ajax({
-						type : 'POST',
-						url : '${pageContext.request.contextPath}/AJAXAdminUserManager',
-						data : {
-
-							page : getMove(),
-							email : emailvalue
-						},
-						success : function(responseText) {
-							$('#content-table').html(responseText);
-						}
-
-					});
-
-		}
-	</script>
 
 	<script src="${url}/js/js-page/devide-page-admin.js"></script>
 
