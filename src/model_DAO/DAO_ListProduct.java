@@ -39,17 +39,35 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 	public List<Product_form> getListFollowBranch(String idBranch) throws SQLException {
 		ArrayList<Product_form> lstProduct = new ArrayList<Product_form>();
 		String[] para = { idBranch };
-
-		
-	
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				Product_form p = new Product_form();
 				p.setId(rs.getString("MASP"));
 				p.setName(rs.getString("TENSP"));
 				p.setPrice(Integer.parseInt(rs.getString("GIA")));
-				if (rs.getString("GIA_KM")!=null) {
-					
+				if (rs.getString("GIA_KM") != null) {
+
+					p.setPriceSales(Integer.parseInt(rs.getString("GIA_KM")));
+				}
+				p.setImg(rs.getString("ANH"));
+				p.setAvgEvaluate(Double.parseDouble(rs.getString("AVGDANHGIA")));
+				lstProduct.add(p);
+			}
+		}
+		return lstProduct;
+	}
+
+	public List<Product_form> getListFollowPrices(int fromPrice, int toPrice) throws SQLException {
+		ArrayList<Product_form> lstProduct = new ArrayList<Product_form>();
+		String[] para = { fromPrice + "", toPrice + "" };
+		try (ResultSet rs = super.AccessDBstr(query, para)) {
+			while (rs.next()) {
+				Product_form p = new Product_form();
+				p.setId(rs.getString("MASP"));
+				p.setName(rs.getString("TENSP"));
+				p.setPrice(Integer.parseInt(rs.getString("GIA")));
+				if (rs.getString("GIA_KM") != null) {
+
 					p.setPriceSales(Integer.parseInt(rs.getString("GIA_KM")));
 				}
 				p.setImg(rs.getString("ANH"));
