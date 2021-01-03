@@ -25,7 +25,15 @@ public class ManagerProduct extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
+		String idEdit = request.getParameter("idEdit");
+		if (idEdit!=null) {
+			bo.updateStateProduct(idEdit);
+			request.setAttribute("listProduct", bo.listProductAdmin(1, 1000));
+			request.setAttribute("notice", "Trạng thái đã được thay đổi.");
+		}
+		RequestDispatcher dispatcher //
+		= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-product.jsp");
+dispatcher.forward(request, response);
 	}
 
 }
