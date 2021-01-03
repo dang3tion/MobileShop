@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model_BO_service.BO_Branch;
 
 @WebServlet(urlPatterns = "/admin/branch")
-public class Branch extends HttpServlet {
+public class Controller_Branch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BO_Branch bo = new BO_Branch();
 

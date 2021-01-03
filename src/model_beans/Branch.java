@@ -4,14 +4,13 @@ public class Branch {
 	private String numOrder;
 	private String id;
 	private String name;
-	private int quantity_product;
+	private int productQuantity;
 	private String state;
 
-	public Branch(String id, String name, int quantity_product) {
-		super();
+	public Branch(String id, String name, int productQuantity) {
 		this.id = id;
 		this.name = name;
-		this.quantity_product = quantity_product;
+		this.productQuantity = productQuantity;
 	}
 
 	public String getState() {
@@ -22,25 +21,24 @@ public class Branch {
 		this.state = state;
 	}
 
-	public Branch(String numOrder, String id, String name, int quantity_product, String state) {
+	public Branch(String numOrder, String id, String name, int productQuantity, String state) {
 		super();
 		this.numOrder = numOrder;
 		this.id = id;
 		this.name = name;
-		this.quantity_product = quantity_product;
+		this.productQuantity = productQuantity;
 		this.state = state;
 	}
 
-	public Branch(String id, String name, int quantity_product, String state) {
+	public Branch(String id, String name, int productQuantity, String state) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.quantity_product = quantity_product;
+		this.productQuantity = productQuantity;
 		this.state = state;
 	}
 
 	public Branch() {
-		super();
 	}
 
 	public String getId() {
@@ -59,12 +57,12 @@ public class Branch {
 		this.name = name;
 	}
 
-	public int getQuantity_product() {
-		return quantity_product;
+	public int getproductQuantity() {
+		return productQuantity;
 	}
 
-	public void setQuantity_product(int quantity_product) {
-		this.quantity_product = quantity_product;
+	public void setproductQuantity(int productQuantity) {
+		this.productQuantity = productQuantity;
 	}
 
 	public String getNumOrder() {
@@ -77,7 +75,7 @@ public class Branch {
 
 	@Override
 	public String toString() {
-		return "Branch [id=" + id + ", name=" + name + ", quantity_product=" + quantity_product + ", state=" + state
+		return "Controller_Branch [id=" + id + ", name=" + name + ", productQuantity=" + productQuantity + ", state=" + state
 				+ "]";
 	}
 
