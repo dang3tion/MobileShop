@@ -56,7 +56,7 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 			while (rs.next()) {
 				branch.setId(rs.getString(1));
 				branch.setName(rs.getString(2));
-				branch.setQuantity_product(rs.getInt(3));
+				branch.setproductQuantity(rs.getInt(3));
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

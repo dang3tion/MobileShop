@@ -1,6 +1,7 @@
 package controller_system;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model_DAO.DAO_Product_main;
 import model_beans.Product_main;
@@ -18,13 +20,28 @@ public class ProductDetail extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String id = request.getParameter("id");
+//		 cập nhật lượt xem
+		updateProductView(id, request);
+
 		Product_main pm = DAO_Product_main.getDao_Product_main().getProduct_main("SP03");
 		request.setAttribute("product", pm);
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/detail-product.jsp");
 		dispatcher.forward(request, response);
-		System.out.println(pm.getColors().get(0).getImgMain()+"ádasdasd");
 
+	}
+
+	public void updateProductView(String id, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		HashMap<String, Boolean> listProductViewed = (HashMap<String, Boolean>) session
+				.getAttribute("ACOUNT_VIEWERS_PRODUCT");
+
+		if (!listProductViewed.containsKey(id)) {
+			listProductViewed.put(id, true);
+/// Chạy query
+			session.setAttribute("ACOUNT_VIEWERS_PRODUCT", listProductViewed);
+		}
 	}
 
 }
