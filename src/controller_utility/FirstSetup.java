@@ -1,5 +1,6 @@
 package controller_utility;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSessionListener;
 
 import model_DAO.DAO_Branch;
 import model_DAO.DAO_ShopInfo;
+import model_beans.Branch;
 import model_beans.Cart;
 
 public class FirstSetup implements HttpSessionListener {
@@ -22,9 +24,7 @@ public class FirstSetup implements HttpSessionListener {
 
 		HashMap<String, Boolean> listProductsViewed = new HashMap<String, Boolean>();
 		session.setAttribute("COUNT_VIEWERS_PRODUCT", listProductsViewed);
-
-		session.setAttribute("LIST_BRAND_IN_DOPDOWN_MENU", new DAO_Branch().getAllBranch());
-
+		session.setAttribute("LIST_BRANCH_IN_DOPDOWN_MENU", DAO_Branch.getDAO_Branch().getAllBranch());
 	}
 
 	@Override

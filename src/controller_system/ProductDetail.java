@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model_DAO.DAO_Branch;
 import model_DAO.DAO_Product_main;
+import model_beans.Branch;
 import model_beans.Product_main;
 
 @WebServlet(urlPatterns = "/detail")
@@ -44,4 +46,13 @@ public class ProductDetail extends HttpServlet {
 		}
 	}
 
+	
+	public static void main(String[] args) {
+
+		for (Branch b : DAO_Branch.getDAO_Branch().getAllBranch()) {
+			System.out.println(b.getName());
+		}
+	
+	}
+	
 }

@@ -9,6 +9,23 @@ import model_beans.Branch;
 
 public class DAO_Branch extends ExecuteStatementUtility {
 
+	
+	private static DAO_Branch dao_Branch = null;
+
+	private DAO_Branch() {
+
+	}
+
+	public static DAO_Branch getDAO_Branch() {
+		if (dao_Branch == null) {
+			dao_Branch = new DAO_Branch();
+		}
+		return dao_Branch;
+	}
+	
+	
+	
+	
 	public ArrayList<Branch> listBranch(int start, int end) {
 		ArrayList<Branch> list = new ArrayList<Branch>();
 		String[] para = { start + "", end + "" };
@@ -95,7 +112,7 @@ public class DAO_Branch extends ExecuteStatementUtility {
 		try (ResultSet rs = super.AccessDBstr(query)) {
 			while (rs.next()) {
 				Branch brand = new Branch();
-				brand.setId(rs.getString("MATH"));
+				brand.setId(rs.getString("MATH").trim());
 				brand.setName(rs.getString("TENTH"));
 				listBranch.add(brand);
 			}
@@ -106,4 +123,7 @@ public class DAO_Branch extends ExecuteStatementUtility {
 		return listBranch;
 	}
 
+	
+
+	
 }

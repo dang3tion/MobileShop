@@ -6,7 +6,7 @@ import model_DAO.DAO_Branch;
 import model_beans.Branch;
 
 public class BO_Branch {
-	DAO_Branch dao = new DAO_Branch();
+	DAO_Branch dao = DAO_Branch.getDAO_Branch();
 	public ArrayList<Branch> getListBranch(int start, int end) {
 		return dao.listBranch(start, end);
 	}

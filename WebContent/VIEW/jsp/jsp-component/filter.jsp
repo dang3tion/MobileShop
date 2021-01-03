@@ -15,32 +15,25 @@
 						<div class="content-dropdown" id="content-trademark">
 							<ul class="list-menu">
 								<div class="row">
-									<div class="col-4">
-									
-									<c:forEach items="LIST_BRAND_IN_DOPDOWN_MENU" var="brand">
+									<div class="col-4">	
+									<c:forEach items="${LIST_BRANCH_IN_DOPDOWN_MENU}" var="branch" begin="0" end="2">
 									<li class="item-menu"><a
-											href="result_Page/result-filter.html">${brand.name}</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?id=${branch.id}">${branch.name}</a></li>
 									</c:forEach>
-									
-										
-										
 									</div>
-<!-- 									<div class="col-4"> -->
-<!-- 										<li class="item-menu"><a -->
-<!-- 											href="result_Page/result-filter.html">Xiaomi</a></li> -->
-<!-- 										<li class="item-menu"><a -->
-<!-- 											href="result_Page/result-filter.html">Vivo</a></li> -->
-<!-- 										<li class="item-menu"><a -->
-<!-- 											href="result_Page/result-filter.html">Huawei</a></li> -->
-<!-- 									</div> -->
-<!-- 									<div class="col-4"> -->
-<!-- 										<li class="item-menu"><a -->
-<!-- 											href="result_Page/result-filter.html">Realme</a></li> -->
-<!-- 										<li class="item-menu"><a -->
-<!-- 											href="result_Page/result-filter.html">Nokia</a></li> -->
-<!-- 										<li class="item-menu"><a -->
-<!-- 											href="result_Page/result-filter.html">Hãng khác</a></li> -->
-<!-- 									</div> -->
+									<div class="col-4">	
+									<c:forEach items="${LIST_BRANCH_IN_DOPDOWN_MENU}" var="branch" begin="3" end="5">
+									<li class="item-menu"><a
+											href="${pageContext.request.contextPath}/searchingProduct?id=${branch.id}">${branch.name}</a></li>
+									</c:forEach>
+									</div>
+									<div class="col-4">	
+									<c:forEach items="${LIST_BRANCH_IN_DOPDOWN_MENU}" var="branch" begin="6" end="8">
+									<li class="item-menu"><a
+											href="${pageContext.request.contextPath}/searchingProduct?id=${branch.id}">${branch.name}</a></li>
+									</c:forEach>
+									</div>
+
 								</div>
 							</ul>
 						</div>
