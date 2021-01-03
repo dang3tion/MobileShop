@@ -88,11 +88,15 @@
 												<div class="beta">
 													<div class="price">
 														<p>
-															${pro.key.price } <span class="unit">đ </span>
+															<fmt:formatNumber type="number" maxFractionDigits="3"
+																value="${pro.key.price }" />
+															<span class="unit">đ </span>
 														</p>
 														<c:if test="${pro.key.priceSales!=0}">
 															<p class="discount-price">
-																${pro.key.priceSales } <span class="unit">đ </span>
+																<fmt:formatNumber type="number" maxFractionDigits="3"
+																	value="${pro.key.priceSales }" />
+																<span class="unit">đ </span>
 															</p>
 														</c:if>
 													</div>
@@ -186,24 +190,21 @@
 						<div class="col-4">
 							<h5 class="mb-3 text-left ml-5">Tạm tính</h5>
 							<div class="receipt">
-
-								<ul class="list-group mb-3">
+								<ul>
 									<c:forEach items="${lst}" var="pro">
+										<li class="price-product">
+											<h5>${pro.key.name}<span>x</span> ${pro.value}
+											</h5>
+											<p>
+											<fmt:formatNumber type="number" maxFractionDigits="3"
+												value="${pro.key.price * pro.value }" /> <span class="unit"> đ</span>
+											</p>
 
-
-										<li
-											class="list-group-item d-flex justify-content-between lh-condensed">
-											<div>
-												<h6 class="my-0">${pro.key.name}
-													<span style="color: blue;"> x ${pro.value} </span>
-												</h6>
-											</div> <span style="color: #C41111; font-weight: bolder;"
-											class="price"> <fmt:formatNumber type="number"
-													maxFractionDigits="3" value="${pro.key.price * pro.value }" />
-												<span class='unit'>đ</span></span>
 										</li>
 									</c:forEach>
+
 								</ul>
+
 								<div class="sum-price">
 									<div class="title">
 										<p>Tổng tiền</p>
@@ -214,7 +215,7 @@
 												value="${sum}" />
 											<span class="unit"> đ</span>
 										</p>
-										<p>(Đã bao gồm VAT)</p>
+										<p>(Đã bao gồm VAT nếu có)</p>
 									</div>
 									<!-- 								########## START XỬ LÝ NÚT THANH TOÁN ############## -->
 									<c:choose>
