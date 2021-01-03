@@ -74,14 +74,12 @@
 						<div class="title float-left">
 							<h3>Sản phẩm nổi bật</h3>
 
-
-
-
-
-
 						</div>
 						<div class="title float-right">
-							<a href="#">Xem thêm <i class="fas fa-arrow-right"></i></a>
+							<a
+								href="${pageContext.request.contextPath}/searchingProduct?dssanpham=sanphamnoibat">Xem
+								thêm <i class="fas fa-arrow-right"></i>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -90,22 +88,13 @@
 						<div id="carouselForHorproduct" data-interval="false"
 							class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
-
-
 								<div class="carousel-item active ">
 									<div class="row d-block ">
-
-
-
-
-
-
 										<c:forEach items="${lstPrice }" var="pro" begin="0" end="3">
 											<div class="col-3">
 												<c:import
 													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
 													<c:param name="id" value="0"></c:param>
-
 													<c:param name="image" value="${pro.img}"></c:param>
 													<c:param name="name" value="${pro.name}"></c:param>
 													<c:param name="price" value="${pro.price}"></c:param>
@@ -155,7 +144,10 @@
 							<h3>Sản phẩm mới</h3>
 						</div>
 						<div class="title float-right">
-							<a href="#">Xem thêm <i class="fas fa-arrow-right"></i></a>
+							<a
+								href="${pageContext.request.contextPath}/searchingProduct?dssanpham=sanphammoi">Xem
+								thêm <i class="fas fa-arrow-right"></i>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -228,7 +220,10 @@
 						<h3>Danh sách sản phẩm</h3>
 					</div>
 					<div class="title float-right">
-						<a href="#">Xem thêm <i class="fas fa-arrow-right"></i></a>
+						<a
+							href="${pageContext.request.contextPath}/searchingProduct?dssanpham=sanphamgiacao">Xem
+							thêm <i class="fas fa-arrow-right"></i>
+						</a>
 					</div>
 				</div>
 

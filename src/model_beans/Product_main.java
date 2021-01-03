@@ -1,6 +1,10 @@
 package model_beans;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import model_DAO.DAO_ListProduct;
 
 public class Product_main {
 	private String ID;
@@ -161,4 +165,12 @@ public class Product_main {
 				+ colors + "]/n";
 	}
 
+	public static void main(String[] args) {
+		Map<Enum, String> map = new HashMap<Enum, String>();
+		map.put(DAO_ListProduct.SELECT.PRICE, "");
+		map.put(DAO_ListProduct.SELECT.EVALUATE, "");
+		for (Enum a : map.keySet()) {
+			System.out.println("key: " + a + " value: " + map.get(a));
+		}
+	}
 }

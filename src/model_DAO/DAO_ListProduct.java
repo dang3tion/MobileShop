@@ -139,4 +139,24 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 
 	}
 
+	public Product_form getProductColor(String id, String idColor) throws SQLException {
+		Product_form p = new Product_form();
+		query = "SELECT * FROM GET_PRODUCT_COLOR(?,?)	";
+		String[] para = { id, idColor };
+		try (ResultSet rs = super.AccessDBstr(query, para)) {
+			while (rs.next()) {
+				p.setId(rs.getString("MASP"));
+				p.setName(rs.getString("TENSP"));
+				p.setNameBranch(rs.getString("TENTH"));
+				p.setPrice(Integer.parseInt(rs.getString("GIA")));
+				if (rs.getString("GIA_KM") != null) {
+					p.setPriceSales(Integer.parseInt(rs.getString("GIA_KM")));
+				}
+				p.setImg(rs.getString("ANH"));
+				p.setAvgEvaluate(Double.parseDouble(rs.getString("AVGDANHGIA")));
+				p.setColor(rs.getString("TENMAU"));
+			}
+		}
+		return p;
+	}
 }

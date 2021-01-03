@@ -7,8 +7,11 @@ public class Product_form {
 	private int price;
 	private int priceSales;
 	private double avgEvaluate;
+	private String color;
+	private String nameBranch;
 
-	public Product_form(String id, String name, String img, int price, int priceSales, double avgEvaluate) {
+	public Product_form(String id, String name, String img, int price, int priceSales, double avgEvaluate, String color,
+			String nameBranch) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -16,6 +19,24 @@ public class Product_form {
 		this.price = price;
 		this.priceSales = priceSales;
 		this.avgEvaluate = avgEvaluate;
+		this.color = color;
+		this.nameBranch = nameBranch;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getNameBranch() {
+		return nameBranch;
+	}
+
+	public void setNameBranch(String nameBranch) {
+		this.nameBranch = nameBranch;
 	}
 
 	public Product_form() {

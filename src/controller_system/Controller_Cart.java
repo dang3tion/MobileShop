@@ -1,8 +1,7 @@
 package controller_system;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.sql.SQLException;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -15,8 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import model_BO_service.BO_Product;
 import model_beans.Cart;
-import model_beans.Product;
-import model_utility.CodeOrder;
+import model_beans.Product_form;
 import model_utility.Config;
 
 @WebServlet(urlPatterns = "/cart")
@@ -31,21 +29,17 @@ public class Controller_Cart extends HttpServlet {
 
 		Cart cart = (Cart) session.getAttribute("CART");
 		// display Cart
-		Map<String, HashMap<String, Integer>> map = cart.getListProduct();
-//		HashMap<String, Integer> color = new HashMap<String, Integer>();
-//		color.put("MS01", 1);
-//		color.put("MS02", 3);
-//		map.put("SP01", color);
-//		color = new HashMap<String, Integer>();
-//		color.put("MS01", 3);
-//		color.put("MS04", 1);
-//		map.put("SP02", color);
-
-		
-
-		request.setAttribute("SUM_CART", cart.getQuantityOfProductInCart());
+		int sum = 0;
+		int quantity = cart.getQuantityOfProductInCart();
+		Map<Product_form, Integer> lst = cart.getName_Quantity();
+		Map<Product_form, Integer> map = null;
+		map = cart.getList();
+		sum = cart.getReceiptSum();
+		// TODO Auto-generated catch block
+		request.setAttribute("lst", lst);
+		request.setAttribute("sum", sum);
+		request.setAttribute("quantity", quantity);
 		request.setAttribute("message", request.getAttribute("message"));
-
 		request.setAttribute("map", map);
 		dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
 		dispatcher.forward(request, response);
@@ -70,13 +64,18 @@ public class Controller_Cart extends HttpServlet {
 		switch (choose) {
 		case "add":
 			String message = null;
-			switch (cart.add(productID, colorID)) {
-			case 1:
-				message = "tối đa " + Config.MAX_QUANTITY_OF_PRODUCT + " sản phẩm mỗi mẫu điện thoại";
-				break;
-			case 2:
-				message = "tối đa " + Config.MAX_PRODUCT + " mẫu điện thoại trong giỏ hàng";
-				break;
+			try {
+				switch (cart.add(productID, colorID)) {
+				case 1:
+					message = "tối đa " + Config.MAX_QUANTITY_OF_PRODUCT + " sản phẩm mỗi mẫu điện thoại";
+					break;
+				case 2:
+					message = "tối đa " + Config.MAX_PRODUCT + " mẫu điện thoại trong giỏ hàng";
+					break;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 
 			if (datHang != null) {
@@ -99,12 +98,22 @@ public class Controller_Cart extends HttpServlet {
 
 			break;
 		case "decrease":
-			cart.removeProductItem(productID, colorID);
+			try {
+				cart.removeProductItem(productID, colorID);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			updateCart(cart, session);
 			response.sendRedirect(request.getContextPath() + "/cart");
 			break;
 		case "remove":
-			cart.removeProductModel(productID);
+			try {
+				cart.removeProductModel(productID);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			updateCart(cart, session);
 			response.sendRedirect(request.getContextPath() + "/cart");
 			break;

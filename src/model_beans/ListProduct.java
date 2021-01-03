@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import model_DAO.DAO_ListProduct;
+
 public class ListProduct {
 	private String query;
 	private ArrayList<Product_form> lstProduct;
@@ -17,6 +19,13 @@ public class ListProduct {
 	}
 
 	public void addOrderLIst(String key, String value) {
+		if (!key.equals(DAO_ListProduct.SELECT.PRICE + "") && !orderList.containsKey(key)) {
+			for (String s : orderList.keySet()) {
+				if (!s.equals(DAO_ListProduct.SELECT.PRICE)) {
+					orderList.remove(s);
+				}
+			}
+		}
 		orderList.put(key, value);
 	}
 

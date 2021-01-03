@@ -91,6 +91,7 @@ input::-webkit-inner-spin-button {
   .beta
   .quantity
   .quantity-content
+   form
   .btn {
   padding: 2px 8px;
 }
@@ -101,6 +102,7 @@ input::-webkit-inner-spin-button {
   .beta
   .quantity
   .quantity-content
+  form
   .btn
   i {
   color: #8a8989;
@@ -114,6 +116,7 @@ input::-webkit-inner-spin-button {
   .beta
   .quantity
   .quantity-content
+   form
   .minus {
   border-right: 1px solid #c8c8c8;
 }
@@ -124,6 +127,7 @@ input::-webkit-inner-spin-button {
   .beta
   .quantity
   .quantity-content
+   form
   .plus {
   border-left: 1px solid #c8c8c8;
 }
@@ -150,7 +154,7 @@ input::-webkit-inner-spin-button {
   .content-product
   .beta
   .quantity
-  .delete-content
+  .delete-content form
   button {
   font-size: 14px;
   border-radius: 3px;

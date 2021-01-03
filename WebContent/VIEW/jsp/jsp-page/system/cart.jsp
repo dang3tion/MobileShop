@@ -1,3 +1,4 @@
+<%@page import="model_beans.Cart"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -64,30 +65,79 @@
 
 
 				<c:choose>
-					<c:when test="${ LIST_PRODUCT_IN_CART != null }">
+					<c:when test="${ map != null }">
 						<div class="col-8">
 							<div class="frame-cart">
 								<ul>
-									
-									<%-- 	<c:forEach items="${LIST_PRODUCT_IN_CART}" var="pro">
-										<c:import url="/VIEW/jsp/jsp-component/cart-product.jsp">
-											<c:param name="id" value="${pro.id}"></c:param>
-											<c:param name="image" value="${pro.thumbnail}"></c:param>
-											<c:param name="name" value="${pro.name}"></c:param>
-											<c:param name="price" value="${pro.price}"></c:param>
-											<c:param name="salePrice" value="${pro.salePrice}"></c:param>
-											<c:param name="quantity" value="${pro.quantityInCart}"></c:param>
-										</c:import>
+									<c:forEach items="${map}" var="pro">
+										<li class="cart-content"><img src="${pro.key.img}">
+
+
+											<div class="content-product">
+												<div class="alpha">
+													<div class="mb-4">
+														<a href="../Product_page/chiTietSanPham.html">${pro.key.name }</a>
+													</div>
+													<p>
+														Màu sắc: <span>${pro.key.color }</span>
+													</p>
+													<p>
+														Thương hiệu: <span><a href="#">${pro.key.nameBranch }</a></span>
+													</p>
+												</div>
+												<div class="beta">
+													<div class="price">
+														<p>
+															${pro.key.price } <span class="unit">đ </span>
+														</p>
+														<c:if test="${pro.key.priceSales!=0}">
+															<p class="discount-price">
+																${pro.key.priceSales } <span class="unit">đ </span>
+															</p>
+														</c:if>
+													</div>
+													<div class="quantity">
+														<div class="quantity-content">
+															<form action="${pageContext.request.contextPath}/cart"
+																method="post">
+																<input name="choose" value="decrease" hidden="true">
+																<input name="page" value="cart-page" hidden="true">
+																<button name="id" value="${pro.key.id}"
+																	class="btn minus">
+																	<i class="fas fa-minus"></i>
+																</button>
+															</form>
+															<input type="number" min="1" value="${pro.value }"
+																max="5">
+															<form action="${pageContext.request.contextPath}/cart"
+																method="post">
+																<input name="choose" value="add" hidden="true">
+																<input name="page" value="cart-page" hidden="true">
+																<button name="id" value="${pro.key.id}" class="btn plus">
+																	<i class="fas fa-plus"></i>
+																</button>
+															</form>
+														</div>
+														<div class="delete-content">
+															<form method="POST"
+																action="${pageContext.request.contextPath}/cart">
+																<input name="id" value="${pro.key.id}" hidden="true">
+																<input name="page" value="cart-page" hidden="true">
+																<button name="choose" value="remove"
+																	class="btn btn-danger">Xóa</button>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div></li>
+
 									</c:forEach>
- --%>
-
-
 
 
 
 								</ul>
 								<!-- 								### NÚT XÓA TẤT CẢ GIỎ HÀNG ### -->
-								<c:if test="${PRODUCT_QUANTITY > 1}">
+								<c:if test="${quantity > 1}">
 
 
 									<!-- Button trigger modal -->
@@ -138,19 +188,19 @@
 							<div class="receipt">
 
 								<ul class="list-group mb-3">
-									<c:forEach items="${LIST_PRODUCT_IN_CART}" var="pro">
+									<c:forEach items="${lst}" var="pro">
+
+
 										<li
 											class="list-group-item d-flex justify-content-between lh-condensed">
 											<div>
-												<h6 class="my-0">${pro.name}
-													<span style="color: blue;"> x ${pro.quantityInCart}
-													</span>
+												<h6 class="my-0">${pro.key.name}
+													<span style="color: blue;"> x ${pro.value} </span>
 												</h6>
 											</div> <span style="color: #C41111; font-weight: bolder;"
 											class="price"> <fmt:formatNumber type="number"
-													maxFractionDigits="3"
-													value="${pro.price * pro.quantityInCart }" /> <span
-												class='unit'>đ</span></span>
+													maxFractionDigits="3" value="${pro.key.price * pro.value }" />
+												<span class='unit'>đ</span></span>
 										</li>
 									</c:forEach>
 								</ul>
@@ -161,7 +211,7 @@
 									<div class="price-sum">
 										<p class="price">
 											<fmt:formatNumber type="number" maxFractionDigits="3"
-												value="${SUM_CART}" />
+												value="${sum}" />
 											<span class="unit"> đ</span>
 										</p>
 										<p>(Đã bao gồm VAT)</p>
