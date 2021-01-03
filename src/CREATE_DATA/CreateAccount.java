@@ -1191,7 +1191,6 @@ public class CreateAccount {
 
 			Account newAcc = createAccount();
 			daoACC.add(newAcc);
-			System.out.println(newAcc);
 		}
 
 	}

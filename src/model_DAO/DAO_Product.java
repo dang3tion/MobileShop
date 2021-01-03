@@ -67,14 +67,12 @@ public class DAO_Product extends ExecuteStatementUtility {
 	public Product getProduct(String id) {
 		String query = "select SANPHAM.TENSP,SANPHAM.GIOITHIEU,GIA,GIA_KM,MACH FROM " + PRODUCT
 				+ " inner join GIA_SP on SANPHAM.MASP = GIA_SP.MASP WHERE " + MASP1 + " = ? ";
-		System.out.println(query);
 		String[] para = { id };
 		Product product = null;
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				Product pro = new Product(id, thumbnail(id), rs.getString(1), rs.getString(2), rs.getInt(3),
 						rs.getInt(4), rs.getString(5));
-				System.out.println();
 				product = pro;
 			}
 		} catch (SQLException e) {
@@ -296,11 +294,6 @@ public class DAO_Product extends ExecuteStatementUtility {
 		return false;
 	}
 
-	public static void main(String[] args) {
-		DAO_Product dao = new DAO_Product();
-//		System.out.println(dao.stateProduct("SP08"));
-		System.out.println(dao.updateState("SP01"));
-	}
 }
 
 // _   _                               _       _                     _                     

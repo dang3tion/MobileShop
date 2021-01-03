@@ -16,29 +16,31 @@
 							<ul class="list-menu">
 								<div class="row">
 									<div class="col-4">
-										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Apple</a></li>
-										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Samsung</a></li>
-										<li class="item-menu"><a
-											href="result_Page/result-filter.html">OPPO</a></li>
+									
+									<c:forEach items="LIST_BRAND_IN_DOPDOWN_MENU" var="brand">
+									<li class="item-menu"><a
+											href="result_Page/result-filter.html">${brand.name}</a></li>
+									</c:forEach>
+									
+										
+										
 									</div>
-									<div class="col-4">
-										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Xiaomi</a></li>
-										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Vivo</a></li>
-										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Huawei</a></li>
-									</div>
-									<div class="col-4">
-										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Realme</a></li>
-										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Nokia</a></li>
-										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Hãng khác</a></li>
-									</div>
+<!-- 									<div class="col-4"> -->
+<!-- 										<li class="item-menu"><a -->
+<!-- 											href="result_Page/result-filter.html">Xiaomi</a></li> -->
+<!-- 										<li class="item-menu"><a -->
+<!-- 											href="result_Page/result-filter.html">Vivo</a></li> -->
+<!-- 										<li class="item-menu"><a -->
+<!-- 											href="result_Page/result-filter.html">Huawei</a></li> -->
+<!-- 									</div> -->
+<!-- 									<div class="col-4"> -->
+<!-- 										<li class="item-menu"><a -->
+<!-- 											href="result_Page/result-filter.html">Realme</a></li> -->
+<!-- 										<li class="item-menu"><a -->
+<!-- 											href="result_Page/result-filter.html">Nokia</a></li> -->
+<!-- 										<li class="item-menu"><a -->
+<!-- 											href="result_Page/result-filter.html">Hãng khác</a></li> -->
+<!-- 									</div> -->
 								</div>
 							</ul>
 						</div>

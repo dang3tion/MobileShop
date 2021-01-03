@@ -1259,7 +1259,7 @@ INSERT INTO GIA_SP VALUES('SP09','3/11/2020','990000',NULL)
 INSERT INTO GIA_SP VALUES('SP09','7/4/2020','690000',NULL)
 INSERT INTO GIA_SP VALUES('SP09','5/8/2020','890000',NULL)
 select * from HINHANH
-INSERT INTO HINHANH VALUES('SP09','MS03','//cdn.tgdd.vn/Products/Images/42/232657/itel-it9200-den-1-org.jpg','NEN')
+INSERT INTO HINHANH VALUES('SP09','MS03','https://cdn.tgdd.vn/Products/Images/42/232657/itel-it9200-den-600x600-5-600x600.jpg','NEN')
 INSERT INTO HINHANH VALUES('SP09','MS03','//cdn.tgdd.vn/Products/Images/42/232657/itel-it9200-den-5-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP09','MS03','//cdn.tgdd.vn/Products/Images/42/232657/itel-it9200-den-6-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP09','MS03','//cdn.tgdd.vn/Products/Images/42/232657/itel-it9200-den-7-org.jpg','PHU')

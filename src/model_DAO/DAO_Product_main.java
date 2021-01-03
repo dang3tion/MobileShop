@@ -82,7 +82,6 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 				ResultSet rs2 = super.AccessDBstr(query2, para2);
 				while (rs2.next()) {
 					att.addAttribute(rs2.getString(4), rs2.getString(5));
-					System.out.println(att.getLstAtribute());
 				}
 				lstAtt.add(att);
 
@@ -139,13 +138,11 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 				if (rs.getString("GIA_KM") != null) {
 					price.setPriceSales(Integer.parseInt(rs.getString("GIA_KM")));
 				}
-				System.out.println("Ádasdsad");
 				product.setPrices(price);
 				Color_main color = new Color_main();
 				color.setImgMain(rs.getString("ANH"));
 				lstColor.add(color);
 				product.setColors(lstColor);
-				System.out.println(color.getImgMain());
 				query = "SELECT * FROM dbo.GETEVALUATE_AVG(?)	";
 				ResultSet rs2 = super.AccessDBstr(query, para);
 				if (rs2.next()) {

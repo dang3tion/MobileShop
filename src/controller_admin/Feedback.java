@@ -36,7 +36,6 @@ public class Feedback extends HttpServlet {
 		String date = request.getParameter("date");
 		String contentOld = request.getParameter("contentOld");
 		if (idDelete != null) {
-			System.out.println(idDelete);
 
 			bo.delete(idDelete);
 			request.setAttribute("listContact", bo.listContact(1, 1000));
@@ -44,16 +43,12 @@ public class Feedback extends HttpServlet {
 		}
 		if (email != null||content != null) {
 			
-			System.out.println(email);
-			System.out.println(content);
 			SendMail.sendFeekBack(email, content,contentOld,date);
 			bo.updateState(id);
 			request.setAttribute("listContact", bo.listContact(1, 1000));
 			request.setAttribute("messagesend", "Phản hồi của bạn đã được gửi.");
 		}
 		if (search != null) {
-			System.out.println(search);
-			System.out.println("sdafsdf");
 			request.setAttribute("listContact", bo.listSearch(search, 1, 1000));
 		}
 		

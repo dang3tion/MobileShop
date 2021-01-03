@@ -30,8 +30,6 @@ public class Controller_Branch extends HttpServlet {
 		String id = request.getParameter("id");
 
 		if (search != null) {
-			System.out.println(search);
-			System.out.println("sdafsdf");
 			// hàm search
 			request.setAttribute("listBranch", bo.getListSearch(search,1, 1000));
 		}

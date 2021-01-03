@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model_ConnectDB.ExecuteStatementUtility;
-
 import model_beans.Branch;
 
 public class DAO_Branch extends ExecuteStatementUtility {
@@ -13,8 +12,7 @@ public class DAO_Branch extends ExecuteStatementUtility {
 	public ArrayList<Branch> listBranch(int start, int end) {
 		ArrayList<Branch> list = new ArrayList<Branch>();
 		String[] para = { start + "", end + "" };
-		String query = "    WITH X AS (select ROW_NUMBER() OVER (ORDER BY MATH ASC) AS STT,* FROM THUONGHIEU ) SELECT * FROM X WHERE STT BETWEEN ? AND ?\r\n"
-				+ "";
+		String query = "    WITH X AS (select ROW_NUMBER() OVER (ORDER BY MATH ASC) AS STT,* FROM THUONGHIEU ) SELECT * FROM X WHERE STT BETWEEN ? AND ? ";
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				list.add(new Branch(rs.getString("STT"), rs.getString("MATH").trim(), rs.getString("TENTH"),
@@ -62,7 +60,6 @@ public class DAO_Branch extends ExecuteStatementUtility {
 		String check = branch(id).getState();
 		if (check.equals("Còn kinh doanh")) {
 			try {
-				System.out.println("Ngưng");
 				String query = "UPDATE THUONGHIEU SET TRANGTHAI = N'Ngừng kinh doanh' WHERE MATH = ?";
 				String query1 = "UPDATE SANPHAM SET TINHTRANG = N'Ngưng kinh doanh' WHERE MATH = ? AND TINHTRANG = N'Đang bán'";
 				String[] para = { id };
@@ -70,15 +67,14 @@ public class DAO_Branch extends ExecuteStatementUtility {
 				}
 				try (ResultSet rs = super.AccessDBstr(query1, para)) {
 				}
-	
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		
+
 		if (check.equals("Ngừng kinh doanh")) {
 			try {
-				System.out.println("còn");
 				String query = "UPDATE THUONGHIEU SET TRANGTHAI = N'Còn kinh doanh' WHERE MATH = ?";
 				String query1 = "UPDATE SANPHAM SET TINHTRANG = N'Đang bán' WHERE MATH = ? AND TINHTRANG = N'Ngưng kinh doanh'";
 				String[] para = { id };
@@ -92,9 +88,22 @@ public class DAO_Branch extends ExecuteStatementUtility {
 		}
 	}
 
-	public static void main(String[] args) {
-		DAO_Branch dao = new DAO_Branch();
-		dao.updateState("TH01");
+	// Dùng cho thanh menu
+	public ArrayList<Branch> getAllBranch() {
+		ArrayList<Branch> listBranch = new ArrayList<Branch>();
+		String query = "SELECT MATH, TENTH FROM THUONGHIEU";
+		try (ResultSet rs = super.AccessDBstr(query)) {
+			while (rs.next()) {
+				Branch brand = new Branch();
+				brand.setId(rs.getString("MATH"));
+				brand.setName(rs.getString("TENTH"));
+				listBranch.add(brand);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listBranch;
 	}
 
 }

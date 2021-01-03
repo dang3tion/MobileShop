@@ -124,7 +124,6 @@ public class BO_Account {
 	 */
 	public boolean isDisable(String email) {
 		Account acc = get(email);
-		System.out.println(acc);
 		if (acc.getStatus().equals(Const.ACCONT_DISABLE)) {
 			return true;
 		}

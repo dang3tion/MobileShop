@@ -19,7 +19,6 @@ public class Dao_Contact extends ExecuteStatementUtility {
 		String date = localDate.format(formatter);
 		try {
 			String query = "INSERT INTO " + "PHANHOI" + " VALUES(?,?,?,?,?,?)";
-			System.out.println(query);
 			String[] parameters = { 
 					contact.getEmail(), contact.getName(), contact.getNumberPhone(), date, contact.getContent(),"Chưa phản hồi" };
 
@@ -82,14 +81,6 @@ public class Dao_Contact extends ExecuteStatementUtility {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	public static void main(String[] args) {
-		Dao_Contact dao = new Dao_Contact();
-		System.out.println("hello");
-		System.out.println(dao.listContact(1, 10).size());
-//		for (int i = 0; i < dao.listContact(1, 10).size(); i++) {
-//			System.out.println(dao.listContact(1, 10).get(i).toString());
-//		}
 	}
 	
 	
