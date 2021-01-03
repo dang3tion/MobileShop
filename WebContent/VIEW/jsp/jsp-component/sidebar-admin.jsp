@@ -50,12 +50,12 @@
 					Dữ liệu lọc <i class="menu-icon fas fa-filter"></i>
 			</a></li>
 			<li><a href="${pageContext.request.contextPath}/admin/config"
-				class="list-group-item list-group-item-action ${param.config}">Giao
+				class="list-group-item list-group-item-action ${param.configactive}">Giao
 					diện <i class="menu-icon fas fa-desktop"></i>
 			</a></li>
 			<li><a
 				href="${pageContext.request.contextPath}/admin/information"
-				class="list-group-item list-group-item-action ${param.information}">
+				class="list-group-item list-group-item-action ${param.informationactive}">
 					Thông tin cửa hàng <i class="menu-icon fas fa-cogs"></i>
 			</a></li>
 

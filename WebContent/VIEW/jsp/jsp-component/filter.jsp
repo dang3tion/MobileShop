@@ -82,13 +82,13 @@
 								<div class="row">
 									<div class="col-4">
 										<li class="item-menu"><a
-											href="result_Page/result-filter.html"> Điện thoại mới
-												(232)</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?tinhtrang=MOI">
+												Điện thoại mới </a></li>
 
 									</div>
 									<div class="col-4">
 										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Điện thoại cũ (0)</a></li>
+											href="searchingProduct?tinhtrang=CU">Điện thoại cũ</a></li>
 									</div>
 									<div class="col-4"></div>
 								</div>

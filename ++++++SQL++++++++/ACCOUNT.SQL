@@ -1,7 +1,0 @@
-
-
-
-select * from TAIKHOAN
--- Mật khẩu 123
-INSERT INTO TAIKHOAN
-VALUES('admin', '202cb962ac59075b964b07152d234b70','ENABLE','2005-12-11','ADMIN',N'Trần Thanh Bảo','0943417917',N'Bến Tre',NULL)

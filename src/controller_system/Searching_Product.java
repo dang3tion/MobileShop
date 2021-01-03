@@ -22,19 +22,24 @@ public class Searching_Product extends HttpServlet {
 		String range = request.getParameter("khoanggia");
 		Integer startRange = null;
 		Integer endRange = null;
+		String aspect = request.getParameter("tinhtrang");
 
-		if (range.contains("tren")) {
-			startRange = 15;
-		} else if (range.contains("duoi")) {
-			endRange = 1;
-		} else {
-			startRange = getListNumber(range)[0];
-			endRange = getListNumber(range)[1];
+		if (range != null) {
+			if (range.contains("tren")) {
+				startRange = 15;
+			} else if (range.contains("duoi")) {
+				endRange = 1;
+			} else {
+				startRange = getListNumber(range)[0];
+				endRange = getListNumber(range)[1];
+			}
 		}
 
 		System.out.println("Branch ===>" + branchName);
 		System.out.println("first  ===>" + startRange);
 		System.out.println("last ===>" + endRange);
+		System.out.println("moi/cu ====>" + aspect);
+		System.out.println("________________________________________");
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/XXXXXXXXXXXXXXXX.jsp");
 		dispatcher.forward(request, response);
