@@ -14,6 +14,12 @@ public class Searching_Product extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		String branchName = request.getParameter("thuonghieu");
+		
+		
+		
+		
+		
 	}
 
 }

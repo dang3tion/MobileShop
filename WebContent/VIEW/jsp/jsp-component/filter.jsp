@@ -18,19 +18,19 @@
 									<div class="col-4">	
 									<c:forEach items="${LIST_BRANCH_IN_DOPDOWN_MENU}" var="branch" begin="0" end="2">
 									<li class="item-menu"><a
-											href="${pageContext.request.contextPath}/searchingProduct?id=${branch.id}">${branch.name}</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?thuonghieu=${branch.name}">${branch.name}</a></li>
 									</c:forEach>
 									</div>
 									<div class="col-4">	
 									<c:forEach items="${LIST_BRANCH_IN_DOPDOWN_MENU}" var="branch" begin="3" end="5">
 									<li class="item-menu"><a
-											href="${pageContext.request.contextPath}/searchingProduct?id=${branch.id}">${branch.name}</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?thuonghieu=${branch.name}">${branch.name}</a></li>
 									</c:forEach>
 									</div>
 									<div class="col-4">	
 									<c:forEach items="${LIST_BRANCH_IN_DOPDOWN_MENU}" var="branch" begin="6" end="8">
 									<li class="item-menu"><a
-											href="${pageContext.request.contextPath}/searchingProduct?id=${branch.id}">${branch.name}</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?thuonghieu=${branch.name}">${branch.name}</a></li>
 									</c:forEach>
 									</div>
 
@@ -47,27 +47,27 @@
 								<div class="row">
 									<div class="col-4">
 										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Dưới 1 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Dưới 1 triệu</a></li>
 										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Từ 1 đến 2 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Từ 1 đến 2 triệu</a></li>
 										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Từ 2 đến 3 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Từ 2 đến 3 triệu</a></li>
 									</div>
 									<div class="col-4">
 										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Từ 3 đến 5 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Từ 3 đến 5 triệu</a></li>
 										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Từ 5 đến 7 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Từ 5 đến 7 triệu</a></li>
 										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Từ 7 đến 9 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Từ 7 đến 9 triệu</a></li>
 									</div>
 									<div class="col-4">
 										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Từ 9 đến 12 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Từ 9 đến 12 triệu</a></li>
 										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Từ 12 đến 15 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Từ 12 đến 15 triệu</a></li>
 										<li class="item-menu"><a
-											href="result_Page/result-filter.html">Trên 15 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Trên 15 triệu</a></li>
 									</div>
 								</div>
 							</ul>
