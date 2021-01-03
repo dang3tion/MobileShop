@@ -14,6 +14,9 @@
 	<listener>
 		<listener-class>controller_utility.FirstSetup</listener-class>
 	</listener>
+	<listener>
+		<listener-class>controller_utility.CountUserOnline</listener-class>
+	</listener>
 	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
 		<param-value>model_language.MobileShop</param-value>

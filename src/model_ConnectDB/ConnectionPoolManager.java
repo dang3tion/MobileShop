@@ -4,14 +4,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+
+import javax.management.Query;
 
 import model_utility.Config;
 
 public class ConnectionPoolManager {
 
 	// danh sách các single connection ĐANG TRỐNG trong một connection Pool
-	private List<Connection> availableConnections = new ArrayList<Connection>();
+	private Queue<Connection> availableConnections = new LinkedList<Connection>();
 
 	public ConnectionPoolManager() {
 		while (!isMaxPool()) {
@@ -21,11 +25,9 @@ public class ConnectionPoolManager {
 
 	private synchronized boolean isMaxPool() {
 		final int MAX_POOL_SIZE = Config.DB_MAX_CONNECTIONS;
-
 		if (availableConnections.size() < MAX_POOL_SIZE) {
 			return false;
 		}
-
 		return true;
 	}
 
@@ -49,8 +51,7 @@ public class ConnectionPoolManager {
 	public synchronized Connection getSingleConnectionFromPool() {
 		Connection connection = null;
 		if (availableConnections.size() > 0) {
-			connection = (Connection) availableConnections.get(0);
-			availableConnections.remove(0);
+			connection = availableConnections.remove();		
 		}
 		return connection;
 	}
@@ -63,5 +64,7 @@ public class ConnectionPoolManager {
 		}
 	}
 	
+	
+
 
 }

@@ -47,12 +47,6 @@ public class ProductDetail extends HttpServlet {
 	}
 
 	
-	public static void main(String[] args) {
 
-		for (Branch b : DAO_Branch.getDAO_Branch().getAllBranch()) {
-			System.out.println(b.getName());
-		}
-	
-	}
 	
 }
