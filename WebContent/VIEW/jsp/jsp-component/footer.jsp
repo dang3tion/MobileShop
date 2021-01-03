@@ -33,17 +33,14 @@
 
 
 				</div>
-				<p style="margin-top: -10px; font-size: 1em;">Lượt truy cập</p>
+				<p style="margin-top: -10px; font-size: 1em;">Đang online</p>
 				<p style="margin-top: -20px;">
-					<strong id="luottrruycap">9472</strong>
+				
+				 <c:set var="userOnline" value="${USER_ONLINE}" scope="application" />
+ 
+					<strong id="luottrruycap"> <c:out value="${userOnline}" /></strong>
 				</p>
-				<script>
-					var myVar = setInterval(myTimer, 1000);
-					function myTimer() {
-						document.getElementById("luottrruycap").innerHTML = Math
-								.floor(Math.random() * 10000) + 9999;
-					}
-				</script>
+				
 			</div>
 
 
