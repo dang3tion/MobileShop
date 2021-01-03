@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-import model_ConnectDB.DataSource;
+import model_DAO.DAO_Branch;
 import model_DAO.DAO_ShopInfo;
 import model_beans.Cart;
 
@@ -20,7 +20,10 @@ public class FirstSetup implements HttpSessionListener {
 		session.setAttribute("CART", new Cart());
 		session.setAttribute("SHOPINFO", DAO_ShopInfo.getDaoShopInfo().getInfo());
 
-		session.setAttribute("COUNT_VIEWERS_PRODUCT", new HashMap<String, Boolean>());
+		HashMap<String, Boolean> listProductsViewed = new HashMap<String, Boolean>();
+		session.setAttribute("COUNT_VIEWERS_PRODUCT", listProductsViewed);
+
+		session.setAttribute("LIST_BRAND_IN_DOPDOWN_MENU", new DAO_Branch().getAllBranch());
 
 	}
 

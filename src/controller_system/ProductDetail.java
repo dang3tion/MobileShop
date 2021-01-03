@@ -34,13 +34,13 @@ public class ProductDetail extends HttpServlet {
 
 	public void updateProductView(String id, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		HashMap<String, Boolean> listProductViewed = (HashMap<String, Boolean>) session
-				.getAttribute("ACOUNT_VIEWERS_PRODUCT");
+		HashMap<String, Boolean> listProductsViewed = (HashMap<String, Boolean>) session
+				.getAttribute("COUNT_VIEWERS_PRODUCT");
 
-		if (!listProductViewed.containsKey(id)) {
-			listProductViewed.put(id, true);
-/// Chạy query
-			session.setAttribute("ACOUNT_VIEWERS_PRODUCT", listProductViewed);
+		if (!listProductsViewed.containsKey(id)) {
+			listProductsViewed.put(id, true);
+			DAO_Product_main.getDao_Product_main().updateViewProduct(id);
+			session.setAttribute("ACOUNT_VIEWERS_PRODUCT", listProductsViewed);
 		}
 	}
 

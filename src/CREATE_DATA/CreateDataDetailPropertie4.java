@@ -84,13 +84,6 @@ public class CreateDataDetailPropertie4 extends ExecuteStatementUtility{
 		
 //	}
 	
-	public static void main(String[] args) {
-		System.out.println("123");
-		CreateDataDetailPropertie4 pro = new CreateDataDetailPropertie4();
-		for (int i = 0; i < 45; i++) {
-			pro.add(detail_Propertie());
-		}
-	}
 	
 	
 }

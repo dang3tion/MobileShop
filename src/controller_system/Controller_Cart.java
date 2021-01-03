@@ -30,7 +30,6 @@ public class Controller_Cart extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		Cart cart = (Cart) session.getAttribute("CART");
-		System.out.println();
 		// display Cart
 		Map<String, HashMap<String, Integer>> map = cart.getListProduct();
 //		HashMap<String, Integer> color = new HashMap<String, Integer>();

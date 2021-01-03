@@ -74,6 +74,8 @@
 						<div class="title float-left">
 							<h3>Sản phẩm nổi bật</h3>
 
+<h1>${COUNT_VIEWERS_PRODUCT}123</h1>
+<h1>${CART}456</h1>
 
 
 

@@ -17,11 +17,5 @@ public class BO_Branch {
 		dao.updateState(id);
 	}
 	
-	public static void main(String[] args) {
-		BO_Branch dao = new BO_Branch();
-		for (int i = 0; i < dao.getListBranch(1, 10).size(); i++) {
-			System.out.println(dao.getListBranch(1, 10).get(i).toString());
-		}
-	}
 	
 }

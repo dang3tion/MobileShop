@@ -22,7 +22,6 @@ public class Branch {
 	}
 
 	public Branch(String numOrder, String id, String name, int productQuantity, String state) {
-		super();
 		this.numOrder = numOrder;
 		this.id = id;
 		this.name = name;
@@ -31,7 +30,6 @@ public class Branch {
 	}
 
 	public Branch(String id, String name, int productQuantity, String state) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.productQuantity = productQuantity;
@@ -75,8 +73,8 @@ public class Branch {
 
 	@Override
 	public String toString() {
-		return "Controller_Branch [id=" + id + ", name=" + name + ", productQuantity=" + productQuantity + ", state=" + state
-				+ "]";
+		return "[id=" + id + ", name=" + name + ", productQuantity=" + productQuantity + ", state=" + state
+				+ "]\n";
 	}
 
 }
