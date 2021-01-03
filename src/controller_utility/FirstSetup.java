@@ -1,5 +1,6 @@
 package controller_utility;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
@@ -20,7 +21,12 @@ public class FirstSetup implements HttpSessionListener {
 		session.setAttribute("CART", new Cart());
 		session.setAttribute("SHOPINFO", DAO_ShopInfo.getDaoShopInfo().getInfo());
 
-		session.setAttribute("COUNT_VIEWERS_PRODUCT", new HashMap<String, Boolean>());
+		
+		HashMap<String, Boolean> listProductsViewed = new HashMap<String, Boolean>();
+		session.setAttribute("COUNT_VIEWERS_PRODUCT", listProductsViewed );
+		
+		System.out.println(session
+				.getAttribute("COUNT_VIEWERS_PRODUCT"));
 
 	}
 
@@ -28,5 +34,7 @@ public class FirstSetup implements HttpSessionListener {
 	public void sessionDestroyed(HttpSessionEvent arg0) {
 
 	}
+	
+	
 
 }

@@ -192,8 +192,16 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 		return product;
 	}
 
-	public static void main(String[] args) {
-		System.out.println(getDao_Product_main().getProduct_Form("SP01").getName());
-
+	public int updateViewProduct(String id) {
+		String query = "EXEC  INCREASE_VIEW @ID= ? ";
+		int total = 0;
+		try (ResultSet rs = super.AccessDBstr(query, new String[] { id })) {			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return total;
 	}
+
+
+	
 }
