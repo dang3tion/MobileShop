@@ -15,24 +15,15 @@
 						<div class="content-dropdown" id="content-trademark">
 							<ul class="list-menu">
 								<div class="row">
-									<div class="col-4">	
-									<c:forEach items="${LIST_BRANCH_IN_DOPDOWN_MENU}" var="branch" begin="0" end="2">
-									<li class="item-menu"><a
-											href="${pageContext.request.contextPath}/searchingProduct?thuonghieu=${branch.name}">${branch.name}</a></li>
+									<c:forEach items="${LIST_BRANCH_IN_DOPDOWN_MENU}" var="branch">
+										<div class="col-4">
+
+											<li class="item-menu"><a
+												href="${pageContext.request.contextPath}/searchingProduct?thuonghieu=${branch.name}">${branch.name}</a></li>
+
+										</div>
 									</c:forEach>
-									</div>
-									<div class="col-4">	
-									<c:forEach items="${LIST_BRANCH_IN_DOPDOWN_MENU}" var="branch" begin="3" end="5">
-									<li class="item-menu"><a
-											href="${pageContext.request.contextPath}/searchingProduct?thuonghieu=${branch.name}">${branch.name}</a></li>
-									</c:forEach>
-									</div>
-									<div class="col-4">	
-									<c:forEach items="${LIST_BRANCH_IN_DOPDOWN_MENU}" var="branch" begin="6" end="8">
-									<li class="item-menu"><a
-											href="${pageContext.request.contextPath}/searchingProduct?thuonghieu=${branch.name}">${branch.name}</a></li>
-									</c:forEach>
-									</div>
+
 
 								</div>
 							</ul>
@@ -47,27 +38,36 @@
 								<div class="row">
 									<div class="col-4">
 										<li class="item-menu"><a
-											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Dưới 1 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=duoi-1-trieu">Dưới
+												1 triệu</a></li>
 										<li class="item-menu"><a
-											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Từ 1 đến 2 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=tu-1-den-2-trieu">Từ
+												1 đến 2 triệu</a></li>
 										<li class="item-menu"><a
-											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Từ 2 đến 3 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=tu-2-den-3-trieu">Từ
+												2 đến 3 triệu</a></li>
 									</div>
 									<div class="col-4">
 										<li class="item-menu"><a
-											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Từ 3 đến 5 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=tu-3-den-5-trieu">Từ
+												3 đến 5 triệu</a></li>
 										<li class="item-menu"><a
-											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Từ 5 đến 7 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=tu-5-den-7-trieu">Từ
+												5 đến 7 triệu</a></li>
 										<li class="item-menu"><a
-											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Từ 7 đến 9 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=tu-7-den-9-trieu">Từ
+												7 đến 9 triệu</a></li>
 									</div>
 									<div class="col-4">
 										<li class="item-menu"><a
-											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Từ 9 đến 12 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=tu-9-den-12-trieu">Từ
+												9 đến 12 triệu</a></li>
 										<li class="item-menu"><a
-											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Từ 12 đến 15 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=tu-12-den-15-trieu">Từ
+												12 đến 15 triệu</a></li>
 										<li class="item-menu"><a
-											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=">Trên 15 triệu</a></li>
+											href="${pageContext.request.contextPath}/searchingProduct?khoanggia=tren-15-trieu">Trên
+												15 triệu</a></li>
 									</div>
 								</div>
 							</ul>
