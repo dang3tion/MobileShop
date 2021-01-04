@@ -36,6 +36,9 @@ public class AddProduct extends HttpServlet {
 		String state = request.getParameter("state");
 		String topic = request.getParameter("topic");
 		String countColor = request.getParameter("countColor");
+		dao.addProduct(idProduct, name, type, dao.idBrand(brand), state, topic, quatity, "CH01");
+		System.out.println("thàng công");
+		
 		for (int i = 1; i <= Integer.parseInt(countColor); i++) {
 			//lấy mã màu từ jsp
 			String idColor = dao.createIdColor();
@@ -53,7 +56,6 @@ public class AddProduct extends HttpServlet {
 			dao.addImg(idProduct, idColor, imgEx2, "PHU");
 			dao.addImg(idProduct, idColor, imgEx3, "PHU");
 			dao.addImg(idProduct, idColor, imgEx4, "PHU");
-
 		}
 
 //		System.out.println(name);

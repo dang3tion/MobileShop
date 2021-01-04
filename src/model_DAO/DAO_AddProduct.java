@@ -2,6 +2,8 @@ package model_DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import model_ConnectDB.ExecuteStatementUtility;
 import model_beans.Account;
@@ -17,6 +19,9 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		if (color.equals("")) {
+			color = "0";
 		}
 		return "MS"+(Integer.parseInt(color)+1);
 	}
@@ -43,6 +48,9 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		if (id.equals("")) {
+			id = "0";
+		}
 		return "SP"+(Integer.parseInt(id)+1);
 	}
 	
@@ -66,6 +74,9 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		if (id.equals("")) {
+			id = "0";
 		}
 		return "TH"+(Integer.parseInt(id)+1);
 	}
@@ -94,9 +105,25 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 		return idBrand;
 	}
 	
+	public void addProduct(String id,String name,String type,String idBrand,String state,String introduce,String quatity,String idConfig) {
+		LocalDate localDate = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		String date = localDate.format(formatter);
+		try {
+			String query = "INSERT INTO SANPHAM VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+			String[] parameters = {id,name,type,idBrand,state,date,introduce,quatity,"0","0",idConfig};
+
+			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	public static void main(String[] args) {
 		DAO_AddProduct dao = new DAO_AddProduct();
-		System.out.println(dao.idBrand("HH"));
+		System.out.println(dao.createIdColor());
 	}
 	
 }
