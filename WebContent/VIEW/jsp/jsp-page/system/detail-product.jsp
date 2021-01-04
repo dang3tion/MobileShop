@@ -15,8 +15,12 @@
 <link rel='stylesheet prefetch'
 	href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
 </head>
-<body>
-
+<%@page import="model_DAO.DAO_IconMenu"%>
+<%
+		DAO_IconMenu dao = new DAO_IconMenu();
+		request.setAttribute("color", dao.colorWeb());
+	%>
+<body style="color: ${color.colorText};background-color: ${color.colorBody}">
 	<%
 		request.setCharacterEncoding("UTF-8");
 	%>

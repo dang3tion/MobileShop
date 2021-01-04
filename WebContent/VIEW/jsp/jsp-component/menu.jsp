@@ -4,15 +4,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="model_utility.Config"%>
-
-<%-- <%@ page import="model_utility.Const"%> --%>
-<!-- Thanh navigation Bar cho khach hang -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-menu fixed-top">
-	<%
+<%
 		DAO_IconMenu dao = new DAO_IconMenu();
 		request.setAttribute("icon", dao.listIconMenu());
+		request.setAttribute("color", dao.colorWeb());
 	%>
-	<div class="container">
+<%-- <%@ page import="model_utility.Const"%> --%>
+<!-- Thanh navigation Bar cho khach hang -->
+<nav style="background-color: ${color.colorMenu}" class="navbar navbar-expand-lg navbar-dark bg-menu fixed-top" >
+	
+	<div class="container" >
 		<a class="navbar-brand"
 			href="${pageContext.request.contextPath}/index"><i
 			class="fas fa-mobile-alt"></i> ${SHOPINFO.name}</a>

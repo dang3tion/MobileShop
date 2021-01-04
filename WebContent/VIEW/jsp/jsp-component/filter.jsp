@@ -2,7 +2,12 @@
 	pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<div class="filter-menu">
+<%@page import="model_DAO.DAO_IconMenu"%>
+<%
+		DAO_IconMenu dao = new DAO_IconMenu();
+		request.setAttribute("color", dao.colorWeb());
+	%>
+<div style="background-color: ${color.colorFilter}" class="filter-menu">
 	<div class="container">
 		<div class="row">
 			<!--Noi dung loc du lieu-->

@@ -30,7 +30,7 @@ public class DAO_IconMenu extends ExecuteStatementUtility {
 		Color_Web color = null;
 		try (ResultSet rs = super.AccessDBstr(query)) {
 			if(rs.next()) {
-				color =  new Color_Web(rs.getString("MAU_NEN"),rs.getString("MAU_CHUDAO"),rs.getString("MAU_THANHLOC"),rs.getString("MAU_CHU"));
+				color =  new Color_Web(rs.getString("MAU_NEN"),rs.getString("MAU_THANHLOC"),rs.getString("MAU_CHUDAO"),rs.getString("MAU_CHU"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

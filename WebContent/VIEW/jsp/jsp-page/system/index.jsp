@@ -8,8 +8,12 @@
 <c:url var="url" scope="session" value="/VIEW"></c:url>
 <link rel="stylesheet" href="${url}/css/css-page/contact.css">
 </head>
-
-<body>
+<%@page import="model_DAO.DAO_IconMenu"%>
+<%
+		DAO_IconMenu dao = new DAO_IconMenu();
+		request.setAttribute("color", dao.colorWeb());
+	%>
+<body style="color: ${color.colorText};background-color: ${color.colorBody}">
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
 	<!-- Thanh menu loc du lieu va sap xep-->
