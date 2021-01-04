@@ -1,13 +1,14 @@
+       
 /// thêm màu
 var dem =1 ;
 function themMau() {
+  document.getElementById("countColor").value = dem;
   dem++;
-
+console.log(dem);
   /// lấy số lượng form hiện tại
   var current = document.getElementById("btnAddColor").name;
   n = parseInt(current) + 1;
-  document.getElementById("countColor").value = dem;
-console.log(document.getElementById("countColor").value);
+
   $("#color").append(
     "<div>" +
       ' <div class="boder-color">' +
@@ -21,6 +22,19 @@ console.log(document.getElementById("countColor").value);
       '             <input class="form-control w " value="" placeholder="Nhập màu sắc" name="color'+dem+'">'  +
       "            </div>" +
       "          </div>" +
+      '<div class="col-4 space-top " id="chooseColor" name="1">'+
+			'						<h5 class="spacing_form">Chọn mã màu</h5>'+
+			'						<div class="input-group mb-2 ">'+
+			'							<div class="input-group-prepend">'+
+			'								<div class="input-group-text">'+
+			'									<i class="fas fa-mobile-alt"></i>'+
+			'								</div>'+
+			'							</div>'+
+			'							<input type="color" class="form-control w " value="'+
+			'								placeholder="Nhập màu sắc" name="codeColor'+dem+'">'+
+			'						</div>'+
+			'					</div>'+
+
       '          <div class="col-4 space-top">' +
       '            <h5 class="spacing_form ">URL hình ảnh nền</h5>' +
       '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name ="anhnen'+dem+'">' +
@@ -120,5 +134,4 @@ function thongSoKt() {
   ///cập nhật lại số lượng form
   document.getElementById("btnAddColor").name = parseInt(current) + 1;
 }
-
 

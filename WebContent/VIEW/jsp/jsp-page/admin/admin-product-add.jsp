@@ -95,7 +95,8 @@
 						</div>
 						<div class="col-sm-6 space-top">
 							<h5 class="spacing_form ">Trình trạng</h5>
-							<select class="form-control w" id="exampleFormControlSelect1" name ="state">
+							<select class="form-control w" id="exampleFormControlSelect1"
+								name="state">
 								<option value="Đang bán">Đang bán</option>
 								<option value="Ngưng bán">Ngưng bán</option>
 							</select>
@@ -131,13 +132,26 @@
 											</div>
 										</div>
 										<input class="form-control w " value=""
-											placeholder="Nhập màu sắc">
+											placeholder="Nhập tên màu sắc" name="color1">
+									</div>
+								</div>
+								<div class="col-4 space-top " id="chooseColor" name="1">
+									<h5 class="spacing_form">Chọn mã màu</h5>
+									<div class="input-group mb-2 ">
+										<div class="input-group-prepend">
+											<div class="input-group-text">
+												<i class="fas fa-mobile-alt"></i>
+											</div>
+										</div>
+										<input type="color" class="form-control w " value=""
+											placeholder="Nhập màu sắc" name="codeColor1">
 									</div>
 								</div>
 
 								<div class="col-4 space-top">
 									<h5 class="spacing_form ">URL hình ảnh nền</h5>
-									<input class="mt-2" type="file" accept=".jpg,.png,.jpge">
+									<input class="mt-2" type="file" accept=".jpg,.png,.jpge"
+										name="anhnen1">
 								</div>
 
 
@@ -149,19 +163,23 @@
 							<div class="row boder-color2">
 								<div class="col-3 space-top">
 									<h5 class="spacing_form ">URL ảnh mô tả 1</h5>
-									<input class="mt-2" type="file" accept=".jpg,.png,.jpge">
+									<input class="mt-2" type="file" accept=".jpg,.png,.jpge"
+										name="anhMT11">
 								</div>
 								<div class="col-3 space-top">
 									<h5 class="spacing_form ">URL ảnh mô tả 2</h5>
-									<input class="mt-2" type="file" accept=".jpg,.png,.jpge">
+									<input class="mt-2" type="file" accept=".jpg,.png,.jpge"
+										name="anhMT21">
 								</div>
 								<div class="col-3 space-top">
 									<h5 class="spacing_form ">URL ảnh mô tả 3</h5>
-									<input class="mt-2" type="file" accept=".jpg,.png,.jpge">
+									<input class="mt-2" type="file" accept=".jpg,.png,.jpge"
+										name="anhMT31">
 								</div>
 								<div class="col-3 space-top">
 									<h5 class="spacing_form ">URL ảnh mô tả 4</h5>
-									<input class="mt-2" type="file" accept=".jpg,.png,.jpge">
+									<input class="mt-2" type="file" accept=".jpg,.png,.jpge"
+										name="anhMT41">
 								</div>
 							</div>
 						</div>
@@ -172,9 +190,7 @@
 						name="1" class="btn icon-btn btn-success" href="#"> <span><i
 							style="font-size: 1.2em;" class="fa fa-plus-circle"
 							aria-hidden="true"></i></span> Thêm màu
-					</a>
-					
-					<input id="countColor" name="countColor" value="1">
+					</a> <input style="display: none" id="countColor" name="countColor" value="1">
 
 
 					<div class="form-group space-top">
@@ -183,9 +199,9 @@
 						<div
 							style="border: 1px solid #dadada; padding: 15px; border-radius: 5px;">
 							<!-- (2): textarea sẽ được thay thế bởi CKEditor -->
-							
-								<textarea name="topic" id="editor">${value}</textarea>
-								
+
+							<textarea name="topic" id="editor">${value}</textarea>
+
 						</div>
 						<!-- (3): Code Javascript thay thế textarea có id='editor1' bởi CKEditor -->
 						<script src="${url}/js/js-static/ckeditor/ckeditor.js"></script>
@@ -499,8 +515,148 @@
 			</div>
 		</div>
 	</div>
+	
+	<script type="text/javascript">
+    
+	/// thêm màu
+	var dem =1 ;
+	function themMau() {
+	  dem++;
+	  document.getElementById("countColor").value = dem;
+	console.log(dem);
+	  /// lấy số lượng form hiện tại
+	  var current = document.getElementById("btnAddColor").name;
+	  n = parseInt(current) + 1;
+
+	  $("#color").append(
+	    "<div>" +
+	      ' <div class="boder-color">' +
+	      '        <div class="row boder-color1">' +
+	      '          <div class="col-4 space-top " id="chooseColor" name="1">' +
+	      '            <h5 class="spacing_form">Màu sắc</h5>' +
+	      '            <div class="input-group mb-2 ">' +
+	      '              <div class="input-group-prepend">' +
+	      '                <div class="input-group-text"><i class="fas fa-mobile-alt"></i></div>' +
+	      "              </div>" +
+	      '             <input class="form-control w " value="" placeholder="Nhập màu sắc" name="color'+dem+'">'  +
+	      "            </div>" +
+	      "          </div>" +
+	      '<div class="col-4 space-top " id="chooseColor" name="1">'+
+				'						<h5 class="spacing_form">Chọn mã màu</h5>'+
+				'						<div class="input-group mb-2 ">'+
+				'							<div class="input-group-prepend">'+
+				'								<div class="input-group-text">'+
+				'									<i class="fas fa-mobile-alt"></i>'+
+				'								</div>'+
+				'							</div>'+
+				'							<input type="color" class="form-control w " value="'+
+				'								placeholder="Nhập màu sắc" name="codeColor'+dem+'">'+
+				'						</div>'+
+				'					</div>'+
+
+	      '          <div class="col-4 space-top">' +
+	      '            <h5 class="spacing_form ">URL hình ảnh nền</h5>' +
+	      '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name ="anhnen'+dem+'">' +
+	      "          </div>" +
+	      
+	      "        </div>" +
+	      '        <div class="row boder-color2">' +
+	      '          <div class="col-3 space-top">' +
+	      '            <h5 class="spacing_form ">URL ảnh mô tả 1</h5>' +
+	      '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name="anhMT1'+dem+'">' +
+	      "          </div>" +
+	      '          <div class="col-3 space-top">' +
+	      '            <h5 class="spacing_form ">URL ảnh mô tả 2</h5>' +
+	      '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name="anhMT2'+dem+'">' +
+	      "          </div>" +
+	      '          <div class="col-3 space-top">' +
+	      '            <h5 class="spacing_form ">URL ảnh mô tả 3</h5>' +
+	      '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name="anhMT3'+dem+'">' +
+	      "          </div>" +
+	      '          <div class="col-3 space-top">' +
+	      '            <h5 class="spacing_form ">URL ảnh mô tả 4</h5>' +
+	      '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name="anhMT4'+dem+'">' +
+	      "          </div>" +
+	      "        </div>" +
+	      "      </div>"
+	  );
+	  var textnode = document.createTextNode("Demo" + n);
+	  node.appendChild(textnode);
+	  document.getElementById("addColorForm").appendChild(node);
+
+	  ///cập nhật lại số lượng form
+	  document.getElementById("btnAddColor").name = parseInt(current) + 1;
+	}
+
+	function thongSoKt() {
+	  /// lấy số lượng form hiện tại
+	  var current = document.getElementById("btnAddColor").name;
+	  n = parseInt(current) + 1;
+
+	  $("#thongSoMoi").append(
+	    '<div class="boder-color top-s">' +
+	      '<div class="space-top bodertt">' +
+	      ' <h5 class="spacing_form">Loại thông số kĩ thuật mới</h5>' +
+	      ' <div class="input-group mb-2">' +
+	      '   <div class="input-group-prepend">' +
+	      '     <div class="input-group-text"></div>' +
+	      "   </div>" +
+	      '   <input type="text" class="form-control py-4" value="" placeholder="Nhập tên thông số kĩ thuật mới">' +
+	      " </div>" +
+	      '   <h5 class="spacing_form">Nội dung thông số kĩ thuật mới</h5>' +
+	      ' <div class="input-group mb-2">' +
+	      '   <div class="input-group-prepend">' +
+	      '     <div class="input-group-text"></i></div>' +
+	      "   </div>" +
+	      '   <input type="text" class="form-control py-4" value="" placeholder="Nhập nội dung">' +
+	      " </div>" +
+	      "</div>" +
+	      "</div>"
+	  );
+	  var textnode = document.createTextNode("Demo" + n);
+	  node.appendChild(textnode);
+	  document.getElementById("addColorForm").appendChild(node);
+
+	  ///cập nhật lại số lượng form
+	  document.getElementById("btnAddColor").name = parseInt(current) + 1;
+	}
+
+	function thongSoKt() {
+	  /// lấy số lượng form hiện tại
+	  var current = document.getElementById("btnAddColor").name;
+	  n = parseInt(current) + 1;
+
+	  $("#thongSoMoi").append(
+	    '<div class="boder-color top-s">' +
+	      '<div class="space-top bodertt">' +
+	      ' <h5 class="spacing_form">Loại thông số kĩ thuật mới</h5>' +
+	      ' <div class="input-group mb-2">' +
+	      '   <div class="input-group-prepend">' +
+	      '     <div class="input-group-text"></div>' +
+	      "   </div>" +
+	      '   <input type="text" class="form-control py-4" value="" placeholder="Nhập tên thông số kĩ thuật mới">' +
+	      " </div>" +
+	      '   <h5 class="spacing_form">Nội dung thông số kĩ thuật mới</h5>' +
+	      ' <div class="input-group mb-2">' +
+	      '   <div class="input-group-prepend">' +
+	      '     <div class="input-group-text"></i></div>' +
+	      "   </div>" +
+	      '   <input type="text" class="form-control py-4" value="" placeholder="Nhập nội dung">' +
+	      " </div>" +
+	      "</div>" +
+	      "</div>"
+	  );
+	  var textnode = document.createTextNode("Demo" + n);
+	  node.appendChild(textnode);
+	  document.getElementById("addColorForm").appendChild(node);
+
+	  ///cập nhật lại số lượng form
+	  document.getElementById("btnAddColor").name = parseInt(current) + 1;
+	}
 
 
-	<script src="${url}/js/js-page/addProduct.js"></script>
+	</script>
+
+<%-- 	<script src="${url}/js/js-page/addProduct.js"></script> --%>
 </body>
 </html>

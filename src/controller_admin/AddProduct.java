@@ -32,9 +32,11 @@ public class AddProduct extends HttpServlet {
 		String state = request.getParameter("state");
 		String topic = request.getParameter("topic");
 		String countColor = request.getParameter("countColor");
-		for (int i = 0; i < Integer.parseInt(countColor); i++) {
-			System.out.println(i);
+		for (int i = 1; i < Integer.parseInt(countColor); i++) {
+			String color = request.getParameter("color2");
+			System.out.println(color);
 		}
+		
 		
 		
 //		System.out.println(name);

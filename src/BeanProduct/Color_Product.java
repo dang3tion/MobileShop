@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Color_Product {
     private String id;
+    private String code;
     private String name;
-    private ArrayList<Image_Product> listImg = new ArrayList<Image_Product>();
-	public Color_Product(String id, String name, ArrayList<Image_Product> listImg) {
+	public Color_Product(String id, String code, String name) {
 		super();
 		this.id = id;
+		this.code = code;
 		this.name = name;
-		this.listImg = listImg;
 	}
 	public Color_Product() {
 		super();
@@ -22,25 +22,21 @@ public class Color_Product {
 	public void setId(String id) {
 		this.id = id;
 	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public ArrayList<Image_Product> getListImg() {
-		return listImg;
-	}
-	public void setListImg(ArrayList<Image_Product> listImg) {
-		this.listImg = listImg;
-	}
 	@Override
 	public String toString() {
-		return "Color_Product [id=" + id + ", name=" + name + ", listImg=" + listImg + "]";
+		return "Color_Product [id=" + id + ", code=" + code + ", name=" + name + "]";
 	}
-    
-    
 	
-
-
 }
