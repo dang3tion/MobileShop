@@ -39,9 +39,9 @@
 					href="${pageContext.request.contextPath}/contact">
 						<div class="item-menu">
 
-							<i class="fas fa-phone-square-alt"></i>
+							${icon.get(0).icon}
 							<div class="item-menu-text">
-								<p>${icon.get(2).content}</p>
+								<p>${icon.get(0).content}</p>
 
 							</div>
 
@@ -50,9 +50,9 @@
 				<li class="nav-item"><a
 					href="${pageContext.request.contextPath}/check-receipt">
 						<div class="item-menu">
-							<i class="fas fa-money-check"></i>
+							${icon.get(1).content}
 							<div class="item-menu-text">
-								<p>Kiểm tra đơn hàng</p>
+								<p>${icon.get(1).content}</p>
 							</div>
 
 						</div>
@@ -93,9 +93,9 @@
 						<li class="nav-item hover-account"><a
 							href="${pageContext.request.contextPath}/login">
 								<div class="item-menu">
-									<i class="fas fa-user"></i>
+									${icon.get(2).icon}
 									<div class="item-menu-text">
-										<p>Tài khoản</p>
+										<p>${icon.get(2).content}</p>
 									</div>
 								</div>
 						</a>

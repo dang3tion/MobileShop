@@ -25,7 +25,7 @@
 				<div class="mb-5 mt-3 ">
 					<h4 class="text-center mt-3 mb-3">Cấu hình trang web</h4>
 
-					<form action="">
+					<form action="${pageContext.request.contextPath}/admin/config" method="post">
 						<div class="row space-r">
 							<h5>1.Màu sắc</h5>
 						</div>
@@ -62,42 +62,39 @@
 						<div class="row" style="margin-top: 20px; margin: auto;">
 							<div class="card col-3" style="padding: 10px;">
 								<h6 style="text-align: center;">Icon 1</h6>
-								<img class="card-img-top" src="..." alt="Card image cap">
 								<div class="card-body">
 									<input type="text" class="form-control"
-										placeholder="Nhập link ảnh or font awesome"> <input
+										placeholder="Nhập font awesome" value="${list.get(0).icon}" name = "icon1"> <input
 										style="margin-top: 20px;" type="text" class="form-control"
-										placeholder="Nhập tiêu đề">
+										placeholder="Nhập tiêu đề" value="${list.get(0).content}" name = "content1">
 								</div>
 							</div>
 							<div class="card  col-3" style="padding: 10px;">
 								<h6 style="text-align: center;">Icon 2</h6>
-								<img class="card-img-top" src="..." alt="Card image cap">
 								<div class="card-body">
 									<input type="text" class="form-control"
-										placeholder="Nhập link ảnh or font awesome"> <input
+										placeholder="Nhập font awesome" value="${list.get(1).icon}" name = "icon2"> <input
 										style="margin-top: 20px;" type="text" class="form-control"
-										placeholder="Nhập tiêu đề">
+										placeholder="Nhập tiêu đề" value="${list.get(1).content}" name = "content2">
 								</div>
 							</div>
 							<div class="card col-3" style="padding: 10px;">
 								<h6 style="text-align: center;">Icon 3</h6>
-								<img class="card-img-top" src="..." alt="Card image cap">
+							
 								<div class="card-body">
 									<input type="text" class="form-control"
-										placeholder="Nhập link ảnh or font awesome"> <input
+										placeholder="Nhập font awesome" value ="${list.get(2).icon}" name = "icon3"> <input
 										style="margin-top: 20px;" type="text" class="form-control"
-										placeholder="Nhập tiêu đề">
+										placeholder="Nhập tiêu đề" value="${list.get(2).content}" name = "content3">
 								</div>
 							</div>
 							<div class="card col-3" style="padding: 10px;">
 								<h6 style="text-align: center;">Icon 4</h6>
-								<img class="card-img-top" src="..." alt="Card image cap">
 								<div class="card-body">
 									<input type="text" class="form-control"
-										placeholder="Nhập link ảnh or font awesome"> <input
+										placeholder="Nhập font awesome" value="${list.get(3).icon}" name = "icon4"> <input
 										style="margin-top: 20px;" type="text" class="form-control"
-										placeholder="Nhập tiêu đề">
+										placeholder="Nhập tiêu đề" value ="${list.get(3).content}" name = "content4">
 								</div>
 							</div>
 
@@ -129,7 +126,7 @@
 										<button type="button" class="btn btn-secondary"
 											data-dismiss="modal">Không</button>
 										<button type="submit" class="btn btn-primary"
-											style="width: 80px;" data-dismiss="modal">Có</button>
+											style="width: 80px;">Có</button>
 									</div>
 								</div>
 							</div>
@@ -148,6 +145,40 @@
 		</div>
 
 	</div>
+
+<!-- @@@@@@@@@@ HIỆN THÔNG GỬI  @@@@@@@@@@@@@ -->
+	<c:if test="${messageEdit != null}">
+
+		<script>
+			window.onload = function() {
+				document.getElementById('btn-message').click();
+			}
+		</script>
+
+		<!-- Button trigger modal -->
+		<button style="display: none"
+			type="button" id="btn-message" class="btn btn-white"
+			data-toggle="modal" data-target="#exampleModalCenter"></button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">${messageEdit}</h5>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal">Đóng</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</c:if>
+	<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO GỬI @@@@@@@@@@@@@ -->
 
 </body>
 </html>
