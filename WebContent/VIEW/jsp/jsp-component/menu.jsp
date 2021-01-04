@@ -1,3 +1,4 @@
+<%@page import="model_DAO.DAO_IconMenu"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -7,11 +8,15 @@
 <%-- <%@ page import="model_utility.Const"%> --%>
 <!-- Thanh navigation Bar cho khach hang -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-menu fixed-top">
+	<%
+		DAO_IconMenu dao = new DAO_IconMenu();
+		request.setAttribute("icon", dao.listIconMenu());
+	%>
 	<div class="container">
 		<a class="navbar-brand"
 			href="${pageContext.request.contextPath}/index"><i
-						class="fas fa-mobile-alt"></i> ${SHOPINFO.name}</a>
-			
+			class="fas fa-mobile-alt"></i> ${SHOPINFO.name}</a>
+
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -36,7 +41,7 @@
 
 							<i class="fas fa-phone-square-alt"></i>
 							<div class="item-menu-text">
-								<p>Liên hệ & Hỗ trợ</p>
+								<p>${icon.get(2).content}</p>
 
 							</div>
 
