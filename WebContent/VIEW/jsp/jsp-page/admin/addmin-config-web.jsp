@@ -73,7 +73,7 @@
 								<h6 style="text-align: center;">Icon 2</h6>
 								<div class="card-body">
 									<input type="text" class="form-control"
-										placeholder="Nhập font awesome" value="${list.get(1).icon}" name = "icon2"> <input
+										placeholder="Nhập font awesome" value="'${list.get(1).icon}'" name = "icon2"> <input
 										style="margin-top: 20px;" type="text" class="form-control"
 										placeholder="Nhập tiêu đề" value="${list.get(1).content}" name = "content2">
 								</div>

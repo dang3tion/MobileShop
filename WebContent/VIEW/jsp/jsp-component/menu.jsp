@@ -51,7 +51,7 @@
 				<li class="nav-item"><a
 					href="${pageContext.request.contextPath}/check-receipt">
 						<div class="item-menu">
-							${icon.get(1).content}
+							${icon.get(1).icon}
 							<div class="item-menu-text">
 								<p>${icon.get(1).content}</p>
 							</div>
