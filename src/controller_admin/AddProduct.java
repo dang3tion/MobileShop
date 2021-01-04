@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model_DAO.DAO_AddProduct;
+
 @WebServlet(urlPatterns = "/admin/product-add")
 public class AddProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	DAO_AddProduct dao = new DAO_AddProduct();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -32,9 +34,11 @@ public class AddProduct extends HttpServlet {
 		String state = request.getParameter("state");
 		String topic = request.getParameter("topic");
 		String countColor = request.getParameter("countColor");
-		for (int i = 1; i < Integer.parseInt(countColor); i++) {
-			String color = request.getParameter("color2");
-			System.out.println(color);
+		for (int i = 1; i <= Integer.parseInt(countColor); i++) {
+			String id = dao.createIdColor();
+			String code = request.getParameter("codeColor"+i);
+			String nameColor = request.getParameter("color"+i);
+			dao.addColor(id, code, nameColor);	
 		}
 		
 		
