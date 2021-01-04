@@ -121,7 +121,7 @@ public class Cart {
 		return total;
 	}
 
-	public HashMap<String, HashMap<String, Integer>> getListProduct() {
+	public HashMap<String, HashMap<String, Integer>> getListProduct_hashMap() {
 		return this.listProduct;
 	}
 
@@ -157,9 +157,9 @@ public class Cart {
 
 	}
 
-	public void removeProductModel(String productID) throws SQLException {
+	public void removeAllProductSameColor(String productID, String colorID) throws SQLException {
 		resetList();
-		listProduct.remove(productID);
+		listProduct.get(productID).remove(colorID);
 	}
 
 	public void removeProductItem(String productID, String colorID) throws SQLException {
@@ -194,9 +194,8 @@ public class Cart {
 		cart.add("SP02", "MS03");
 		cart.add("SP02", "MS04");
 		cart.add("SP02", "MS04");
-		System.out.println(cart.getName_Quantity().size() + "asdasd");
-		System.out.println(cart.getQuantityEveryProduct("SP01"));
-		System.out.println(cart.getReceiptProduct("SP01"));
+	System.out.println(cart.getName_Quantity().size());
+	System.out.println(cart.getReceiptSum());
 
 	}
 

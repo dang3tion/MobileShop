@@ -35,12 +35,15 @@ public class Controller_Cart extends HttpServlet {
 		Map<Product_form, Integer> map = null;
 		map = cart.getList();
 		sum = cart.getReceiptSum();
+		System.out.println("tong iga " + sum);
+		System.out.println(lst.size() + "ádas");
 		// TODO Auto-generated catch block
 		request.setAttribute("lst", lst);
 		request.setAttribute("sum", sum);
 		request.setAttribute("quantity", quantity);
 		request.setAttribute("message", request.getAttribute("message"));
 		request.setAttribute("map", map);
+		request.setAttribute("LIST_PRODUCT_IN_CART", cart.getListProduct_hashMap());
 		dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
 		dispatcher.forward(request, response);
 		return;
@@ -55,7 +58,7 @@ public class Controller_Cart extends HttpServlet {
 		String page = request.getParameter("page");
 		String datHang = request.getParameter("datHang");
 
-		String colorID = request.getParameter("color");
+		String colorID = request.getParameter("colorID");
 
 		HttpSession session = request.getSession();
 
@@ -109,7 +112,7 @@ public class Controller_Cart extends HttpServlet {
 			break;
 		case "remove":
 			try {
-				cart.removeProductModel(productID);
+				cart.removeAllProductSameColor(productID, colorID);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -131,8 +134,8 @@ public class Controller_Cart extends HttpServlet {
 
 	private void updateCart(Cart cart, HttpSession session) {
 		session.setAttribute("CART", cart);
-		session.setAttribute("CART_QUANTITY", cart.getQuantityOfProductInCart());
-		session.setAttribute("PRODUCT_QUANTITY", cart.getListProduct().size());
+//		session.setAttribute("CART_QUANTITY", cart.getQuantityOfProductInCart());
+//		session.setAttribute("PRODUCT_QUANTITY", cart.getListProduct().size());
 
 	}
 

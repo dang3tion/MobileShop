@@ -17,7 +17,10 @@ public class FirstSetup implements HttpSessionListener {
 	@Override
 	public void sessionCreated(HttpSessionEvent event) {
 
-		DataSource.countOnlineUserQuantity ++;
+		
+		
+		
+		DataSource.countOnlineUserQuantity++;
 		updateOnlineUserQuantity(event);
 
 		HttpSession session = event.getSession();

@@ -106,6 +106,7 @@
 																method="post">
 																<input name="choose" value="decrease" hidden="true">
 																<input name="page" value="cart-page" hidden="true">
+																<input name="colorID" value="${XXXXX}" hidden="true">
 																<button name="id" value="${pro.key.id}"
 																	class="btn minus">
 																	<i class="fas fa-minus"></i>
@@ -117,6 +118,7 @@
 																method="post">
 																<input name="choose" value="add" hidden="true">
 																<input name="page" value="cart-page" hidden="true">
+																<input name="colorID" value="${XXXXX}" hidden="true">
 																<button name="id" value="${pro.key.id}" class="btn plus">
 																	<i class="fas fa-plus"></i>
 																</button>
@@ -126,6 +128,7 @@
 															<form method="POST"
 																action="${pageContext.request.contextPath}/cart">
 																<input name="id" value="${pro.key.id}" hidden="true">
+																<input name="colorID" value="${XXXXX}" hidden="true">
 																<input name="page" value="cart-page" hidden="true">
 																<button name="choose" value="remove"
 																	class="btn btn-danger">Xóa</button>
