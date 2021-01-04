@@ -32,24 +32,24 @@
 						<div class="row space-r">
 							<div class="col-3" style="margin-top: 20px;">
 								<h6>
-									Menu: <input type="color" value="#4DABF7">
+									Menu: <input type="color" value="${color.colorMenu}" name = "colorMenu">
 								</h6>
 							</div>
 
 							<div class="col-3" style="margin-top: 20px;">
 								<h6>
-									Thanh lọc: <input type="color" value="#FFFFFF">
+									Thanh lọc: <input type="color" value="${color.colorFilter}" name = "colorFilter">
 								</h6>
 							</div>
 
 							<div class="col-3" style="margin-top: 20px;">
 								<h6>
-									Body trang web: <input type="color" value="#FFFFFF">
+									Chủ đạo trang web: <input type="color" value="${color.colorBody}" name = "colorBody" >
 								</h6>
 							</div>
 							<div class="col-3" style="margin-top: 20px;">
 								<h6>
-									Màu chữ: <input type="color" value="#000000">
+									Màu chữ: <input type="color" value="${color.colorText}" name = "colorText">
 								</h6>
 							</div>
 

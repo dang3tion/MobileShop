@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model_ConnectDB.ExecuteStatementUtility;
+import model_beans.Color_Web;
 import model_beans.IconMenu;
 import model_beans.Product;
 
@@ -23,6 +24,31 @@ public class DAO_IconMenu extends ExecuteStatementUtility {
 		return listicon;
 	}
 
+	public Color_Web colorWeb() {
+		
+		String query = "SELECT * FROM QL_GIAODIEN";
+		Color_Web color = null;
+		try (ResultSet rs = super.AccessDBstr(query)) {
+			if(rs.next()) {
+				color =  new Color_Web(rs.getString("MAU_NEN"),rs.getString("MAU_CHUDAO"),rs.getString("MAU_THANHLOC"),rs.getString("MAU_CHU"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return color;
+	}
+	
+	public void updateColor(String colornen,String colorchudao,String colorloc,String colorchu) {
+		try {
+			String query = "UPDATE QL_GIAODIEN SET MAU_NEN = ?,MAU_CHUDAO = ?,MAU_THANHLOC = ?,MAU_CHU = ? WHERE MAGD = 'GD01'";
+			String[] parameters = {colornen,colorchudao,colorloc,colorchu};
+
+			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public void updateIcon(String icon1, String content1, String icon2, String content2, String icon3, String content3,
 			String icon4, String content4) {
 		if (countIcon() == 0) {
@@ -106,6 +132,8 @@ public class DAO_IconMenu extends ExecuteStatementUtility {
 		}
 
 	}
+	
+	
 	public int countIcon() {
 		String query = "SELECT COUNT(*) FROM ICON_MENU";
 		int count = 0;
@@ -120,6 +148,6 @@ public class DAO_IconMenu extends ExecuteStatementUtility {
 	}
 	public static void main(String[] args) {
 		DAO_IconMenu dao = new DAO_IconMenu();
-		dao.updateIcon("cương", "cương","cương", "cương", "cương", "cương", "cương", "cương");
+		System.out.println(dao.colorWeb());
 	}
 }

@@ -17,6 +17,7 @@ public class ConfigGUI extends HttpServlet {
 	private DAO_IconMenu dao = new DAO_IconMenu();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setAttribute("color", dao.colorWeb());
 		request.setAttribute("list", dao.listIconMenu());
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/addmin-config-web.jsp");
@@ -33,6 +34,13 @@ public class ConfigGUI extends HttpServlet {
 		String content3 = request.getParameter("content3");
 		String icon4 = request.getParameter("icon4");
 		String content4 = request.getParameter("content4");
+		String colorMenu = request.getParameter("colorMenu");
+		String colorFilter = request.getParameter("colorFilter");
+		String colorBody = request.getParameter("colorBody");
+		String colorText = request.getParameter("colorText");
+		
+		
+		dao.updateColor(colorMenu, colorBody, colorFilter, colorText);
 		dao.updateIcon(icon1, content1, icon2, content2, icon3, content3, icon4, content4);
 		request.setAttribute("messageEdit", "Đã cập nhật thay đổi.");
 		doGet(request, response);
