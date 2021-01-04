@@ -28,13 +28,23 @@ public class AddProduct extends HttpServlet {
 		String priceSale = request.getParameter("priceSale");
 		String brand =  request.getParameter("brand");
 		String quatity = request.getParameter("quatity");
+		String type = request.getParameter("type");
+		String state = request.getParameter("state");
+		String topic = request.getParameter("topic");
+		String countColor = request.getParameter("countColor");
+		for (int i = 0; i < Integer.parseInt(countColor); i++) {
+			System.out.println(i);
+		}
 		
-		System.out.println(name);
-		System.out.println(price);
-		System.out.println(priceSale);
-		System.out.println(brand);
-		System.out.println(quatity);
 		
+//		System.out.println(name);
+//		System.out.println(price);
+//		System.out.println(priceSale);
+//		System.out.println(brand);
+//		System.out.println(quatity);
+//		System.out.println(type);
+//		System.out.println(state);
+//		System.out.println(topic);
 		doGet(request, response);
 	}
 }

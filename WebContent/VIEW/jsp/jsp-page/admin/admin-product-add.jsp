@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<!DOCTYPE html>
 <html lang="en">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
@@ -96,7 +95,7 @@
 						</div>
 						<div class="col-sm-6 space-top">
 							<h5 class="spacing_form ">Trình trạng</h5>
-							<select class="form-control w" id="exampleFormControlSelect1">
+							<select class="form-control w" id="exampleFormControlSelect1" name ="state">
 								<option value="Đang bán">Đang bán</option>
 								<option value="Ngưng bán">Ngưng bán</option>
 							</select>
@@ -174,7 +173,8 @@
 							style="font-size: 1.2em;" class="fa fa-plus-circle"
 							aria-hidden="true"></i></span> Thêm màu
 					</a>
-
+					
+					<input id="countColor" name="countColor" value="1">
 
 
 					<div class="form-group space-top">
@@ -183,12 +183,9 @@
 						<div
 							style="border: 1px solid #dadada; padding: 15px; border-radius: 5px;">
 							<!-- (2): textarea sẽ được thay thế bởi CKEditor -->
-							<form action="${pageContext.request.contextPath}/admin/xxxxx"
-								method="GET" style="margin-top: 70px; border: 1px solid black">
-								<textarea name="productTopic" id="editor">${value}</textarea>
-								<button class="btn btn-primary col-sm-3 row"
-									style="margin: 15px 0px;" type="submit">Lưu</button>
-							</form>
+							
+								<textarea name="topic" id="editor">${value}</textarea>
+								
 						</div>
 						<!-- (3): Code Javascript thay thế textarea có id='editor1' bởi CKEditor -->
 						<script src="${url}/js/js-static/ckeditor/ckeditor.js"></script>
