@@ -37,6 +37,7 @@ public class AddProduct extends HttpServlet {
 		String topic = request.getParameter("topic");
 		String countColor = request.getParameter("countColor");
 		dao.addProduct(idProduct, name, type, dao.idBrand(brand), state, topic, quatity, "CH01");
+		dao.addPrice(idProduct, price, priceSale);
 		System.out.println("thàng công");
 		
 		for (int i = 1; i <= Integer.parseInt(countColor); i++) {

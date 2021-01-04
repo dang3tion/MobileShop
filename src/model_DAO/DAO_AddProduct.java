@@ -120,6 +120,20 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 		}
 	}
 	
+	public void addPrice(String id,String price,String priceSale) {
+		LocalDate localDate = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		String date = localDate.format(formatter);
+		try {
+			String query = "INSERT INTO GIA_SP VALUES(?,?,?,?)";
+			String[] parameters = {id,date,price,priceSale};
+
+			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public static void main(String[] args) {
 		DAO_AddProduct dao = new DAO_AddProduct();
