@@ -40,16 +40,16 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 	
 	public String createIdProduct() {
 		String id = "";
-		String query = "select * from HINHANH order by MASP desc";
+		String query = "select COUNT(MASP) from SANPHAM";
 		try (ResultSet rs = super.AccessDBstr(query)) {
 			if (rs.next()) {
-				id = rs.getString(1).replace("SP", "").trim();
+				id = rs.getString(1);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		if (id.equals("")) {
-			id = "0";
+			id = "1";
 		}
 		return "SP"+(Integer.parseInt(id)+1);
 	}
@@ -134,10 +134,83 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 			e.printStackTrace();
 		}
 	}
+	public String createIdConfig() {
+		String id = "";
+		String query = "select COUNT(MACH) from CAUHINH";
+		try (ResultSet rs = super.AccessDBstr(query)) {
+			if (rs.next()) {
+				id = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if (id.equals("")) {
+			id = "0";
+		}
+		return "CH"+(Integer.parseInt(id)+1);
+	}
+	
+	public void addConfig(String id,String number) {
+		try {
+			String query = "INSERT INTO CAUHINH VALUES(?,?)";
+			String[] parameters = {id,number};
+
+			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public String createIdProper() {
+		String id = "";
+		String query = "select COUNT(MATT) from THUOCTINH";
+		try (ResultSet rs = super.AccessDBstr(query)) {
+			if (rs.next()) {
+				id = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if (id.equals("")) {
+			id = "0";
+		}
+		return "TT"+(Integer.parseInt(id)+1);
+	}
+	public void addProper(String id,String typeValue,String content,String idClass) {
+		try {
+			String query = "INSERT INTO THUOCTINH VALUES(?,?,?,?)";
+			String[] parameters = {id,typeValue,content,idClass};
+			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public String createIdDetailProper() {
+		String id = "";
+		String query = "select COUNT(MACT) from CHITIET_THUOCTINH";
+		try (ResultSet rs = super.AccessDBstr(query)) {
+			if (rs.next()) {
+				id = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if (id.equals("")) {
+			id = "0";
+		}
+		return "CT"+(Integer.parseInt(id)+1);
+	}
+	public void addDetailProper(String id,String value,String content,String idProper) {
+		
+	}
+	
 	
 	public static void main(String[] args) {
 		DAO_AddProduct dao = new DAO_AddProduct();
-		System.out.println(dao.createIdColor());
+		System.out.println(dao.createIdProper());
+		dao.addProper(dao.createIdProper(), "VB", "Chất lượng hình ảnh", "CS");
 	}
 	
 }
