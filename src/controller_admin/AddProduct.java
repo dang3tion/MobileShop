@@ -23,6 +23,18 @@ public class AddProduct extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String name = request.getParameter("nameProduct");
+		String price = request.getParameter("price");
+		String priceSale = request.getParameter("priceSale");
+		String brand =  request.getParameter("brand");
+		String quatity = request.getParameter("quatity");
+		
+		System.out.println(name);
+		System.out.println(price);
+		System.out.println(priceSale);
+		System.out.println(brand);
+		System.out.println(quatity);
+		
 		doGet(request, response);
 	}
 }

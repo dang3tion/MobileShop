@@ -30,7 +30,8 @@
 
 			<div class="container mt-5 " style="width: 95%">
 				<h2 style="text-align: center;">Thêm sản phẩm</h2>
-				<form>
+				<form action="${pageContext.request.contextPath}/admin/product-add"
+					method="post">
 					<div class="row">
 						<div class="col-6 space-top">
 							<h5 class="spacing_form">Tên sản phẩm</h5>
@@ -41,7 +42,7 @@
 									</div>
 								</div>
 								<input type="text" class="form-control py-4" value=""
-									placeholder="Nhập tên sản phẩm">
+									name="nameProduct" placeholder="Nhập tên sản phẩm">
 							</div>
 						</div>
 						<div class="col-6 space-top">
@@ -53,7 +54,7 @@
 									</div>
 								</div>
 								<input type="text" class="form-control py-4" value=""
-									placeholder="20.000.000">
+									placeholder="20.000.000" name="price">
 							</div>
 						</div>
 					</div>
@@ -68,7 +69,7 @@
 									</div>
 								</div>
 								<input type="text" class="form-control py-4" value=""
-									placeholder="Nhập tên thương hiệu">
+									placeholder="Nhập tên thương hiệu" name="brand">
 							</div>
 						</div>
 						<div class="col-6 space-top">
@@ -80,25 +81,41 @@
 									</div>
 								</div>
 								<input type="text" class="form-control py-4" value=""
-									placeholder="20.000.000">
+									placeholder="20.000.000" name="priceSale">
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm-6 space-top">
 							<h5 class="spacing_form">Loại sản phẩm</h5>
-							<select class="form-control w" id="exampleFormControlSelect1">
-								<option>Mới</option>
-								<option>Cũ</option>
+							<select class="form-control w" id="exampleFormControlSelect1"
+								name="type">
+								<option value="Mới">Mới</option>
+								<option value="Cũ">Cũ</option>
 							</select>
 						</div>
 						<div class="col-sm-6 space-top">
 							<h5 class="spacing_form ">Trình trạng</h5>
 							<select class="form-control w" id="exampleFormControlSelect1">
-								<option>Còn hàng</option>
-								<option>Hết hàng</option>
+								<option value="Đang bán">Đang bán</option>
+								<option value="Ngưng bán">Ngưng bán</option>
 							</select>
 						</div>
+						<div class="col-sm-6 space-top">
+							<h5 class="spacing_form">Số lượng</h5>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fas fa-tag "></i>
+									</div>
+								</div>
+								<input type="number" class="form-control py-4" value=""
+									placeholder="Nhập số lượng" name="quatity">
+							</div>
+						</div>
+
+
+
 					</div>
 
 
@@ -114,7 +131,8 @@
 												<i class="fas fa-mobile-alt"></i>
 											</div>
 										</div>
-										<input class="form-control w " value="" placeholder="Nhập màu sắc">
+										<input class="form-control w " value=""
+											placeholder="Nhập màu sắc">
 									</div>
 								</div>
 
@@ -125,18 +143,7 @@
 
 
 
-								<div class="col-4 space-top">
-									<h5 class="spacing_form">Số lượng</h5>
-									<div class="input-group mb-2">
-										<div class="input-group-prepend">
-											<div class="input-group-text">
-												<i class="fas fa-tag "></i>
-											</div>
-										</div>
-										<input type="number" class="form-control py-4" value=""
-											placeholder="Nhập số lượng">
-									</div>
-								</div>
+
 							</div>
 
 
@@ -457,10 +464,14 @@
 						</div>
 					</div>
 					<div class="row" style="margin-top: 60px;">
-						<button
-							class="btn btn-primary col-sm-3 row space-top space-bottom "
-							style="margin: 15px 10px 20px 10px;" type="submit">Thêm
-							sản phẩm</button>
+						<div class="col-4"></div>
+						<div class="col-8">
+							<button
+								class="btn btn-primary col-sm-3 row space-top space-bottom "
+								style="margin: 15px 10px 20px 10px;" type="submit">Thêm
+								sản phẩm</button>
+
+						</div>
 					</div>
 				</form>
 			</div>
@@ -491,8 +502,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
-<script src="${url}/js/js-page/addProduct.js"></script>
+
+
+	<script src="${url}/js/js-page/addProduct.js"></script>
 </body>
 </html>
