@@ -155,6 +155,7 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 				p.setImg(rs.getString("ANH"));
 				p.setAvgEvaluate(Double.parseDouble(rs.getString("AVGDANHGIA")));
 				p.setColor(rs.getString("TENMAU"));
+				p.setColorID(idColor);
 			}
 		}
 		return p;

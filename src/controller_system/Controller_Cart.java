@@ -35,15 +35,14 @@ public class Controller_Cart extends HttpServlet {
 		Map<Product_form, Integer> map = null;
 		map = cart.getList();
 		sum = cart.getReceiptSum();
-		System.out.println("tong iga " + sum);
-		System.out.println(lst.size() + "ádas");
+
 		// TODO Auto-generated catch block
 		request.setAttribute("lst", lst);
 		request.setAttribute("sum", sum);
 		request.setAttribute("quantity", quantity);
 		request.setAttribute("message", request.getAttribute("message"));
 		request.setAttribute("map", map);
-		request.setAttribute("LIST_PRODUCT_IN_CART", cart.getListProduct_hashMap());
+		request.setAttribute("SHOW_LIST_CART", map.size());
 		dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
 		dispatcher.forward(request, response);
 		return;
@@ -67,6 +66,7 @@ public class Controller_Cart extends HttpServlet {
 		switch (choose) {
 		case "add":
 			String message = null;
+			System.out.println("===>" + productID + " xxx " + colorID);
 			try {
 				switch (cart.add(productID, colorID)) {
 				case 1:

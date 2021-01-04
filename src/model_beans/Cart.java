@@ -171,6 +171,7 @@ public class Cart {
 
 	public void removeAll() {
 		listProduct.clear();
+		list.clear();
 	}
 
 	private int checkLimit(String productID) {

@@ -8,10 +8,11 @@ public class Product_form {
 	private int priceSales;
 	private double avgEvaluate;
 	private String color;
+	private String colorID;
 	private String nameBranch;
 
 	public Product_form(String id, String name, String img, int price, int priceSales, double avgEvaluate, String color,
-			String nameBranch) {
+			String colorID, String nameBranch) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -20,7 +21,16 @@ public class Product_form {
 		this.priceSales = priceSales;
 		this.avgEvaluate = avgEvaluate;
 		this.color = color;
+		this.colorID = colorID;
 		this.nameBranch = nameBranch;
+	}
+
+	public String getColorID() {
+		return colorID;
+	}
+
+	public void setColorID(String colorID) {
+		this.colorID = colorID;
 	}
 
 	public String getColor() {
