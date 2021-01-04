@@ -8,6 +8,8 @@
 <jsp:include page="/VIEW/jsp/jsp-component/head-css-admin.jsp"></jsp:include>
 <link href="${url}/css/css-page/admin-user.css" type="text/css"
 	rel="stylesheet" />
+<link href="${url}/css/css-page/admin1.css" type="text/css"
+	rel="stylesheet" />
 </head>
 
 <body>
@@ -112,14 +114,7 @@
 												<i class="fas fa-mobile-alt"></i>
 											</div>
 										</div>
-										<select name="" class="form-control w ">
-											<option value="">Đen</option>
-											<option value="">Trắng</option>
-											<option class="active" value="">Đỏ</option>
-											<option value="">Xanh</option>
-											<option value="">Hồng</option>
-											<option value="">Lam</option>
-										</select>
+										<input class="form-control w " value="" placeholder="Nhập màu sắc">
 									</div>
 								</div>
 
@@ -496,5 +491,8 @@
 			</div>
 		</div>
 	</div>
+	
+	
+<script src="${url}/js/js-page/addProduct.js"></script>
 </body>
 </html>
