@@ -10,10 +10,11 @@
 </head>
 <%@page import="model_DAO.DAO_IconMenu"%>
 <%
-		DAO_IconMenu dao = new DAO_IconMenu();
-		request.setAttribute("color", dao.colorWeb());
-	%>
-<body style="color: ${color.colorText};background-color: ${color.colorBody}">
+	DAO_IconMenu dao = new DAO_IconMenu();
+request.setAttribute("color", dao.colorWeb());
+%>
+<body
+	style="color: ${color.colorText};background-color: ${color.colorBody}">
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
 	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
@@ -25,9 +26,7 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-12">
-				${SHOPINFO.policy}
-			</div>
+			<div class="col-12">${SHOPINFO.policy}</div>
 			<div class="col-12  d-flex justify-content-center">
 				<div class="guide-buy">
 					<h4 class="mb-3">Liên hệ với chúng tôi</h4>
@@ -40,7 +39,8 @@
 						<div class="outframe-2">
 							<div class="frame-contact">
 								<h4>Gửi phản hồi của bạn</h4>
-								<form onsubmit="return checkVali()" action="${pageContext.request.contextPath}/contact"
+								<form onsubmit="return checkVali()"
+									action="${pageContext.request.contextPath}/contact"
 									method="post">
 									<div class="collumn">
 										<div class="form-2">
@@ -63,9 +63,11 @@
 													</div>
 													<input placeholder="Nhập email" id="email"
 														onfocusout="email(this,text2)" name="email">
-													
+
 												</div>
-												<p id="require-email" style="display: none;color: red; margin-left: -1em">Vui lòng nhập đúng email</p>
+												<p id="require-email"
+													style="display: none; color: red; margin-left: -1em">Vui
+													lòng nhập đúng email</p>
 												<div class=" fillText3" id="text2">Email must have the
 													@ characters</div>
 											</div>
@@ -99,7 +101,8 @@
 									</div>
 									<div class="collumn">
 										<div class="">
-											<button onclick="checkClick()" type="submit" class="btn-submit">
+											<button onclick="checkClick()" type="submit"
+												class="btn-submit">
 												Gửi <i class="fas fa-long-arrow-alt-right"></i>
 											</button>
 										</div>

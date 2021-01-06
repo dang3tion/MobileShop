@@ -16,10 +16,11 @@
 
 <%@page import="model_DAO.DAO_IconMenu"%>
 <%
-		DAO_IconMenu dao = new DAO_IconMenu();
-		request.setAttribute("color", dao.colorWeb());
-	%>
-<body style="color: ${color.colorText};background-color: ${color.colorBody}">
+	DAO_IconMenu dao = new DAO_IconMenu();
+request.setAttribute("color", dao.colorWeb());
+%>
+<body
+	style="color: ${color.colorText};background-color: ${color.colorBody}">
 
 
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
@@ -36,16 +37,18 @@
 
 
 	<!-- Page Content -->
-	<form onsubmit="return checkVali()" action="${pageContext.request.contextPath}/login" method="POST">
+	<form onsubmit="return checkVali()"
+		action="${pageContext.request.contextPath}/login" method="POST">
 		<div class="form-signin color_tt" id="login">
 			<img class="mb-4" src="${url}/image/img-sys/user.png" width="72"
 				height="72">
 			<h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
 
-<!-- 			<input type="text" name="email" id="inputEmail" class="form-control" -->
-<%-- 				placeholder="Email hoặc số điện thoại" value="${messEmail}"> --%>
+			<!-- 			<input type="text" name="email" id="inputEmail" class="form-control" -->
+			<%-- 				placeholder="Email hoặc số điện thoại" value="${messEmail}"> --%>
 			<input type="text" name="email" id="inputEmail" class="form-control"
-				placeholder="nhập email" value="${messEmail}" onfocusout=" check_email(this.id)">
+				placeholder="nhập email" value="${messEmail}"
+				onfocusout=" check_email(this.id)">
 			<div class="require" id="require-email">
 				Yêu cầu nhập email theo đúng theo định dạng email <br>Ví dụ:
 				nlumobile@gmail.com
@@ -66,17 +69,18 @@
 					class=" mt-2 form-check-label">Ghi nhớ đăng nhập</label>
 			</div>
 
-			<button onclick="check11()" class="btn btn-lg btn-primary btn-block" style="font-size:18px;" type="submit">
-				Đăng nhập</button>
+			<button onclick="check11()" class="btn btn-lg btn-primary btn-block"
+				style="font-size: 18px;" type="submit">Đăng nhập</button>
 
 			<div class="or-seperator">
 				<b>hoặc</b>
 			</div>
 
-			<a id="google-login-button" class="btn btn-danger btn-lg  btn-block" style="font-size:18px;"
-				role="button" aria-pressed="true"
+			<a id="google-login-button" class="btn btn-danger btn-lg  btn-block"
+				style="font-size: 18px;" role="button" aria-pressed="true"
 				href="${Config.GOOGLE_URL_HREF_JSP}"><i id="icon-google"
-				class="fab fa-google-plus-g mr-3" aria-hidden="true"></i> Đăng nhập bằng Google</a>
+				class="fab fa-google-plus-g mr-3" aria-hidden="true"></i> Đăng nhập
+				bằng Google</a>
 
 
 		</div>
@@ -118,10 +122,10 @@
 
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
-	
+
 	<c:url var="url" scope="session" value="/VIEW"></c:url>
 	<script src="${url}/js/js-page/form-login.js"></script>
-	
+
 </body>
 
 </html>

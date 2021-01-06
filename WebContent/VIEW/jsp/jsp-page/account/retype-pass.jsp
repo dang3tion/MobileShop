@@ -27,7 +27,8 @@ request.setAttribute("color", dao.colorWeb());
 	</c:import>
 	<!-- Page Content -->
 
-	<form onsubmit="return checkRegisterKK()" action="${pageContext.request.contextPath}/retype" method="post"
+	<form onsubmit="return checkRegisterKK()"
+		action="${pageContext.request.contextPath}/retype" method="post"
 		class="form-signin" id="register">
 		<img class="mb-4" src="${url}/image/img-sys/pass.png" width="72"
 			height="72">
@@ -48,7 +49,8 @@ request.setAttribute("color", dao.colorWeb());
 				<div class="form-input">
 					<i class="fas fa-key"></i> <input type="password"
 						id="inputPassword-confirm" class="form-control"
-						placeholder="Nhập lại mật khẩu" onfocusout="check_pass(this.id,inputPassword)">
+						placeholder="Nhập lại mật khẩu"
+						onfocusout="check_pass(this.id,inputPassword)">
 				</div>
 
 			</div>
@@ -62,7 +64,8 @@ request.setAttribute("color", dao.colorWeb());
 
 		<h5 style="color: red">${message}</h5>
 
-		<button onclick="checkEmpty()" class="btn btn-lg btn-primary btn-block">OK</button>
+		<button onclick="checkEmpty()"
+			class="btn btn-lg btn-primary btn-block">OK</button>
 	</form>
 
 

@@ -15,12 +15,13 @@
 
 <%@page import="model_DAO.DAO_IconMenu"%>
 <%
-		DAO_IconMenu dao = new DAO_IconMenu();
-		request.setAttribute("color", dao.colorWeb());
-	%>
-<body style="color: ${color.colorText};background-color: ${color.colorBody}">
+	DAO_IconMenu dao = new DAO_IconMenu();
+request.setAttribute("color", dao.colorWeb());
+%>
+<body
+	style="color: ${color.colorText};background-color: ${color.colorBody}">
 
-<!-- @@@@@@@@@@ HIỆN THÔNG BÁO  @@@@@@@@@@@@@ -->
+	<!-- @@@@@@@@@@ HIỆN THÔNG BÁO  @@@@@@@@@@@@@ -->
 	<c:if test="${message != null}">
 
 		<script>
@@ -57,21 +58,20 @@
 
 	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
 	</c:import>
-<div style="margin-top: 15px"></div>
+	<div style="margin-top: 15px"></div>
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
 		<c:param name="title" value="Nhập OTP"></c:param>
 	</c:import>
 
 	<!-- Page Content -->
-	<form  method="post"
-		action="${pageContext.request.contextPath}/otp" class="form-signin"
-		id="otp">
+	<form method="post" action="${pageContext.request.contextPath}/otp"
+		class="form-signin" id="otp">
 		<img class="mb-4" src="${url}/image/img-sys/OTP.png" alt="" width="72"
 			height="72">
 		<h1 class="h3 mb-3 font-weight-normal">Nhập mã OTP</h1>
 		<label class="sr-only">OTP</label> <input name="OTP" id="checkOTP"
-			class="form-control" placeholder="Nhập mã OTP đã được gửi trong mail"
-		> <br />
+			class="form-control" placeholder="Nhập mã OTP đã được gửi trong mail">
+		<br />
 		</div>
 		<button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Tiếp
 			tục</button>
@@ -80,15 +80,17 @@
 	<div class="container">
 		<div class="row text-center">
 			<div class="col-12">
-		
+
 				<script>
-				
-					var timeleft = ${COUNTDOWN};
+					var timeleft = $
+					{
+						COUNTDOWN
+					};
 
 					if (timeleft === 0) {
-						
+
 					}
-					
+
 					var downloadTimer = setInterval(
 							function() {
 								if (timeleft <= 0) {

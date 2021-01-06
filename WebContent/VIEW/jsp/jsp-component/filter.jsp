@@ -4,9 +4,9 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page import="model_DAO.DAO_IconMenu"%>
 <%
-		DAO_IconMenu dao = new DAO_IconMenu();
-		request.setAttribute("color", dao.colorWeb());
-	%>
+	DAO_IconMenu dao = new DAO_IconMenu();
+request.setAttribute("color", dao.colorWeb());
+%>
 <div style="background-color: ${color.colorFilter}" class="filter-menu">
 	<div class="container">
 		<div class="row">

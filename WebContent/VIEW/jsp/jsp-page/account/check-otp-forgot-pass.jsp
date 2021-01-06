@@ -15,10 +15,11 @@
 
 <%@page import="model_DAO.DAO_IconMenu"%>
 <%
-		DAO_IconMenu dao = new DAO_IconMenu();
-		request.setAttribute("color", dao.colorWeb());
-	%>
-<body style="color: ${color.colorText};background-color: ${color.colorBody}">
+	DAO_IconMenu dao = new DAO_IconMenu();
+request.setAttribute("color", dao.colorWeb());
+%>
+<body
+	style="color: ${color.colorText};background-color: ${color.colorBody}">
 	<!-- @@@@@@@@@@ HIỆN THÔNG BÁO  @@@@@@@@@@@@@ -->
 	<c:if test="${message != null}">
 
@@ -83,7 +84,10 @@
 		<div class="row text-center">
 			<div class="col-12">
 				<script>
-				var timeleft = ${COUNTDOWN};
+					var timeleft = $
+					{
+						COUNTDOWN
+					};
 					var downloadTimer = setInterval(
 							function() {
 								if (timeleft <= 0) {

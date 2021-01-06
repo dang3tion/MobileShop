@@ -17,10 +17,11 @@
 </head>
 <%@page import="model_DAO.DAO_IconMenu"%>
 <%
-		DAO_IconMenu dao = new DAO_IconMenu();
-		request.setAttribute("color", dao.colorWeb());
-	%>
-<body style="color: ${color.colorText};background-color: ${color.colorBody}">
+	DAO_IconMenu dao = new DAO_IconMenu();
+request.setAttribute("color", dao.colorWeb());
+%>
+<body
+	style="color: ${color.colorText};background-color: ${color.colorBody}">
 	<%
 		request.setCharacterEncoding("UTF-8");
 	%>
@@ -44,143 +45,115 @@
 		<!-- Portfolio Item Heading -->
 		<h4 class="my-4">
 			<small>Điện thoại </small> ${product.name}
-<%-- 			<c:forEach items="${map }" var="i"> --%>
-<%-- 				<c:forEach items="${i.value}" var="j"> --%>
-<%-- 					<h5>Sản phẩm: ${i.key }, Màu sắc: ${j.key},Số lượng: ${j.value }</h5> --%>
+			<%-- 			<c:forEach items="${map }" var="i"> --%>
+			<%-- 				<c:forEach items="${i.value}" var="j"> --%>
+			<%-- 					<h5>Sản phẩm: ${i.key }, Màu sắc: ${j.key},Số lượng: ${j.value }</h5> --%>
 
-<%-- 				</c:forEach> --%>
+			<%-- 				</c:forEach> --%>
 
 
 
-<%-- 			</c:forEach> --%>
+			<%-- 			</c:forEach> --%>
 		</h4>
 
 		<!-- Portfolio Item Row -->
 		<div class="row">
 
 			<div class=" col-md-7 ">
-				<div class="frame-img">
-					<div class="img-main">
-						<div class="img-frame-main">
-							<img class="img-main"
-								src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-new-600x600-600x600.jpg">
+				<c:forEach items="${product.colors }" var="col">
+					<div class="frame-img">
+						<div class="img-main">
+							<div class="img-frame-main">
+								<img class="img-main" src="${col.imgMain}">
+							</div>
 						</div>
-					</div>
-					<div class="img-slide" id="img-slide">
-						<div class="img-container" id="img-container">
-							<div class="img-card">
-								<div class="cardi">
-									<img id="img1" class="active"
-										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-new-600x600-600x600.jpg">
-								</div>
-							</div>
-							<div class="img-card">
-								<div class="cardi">
-									<img id="img2"
-										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-3-org.jpg">
-								</div>
-							</div>
-							<div class="img-card">
-								<div class="cardi">
-									<img id="img3"
-										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-2-org.jpg">
-								</div>
-							</div>
-							<div class="img-card">
-								<div class="cardi">
-									<img id="img4"
-										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
-								</div>
-							</div>
-							<div class="img-card">
-								<div class="cardi">
-									<img id="img5"
-										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
-								</div>
-							</div>
-							<div class="img-card">
-								<div class="cardi">
-									<img id="img5"
-										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
-								</div>
-							</div>
-							<div class="img-card">
-								<div class="cardi">
-									<img id="img5"
-										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
-								</div>
-							</div>
 
-						</div>
-						<button id="pre" onclick="previouseSlide()" class="btn-previouse">
-							<i class="fas fa-chevron-left"></i>
-						</button>
-						<button id="nex" onclick="nextSlide()" class="btn-next">
-							<i class="fas fa-chevron-right"></i>
-						</button>
-					</div>
-				</div>
-				<div class="frame-img">
-					<div class="img-main">
-						<div class="img-frame-main">
-							<img class="img-main"
-								src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-den-new-600x600-600x600.jpg">
-						</div>
-					</div>
-					<div class="img-slide" id="img-slide">
-						<div class="img-container" id="img-container">
-							<div class="img-card">
-								<div class="cardi">
-									<img id="img1" class="active"
-										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-den-new-600x600-600x600.jpg">
+						<div class="img-slide" id="img-slide">
+							<div class="img-container" id="img-container">
+								<div class="img-card">
+									<div class="cardi">
+										<img id="img1" class="active" src="${col.imgMain}">
+									</div>
 								</div>
-							</div>
-							<div class="img-card">
-								<div class="cardi">
-									<img id="img2"
-										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-den-3-org.jpg">
-								</div>
-							</div>
-							<div class="img-card">
-								<div class="cardi">
-									<img id="img3"
-										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-2-org.jpg">
-								</div>
-							</div>
-							<div class="img-card">
-								<div class="cardi">
-									<img id="img4"
-										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
-								</div>
-							</div>
-							<div class="img-card">
-								<div class="cardi">
-									<img id="img5"
-										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
-								</div>
-							</div>
-							<div class="img-card">
-								<div class="cardi">
-									<img id="img5"
-										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
-								</div>
-							</div>
-							<div class="img-card">
-								<div class="cardi">
-									<img id="img5"
-										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
-								</div>
-							</div>
+								<c:forEach items="${col.imgSubs}" var="img">
+									<div class="img-card">
+										<div class="cardi">
+											<img id="img1" src="${img}">
+										</div>
+									</div>
 
+								</c:forEach>
+							</div>
+							<button id="pre" onclick="previouseSlide()" class="btn-previouse">
+								<i class="fas fa-chevron-left"></i>
+							</button>
+							<button id="nex" onclick="nextSlide()" class="btn-next">
+								<i class="fas fa-chevron-right"></i>
+							</button>
 						</div>
-						<button id="pre" onclick="previouseSlide()" class="btn-previouse">
-							<i class="fas fa-chevron-left"></i>
-						</button>
-						<button id="nex" onclick="nextSlide()" class="btn-next">
-							<i class="fas fa-chevron-right"></i>
-						</button>
 					</div>
-				</div>
+				</c:forEach>
+				<!-- 				<div class="frame-img"> -->
+				<!-- 					<div class="img-main"> -->
+				<!-- 						<div class="img-frame-main"> -->
+				<!-- 							<img class="img-main" -->
+				<!-- 								src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-den-new-600x600-600x600.jpg"> -->
+				<!-- 						</div> -->
+				<!-- 					</div> -->
+				<!-- 					<div class="img-slide" id="img-slide"> -->
+				<!-- 						<div class="img-container" id="img-container"> -->
+				<!-- 							<div class="img-card"> -->
+				<!-- 								<div class="cardi"> -->
+				<!-- 									<img id="img1" class="active" -->
+				<!-- 										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-den-new-600x600-600x600.jpg"> -->
+				<!-- 								</div> -->
+				<!-- 							</div> -->
+				<!-- 							<div class="img-card"> -->
+				<!-- 								<div class="cardi"> -->
+				<!-- 									<img id="img2" -->
+				<!-- 										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-den-3-org.jpg"> -->
+				<!-- 								</div> -->
+				<!-- 							</div> -->
+				<!-- 							<div class="img-card"> -->
+				<!-- 								<div class="cardi"> -->
+				<!-- 									<img id="img3" -->
+				<!-- 										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-2-org.jpg"> -->
+				<!-- 								</div> -->
+				<!-- 							</div> -->
+				<!-- 							<div class="img-card"> -->
+				<!-- 								<div class="cardi"> -->
+				<!-- 									<img id="img4" -->
+				<!-- 										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg"> -->
+				<!-- 								</div> -->
+				<!-- 							</div> -->
+				<!-- 							<div class="img-card"> -->
+				<!-- 								<div class="cardi"> -->
+				<!-- 									<img id="img5" -->
+				<!-- 										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg"> -->
+				<!-- 								</div> -->
+				<!-- 							</div> -->
+				<!-- 							<div class="img-card"> -->
+				<!-- 								<div class="cardi"> -->
+				<!-- 									<img id="img5" -->
+				<!-- 										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg"> -->
+				<!-- 								</div> -->
+				<!-- 							</div> -->
+				<!-- 							<div class="img-card"> -->
+				<!-- 								<div class="cardi"> -->
+				<!-- 									<img id="img5" -->
+				<!-- 										src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg"> -->
+				<!-- 								</div> -->
+				<!-- 							</div> -->
+
+				<!-- 						</div> -->
+				<!-- 						<button id="pre" onclick="previouseSlide()" class="btn-previouse"> -->
+				<!-- 							<i class="fas fa-chevron-left"></i> -->
+				<!-- 						</button> -->
+				<!-- 						<button id="nex" onclick="nextSlide()" class="btn-next"> -->
+				<!-- 							<i class="fas fa-chevron-right"></i> -->
+				<!-- 						</button> -->
+				<!-- 					</div> -->
+				<!-- 				</div> -->
 				<script>
 					var index = 0;
 
@@ -275,13 +248,20 @@
 				<div class="" style="margin-bottom: 30px; margin-top: 15px">
 					<h2 class="my-3 bg-price color-price d-inline mr-5">
 
-						<fmt:formatNumber type="number" maxFractionDigits="3" value="" />
-						10.000.000₫
+						<fmt:formatNumber type="number" maxFractionDigits="3"
+							value="${product.prices.price}" />
+						₫
 					</h2>
 					<h3 class="my-3 bg-price price d-inline" style="color: #3D3D3D;">
-						<fmt:formatNumber type="number" maxFractionDigits="3" value="" />
-						<strike style="color: #bbbbbb; font-size: 20px; font-weight: 400;">
-							10.000.000 ₫</strike>
+						<c:if test="${product.prices.priceSales!=0}">
+							<fmt:formatNumber type="number" maxFractionDigits="3"
+								value="${product.prices.priceSales}" />
+
+							<strike
+								style="color: #bbbbbb; font-size: 20px; font-weight: 400;">
+
+								₫</strike>
+						</c:if>
 					</h3>
 
 				</div>
@@ -292,38 +272,57 @@
 
 					<div class="row">
 						<div class="frame-choose">
-							<input type="radio" class="choose-color" onclick="chooseColor()"
-								checked id="MS01" name="color"> <label
-								class="color-card" for="MS01">
-								<div class="frame-color">
-									<div
-										style="width: fit-content; margin: auto; position: relative;">
-										<img
-											src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
-										<i class="fas fa-check"></i>
-									</div>
-									<div class="title">xanhxanhxanhxanh</div>
+							<c:forEach items="${product.colors }" var="col" begin="0" end="0">
 
-								</div>
-							</label> <input type="radio" id="MS02" class="choose-color"
-								onclick="chooseColor()" name="color"> <label
-								class="color-card" for="MS02">
-								<div class="frame-color">
-									<div
-										style="width: fit-content; margin: auto; position: relative;">
-										<img
-											src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg">
-										<i class="fas fa-check"></i>
-									</div>
-									<div class="title">đỏ</div>
+								<input type="radio" class="choose-color" onclick="chooseColor()"
+									checked id="${col.id }" name="color">
+								<label class="color-card" for="${col.id }">
+									<div class="frame-color">
+										<div
+											style="width: fit-content; margin: auto; position: relative;">
+											<img src="${col.imgMain}"> <i class="fas fa-check"></i>
+										</div>
+										<div class="title">${col.name}</div>
 
-								</div>
-							</label>
+									</div>
+								</label>
+
+							</c:forEach>
+							<c:forEach items="${product.colors }" var="col" begin="1">
+
+								<input type="radio" class="choose-color" onclick="chooseColor()"
+									 id="${col.id }" name="color">
+								<label class="color-card" for="${col.id }">
+									<div class="frame-color">
+										<div
+											style="width: fit-content; margin: auto; position: relative;">
+											<img src="${col.imgMain}"> <i class="fas fa-check"></i>
+										</div>
+										<div class="title">${col.name}</div>
+
+									</div>
+								</label>
+
+							</c:forEach>
+							<!-- 							<input type="radio" id="MS02" class="choose-color" -->
+							<!-- 								onclick="chooseColor()" name="color"> <label -->
+							<!-- 								class="color-card" for="MS02"> -->
+							<!-- 								<div class="frame-color"> -->
+							<!-- 									<div -->
+							<!-- 										style="width: fit-content; margin: auto; position: relative;"> -->
+							<!-- 										<img -->
+							<!-- 											src="https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg"> -->
+							<!-- 										<i class="fas fa-check"></i> -->
+							<!-- 									</div> -->
+							<!-- 									<div class="title">đỏ</div> -->
+
+							<!-- 								</div> -->
+							<!-- 							</label> -->
 
 						</div>
 						<div style="margin-top: 0px; margin-left: 10px;">
 							<p class="block" style="font-size: 16px; font-weight: 400;">
-								<span style="margin-right: 10px;">Thương hiệu:</span><a href="#">Samsung</a>
+								<span style="margin-right: 10px;">Thương hiệu:</span><a href="#">${product.branch.name }</a>
 							</p>
 							<p class="block"
 								style="font-style: italic; font-size: 15px; font-weight: 400;">Đổi

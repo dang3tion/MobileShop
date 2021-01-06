@@ -23,10 +23,11 @@ public class ProductDetail extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
+		// t cần gửi cái id bằng link qua bên trang này
 //		 cập nhật lượt xem
 		updateProductView(id, request);
 
-		Product_main pm = DAO_Product_main.getDao_Product_main().getProduct_main("SP03");
+		Product_main pm = DAO_Product_main.getDao_Product_main().getProduct_main(id);
 		request.setAttribute("product", pm);
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/detail-product.jsp");
@@ -46,7 +47,4 @@ public class ProductDetail extends HttpServlet {
 		}
 	}
 
-	
-
-	
 }

@@ -12,16 +12,17 @@
 
 <%@page import="model_DAO.DAO_IconMenu"%>
 <%
-		DAO_IconMenu dao = new DAO_IconMenu();
-		request.setAttribute("color", dao.colorWeb());
-	%>
-<body style="color: ${color.colorText};background-color: ${color.colorBody}">
+	DAO_IconMenu dao = new DAO_IconMenu();
+request.setAttribute("color", dao.colorWeb());
+%>
+<body
+	style="color: ${color.colorText};background-color: ${color.colorBody}">
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
 	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
 	</c:import>
 
-		<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
+	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
 		<c:param name="title" value="Thông tin giao nhận hàng"></c:param>
 	</c:import>
 	<!-- Page Content -->
@@ -58,8 +59,8 @@
 												<i class="fas fa-user-circle"></i>
 											</div>
 										</div>
-										<input placeholder="hãy nhập họ tên" type="text" name="name" class="form-control py-4"
-											value="${CUSTOMER_LOGINED.name}">
+										<input placeholder="hãy nhập họ tên" type="text" name="name"
+											class="form-control py-4" value="${CUSTOMER_LOGINED.name}">
 									</div>
 								</div>
 
@@ -71,8 +72,9 @@
 												<i class="fas fa-mobile-alt"></i>
 											</div>
 										</div>
-										<input placeholder="Hãy nhập số điện thoại để giao nhận hàng" type="text" name="phoneNumber"
-											class="form-control py-4" value="${CUSTOMER_LOGINED.phoneNumber}">
+										<input placeholder="Hãy nhập số điện thoại để giao nhận hàng"
+											type="text" name="phoneNumber" class="form-control py-4"
+											value="${CUSTOMER_LOGINED.phoneNumber}">
 									</div>
 								</div>
 								<div class="col-12">
@@ -112,7 +114,8 @@
 												<i class="fas fa-map-marked-alt"></i>
 											</div>
 										</div>
-										<input placeholder="Hãy nhập địa chỉ giao hàng" type="text" name="address" class="form-control py-4"
+										<input placeholder="Hãy nhập địa chỉ giao hàng" type="text"
+											name="address" class="form-control py-4"
 											value="${CUSTOMER_LOGINED.address}">
 									</div>
 								</div>

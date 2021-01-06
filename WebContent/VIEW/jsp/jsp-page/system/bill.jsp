@@ -15,15 +15,16 @@
 </head>
 <%@page import="model_DAO.DAO_IconMenu"%>
 <%
-		DAO_IconMenu dao = new DAO_IconMenu();
-		request.setAttribute("color", dao.colorWeb());
-	%>
-<body style="color: ${color.colorText};background-color: ${color.colorBody}">
+	DAO_IconMenu dao = new DAO_IconMenu();
+request.setAttribute("color", dao.colorWeb());
+%>
+<body
+	style="color: ${color.colorText};background-color: ${color.colorBody}">
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
-		<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
+	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
 	</c:import>
-<!-- breadcumb -->
+	<!-- breadcumb -->
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
 		<c:param name="title" value="Trạng thái đơn hàng"></c:param>
 	</c:import>
@@ -65,7 +66,7 @@
 								<b>Địa chỉ giao hàng : 124/97 Khu phố 6,Phường Linh
 									Trung,Quận Thủ Đức, Tp.HCM</b>
 							</p>
-						</div> 
+						</div>
 						<table class="order-detail" border="0" cellpadding="0"
 							cellspacing="0" align="left"
 							style="width: 80%; margin-bottom: 50px; margin-left: 110px;">
@@ -75,11 +76,12 @@
 								<th>SỐ LƯỢNG</th>
 								<th>THÀNH TIỀN</th>
 							</tr>
-							
-							
+
+
 							<tr>
-								<td><img src="https://images.all-free-download.com/images/templates_medium/fotolandia_79.jpg" alt=""
-									width="80"></td>
+								<td><img
+									src="https://images.all-free-download.com/images/templates_medium/fotolandia_79.jpg"
+									alt="" width="80"></td>
 								<td valign="top" style="padding-left: 15px;">
 									<h5
 										style="font-size: 14px; color: #444; margin-top: 15px; margin-bottom: 0px;">IPHONE
@@ -100,16 +102,15 @@
 									</h5>
 								</td>
 							</tr>
-							
-							
-					
+
+
+
 							<tr class="pad-left-right-space ">
 								<td colspan="2" align="left">
 									<p>Tổng:</p>
 								</td>
 								<td colspan="2" align="right"><b>50.000.000<span>
 											VNĐ</span></b></td>
-							
 							<tr class="pad-left-right-space">
 								<td colspan="2" align="left">
 									<p>Phí giao hàng :</p>
@@ -117,7 +118,7 @@
 								<td colspan="2" align="right"><b>500.000<span>
 											VNĐ</span></b></td>
 							</tr>
-							
+
 							<tr class="pad-left-right-space ">
 								<td class="m-b-5" colspan="2" align="left">
 									<p">Tổng cộng :</p>

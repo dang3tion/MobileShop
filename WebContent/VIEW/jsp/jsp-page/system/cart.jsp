@@ -12,10 +12,11 @@
 </head>
 <%@page import="model_DAO.DAO_IconMenu"%>
 <%
-		DAO_IconMenu dao = new DAO_IconMenu();
-		request.setAttribute("color", dao.colorWeb());
-	%>
-<body style="color: ${color.colorText};background-color: ${color.colorBody}">
+	DAO_IconMenu dao = new DAO_IconMenu();
+request.setAttribute("color", dao.colorWeb());
+%>
+<body
+	style="color: ${color.colorText};background-color: ${color.colorBody}">
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
 	<c:import url="/VIEW/jsp/jsp-component/filter.jsp">
@@ -70,8 +71,8 @@
 
 				<c:choose>
 					<c:when test="${ SHOW_LIST_CART >0 }">
-					
-					
+
+
 						<div class="col-8">
 							<div class="frame-cart">
 								<ul>
@@ -112,7 +113,8 @@
 																method="post">
 																<input name="choose" value="decrease" hidden="true">
 																<input name="page" value="cart-page" hidden="true">
-																<input name="colorID" value="${pro.key.colorID}" hidden="true">
+																<input name="colorID" value="${pro.key.colorID}"
+																	hidden="true">
 																<button name="id" value="${pro.key.id}"
 																	class="btn minus">
 																	<i class="fas fa-minus"></i>
@@ -124,7 +126,8 @@
 																method="post">
 																<input name="choose" value="add" hidden="true">
 																<input name="page" value="cart-page" hidden="true">
-																<input name="colorID" value="${pro.key.colorID}" hidden="true">
+																<input name="colorID" value="${pro.key.colorID}"
+																	hidden="true">
 																<button name="id" value="${pro.key.id}" class="btn plus">
 																	<i class="fas fa-plus"></i>
 																</button>
@@ -134,8 +137,9 @@
 															<form method="POST"
 																action="${pageContext.request.contextPath}/cart">
 																<input name="id" value="${pro.key.id}" hidden="true">
-																<input name="colorID" value="${pro.key.colorID}" hidden="true">
-																<input name="page" value="cart-page" hidden="true">
+																<input name="colorID" value="${pro.key.colorID}"
+																	hidden="true"> <input name="page"
+																	value="cart-page" hidden="true">
 																<button name="choose" value="remove"
 																	class="btn btn-danger">Xóa</button>
 															</form>
@@ -205,8 +209,9 @@
 											<h5>${pro.key.name}<span>x</span> ${pro.value}
 											</h5>
 											<p>
-											<fmt:formatNumber type="number" maxFractionDigits="3"
-												value="${pro.key.price * pro.value }" /> <span class="unit"> đ</span>
+												<fmt:formatNumber type="number" maxFractionDigits="3"
+													value="${pro.key.price * pro.value }" />
+												<span class="unit"> đ</span>
 											</p>
 
 										</li>

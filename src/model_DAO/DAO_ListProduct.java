@@ -120,7 +120,7 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 		try (ResultSet rs = super.AccessDBstr(query)) {
 			while (rs.next()) {
 				Product_form p = new Product_form();
-				p.setId(rs.getString("MASP"));
+				p.setId(rs.getString("MASP").trim());
 				p.setName(rs.getString("TENSP"));
 				p.setPrice(Integer.parseInt(rs.getString("GIA")));
 				if (rs.getString("GIA_KM") != null) {

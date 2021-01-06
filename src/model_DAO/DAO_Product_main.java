@@ -99,9 +99,9 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				Color_main cl = new Color_main();
-				cl.setId(rs.getString(1));
-				cl.setName(rs.getString(3));
-				String idColor = rs.getString(2);
+				cl.setId(rs.getString("MAMAU"));
+				cl.setName(rs.getString("TENMAU"));
+				String idColor = rs.getString("MAMAU");
 				String query2 = "SELECT * FROM HINHANH HA JOIN MAUSAC MS ON MS.MAMAU=HA.MAMAU WHERE HA.MASP=? AND HA.MAMAU=? ";
 				String[] para2 = { id, idColor };
 				ResultSet rs2 = super.AccessDBstr(query2, para2);
@@ -129,7 +129,8 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 		Price_product_main price = getPrices_Product(id);
 		StarEvaluate stars = new StarEvaluate();
 		Product_main product = new Product_main();
-		product.setID(id);
+		product.setID(id.trim());
+	
 		query = "SELECT * FROM dbo.GETPRODUCT_FORM(?)	";
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			if (rs.next()) {
@@ -167,7 +168,7 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 		Product_main product = new Product_main();
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			if (rs.next()) {
-				product.setID(rs.getString(1));
+				product.setID(rs.getString(1).trim());
 				product.setName(rs.getString(2));
 				product.setType(rs.getString(3));
 				product.setStatus(rs.getString(5));
@@ -192,13 +193,11 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 	public int updateViewProduct(String id) {
 		String query = "EXEC  INCREASE_VIEW @ID= ? ";
 		int total = 0;
-		try (ResultSet rs = super.AccessDBstr(query, new String[] { id })) {			
+		try (ResultSet rs = super.AccessDBstr(query, new String[] { id })) {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return total;
 	}
 
-
-	
 }
