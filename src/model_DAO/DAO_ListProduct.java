@@ -60,6 +60,22 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 		return list;
 	}
 
+	public ListProduct getListFollowPricesBigger(int fromPrice) throws SQLException {
+		String[] para = { fromPrice + "" };
+		query = "SELECT * FROM GET_PRODUCT_PRICES_BIGGER(?)";
+		ListProduct list = getListProduct(query, para);
+
+		return list;
+	}
+
+	public ListProduct getListFollowPricesSmaller(int toPrice) throws SQLException {
+		String[] para = { toPrice + "" };
+		query = "SELECT * FROM GET_PRODUCT_PRICES_SMAILLER(?)";
+		ListProduct list = getListProduct(query, para);
+
+		return list;
+	}
+
 	public ListProduct getListFollowtType(String type) throws SQLException {
 		String[] para = { type };
 		query = "SELECT * FROM GET_PRODUCT_TYPE(?)";
@@ -97,7 +113,7 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
 				Product_form p = new Product_form();
-				p.setId(rs.getString("MASP"));
+				p.setId(rs.getString("MASP").trim());
 				p.setName(rs.getString("TENSP"));
 				p.setPrice(Integer.parseInt(rs.getString("GIA")));
 				if (rs.getString("GIA_KM") != null) {
@@ -145,7 +161,7 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 		String[] para = { id, idColor };
 		try (ResultSet rs = super.AccessDBstr(query, para)) {
 			while (rs.next()) {
-				p.setId(rs.getString("MASP"));
+				p.setId(rs.getString("MASP").trim());
 				p.setName(rs.getString("TENSP"));
 				p.setNameBranch(rs.getString("TENTH"));
 				p.setPrice(Integer.parseInt(rs.getString("GIA")));

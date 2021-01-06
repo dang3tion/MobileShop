@@ -32,298 +32,26 @@ request.setAttribute("color", dao.colorWeb());
 			<jsp:include page="/VIEW/jsp/jsp-component/sidebar-filter.jsp"></jsp:include>
 			<!--Noi dung ket qua sau khi tim kiem-->
 			<div class="col-9" id="result-content">
-				<!--Hang ket qua-->
-
-				<div class="row-content">
-
-					<div class="row">
-						<div class="col-12">
-							<div class="title-searching">
-
-								<h4>
-									Tìm thấy <span>2.502 </span>kết quả
-								</h4>
-								<i class="fas fa-search"> </i>
-								<hr>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="card">
-								<div class="card-img text-center">
-									<a href="#"> <img
-										src="${url }/image/image-user/product/1.jpg" width="80%"
-										class="" alt="..."></a>
-								</div>
-								<div class="card-content">
-									<div class="card-title">
-										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a>
-									</div>
-									<div class="card-price">
-										<span>
-											<div class="card-count">
-												19.990.000 <span class="unit">đ</span>
-											</div>
-											<div class="card-discount">
-												23.000.000 <span class="unit">đ</span>
-											</div>
-									</div>
-									<div class="card-stars">
-										<span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star  text-dark"></i></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="card">
-								<div class="card-img text-center">
-									<a href="#"> <img src="https://picsum.photos/400/400"
-										width="80%" class="" alt="..."></a>
-								</div>
-								<div class="card-content">
-									<div class="card-title">
-										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a>
-									</div>
-									<div class="card-price">
-										<span>
-											<div class="card-count">
-												19.990.000 <span class="unit">đ</span>
-											</div>
-											<div class="card-discount">
-												23.000.000 <span class="unit">đ</span>
-											</div>
-									</div>
-									<div class="card-stars">
-										<span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star  text-dark"></i></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="card">
-								<div class="card-img text-center">
-									<a href="#"> <img src="https://picsum.photos/400/400"
-										width="80%" class="" alt="..."></a>
-								</div>
-								<div class="card-content">
-									<div class="card-title">
-										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a>
-									</div>
-									<div class="card-price">
-										<span>
-											<div class="card-count">
-												19.990.000 <span class="unit">đ</span>
-											</div>
-											<div class="card-discount">
-												23.000.000 <span class="unit">đ</span>
-											</div>
-									</div>
-									<div class="card-stars">
-										<span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star  text-dark"></i></span>
-									</div>
-								</div>
-							</div>
-						</div>
+				<!--Hang ket qua ^^^-->
+				
+						<div class="row">
+				<c:forEach items="${lstPrices}" var="pro" begin="0" end="8">
+					<div class="col-4">
+						<c:import url="/VIEW/jsp/jsp-component/card-product-index.jsp">
+							<c:param name="URLdetail"></c:param>
+							<c:param name="id" value="${pro.id}"></c:param>
+							<c:param name="image" value="${pro.img}"></c:param>
+							<c:param name="name" value="${pro.name}"></c:param>
+							<c:param name="price" value="${pro.price}"></c:param>
+							<c:param name="salePrice" value="${pro.priceSales}"></c:param>
+						</c:import>
 					</div>
-				</div>
-				<!--Hang ket qua-->
-				<div class="row-content">
-					<div class="row">
-						<div class="col-4">
-							<div class="card">
-								<div class="card-img text-center">
-									<a href="#"> <img src="https://picsum.photos/400/400"
-										width="80%" class="" alt="..."></a>
-								</div>
-								<div class="card-content">
-									<div class="card-title">
-										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a>
-									</div>
-									<div class="card-price">
-										<span>
-											<div class="card-count">
-												19.990.000 <span class="unit">đ</span>
-											</div>
-											<div class="card-discount">
-												23.000.000 <span class="unit">đ</span>
-											</div>
-									</div>
-									<div class="card-stars">
-										<span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star  text-dark"></i></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="card">
-								<div class="card-img text-center">
-									<a href="#"> <img src="https://picsum.photos/400/400"
-										width="80%" class="" alt="..."></a>
-								</div>
-								<div class="card-content">
-									<div class="card-title">
-										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a>
-									</div>
-									<div class="card-price">
-										<span>
-											<div class="card-count">
-												19.990.000 <span class="unit">đ</span>
-											</div>
-											<div class="card-discount">
-												23.000.000 <span class="unit">đ</span>
-											</div>
-									</div>
-									<div class="card-stars">
-										<span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star  text-dark"></i></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="card">
-								<div class="card-img text-center">
-									<a href="#"> <img src="https://picsum.photos/400/400"
-										width="80%" class="" alt="..."></a>
-								</div>
-								<div class="card-content">
-									<div class="card-title">
-										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a>
-									</div>
-									<div class="card-price">
-										<span>
-											<div class="card-count">
-												19.990.000 <span class="unit">đ</span>
-											</div>
-											<div class="card-discount">
-												23.000.000 <span class="unit">đ</span>
-											</div>
-									</div>
-									<div class="card-stars">
-										<span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star  text-dark"></i></span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--Hang ket qua-->
-				<div class="row-content">
-					<div class="row">
-						<div class="col-4">
-							<div class="card">
-								<div class="card-img text-center">
-									<a href="#"> <img src="https://picsum.photos/400/400"
-										width="80%" class="" alt="..."></a>
-								</div>
-								<div class="card-content">
-									<div class="card-title">
-										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a>
-									</div>
-									<div class="card-price">
-										<span>
-											<div class="card-count">
-												19.990.000 <span class="unit">đ</span>
-											</div>
-											<div class="card-discount">
-												23.000.000 <span class="unit">đ</span>
-											</div>
-									</div>
-									<div class="card-stars">
-										<span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star  text-dark"></i></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="card">
-								<div class="card-img text-center">
-									<a href="#"> <img src="https://picsum.photos/400/400"
-										width="80%" class="" alt="..."></a>
-								</div>
-								<div class="card-content">
-									<div class="card-title">
-										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a>
-									</div>
-									<div class="card-price">
-										<span>
-											<div class="card-count">
-												19.990.000 <span class="unit">đ</span>
-											</div>
-											<div class="card-discount">
-												23.000.000 <span class="unit">đ</span>
-											</div>
-									</div>
-									<div class="card-stars">
-										<span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star  text-dark"></i></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="card">
-								<div class="card-img text-center">
-									<a href="#"> <img src="https://picsum.photos/400/400"
-										width="80%" class="" alt="..."></a>
-								</div>
-								<div class="card-content">
-									<div class="card-title">
-										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a>
-									</div>
-									<div class="card-price">
-										<span>
-											<div class="card-count">
-												19.990.000 <span class="unit">đ</span>
-											</div>
-											<div class="card-discount">
-												23.000.000 <span class="unit">đ</span>
-											</div>
-									</div>
-									<div class="card-stars">
-										<span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-											<i class="fas fa-star text-warning"></i>
-										</span> <span> <i class="fas fa-star  text-dark"></i></span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+				</c:forEach>
 
-				</div>
+</div>
 
-				<!-- pagination -->
+
+				<!-- 				pagination -->
 				<div class="row ">
 					<div class="col-12 d-flex justify-content-end">
 						<nav aria-label="...">
@@ -363,3 +91,301 @@ request.setAttribute("color", dao.colorWeb());
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+<!-- 				<div class="row-content"> -->
+
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col-12"> -->
+<!-- 							<div class="title-searching"> -->
+
+<!-- 								<h4> -->
+<!-- 									Tìm thấy <span>2.502 </span>kết quả -->
+<!-- 								</h4> -->
+<!-- 								<i class="fas fa-search"> </i> -->
+<!-- 								<hr> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="col-4"> -->
+<!-- 							<div class="card"> -->
+<!-- 								<div class="card-img text-center"> -->
+<!-- 									<a href="#"> <img -->
+<%-- 										src="${url }/image/image-user/product/1.jpg" width="80%" --%>
+<!-- 										class="" alt="..."></a> -->
+<!-- 								</div> -->
+<!-- 								<div class="card-content"> -->
+<!-- 									<div class="card-title"> -->
+<!-- 										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-price"> -->
+<!-- 										<span> -->
+<!-- 											<div class="card-count"> -->
+<!-- 												19.990.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 											<div class="card-discount"> -->
+<!-- 												23.000.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-stars"> -->
+<!-- 										<span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star  text-dark"></i></span> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="col-4"> -->
+<!-- 							<div class="card"> -->
+<!-- 								<div class="card-img text-center"> -->
+<!-- 									<a href="#"> <img src="https://picsum.photos/400/400" -->
+<!-- 										width="80%" class="" alt="..."></a> -->
+<!-- 								</div> -->
+<!-- 								<div class="card-content"> -->
+<!-- 									<div class="card-title"> -->
+<!-- 										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-price"> -->
+<!-- 										<span> -->
+<!-- 											<div class="card-count"> -->
+<!-- 												19.990.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 											<div class="card-discount"> -->
+<!-- 												23.000.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-stars"> -->
+<!-- 										<span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star  text-dark"></i></span> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="col-4"> -->
+<!-- 							<div class="card"> -->
+<!-- 								<div class="card-img text-center"> -->
+<!-- 									<a href="#"> <img src="https://picsum.photos/400/400" -->
+<!-- 										width="80%" class="" alt="..."></a> -->
+<!-- 								</div> -->
+<!-- 								<div class="card-content"> -->
+<!-- 									<div class="card-title"> -->
+<!-- 										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-price"> -->
+<!-- 										<span> -->
+<!-- 											<div class="card-count"> -->
+<!-- 												19.990.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 											<div class="card-discount"> -->
+<!-- 												23.000.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-stars"> -->
+<!-- 										<span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star  text-dark"></i></span> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				Hang ket qua -->
+<!-- 				<div class="row-content"> -->
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col-4"> -->
+<!-- 							<div class="card"> -->
+<!-- 								<div class="card-img text-center"> -->
+<!-- 									<a href="#"> <img src="https://picsum.photos/400/400" -->
+<!-- 										width="80%" class="" alt="..."></a> -->
+<!-- 								</div> -->
+<!-- 								<div class="card-content"> -->
+<!-- 									<div class="card-title"> -->
+<!-- 										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-price"> -->
+<!-- 										<span> -->
+<!-- 											<div class="card-count"> -->
+<!-- 												19.990.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 											<div class="card-discount"> -->
+<!-- 												23.000.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-stars"> -->
+<!-- 										<span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star  text-dark"></i></span> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="col-4"> -->
+<!-- 							<div class="card"> -->
+<!-- 								<div class="card-img text-center"> -->
+<!-- 									<a href="#"> <img src="https://picsum.photos/400/400" -->
+<!-- 										width="80%" class="" alt="..."></a> -->
+<!-- 								</div> -->
+<!-- 								<div class="card-content"> -->
+<!-- 									<div class="card-title"> -->
+<!-- 										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-price"> -->
+<!-- 										<span> -->
+<!-- 											<div class="card-count"> -->
+<!-- 												19.990.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 											<div class="card-discount"> -->
+<!-- 												23.000.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-stars"> -->
+<!-- 										<span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star  text-dark"></i></span> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="col-4"> -->
+<!-- 							<div class="card"> -->
+<!-- 								<div class="card-img text-center"> -->
+<!-- 									<a href="#"> <img src="https://picsum.photos/400/400" -->
+<!-- 										width="80%" class="" alt="..."></a> -->
+<!-- 								</div> -->
+<!-- 								<div class="card-content"> -->
+<!-- 									<div class="card-title"> -->
+<!-- 										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-price"> -->
+<!-- 										<span> -->
+<!-- 											<div class="card-count"> -->
+<!-- 												19.990.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 											<div class="card-discount"> -->
+<!-- 												23.000.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-stars"> -->
+<!-- 										<span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star  text-dark"></i></span> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				Hang ket qua -->
+<!-- 				<div class="row-content"> -->
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col-4"> -->
+<!-- 							<div class="card"> -->
+<!-- 								<div class="card-img text-center"> -->
+<!-- 									<a href="#"> <img src="https://picsum.photos/400/400" -->
+<!-- 										width="80%" class="" alt="..."></a> -->
+<!-- 								</div> -->
+<!-- 								<div class="card-content"> -->
+<!-- 									<div class="card-title"> -->
+<!-- 										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-price"> -->
+<!-- 										<span> -->
+<!-- 											<div class="card-count"> -->
+<!-- 												19.990.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 											<div class="card-discount"> -->
+<!-- 												23.000.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-stars"> -->
+<!-- 										<span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star  text-dark"></i></span> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="col-4"> -->
+<!-- 							<div class="card"> -->
+<!-- 								<div class="card-img text-center"> -->
+<!-- 									<a href="#"> <img src="https://picsum.photos/400/400" -->
+<!-- 										width="80%" class="" alt="..."></a> -->
+<!-- 								</div> -->
+<!-- 								<div class="card-content"> -->
+<!-- 									<div class="card-title"> -->
+<!-- 										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-price"> -->
+<!-- 										<span> -->
+<!-- 											<div class="card-count"> -->
+<!-- 												19.990.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 											<div class="card-discount"> -->
+<!-- 												23.000.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-stars"> -->
+<!-- 										<span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star  text-dark"></i></span> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="col-4"> -->
+<!-- 							<div class="card"> -->
+<!-- 								<div class="card-img text-center"> -->
+<!-- 									<a href="#"> <img src="https://picsum.photos/400/400" -->
+<!-- 										width="80%" class="" alt="..."></a> -->
+<!-- 								</div> -->
+<!-- 								<div class="card-content"> -->
+<!-- 									<div class="card-title"> -->
+<!-- 										<a href="#">Iphone 12 64 GBIphone 12 64 GBIphone 12 64 GB</a> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-price"> -->
+<!-- 										<span> -->
+<!-- 											<div class="card-count"> -->
+<!-- 												19.990.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 											<div class="card-discount"> -->
+<!-- 												23.000.000 <span class="unit">đ</span> -->
+<!-- 											</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="card-stars"> -->
+<!-- 										<span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star text-warning"></i></span> <span> -->
+<!-- 											<i class="fas fa-star text-warning"></i> -->
+<!-- 										</span> <span> <i class="fas fa-star  text-dark"></i></span> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+
+<!-- 				</div> -->

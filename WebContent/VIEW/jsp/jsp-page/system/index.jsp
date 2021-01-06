@@ -100,8 +100,6 @@ request.setAttribute("color", dao.colorWeb());
 										<c:forEach items="${lstPrice }" var="pro" begin="0" end="3">
 											<div class="col-3">
 												<c:import
-												
-												
 													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
 													<c:param name="URLdetail"></c:param>
 													<c:param name="id" value="${pro.id}"></c:param>
