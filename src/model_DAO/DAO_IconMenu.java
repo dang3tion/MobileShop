@@ -105,10 +105,5 @@ public class DAO_IconMenu extends ExecuteCRUD {
 		}
 		return count;
 	}
-	public static void main(String[] args) {
-		DAO_IconMenu dao = new DAO_IconMenu();
-		for (int i = 0; i < dao.listIconMenu().size(); i++) {
-			System.out.println( dao.listIconMenu().get(i).toString());
-		}
-	}
+
 }

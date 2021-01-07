@@ -59,6 +59,8 @@ public class Controller_Cart extends HttpServlet {
 
 		String colorID = request.getParameter("colorID");
 
+		System.out.println("page : " + page + " chọn : " + choose + " id  : " + productID + " màu :" + colorID);
+
 		HttpSession session = request.getSession();
 
 		Cart cart = (Cart) session.getAttribute("CART");
