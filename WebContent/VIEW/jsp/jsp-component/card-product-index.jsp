@@ -8,8 +8,8 @@
 
 <div class="card">
 	<div class="card-img text-center">
-		<c:url value="/chitiet" var="URLdetail">
-			<c:param name="id" value="${param.id}" />
+		<c:url value="/chi-tiet" var="URLdetail">
+			<c:param name="dien-thoai" value="${param.url}" />
 		</c:url>
 		<a href="${URLdetail}"> <img src="${param.image}" width="80%"></a>
 	</div>

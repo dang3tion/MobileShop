@@ -52,34 +52,30 @@ public class DAO_ListProduct extends ExecuteCRUD {
 	}
 
 	public ListProduct getListFollowPrices(int fromPrice, int toPrice) throws SQLException {
-		String[] para = { fromPrice + "", toPrice + "" };
 		query = "SELECT * FROM GET_PRODUCT_PRICES(?,?)";
-		ListProduct list = getListProduct(query, para);
+		ListProduct list = getListProduct(query, fromPrice, toPrice);
 
 		return list;
 	}
 
 	public ListProduct getListFollowPricesBigger(int fromPrice) throws SQLException {
-		String[] para = { fromPrice + "" };
 		query = "SELECT * FROM GET_PRODUCT_PRICES_BIGGER(?)";
-		ListProduct list = getListProduct(query, para);
+		ListProduct list = getListProduct(query, fromPrice);
 
 		return list;
 	}
 
 	public ListProduct getListFollowPricesSmaller(int toPrice) throws SQLException {
-		String[] para = { toPrice + "" };
 		query = "SELECT * FROM GET_PRODUCT_PRICES_SMAILLER(?)";
-		ListProduct list = getListProduct(query, para);
+		ListProduct list = getListProduct(query, toPrice);
 
 		return list;
 	}
 
 	public ListProduct getListFollowtType(String type) throws SQLException {
-		String[] para = { type };
 		query = "SELECT * FROM GET_PRODUCT_TYPE(?)";
 
-		ListProduct list = getListProduct(query, para);
+		ListProduct list = getListProduct(query, type);
 
 		return list;
 	}
@@ -92,9 +88,8 @@ public class DAO_ListProduct extends ExecuteCRUD {
 		} else if (s == LISTP.HIGHESTPRICE) {
 			query = "SELECT * FROM GET_PRODUCT_HIGHESTPRICE(?) ";
 		}
-		String[] para = { number + "" };
 
-		ListProduct list = getListProduct(query, para);
+		ListProduct list = getListProduct(query, number);
 
 		return list;
 	}
@@ -113,6 +108,7 @@ public class DAO_ListProduct extends ExecuteCRUD {
 			while (rs.next()) {
 				Product_form p = new Product_form();
 				p.setId(rs.getString("MASP").trim());
+				p.setURL(DAO_Product_main.getDao_Product_main().convertBetweenURLandID(p.getId()));
 				p.setName(rs.getString("TENSP"));
 				p.setPrice(Integer.parseInt(rs.getString("GIA")));
 				if (rs.getString("GIA_KM") != null) {

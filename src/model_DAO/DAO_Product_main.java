@@ -25,18 +25,20 @@ public class DAO_Product_main extends ExecuteCRUD {
 
 	}
 
-	
-	public String convertPrductID(String ID_or_Name) {
+	public String convertBetweenURLandID(String ID_or_Name) {
 		String query = null;
 		String result = null;
+		String para = null;
 
 		if (ID_or_Name.length() < 6) {
 			query = "SELECT TENSP FROM SANPHAM WHERE MASP= ?";
+			para = ID_or_Name;
 		} else {
 			query = "SELECT MASP FROM SANPHAM WHERE TENSP= ? ";
+			para = ID_or_Name.replace('-', ' ');
 		}
 
-		try (ResultSet rs = super.ExecuteQuery(query,  ID_or_Name )) {
+		try (ResultSet rs = super.ExecuteQuery(query, para)) {
 			if (rs.next()) {
 				result = rs.getString(1).trim();
 			}
@@ -47,7 +49,7 @@ public class DAO_Product_main extends ExecuteCRUD {
 		result = result.replace(' ', '-');
 		return result;
 	}
-	
+
 	public static DAO_Product_main getDao_Product_main() {
 		if (dao_product_main == null) {
 			dao_product_main = new DAO_Product_main();
@@ -146,7 +148,7 @@ public class DAO_Product_main extends ExecuteCRUD {
 		StarEvaluate stars = new StarEvaluate();
 		Product_main product = new Product_main();
 		product.setID(id.trim());
-	
+
 		query = "SELECT * FROM dbo.GETPRODUCT_FORM(?)	";
 		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			if (rs.next()) {

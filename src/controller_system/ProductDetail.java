@@ -16,14 +16,16 @@ import model_DAO.DAO_Product_main;
 import model_beans.Branch;
 import model_beans.Product_main;
 
-@WebServlet(urlPatterns = "/chitiet")
+@WebServlet(urlPatterns = "/chi-tiet")
 public class ProductDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	DAO_Product_main dao = DAO_Product_main.getDao_Product_main();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String id = request.getParameter("id");
-		// t cần gửi cái id bằng link qua bên trang này
+		String id = request.getParameter("dien-thoai");
+		
+		id = dao.convertBetweenURLandID(id);
 //		 cập nhật lượt xem
 		updateProductView(id, request);
 

@@ -102,7 +102,7 @@ request.setAttribute("color", dao.colorWeb());
 												<c:import
 													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
 													<c:param name="URLdetail"></c:param>
-													<c:param name="id" value="${pro.id}"></c:param>
+													<c:param name="url" value="${pro.URL}"></c:param>
 													<c:param name="image" value="${pro.img}"></c:param>
 													<c:param name="name" value="${pro.name}"></c:param>
 													<c:param name="price" value="${pro.price}"></c:param>
@@ -119,7 +119,7 @@ request.setAttribute("color", dao.colorWeb());
 												<c:import
 													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
 												<c:param name="URLdetail"></c:param>
-													<c:param name="id" value="${pro.id}"></c:param>
+													<c:param name="url" value="${pro.URL}"></c:param>
 													<c:param name="image" value="${pro.img}"></c:param>
 													<c:param name="name" value="${pro.name}"></c:param>
 													<c:param name="price" value="${pro.price}"></c:param>
@@ -172,7 +172,7 @@ request.setAttribute("color", dao.colorWeb());
 												<c:import
 													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
 													<c:param name="URLdetail"></c:param>
-													<c:param name="id" value="${pro.id}"></c:param>
+													<c:param name="url" value="${pro.URL}"></c:param>
 													<c:param name="image" value="${pro.img}"></c:param>
 													<c:param name="name" value="${pro.name}"></c:param>
 													<c:param name="price" value="${pro.price}"></c:param>
@@ -190,7 +190,7 @@ request.setAttribute("color", dao.colorWeb());
 												<c:import
 													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
 													<c:param name="URLdetail"></c:param>
-													<c:param name="id" value="${pro.id}"></c:param>
+													<c:param name="url" value="${pro.URL}"></c:param>
 													<c:param name="image" value="${pro.img}"></c:param>
 													<c:param name="name" value="${pro.name}"></c:param>
 													<c:param name="price" value="${pro.price}"></c:param>
@@ -244,7 +244,7 @@ request.setAttribute("color", dao.colorWeb());
 						<div class="col-4">
 							<c:import url="/VIEW/jsp/jsp-component/card-product-index.jsp">
 								<c:param name="URLdetail"></c:param>
-													<c:param name="id" value="${pro.id}"></c:param>
+													<c:param name="url" value="${pro.URL}"></c:param>
 													<c:param name="image" value="${pro.img}"></c:param>
 													<c:param name="name" value="${pro.name}"></c:param>
 													<c:param name="price" value="${pro.price}"></c:param>

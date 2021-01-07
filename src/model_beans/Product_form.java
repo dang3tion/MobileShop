@@ -1,6 +1,7 @@
 package model_beans;
 
 public class Product_form {
+	private String URL;
 	private String id;
 	private String name;
 	private String img;
@@ -13,7 +14,6 @@ public class Product_form {
 
 	public Product_form(String id, String name, String img, int price, int priceSales, double avgEvaluate, String color,
 			String colorID, String nameBranch) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.img = img;
@@ -23,6 +23,14 @@ public class Product_form {
 		this.color = color;
 		this.colorID = colorID;
 		this.nameBranch = nameBranch;
+	}
+
+	public String getURL() {
+		return URL;
+	}
+
+	public void setURL(String URL) {
+		this.URL = URL;
 	}
 
 	public String getColorID() {
@@ -101,4 +109,10 @@ public class Product_form {
 		this.priceSales = priceSales;
 	}
 
+	@Override
+	public String toString() {
+		return "Product_form [URL=" + URL + ", id=" + id + ", name=" + name + ", img=" + img + ", price=" + price
+				+ ", priceSales=" + priceSales + ", avgEvaluate=" + avgEvaluate + ", color=" + color + ", colorID="
+				+ colorID + ", nameBranch=" + nameBranch + "]\n";
+	}
 }
