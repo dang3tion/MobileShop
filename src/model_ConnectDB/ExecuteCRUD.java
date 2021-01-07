@@ -69,11 +69,11 @@ public class ExecuteCRUD {
 		Connection con = null;
 		try {
 			con = DataSource.getConnection();
-			Statement stmt = con.createStatement();
+			PreparedStatement stmt = con.prepareStatement(query);
 			if (query.toLowerCase().contains("select")) {
-				resultSet = stmt.executeQuery(query);
+				resultSet = stmt.executeQuery();
 			} else {
-				stmt.executeUpdate(query);
+				stmt.executeUpdate();
 			}
 
 		} catch (SQLException e) {
