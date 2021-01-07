@@ -16,7 +16,7 @@ import model_DAO.DAO_Product_main;
 import model_beans.Branch;
 import model_beans.Product_main;
 
-@WebServlet(urlPatterns = "/detail")
+@WebServlet(urlPatterns = "/chitiet")
 public class ProductDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

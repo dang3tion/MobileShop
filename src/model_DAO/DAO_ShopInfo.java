@@ -2,10 +2,10 @@ package model_DAO;
 
 import java.sql.ResultSet;
 
-import model_ConnectDB.ExecuteStatementUtility;
+import model_ConnectDB.ExecuteCRUD;
 import model_beans.ShopInfo;
 
-public class DAO_ShopInfo extends ExecuteStatementUtility {
+public class DAO_ShopInfo extends ExecuteCRUD {
 
 	private final String INFO = "THONGTIN_SHOP";
 	private final String SHOPNAME = "TENSHOP";
@@ -41,7 +41,7 @@ public class DAO_ShopInfo extends ExecuteStatementUtility {
 
 			String[] param = { info.getName(), info.getPolicy(), info.getURL_facebook(), info.getURL_youtube(),
 					info.getAddress() };
-			try (ResultSet rs = super.AccessDBstr(query, param)) {
+			try (ResultSet rs = super.ExecuteQuery(query, param)) {
 			}
 		} catch (
 
@@ -51,7 +51,7 @@ public class DAO_ShopInfo extends ExecuteStatementUtility {
 	}
 
 	public ShopInfo getInfo() {
-		try (ResultSet rs = super.AccessDBstr("SELECT * FROM " + INFO + " ;")) {
+		try (ResultSet rs = super.ExecuteQueryNonParameter("SELECT * FROM " + INFO + " ;")) {
 			while (rs.next()) {
 
 				return new ShopInfo(rs.getString(SHOPNAME), //

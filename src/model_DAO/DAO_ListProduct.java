@@ -7,11 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import model_ConnectDB.ExecuteStatementUtility;
+import model_ConnectDB.ExecuteCRUD;
 import model_beans.ListProduct;
 import model_beans.Product_form;
 
-public class DAO_ListProduct extends ExecuteStatementUtility {
+public class DAO_ListProduct extends ExecuteCRUD {
 	private final String PRODUCT = "SANPHAM";
 	private final String ID = "MASP";
 
@@ -44,10 +44,9 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 	}
 
 	public ListProduct getListFollowBranch(String idBranch) throws SQLException {
-		String[] para = { idBranch };
 		query = "SELECT * FROM GET_PRODUCT_BRANCH(?)";
 
-		ListProduct list = getListProduct(query, para);
+		ListProduct list = getListProduct(query, idBranch);
 
 		return list;
 	}
@@ -108,9 +107,9 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 
 	}
 
-	public ListProduct getListProduct(String query, String[] para) throws NumberFormatException, SQLException {
+	public ListProduct getListProduct(String query, Object... para) throws NumberFormatException, SQLException {
 		ArrayList<Product_form> lstProduct = new ArrayList<Product_form>();
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, para)) {
 			while (rs.next()) {
 				Product_form p = new Product_form();
 				p.setId(rs.getString("MASP").trim());
@@ -133,7 +132,7 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 
 	public ListProduct getListProduct(String query) throws NumberFormatException, SQLException {
 		ArrayList<Product_form> lstProduct = new ArrayList<Product_form>();
-		try (ResultSet rs = super.AccessDBstr(query)) {
+		try (ResultSet rs = super.ExecuteQueryNonParameter(query)) {
 			while (rs.next()) {
 				Product_form p = new Product_form();
 				p.setId(rs.getString("MASP").trim());
@@ -158,8 +157,7 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 	public Product_form getProductColor(String id, String idColor) throws SQLException {
 		Product_form p = new Product_form();
 		query = "SELECT * FROM GET_PRODUCT_COLOR(?,?)	";
-		String[] para = { id, idColor };
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, id, idColor)) {
 			while (rs.next()) {
 				p.setId(rs.getString("MASP").trim());
 				p.setName(rs.getString("TENSP"));

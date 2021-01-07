@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import BeanProduct.Detail_Config;
 import BeanProduct.Detail_Propertie;
 import BeanProduct.Product;
-import model_ConnectDB.ExecuteStatementUtility;
+import model_ConnectDB.ExecuteCRUD;
 
-public class CreateDataDetailPropertie4 extends ExecuteStatementUtility{
+public class CreateDataDetailPropertie4 extends ExecuteCRUD{
 	public static int rdINT(int start, int end) {
 		return (int) ((Math.random() * (end - start)) + start);
 	}
@@ -72,7 +72,7 @@ public class CreateDataDetailPropertie4 extends ExecuteStatementUtility{
 					
 			};
 
-			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+			try (ResultSet rs = super.ExecuteQuery(query, parameters)) {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

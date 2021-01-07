@@ -5,9 +5,10 @@
 
 
 
+
 <div class="card">
 	<div class="card-img text-center">
-		<c:url value="/detail" var="URLdetail">
+		<c:url value="/chitiet" var="URLdetail">
 			<c:param name="id" value="${param.id}" />
 		</c:url>
 		<a href="${URLdetail}"> <img src="${param.image}" width="80%"></a>
