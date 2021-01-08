@@ -7,11 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import model_ConnectDB.ExecuteStatementUtility;
+import model_ConnectDB.ExecuteCRUD;
 import model_beans.ListProduct;
 import model_beans.Product_form;
 
-public class DAO_ListProduct extends ExecuteStatementUtility {
+public class DAO_ListProduct extends ExecuteCRUD {
 	private final String PRODUCT = "SANPHAM";
 	private final String ID = "MASP";
 
@@ -44,43 +44,38 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 	}
 
 	public ListProduct getListFollowBranch(String idBranch) throws SQLException {
-		String[] para = { idBranch };
 		query = "SELECT * FROM GET_PRODUCT_BRANCH(?)";
 
-		ListProduct list = getListProduct(query, para);
+		ListProduct list = getListProduct(query, idBranch);
 
 		return list;
 	}
 
 	public ListProduct getListFollowPrices(int fromPrice, int toPrice) throws SQLException {
-		String[] para = { fromPrice + "", toPrice + "" };
 		query = "SELECT * FROM GET_PRODUCT_PRICES(?,?)";
-		ListProduct list = getListProduct(query, para);
+		ListProduct list = getListProduct(query, fromPrice, toPrice);
 
 		return list;
 	}
 
 	public ListProduct getListFollowPricesBigger(int fromPrice) throws SQLException {
-		String[] para = { fromPrice + "" };
 		query = "SELECT * FROM GET_PRODUCT_PRICES_BIGGER(?)";
-		ListProduct list = getListProduct(query, para);
+		ListProduct list = getListProduct(query, fromPrice);
 
 		return list;
 	}
 
 	public ListProduct getListFollowPricesSmaller(int toPrice) throws SQLException {
-		String[] para = { toPrice + "" };
 		query = "SELECT * FROM GET_PRODUCT_PRICES_SMAILLER(?)";
-		ListProduct list = getListProduct(query, para);
+		ListProduct list = getListProduct(query, toPrice);
 
 		return list;
 	}
 
 	public ListProduct getListFollowtType(String type) throws SQLException {
-		String[] para = { type };
 		query = "SELECT * FROM GET_PRODUCT_TYPE(?)";
 
-		ListProduct list = getListProduct(query, para);
+		ListProduct list = getListProduct(query, type);
 
 		return list;
 	}
@@ -93,9 +88,8 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 		} else if (s == LISTP.HIGHESTPRICE) {
 			query = "SELECT * FROM GET_PRODUCT_HIGHESTPRICE(?) ";
 		}
-		String[] para = { number + "" };
 
-		ListProduct list = getListProduct(query, para);
+		ListProduct list = getListProduct(query, number);
 
 		return list;
 	}
@@ -108,12 +102,13 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 
 	}
 
-	public ListProduct getListProduct(String query, String[] para) throws NumberFormatException, SQLException {
+	public ListProduct getListProduct(String query, Object... para) throws NumberFormatException, SQLException {
 		ArrayList<Product_form> lstProduct = new ArrayList<Product_form>();
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, para)) {
 			while (rs.next()) {
 				Product_form p = new Product_form();
 				p.setId(rs.getString("MASP").trim());
+				p.setURL(DAO_Product_main.getDao_Product_main().convertBetweenURLandID(p.getId()));
 				p.setName(rs.getString("TENSP"));
 				p.setPrice(Integer.parseInt(rs.getString("GIA")));
 				if (rs.getString("GIA_KM") != null) {
@@ -134,7 +129,7 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 
 	public ListProduct getListProduct(String query) throws NumberFormatException, SQLException {
 		ArrayList<Product_form> lstProduct = new ArrayList<Product_form>();
-		try (ResultSet rs = super.AccessDBstr(query)) {
+		try (ResultSet rs = super.ExecuteQueryNonParameter(query)) {
 			while (rs.next()) {
 				Product_form p = new Product_form();
 				p.setId(rs.getString("MASP").trim());
@@ -159,8 +154,7 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 	public Product_form getProductColor(String id, String idColor) throws SQLException {
 		Product_form p = new Product_form();
 		query = "SELECT * FROM GET_PRODUCT_COLOR(?,?)	";
-		String[] para = { id, idColor };
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, id, idColor)) {
 			while (rs.next()) {
 				p.setId(rs.getString("MASP").trim());
 				p.setName(rs.getString("TENSP"));

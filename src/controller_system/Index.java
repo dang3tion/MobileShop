@@ -38,6 +38,7 @@ public class Index extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("lstPrice", listHighesPrice.getLstProduct());
+		System.out.println(listHighesPrice.getLstProduct());
 		request.setAttribute("lstNew", listNew.getLstProduct());
 		request.setAttribute("lstSpecial", listSpecial.getLstProduct());
 

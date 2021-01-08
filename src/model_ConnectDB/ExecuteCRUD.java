@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ExecuteStatementUtility {
+public class ExecuteCRUD {
 
 	/**
 	 * @implNote CHỈ DÙNG TRONG TRƯỜNG HỢP DANH SÁCH THAM SỐ ĐỀU LÀ STRING
@@ -24,14 +24,22 @@ public class ExecuteStatementUtility {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public ResultSet AccessDBstr(String query, Object[] parameters) {
+	public ResultSet ExecuteQuery(String query, Object... parameters) {
 		ResultSet resultSet = null;
 		Connection con = null;
 		try {
 			con = DataSource.getConnection();
 			PreparedStatement stmt = con.prepareStatement(query);
-			for (int i = 0; i < parameters.length; i++) {
-				stmt.setString(i + 1, parameters[i].toString());
+			int i = 0;
+			for (Object object : parameters) {
+				if (object instanceof String) {
+					stmt.setString(i + 1, (String) object);
+				}
+				if (object instanceof Integer) {
+					stmt.setInt(i + 1, (Integer) object);
+				}
+				i++;
+
 			}
 			if (query.toLowerCase().contains("select")) {
 				resultSet = stmt.executeQuery();
@@ -56,24 +64,24 @@ public class ExecuteStatementUtility {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public ResultSet AccessDBstr(String query)    {
+	public ResultSet ExecuteQueryNonParameter(String query) {
 		ResultSet resultSet = null;
 		Connection con = null;
 		try {
 			con = DataSource.getConnection();
-			Statement stmt = con.createStatement();
+			PreparedStatement stmt = con.prepareStatement(query);
 			if (query.toLowerCase().contains("select")) {
-				resultSet = stmt.executeQuery(query);
+				resultSet = stmt.executeQuery();
 			} else {
-				stmt.executeUpdate(query);
+				stmt.executeUpdate();
 			}
 
-		} catch (SQLException  e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DataSource.returnConnection(con);
 		}
 		return resultSet;
 	}
-	
+
 }

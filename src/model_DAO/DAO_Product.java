@@ -8,11 +8,11 @@ import BeanProduct.Config;
 import BeanProduct.Detail_Config;
 import BeanProduct.Detail_Propertie;
 import BeanProduct.Propertie;
-import model_ConnectDB.ExecuteStatementUtility;
+import model_ConnectDB.ExecuteCRUD;
 import model_beans.Product;
 import model_beans.ProductAdmin;
 
-public class DAO_Product extends ExecuteStatementUtility {
+public class DAO_Product extends ExecuteCRUD {
 
 	public DAO_Product() {
 
@@ -21,7 +21,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 	public String thumbnail(String id) {
 		String query = "SELECT ANH FROM HINHANH WHERE MASP = ? AND LOAIANH = 'NEN'";
 		String link = "";
-		try (ResultSet rs = super.AccessDBstr(query, new String[] { id })) {
+		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			while (rs.next()) {
 				link = rs.getString(1);
 			}
@@ -33,11 +33,9 @@ public class DAO_Product extends ExecuteStatementUtility {
 
 	public ArrayList<Product> getList(int start, int end) {
 		ArrayList<Product> listProduct = new ArrayList<Product>();
-		String[] para = { start + "", end + "" };
 		String query = "WITH X AS (select ROW_NUMBER() OVER (ORDER BY SANPHAM.MASP DESC) AS STT,SANPHAM.MASP, SANPHAM.TENSP,SANPHAM.GIOITHIEU,GIA,GIA_KM,MACH FROM  SANPHAM\r\n"
 				+ "				inner join GIA_SP on SANPHAM.MASP = GIA_SP.MASP) SELECT * FROM X WHERE STT BETWEEN ? AND ?";
-		Product product = null;
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, start, end)) {
 			while (rs.next()) {
 				listProduct.add(new Product(rs.getString("MASP").trim(), thumbnail(rs.getString("MASP").trim()),
 						rs.getString("TENSP"), rs.getString("GIOITHIEU"), rs.getInt("GIA"), rs.getInt("GIA_KM"),
@@ -67,9 +65,8 @@ public class DAO_Product extends ExecuteStatementUtility {
 	public Product getProduct(String id) {
 		String query = "select SANPHAM.TENSP,SANPHAM.GIOITHIEU,GIA,GIA_KM,MACH FROM " + PRODUCT
 				+ " inner join GIA_SP on SANPHAM.MASP = GIA_SP.MASP WHERE " + MASP1 + " = ? ";
-		String[] para = { id };
 		Product product = null;
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			while (rs.next()) {
 				Product pro = new Product(id, thumbnail(id), rs.getString(1), rs.getString(2), rs.getInt(3),
 						rs.getInt(4), rs.getString(5));
@@ -85,9 +82,8 @@ public class DAO_Product extends ExecuteStatementUtility {
 
 	public Config getConfig(String id) {
 		String query = "SELECT * FROM " + CONFIG + " WHERE " + MACH + " = ? ";
-		String[] para = { getProduct(id).getIdConfig() };
 		Config conf = null;
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, getProduct(id).getIdConfig())) {
 			while (rs.next()) {
 				conf = new Config( //
 						rs.getString(MACH), //
@@ -106,8 +102,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 	public ArrayList<Detail_Config> getDetailConfig(String id) {
 		ArrayList<Detail_Config> detail = new ArrayList<Detail_Config>();
 		String query = "SELECT * FROM " + DETAIL_CONFIG + " WHERE " + MACH + " = ? ";
-		String[] para = { getConfig(id).getId() };
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, getConfig(id).getId())) {
 			while (rs.next()) {
 				detail.add(new Detail_Config( //
 						rs.getString(MACH), //
@@ -126,8 +121,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 	public ArrayList<Propertie> listProper(String idTT) {
 		ArrayList<Propertie> proper = new ArrayList<Propertie>();
 		String query = "SELECT * FROM " + PROPERTIES + " WHERE " + "MATT" + " = ? ";
-		String[] para = { idTT };
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, idTT)) {
 			while (rs.next()) {
 				proper.add(new Propertie(rs.getString("MATT"), rs.getString("LOAI_GIATRI"), rs.getString("NOIDUNG") //
 
@@ -145,8 +139,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 	public Detail_Propertie listDetailPro(String idCT) {
 		Detail_Propertie proper = null;
 		String query = "SELECT * FROM " + DETAIL_PRO + " WHERE " + "MACT" + " = ? ";
-		String[] para = { idCT };
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, idCT)) {
 			while (rs.next()) {
 				proper = (new Detail_Propertie(rs.getString("MACT"), rs.getString("GIATRI"), rs.getString("NOIDUNG"), //
 						rs.getString("MATT"), listProper(rs.getString("MATT"))));
@@ -162,9 +155,8 @@ public class DAO_Product extends ExecuteStatementUtility {
 
 	public int countStar(String numberStar, String id) {
 		String query = "SELECT  COUNT(MUCDANHGIA) FROM " + DANHGIA + " WHERE " + "MASP" + " = ? AND " + "MUCDANHGIA =?";
-		String[] para = { id, numberStar };
 		int star = 0;
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, id, numberStar)) {
 			while (rs.next()) {
 				star = rs.getInt(1);
 			}
@@ -184,7 +176,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 					content, //
 					date };
 
-			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+			try (ResultSet rs = super.ExecuteQuery(query, parameters)) {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -198,7 +190,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 		String price = "";
 		String priceSale = "";
 		String query = "SELECT * FROM GIA_SP WHERE MASP = ? AND NGAYCAPNHAT = (SELECT MAX(NGAYCAPNHAT) FROM GIA_SP WHERE MASP = ?)";
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, para)) {
 			while (rs.next()) {
 				price = rs.getString("GIA").replace(".0000", "");
 				priceSale = (rs.getString("GIA_KM"));
@@ -218,9 +210,8 @@ public class DAO_Product extends ExecuteStatementUtility {
 
 	public String stateProduct(String id) {
 		String state = "";
-		String[] para = { id };
 		String query = "select TINHTRANG from sanpham where masp = ?";
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			while (rs.next()) {
 				state = rs.getString(1);
 			}
@@ -232,10 +223,9 @@ public class DAO_Product extends ExecuteStatementUtility {
 
 	public String stateBrand(String id) {
 		String state = "";
-		String[] para = { id };
 		String query = "select THUONGHIEU.TRANGTHAI from THUONGHIEU inner join SANPHAM on THUONGHIEU.MATH = SANPHAM.MATH where SANPHAM.MASP = ?\r\n"
 				+ "";
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			while (rs.next()) {
 				state = rs.getString(1);
 			}
@@ -247,9 +237,8 @@ public class DAO_Product extends ExecuteStatementUtility {
 
 	public ArrayList<ProductAdmin> listProductAdmin(int start, int end) {
 		ArrayList<ProductAdmin> product = new ArrayList<ProductAdmin>();
-		String[] para = { start + "", end + "" };
 		String query = "WITH X AS (select ROW_NUMBER() OVER (ORDER BY SANPHAM.NGAYCAPNHAT DESC) AS STT, SANPHAM.*,THUONGHIEU.TENTH,HINHANH.ANH FROM ((SANPHAM INNER JOIN HINHANH ON SANPHAM.MASP = HINHANH.MASP)) INNER JOIN THUONGHIEU ON THUONGHIEU.MATH = SANPHAM.MATH WHERE HINHANH.LOAIANH = 'NEN') SELECT * FROM X WHERE STT BETWEEN ? AND ?";
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, start, end)) {
 			while (rs.next()) {
 				product.add(new ProductAdmin(rs.getString("STT"), rs.getString("MASP").trim(), rs.getString("ANH"),
 						rs.getString("TENSP"), rs.getString("TENTH"), rs.getString("NGAYCAPNHAT"),
@@ -270,8 +259,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 			try {
 				String query = "UPDATE SANPHAM SET TINHTRANG = N'Ngừng bán' WHERE MASP = ?";
 
-				String[] para = { id };
-				try (ResultSet rs = super.AccessDBstr(query, para)) {
+				try (ResultSet rs = super.ExecuteQuery(query, id)) {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -282,8 +270,7 @@ public class DAO_Product extends ExecuteStatementUtility {
 			try {
 				String query = "UPDATE SANPHAM SET TINHTRANG = N'Đang bán' WHERE MASP = ?";
 
-				String[] para = { id };
-				try (ResultSet rs = super.AccessDBstr(query, para)) {
+				try (ResultSet rs = super.ExecuteQuery(query, id)) {
 				}
 
 			} catch (Exception e) {
@@ -295,22 +282,3 @@ public class DAO_Product extends ExecuteStatementUtility {
 	}
 
 }
-
-// _   _                               _       _                     _                     
-//| | | |                             (_)     | |                   | |                    
-//| |_| |__   __ _ _   _   _ __   ___  _    __| |_   _ _ __   __ _  | |__   __ _ _ __ ___  
-//| __| '_ \ / _` | | | | | '_ \ / _ \| |  / _` | | | | '_ \ / _` | | '_ \ / _` | '_ ` _ \ 
-//| |_| | | | (_| | |_| | | | | | (_) | | | (_| | |_| | | | | (_| | | | | | (_| | | | | | |
-// \__|_| |_|\__,_|\__, | |_| |_|\___/|_|  \__,_|\__,_|_| |_|\__, | |_| |_|\__,_|_| |_| |_|
-//                 __/ |                                     __/ |                        
-//                |___/                                     |___/   
-
-//
-//     _                     _   _                       _       _   _               _                     
-//    | |                   | | | |                     | |     (_) | |             | |                    
-//  __| |_   _ _ __   __ _  | |_| |__   __ _ _   _    __| | ___  _  | |_ ___ _ __   | |__   __ _ _ __ ___  
-// / _` | | | | '_ \ / _` | | __| '_ \ / _` | | | |  / _` |/ _ \| | | __/ _ \ '_ \  | '_ \ / _` | '_ ` _ \ 
-//| (_| | |_| | | | | (_| | | |_| | | | (_| | |_| | | (_| | (_) | | | ||  __/ | | | | | | | (_| | | | | | |
-// \__,_|\__,_|_| |_|\__, |  \__|_| |_|\__,_|\__, |  \__,_|\___/|_|  \__\___|_| |_| |_| |_|\__,_|_| |_| |_|
-//               __/ |                   __/ |                                                        
-//              |___/                   |___/                                         

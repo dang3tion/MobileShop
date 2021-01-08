@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model_ConnectDB.ExecuteStatementUtility;
+import model_ConnectDB.ExecuteCRUD;
 import model_beans.Attribute;
 import model_beans.Branch;
 import model_beans.Color_main;
@@ -13,7 +13,7 @@ import model_beans.Price_product_main;
 import model_beans.Product_main;
 import model_beans.StarEvaluate;
 
-public class DAO_Product_main extends ExecuteStatementUtility {
+public class DAO_Product_main extends ExecuteCRUD {
 	private final String PRODUCT = "SANPHAM";
 	private final String ID = "MASP";
 	private final String PRICE = "GIA_SP";
@@ -23,6 +23,31 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 
 	private DAO_Product_main() {
 
+	}
+
+	public String convertBetweenURLandID(String ID_or_Name) {
+		String query = null;
+		String result = null;
+		String para = null;
+
+		if (ID_or_Name.length() < 6) {
+			query = "SELECT TENSP FROM SANPHAM WHERE MASP= ?";
+			para = ID_or_Name;
+		} else {
+			query = "SELECT MASP FROM SANPHAM WHERE TENSP= ? ";
+			para = ID_or_Name.replace('-', ' ');
+		}
+
+		try (ResultSet rs = super.ExecuteQuery(query, para)) {
+			if (rs.next()) {
+				result = rs.getString(1).trim();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		result = result.replace(' ', '-');
+		return result;
 	}
 
 	public static DAO_Product_main getDao_Product_main() {
@@ -35,8 +60,7 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 	public Price_product_main getPrices_Product(String id) {
 		Price_product_main price = new Price_product_main();
 		query = "SELECT TOP 1 *  FROM " + PRICE + " WHERE " + ID + " = ? ORDER BY " + PRICE_DATE + " DESC";
-		String[] para = { id };
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			while (rs.next()) {
 				price.setPrice(rs.getInt(3));
 				price.setPriceSales(rs.getInt(4));
@@ -51,8 +75,7 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 	public Branch getBranch_Product(String id) {
 		Branch branch = new Branch();
 		query = "SELECT TH.MATH,TH.TENTH,TH.SLDT FROM THUONGHIEU TH JOIN SANPHAM SP ON SP.MATH=TH.MATH WHERE SP.MASP= ? ";
-		String[] para = { id };
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			while (rs.next()) {
 				branch.setId(rs.getString(1));
 				branch.setName(rs.getString(2));
@@ -67,9 +90,8 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 	public List<Attribute> getAttribute_Product(String id) {
 		ArrayList<Attribute> lstAtt = new ArrayList<Attribute>();
 		query = "  SELECT SP.MASP, LTT.MALOP,LTT.NOIDUNG FROM SANPHAM SP JOIN CAUHINH CH ON CH.MACH=SP.MACH JOIN CH_CTTT CT ON CT.MACH=CH.MACH JOIN CHITIET_THUOCTINH CTT ON CTT.MACT=CT.MACT JOIN THUOCTINH TT ON TT.MATT=CTT.MATT JOIN LOP_THUOCTINH LTT ON LTT.MALOP=TT.MALOP WHERE SP.MASP= ? GROUP BY SP.MASP, LTT.MALOP,LTT.NOIDUNG";
-		String[] para = { id };
 		// set thuoc tinh
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			while (rs.next()) {
 				Attribute att = new Attribute();
 				att.setName(rs.getString(3));
@@ -78,8 +100,7 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 						+ "SELECT SP.MASP, LTT.MALOP,tt.MATT,tt.NOIDUNG,ctt.NOIDUNG,ctt.MACT FROM SANPHAM SP JOIN CAUHINH CH ON CH.MACH=SP.MACH JOIN CH_CTTT CT ON CT.MACH=CH.MACH JOIN CHITIET_THUOCTINH CTT ON CTT.MACT=CT.MACT\r\n"
 						+ "JOIN THUOCTINH TT ON TT.MATT=CTT.MATT JOIN LOP_THUOCTINH LTT ON LTT.MALOP=TT.MALOP WHERE SP.MASP=? AND LTT.MALOP=? \r\n"
 						+ "GROUP BY SP.MASP, LTT.MALOP,tt.MATT,tt.NOIDUNG,ctt.NOIDUNG,ctt.MACT ORDER BY TT.MATT ASC";
-				String[] para2 = { id, idAtt };
-				ResultSet rs2 = super.AccessDBstr(query2, para2);
+				ResultSet rs2 = super.ExecuteQuery(query2, id, idAtt);
 				while (rs2.next()) {
 					att.addAttribute(rs2.getString(4), rs2.getString(5));
 				}
@@ -94,17 +115,15 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 
 	public List<Color_main> getColors_Product(String id) {
 		ArrayList<Color_main> lstColor = new ArrayList<Color_main>();
-		String[] para = { id };
 		query = "SELECT HA.MASP,HA.MAMAU,MS.TENMAU FROM HINHANH HA JOIN MAUSAC MS ON MS.MAMAU=HA.MAMAU WHERE HA.MASP=? GROUP BY HA.MASP,HA.MAMAU,MS.TENMAU";
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			while (rs.next()) {
 				Color_main cl = new Color_main();
 				cl.setId(rs.getString("MAMAU"));
 				cl.setName(rs.getString("TENMAU"));
 				String idColor = rs.getString("MAMAU");
 				String query2 = "SELECT * FROM HINHANH HA JOIN MAUSAC MS ON MS.MAMAU=HA.MAMAU WHERE HA.MASP=? AND HA.MAMAU=? ";
-				String[] para2 = { id, idColor };
-				ResultSet rs2 = super.AccessDBstr(query2, para2);
+				ResultSet rs2 = super.ExecuteQuery(query2, id, idColor);
 				while (rs2.next()) {
 					String type = rs2.getString(4).trim();
 					if (type.equals("NEN")) {
@@ -124,15 +143,14 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 	}
 
 	public Product_main getProduct_Form(String id) {
-		String[] para = { id };
 		ArrayList<Color_main> lstColor = (ArrayList<Color_main>) getColors_Product(id);
 		Price_product_main price = getPrices_Product(id);
 		StarEvaluate stars = new StarEvaluate();
 		Product_main product = new Product_main();
 		product.setID(id.trim());
-	
+
 		query = "SELECT * FROM dbo.GETPRODUCT_FORM(?)	";
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			if (rs.next()) {
 				product.setName(rs.getString("TENSP"));
 				price.setPrice(Integer.parseInt(rs.getString("GIA")));
@@ -145,7 +163,7 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 				lstColor.add(color);
 				product.setColors(lstColor);
 				query = "SELECT * FROM dbo.GETEVALUATE_AVG(?)	";
-				ResultSet rs2 = super.AccessDBstr(query, para);
+				ResultSet rs2 = super.ExecuteQuery(query, id);
 				if (rs2.next()) {
 					stars.setAvgStars(Double.parseDouble(rs2.getString("STB")));
 					product.setEvaluate(stars);
@@ -159,14 +177,13 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 	}
 
 	public Product_main getProduct_main(String id) {
-		String[] para = { id };
 		Branch branch = getBranch_Product(id);
 		ArrayList<Color_main> lstColor = (ArrayList<Color_main>) getColors_Product(id);
 		Price_product_main price = getPrices_Product(id);
 		ArrayList<Attribute> lstAtt = (ArrayList<Attribute>) getAttribute_Product(id);
 		query = "SELECT * FROM SANPHAM WHERE MASP=?";
 		Product_main product = new Product_main();
-		try (ResultSet rs = super.AccessDBstr(query, para)) {
+		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			if (rs.next()) {
 				product.setID(rs.getString(1).trim());
 				product.setName(rs.getString(2));
@@ -193,7 +210,7 @@ public class DAO_Product_main extends ExecuteStatementUtility {
 	public int updateViewProduct(String id) {
 		String query = "EXEC  INCREASE_VIEW @ID= ? ";
 		int total = 0;
-		try (ResultSet rs = super.AccessDBstr(query, new String[] { id })) {
+		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

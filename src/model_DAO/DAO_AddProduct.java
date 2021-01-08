@@ -5,15 +5,15 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import model_ConnectDB.ExecuteStatementUtility;
+import model_ConnectDB.ExecuteCRUD;
 import model_beans.Account;
 
-public class DAO_AddProduct extends ExecuteStatementUtility {
+public class DAO_AddProduct extends ExecuteCRUD {
 	
 	public String createIdColor() {
 		String color = "";
 		String query = "select * from MAUSAC order by MAMAU desc";
-		try (ResultSet rs = super.AccessDBstr(query)) {
+		try (ResultSet rs = super.ExecuteQueryNonParameter(query)) {
 			if (rs.next()) {
 				color = rs.getString(1).replace("MS", "").trim();
 			}
@@ -29,9 +29,8 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 	public void addColor(String id, String codeColor, String name) {
 		try {
 			String query = "INSERT INTO MAUSAC VALUES(?,?,?)";
-			String[] parameters = { id, codeColor, name };
 
-			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+			try (ResultSet rs = super.ExecuteQuery(query, id, codeColor, name)) {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -41,7 +40,7 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 	public String createIdProduct() {
 		String id = "";
 		String query = "select COUNT(MASP) from SANPHAM";
-		try (ResultSet rs = super.AccessDBstr(query)) {
+		try (ResultSet rs = super.ExecuteQueryNonParameter(query)) {
 			if (rs.next()) {
 				id = rs.getString(1);
 			}
@@ -57,9 +56,8 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 	public void addImg(String idProduct,String idColor,String linkImg,String type) {
 		try {
 			String query = "INSERT INTO HINHANH VALUES(?,?,?,?)";
-			String[] parameters = {idProduct,idColor, linkImg,type };
 
-			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+			try (ResultSet rs = super.ExecuteQuery(query, idProduct,idColor, linkImg,type)) {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,7 +66,7 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 	public String createIdBrand() {
 		String id = "";
 		String query = "select * from THUONGHIEU order by MATH desc";
-		try (ResultSet rs = super.AccessDBstr(query)) {
+		try (ResultSet rs = super.ExecuteQueryNonParameter(query)) {
 			if (rs.next()) {
 				id = rs.getString(1).replace("TH", "").trim();
 			}
@@ -84,7 +82,7 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 	public String idBrand(String name) {
 		String idBrand = createIdBrand();
 		String query = "select * from THUONGHIEU";
-		try (ResultSet rs = super.AccessDBstr(query)) {
+		try (ResultSet rs = super.ExecuteQueryNonParameter(query)) {
 			while (rs.next()) {
 				if (name.equals(rs.getString("TENTH"))) {
 					return idBrand = rs.getString("MATH");
@@ -96,7 +94,7 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 		try {
 			String query1 = "INSERT INTO THUONGHIEU VALUES(?,?,?,?)";
 			String[] parameters = {idBrand,name,"0","Còn kinh doanh"};
-			try (ResultSet rs = super.AccessDBstr(query1, parameters)) {
+			try (ResultSet rs = super.ExecuteQuery(query1, parameters)) {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -113,7 +111,7 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 			String query = "INSERT INTO SANPHAM VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 			String[] parameters = {id,name,type,idBrand,state,date,introduce,quatity,"0","0",idConfig};
 
-			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+			try (ResultSet rs = super.ExecuteQuery(query, parameters)) {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -126,9 +124,8 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 		String date = localDate.format(formatter);
 		try {
 			String query = "INSERT INTO GIA_SP VALUES(?,?,?,?)";
-			String[] parameters = {id,date,price,priceSale};
 
-			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+			try (ResultSet rs = super.ExecuteQuery(query, id,date,price,priceSale)) {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -137,7 +134,7 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 	public String createIdConfig() {
 		String id = "";
 		String query = "select COUNT(MACH) from CAUHINH";
-		try (ResultSet rs = super.AccessDBstr(query)) {
+		try (ResultSet rs = super.ExecuteQueryNonParameter(query)) {
 			if (rs.next()) {
 				id = rs.getString(1);
 			}
@@ -153,9 +150,8 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 	public void addConfig(String id,String number) {
 		try {
 			String query = "INSERT INTO CAUHINH VALUES(?,?)";
-			String[] parameters = {id,number};
 
-			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+			try (ResultSet rs = super.ExecuteQuery(query,id,number)) {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -164,7 +160,7 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 	public String createIdProper() {
 		String id = "";
 		String query = "select COUNT(MATT) from THUOCTINH";
-		try (ResultSet rs = super.AccessDBstr(query)) {
+		try (ResultSet rs = super.ExecuteQueryNonParameter(query)) {
 			if (rs.next()) {
 				id = rs.getString(1);
 			}
@@ -179,8 +175,7 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 	public void addProper(String id,String typeValue,String content,String idClass) {
 		try {
 			String query = "INSERT INTO THUOCTINH VALUES(?,?,?,?)";
-			String[] parameters = {id,typeValue,content,idClass};
-			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+			try (ResultSet rs = super.ExecuteQuery(query, id,typeValue,content,idClass)) {
 				
 			}
 		} catch (Exception e) {
@@ -190,7 +185,7 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 	public String createIdDetailProper() {
 		String id = "";
 		String query = "select COUNT(MACT) from CHITIET_THUOCTINH";
-		try (ResultSet rs = super.AccessDBstr(query)) {
+		try (ResultSet rs = super.ExecuteQueryNonParameter(query)) {
 			if (rs.next()) {
 				id = rs.getString(1);
 			}
@@ -207,10 +202,6 @@ public class DAO_AddProduct extends ExecuteStatementUtility {
 	}
 	
 	
-	public static void main(String[] args) {
-		DAO_AddProduct dao = new DAO_AddProduct();
-		System.out.println(dao.createIdProper());
-		dao.addProper(dao.createIdProper(), "VB", "Chất lượng hình ảnh", "CS");
-	}
+	
 	
 }

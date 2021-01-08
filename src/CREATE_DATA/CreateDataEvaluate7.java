@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import BeanProduct.Product;
-import model_ConnectDB.ExecuteStatementUtility;
+import model_ConnectDB.ExecuteCRUD;
 
 
-public class CreateDataEvaluate7 extends ExecuteStatementUtility{
+public class CreateDataEvaluate7 extends ExecuteCRUD{
 	public static int rdINT(int start, int end) {
 		return (int) ((Math.random() * (end - start)) + start);
 	}
@@ -70,7 +70,7 @@ public class CreateDataEvaluate7 extends ExecuteStatementUtility{
 
 			};
 
-			try (ResultSet rs = super.AccessDBstr(query, parameters)) {
+			try (ResultSet rs = super.ExecuteQuery(query, parameters)) {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
