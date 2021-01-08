@@ -102,9 +102,9 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 
 	public ListProduct orderListProduct(ListProduct list, SELECT type, ORDER order)
 			throws NumberFormatException, SQLException {
-		list.addOrderLIst(type + "", order + "");
+		list.addOrderLIst(type, order);
 		String query = list.getQueryOrder();
-		return getListProduct(query);
+		return getListProduct(query,list.getPara());
 
 	}
 
@@ -128,6 +128,7 @@ public class DAO_ListProduct extends ExecuteStatementUtility {
 		ListProduct result = new ListProduct();
 		result.setLstProduct(lstProduct);
 		result.setQuery(query);
+		result.setPara(para);
 		return result;
 	}
 

@@ -101,4 +101,11 @@ public class Product_form {
 		this.priceSales = priceSales;
 	}
 
+	@Override
+	public String toString() {
+		return "Product_form [id=" + id + ", name=" + name + ", img=" + img + ", price=" + price + ", priceSales="
+				+ priceSales + ", avgEvaluate=" + avgEvaluate + ", color=" + color + ", colorID=" + colorID
+				+ ", nameBranch=" + nameBranch + "]";
+	}
+
 }
