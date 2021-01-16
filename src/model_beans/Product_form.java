@@ -1,5 +1,6 @@
 package model_beans;
 
+
 public class Product_form {
 	private String URL;
 	private String id;
@@ -107,6 +108,23 @@ public class Product_form {
 
 	public void setPriceSales(int priceSales) {
 		this.priceSales = priceSales;
+	}
+
+	public double getModStart() {
+		return avgEvaluate % 1;
+	}
+
+	public boolean getCheckStart() {
+		if (getModStart() < 0.4) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public int getStartIntact() {
+		int start = (int) (avgEvaluate - getModStart());
+		return start;
 	}
 
 	@Override
