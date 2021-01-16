@@ -1521,4 +1521,12 @@ SELECT * FROM dbo.GETPRODUCT_FORM('sp01')
 
 SELECT * FROM dbo.GET_PRODUCT_BRANCH('TH03')	order by GIA desc
 
+--icon menu
+UPDATE ICON_MENU SET ICON = '<i class="fas fa-phone-square-alt"></i>', TIEUDE = N'Liên hệ & Hỗ trợ' WHERE MAIC = 'IC1';
+UPDATE ICON_MENU SET ICON = '<i class="fas fa-money-check"></i>', TIEUDE = N'Kiểm tra đơn hàng' WHERE MAIC = 'IC2';
+UPDATE ICON_MENU SET ICON = ' <i class="fas fa-user"></i>', TIEUDE = N'Đăng nhập' WHERE MAIC = 'IC3';
+UPDATE ICON_MENU SET ICON = '<i class="fas fa-shopping-cart"></i>', TIEUDE = N'Giỏ hàng' WHERE MAIC = 'IC4';
+--MAU GIAO DIEN
+UPDATE QL_GIAODIEN SET MAU_THANHLOC = '#000000c2',MAU_CHU = '#000000c2',MAU_NEN ='#3f89d8'
+
 	

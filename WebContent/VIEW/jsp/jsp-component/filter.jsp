@@ -7,6 +7,7 @@
 	DAO_IconMenu dao = new DAO_IconMenu();
 request.setAttribute("color", dao.colorWeb());
 %>
+
 <div style="background-color: ${color.colorFilter}" class="filter-menu">
 	<div class="container">
 		<div class="row">
