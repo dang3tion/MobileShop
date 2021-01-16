@@ -33,6 +33,7 @@
 				</div>
 			</c:if>
 		</div>
+		<h3>${param.evaluate}</h3>
 		<div class="card-stars">
 			<span> <i class="fas fa-star text-warning"></i></span> <span>
 				<i class="fas fa-star text-warning"></i>

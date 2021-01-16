@@ -126,6 +126,7 @@ public class DAO_ListProduct extends ExecuteCRUD {
 
 					p.setPriceSales(Integer.parseInt(rs.getString("GIA_KM")));
 				}
+				
 				p.setImg(rs.getString("ANH"));
 				p.setAvgEvaluate(Double.parseDouble(rs.getString("AVGDANHGIA")));
 				lstProduct.add(p);
