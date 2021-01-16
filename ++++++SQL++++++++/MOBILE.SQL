@@ -303,6 +303,11 @@ VALUES('admin', '202cb962ac59075b964b07152d234b70','ENABLE','11-12-2005','ADMIN'
 --Phần thêm các dữ liệu mẫu
 INSERT INTO TAIKHOAN VALUES('', '202cb962ac59075b964b07152d234b70','ENABLE','2005-12-11','ADMIN',N'Trần Thanh Bảo','0943417917',N'Bến Tre',NULL)
 select * from TAIKHOAN
+
+SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY ID DESC) AS STT ,* FROM  TAIKHOAN
+				) AS X  WHERE STT BETWEEN 20 AND 25 
+
+SELECT * FROM TAIKHOAN order by tennd asc 
 select * from BINHLUAN
 select * from CAUHINH
 select * from CH_CTTT
@@ -1241,12 +1246,16 @@ INSERT INTO HINHANH VALUES('SP08','MS01','//cdn.tgdd.vn/Products/Images/42/19815
 INSERT INTO HINHANH VALUES('SP08','MS01','//cdn.tgdd.vn/Products/Images/42/198150/oppo-find-x2-xanh-duong-9-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP08','MS01','//cdn.tgdd.vn/Products/Images/42/198150/oppo-find-x2-xanh-duong-2-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP08','MS01','//cdn.tgdd.vn/Products/Images/42/198150/oppo-find-x2-xanh-duong-13-org.jpg','PHU')
+
+INSERT INTO SOLUONG_SP VALUES('SP08','MS01',10)
 INSERT INTO HINHANH VALUES('SP08','MS03','https://cdn.tgdd.vn/Products/Images/42/198150/oppo-find-x2-den-1-org.jpg','NEN')
 INSERT INTO HINHANH VALUES('SP08','MS03','//cdn.tgdd.vn/Products/Images/42/198150/oppo-find-x2-den-6-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP08','MS03','//cdn.tgdd.vn/Products/Images/42/198150/oppo-find-x2-den-13-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP08','MS03','//cdn.tgdd.vn/Products/Images/42/198150/oppo-find-x2-den-2-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP08','MS03','//cdn.tgdd.vn/Products/Images/42/198150/oppo-find-x2-den-4-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP08','MS03','//cdn.tgdd.vn/Products/Images/42/198150/oppo-find-x2-den-5-org.jpg','PHU')
+
+INSERT INTO SOLUONG_SP VALUES('SP08','MS03',7)
 --Itel it9200 4G
 INSERT INTO CH_CTTT VALUES('CH09','CT01')
 INSERT INTO CH_CTTT VALUES('CH09','CT11')
@@ -1291,6 +1300,7 @@ INSERT INTO HINHANH VALUES('SP09','MS03','//cdn.tgdd.vn/Products/Images/42/23265
 INSERT INTO HINHANH VALUES('SP09','MS03','//cdn.tgdd.vn/Products/Images/42/232657/itel-it9200-den-7-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP09','MS03','//cdn.tgdd.vn/Products/Images/42/232657/itel-it9200-den-3-1-org.jpg','PHU')
 
+INSERT INTO SOLUONG_SP VALUES('SP09','MS03',7)
 --Mobell M339
 INSERT INTO CH_CTTT VALUES('CH10','CT01')
 INSERT INTO CH_CTTT VALUES('CH10','CT11')
@@ -1336,12 +1346,15 @@ INSERT INTO HINHANH VALUES('SP10','MS02','//cdn.tgdd.vn/Products/Images/42/13991
 INSERT INTO HINHANH VALUES('SP10','MS02','//cdn.tgdd.vn/Products/Images/42/139913/mobell-m339-do-3-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP10','MS02','//cdn.tgdd.vn/Products/Images/42/139913/mobell-m339-do-2-org.jpg','PHU')
 
+INSERT INTO SOLUONG_SP VALUES('SP10','MS02',23)
 INSERT INTO HINHANH VALUES('SP10','MS03','https://cdn.tgdd.vn/Products/Images/42/139913/mobell-m339-den-new-600x600-600x600.jpg','NEN')
 INSERT INTO HINHANH VALUES('SP10','MS03','//cdn.tgdd.vn/Products/Images/42/139913/mobell-m339-den-1-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP10','MS03','//cdn.tgdd.vn/Products/Images/42/139913/mobell-m339-den-4-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP10','MS03','//cdn.tgdd.vn/Products/Images/42/139913/mobell-m339-den-5-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP10','MS03','//cdn.tgdd.vn/Products/Images/42/139913/mobell-m339-den-3-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP10','MS03','//cdn.tgdd.vn/Products/Images/42/139913/mobell-m339-den-2-org.jpg','PHU')
+
+INSERT INTO SOLUONG_SP VALUES('SP10','MS03',17)
 select * from MAUSAC
 select * from SANPHAM
 select * from thuonghieu

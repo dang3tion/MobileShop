@@ -53,12 +53,6 @@
 					<h4 class="text-center mt-3 mb-3"></h4>
 					<div class="row">
 
-						<!-- 												<div class="show-page mb-3 ml-3" style="padding-left: 10px"> -->
-						<!-- 													Hiển thị <span> <select id="rowsPerPage"> -->
-						<!-- 															<option value="10">10</option> -->
-						<!-- 															<option value="20">20</option> -->
-						<!-- 															<option value="50">50</option> -->
-						<!-- 													</select></span> -->
 
 
 

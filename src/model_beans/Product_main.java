@@ -40,6 +40,8 @@ public class Product_main {
 		this.evaluate = evaluate;
 	}
 
+	
+
 	public StarEvaluate getEvaluate() {
 		return evaluate;
 	}
@@ -115,7 +117,6 @@ public class Product_main {
 		this.posts = posts;
 	}
 
-
 	public int getSale_quantity() {
 		return sale_quantity;
 	}
@@ -151,8 +152,8 @@ public class Product_main {
 	@Override
 	public String toString() {
 		return "Product_main [ID=" + ID + ", name=" + name + ", type=" + type + ", branch=" + branch + ", status="
-				+ status + ", update_date=" + update_date + ", posts=" + posts + ", sale_quantity=" + sale_quantity + ", view=" + view + ", attributes=" + attributes + ", colors="
-				+ colors + "]/n";
+				+ status + ", update_date=" + update_date + ", posts=" + posts + ", sale_quantity=" + sale_quantity
+				+ ", view=" + view + ", attributes=" + attributes + ", colors=" + colors + "]/n";
 	}
 
 	public static void main(String[] args) {

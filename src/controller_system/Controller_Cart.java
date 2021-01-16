@@ -20,7 +20,6 @@ import model_utility.Config;
 @WebServlet(urlPatterns = "/cart")
 public class Controller_Cart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	BO_Product bo = BO_Product.getBoProduct();
 	RequestDispatcher dispatcher;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -24,7 +24,6 @@ import model_beans.Product_main;
 @WebServlet(urlPatterns = "/index")
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private BO_Product bo = BO_Product.getBoProduct();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
