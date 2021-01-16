@@ -1,4 +1,4 @@
-package controller_admin;
+package controller_AJAX;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,35 +14,32 @@ import javax.servlet.http.HttpSession;
 import model_DAO.DAO_Product_main;
 import model_beans.Product_main;
 
-@WebServlet(urlPatterns = "/admin/manager-product")
-public class ManagerProduct extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+@WebServlet("/AJAXAdminProductManager")
+public class AJAXADminProductManager extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int currentPage = 1;
-		HttpSession session = request.getSession();
-		if (session.getAttribute("current_page") == null) {
-			session.setAttribute("current_page", 1);
-		} else {
-			currentPage = (Integer) session.getAttribute("current_page");
-		}
-
+		int page = Integer.parseInt(request.getParameter("page"));
 		ArrayList<Product_main> listProduct = (ArrayList<Product_main>) DAO_Product_main.getDao_Product_main()
-				.getAllProduct((currentPage - 1) * 2, currentPage * 2);
-		request.setAttribute("STT", (currentPage - 1) * 2 + 1);
-		request.setAttribute("totalPage", DAO_Product_main.getDao_Product_main().getNumberOfPage(2));
+				.getAllProduct((page - 1) * 2 + 1, page * 2);
+		updateCurrentPage(request, page);
+		doPost(request, response);
 		request.setAttribute("listProduct", listProduct);
-		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-product.jsp");
+		request.setAttribute("STT", (page - 1) * 2 + 1);
+		RequestDispatcher dispatcher = this.getServletContext()
+				.getRequestDispatcher("/VIEW/jsp/jsp-component/product-table-admin.jsp");
 		dispatcher.forward(request, response);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		doGet(request, response);
-
 	}
 
+	private void updateCurrentPage(HttpServletRequest request, int page) {
+		HttpSession session = request.getSession();
+
+		session.setAttribute("current_page", page);
+	}
 }

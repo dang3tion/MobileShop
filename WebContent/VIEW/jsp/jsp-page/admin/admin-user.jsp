@@ -158,7 +158,7 @@
 	<!-- 	@@@@@@@@@ GỬI DỮ LIỆU XUỐNG SERVER @@@@@@@@@@@@@@@@@ -->
 
 	<input id="curent-home-page-admin-management-user"
-		value="${CURRENT_PAGE_MANAGEMENT_USER}"></input>
+		value="${CURRENT_PAGE_MANAGEMENT_USER}" style="display:none"></input>
 
 
 	<script>

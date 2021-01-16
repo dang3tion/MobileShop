@@ -25,9 +25,8 @@ public class DAO_Product_main extends ExecuteCRUD {
 
 	}
 
-	
 	public int getTotalQuantity() {
-		String query="SELECT SUM(SS.SOLUONG) FROM SANPHAM SP JOIN SOLUONG_SP SS ON SS.MASP=SP.MASP";
+		String query = "SELECT SUM(SS.SOLUONG) FROM SANPHAM SP JOIN SOLUONG_SP SS ON SS.MASP=SP.MASP";
 		try (ResultSet rs = super.ExecuteQuery(query)) {
 			if (rs.next()) {
 
@@ -38,8 +37,9 @@ public class DAO_Product_main extends ExecuteCRUD {
 		}
 		return 0;
 	}
+
 	public int getTotalQuantity_isSaled() {
-		String query="SELECT SUM(SS.SL_DABAN) FROM SANPHAM SP JOIN SOLUONG_SP SS ON SS.MASP=SP.MASP";
+		String query = "SELECT SUM(SS.SL_DABAN) FROM SANPHAM SP JOIN SOLUONG_SP SS ON SS.MASP=SP.MASP";
 		try (ResultSet rs = super.ExecuteQuery(query)) {
 			if (rs.next()) {
 
@@ -50,7 +50,18 @@ public class DAO_Product_main extends ExecuteCRUD {
 		}
 		return 0;
 	}
-	public int getTotalNumberAccount() {
+
+	public int getNumberOfPage(int numRow) {
+		int num = getTotalProduct() / numRow;
+
+		if (getTotalProduct() % numRow > 1) {
+			num += 1;
+		}
+
+		return num;
+	}
+
+	public int getTotalProduct() {
 		String query = "SELECT COUNT(*) FROM SANPHAM";
 
 		try (ResultSet rs = super.ExecuteQuery(query)) {
@@ -181,12 +192,15 @@ public class DAO_Product_main extends ExecuteCRUD {
 
 	public List<Color_main> getColors_Product(String id) {
 		ArrayList<Color_main> lstColor = new ArrayList<Color_main>();
-		query = "SELECT HA.MASP,HA.MAMAU,MS.TENMAU FROM HINHANH HA JOIN MAUSAC MS ON MS.MAMAU=HA.MAMAU WHERE HA.MASP=? GROUP BY HA.MASP,HA.MAMAU,MS.TENMAU";
+		query = "SELECT HA.MASP,HA.MAMAU,MS.TENMAU,SS.SOLUONG,SS.SL_DABAN FROM HINHANH HA JOIN MAUSAC MS ON MS.MAMAU=HA.MAMAU JOIN SOLUONG_SP SS ON SS.MAMAU=HA.MAMAU AND SS.MASP=HA.MASP WHERE HA.MASP=? GROUP BY HA.MASP,HA.MAMAU,MS.TENMAU,SS.SOLUONG,SS.SL_DABAN\r\n"
+				+ "";
 		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			while (rs.next()) {
 				Color_main cl = new Color_main();
 				cl.setId(rs.getString("MAMAU"));
 				cl.setName(rs.getString("TENMAU"));
+				cl.setQuantity(rs.getInt("SOLUONG"));
+				cl.setQuantity_sale(rs.getInt("SL_DABAN"));
 				String idColor = rs.getString("MAMAU");
 				String query2 = "SELECT * FROM HINHANH HA JOIN MAUSAC MS ON MS.MAMAU=HA.MAMAU WHERE HA.MASP=? AND HA.MAMAU=? ";
 				ResultSet rs2 = super.ExecuteQuery(query2, id, idColor);
@@ -272,6 +286,21 @@ public class DAO_Product_main extends ExecuteCRUD {
 		return product;
 	}
 
+	public List<Product_main> getAllProduct(int start, int end) {
+		ArrayList<Product_main> arr = new ArrayList<Product_main>();
+		String query = "SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY masp DESC) AS STT ,* FROM  SANPHAM) AS X  WHERE STT BETWEEN ? AND ? ";
+		try (ResultSet rs = super.ExecuteQuery(query, start, end)) {
+			while (rs.next()) {
+				Product_main p = getProduct_main(rs.getString("MASP"));
+				arr.add(p);
+			}
+			return arr;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+
 	public int updateViewProduct(String id) {
 		String query = "EXEC  INCREASE_VIEW @ID= ? ";
 		int total = 0;
@@ -283,8 +312,10 @@ public class DAO_Product_main extends ExecuteCRUD {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(DAO_Product_main.getDao_Product_main().getTotalNumberAccount());
 		System.out.println(DAO_Product_main.getDao_Product_main().getTotalNumberAccount_stopSale());
-		System.out.println("select SUM(ss.sl_daban) from SANPHAM sp join SOLUONG_SP ss on ss.MASP=sp.MASP".toUpperCase());
+		System.out
+				.println("select SUM(ss.sl_daban) from SANPHAM sp join SOLUONG_SP ss on ss.MASP=sp.MASP".toUpperCase());
+		System.out.println(DAO_Product_main.getDao_Product_main().getAllProduct(5, 10).get(0).getQuantity());
+
 	}
 }

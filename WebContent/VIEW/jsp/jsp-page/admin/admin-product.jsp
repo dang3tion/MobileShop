@@ -27,7 +27,7 @@
 
 			<div class="container-fluid">
 				<div class="mb-5 mt-3 ">
-				<h4 class="mt-3 mb-3">Thống kê sản phẩm</h4>
+					<h4 class="mt-3 mb-3">Thống kê sản phẩm</h4>
 
 
 
@@ -38,6 +38,7 @@
 								<th scope="col">Số sản phẩm đang bán</th>
 								<th scope="col">Số sản phẩm ngưng kinh doanh</th>
 								<th scope="col">Tổng số lượng tồn kho</th>
+								<th scope="col">Tổng số lượng đã bán</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -46,10 +47,11 @@
 								<td>10</td>
 								<td>10</td>
 								<td>10</td>
+								<td>10</td>
 							</tr>
 						</tbody>
 					</table>
-					
+
 					<div class="content">
 						<div class="animated fadeIn">
 							<div class="row">
@@ -60,20 +62,10 @@
 											<div class=" mb-2">
 												<h4 class="text-center mt-3 mb-3">Danh sách sản phẩm</h4>
 												<div class="row">
-													<div class="show-page mb-3 ml-3">
-
-														Hiển thị <span> <select id="show"
-															onclick="select_page()">
-																<option value="10">10</option>
-																<option value="20">20</option>
-																<option value="50">50</option>
-														</select></span> cột
-													</div>
 
 													<div class="show-page  arrange ml-3">
 
-														Sắp xếp <span> <select id="show"
-															onclick="select_page()">
+														Sắp xếp <span> <select id="show" onclick="">
 																<option value="10">A-Z</option>
 																<option value="20">Z-A</option>
 														</select></span>
@@ -90,7 +82,7 @@
 													href=" ${pageContext.request.contextPath}/admin/product-add"><button
 														data-toggle="tooltip" data-placement="top"
 														title="Thêm một sản phẩm mới vào danh sách"
-														class="btn btn-success btn-add">
+														style="float: right;" class="btn btn-success btn-add">
 														<i class="fas fa-plus-square"></i> Thêm sản phẩm
 													</button></a>
 												<table id="bootstrap-data-table" class="table table-hover ">
@@ -103,13 +95,15 @@
 															<th>Tên</th>
 															<th data-toggle="tooltip" data-placement="top"
 																title="Hãng sản xuất">Hãng SX</th>
-															<th>Ngày cập nhật</th>
 															<th data-toggle="tooltip" data-placement="top"
-																title="Số lượng còn lại">SL còn lại</th>
+																title="Ngày cập nhật">NCN</th>
 															<th data-toggle="tooltip" data-placement="top"
-																title="Số lượng đã bán">SL đã bán</th>
+																title="Số lượng còn lại">SLCL</th>
+															<th data-toggle="tooltip" data-placement="top"
+																title="Số lượng đã bán">SLĐB</th>
 															<th>Giá gốc</th>
-															<th>Giá KM</th>
+															<th data-toggle="tooltip" data-placement="top"
+																title="Giá khuyến mãi">Giá KM</th>
 															<th>Trạng thái</th>
 															<th></th>
 
@@ -117,19 +111,21 @@
 													</thead>
 
 													<tbody id="content-table">
-													
+
+
 														<!-- Modal -->
-													
+
 
 
 													</tbody>
 												</table>
 
-												<div class="page-navigation">
+												<div class="page-navigation" id="page-navigation"
+													value="${totalPage}">
 													<div class="beta">
-														<button onclick="previous_page()">Trước</button>
+														<button onclick="previousPage()">Trước</button>
 														<span id="page-number"> </span>
-														<button onclick="next_page()">Sau</button>
+														<button onclick="nextPage()">Sau</button>
 													</div>
 												</div>
 											</div>
@@ -143,51 +139,11 @@
 						</div>
 						<!-- .content -->
 						<!--Modal add-->
-						<div class="modal fade" id="add" tabindex="-1" role="dialog"
-							aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLongTitle">Thêm
-											sản phẩm</h5>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">...</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Đóng</button>
-										<button type="button" class="btn btn-primary">Lưu</button>
-									</div>
-								</div>
-							</div>
-						</div>
+
 						<!--/Modal add-->
 
 						<!--Modal edit-->
-						<div class="modal fade" id="editUser" tabindex="-1" role="dialog"
-							aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLongTitle">Chỉnh
-											sửa sản phẩm</h5>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">...</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Đóng</button>
-										<button type="button" class="btn btn-primary">Lưu</button>
-									</div>
-								</div>
-							</div>
-						</div>
+
 						<!--/Modal edit-->
 
 
@@ -199,83 +155,91 @@
 		</div>
 		<!-- delete product -->
 		<!-- Modal -->
-		<div class="modal fade" id="delete" tabindex="-1" role="dialog"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa
-							sản phẩm</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">Bạn có muốn xóa sản phẩm này.</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Không</button>
-						<button type="button" data-dismiss="modal" class="btn btn-primary">Đồng
-							ý</button>
-					</div>
-				</div>
-			</div>
-		</div>
+
 	</div>
+	<input id="curent-page" value="${current_page}" style="display: none"></input>
 
-	<div class="modal fade" id="stop" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<input style="display: none" value="${pro.id}" name="idEdit">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">Thương hiệu của sản phẩm này đã ngừng kinh doanh.</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Đóng</button>
-					
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- @@@@@@@@@@ HIỆN THÔNG BÁO THAY ĐỔI  @@@@@@@@@@@@@ -->
-	<c:if test="${notice != null}">
 
-		<script>
-			window.onload = function() {
-				document.getElementById('btn-message').click();
-			}
-		</script>
 
-		<!-- Button trigger modal -->
-		<button style="display: none"
-			type="button" id="btn-message" class="btn btn-white"
-			data-toggle="modal" data-target="#exampleModalCenter"></button>
+	<script>
+		function getCurrentPage() {
+			return document.getElementById("curent-page").value;
+		}
+		function SendDataToServlet(number) {
+			getNumberPageDefault(number);
+			$
+					.ajax({
+						type : 'GET',
+						url : '${pageContext.request.contextPath}/AJAXAdminProductManager',
+						data : {
 
-		<!-- Modal -->
-		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
-			role="dialog" aria-labelledby="exampleModalCenterTitle"
-			aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLongTitle">${notice}</h5>
-					</div>
+							page : parseInt(number)
 
-					<div class="modal-footer">
-						<button type="button" class="btn btn-success" data-dismiss="modal">Đóng</button>
-					</div>
-				</div>
-			</div>
-		</div>
+						},
+						success : function(responseText) {
+							$('#content-table').html(responseText);
+						}
 
-	</c:if>
+					});
+
+		}
+		// 		function SendDataLock(emailvalue) {
+
+		// 			$
+		// 					.ajax({
+		// 						type : 'POST',
+		// 						url : '${pageContext.request.contextPath}/AJAXAdminUserManager',
+		// 						data : {
+
+		// 							page : getMove(),
+		// 							email : emailvalue
+		// 						},
+		// 						success : function(responseText) {
+		// 							$('#content-table').html(responseText);
+		// 						}
+
+		// 					});
+
+		// 		}
+		// 		function switchChedoXem(value) {
+
+		// 			$
+		// 					.ajax({
+		// 						type : 'GET',
+		// 						url : '${pageContext.request.contextPath}/AJAXswitchChedoXemAdminManageUser',
+		// 						data : {
+
+		// 							statusAccount : value
+
+		// 						},
+		// 						success : function(responseText) {
+		// 							document.getElementById('page-navigation').value = responseText;
+		// 							// 					alert(responseText);
+		// 						}
+
+		// 					});
+
+		// 			$
+		// 		.ajax({
+		// 						type : 'GET',
+		// 						url : '${pageContext.request.contextPath}/AJAXAdminUserManager',
+		// 						data : {
+
+		// 							cheDoXem : value
+
+		// 						},
+		// 						success : function(responseText) {
+		// 							$('#content-table').html(responseText);
+		// 						}
+
+		// 					});
+
+		// 		}
+	</script>
+
+	<script src="${url}/js/js-page/devide-page-admin.js"></script>
+	<!-- @@@@@@@@@@ HIỆN THÔNG BÁO THAY ĐỔI  @@@@@@@@@@@@@ -->
+
 	<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO THAY ĐỔI @@@@@@@@@@@@@ -->
 </body>
 

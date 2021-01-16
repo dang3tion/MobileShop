@@ -25,5 +25,5 @@
 			</c:import>
 		</div>
 	</c:forEach>
-
+</div>
 	<!-- </div> -->

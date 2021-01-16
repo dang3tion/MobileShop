@@ -38,10 +38,21 @@ public class Product_main {
 		this.evaluate = evaluate;
 	}
 
+	public String getImgMain() {
+		return colors.get(0).getImgMain();
+	}
 	public int getQuantity() {
 		int result = 0;
 		for (Color_main co : colors) {
 			result += co.getQuantity();
+		}
+		return result;
+	}
+
+	public int getQuantitySale() {
+		int result = 0;
+		for (Color_main co : colors) {
+			result += co.getQuantity_sale();
 		}
 		return result;
 	}
