@@ -134,7 +134,7 @@ public class DAO_ListProduct extends ExecuteCRUD {
 		ListProduct result = new ListProduct();
 		result.setLstProduct(lstProduct);
 		result.setQuery(query);
-		result.setPara(para);
+//		result.setPara(para);
 		return result;
 	}
 

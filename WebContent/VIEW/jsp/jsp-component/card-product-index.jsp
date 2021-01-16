@@ -19,16 +19,18 @@
 		</div>
 		<div class="card-price">
 			<div class="card-count">
-			<fmt:formatNumber type="number" maxFractionDigits="3"
-			value="${param.price}" /><span class="unit">đ</span>
+				<fmt:formatNumber type="number" maxFractionDigits="3"
+					value="${param.price}" />
+				<span class="unit">đ</span>
 			</div>
-			
-			
+
+
 			<c:if test="${param.salePrice!=0 }">
-			<div class="card-discount"><fmt:formatNumber type="number" maxFractionDigits="3"
-			value="${param.salePrice}" />
-				 <span class="unit">đ</span>
-			</div>
+				<div class="card-discount">
+					<fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${param.salePrice}" />
+					<span class="unit">đ</span>
+				</div>
 			</c:if>
 		</div>
 		<div class="card-stars">
