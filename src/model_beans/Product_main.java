@@ -3,7 +3,6 @@ package model_beans;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 import model_DAO.DAO_ListProduct;
 
 public class Product_main {
@@ -14,7 +13,7 @@ public class Product_main {
 	private String status;
 	private String update_date;
 	private String posts;
-	private int sale_quantity;
+
 	private int view;
 	private Price_product_main prices;
 	private ArrayList<Attribute> attributes = new ArrayList<Attribute>();
@@ -32,7 +31,6 @@ public class Product_main {
 		this.status = status;
 		this.update_date = update_date;
 		this.posts = posts;
-		this.sale_quantity = sale_quantity;
 		this.view = view;
 		this.prices = prices;
 		this.attributes = attributes;
@@ -40,7 +38,13 @@ public class Product_main {
 		this.evaluate = evaluate;
 	}
 
-	
+	public int getQuantity() {
+		int result = 0;
+		for (Color_main co : colors) {
+			result += co.getQuantity();
+		}
+		return result;
+	}
 
 	public StarEvaluate getEvaluate() {
 		return evaluate;
@@ -117,14 +121,6 @@ public class Product_main {
 		this.posts = posts;
 	}
 
-	public int getSale_quantity() {
-		return sale_quantity;
-	}
-
-	public void setSale_quantity(int sale_quantity) {
-		this.sale_quantity = sale_quantity;
-	}
-
 	public int getView() {
 		return view;
 	}
@@ -152,8 +148,8 @@ public class Product_main {
 	@Override
 	public String toString() {
 		return "Product_main [ID=" + ID + ", name=" + name + ", type=" + type + ", branch=" + branch + ", status="
-				+ status + ", update_date=" + update_date + ", posts=" + posts + ", sale_quantity=" + sale_quantity
-				+ ", view=" + view + ", attributes=" + attributes + ", colors=" + colors + "]/n";
+				+ status + ", update_date=" + update_date + ", posts=" + posts + ", view=" + view + ", attributes="
+				+ attributes + ", colors=" + colors + "]/n";
 	}
 
 	public static void main(String[] args) {

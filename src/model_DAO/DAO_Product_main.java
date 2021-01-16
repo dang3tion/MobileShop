@@ -25,6 +25,72 @@ public class DAO_Product_main extends ExecuteCRUD {
 
 	}
 
+	
+	public int getTotalQuantity() {
+		String query="SELECT SUM(SS.SOLUONG) FROM SANPHAM SP JOIN SOLUONG_SP SS ON SS.MASP=SP.MASP";
+		try (ResultSet rs = super.ExecuteQuery(query)) {
+			if (rs.next()) {
+
+				return rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	public int getTotalQuantity_isSaled() {
+		String query="SELECT SUM(SS.SL_DABAN) FROM SANPHAM SP JOIN SOLUONG_SP SS ON SS.MASP=SP.MASP";
+		try (ResultSet rs = super.ExecuteQuery(query)) {
+			if (rs.next()) {
+
+				return rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	public int getTotalNumberAccount() {
+		String query = "SELECT COUNT(*) FROM SANPHAM";
+
+		try (ResultSet rs = super.ExecuteQuery(query)) {
+			if (rs.next()) {
+
+				return rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+
+	}
+
+	public int getTotalNumberAccount_areSaling() {
+		String query = "SELECT * FROM SANPHAM WHERE TINHTRANG =N'Đang bán'";
+		try (ResultSet rs = super.ExecuteQuery(query)) {
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+
+	}
+
+	public int getTotalNumberAccount_stopSale() {
+		String query = "SELECT * FROM SANPHAM WHERE TINHTRANG !=N'Đang bán'";
+		try (ResultSet rs = super.ExecuteQuery(query)) {
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+
+	}
+
 	public String convertBetweenURLandID(String ID_or_Name) {
 		String query = null;
 		String result = null;
@@ -192,7 +258,6 @@ public class DAO_Product_main extends ExecuteCRUD {
 				product.setUpdate_date(rs.getString("NGAYCAPNHAT"));
 				product.setPosts(rs.getString("GIOITHIEU"));
 
-				product.setSale_quantity(rs.getInt("SL_DABAN"));
 				product.setView(rs.getInt("LUOTXEM"));
 				product.setAttributes(lstAtt);
 				product.setColors(lstColor);
@@ -217,4 +282,9 @@ public class DAO_Product_main extends ExecuteCRUD {
 		return total;
 	}
 
+	public static void main(String[] args) {
+		System.out.println(DAO_Product_main.getDao_Product_main().getTotalNumberAccount());
+		System.out.println(DAO_Product_main.getDao_Product_main().getTotalNumberAccount_stopSale());
+		System.out.println("select SUM(ss.sl_daban) from SANPHAM sp join SOLUONG_SP ss on ss.MASP=sp.MASP".toUpperCase());
+	}
 }
