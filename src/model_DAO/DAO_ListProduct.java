@@ -3,9 +3,6 @@ package model_DAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import model_ConnectDB.ExecuteCRUD;
 import model_beans.ListProduct;
@@ -94,12 +91,26 @@ public class DAO_ListProduct extends ExecuteCRUD {
 		return list;
 	}
 
-	public ListProduct orderListProduct(ListProduct list, SELECT type, ORDER order)
+	public ArrayList<Product_form> orderListProduct(ListProduct list, String query)
 			throws NumberFormatException, SQLException {
-		list.addOrderLIst(type, order);
-		String query = list.getQueryOrder();
-		return getListProduct(query,list.getPara());
+		ArrayList<Product_form> lst = new ArrayList<Product_form>();
+		try (ResultSet rs = super.ExecuteQuery(query, list.getPara())) {
+			while (rs.next()) {
+				Product_form p = new Product_form();
+				p.setId(rs.getString("MASP").trim());
+				p.setURL(DAO_Product_main.getDao_Product_main().convertBetweenURLandID(p.getId()));
+				p.setName(rs.getString("TENSP"));
+				p.setPrice(Integer.parseInt(rs.getString("GIA")));
+				if (rs.getString("GIA_KM") != null) {
 
+					p.setPriceSales(Integer.parseInt(rs.getString("GIA_KM")));
+				}
+				p.setImg(rs.getString("ANH"));
+				p.setAvgEvaluate(Double.parseDouble(rs.getString("AVGDANHGIA")));
+				lst.add(p);
+			}
+		}
+		return lst;
 	}
 
 	public ListProduct getListProduct(String query, Object... para) throws NumberFormatException, SQLException {

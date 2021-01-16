@@ -3,7 +3,6 @@ package model_beans;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import model_DAO.DAO_ListProduct;
@@ -13,7 +12,7 @@ import model_DAO.DAO_ListProduct.SELECT;
 
 public class ListProduct {
 	private String query;
-	private String[] para;
+	private Object[] para;
 	private ArrayList<Product_form> lstProduct;
 	private Map<SELECT, ORDER> orderList = new HashMap<SELECT, ORDER>();
 
@@ -30,11 +29,11 @@ public class ListProduct {
 		this.lstProduct = lstProduct;
 	}
 
-	public String[] getPara() {
+	public Object[] getPara() {
 		return para;
 	}
 
-	public void setPara(String[] para) {
+	public void setPara(Object[] para) {
 		this.para = para;
 	}
 
@@ -56,6 +55,28 @@ public class ListProduct {
 			}
 		}
 		orderList.put(key, value);
+		resetListOder();
+	}
+
+	public void removerOrder(SELECT key) {
+
+		if (orderList.containsKey(key)) {
+			orderList.remove(key);
+		}
+		resetListOder();
+	}
+
+	private void resetListOder() {
+		try {
+			this.lstProduct = DAO_ListProduct.getDao_ListProduct().orderListProduct(this, getQueryOrder());
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	public String getQueryOrder() {
@@ -132,9 +153,13 @@ public class ListProduct {
 		ListProduct list = DAO_ListProduct.getDao_ListProduct().getListProMenu(LISTP.HIGHESTPRICE, 100);
 //		System.out.println(list.getLstProduct());
 		list.addOrderLIst(SELECT.PRICE, ORDER.ASC);
-		System.out.println(list.getQuery());
+		list.addOrderLIst(SELECT.VIEW, ORDER.DESC);
+		System.out.println(list.getLstProduct());
+
+		list.addOrderLIst(SELECT.PRICE, ORDER.DESC);
+		System.out.println(list.getLstProduct());
+		list.removerOrder(SELECT.PRICE);
+		System.out.println(list.getLstProduct());
 		System.out.println(list.getQueryOrder());
-		list = DAO_ListProduct.getDao_ListProduct().orderListProduct(list, SELECT.PRICE, ORDER.ASC);
-System.out.println(list.getLstProduct());
 	}
 }
