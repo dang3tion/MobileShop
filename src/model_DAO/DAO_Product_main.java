@@ -185,15 +185,15 @@ public class DAO_Product_main extends ExecuteCRUD {
 		Product_main product = new Product_main();
 		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			if (rs.next()) {
-				product.setID(rs.getString(1).trim());
-				product.setName(rs.getString(2));
-				product.setType(rs.getString(3));
-				product.setStatus(rs.getString(5));
-				product.setUpdate_date(rs.getString(6));
-				product.setPosts(rs.getString(7));
-				product.setQuantity(rs.getInt(8));
-				product.setSale_quantity(rs.getInt(9));
-				product.setView(rs.getInt(10));
+				product.setID(rs.getString("MASP").trim());
+				product.setName(rs.getString("TENSP"));
+				product.setType(rs.getString("LOAI_SP"));
+				product.setStatus(rs.getString("TINHTRANG"));
+				product.setUpdate_date(rs.getString("NGAYCAPNHAT"));
+				product.setPosts(rs.getString("GIOITHIEU"));
+
+				product.setSale_quantity(rs.getInt("SL_DABAN"));
+				product.setView(rs.getInt("LUOTXEM"));
 				product.setAttributes(lstAtt);
 				product.setColors(lstColor);
 				product.setBranch(branch);

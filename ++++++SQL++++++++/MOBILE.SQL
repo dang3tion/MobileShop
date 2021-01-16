@@ -87,7 +87,7 @@
 	TINHTRANG NVARCHAR(100) NOT NULL,
 	NGAYCAPNHAT DATE NOT NULL,
 	GIOITHIEU NVARCHAR(MAX) NOT NULL,
-	SOLUONG INT NOT NULL,
+	
 	SL_DABAN INT NOT NULL,
 	LUOTXEM INT NOT NULL,
 	MACH CHAR(10) NOT NULL,	
@@ -199,6 +199,12 @@
 	GO
 	-- BANG HINH ANH VA MAU SAC
 	GO
+	CREATE TABLE SOLUONG_SP(
+	MASP CHAR(10) NOT NULL,
+	MAMAU CHAR(10) NOT NULL,
+	SOLUONG INT NOT NULL
+	)
+	ALTER TABLE SOLUONG_SP ADD CONSTRAINT PK_SOLUONG PRIMARY KEY (MASP,MAMAU)
 	CREATE TABLE HINHANH(
 	 MASP CHAR(10) NOT NULL,
 	 MAMAU CHAR(10) NOT NULL,
@@ -282,6 +288,10 @@
 	ALTER TABLE TRALOI ADD CONSTRAINT FK_TL_BL FOREIGN KEY (MABL) REFERENCES BINHLUAN(MABL)
 	
 	ALTER TABLE THUOCTINH ADD CONSTRAINT FK_TT_LTT FOREIGN KEY (MALOP) REFERENCES LOP_THUOCTINH(MALOP)
+	
+	ALTER TABLE SOLUONG_SP ADD CONSTRAINT FK_SL_SP FOREIGN KEY(MASP) REFERENCES SANPHAM(MASP)
+	
+	ALTER TABLE SOLUONG_SP ADD CONSTRAINT FK_SL_MS FOREIGN KEY(MAMAU) REFERENCES MAUSAC(MAMAU)
 	--INSERT VALUES
 	SELECT * FROM BINHLUAN
 	
@@ -687,17 +697,19 @@ INSERT INTO CH_CTTT VALUES('CH01','CT384')
 INSERT INTO CH_CTTT VALUES('CH01','CT382')
 INSERT INTO CH_CTTT VALUES('CH01','CT391')
 
-INSERT INTO SANPHAM VALUES('SP01','iPhone 12 128GB',N'Mới',N'TH01',N'Đang bán','1/10/2020',N'Giới thiệu',10,2,0,'CH01')
+INSERT INTO SANPHAM VALUES('SP01','iPhone 12 128GB',N'Mới',N'TH01',N'Đang bán','1/10/2020',N'Giới thiệu',0,0,'CH01')
 INSERT INTO GIA_SP VALUES('SP01','2/10/2020','26990000',NULL)
 INSERT INTO GIA_SP VALUES('SP01','1/10/2020','26990000',NULL)
 INSERT INTO GIA_SP VALUES('SP01','1/6/2020','27990000',NULL)
 INSERT INTO GIA_SP VALUES('SP01','1/1/2020','28990000',NULL)
+
 INSERT INTO HINHANH VALUES('SP01','MS04','https://cdn.tgdd.vn/Products/Images/42/228736/iphone-12-trang-new-600x600-600x600.jpg','NEN')
 INSERT INTO HINHANH VALUES('SP01','MS04','https://img.fpt.shop/w_960/h_640/f_jpg/cmpr_10/m_letterbox_ffffff_100/https://fptshop.com.vn/Uploads/Originals/2020/11/27/637420740532520004_iphone-12-pro-12-pro-max.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP01','MS04','https://img.fpt.shop/w_960/h_640/f_jpg/cmpr_10/m_letterbox_ffffff_100/https://fptshop.com.vn/Uploads/Originals/2020/11/27/637420740532520004_iphone-12-pro-12-pro-max-2.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP01','MS04','https://img.fpt.shop/w_960/h_640/f_jpg/cmpr_10/m_letterbox_ffffff_100/https://fptshop.com.vn/Uploads/Originals/2020/11/27/637420740532520004_iphone-12-pro-12-pro-max-1.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP01','MS04','https://img.fpt.shop/w_960/h_640/f_jpg/cmpr_10/m_letterbox_ffffff_100/https://fptshop.com.vn/Uploads/Originals/2020/11/27/637420740532520004_iphone-12-pro-12-pro-max-3.jpg','PHU')
 
+INSERT INTO SOLUONG_SP VALUES('SP01','MS04',10)
 
 
 
@@ -763,18 +775,25 @@ INSERT INTO CH_CTTT VALUES('CH02','CT383')
 INSERT INTO CH_CTTT VALUES('CH02','CT384')
 INSERT INTO CH_CTTT VALUES('CH02','CT391')
 
-INSERT INTO SANPHAM VALUES('SP02','Samsung Galaxy M51',N'Mới',N'TH02',N'Đang bán','10/10/2020',N'Giới thiệu',10,2,0,'CH02')
+INSERT INTO SANPHAM VALUES('SP02','Samsung Galaxy M51',N'Mới',N'TH02',N'Đang bán','10/10/2020',N'Giới thiệu',0,0,'CH02')
 INSERT INTO GIA_SP VALUES('SP02','10/10/2020','9490000',NULL)
 INSERT INTO HINHANH VALUES('SP02','MS03','https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-den-new-600x600-600x600.jpg','NEN')
 INSERT INTO HINHANH VALUES('SP02','MS03','//cdn.tgdd.vn/Products/Images/42/217536/galaxym51-black-1020x680-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP02','MS03','//cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-den-2-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP02','MS03','//cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-den-3-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP02','MS03','//cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-den-4-org.jpg','PHU')
+
+
+INSERT INTO SOLUONG_SP VALUES('SP02','MS03',20)
+
 INSERT INTO HINHANH VALUES('SP02','MS04','https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-new-600x600-600x600.jpg','NEN')
 INSERT INTO HINHANH VALUES('SP02','MS04','//cdn.tgdd.vn/Products/Images/42/217536/galaxym51-white-1020x680-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP02','MS04','//cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-2-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP02','MS04','//cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-4-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP02','MS04','//cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-5-org.jpg','PHU')
+
+
+INSERT INTO SOLUONG_SP VALUES('SP02','MS04',20)
 --OPPO A92
 INSERT INTO CH_CTTT VALUES('CH03','CT03')
 INSERT INTO CH_CTTT VALUES('CH03','CT12')
@@ -842,13 +861,15 @@ INSERT INTO CH_CTTT VALUES('CH03','CT382')
 INSERT INTO CH_CTTT VALUES('CH03','CT383')
 INSERT INTO CH_CTTT VALUES('CH03','CT384')
 INSERT INTO CH_CTTT VALUES('CH03','CT392')
-INSERT INTO SANPHAM VALUES('SP03','OPPO A92',N'Mới',N'TH03',N'Đang bán','1/5/2020',N'Giới thiệu',10,2,0,'CH03')
+INSERT INTO SANPHAM VALUES('SP03','OPPO A92',N'Mới',N'TH03',N'Đang bán','1/5/2020',N'Giới thiệu',0,0,'CH03')
 INSERT INTO GIA_SP VALUES('SP03','1/5/2020','5990000',NULL)
 INSERT INTO HINHANH VALUES('SP03','MS01','https://cdn.tgdd.vn/Products/Images/42/220654/oppo-a92-tim-600x600.jpg','NEN')
 INSERT INTO HINHANH VALUES('SP03','MS01','//cdn.tgdd.vn/Products/Images/42/220654/oppo-a92-tim-1-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP03','MS01','//cdn.tgdd.vn/Products/Images/42/220654/oppo-a92-tim-2-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP03','MS01','//cdn.tgdd.vn/Products/Images/42/220654/oppo-a92-tim-3-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP03','MS01','//cdn.tgdd.vn/Products/Images/42/220654/oppo-a92-tim-4-org.jpg','PHU')
+
+INSERT INTO SOLUONG_SP VALUES('SP03','MS01',20)
 --Vivo V20
 INSERT INTO CH_CTTT VALUES('CH04','CT04')
 INSERT INTO CH_CTTT VALUES('CH04','CT12')
@@ -912,13 +933,15 @@ INSERT INTO CH_CTTT VALUES('CH04','CT386')
 INSERT INTO CH_CTTT VALUES('CH04','CT383')
 INSERT INTO CH_CTTT VALUES('CH04','CT384')
 INSERT INTO CH_CTTT VALUES('CH04','CT393')
-INSERT INTO SANPHAM VALUES('SP04','Vivo V20',N'Mới',N'TH05',N'Đang bán','1/10/2020',N'Giới thiệu',10,2,0,'CH04')
+INSERT INTO SANPHAM VALUES('SP04','Vivo V20',N'Mới',N'TH05',N'Đang bán','1/10/2020',N'Giới thiệu',0,0,'CH04')
 INSERT INTO GIA_SP VALUES('SP04','1/10/2020','7990000','8490000')
 INSERT INTO HINHANH VALUES('SP04','MS01','https://cdn.tgdd.vn/Products/Images/42/228453/vivo-v20-600-xanh-hong-2-600x600.jpg','NEN')
 INSERT INTO HINHANH VALUES('SP04','MS01','//cdn.tgdd.vn/Products/Images/42/228453/vivo-v20-xanh-hong-1-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP04','MS01','//cdn.tgdd.vn/Products/Images/42/228453/vivo-v20-xanh-hong-2-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP04','MS01','//cdn.tgdd.vn/Products/Images/42/228453/vivo-v20-xanh-hong-3-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP04','MS01','//cdn.tgdd.vn/Products/Images/42/228453/vivo-v20-xanh-hong-4-org.jpg','PHU')
+
+INSERT INTO SOLUONG_SP VALUES('SP04','MS01',15)
 --Xiaomi Redmi 9
 INSERT INTO CH_CTTT VALUES('CH05','CT05')
 INSERT INTO CH_CTTT VALUES('CH05','CT12')
@@ -978,7 +1001,7 @@ INSERT INTO CH_CTTT VALUES('CH05','CT383')
 INSERT INTO CH_CTTT VALUES('CH05','CT395')
 
 
-INSERT INTO SANPHAM VALUES('SP05','Xiaomi Redmi 9',N'Mới',N'TH04',N'Đang bán','1/10/2020',N'Giới thiệu',10,2,0,'CH05')
+INSERT INTO SANPHAM VALUES('SP05','Xiaomi Redmi 9',N'Mới',N'TH04',N'Đang bán','1/10/2020',N'Giới thiệu',0,0,'CH05')
 INSERT INTO GIA_SP VALUES('SP05','1/10/2020','3490000','3990000')
 INSERT INTO HINHANH VALUES('SP05','MS07','https://cdn.tgdd.vn/Products/Images/42/217308/TimerThumb/xiaomi-redmi-9-(34).jpg','NEN')
 INSERT INTO HINHANH VALUES('SP05','MS07','https://cdn.tgdd.vn/Products/Images/42/217308/xiaomi-redmi-9-tim-2-org.jpg','PHU')
@@ -987,7 +1010,7 @@ INSERT INTO HINHANH VALUES('SP05','MS07','https://cdn.tgdd.vn/Products/Images/42
 INSERT INTO HINHANH VALUES('SP05','MS07','https://cdn.tgdd.vn/Products/Images/42/217308/xiaomi-redmi-9-tim-4-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP05','MS07','https://cdn.tgdd.vn/Products/Images/42/217308/xiaomi-redmi-9-tim-5-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP05','MS07','https://cdn.tgdd.vn/Products/Images/42/217308/xiaomi-redmi-9-tim-6-org.jpg','PHU')
-
+INSERT INTO SOLUONG_SP VALUES('SP05','MS07',10)
 
 INSERT INTO HINHANH VALUES('SP05','MS08','https://cdn.tgdd.vn/Products/Images/42/217308/xiaomi-redmi-9-xam-new-600x600-200x200.jpg','NEN')
 INSERT INTO HINHANH VALUES('SP05','MS08','https://cdn.tgdd.vn/Products/Images/42/217308/xiaomi-redmi-9-xam-3-org.jpg','PHU')
@@ -996,6 +1019,7 @@ INSERT INTO HINHANH VALUES('SP05','MS08','https://cdn.tgdd.vn/Products/Images/42
 INSERT INTO HINHANH VALUES('SP05','MS08','https://cdn.tgdd.vn/Products/Images/42/217308/xiaomi-redmi-9-xam-4-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP05','MS08','https://cdn.tgdd.vn/Products/Images/42/217308/xiaomi-redmi-9-xam-5-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP05','MS08','https://cdn.tgdd.vn/Products/Images/42/217308/xiaomi-redmi-9-xam-6-org.jpg','PHU')
+INSERT INTO SOLUONG_SP VALUES('SP05','MS08',15)
 --Realme 5i
 	INSERT INTO CH_CTTT VALUES('CH06','CT05')
 INSERT INTO CH_CTTT VALUES('CH06','CT13')
@@ -1053,7 +1077,7 @@ INSERT INTO CH_CTTT VALUES('CH06','CT382')
 INSERT INTO CH_CTTT VALUES('CH06','CT385')
 INSERT INTO CH_CTTT VALUES('CH06','CT396')
 select * from THUONGHIEU
-INSERT INTO SANPHAM VALUES('SP06','Realme 5i',N'Mới',N'TH07',N'Đang bán','1/10/2020',N'Giới thiệu',10,2,0,'CH06')
+INSERT INTO SANPHAM VALUES('SP06','Realme 5i',N'Mới',N'TH07',N'Đang bán','1/10/2020',N'Giới thiệu',0,0,'CH06')
 INSERT INTO GIA_SP VALUES('SP06','1/10/2020','3690000','3990000')
 INSERT INTO HINHANH VALUES('SP06','MS09','https://cdn.tgdd.vn/Products/Images/42/217331/realme-5i-xanh-duong-new-600x600-1-600x600.jpg','NEN')
 INSERT INTO HINHANH VALUES('SP06','MS09','https://cdn.tgdd.vn/Products/Images/42/217331/realme-5i-4g-xanhla-up-2-org.jpg','PHU')
@@ -1062,7 +1086,7 @@ INSERT INTO HINHANH VALUES('SP06','MS09','https://cdn.tgdd.vn/Products/Images/42
 INSERT INTO HINHANH VALUES('SP06','MS09','https://cdn.tgdd.vn/Products/Images/42/217331/realme-5i-4g-xanhla-up-4-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP06','MS09','https://cdn.tgdd.vn/Products/Images/42/217331/realme-5i-4g-xanhla-up-5-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP06','MS09','https://cdn.tgdd.vn/Products/Images/42/217331/realme-5i-4g-xanhla-up-6-org.jpg','PHU')
-
+INSERT INTO SOLUONG_SP VALUES('SP06','MS09',15)
 --Huawei Nova 7i 
 INSERT INTO CH_CTTT VALUES('CH07','CT05')
 INSERT INTO CH_CTTT VALUES('CH07','CT12')
@@ -1120,7 +1144,7 @@ INSERT INTO CH_CTTT VALUES('CH07','CT383')
 INSERT INTO CH_CTTT VALUES('CH07','CT396')
 
 select * from THUONGHIEU
-INSERT INTO SANPHAM VALUES('SP07','Huawei Nova 7i',N'Mới',N'TH06',N'Đang bán','1/10/2020',N'Giới thiệu',10,2,0,'CH07')
+INSERT INTO SANPHAM VALUES('SP07','Huawei Nova 7i',N'Mới',N'TH06',N'Đang bán','1/10/2020',N'Giới thiệu',0,0,'CH07')
 INSERT INTO GIA_SP VALUES('SP07','1/10/2020','6990000','7290000')
 INSERT INTO HINHANH VALUES('SP07','MS06','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-pink-600x600-1-600x600.jpg','NEN')
 INSERT INTO HINHANH VALUES('SP07','MS06','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-1-org.jpg','PHU')
@@ -1129,6 +1153,8 @@ INSERT INTO HINHANH VALUES('SP07','MS06','https://cdn.tgdd.vn/Products/Images/42
 INSERT INTO HINHANH VALUES('SP07','MS06','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-4-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP07','MS06','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-5-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP07','MS06','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-hong-6-org.jpg','PHU')
+
+INSERT INTO SOLUONG_SP VALUES('SP07','MS06',22)
 SELECT * FROM MAUSAC
 INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-green-600x600-1-600x600.jpg','NEN')
 INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-xanh-la-1-org.jpg','PHU')
@@ -1136,6 +1162,7 @@ INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42
 INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-xanh-la-3-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-xanh-la-4-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP07','MS09','https://cdn.tgdd.vn/Products/Images/42/218363/huawei-nova-7i-xanh-la-5-org.jpg','PHU')
+INSERT INTO SOLUONG_SP VALUES('SP07','MS09',15)
 
 select * from THUONGHIEU
 -- OPPO Find X2
@@ -1202,7 +1229,7 @@ INSERT INTO CH_CTTT VALUES('CH08','CT384')
 INSERT INTO CH_CTTT VALUES('CH08','CT382')
 INSERT INTO CH_CTTT VALUES('CH08','CT391')
 
-INSERT INTO SANPHAM VALUES('SP08','OPPO Find X2',N'Mới',N'TH03',N'Đang bán','15/11/2020',N'Giới thiệu về OPPO Find X2',10,2,0,'CH08')
+INSERT INTO SANPHAM VALUES('SP08','OPPO Find X2',N'Mới',N'TH03',N'Đang bán','15/11/2020',N'Giới thiệu về OPPO Find X2',0,0,'CH08')
 INSERT INTO GIA_SP VALUES('SP08','1/11/2020','19990000',NULL)
 INSERT INTO GIA_SP VALUES('SP08','3/11/2020','20000000',NULL)
 INSERT INTO GIA_SP VALUES('SP08','7/4/2020','21990000',NULL)
@@ -1252,7 +1279,7 @@ INSERT INTO CH_CTTT VALUES('CH09','CT384')
 INSERT INTO CH_CTTT VALUES('CH09','CT382')
 INSERT INTO CH_CTTT VALUES('CH09','CT391')
 
-INSERT INTO SANPHAM VALUES('SP09','Itel it9200 4G',N'Mới',N'TH09',N'Đang bán','15/11/2020',N'Giới thiệu về Cục gạch',20,5,10,'CH09')
+INSERT INTO SANPHAM VALUES('SP09','Itel it9200 4G',N'Mới',N'TH09',N'Đang bán','15/11/2020',N'Giới thiệu về Cục gạch',0,10,'CH09')
 INSERT INTO GIA_SP VALUES('SP09','1/11/2020','790000',NULL)
 INSERT INTO GIA_SP VALUES('SP09','3/11/2020','990000',NULL)
 INSERT INTO GIA_SP VALUES('SP09','7/4/2020','690000',NULL)
@@ -1296,7 +1323,7 @@ INSERT INTO CH_CTTT VALUES('CH10','CT384')
 INSERT INTO CH_CTTT VALUES('CH10','CT382')
 INSERT INTO CH_CTTT VALUES('CH10','CT391')
 
-INSERT INTO SANPHAM VALUES('SP10','Mobell M339',N'Mới',N'TH09',N'Đang bán','15/11/2020',N'Giới thiệu về Cục gạch',50,7,10,'CH10')
+INSERT INTO SANPHAM VALUES('SP10','Mobell M339',N'Mới',N'TH09',N'Đang bán','15/11/2020',N'Giới thiệu về Cục gạch',0,10,'CH10')
 INSERT INTO GIA_SP VALUES('SP10','1/11/2020','390000',NULL)
 INSERT INTO GIA_SP VALUES('SP10','3/11/2020','290000',NULL)
 INSERT INTO GIA_SP VALUES('SP10','7/4/2020','490000',NULL)
