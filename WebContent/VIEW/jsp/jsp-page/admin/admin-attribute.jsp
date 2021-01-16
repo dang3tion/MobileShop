@@ -38,18 +38,9 @@
 									<div class="card">
 										<div class="card-body">
 											<div class=" mb-2">
-												<h4 class="text-center mt-3 mb-3">Danh sách các thuộc
-													tính/thông số kĩ thuật</h4>
+												<h4 class="text-center mt-3 mb-3">Danh sách các thông
+													số kĩ thuật</h4>
 												<div class="row">
-													<div class="show-page mb-3 ml-3">
-
-														Hiển thị <span> <select id="show"
-															onclick="select_page()">
-																<option value="10">10</option>
-																<option value="20">20</option>
-																<option value="50">50</option>
-														</select></span> cột
-													</div>
 
 													<div class="show-page  arrange">
 
@@ -68,18 +59,20 @@
 
 												</div>
 												<a><button data-target="#add-attribute"
-														data-toggle="modal" data-toggle="tooltip"
-														style="margin-right: 10px;" data-placement="top"
-														title="Thêm thuộc tính" class="btn btn-success btn-add">
-														<i class="fas fa-plus-square"></i>
+														style="float: right;" data-toggle="modal"
+														data-toggle="tooltip" style="margin-right: 10px;"
+														data-placement="top" title="Thêm thuộc tính"
+														class="btn btn-success btn-add">
+														<i class="fas fa-plus-square mr-2"></i>Thêm thuộc tính mới
 													</button></a>
 												<table id="bootstrap-data-table" class="table table-hover">
 													<thead class="thead-light">
 														<tr>
-															<th>Tên thuộc tính</th>
-
-															<th data-toggle="tooltip" data-placement="top" title="">Loại
-																giá trị lọc</th>
+															<th data-toggle="tooltip" data-placement="top"
+																title="Số thứ tự">STT</th>
+															<th>Tên thông số kỹ thuật</th>
+															<th>Loại thông số</th>
+															<th>Nhóm thông số</th>
 
 															<th></th>
 														</tr>
@@ -88,44 +81,14 @@
 													<tbody id="content-table">
 														<tr>
 
-															<td>Hệ điều hành</td>
+															<td>1</td>
+															<td>Văn bản</td>
+															<td>Văn bản</td>
 															<td>Văn bản</td>
 
 
-
-															<td class="row" style="margin: auto; float: right">
-
-																<div style="margin: auto;">
-
-																	<button class="btn btn-danger sizeTh1"
-																		data-toggle="modal" data-target="#delete"
-																		data-toggle="tooltip" data-placement="top" title="Xóa">
-																		<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																	</button>
-																</div>
-
-															</td>
 														</tr>
-														<tr>
 
-															<td>Kích cỡ màn hình</td>
-															<td>Số</td>
-
-
-															<td class="row"
-																style="border: none; margin: auto; float: right">
-
-																<div style="margin: auto;">
-
-																	<button class="btn btn-danger sizeTh1"
-																		data-toggle="modal" data-target="#delete"
-																		data-toggle="tooltip" data-placement="top" title="Xóa">
-																		<i class="txt-center menu-icon fas fa-trash-alt"></i>
-																	</button>
-																</div>
-
-															</td>
-														</tr>
 													</tbody>
 												</table>
 
@@ -148,32 +111,12 @@
 
 
 						<!-- Modal -->
-						<div class="modal fade" id="add-string-attribute" tabindex="-1"
-							aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel"></h5>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Đóng</button>
-										<button type="button" class="btn btn-primary">Lưu</button>
-									</div>
-								</div>
-							</div>
-						</div>
-
 
 
 						<div class="modal fade" id="add-attribute" tabindex="-1"
 							aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
+							<div class="modal-dialog"
+								style="min-width: 700px; margin: auto; margin-top: 100px;">
 								<div class="modal-content">
 									<div class="modal-header">
 										<h5 class="modal-title" id="exampleModalLabel"></h5>
@@ -183,19 +126,40 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<h5>Nhập tên thuộc tính</h5>
-										<input type="text" class="title-attribute" autofocus name="">
-										<h5>Chọn loại thuộc tính</h5>
+										<h5>Nhập tên thông số</h5>
+										<input type="text" class="title-attribute" autofocus
+											name="name">
+										<h5>Chọn loại thông số</h5>
 
-										<select class="select-choose">
+										<select class="select-choose" name="type">
 											<option value="Khác">Văn bản</option>
 											<option value="Andriod">Số</option>
 										</select>
+
+										<h5>Nhóm thông số</h5>
+										<select class="select-choose" id="class-select" name="class">
+											<option value="Khác">Văn bản</option>
+											<option value="Andriod">Số</option>
+										</select> <input id="class-input" type="text" style="display: none"
+											class="title-attribute" autofocus name="class">
+										<button style="float: right;" style="margin-right: 10px;"
+											id="add-new-class" title="Thêm thuộc tính"
+											class="btn btn-success btn-add">
+											<i class="fas fa-plus-square mr-2"></i>Thêm nhóm mới
+										</button>
+										<button style="float: right;" style="margin-right: 10px;"
+											id="add-new-class" title="Thêm thuộc tính"
+											class="btn btn-success btn-add">
+											<i class="far fa-window-close mr-2"></i>Hủy
+										</button>
+
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-dismiss="modal">Đóng</button>
-										<button type="button" class="btn btn-primary">Lưu</button>
+										<button type="button" class="btn btn-primary"
+											data-target="#add" data-toggle="modal" data-toggle="tooltip"
+											data-placement="top">Lưu</button>
 									</div>
 								</div>
 							</div>
@@ -209,30 +173,36 @@
 					<!-- /#right-panel -->
 				</div>
 			</div>
-			<div class="modal fade" id="delete" tabindex="-1" role="dialog"
-				aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
+			<div class="modal fade" id="add" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true"
+				style="background-color: #0000002e;">
+				<div class="modal-dialog" style="margin-top: 200px;" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa
+							<h5 class="modal-title" id="exampleModalLabel">Xác nhận thêm
 								thuộc tính</h5>
 							<button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
-						<div class="modal-body">Bạn có muốn xóa thuộc tính này
+						<div class="modal-body">Bạn có chắc muốn thêm thông số này
 							không?</div>
-						<div class="modal-footer">	<button type="button" data-dismiss="modal"
+						<div class="modal-footer">
+							<button type="button" data-dismiss="modal"
 								class="btn btn-primary">Đồng ý</button>
 							<button type="button" class="btn btn-secondary"
 								data-dismiss="modal">Không</button>
-						
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 </body>
+<script>
+	function addNewClass() {
 
+	}
+</script>
 </html>
