@@ -33,7 +33,6 @@ request.setAttribute("color", dao.colorWeb());
 		<div class="row">
 			<jsp:include page="/VIEW/jsp/jsp-component/sidebar-filter.jsp"></jsp:include>
 			<!--Noi dung ket qua sau khi tim kiem-->
-			<button onclick="sendAllUserSelected()">OK</button>
 			<div class="col-9" id="result-content">
 				<!--Hang ket qua ^^^-->
 
@@ -72,8 +71,22 @@ request.setAttribute("color", dao.colorWeb());
 
 	<!-- /.container -->
 	<script>
+	
+	
+	var obj = {
+			  href:'',
+			  toString:function(){
+			    return this.href;
+			  }
+			};
+
+			
+	
+	
 		function sendAllUserSelected() {
 
+			
+			
 			var jsonDataFilterSidebar = {
 				os_ios : false,
 				os_android : false,
@@ -94,20 +107,48 @@ request.setAttribute("color", dao.colorWeb());
 				front_cam_12_99MP : false,
 				rear_cam_5MP : false,
 				rear_cam_5_12MP : false,
-				rear_cam_12_99MP : false	
+				rear_cam_12_99MP : false
 			}
-			
+
 			var jsonDataSortNavigationbar = {
-					price_hight_to_low : false,
-					price_low_to_hight : false,
-					sort_lasted_update : false,
-					sort_new_to_old : false,
-					sort_old_to_new : false,
-					sort_a_z : false,
-					sort_z_a : false,
-					sort_most_view : false,
-					sort_most_vote : false
-					
+				price_hight_to_low : false,
+				price_low_to_hight : false,
+				sort_lasted_update : false,
+				sort_new_to_old : false,
+				sort_old_to_new : false,
+				sort_a_z : false,
+				sort_z_a : false,
+				sort_most_view : false,
+				sort_most_vote : false
+
+			}
+
+			if (document.getElementById("thapcao").checked) {
+				jsonDataSortNavigationbar.price_hight_to_low = true;
+			}
+			if (document.getElementById("caothap").checked) {
+				jsonDataSortNavigationbar.price_low_to_hight = true;
+			}
+			if (document.getElementById("sort_lasted_update").checked) {
+				jsonDataSortNavigationbar.sort_lasted_update = true;
+			}
+			if (document.getElementById("sort_new_to_old").checked) {
+				jsonDataSortNavigationbar.sort_new_to_old = true;
+			}
+			if (document.getElementById("sort_old_to_new").checked) {
+				jsonDataSortNavigationbar.sort_old_to_new = true;
+			}
+			if (document.getElementById("sort_a_z").checked) {
+				jsonDataSortNavigationbar.sort_a_z = true;
+			}
+			if (document.getElementById("sort_z_a").checked) {
+				jsonDataSortNavigationbar.sort_z_a = true;
+			}
+			if (document.getElementById("sort_most_view").checked) {
+				jsonDataSortNavigationbar.sort_most_view = true;
+			}
+			if (document.getElementById("sort_most_vote").checked) {
+				jsonDataSortNavigationbar.sort_most_vote = true;
 			}
 
 			$
@@ -116,8 +157,17 @@ request.setAttribute("color", dao.colorWeb());
 						url : '${pageContext.request.contextPath}/AJAXFilterSortHandling',
 						data : {
 
-							dataFilterSidebar : JSON.stringify(jsonDataFilterSidebar),
-							jsonDataSortNavigationbar : JSON.stringify(jsonDataSortNavigationbar)
+							dataFilterSidebar : JSON
+									.stringify(jsonDataFilterSidebar),
+							jsonDataSortNavigationbar : JSON
+									.stringify(jsonDataSortNavigationbar),
+									
+								currentURL : window.location.href.toString(),
+								
+								keyWord : document.getElementById("keyWord").value
+								
+							
+
 						},
 						success : function(responseText) {
 							$('#result-content').html(responseText);

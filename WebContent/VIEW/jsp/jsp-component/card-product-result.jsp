@@ -5,6 +5,8 @@
 
 
 
+<h3>${TESTING}</h3>
+
 <!-- <div class="row"> -->
 <%-- 	<c:forEach items="${lstPrices}" var="pro" begin="0" end="8"> --%>
 <!-- 		<div class="col-4"> -->
@@ -35,6 +37,6 @@
 		</div>
 	</c:forEach>
 
-</div>
+<!-- </div> -->
 
 

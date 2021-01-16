@@ -25,7 +25,7 @@ request.setAttribute("color", dao.colorWeb());
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="input-group md-form form-sm form-2 pl-5 pr-5">
-			<input class="form-control my-0 py-1 lime-border" type="text"
+			<input id="keyWord" class="form-control my-0 py-1 lime-border" type="text"
 				placeholder="Bạn tìm gì..." aria-label="Search">
 			<div class="input-group-append">
 				<span class="input-group-text lime lighten-2" id="basic-text1">

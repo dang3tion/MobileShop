@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+ <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -118,19 +118,39 @@ request.setAttribute("color", dao.colorWeb());
 								<div class="row">
 									<div class="col-12">
 										<div class="list-group">
-											<a href="#" class="list-group-item list-group-item-action">Mới
-												cập nhật</a> <a href="#"
+										
+										<input onchange="sendAllUserSelected()" type="radio" name="sortListProduct" id="sort_lasted_update" style="display:none" checked>
+											<label for="sort_lasted_update" class="list-group-item list-group-item-action">Mới
+												cập nhật</label> 
+												
+										<input onchange="sendAllUserSelected()" type="radio" name="sortListProduct" id="sort_new_to_old" style="display:none">
+											<label for="sort_new_to_old"
 												class="list-group-item list-group-item-action">Sản phẩm
-												Mới-Cũ</a> <a href="#"
+												Mới-Cũ</label> 
+												
+										<input onchange="sendAllUserSelected()" type="radio" name="sortListProduct" id="sort_old_to_new" style="display:none">
+											<label for="sort_old_to_new"
 												class="list-group-item list-group-item-action">Sản phẩm
-												Cũ-Mới</a> <a href="#"
-												class="list-group-item list-group-item-action">Tên A-Z</a> <a
-												href="#" class="list-group-item list-group-item-action">Tên
-												Z-A</a> <a href="#"
+												Cũ-Mới</label> 
+										
+										<input onchange="sendAllUserSelected()" type="radio" name="sortListProduct" id="sort_a_z" style="display:none">	
+											<label for="sort_a_z"
+												class="list-group-item list-group-item-action">Tên A-Z</label> 
+										
+										<input onchange="sendAllUserSelected()" type="radio" name="sortListProduct" id="sort_z_a" style="display:none">	
+												<label for="sort_z_a"
+												 class="list-group-item list-group-item-action">Tên
+												Z-A</label> 
+										
+										<input onchange="sendAllUserSelected()" type="radio" name="sortListProduct" id="sort_most_view" style="display:none">	
+											<label for="sort_most_view"
 												class="list-group-item list-group-item-action">Được xem
-												nhiều nhất</a> <a href="#"
+												nhiều nhất</label> 
+												
+										<input onchange="sendAllUserSelected()" type="radio" name="sortListProduct" id="sort_most_vote" style="display:none">	
+											<label for="sort_most_vote"
 												class="list-group-item list-group-item-action">Đánh giá
-												cao</a>
+												cao</label>
 
 										</div>
 									</div>
@@ -139,7 +159,7 @@ request.setAttribute("color", dao.colorWeb());
 							</div>
 						<li class="item-menu"><a href="#">
 								<div class="filter-check">
-									<input type="checkbox" name="check" onclick="onlyOne(this)"
+									<input onchange="sendAllUserSelected()" type="checkbox" name="check" onclick="onlyOne(this)"
 										value="thapcao" id="thapcao"> <label for="thapcao">
 										Giá cao đến thấp<i class="fas fa-arrow-up"></i>
 									</label>
@@ -147,7 +167,7 @@ request.setAttribute("color", dao.colorWeb());
 						</a></li>
 						<li class="item-menu"><a href="#">
 								<div class="filter-check">
-									<input type="checkbox" name="check" onclick="onlyOne(this)"
+									<input onchange="sendAllUserSelected()" type="checkbox" name="check" onclick="onlyOne(this)"
 										value="caothap" id="caothap"> <label for="caothap">
 										Giá thấp đến cao<i class="fas fa-arrow-down"></i>
 									</label>
