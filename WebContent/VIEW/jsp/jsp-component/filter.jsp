@@ -112,7 +112,10 @@ request.setAttribute("color", dao.colorWeb());
 					<ul class="list-menu">
 						<li class="item-menu" id="order">
 							<div class="header">
-								<a href="${pageContext.request.contextPath}/searchingProduct?tinhtrang=MOI">Xếp theo <i class="fas fa-caret-down"></i></a>
+								<a
+									href="${pageContext.request.contextPath}/searchingProduct?tinhtrang=MOI">Xếp
+									theo <i class="fas fa-caret-down"></i>
+								</a>
 							</div>
 							<div class="content-dropdown" id="content-order">
 								<div class="row">

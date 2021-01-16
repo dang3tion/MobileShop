@@ -6,14 +6,25 @@ public class Color_main {
 	private String id;
 	private String name;
 	private String imgMain;
+	private int quantity;
 	private ArrayList<String> imgSubs = new ArrayList<String>();
 
-	public Color_main(String id, String name, String imgMain, ArrayList<String> imgSubs) {
+
+	public Color_main(String id, String name, String imgMain, int quantity, ArrayList<String> imgSubs) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.imgMain = imgMain;
+		this.quantity = quantity;
 		this.imgSubs = imgSubs;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public Color_main() {

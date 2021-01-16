@@ -33,6 +33,7 @@
 				<c:param name="name" value="4534234"></c:param>
 				<c:param name="price" value="24234234"></c:param>
 				<c:param name="salePrice" value="423423"></c:param>
+				
 			</c:import>
 		</div>
 	</c:forEach>

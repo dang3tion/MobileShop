@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.Param"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -33,12 +34,34 @@
 				</div>
 			</c:if>
 		</div>
+		<h3>${param.evaluate}</h3>
+		<h3>${param.startIntact}</h3>
+		<h3>${param.modStart}</h3>
+		<h3>${param.checkStart}</h3>
+
+
+
+
+		<!-- 		<div class="card-stars"> -->
+
+		<!-- 		 <span> <i id="t1" class="fas fa-star text-warning"></i> -->
+		<!--         </span> -->
+		<!--          <span> <i id="t2" class="fas fa-star text-warning"></i> -->
+		<!--         </span> -->
+		<!--          <span> <i id="t3" class="fas fa-star text-warning"></i></span>  -->
+		<!--          <span> -->
+		<!--             <i id="t4" class="fas fa-star text-warning"></i> -->
+		<!--         </span>  -->
+		<!--         <span> <i id="t5" class="fas fa-star  text-dark"></i></span> -->
+
+		<!-- 		</div> -->
+
 		<div class="card-stars">
-			<span> <i class="fas fa-star text-warning"></i></span> <span>
-				<i class="fas fa-star text-warning"></i>
-			</span> <span> <i class="fas fa-star text-warning"></i></span> <span>
-				<i class="fas fa-star text-warning"></i>
-			</span> <span> <i class="fas fa-star  text-dark"></i></span>
+
+			<c:forEach begin="1" end="${param.startIntact}">
+				<span> <i id="t1" class="fas fa-star text-warning"></i>
+				</span>
+			</c:forEach>
 		</div>
 	</div>
 </div>
