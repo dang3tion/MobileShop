@@ -34,10 +34,6 @@
 				</div>
 			</c:if>
 		</div>
-		<h3>${param.evaluate}</h3>
-		<h3>${param.startIntact}</h3>
-		<h3>${param.modStart}</h3>
-		<h3>${param.checkStart}</h3>
 
 
 
@@ -59,9 +55,24 @@
 		<div class="card-stars">
 
 			<c:forEach begin="1" end="${param.startIntact}">
-				<span> <i id="t1" class="fas fa-star text-warning"></i>
+				<span> <i style="color: orange;" id="t1" class="fas fa-star text-warning"></i>
 				</span>
 			</c:forEach>
+			<c:if test="${param.checkStart eq true}">
+				<span> <i class="fas fa-star-half-alt"></i>
+				</span>
+				<c:forEach begin="1" end="${param.modStart}">
+
+					<span> <i id="t1" class="fas fa-star"></i>
+					</span>
+				</c:forEach>
+			</c:if>
+			<c:if test="${param.checkStart eq false}">
+				<c:forEach begin="1" end="${param.modStart}">
+					<span> <i id="t1" class="fas fa-star"></i>
+					</span>
+				</c:forEach>
+			</c:if>
 		</div>
 	</div>
 </div>

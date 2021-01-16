@@ -110,12 +110,20 @@ public class Product_form {
 		this.priceSales = priceSales;
 	}
 
-	public double getModStart() {
+	public int getModStart() {
+		if (getCheckStart()) {
+			return 5 - (getStartIntact() + 1);
+		} else {
+			return 5 - getStartIntact();
+		}
+	}
+
+	public double duStart() {
 		return avgEvaluate % 1;
 	}
 
 	public boolean getCheckStart() {
-		if (getModStart() < 0.4) {
+		if (duStart() < 0.4) {
 			return false;
 		} else {
 			return true;
@@ -123,7 +131,7 @@ public class Product_form {
 	}
 
 	public int getStartIntact() {
-		int start = (int) (avgEvaluate - getModStart());
+		int start = (int) (avgEvaluate - duStart());
 		return start;
 	}
 
