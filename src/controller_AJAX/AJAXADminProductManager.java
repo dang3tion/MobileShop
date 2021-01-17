@@ -25,7 +25,6 @@ public class AJAXADminProductManager extends HttpServlet {
 		} else if (page < 1) {
 			page = 1;
 		}
-		System.out.println(page);
 		ArrayList<Product_main> listProduct = (ArrayList<Product_main>) DAO_Product_main.getDao_Product_main()
 				.getAllProduct((page - 1) * 2 + 1, page * 2);
 		updateCurrentPage(request, page);

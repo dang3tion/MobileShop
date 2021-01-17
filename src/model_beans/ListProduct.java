@@ -154,12 +154,8 @@ public class ListProduct {
 //		System.out.println(list.getLstProduct());
 		list.addOrderLIst(SELECT.PRICE, ORDER.ASC);
 		list.addOrderLIst(SELECT.VIEW, ORDER.DESC);
-		System.out.println(list.getLstProduct());
 
 		list.addOrderLIst(SELECT.PRICE, ORDER.DESC);
-		System.out.println(list.getLstProduct());
 		list.removerOrder(SELECT.PRICE);
-		System.out.println(list.getLstProduct());
-		System.out.println(list.getQueryOrder());
 	}
 }

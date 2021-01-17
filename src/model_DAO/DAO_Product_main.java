@@ -54,7 +54,7 @@ public class DAO_Product_main extends ExecuteCRUD {
 	public int getNumberOfPage(int numRow) {
 		int num = getTotalProduct() / numRow;
 
-		if (getTotalProduct() % numRow > 1) {
+		if (getTotalProduct() % numRow >= 1) {
 			num += 1;
 		}
 

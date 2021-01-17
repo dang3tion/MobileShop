@@ -20,7 +20,7 @@
 
 
 		<!-- Page Content -->
-		<div id="page-content-wrapper">
+		<div id="page-content-wrapper" >
 
 			<!-- 		toggle logout -->
 			<jsp:include page="/VIEW/jsp/jsp-component/toggle-logout-bar.jsp"></jsp:include>
@@ -87,7 +87,7 @@
 													</button></a>
 												<table id="bootstrap-data-table" class="table table-hover ">
 													<thead class="thead-light">
-														<tr style="    font-size: 14px;">
+														<tr style="font-size: 14px;">
 															<th>STT</th>
 															<th>Ảnh</th>
 															<th data-toggle="tooltip" data-placement="top"

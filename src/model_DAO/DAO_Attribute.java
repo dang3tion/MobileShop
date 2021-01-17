@@ -173,7 +173,7 @@ public class DAO_Attribute extends ExecuteCRUD {
 
 	public int numberOfPage(int line) {
 		int result = getTotalAttributesManager() / line;
-		if (getTotalAttributesManager() % line > 1) {
+		if (getTotalAttributesManager() % line >= 1) {
 			result += 1;
 		}
 
