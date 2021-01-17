@@ -13,7 +13,6 @@ public class Product_form {
 	private String colorID;
 	private String nameBranch;
 
-
 	public Product_form(String id, String name, String img, int price, int priceSales, double avgEvaluate, String color,
 			String colorID, String nameBranch) {
 		this.id = id;
