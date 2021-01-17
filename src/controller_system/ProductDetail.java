@@ -37,7 +37,7 @@ public class ProductDetail extends HttpServlet {
 
 	}
 
-	public void updateProductView(String id, HttpServletRequest request) {
+	public static void updateProductView(String id, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		HashMap<String, Boolean> listProductsViewed = (HashMap<String, Boolean>) session
 				.getAttribute("COUNT_VIEWERS_PRODUCT");

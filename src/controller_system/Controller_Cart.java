@@ -24,6 +24,7 @@ import model_utility.Config;
 public class Controller_Cart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	RequestDispatcher dispatcher;
+	DAO_Product_main dao = DAO_Product_main.getDao_Product_main();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -31,7 +32,6 @@ public class Controller_Cart extends HttpServlet {
 		Cart cart = (Cart) session.getAttribute("CART");
 		request.setAttribute("message", request.getAttribute("message"));
 		request.setAttribute("LIST_INSTANCE_PRODUCT", getListInstanceProductInCart(cart));
-		request.setAttribute("QUANTITY_INSTANCE_PRODUCT", quantityCart(cart));
 		request.setAttribute("TOTAL_MONEY", getTotalMoney(cart));
 		dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
 		dispatcher.forward(request, response);
@@ -56,14 +56,14 @@ public class Controller_Cart extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String productID = request.getParameter("id");
+		String productID = request.getParameter("id").trim();
 		String choose = request.getParameter("choose");
 		String page = request.getParameter("page");
 		String datHang = request.getParameter("datHang");
+		String colorID = request.getParameter("colorID").trim();
 
-		String colorID = request.getParameter("colorID");
-
-		System.out.println("page : " + page + " chọn : " + choose + " id  : " + productID + " màu :" + colorID);
+		System.out.println( "/page : " + page + " /chon : " + choose + "/ id  : " + productID
+				+ " /màu :" + colorID);
 
 		HttpSession session = request.getSession();
 
@@ -72,7 +72,6 @@ public class Controller_Cart extends HttpServlet {
 		switch (choose) {
 		case "add":
 			String message = null;
-			System.out.println("===>" + productID + " xxx " + colorID);
 			try {
 				switch (cart.add(productID, colorID)) {
 				case 1:
@@ -83,7 +82,6 @@ public class Controller_Cart extends HttpServlet {
 					break;
 				}
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -102,7 +100,12 @@ public class Controller_Cart extends HttpServlet {
 
 			updateCart(cart, session);
 			request.setAttribute("message", message);
-			dispatcher = this.getServletContext().getRequestDispatcher("/product-detail?id=" + productID);
+			// cập nhật lượt xem
+				ProductDetail.updateProductView(productID, request);
+
+				Product_main pm = DAO_Product_main.getDao_Product_main().getProduct_main(productID);
+				request.setAttribute("product", pm);
+			dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/detail-product.jsp");
 			dispatcher.forward(request, response);
 
 			break;
@@ -140,31 +143,35 @@ public class Controller_Cart extends HttpServlet {
 
 	private void updateCart(Cart cart, HttpSession session) {
 		session.setAttribute("CART", cart);
-//		session.setAttribute("CART_QUANTITY", cart.getQuantityOfProductInCart());
-//		session.setAttribute("PRODUCT_QUANTITY", cart.getListProduct().size());
+		session.setAttribute("QUANTITY_INSTANCE_PRODUCT", quantityCart(cart));
 
 	}
 
 	private int quantityCart(Cart cart) {
 		int quantity = 0;
 		for (String ID : cart.getListProductID()) {
-			quantity += cart.getListProduct().get(ID).size();
+			for (String colorID : cart.getListProduct().get(ID).keySet()) {
+				quantity += cart.getListProduct().get(ID).get(colorID);
+			}
 		}
 		return quantity;
+
 	}
 
 	private int getTotalMoney(Cart cart) {
-		DAO_Product_main dao = DAO_Product_main.getDao_Product_main();
+
 		int total = 0;
 		for (String ID : cart.getListProductID()) {
-			total += cart.getListProductID().size() * dao.getProduct_main(ID).getPrices().getPrice();
+			for (String colorID : cart.getListProduct().get(ID).keySet()) {
+				total += dao.getProduct_main(ID).getPrices().getPrice() * cart.getListProduct().get(ID).get(colorID);
+			}
+
 		}
 		return total;
 	}
 
 	private ArrayList<Product_form> getListInstanceProductInCart(Cart cart) {
 		ArrayList<Product_form> listProduct = new ArrayList<Product_form>();
-		DAO_Product_main dao = DAO_Product_main.getDao_Product_main();
 		for (String ID : cart.getListProductID()) {
 			for (String colorID : cart.getListProduct().get(ID).keySet()) {
 				Product_main product = dao.getProduct_main(ID);

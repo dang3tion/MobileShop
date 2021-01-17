@@ -24,6 +24,8 @@ public class FirstSetup implements HttpSessionListener {
 		updateOnlineUserQuantity(event);
 
 		HttpSession session = event.getSession();
+		
+		
 
 		session.setAttribute("LANGUAGE", "vi_VN");
 		Cart cart = new Cart();
@@ -37,7 +39,7 @@ public class FirstSetup implements HttpSessionListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		session.setAttribute("QUANTITY_INSTANCE_PRODUCT", 1);
 		session.setAttribute("CART", cart);
 		session.setAttribute("SHOPINFO", DAO_ShopInfo.getDaoShopInfo().getInfo());
 

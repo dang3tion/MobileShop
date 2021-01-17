@@ -166,7 +166,7 @@ public class Cart {
 	}
 
 	public void removeProductItem(String productID, String colorID) throws SQLException {
-		if (getQuantityEveryProduct(productID) > 1) {
+		if (getQuantityEveryProductColor(productID, colorID) > 1) {
 //			resetList();
 			listProduct.get(productID).put(colorID, getQuantityEveryProductColor(productID, colorID) - 1);
 		}

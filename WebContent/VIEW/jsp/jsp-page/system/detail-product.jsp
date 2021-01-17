@@ -291,7 +291,7 @@ request.setAttribute("color", dao.colorWeb());
 							<c:forEach items="${product.colors }" var="col" begin="1">
 
 								<input type="radio" class="choose-color" onclick="chooseColor()"
-									 id="${col.id }" name="color">
+									id="${col.id }" name="color">
 								<label class="color-card" for="${col.id }">
 									<div class="frame-color">
 										<div
@@ -360,8 +360,8 @@ request.setAttribute("color", dao.colorWeb());
 						<form action="${pageContext.request.contextPath}/cart"
 							method="post">
 							<input name="choose" value="add" hidden="true"> <input
-								name="color" id="color-input" value="" hidden="true">
-							<button name="id" onclick="addCart()" value="${PRODUCT.id}"
+								name="colorID" id="color-input" value="MS01" hidden="true">
+							<button name="id"  value="SP01"
 								type="submit" class="btnMua btn btn-primary btn-lg btn-block">
 								<i class="fas fa-cart-plus" style="color: white;"></i> THÊM VÀO
 								GIỎ HÀNG
@@ -386,8 +386,9 @@ request.setAttribute("color", dao.colorWeb());
 						<form action="${pageContext.request.contextPath}/cart"
 							method="post">
 							<input name="choose" value="add" hidden="true"> <input
-								name="datHang" value="true" hidden="true">
-							<button name="id" value="${PRODUCT.id}" type="submit"
+								name="datHang" value="true" hidden="true"> <input
+								name="colorID" value="MS01" hidden="true">
+							<button name="id" value="SP01" type="submit"
 								class="btnMua btn btn-danger btn-lg btn-block">
 								<strong>ĐẶT HÀNG</strong>
 							</button>

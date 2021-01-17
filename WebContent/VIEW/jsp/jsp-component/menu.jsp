@@ -147,8 +147,8 @@ request.setAttribute("color", dao.colorWeb());
 										</p>
 
 									</div>
-									<c:if test="${CART_QUANTITY != 0 && CART_QUANTITY != null }">
-										<label class="quantity-cart" id="quantity-cart123">${CART_QUANTITY}</label>
+									<c:if test="${QUANTITY_INSTANCE_PRODUCT != 0 && QUANTITY_INSTANCE_PRODUCT != null }">
+										<label class="quantity-cart" id="quantity-cart123">${QUANTITY_INSTANCE_PRODUCT}</label>
 									</c:if>
 								</div>
 
