@@ -69,8 +69,7 @@
 												<button data-target="#add-class" style="float: right;"
 													data-toggle="modal" data-toggle="tooltip"
 													style="margin-right: 10px;" data-placement="top"
-													title="Thêm nhóm mới"
-													class="btn btn-primary btn-add mt-2 ">
+													title="Thêm nhóm mới" class="btn btn-primary btn-add mt-2 ">
 													<i class="fas fa-plus-square mr-2"></i>Thêm nhóm mới
 												</button>
 												<table id="bootstrap-data-table" class="table table-hover">
