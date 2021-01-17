@@ -23,8 +23,8 @@ import model_utility.Config;
 @WebServlet(urlPatterns = "/cart")
 public class Controller_Cart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	RequestDispatcher dispatcher;
-	DAO_Product_main dao = DAO_Product_main.getDao_Product_main();
+	private RequestDispatcher dispatcher;
+	private static DAO_Product_main dao = DAO_Product_main.getDao_Product_main();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -75,7 +75,7 @@ public class Controller_Cart extends HttpServlet {
 			try {
 				switch (cart.add(productID, colorID)) {
 				case 1:
-					message = "tối đa " + Config.MAX_QUANTITY_OF_PRODUCT + " sản phẩm mỗi mẫu điện thoại";
+					message = dao.getProductNameFormID(productID)+" chỉ được mua tối đa " + Config.MAX_QUANTITY_OF_PRODUCT+" sản phẩm " ;
 					break;
 				case 2:
 					message = "tối đa " + Config.MAX_PRODUCT + " mẫu điện thoại trong giỏ hàng";
@@ -158,7 +158,7 @@ public class Controller_Cart extends HttpServlet {
 
 	}
 
-	private int getTotalMoney(Cart cart) {
+	public static int getTotalMoney(Cart cart) {
 
 		int total = 0;
 		for (String ID : cart.getListProductID()) {
@@ -170,7 +170,7 @@ public class Controller_Cart extends HttpServlet {
 		return total;
 	}
 
-	private ArrayList<Product_form> getListInstanceProductInCart(Cart cart) {
+	public static ArrayList<Product_form> getListInstanceProductInCart(Cart cart) {
 		ArrayList<Product_form> listProduct = new ArrayList<Product_form>();
 		for (String ID : cart.getListProductID()) {
 			for (String colorID : cart.getListProduct().get(ID).keySet()) {
@@ -184,7 +184,7 @@ public class Controller_Cart extends HttpServlet {
 				product_form.setNameBranch(product.getBranch().getName());
 				product_form.setPrice(product.getPrices().getPrice());
 				product_form.setPriceSales(product.getPrices().getPriceSales());
-				product_form.setImg(dao.getURLthumbnail(ID));
+				product_form.setImg(dao.getURLthumbnail(ID, colorID));
 				product_form.setColorID(colorID);
 				product_form.setColor(color);
 				product_form.setQuantityInCart(cart.getListProduct().get(ID).get(colorID));

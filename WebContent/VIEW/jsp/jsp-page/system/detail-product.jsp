@@ -368,6 +368,21 @@ request.setAttribute("color", dao.colorWeb());
 							</button>
 						</form>
 					</div>
+
+
+					<div class="col-sm-5">
+						<form action="${pageContext.request.contextPath}/cart"
+							method="post">
+							<input name="datHang" value="true" hidden="true"> <input
+								name="choose" value="add" hidden="true"> <input
+								name="colorID" id="color-inputMua" value="MS01" hidden="true">
+							<button name="id" onclick="addCart()" value="${product.ID }"
+								type="submit" class="btnMua btn btn-danger btn-lg btn-block">
+								<strong>ĐẶT HÀNG</strong>
+							</button>
+						</form>
+					</div>
+
 					<script>
 						function addCart() {
 							var btn = document
@@ -377,24 +392,12 @@ request.setAttribute("color", dao.colorWeb());
 								var check = btn[i].checked;
 								if (check == true) {
 									document.getElementById('color-input').value = btn[i].id;
+									document.getElementById('color-inputMua').value = btn[i].id;
 								}
 							}
 						}
 						addCart();
 					</script>
-
-					<div class="col-sm-5">
-						<form action="${pageContext.request.contextPath}/cart"
-							method="post">
-							<input name="choose" value="add" hidden="true"> <input
-								name="datHang" value="true" hidden="true"> <input
-								name="colorID" value="MS01" hidden="true">
-							<button name="id" value="SP01" type="submit"
-								class="btnMua btn btn-danger btn-lg btn-block">
-								<strong>ĐẶT HÀNG</strong>
-							</button>
-						</form>
-					</div>
 				</div>
 			</div>
 

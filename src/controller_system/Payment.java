@@ -31,17 +31,8 @@ public class Payment extends HttpServlet {
 		Cart cart = (Cart) session.getAttribute("CART");
 		String codeOder = cart.getCodeOder().getCode();
 
-		// display Cart
-		ArrayList<Product> listProduct = new ArrayList<Product>();
-		for (String productID : cart.getListProductID()) {
-			Product pro = bo.getProduct(productID);
-			pro.setQuantityInCart(cart.getQuantityEveryProduct(productID));
-			listProduct.add(pro);
-
-			request.setAttribute("LIST_PRODUCT_IN_CART", listProduct);
-			request.setAttribute("SUM_CART", cart.getQuantityOfProductInCart());
-		}
-
+		request.setAttribute("LIST_INSTANCE_PRODUCT", Controller_Cart.getListInstanceProductInCart(cart));
+		request.setAttribute("TOTAL_MONEY", Controller_Cart.getTotalMoney(cart));
 		request.setAttribute("CODE_ODER", codeOder);
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/payment.jsp");
@@ -61,40 +52,27 @@ public class Payment extends HttpServlet {
 		String phoneNumber = request.getParameter("phoneNumber");
 		String paymentMethod = request.getParameter("paymentMethod");
 
-
-		// display Cart
-		ArrayList<Product> listProduct = new ArrayList<Product>();
-		for (String productID : cart.getListProductID()) {
-			Product pro = bo.getProduct(productID);
-			pro.setQuantityInCart(cart.getQuantityEveryProduct(productID));
-			listProduct.add(pro);
-
-			request.setAttribute("LIST_PRODUCT_IN_CART", listProduct);
-			request.setAttribute("SUM_CART", cart.getQuantityOfProductInCart());
-		}
-
+		
+		request.setAttribute("LIST_INSTANCE_PRODUCT", Controller_Cart.getListInstanceProductInCart(cart));
+		request.setAttribute("TOTAL_MONEY", Controller_Cart.getTotalMoney(cart));
 		request.setAttribute("CODE_ODER", codeOder);
+		request.setAttribute("message", "Chưa nhập hoặc sai mã captcha !");
+		request.setAttribute("CUSTOMER_LOGINED.address", address);
+		request.setAttribute("CUSTOMER_LOGINED.name", name);
+		request.setAttribute("CUSTOMER_LOGINED.phoneNumber", phoneNumber);
+		System.out.println(paymentMethod + "___" + address);
+		if (paymentMethod.equals("COD")) {
+			request.setAttribute("CHECKED_COD", "checked");
+		}
 
 		if (session.getAttribute(Const.CUSTOMER_LOGINED) == null) {
 			// Verify CAPTCHA.
 			if (VerifyCaptcha.verify(gRecaptchaResponse) == false) {
-				request.setAttribute("message", "Chưa nhập hoặc sai mã captcha !");
-				request.setAttribute("address", address);
-				request.setAttribute("name", name);
-				request.setAttribute("phoneNumber", phoneNumber);
-
-				if (paymentMethod.equals("tranfer")) {
-					request.setAttribute("CHECKED_TRANFER", "checked='checked'");
-				} else {
-					request.setAttribute("CHECKED_COD", "checked='checked'");
-				}
-
 				RequestDispatcher dispatcher = //
 						request.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/payment.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
-
 		}
 
 		/// INSERT VÀO DATABASE Ở ĐÂY

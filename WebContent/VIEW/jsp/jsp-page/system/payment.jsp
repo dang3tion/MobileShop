@@ -31,7 +31,7 @@ request.setAttribute("color", dao.colorWeb());
 
 
 	<c:choose>
-		<c:when test="${ LIST_PRODUCT_IN_CART != null }">
+		<c:when test="${ QUANTITY_INSTANCE_PRODUCT != null }">
 
 
 
@@ -54,18 +54,18 @@ request.setAttribute("color", dao.colorWeb());
 
 					<div class="row mt-5">
 
-						<div class="col-md-4 order-md-2 mb-4">
+						<div style="font-size: 1em" class="col-md-4 order-md-2 mb-4">
 							<h4
 								class="d-flex justify-content-between align-items-center mb-3">
 								<span class="text-muted">Sản phẩm của bạn</span> <span
 									class="badge badge-secondary badge-pill">${CART_QUANTITY}</span>
 							</h4>
 							<ul class="list-group mb-3">
-								<c:forEach items="${LIST_PRODUCT_IN_CART}" var="pro">
+								<c:forEach items="${LIST_INSTANCE_PRODUCT}" var="pro">
 									<li
 										class="list-group-item d-flex justify-content-between lh-condensed">
 										<div>
-											<h6 class="my-0">${pro.name}
+											<h6 style="font-size: 0.9em" class="my-0">${pro.name} (${pro.color})
 												<span style="color: blue;"> x ${pro.quantityInCart} </span>
 											</h6>
 										</div> <span style="color: #C41111; font-weight: bolder;"
@@ -79,7 +79,7 @@ request.setAttribute("color", dao.colorWeb());
 
 								<li class="list-group-item d-flex justify-content-between"><span>Tổng
 										cộng</span> <strong class="price"><fmt:formatNumber
-											type="number" maxFractionDigits="3" value="${SUM_CART }" />
+											type="number" maxFractionDigits="3" value="${TOTAL_MONEY }" />
 										<span class='unit'>đ</span></strong></li>
 							</ul>
 
@@ -114,7 +114,7 @@ request.setAttribute("color", dao.colorWeb());
 											<i class="fas fa-map-marked-alt"></i>
 										</div>
 									</div>
-									<input id="inAddress" name="address" type="text"
+									<input value="${CUSTOMER_LOGINED.address}" id="inAddress" name="address" type="text"
 										class="form-control" placeholder="Nhập địa chỉ giao hàng"
 										value="" onfocusout="check_address(this.id)">
 								</div>
@@ -135,7 +135,7 @@ request.setAttribute("color", dao.colorWeb());
 												<i class="far fa-id-card"></i>
 											</div>
 										</div>
-										<input id="inName" type="text" class="form-control"
+										<input value="${CUSTOMER_LOGINED.name}" id="inName" type="text" class="form-control"
 											placeholder="Nhập họ tên không dấu"
 											onfocusout="check_name(this.id)">
 									</div>
@@ -149,8 +149,8 @@ request.setAttribute("color", dao.colorWeb());
 												<i class="fas fa-phone-square-alt"></i>
 											</div>
 										</div>
-										<input id="phone" type="text" class="form-control"
-											placeholder="Nhập số điện thoại" value=""
+										<input value="${CUSTOMER_LOGINED.phoneNumber}" id="phone" type="text" class="form-control"
+											placeholder="Nhập số điện thoại" 
 											onfocusout="check_phone(this.id)">
 									</div>
 								</div>
@@ -182,7 +182,7 @@ request.setAttribute("color", dao.colorWeb());
 							<h6 class="mb-4">Chọn phương thức thanh toán:</h6>
 							<div class="d-block my-3">
 								<div class="custom-control custom-radio">
-									<input id="credit" name="paymentMethod" type="radio"
+									<input id="credit" name="paymentMethod" type="radio" 
 										class="custom-control-input" onclick="hidenForm(this)" checked
 										required> <label class="custom-control-label"
 										for="credit">Chuyển khoản</label>
@@ -191,8 +191,8 @@ request.setAttribute("color", dao.colorWeb());
 								<div class="custom-control custom-radio "
 									style="margin-top: 20px;">
 									<input id="COD" name="paymentMethod" type="radio"
-										class="custom-control-input" onclick="hidenForm(this)"
-										required> <label class="custom-control-label "
+										class="custom-control-input" onclick="hidenForm(this)" value="COD"
+									${CHECKED_COD}	required> <label class="custom-control-label "
 										for="COD">Thanh toán khi nhận hàng (COD)</label>
 								</div>
 
@@ -209,7 +209,7 @@ request.setAttribute("color", dao.colorWeb());
 								<div class="row ml-4">
 									<h5>
 										Bạn vui lòng chuyển <span class="text-danger"><fmt:formatNumber
-												type="number" maxFractionDigits="3" value="${SUM_CART }" />
+												type="number" maxFractionDigits="3" value="${TOTAL_MONEY }" />
 											VNĐ</span>
 									</h5>
 									<h5 class="mx-3">Vào STK : 045845723873284</h5>
