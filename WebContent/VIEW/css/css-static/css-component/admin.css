@@ -232,7 +232,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	min-width: 800px;
 }
 
-.select-choose {
+.select-choose {width: 300px;
 	padding: 4px;
 	outline: 0;
 	border-radius: 4px;
