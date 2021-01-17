@@ -25,7 +25,7 @@ public class AJAXAdminAttribute extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-	}da a
+	}
 
 	private void updateCurrentPage(HttpServletRequest request, int page) {
 		HttpSession session = request.getSession();
