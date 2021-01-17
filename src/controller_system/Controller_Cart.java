@@ -2,6 +2,8 @@ package controller_system;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -13,8 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model_BO_service.BO_Product;
+import model_DAO.DAO_Product;
+import model_DAO.DAO_Product_main;
+import model_beans.Branch;
 import model_beans.Cart;
 import model_beans.Product_form;
+import model_beans.Product_main;
 import model_utility.Config;
 
 @WebServlet(urlPatterns = "/cart")
@@ -27,24 +33,46 @@ public class Controller_Cart extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		Cart cart = (Cart) session.getAttribute("CART");
-		// display Cart
-		int sum = 0;
-		int quantity = cart.getQuantityOfProductInCart();
-		Map<Product_form, Integer> lst = cart.getName_Quantity();
-		Map<Product_form, Integer> map = null;
-		map = cart.getList();
-		sum = cart.getReceiptSum();
+		
+		ArrayList<Product_form> listProduct = new ArrayList<Product_form>();
+		
+		for ( String ID : cart.getListProductID()) {
+			for (String colorID : cart.getListProduct().get(ID).keySet()) {
+				Product_main product = DAO_Product_main.getDao_Product_main().getProduct_main(ID);
+				String color = DAO_Product_main.getDao_Product_main().getColorName(colorID);
+				Product_form product_form = new Product_form();
+				product_form.setId(product.getID());
+				product_form.setName(product.getName());
+				product_form.setNameBranch(product.getBranch().getName());
+				product_form.setPrice(product.getPrices().getPrice());
+				product_form.setPriceSales(product.getPrices().getPriceSales());
+				product_form.setImg(DAO_Product_main.getDao_Product_main().getURLthumbnail(ID));
+				
+				System.out.println(product_form);
+				//				product.setName();
+//				listProduct.add(product);
+			}
+		}
+		
 
-		// TODO Auto-generated catch block
-		request.setAttribute("lst", lst);
-		request.setAttribute("sum", sum);
-		request.setAttribute("quantity", quantity);
 		request.setAttribute("message", request.getAttribute("message"));
-		request.setAttribute("map", map);
-		request.setAttribute("SHOW_LIST_CART", map.size());
 		dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
 		dispatcher.forward(request, response);
 		return;
+		
+		
+//		int sum = 0;
+//		int quantity = cart.getQuantityOfProductInCart();
+//		Map<Product_form, Integer> lst = cart.getName_Quantity();
+//		Map<Product_form, Integer> map = null;
+//		map = cart.getList();
+//		sum = cart.getReceiptSum();
+		// TODO Auto-generated catch block
+//		request.setAttribute("lst", lst);
+//		request.setAttribute("sum", sum);
+//		request.setAttribute("quantity", quantity);
+//		request.setAttribute("SHOW_LIST_CART", map.size());
+//		request.setAttribute("map", map);
 
 	}
 
