@@ -361,7 +361,7 @@ request.setAttribute("color", dao.colorWeb());
 							method="post">
 							<input name="choose" value="add" hidden="true"> <input
 								name="colorID" id="color-input" value="MS01" hidden="true">
-							<button name="id"  value="SP01"
+							<button name="id" onclick="addCart()" value="${product.ID }"
 								type="submit" class="btnMua btn btn-primary btn-lg btn-block">
 								<i class="fas fa-cart-plus" style="color: white;"></i> THÊM VÀO
 								GIỎ HÀNG
@@ -380,6 +380,7 @@ request.setAttribute("color", dao.colorWeb());
 								}
 							}
 						}
+						addCart();
 					</script>
 
 					<div class="col-sm-5">
