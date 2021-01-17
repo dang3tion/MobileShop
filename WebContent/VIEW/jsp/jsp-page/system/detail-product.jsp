@@ -386,7 +386,8 @@ request.setAttribute("color", dao.colorWeb());
 					<script>
 						function addCart() {
 							var btn = document
-									.getElementsByClassName("choose-color");
+									.get
+						ElementsByClassName("choose-color");
 							var length = btn.length;
 							for (var i = 0; i < length; i++) {
 								var check = btn[i].checked;

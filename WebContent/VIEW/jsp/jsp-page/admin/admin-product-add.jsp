@@ -9,6 +9,8 @@
 	rel="stylesheet" />
 <link href="${url}/css/css-page/admin1.css" type="text/css"
 	rel="stylesheet" />
+<link href="${url}/css/css-page/admin-infor.css" type="text/css"
+	rel="stylesheet" />
 </head>
 
 <body>
@@ -21,183 +23,373 @@
 		<!-- /#sidebar-wrapper -->
 
 		<!-- Page Content -->
-		<div id="page-content-wrapper">
+		<div id="page-content-wrapper" style="background-color: #e6e6e682;">
 
 			<!-- 		toggle logout -->
 			<jsp:include page="/VIEW/jsp/jsp-component/toggle-logout-bar.jsp"></jsp:include>
 
 
 			<div class="container mt-5 " style="width: 95%">
-				<h2 style="text-align: center;">Thêm sản phẩm</h2>
+
+
+				<div class="container-fluid">
+					<div class="frame-cog">
+						<h3>Thêm sản phẩm mới</h3>
+						<div class="save">
+							<button type="submit">Lưu lại toàn bộ</button>
+
+						</div>
+						<div class="frame-cog-content" id="frame-content">
+							<div class="frame">
+								<h5>Thông tin chung</h5>
+								<ul class="information">
+									<li class="content-input">
+										<div class="title">
+											<p>Tên sản phẩm</p>
+										</div>
+
+										<div class="input">
+											<input name="name" placeHolder="Nhập tên sản phẩm"
+												type="text" value="">
+										</div>
+
+									</li>
+									<li class="content-input">
+										<div class="title">
+											<p>Thương hiệu</p>
+										</div>
+										<div class="input">
+											<select class="" name="type">
+												<option value="Mới">Mới</option>
+												<option value="Cũ">Cũ</option>
+											</select>
+										</div>
+
+
+									</li>
+									<li class="content-input">
+										<div class="title">
+											<p>Loại sản phẩm</p>
+										</div>
+										<div class="input">
+											<select class="" name="type">
+												<option value="Mới">Mới</option>
+												<option value="Cũ">Cũ</option>
+											</select>
+										</div>
+									</li>
+									<li class="content-input">
+										<div class="title">
+											<p>Tình trạng</p>
+										</div>
+										<div class="input">
+											<select class="" name="type">
+												<option value="Mới">Mới</option>
+												<option value="Cũ">Cũ</option>
+											</select>
+										</div>
+									</li>
+									<li class="content-input">
+										<div class="title">
+											<p>Giá bán (VND)</p>
+										</div>
+										<div class="input">
+											<input name="name" type="text" value="">
+										</div>
+									</li>
+									<li class="content-input">
+										<div class="title">
+											<p>Giá bán khuyến mãi (VND)</p>
+										</div>
+										<div class="input">
+											<input name="name" type="text" value="">
+										</div>
+									</li>
+									<li class="content-input">
+										<div class="title">
+											<p>Giá bán (VND)</p>
+										</div>
+										<div class="input">
+											<input type="file" id="actual-btn" hidden /> <label
+												class="choose-file" for="actual-btn">Chọn ảnh</label>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+							<div class="frame-number" style="width: 94%;">
+
+								<h5>Màu sắc sản phấm</h5>
+								<div class="frame-cog-content">
+									<div class="frame">
+										<ul class="information">
+											<li class="content-input">
+												<div class="title">
+													<p>Tên màu sắc</p>
+												</div>
+
+												<div class="input">
+													<input name="name" placeHolder="Nhập tên màu sắc"
+														type="text" value="">
+												</div>
+
+											</li>
+											<li class="content-input">
+												<div class="title">
+													<p>Chọn màu sắc</p>
+												</div>
+
+												<div class="input">
+													<input name="color" placeHolder="" type="text" value="">
+												</div>
+
+											</li>
+											<li class="content-input">
+												<div class="title">
+													<p>Chọn ảnh nền</p>
+												</div>
+
+												<div class="input">
+													<input type="file" id="actual-btn" hidden /> <label
+														class="choose-file" style="margin: 0;" for="actual-btn">Chọn
+														ảnh</label>
+												</div>
+
+											</li>
+											<div id="color-sub1">
+												<li class="content-input">
+													<div class="title">
+														<p>Chọn ảnh mô tả</p>
+													</div>
+
+													<div class="input">
+														<input type="file" id="actual-btn" hidden /> <label
+															class="choose-file" style="margin: 0;" for="actual-btn">Chọn
+															ảnh</label>
+													</div>
+
+												</li>
+												<li class="content-input">
+													<div class="title">
+														<p>Chọn ảnh mô tả</p>
+													</div>
+
+													<div class="input">
+														<input type="file" id="actual-btn" hidden /> <label
+															class="choose-file" style="margin: 0;" for="actual-btn">Chọn
+															ảnh</label>
+													</div>
+
+												</li>
+											</div>
+											<li class="content-input">
+												<div class="title">
+													<button class="btn-primary"
+														style="box-shadow: 1px 1px 2px 0px #a5a5a5; padding: 5px; border-radius: 3px; outline: 0; border: 0"
+														onclick="addSubimg('â');">Thêm ảnh mô tả</button>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+							</div>
+							<div class="frame-number" style="width: 94%;">
+
+								<h5>Màu sắc sản phấm</h5>
+								<div class="frame-cog-content">
+									<div class="frame">
+										<ul class="information">
+											<li class="content-input">
+												<div class="title">
+													<p>Tên màu sắc</p>
+												</div>
+
+												<div class="input">
+													<input name="name" placeHolder="Nhập tên màu sắc"
+														type="text" value="">
+												</div>
+
+											</li>
+											<li class="content-input">
+												<div class="title">
+													<p>Chọn màu sắc</p>
+												</div>
+
+												<div class="input">
+													<input name="color" placeHolder="" type="text" value="">
+												</div>
+
+											</li>
+											<li class="content-input">
+												<div class="title">
+													<p>Chọn ảnh nền</p>
+												</div>
+
+												<div class="input">
+													<input type="file" id="actual-btn" hidden /> <label
+														class="choose-file" style="margin: 0;" for="actual-btn">Chọn
+														ảnh</label>
+												</div>
+
+											</li>
+											<div id="color-sub1">
+												<li class="content-input">
+													<div class="title">
+														<p>Chọn ảnh mô tả</p>
+													</div>
+
+													<div class="input">
+														<input type="file" id="actual-btn" hidden /> <label
+															class="choose-file" style="margin: 0;" for="actual-btn">Chọn
+															ảnh</label>
+													</div>
+
+												</li>
+												<li class="content-input">
+													<div class="title">
+														<p>Chọn ảnh mô tả</p>
+													</div>
+
+													<div class="input">
+														<input type="file" id="actual-btn" hidden /> <label
+															class="choose-file" style="margin: 0;" for="actual-btn">Chọn
+															ảnh</label>
+													</div>
+
+												</li>
+											</div>
+											<li class="content-input">
+												<div class="title">
+													<button class="btn-primary"
+														style="box-shadow: 1px 1px 2px 0px #a5a5a5; padding: 5px; border-radius: 3px; outline: 0; border: 0"
+														onclick="addSubimg('â');">Thêm ảnh mô tả</button>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div>
+							<button class="btn-primary"
+								style="background: #FFC107; margin-right: 30px; float: right; box-shadow: 1px 1px 2px 0px #a5a5a5; padding: 10px; border-radius: 3px; outline: 0; border: 0;"
+								onclick="addColor('â');">Thêm màu sắc</button>
+						</div>
+					</div>
+				</div>
+
+				<script>
+					function addSubimg(id) {
+						var ele = document.getElementById(id);
+						$("#color-sub1")
+								.append(
+										'<li class="content-input">'
+												+ '<div class="title">'
+												+ '<p>Chọn ảnh mô tả</p>'
+												+ '	</div>'
+												+ '<div class="input">'
+												+ '	<input type="file" id="actual-btn" hidden /> <label'
+							+'		class="choose-file" style="margin: 0;" for="actual-btn">Chọn'
+												+ '		ảnh</label> </div>'
+												+ '</li>')
+
+					}
+
+					function addColor(id) {
+						$('#frame-content')
+								.append(
+										'<div class="frame-number" style="width: 94%;">'
+
+												+ '<h5>Màu sắc sản phấm</h5>'
+												+ '	<div class="frame-cog-content">'
+												+ '<div class="frame">'
+												+ '	<ul class="information">'
+												+ '		<li class="content-input">'
+												+ '			<div class="title">'
+												+ '					<p>Tên màu sắc</p>'
+												+ '				</div>'
+
+												+ '				<div class="input">'
+												+ '					<input name="name" placeHolder="Nhập tên màu sắc"'
+								+ '						type="text" value="">'
+												+ '				</div>'
+
+												+ '		</li>'
+												+ '			<li class="content-input">'
+												+ '				<div class="title">'
+												+ '					<p>Chọn màu sắc</p>'
+												+ '				</div>'
+
+												+ '				<div class="input">'
+												+ '					<input name="color" placeHolder="" type="text" value="">'
+												+ '				</div>'
+
+												+ '			</li>'
+												+ '		<li class="content-input">'
+												+ '			<div class="title">'
+												+ '					<p>Chọn ảnh nền</p>'
+												+ '				</div>'
+
+												+ '				<div class="input">'
+												+ '				<input type="file" id="actual-btn" hidden /> <label'
+								+ '						class="choose-file" style="margin: 0;" for="actual-btn">Chọn'
+												+ '											ảnh</label>'
+												+ '					</div>'
+
+												+ '				</li>'
+												+ '				<div id="color-sub1">'
+												+ '					<li class="content-input">'
+												+ '						<div class="title">'
+												+ '							<p>Chọn ảnh mô tả</p>'
+												+ '						</div>'
+
+												+ '						<div class="input">'
+												+ '							<input type="file" id="actual-btn" hidden /> <label'
+								+ '								class="choose-file" style="margin: 0;" for="actual-btn">Chọn'
+												+ '								ảnh</label>'
+												+ '						</div>'
+
+												+ '					</li>'
+												+ '					<li class="content-input">'
+												+ '						<div class="title">'
+												+ '							<p>Chọn ảnh mô tả</p>'
+												+ '						</div>'
+
+												+ '						<div class="input">'
+												+ '							<input type="file" id="actual-btn" hidden /> <label'
+								+ '								class="choose-file" style="margin: 0;" for="actual-btn">Chọn'
+												+ '								ảnh</label>'
+												+ '						</div>'
+
+												+ '					</li>'
+												+ '				</div>'
+												+ '				<li class="content-input">'
+												+ '					<div class="title">'
+												+ '					<button class="btn-primary"'
+												+ '							style="box-shadow: 1px 1px 2px 0px #a5a5a5; padding: 5px; border-radius: 3px; outline: 0; border: 0"'
+												+ '							onclick="addSubimg(a);">Thêm ảnh mô tả</button>'
+												+ '					</div>' + '				</li>'
+												+ '			</ul>' + '		</div>'
+												+ '		</div>'
+
+												+ '		</div>');
+					}
+					addSubimg('â');
+				</script>
 				<form action="${pageContext.request.contextPath}/admin/product-add"
 					method="post">
-					<div class="row">
-						<div class="col-6 space-top">
-							<h5 class="spacing_form">Tên sản phẩm</h5>
-							<div class="input-group mb-2">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-mobile-alt"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4" value=""
-									name="nameProduct" placeholder="Nhập tên sản phẩm">
-							</div>
-						</div>
-						<div class="col-6 space-top">
-							<h5 class="spacing_form">Giá bán(VND)</h5>
-							<div class="input-group mb-2">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-dollar-sign"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4" value=""
-									placeholder="20.000.000" name="price">
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-6 space-top">
-							<h5 class="spacing_form">Tên Thương hiệu</h5>
-							<div class="input-group mb-2">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-mobile-alt"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4" value=""
-									placeholder="Nhập tên thương hiệu" name="brand">
-							</div>
-						</div>
-						<div class="col-6 space-top">
-							<h5 class="spacing_form">Giá bán Khuyến mãi(VND)</h5>
-							<div class="input-group mb-2">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-dollar-sign"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4" value=""
-									placeholder="20.000.000" name="priceSale">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6 space-top">
-							<h5 class="spacing_form">Loại sản phẩm</h5>
-							<select class="form-control w" id="exampleFormControlSelect1"
-								name="type">
-								<option value="Mới">Mới</option>
-								<option value="Cũ">Cũ</option>
-							</select>
-						</div>
-						<div class="col-sm-6 space-top">
-							<h5 class="spacing_form ">Trình trạng</h5>
-							<select class="form-control w" id="exampleFormControlSelect1"
-								name="state">
-								<option value="Đang bán">Đang bán</option>
-								<option value="Ngưng bán">Ngưng bán</option>
-							</select>
-						</div>
-						<div class="col-sm-6 space-top">
-							<h5 class="spacing_form">Số lượng</h5>
-							<div class="input-group mb-2">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-tag "></i>
-									</div>
-								</div>
-								<input type="number" class="form-control py-4" value=""
-									placeholder="Nhập số lượng" name="quatity">
-							</div>
-						</div>
-
-
-
-					</div>
-
 
 					<!-- color -->
-					<div id="color">
-						<div class="boder-color">
-							<div class="row boder-color1">
-								<div class="col-4 space-top " id="chooseColor" name="1">
-									<h5 class="spacing_form">Màu sắc</h5>
-									<div class="input-group mb-2 ">
-										<div class="input-group-prepend">
-											<div class="input-group-text">
-												<i class="fas fa-mobile-alt"></i>
-											</div>
-										</div>
-										<input class="form-control w " value=""
-											placeholder="Nhập tên màu sắc" name="color1">
-									</div>
-								</div>
-								<div class="col-4 space-top " id="chooseColor" name="1">
-									<h5 class="spacing_form">Chọn mã màu</h5>
-									<div class="input-group mb-2 ">
-										<div class="input-group-prepend">
-											<div class="input-group-text">
-												<i class="fas fa-mobile-alt"></i>
-											</div>
-										</div>
-										<input type="color" class="form-control w " value=""
-											placeholder="Nhập màu sắc" name="codeColor1">
-									</div>
-								</div>
-
-								<div class="col-4 space-top">
-									<h5 class="spacing_form ">URL hình ảnh nền</h5>
-									<input class="mt-2" type="file" accept=".jpg,.png,.jpge"
-										name="anhnen1">
-								</div>
 
 
-
-
-							</div>
-
-
-							<div class="row boder-color2">
-								<div class="col-3 space-top">
-									<h5 class="spacing_form ">URL ảnh mô tả 1</h5>
-									<input class="mt-2" type="file" accept=".jpg,.png,.jpge"
-										name="anhMT11">
-								</div>
-								<div class="col-3 space-top">
-									<h5 class="spacing_form ">URL ảnh mô tả 2</h5>
-									<input class="mt-2" type="file" accept=".jpg,.png,.jpge"
-										name="anhMT21">
-								</div>
-								<div class="col-3 space-top">
-									<h5 class="spacing_form ">URL ảnh mô tả 3</h5>
-									<input class="mt-2" type="file" accept=".jpg,.png,.jpge"
-										name="anhMT31">
-								</div>
-								<div class="col-3 space-top">
-									<h5 class="spacing_form ">URL ảnh mô tả 4</h5>
-									<input class="mt-2" type="file" accept=".jpg,.png,.jpge"
-										name="anhMT41">
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- add color -->
-					<a data-toggle="modal" data-target="#themMau" style="float: right;"
-						name="1" class="btn icon-btn btn-success" href="#"> <span><i
-							style="font-size: 1.2em;" class="fa fa-plus-circle"
-							aria-hidden="true"></i></span> Thêm màu
-					</a> <input style="display: none" id="countColor" name="countColor" value="1">
-
-
-					<div class="form-group space-top">
-						<h5 class="spacing_form">Giới thiệu sản phẩm</h5>
+					<div class="form-group space-top" style="margin-top: 50px">
+						<h5 class="spacing_form" style="margin-left: 10px;">Giới
+							thiệu sản phẩm</h5>
 
 						<div
-							style="border: 1px solid #dadada; padding: 15px; border-radius: 5px;">
+							style="border: 1px solid #dadada; padding: 15px; border-radius: 5px; background: white;">
 							<!-- (2): textarea sẽ được thay thế bởi CKEditor -->
 
 							<textarea name="topic" id="editor">${value}</textarea>
@@ -214,244 +406,8 @@
 					<hr>
 					<!-- thong so ki thuat -->
 					<h3 class="text-center">Thông số kĩ thuật</h3>
-					<div class="row">
-						<div class="col-12 space-top">
-							<h5 class="spacing_form">Màn hình</h5>
-							<div class="input-group mb-2">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-mobile-alt"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4 mr-4" value=""
-									placeholder="Nhập thông số màn hình">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-at"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4 mr-4" value=""
-									placeholder="Nhập giá trị tương đuong">
-								<button class="btn btn-danger" title="Xóa thuộc tính này">
-									<span><i class="fas fa-trash-alt"></i></span>
-								</button>
-							</div>
 
-						</div>
-						<div class="col-12 space-top">
-							<h5 class="spacing_form">Hệ điều hành</h5>
-							<div class="input-group mb-2">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-cogs"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4 mr-4" value=""
-									placeholder="Nhập tên hệ điều hành">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-at"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4 mr-4" value=""
-									placeholder="Nhập giá trị tương đuong">
-								<button class="btn btn-danger" title="Xóa thuộc tính này">
-									<span><i class="fas fa-trash-alt"></i></span>
-								</button>
-							</div>
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-12 space-top">
-							<h5 class="spacing_form">Camera sau</h5>
-							<div class="input-group mb-2">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-camera"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4 mr-4" value=""
-									placeholder="Nhập thông số camera sau">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-at"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4 mr-4" value=""
-									placeholder="Nhập giá trị tương đuong">
-								<button class="btn btn-danger" title="Xóa thuộc tính này">
-									<span><i class="fas fa-trash-alt"></i></span>
-								</button>
-							</div>
-						</div>
-						<div class="col-12 space-top">
-							<h5 class="spacing_form">Camera trước</h5>
-							<div class="input-group mb-2">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-camera"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4 mr-4" value=""
-									placeholder="Nhập thông số camera trước">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-at"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4 mr-4" value=""
-									placeholder="Nhập giá trị tương đuong">
-								<button class="btn btn-danger" title="Xóa thuộc tính này">
-									<span><i class="fas fa-trash-alt"></i></span>
-								</button>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-12 space-top">
-							<h5 class="spacing_form">CPU</h5>
-							<div class="input-group mb-2">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-hdd"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4 mr-4" value=""
-									placeholder="Nhập thông số CPU">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-at"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4 mr-4" value=""
-									placeholder="Nhập giá trị tương đuong">
-								<button class="btn btn-danger" title="Xóa thuộc tính này">
-									<span><i class="fas fa-trash-alt"></i></span>
-								</button>
-							</div>
-						</div>
-						<div class="col-12 space-top">
-							<h5 class="spacing_form">Bộ nhớ</h5>
-							<div class="input-group mb-2">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-sd-card"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4 mr-4" value=""
-									placeholder="Nhập thông số bộ nhớ">
-								<div class="input-group-prepend">
-									<div class="input-group-text">
-										<i class="fas fa-at"></i>
-									</div>
-								</div>
-								<input type="text" class="form-control py-4 mr-4" value=""
-									placeholder="Nhập giá trị tương đuong">
-								<button class="btn btn-danger" title="Xóa thuộc tính này">
-									<span><i class="fas fa-trash-alt"></i></span>
-								</button>
-							</div>
-						</div>
-					</div>
-					<div class="space-top">
-						<h5 class="spacing_form">Kết nối</h5>
-						<div class="input-group mb-2">
-							<div class="input-group-prepend">
-								<div class="input-group-text">
-									<i class="fas fa-wifi"></i>
-								</div>
-							</div>
-							<input type="text" class="form-control py-4 mr-4" value=""
-								placeholder="Nhập loại kết nối">
-							<div class="input-group-prepend">
-								<div class="input-group-text">
-									<i class="fas fa-at"></i>
-								</div>
-							</div>
-							<input type="text" class="form-control py-4 mr-4" value=""
-								placeholder="Nhập giá trị tương đuong">
-							<button class="btn btn-danger" title="Xóa thuộc tính này">
-								<span><i class="fas fa-trash-alt"></i></span>
-							</button>
-						</div>
-					</div>
-					<div class="space-top">
-						<h5 class="spacing_form">Tên thông số kỹ thuật mới</h5>
-						<div class="input-group mb-2">
-							<div class="input-group-prepend">
-								<div class="input-group-text">
-									<i class="fas fa-cog"></i>
-								</div>
-							</div>
-							<input type="text" class="form-control py-4 mr-4" value=""
-								placeholder="Nhập loại tên thông số kỹ thuật mới">
-							<div class="input-group-prepend">
-								<div class="input-group-text">
-									<i class="fas fa-at"></i>
-								</div>
-							</div>
-							<input type="text" class="form-control py-4 mr-4" value=""
-								placeholder="Nhập giá trị tương đuong">
-							<button data-target="#delete-attribute" data-toggle="modal"
-								data-toggle="tooltip" class="btn btn-danger"
-								title="Xóa thuộc tính này">
-								<span><i class="fas fa-trash-alt"></i></span>
-							</button>
-						</div>
-					</div>
-					<a data-target="#add-attribute" data-toggle="modal"
-						data-toggle="tooltip" style="float: right; color: white;" name="1"
-						class="btn icon-btn btn-success mt-2"> <span><i
-							style="font-size: 1.2em;" class="fa fa-plus-circle"
-							aria-hidden="true"></i></span> Thêm thông số kĩ thuật
-					</a>
-
-					<div class="modal fade" id="add-attribute" tabindex="-1"
-						aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog" style="max-width: 50%;">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Thêm thuộc
-										tính cho sản phẩm</h5>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-
-									<h5>Chọn thuộc tính</h5>
-									<div style="float: left">
-										<select style="width: 200px;" class="select-choose">
-											<option value="Khác">Hệ điều hành</option>
-											<option value="Andriod">Kích cỡ màn hình</option>
-											<option value="Khác">Bộ nhớ trong</option>
-											<option value="Khác">Dung lượng RAM</option>
-											<option value="Khác">Camera trước</option>
-											<option value="Khác">Camera sau</option>
-
-										</select>
-									</div>
-									<div style="float: right">
-										<a href="#">
-											<button class="btn btn-success ">
-												<span><i style="font-size: 1.2em; margin: 0px 5px;"
-													class="fa fa-plus-circle" aria-hidden="true"></i></span>Tạo thuộc
-												tính mới
-											</button>
-										</a>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">Đóng</button>
-									<button type="button" class="btn btn-primary">Lưu</button>
-								</div>
-							</div>
-						</div>
-					</div>
 					<div class="modal fade" id="delete-attribute" tabindex="-1"
 						aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
@@ -476,16 +432,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row" style="margin-top: 60px;">
-						<div class="col-4"></div>
-						<div class="col-8">
-							<button
-								class="btn btn-primary col-sm-3 row space-top space-bottom "
-								style="margin: 15px 10px 20px 10px;" type="submit">Thêm
-								sản phẩm</button>
 
-						</div>
-					</div>
 				</form>
 			</div>
 		</div>
@@ -515,148 +462,142 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<script type="text/javascript">
-    
-	/// thêm màu
-	var dem =1 ;
-	function themMau() {
-	  dem++;
-	  document.getElementById("countColor").value = dem;
-	console.log(dem);
-	  /// lấy số lượng form hiện tại
-	  var current = document.getElementById("btnAddColor").name;
-	  n = parseInt(current) + 1;
+		/// thêm màu
+		var dem = 1;
+		function themMau() {
+			dem++;
+			document.getElementById("countColor").value = dem;
+			console.log(dem);
+			/// lấy số lượng form hiện tại
+			var current = document.getElementById("btnAddColor").name;
+			n = parseInt(current) + 1;
 
-	  $("#color").append(
-	    "<div>" +
-	      ' <div class="boder-color">' +
-	      '        <div class="row boder-color1">' +
-	      '          <div class="col-4 space-top " id="chooseColor" name="1">' +
-	      '            <h5 class="spacing_form">Màu sắc</h5>' +
-	      '            <div class="input-group mb-2 ">' +
-	      '              <div class="input-group-prepend">' +
-	      '                <div class="input-group-text"><i class="fas fa-mobile-alt"></i></div>' +
-	      "              </div>" +
-	      '             <input class="form-control w " value="" placeholder="Nhập màu sắc" name="color'+dem+'">'  +
-	      "            </div>" +
-	      "          </div>" +
-	      '<div class="col-4 space-top " id="chooseColor" name="1">'+
-				'						<h5 class="spacing_form">Chọn mã màu</h5>'+
-				'						<div class="input-group mb-2 ">'+
-				'							<div class="input-group-prepend">'+
-				'								<div class="input-group-text">'+
-				'									<i class="fas fa-mobile-alt"></i>'+
-				'								</div>'+
-				'							</div>'+
-				'							<input type="color" class="form-control w " value="'+
-				'								placeholder="Nhập màu sắc" name="codeColor'+dem+'">'+
-				'						</div>'+
-				'					</div>'+
+			$("#color")
+					.append(
+							"<div>"
+									+ ' <div class="boder-color">'
+									+ '        <div class="row boder-color1">'
+									+ '          <div class="col-4 space-top " id="chooseColor" name="1">'
+									+ '            <h5 class="spacing_form">Màu sắc</h5>'
+									+ '            <div class="input-group mb-2 ">'
+									+ '              <div class="input-group-prepend">'
+									+ '                <div class="input-group-text"><i class="fas fa-mobile-alt"></i></div>'
+									+ "              </div>"
+									+ '             <input class="form-control w " value="" placeholder="Nhập màu sắc" name="color'+dem+'">'
+									+ "            </div>"
+									+ "          </div>"
+									+ '<div class="col-4 space-top " id="chooseColor" name="1">'
+									+ '						<h5 class="spacing_form">Chọn mã màu</h5>'
+									+ '						<div class="input-group mb-2 ">'
+									+ '							<div class="input-group-prepend">'
+									+ '								<div class="input-group-text">'
+									+ '									<i class="fas fa-mobile-alt"></i>'
+									+ '								</div>'
+									+ '							</div>'
+									+ '							<input type="color" class="form-control w " value="'+
+				'								placeholder="Nhập màu sắc" name="codeColor'+dem+'">'
+									+ '						</div>'
+									+ '					</div>'
+									+
 
-	      '          <div class="col-4 space-top">' +
-	      '            <h5 class="spacing_form ">URL hình ảnh nền</h5>' +
-	      '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name ="anhnen'+dem+'">' +
-	      "          </div>" +
-	      
-	      "        </div>" +
-	      '        <div class="row boder-color2">' +
-	      '          <div class="col-3 space-top">' +
-	      '            <h5 class="spacing_form ">URL ảnh mô tả 1</h5>' +
-	      '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name="anhMT1'+dem+'">' +
-	      "          </div>" +
-	      '          <div class="col-3 space-top">' +
-	      '            <h5 class="spacing_form ">URL ảnh mô tả 2</h5>' +
-	      '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name="anhMT2'+dem+'">' +
-	      "          </div>" +
-	      '          <div class="col-3 space-top">' +
-	      '            <h5 class="spacing_form ">URL ảnh mô tả 3</h5>' +
-	      '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name="anhMT3'+dem+'">' +
-	      "          </div>" +
-	      '          <div class="col-3 space-top">' +
-	      '            <h5 class="spacing_form ">URL ảnh mô tả 4</h5>' +
-	      '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name="anhMT4'+dem+'">' +
-	      "          </div>" +
-	      "        </div>" +
-	      "      </div>"
-	  );
-	  var textnode = document.createTextNode("Demo" + n);
-	  node.appendChild(textnode);
-	  document.getElementById("addColorForm").appendChild(node);
+									'          <div class="col-4 space-top">'
+									+ '            <h5 class="spacing_form ">URL hình ảnh nền</h5>'
+									+ '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name ="anhnen'+dem+'">'
+									+ "          </div>"
+									+
 
-	  ///cập nhật lại số lượng form
-	  document.getElementById("btnAddColor").name = parseInt(current) + 1;
-	}
+									"        </div>"
+									+ '        <div class="row boder-color2">'
+									+ '          <div class="col-3 space-top">'
+									+ '            <h5 class="spacing_form ">URL ảnh mô tả 1</h5>'
+									+ '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name="anhMT1'+dem+'">'
+									+ "          </div>"
+									+ '          <div class="col-3 space-top">'
+									+ '            <h5 class="spacing_form ">URL ảnh mô tả 2</h5>'
+									+ '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name="anhMT2'+dem+'">'
+									+ "          </div>"
+									+ '          <div class="col-3 space-top">'
+									+ '            <h5 class="spacing_form ">URL ảnh mô tả 3</h5>'
+									+ '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name="anhMT3'+dem+'">'
+									+ "          </div>"
+									+ '          <div class="col-3 space-top">'
+									+ '            <h5 class="spacing_form ">URL ảnh mô tả 4</h5>'
+									+ '            <input class="mt-2" type="file" accept=".jpg,.png,.jpge" name="anhMT4'+dem+'">'
+									+ "          </div>" + "        </div>"
+									+ "      </div>");
+			var textnode = document.createTextNode("Demo" + n);
+			node.appendChild(textnode);
+			document.getElementById("addColorForm").appendChild(node);
 
-	function thongSoKt() {
-	  /// lấy số lượng form hiện tại
-	  var current = document.getElementById("btnAddColor").name;
-	  n = parseInt(current) + 1;
+			///cập nhật lại số lượng form
+			document.getElementById("btnAddColor").name = parseInt(current) + 1;
+		}
 
-	  $("#thongSoMoi").append(
-	    '<div class="boder-color top-s">' +
-	      '<div class="space-top bodertt">' +
-	      ' <h5 class="spacing_form">Loại thông số kĩ thuật mới</h5>' +
-	      ' <div class="input-group mb-2">' +
-	      '   <div class="input-group-prepend">' +
-	      '     <div class="input-group-text"></div>' +
-	      "   </div>" +
-	      '   <input type="text" class="form-control py-4" value="" placeholder="Nhập tên thông số kĩ thuật mới">' +
-	      " </div>" +
-	      '   <h5 class="spacing_form">Nội dung thông số kĩ thuật mới</h5>' +
-	      ' <div class="input-group mb-2">' +
-	      '   <div class="input-group-prepend">' +
-	      '     <div class="input-group-text"></i></div>' +
-	      "   </div>" +
-	      '   <input type="text" class="form-control py-4" value="" placeholder="Nhập nội dung">' +
-	      " </div>" +
-	      "</div>" +
-	      "</div>"
-	  );
-	  var textnode = document.createTextNode("Demo" + n);
-	  node.appendChild(textnode);
-	  document.getElementById("addColorForm").appendChild(node);
+		function thongSoKt() {
+			/// lấy số lượng form hiện tại
+			var current = document.getElementById("btnAddColor").name;
+			n = parseInt(current) + 1;
 
-	  ///cập nhật lại số lượng form
-	  document.getElementById("btnAddColor").name = parseInt(current) + 1;
-	}
+			$("#thongSoMoi")
+					.append(
+							'<div class="boder-color top-s">'
+									+ '<div class="space-top bodertt">'
+									+ ' <h5 class="spacing_form">Loại thông số kĩ thuật mới</h5>'
+									+ ' <div class="input-group mb-2">'
+									+ '   <div class="input-group-prepend">'
+									+ '     <div class="input-group-text"></div>'
+									+ "   </div>"
+									+ '   <input type="text" class="form-control py-4" value="" placeholder="Nhập tên thông số kĩ thuật mới">'
+									+ " </div>"
+									+ '   <h5 class="spacing_form">Nội dung thông số kĩ thuật mới</h5>'
+									+ ' <div class="input-group mb-2">'
+									+ '   <div class="input-group-prepend">'
+									+ '     <div class="input-group-text"></i></div>'
+									+ "   </div>"
+									+ '   <input type="text" class="form-control py-4" value="" placeholder="Nhập nội dung">'
+									+ " </div>" + "</div>" + "</div>");
+			var textnode = document.createTextNode("Demo" + n);
+			node.appendChild(textnode);
+			document.getElementById("addColorForm").appendChild(node);
 
-	function thongSoKt() {
-	  /// lấy số lượng form hiện tại
-	  var current = document.getElementById("btnAddColor").name;
-	  n = parseInt(current) + 1;
+			///cập nhật lại số lượng form
+			document.getElementById("btnAddColor").name = parseInt(current) + 1;
+		}
 
-	  $("#thongSoMoi").append(
-	    '<div class="boder-color top-s">' +
-	      '<div class="space-top bodertt">' +
-	      ' <h5 class="spacing_form">Loại thông số kĩ thuật mới</h5>' +
-	      ' <div class="input-group mb-2">' +
-	      '   <div class="input-group-prepend">' +
-	      '     <div class="input-group-text"></div>' +
-	      "   </div>" +
-	      '   <input type="text" class="form-control py-4" value="" placeholder="Nhập tên thông số kĩ thuật mới">' +
-	      " </div>" +
-	      '   <h5 class="spacing_form">Nội dung thông số kĩ thuật mới</h5>' +
-	      ' <div class="input-group mb-2">' +
-	      '   <div class="input-group-prepend">' +
-	      '     <div class="input-group-text"></i></div>' +
-	      "   </div>" +
-	      '   <input type="text" class="form-control py-4" value="" placeholder="Nhập nội dung">' +
-	      " </div>" +
-	      "</div>" +
-	      "</div>"
-	  );
-	  var textnode = document.createTextNode("Demo" + n);
-	  node.appendChild(textnode);
-	  document.getElementById("addColorForm").appendChild(node);
+		function thongSoKt() {
+			/// lấy số lượng form hiện tại
+			var current = document.getElementById("btnAddColor").name;
+			n = parseInt(current) + 1;
 
-	  ///cập nhật lại số lượng form
-	  document.getElementById("btnAddColor").name = parseInt(current) + 1;
-	}
+			$("#thongSoMoi")
+					.append(
+							'<div class="boder-color top-s">'
+									+ '<div class="space-top bodertt">'
+									+ ' <h5 class="spacing_form">Loại thông số kĩ thuật mới</h5>'
+									+ ' <div class="input-group mb-2">'
+									+ '   <div class="input-group-prepend">'
+									+ '     <div class="input-group-text"></div>'
+									+ "   </div>"
+									+ '   <input type="text" class="form-control py-4" value="" placeholder="Nhập tên thông số kĩ thuật mới">'
+									+ " </div>"
+									+ '   <h5 class="spacing_form">Nội dung thông số kĩ thuật mới</h5>'
+									+ ' <div class="input-group mb-2">'
+									+ '   <div class="input-group-prepend">'
+									+ '     <div class="input-group-text"></i></div>'
+									+ "   </div>"
+									+ '   <input type="text" class="form-control py-4" value="" placeholder="Nhập nội dung">'
+									+ " </div>" + "</div>" + "</div>");
+			var textnode = document.createTextNode("Demo" + n);
+			node.appendChild(textnode);
+			document.getElementById("addColorForm").appendChild(node);
 
-
+			///cập nhật lại số lượng form
+			document.getElementById("btnAddColor").name = parseInt(current) + 1;
+		}
 	</script>
 
-<%-- 	<script src="${url}/js/js-page/addProduct.js"></script> --%>
+	<%-- 	<script src="${url}/js/js-page/addProduct.js"></script> --%>
 </body>
 </html>
