@@ -311,11 +311,31 @@ public class DAO_Product_main extends ExecuteCRUD {
 		return total;
 	}
 
-	public static void main(String[] args) {
-		System.out.println(DAO_Product_main.getDao_Product_main().getTotalNumberAccount_stopSale());
-		System.out
-				.println("select SUM(ss.sl_daban) from SANPHAM sp join SOLUONG_SP ss on ss.MASP=sp.MASP".toUpperCase());
-		System.out.println(DAO_Product_main.getDao_Product_main().getAllProduct(5, 10).get(0).getQuantity());
-
+	public String getColorName(String ColorId) {
+		String query = "select TENMAU from MAUSAC where MAMAU = ? ";
+		String color = null;
+		try (ResultSet rs = super.ExecuteQuery(query, ColorId)) {
+			if (rs.next()) {
+				color = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return color;
 	}
+
+	public String getURLthumbnail(String productId) {
+		String query = "select ANH from HINHANH where MaSP = ? and LOAIANH = 'nen'  ";
+		String url = null;
+		try (ResultSet rs = super.ExecuteQuery(query, productId)) {
+			if (rs.next()) {
+				url = rs.getString(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return url;
+	}
+
 }

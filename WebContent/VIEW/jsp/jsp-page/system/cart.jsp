@@ -70,39 +70,42 @@ request.setAttribute("color", dao.colorWeb());
 
 
 				<c:choose>
-					<c:when test="${ SHOW_LIST_CART >0 }">
+					<c:when test="${ QUANTITY_INSTANCE_PRODUCT >0 }">
 
 
 						<div class="col-8">
 							<div class="frame-cart">
 								<ul>
-									<c:forEach items="${map}" var="pro">
-										<li class="cart-content"><img src="${pro.key.img}">
-
+									<c:forEach items="${LIST_INSTANCE_PRODUCT}" var="pro">
+										<li class="cart-content"><a
+											href="${pageContext.request.contextPath}/chi-tiet?dien-thoai=${pro.URL}">
+												<img src="${pro.img}">
+										</a>
 
 											<div class="content-product">
 												<div class="alpha">
 													<div class="mb-4">
-														<a href="../Product_page/chiTietSanPham.html">${pro.key.name }</a>
+														<a
+															href="${pageContext.request.contextPath}/chi-tiet?dien-thoai=${pro.URL}">${pro.name }</a>
 													</div>
 													<p>
-														Màu sắc: <span>${pro.key.color }</span>
+														Màu sắc: <span>${pro.color}</span>
 													</p>
 													<p>
-														Thương hiệu: <span><a href="#">${pro.key.nameBranch }</a></span>
+														Thương hiệu: <span><a href="">${pro.nameBranch }</a></span>
 													</p>
 												</div>
 												<div class="beta">
 													<div class="price">
 														<p>
 															<fmt:formatNumber type="number" maxFractionDigits="3"
-																value="${pro.key.price }" />
+																value="${pro.price }" />
 															<span class="unit">đ </span>
 														</p>
-														<c:if test="${pro.key.priceSales!=0}">
+														<c:if test="${pro.priceSales!=0}">
 															<p class="discount-price">
 																<fmt:formatNumber type="number" maxFractionDigits="3"
-																	value="${pro.key.priceSales }" />
+																	value="${pro.priceSales }" />
 																<span class="unit">đ </span>
 															</p>
 														</c:if>
@@ -113,22 +116,21 @@ request.setAttribute("color", dao.colorWeb());
 																method="post">
 																<input name="choose" value="decrease" hidden="true">
 																<input name="page" value="cart-page" hidden="true">
-																<input name="colorID" value="${pro.key.colorID}"
+																<input name="colorID" value="${pro.colorID}"
 																	hidden="true">
-																<button name="id" value="${pro.key.id}"
-																	class="btn minus">
+																<button name="id" value="${pro.id}" class="btn minus">
 																	<i class="fas fa-minus"></i>
 																</button>
 															</form>
-															<input type="number" min="1" value="${pro.value }"
-																max="5">
+															<input type="number" min="1"
+																value="${pro.quantityInCart}" max="5">
 															<form action="${pageContext.request.contextPath}/cart"
 																method="post">
 																<input name="choose" value="add" hidden="true">
 																<input name="page" value="cart-page" hidden="true">
-																<input name="colorID" value="${pro.key.colorID}"
+																<input name="colorID" value="${pro.colorID}"
 																	hidden="true">
-																<button name="id" value="${pro.key.id}" class="btn plus">
+																<button name="id" value="${pro.id}" class="btn plus">
 																	<i class="fas fa-plus"></i>
 																</button>
 															</form>
@@ -136,8 +138,8 @@ request.setAttribute("color", dao.colorWeb());
 														<div class="delete-content">
 															<form method="POST"
 																action="${pageContext.request.contextPath}/cart">
-																<input name="id" value="${pro.key.id}" hidden="true">
-																<input name="colorID" value="${pro.key.colorID}"
+																<input name="id" value="${pro.id}" hidden="true">
+																<input name="colorID" value="${pro.colorID}"
 																	hidden="true"> <input name="page"
 																	value="cart-page" hidden="true">
 																<button name="choose" value="remove"
@@ -154,7 +156,7 @@ request.setAttribute("color", dao.colorWeb());
 
 								</ul>
 								<!-- 								### NÚT XÓA TẤT CẢ GIỎ HÀNG ### -->
-								<c:if test="${quantity > 1}">
+								<c:if test="${QUANTITY_INSTANCE_PRODUCT > 1}">
 
 
 									<!-- Button trigger modal -->
@@ -204,13 +206,13 @@ request.setAttribute("color", dao.colorWeb());
 							<h5 class="mb-3 text-left ml-5">Tạm tính</h5>
 							<div class="receipt">
 								<ul>
-									<c:forEach items="${lst}" var="pro">
+									<c:forEach items="${LIST_INSTANCE_PRODUCT}" var="pro">
 										<li class="price-product">
-											<h5>${pro.key.name}<span>x</span> ${pro.value}
+											<h5>${pro.name} (${pro.color})  <span> x</span> <strong>${pro.quantityInCart}</strong>
 											</h5>
 											<p>
 												<fmt:formatNumber type="number" maxFractionDigits="3"
-													value="${pro.key.price * pro.value }" />
+													value="${pro.price * pro.quantityInCart }" />
 												<span class="unit"> đ</span>
 											</p>
 
@@ -226,7 +228,7 @@ request.setAttribute("color", dao.colorWeb());
 									<div class="price-sum">
 										<p class="price">
 											<fmt:formatNumber type="number" maxFractionDigits="3"
-												value="${sum}" />
+												value="${TOTAL_MONEY}" />
 											<span class="unit"> đ</span>
 										</p>
 										<p>(Đã bao gồm VAT nếu có)</p>

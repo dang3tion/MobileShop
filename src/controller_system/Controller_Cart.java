@@ -2,6 +2,7 @@ package controller_system;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -13,8 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model_BO_service.BO_Product;
+import model_DAO.DAO_Product_main;
 import model_beans.Cart;
 import model_beans.Product_form;
+import model_beans.Product_main;
 import model_utility.Config;
 
 @WebServlet(urlPatterns = "/cart")
@@ -25,26 +28,28 @@ public class Controller_Cart extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-
 		Cart cart = (Cart) session.getAttribute("CART");
-		// display Cart
-		int sum = 0;
-		int quantity = cart.getQuantityOfProductInCart();
-		Map<Product_form, Integer> lst = cart.getName_Quantity();
-		Map<Product_form, Integer> map = null;
-		map = cart.getList();
-		sum = cart.getReceiptSum();
-
-		// TODO Auto-generated catch block
-		request.setAttribute("lst", lst);
-		request.setAttribute("sum", sum);
-		request.setAttribute("quantity", quantity);
 		request.setAttribute("message", request.getAttribute("message"));
-		request.setAttribute("map", map);
-		request.setAttribute("SHOW_LIST_CART", map.size());
+		request.setAttribute("LIST_INSTANCE_PRODUCT", getListInstanceProductInCart(cart));
+		request.setAttribute("QUANTITY_INSTANCE_PRODUCT", quantityCart(cart));
+		request.setAttribute("TOTAL_MONEY", getTotalMoney(cart));
 		dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
 		dispatcher.forward(request, response);
 		return;
+//		// display Cart
+//		int sum = 0;
+//		int quantity = cart.getQuantityOfProductInCart();
+//		Map<Product_form, Integer> lst = cart.getName_Quantity();
+//		Map<Product_form, Integer> map = null;
+//		map = cart.getList();
+//		sum = cart.getReceiptSum();
+//
+//		// TODO Auto-generated catch block
+//		request.setAttribute("lst", lst);
+//		request.setAttribute("sum", sum);
+//		request.setAttribute("quantity", quantity);
+//		request.setAttribute("map", map);
+//		request.setAttribute("SHOW_LIST_CART", map.size());
 
 	}
 
@@ -138,6 +143,49 @@ public class Controller_Cart extends HttpServlet {
 //		session.setAttribute("CART_QUANTITY", cart.getQuantityOfProductInCart());
 //		session.setAttribute("PRODUCT_QUANTITY", cart.getListProduct().size());
 
+	}
+
+	private int quantityCart(Cart cart) {
+		int quantity = 0;
+		for (String ID : cart.getListProductID()) {
+			quantity += cart.getListProduct().get(ID).size();
+		}
+		return quantity;
+	}
+
+	private int getTotalMoney(Cart cart) {
+		DAO_Product_main dao = DAO_Product_main.getDao_Product_main();
+		int total = 0;
+		for (String ID : cart.getListProductID()) {
+			total += cart.getListProductID().size() * dao.getProduct_main(ID).getPrices().getPrice();
+		}
+		return total;
+	}
+
+	private ArrayList<Product_form> getListInstanceProductInCart(Cart cart) {
+		ArrayList<Product_form> listProduct = new ArrayList<Product_form>();
+		DAO_Product_main dao = DAO_Product_main.getDao_Product_main();
+		for (String ID : cart.getListProductID()) {
+			for (String colorID : cart.getListProduct().get(ID).keySet()) {
+				Product_main product = dao.getProduct_main(ID);
+				String color = dao.getColorName(colorID);
+				Product_form product_form = new Product_form();
+
+				product_form.setURL(dao.convertBetweenURLandID(ID));
+				product_form.setId(product.getID());
+				product_form.setName(product.getName());
+				product_form.setNameBranch(product.getBranch().getName());
+				product_form.setPrice(product.getPrices().getPrice());
+				product_form.setPriceSales(product.getPrices().getPriceSales());
+				product_form.setImg(dao.getURLthumbnail(ID));
+				product_form.setColorID(colorID);
+				product_form.setColor(color);
+				product_form.setQuantityInCart(cart.getListProduct().get(ID).get(colorID));
+
+				listProduct.add(product_form);
+			}
+		}
+		return listProduct;
 	}
 
 	// kiểm tra đã đăng nhập hay chưa

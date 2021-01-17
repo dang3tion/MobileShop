@@ -12,6 +12,16 @@ public class Product_form {
 	private String color;
 	private String colorID;
 	private String nameBranch;
+	// KHÔNG ĐƯỢC XÓA THUỘC TÍNH NÀY
+	private int quantityInCart;
+
+	public int getQuantityInCart() {
+		return quantityInCart;
+	}
+
+	public void setQuantityInCart(int quantityInCart) {
+		this.quantityInCart = quantityInCart;
+	}
 
 	public Product_form(String id, String name, String img, int price, int priceSales, double avgEvaluate, String color,
 			String colorID, String nameBranch) {
@@ -139,6 +149,6 @@ public class Product_form {
 	public String toString() {
 		return "Product_form [URL=" + URL + ", id=" + id + ", name=" + name + ", img=" + img + ", price=" + price
 				+ ", priceSales=" + priceSales + ", avgEvaluate=" + avgEvaluate + ", color=" + color + ", colorID="
-				+ colorID + ", nameBranch=" + nameBranch + "]\n";
+				+ colorID + ", nameBranch=" + nameBranch + "quantity cart" + quantityInCart+ " ]\n";
 	}
 }
