@@ -288,7 +288,7 @@ public class DAO_Product_main extends ExecuteCRUD {
 
 	public List<Product_main> getAllProduct(int start, int end) {
 		ArrayList<Product_main> arr = new ArrayList<Product_main>();
-		String query = "SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY masp DESC) AS STT ,* FROM  SANPHAM) AS X  WHERE STT BETWEEN ? AND ? ";
+		String query = "SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY masp ASC) AS STT ,* FROM  SANPHAM) AS X  WHERE STT BETWEEN ? AND ? ";
 		try (ResultSet rs = super.ExecuteQuery(query, start, end)) {
 			while (rs.next()) {
 				Product_main p = getProduct_main(rs.getString("MASP"));
