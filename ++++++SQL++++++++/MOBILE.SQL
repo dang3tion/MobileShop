@@ -410,7 +410,7 @@ INSERT INTO LOP_THUOCTINH VALUES('TTK',N'Thông tin khác',0)
 select COUNT(*) from THUOCTINH
 delete LOP_THUOCTINH where MALOP='cmh'
 --THUOC TINH
-
+delete THUOCTINH where MATT='tt41'
 INSERT INTO THUOCTINH VALUES('TT01','VB',N'Công nghệ màn hình','MH')
 INSERT INTO THUOCTINH VALUES('TT02','VB',N'Độ phân giải','MH')
 INSERT INTO THUOCTINH VALUES('TT03','SO',N'Màn hình rộng','MH')

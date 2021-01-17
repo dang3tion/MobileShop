@@ -90,11 +90,39 @@ public class DAO_Attribute extends ExecuteCRUD {
 	}
 
 	public boolean addAttributeClass(String name) {
-		String query = "INSERT INTO LOP_THUOCTINH VALUES(?,?,?)";
+		if (!checkNameClass(name)) {
+			String query = "INSERT INTO LOP_THUOCTINH VALUES(?,?,?)";
+			String id = cutString(name);
+			int value = 0;
+
+			try (ResultSet rs = super.ExecuteQuery(query, id, name, value)) {
+				return true;
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		return false;
+	}
+
+	public boolean checkNameClass(String name) {
+		String query = "SELECT * FROM LOP_THUOCTINH WHERE NOIDUNG=? OR MALOP=?";
 		String id = cutString(name);
-		int value = 0;
-		try (ResultSet rs = super.ExecuteQuery(query, id, name, value)) {
-			return true;
+		try (ResultSet rs = super.ExecuteQuery(query, name.trim(), id)) {
+			if (rs.next()) {
+				return true;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
+	}
+
+	public boolean checkAttributeName(String name) {
+		String query = "SELECT * FROM THUOCTINH WHERE NOIDUNG=?";
+		try (ResultSet rs = super.ExecuteQuery(query, name)) {
+			if (rs.next()) {
+				return true;
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -115,18 +143,21 @@ public class DAO_Attribute extends ExecuteCRUD {
 	}
 
 	public boolean addAttributesManager(String name, String type, String nameClass) {
-		String id = "TT" + (getTotalAttributesManager() + 1);
-		String idClass = getAttributeClassFromname(nameClass).getId();
-		if (type.equalsIgnoreCase("văn bản")) {
-			type = "VB";
-		} else {
-			type = "SO";
-		}
-		String query = "INSERT INTO THUOCTINH VALUES(?,?,?,?)";
-		try (ResultSet rs = super.ExecuteQuery(query, id, type, name, idClass)) {
-			return true;
-		} catch (Exception e) {
-			// TODO: handle exception
+		if (!checkAttributeName(name.trim())) {
+
+			String id = "TT" + (getTotalAttributesManager() + 1);
+			String idClass = getAttributeClassFromname(nameClass).getId();
+			if (type.equalsIgnoreCase("văn bản")) {
+				type = "VB";
+			} else {
+				type = "SO";
+			}
+			String query = "INSERT INTO THUOCTINH VALUES(?,?,?,?)";
+			try (ResultSet rs = super.ExecuteQuery(query, id, type, name, idClass)) {
+				return true;
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 		}
 		return false;
 	}
@@ -140,8 +171,16 @@ public class DAO_Attribute extends ExecuteCRUD {
 		return result.toUpperCase();
 	}
 
+	public int numberOfPage(int line) {
+		int result = getTotalAttributesManager() / line;
+		if (getTotalAttributesManager() % line > 1) {
+			result += 1;
+		}
+
+		return result;
+	}
+
 	public static void main(String[] args) {
-		System.out
-				.println(DAO_Attribute.getInstance().addAttributesManager("Công nghệ đào sâu", "Văn bản", "Màn hình"));
+		System.out.println(DAO_Attribute.getInstance().checkNameClass("Pin & Sạc"));
 	}
 }

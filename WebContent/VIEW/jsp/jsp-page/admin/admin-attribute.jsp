@@ -38,6 +38,7 @@
 									<div class="card">
 										<div class="card-body">
 											<div class=" mb-2">
+
 												<h4 class="text-center mt-3 mb-3">Danh sách các thông
 													số kĩ thuật</h4>
 												<div class="row">
@@ -72,6 +73,9 @@
 													title="Thêm nhóm mới" class="btn btn-primary btn-add mt-2 ">
 													<i class="fas fa-plus-square mr-2"></i>Thêm nhóm mới
 												</button>
+												<div style="float: left; margin-top: 14px; color: #2196F3;">
+													<p>${reString }</p>
+												</div>
 												<table id="bootstrap-data-table" class="table table-hover">
 													<thead class="thead-light">
 														<tr>
@@ -86,24 +90,16 @@
 													</thead>
 
 													<tbody id="content-table">
-														<tr>
-
-															<td>1</td>
-															<td>Văn bản</td>
-															<td>Văn bản</td>
-															<td>Văn bản</td>
-
-
-														</tr>
 
 													</tbody>
 												</table>
 
-												<div class="page-navigation">
+												<div class="page-navigation" id="page-navigation"
+													value="${totalPage}">
 													<div class="beta">
-														<button onclick="previous_page()">Trước</button>
+														<button onclick="previousPage()">Trước</button>
 														<span id="page-number"> </span>
-														<button onclick="next_page()">Sau</button>
+														<button onclick="nextPage()">Sau</button>
 													</div>
 												</div>
 											</div>
@@ -118,79 +114,139 @@
 
 
 						<!-- Modal -->
-
-						<div class="modal fade" id="add-class" tabindex="-1"
-							aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog"
-								style="min-width: 700px; margin: auto; margin-top: 100px;">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel"></h5>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<h5>Nhập tên nhóm thuộc tính</h5>
-										<input type="text" class="title-attribute" autofocus
-											name="name">
-
-
-
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Đóng</button>
-										<button type="button" class="btn btn-primary"
-											data-target="#add" data-toggle="modal" data-toggle="tooltip"
-											data-placement="top">Lưu</button>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="modal fade" id="add-attribute" tabindex="-1"
-							aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog"
-								style="min-width: 700px; margin: auto; margin-top: 100px;">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel"></h5>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<h5>Nhập tên thông số</h5>
-										<input type="text" class="title-attribute" autofocus
-											name="name">
-										<h5>Chọn loại thông số</h5>
-
-										<select class="select-choose" name="type">
-											<option value="Khác">Văn bản</option>
-											<option value="Andriod">Số</option>
-										</select>
-
-										<h5>Nhóm thông số</h5>
-										<select class="select-choose" id="class-select" name="class">
-											<option value="Khác">Văn bản</option>
-											<option value="Andriod">Số</option>
-										</select>
+						<form action="${pageContext.request.contextPath}/admin/attribute"
+							method="post">
+							<div class="modal fade" id="add-class" tabindex="-1"
+								aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog"
+									style="min-width: 700px; margin: auto; margin-top: 100px;">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel"></h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<h5>Nhập tên nhóm thuộc tính</h5>
+											<input type="text" class="title-attribute" autofocus
+												name="class-attribute">
 
 
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Đóng</button>
-										<button type="button" class="btn btn-primary"
-											data-target="#add" data-toggle="modal" data-toggle="tooltip"
-											data-placement="top">Lưu</button>
+
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Đóng</button>
+											<button type="button" class="btn btn-primary"
+												data-target="#addclass" data-toggle="modal"
+												data-toggle="tooltip" data-placement="top">Lưu</button>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+							<div class="modal fade" id="addclass" tabindex="-1" role="dialog"
+								aria-labelledby="exampleModalLabel" aria-hidden="true"
+								style="background-color: #0000002e;">
+								<div class="modal-dialog" style="margin-top: 200px;"
+									role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">Xác nhận
+												tạo lớp thuộc tính mới</h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">Bạn có chắc muốn tạo nhóm mới?</div>
+										<div class="modal-footer">
+											<input type="submit" name="button-add-class"
+												class="btn btn-primary" value="Đồng ý">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Không</button>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</form>
+
+						<form action="${pageContext.request.contextPath}/admin/attribute"
+							method="post">
+							<div class="modal fade" id="add-attribute" tabindex="-1"
+								aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog"
+									style="min-width: 700px; margin: auto; margin-top: 100px;">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel"></h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<h5>Nhập tên thông số</h5>
+											<input type="text" class="title-attribute" autofocus
+												name="name-attribute">
+											<h5>Chọn loại thông số</h5>
+
+											<select class="select-choose" name="type">
+												<option value="VB">Văn bản</option>
+												<option value="SO">Số</option>
+											</select>
+
+											<h5>Nhóm thông số</h5>
+											<select class="select-choose" id="class-select"
+												name="class-attribute">
+												<c:forEach items="${listClass }" var="c">
+													<option value="${ c.name}">${ c.name}</option>
+												</c:forEach>
+											</select>
+
+
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Đóng</button>
+											<button type="button" class="btn btn-primary"
+												data-target="#add" data-toggle="modal" data-toggle="tooltip"
+												data-placement="top">Lưu</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="modal fade" id="add" tabindex="-1" role="dialog"
+								aria-labelledby="exampleModalLabel" aria-hidden="true"
+								style="background-color: #0000002e;">
+								<div class="modal-dialog" style="margin-top: 200px;"
+									role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">Xác nhận
+												thêm thuộc tính</h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">Bạn có chắc muốn thêm thông số
+											này không?</div>
+										<div class="modal-footer">
+											<input type="submit" name="add-attribute"
+											class="btn btn-primary" value="Đồng ý">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Không</button>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
 						<!--Modal edit-->
 
 						<!--/Modal edit-->
@@ -199,37 +255,33 @@
 					</div>
 					<!-- /#right-panel -->
 				</div>
-			</div>
-			<div class="modal fade" id="add" tabindex="-1" role="dialog"
-				aria-labelledby="exampleModalLabel" aria-hidden="true"
-				style="background-color: #0000002e;">
-				<div class="modal-dialog" style="margin-top: 200px;" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Xác nhận thêm
-								thuộc tính</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">Bạn có chắc muốn thêm thông số này
-							không?</div>
-						<div class="modal-footer">
-							<button type="button" data-dismiss="modal"
-								class="btn btn-primary">Đồng ý</button>
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Không</button>
 
-						</div>
-					</div>
-				</div>
+
 			</div>
+			<input id="curent-page" value="${current_page}" style="display: none"></input>
 		</div>
 </body>
 <script>
-	function addNewClass() {
+	function getCurrentPage() {
+		return document.getElementById("curent-page").value;
+	}
+	function SendDataToServlet(number) {
+		getNumberPageDefault(number);
+		$.ajax({
+			type : 'GET',
+			url : '${pageContext.request.contextPath}/AJAXAdminAttribute',
+			data : {
+
+				page : parseInt(number)
+
+			},
+			success : function(responseText) {
+				$('#content-table').html(responseText);
+			}
+
+		});
 
 	}
 </script>
+<script src="${url}/js/js-page/devide-page-admin.js"></script>
 </html>

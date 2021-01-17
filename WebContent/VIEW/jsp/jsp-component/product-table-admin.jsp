@@ -4,7 +4,7 @@
 	prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:forEach items="${listProduct}" var="pro" varStatus="i">
-	<tr>
+	<tr style="    font-size: 14px;">
 		<td>${i.index +STT}</td>
 		<td><img src="${pro.imgMain}"
 			style="width: 70px; height: 60px; object-fit: contain;"></img></td>

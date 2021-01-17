@@ -87,7 +87,7 @@
 													</button></a>
 												<table id="bootstrap-data-table" class="table table-hover ">
 													<thead class="thead-light">
-														<tr>
+														<tr style="    font-size: 14px;">
 															<th>STT</th>
 															<th>Ảnh</th>
 															<th data-toggle="tooltip" data-placement="top"
