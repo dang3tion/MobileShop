@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <head>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
 <c:url var="url" scope="session" value="/VIEW"></c:url>
@@ -52,19 +53,17 @@ request.setAttribute("color", dao.colorWeb());
 						</table>
 						<div style="margin-left: 110px; text-align: left">
 							<p style="font-size: 18px;">
-								<b>Chào Nguyễn Văn Dũng,</b>
+								<b>Chào ${name},</b>
 							</p>
 							<p style="font-size: 18px;">
-								<b>Số điện thoại : 0953636841</b>
+								<b>Số điện thoại : ${phoneNumber}</b>
 							</p>
-							<p style="font-size: 18px;">Đơn hàng của bạn đã được đặt hàng
-								thành công</p>
+							<p style="font-size: 18px;">Nhân viên Shop sẽ liên hệ với bạn sau 5 phút</p>
 							<p style="font-size: 18px;">
-								<b>Mã đơn hàng : 267676GHERT105467</b>
+								<b>Mã đơn hàng : ${CodeOrder}</b>
 							</p>
 							<p style="font-size: 18px;">
-								<b>Địa chỉ giao hàng : 124/97 Khu phố 6,Phường Linh
-									Trung,Quận Thủ Đức, Tp.HCM</b>
+								<b>Địa chỉ giao hàng :${address}</b>
 							</p>
 						</div>
 						<table class="order-detail" border="0" cellpadding="0"
@@ -78,30 +77,35 @@ request.setAttribute("color", dao.colorWeb());
 							</tr>
 
 
+							<c:forEach var="pro" items="${LIST_INSTANCE_PRODUCT}">
+							
 							<tr>
 								<td><img
-									src="https://images.all-free-download.com/images/templates_medium/fotolandia_79.jpg"
+									src="${pro.img}"
 									alt="" width="80"></td>
 								<td valign="top" style="padding-left: 15px;">
 									<h5
-										style="font-size: 14px; color: #444; margin-top: 15px; margin-bottom: 0px;">IPHONE
-										8-phiên bản bộ nhớ 512GB</h5>
+										style="font-size: 14px; color: #444; margin-top: 15px; margin-bottom: 0px;">${pro.name}</h5>
 								</td>
 								<td valign="top" style="padding-left: 15px;">
 									<h5
 										style="font-size: 14px; color: #444; margin-top: 15px; margin-bottom: 0px;">
-										Màu : <span> Đen</span>
+										Màu : <span> ${pro.color}</span>
 									</h5>
 									<h5 style="font-size: 14px; color: #444; margin-top: 10px;">
-										Số lượng : <span>1</span>
+										Số lượng : <span>${pro.quantityInCart}</span>
 									</h5>
 								</td>
 								<td valign="top" style="padding-left: 15px;">
 									<h5 style="font-size: 14px; color: #444; margin-top: 15px">
-										<b>9.000.000 VNĐ</b>
+										<b><strong class="price"><fmt:formatNumber
+											type="number" maxFractionDigits="3" value="${pro.price * pro.quantityInCart }" />
+										<span class='unit'>đ</span></strong> VNĐ</b>
 									</h5>
 								</td>
 							</tr>
+							
+							</c:forEach>
 
 
 
@@ -109,14 +113,16 @@ request.setAttribute("color", dao.colorWeb());
 								<td colspan="2" align="left">
 									<p>Tổng:</p>
 								</td>
-								<td colspan="2" align="right"><b>50.000.000<span>
+								<td colspan="2" align="right"><b><strong class="price"><fmt:formatNumber
+											type="number" maxFractionDigits="3" value="${TOTAL_MONEY }" />
+										<span class='unit'>đ</span></strong><span>
 											VNĐ</span></b></td>
 							<tr class="pad-left-right-space">
 								<td colspan="2" align="left">
 									<p>Phí giao hàng :</p>
 								</td>
-								<td colspan="2" align="right"><b>500.000<span>
-											VNĐ</span></b></td>
+								<td colspan="2" align="right"><b>MIỄN PHÍ<span>
+											</span></b></td>
 							</tr>
 
 							<tr class="pad-left-right-space ">

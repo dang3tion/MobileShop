@@ -54,7 +54,7 @@ request.setAttribute("color", dao.colorWeb());
 
 					<div class="row mt-5">
 
-						<div style="font-size: 1em" class="col-md-4 order-md-2 mb-4">
+						<div style="font-size: 1.1em" class="col-md-4 order-md-2 mb-4">
 							<h4
 								class="d-flex justify-content-between align-items-center mb-3">
 								<span class="text-muted">Sản phẩm của bạn</span> <span
@@ -65,7 +65,7 @@ request.setAttribute("color", dao.colorWeb());
 									<li
 										class="list-group-item d-flex justify-content-between lh-condensed">
 										<div>
-											<h6 style="font-size: 0.9em" class="my-0">${pro.name} (${pro.color})
+											<h6 style="font-size: 0.8em" class="my-0">${pro.name} (${pro.color})
 												<span style="color: blue;"> x ${pro.quantityInCart} </span>
 											</h6>
 										</div> <span style="color: #C41111; font-weight: bolder;"
@@ -90,7 +90,7 @@ request.setAttribute("color", dao.colorWeb());
 
 								<button onclick="checkClick()" class="btn btn-primary"
 									style="padding: 7px 130px; text-align: center; margin: auto;"
-									type="submit">Thanh Toán</button>
+									type="submit">XÁC NHẬN</button>
 
 
 							</div>

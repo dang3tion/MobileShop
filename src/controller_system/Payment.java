@@ -63,12 +63,13 @@ public class Payment extends HttpServlet {
 		request.setAttribute("TOTAL_MONEY", Controller_Cart.getTotalMoney(cart));
 		request.setAttribute("CODE_ODER", codeOder);
 		request.setAttribute("message", "Chưa nhập hoặc sai mã captcha !");
-		request.setAttribute("CUSTOMER_LOGINED.address", address);
-		request.setAttribute("CUSTOMER_LOGINED.name", name);
-		request.setAttribute("CUSTOMER_LOGINED.phoneNumber", phoneNumber);
+		request.setAttribute("address", address);
+		request.setAttribute("name", name);
+		request.setAttribute("phoneNumber", phoneNumber);
 		if (paymentMethod.equals("COD")) {
 			request.setAttribute("CHECKED_COD", "checked");
 		}
+		request.setAttribute("CodeOrder", codeOder);
 
 		if (session.getAttribute(Const.CUSTOMER_LOGINED) == null) {
 			// Verify CAPTCHA.

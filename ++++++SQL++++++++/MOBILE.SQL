@@ -239,8 +239,8 @@
 	CREATE TABLE CTDH(
 	MADH CHAR(20) NOT NULL,
 	MASP CHAR(10) NOT NULL ,
-	SOLUONG INT NOT NULL,
-	TENSP NVARCHAR(100) NOT NULL
+	MAMAU CHAR(10) NOT NULL,
+	SOLUONG INT NOT NULL
 	)
 	ALTER TABLE CTDH ADD CONSTRAINT PK_CTDH_MADH_MASP PRIMARY KEY (MADH,MASP)
 	CREATE TABLE PHANHOI(
@@ -1266,7 +1266,7 @@ INSERT INTO HINHANH VALUES('SP08','MS01','//cdn.tgdd.vn/Products/Images/42/19815
 INSERT INTO HINHANH VALUES('SP08','MS01','//cdn.tgdd.vn/Products/Images/42/198150/oppo-find-x2-xanh-duong-13-org.jpg','PHU')
 
 INSERT INTO SOLUONG_SP VALUES('SP08','MS01',10,0)
-INSERT INTO HINHANH VALUES('SP08','MS03','https://cdn.tgdd.vn/Products/Images/42/198150/oppo-find-x2-den-1-org.jpg','NEN')
+INSERT INTO HINHANH VALUES('SP08','MS03','https://cdn.tgdd.vn/Products/Images/42/198150/oppo-find-x2-black-600x600-2-600x600.jpg','NEN')
 INSERT INTO HINHANH VALUES('SP08','MS03','//cdn.tgdd.vn/Products/Images/42/198150/oppo-find-x2-den-6-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP08','MS03','//cdn.tgdd.vn/Products/Images/42/198150/oppo-find-x2-den-13-org.jpg','PHU')
 INSERT INTO HINHANH VALUES('SP08','MS03','//cdn.tgdd.vn/Products/Images/42/198150/oppo-find-x2-den-2-org.jpg','PHU')
