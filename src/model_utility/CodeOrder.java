@@ -8,7 +8,7 @@ public class CodeOrder {
 	}
 
 	public CodeOrder() {
-		this.codeOder = "#" + randomCode();
+		this.codeOder = ""+ randomCode();
 	}
 
 	private int randomCode() {

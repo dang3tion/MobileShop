@@ -149,13 +149,5 @@ public class ListProduct {
 		}
 	}
 
-	public static void main(String[] args) throws SQLException {
-		ListProduct list = DAO_ListProduct.getDao_ListProduct().getListProMenu(LISTP.HIGHESTPRICE, 100);
-//		System.out.println(list.getLstProduct());
-		list.addOrderLIst(SELECT.PRICE, ORDER.ASC);
-		list.addOrderLIst(SELECT.VIEW, ORDER.DESC);
-
-		list.addOrderLIst(SELECT.PRICE, ORDER.DESC);
-		list.removerOrder(SELECT.PRICE);
-	}
+	
 }

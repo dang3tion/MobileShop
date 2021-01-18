@@ -324,10 +324,10 @@ public class DAO_Product_main extends ExecuteCRUD {
 		return color;
 	}
 
-	public String getURLthumbnail(String productId) {
-		String query = "select ANH from HINHANH where MaSP = ? and LOAIANH = 'nen'  ";
+	public String getURLthumbnail(String productId, String colorID) {
+		String query = "select ANH from HINHANH where MaSP = ? and MAMAU = ? and LOAIANH = 'nen'  ";
 		String url = null;
-		try (ResultSet rs = super.ExecuteQuery(query, productId)) {
+		try (ResultSet rs = super.ExecuteQuery(query, productId, colorID)) {
 			if (rs.next()) {
 				url = rs.getString(1);
 			}
@@ -336,6 +336,20 @@ public class DAO_Product_main extends ExecuteCRUD {
 			e.printStackTrace();
 		}
 		return url;
+	}
+
+	public String getProductNameFormID(String productId) {
+		String query = "select TENSP from Sanpham where MaSP = ? ";
+		String name = null;
+		try (ResultSet rs = super.ExecuteQuery(query, productId)) {
+			if (rs.next()) {
+				name = rs.getString(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return name;
 	}
 
 }

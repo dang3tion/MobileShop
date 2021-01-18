@@ -156,7 +156,7 @@ request.setAttribute("color", dao.colorWeb());
 
 								</ul>
 								<!-- 								### NÚT XÓA TẤT CẢ GIỎ HÀNG ### -->
-								<c:if test="${QUANTITY_INSTANCE_PRODUCT > 1}">
+								<c:if test="${QUANTITY_MODEL > 1}">
 
 
 									<!-- Button trigger modal -->

@@ -163,12 +163,5 @@ public class Product_main {
 				+ attributes + ", colors=" + colors + "]/n";
 	}
 
-	public static void main(String[] args) {
-		Map<Enum, String> map = new HashMap<Enum, String>();
-		map.put(DAO_ListProduct.SELECT.PRICE, "");
-		map.put(DAO_ListProduct.SELECT.EVALUATE, "");
-		for (Enum a : map.keySet()) {
-			System.out.println("key: " + a + " value: " + map.get(a));
-		}
-	}
+
 }

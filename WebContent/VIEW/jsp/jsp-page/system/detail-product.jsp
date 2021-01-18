@@ -156,7 +156,6 @@ request.setAttribute("color", dao.colorWeb());
 				<!-- 				</div> -->
 				<script>
 					var index = 0;
-
 					var width = document.getElementsByClassName("frame-img")[index]
 							.getElementsByClassName('img-container')[0].offsetWidth - 480;
 					var length = document.getElementsByClassName("frame-img")[index]
@@ -165,7 +164,6 @@ request.setAttribute("color", dao.colorWeb());
 					var loc = 0;
 					function translate_container(deg) {
 						loc = deg;
-
 						if (deg == 0) {
 							document.getElementsByClassName("frame-img")[index]
 									.getElementsByClassName('img-slide')[0].style.borderLeft = "2px solid #9e9e9e";
@@ -190,7 +188,6 @@ request.setAttribute("color", dao.colorWeb());
 							document.getElementsByClassName("frame-img")[index]
 									.getElementsByClassName('btn-previouse')[0].style.display = "block";
 						}
-
 						document.getElementsByClassName("frame-img")[index]
 								.getElementsByClassName('img-container')[0].style.transform = "translateX("
 								+ deg + "px)";
@@ -210,15 +207,12 @@ request.setAttribute("color", dao.colorWeb());
 							} else {
 								img[i].getElementsByClassName('cardi')[0]
 										.getElementsByTagName('img')[0].className = "";
-
 							}
 						}
 					}
-
 					translate_container(0);
 					function nextSlide() {
 						translate_container(loc + step);
-
 					}
 					function previouseSlide() {
 						translate_container(loc - step);
@@ -232,7 +226,6 @@ request.setAttribute("color", dao.colorWeb());
 									'onclick', "setImg(" + (i + 1) + ")");
 						}
 					}
-
 					setClick();
 					translate_container(0);
 					function setIndex(n) {
@@ -350,7 +343,6 @@ request.setAttribute("color", dao.colorWeb());
 								colors[i].style.display = "none";
 							}
 						}
-
 					}
 					chooseColor();
 				</script>
@@ -371,8 +363,7 @@ request.setAttribute("color", dao.colorWeb());
 					<script>
 						function addCart() {
 							var btn = document
-									.get
-						ElementsByClassName("choose-color");
+									.getElementsByClassName("choose-color");
 							var length = btn.length;
 							for (var i = 0; i < length; i++) {
 								var check = btn[i].checked;
@@ -389,13 +380,30 @@ request.setAttribute("color", dao.colorWeb());
 							method="post">
 							<input name="choose" value="add" hidden="true"> <input
 								name="datHang" value="true" hidden="true"> <input
-								name="colorID" value="MS01" hidden="true">
-							<button name="id" value="SP01" type="submit"
+								name="colorID" id="color-input-mua" value="MS01" hidden="true">
+							<button name="id" onclick="addCartMua()" value="${product.ID }" type="submit"
 								class="btnMua btn btn-danger btn-lg btn-block">
 								<strong>ĐẶT HÀNG</strong>
 							</button>
 						</form>
 					</div>
+					
+					
+					<script>
+						function addCartMua() {
+							var btn = document
+									.getElementsByClassName("choose-color");
+							var length = btn.length;
+							for (var i = 0; i < length; i++) {
+								var check = btn[i].checked;
+								if (check == true) {
+									document.getElementById('color-input-mua').value = btn[i].id;
+								}
+							}
+						}
+						addCartMua();
+					</script>
+					
 				</div>
 			</div>
 
@@ -586,7 +594,6 @@ request.setAttribute("color", dao.colorWeb());
 				</div>
 				<div class="col-4">
 					<div class="btn-evaluate">
-
 						<c:if test="${CUSTOMER_LOGINED != null}">
 							<button onclick="clickSend()" id="showup-btn">Gửi đánh
 								giá của bạn</button>
@@ -597,7 +604,6 @@ request.setAttribute("color", dao.colorWeb());
 					<div class="col-12" style="margin: 20px 30px;">
 						<div class="evaluate">
 							<span>Chọn đánh giá của bạn</span>
-
 							<ul class="evaluating-star" id="star-evaluate">
 								<li><i onmouseover="hoverStar(0)" onmouseout="checkValue()"
 									onclick="getValue(1)" class="fas fa-star"></i></li>
@@ -621,16 +627,13 @@ request.setAttribute("color", dao.colorWeb());
 						style="margin-left: 30px; display: flex;">
 						<div class="input-evaluate">
 							<textarea placeholder="Mời bạn nhập nội dung đánh giá"></textarea>
-
 						</div>
-
 						<div class="btn-send">
 							<button>Gửi đánh giá</button>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 		<div class="content-evaluate-frame">
 			<div class="header">Đánh giá của khách hàng</div>
@@ -664,9 +667,7 @@ request.setAttribute("color", dao.colorWeb());
 						</div>
 					</div>
 				</div>
-
 				<div class="content">
-
 					<p>Máy tốt nhưng mới mua gặp hiện tượng kết nối wifi không đc
 						hay do lỗi của ổ wifi</p>
 				</div>
@@ -700,9 +701,7 @@ request.setAttribute("color", dao.colorWeb());
 						</div>
 					</div>
 				</div>
-
 				<div class="content">
-
 					<p>Máy tốt nhưng mới mua gặp hiện tượng kết nối wifi không đc
 						hay do lỗi của ổ wifi</p>
 				</div>
@@ -723,9 +722,7 @@ request.setAttribute("color", dao.colorWeb());
 						<div class="col-12" id="send-cmt" style="">
 							<div class="input-evaluate">
 								<textarea placeholder="Nội dung bình luận"></textarea>
-
 							</div>
-
 							<div class="btn-cmt">
 								<button>Gửi bình luận</button>
 							</div>
@@ -841,7 +838,6 @@ request.setAttribute("color", dao.colorWeb());
 			</div>
 		</div>
 	</div>
-
 	<!-- Page Footer -->
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 </body>
@@ -913,5 +909,4 @@ request.setAttribute("color", dao.colorWeb());
 <script src="${url }/js/js-page/slide-product.js"></script>
 <script src="${url }/js/js-page/comment.js" charset="utf-8"></script>
 <script src="${url }/js/js-static/cart.js"></script>
-
 </html>

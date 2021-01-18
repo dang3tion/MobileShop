@@ -35,6 +35,7 @@ public class ShopInfo extends HttpServlet {
 		
 		model_beans.ShopInfo newInfo = new model_beans.ShopInfo(name, policy, facebookURL , youtubeURL , realAddress );
 
+	
 		DAO_ShopInfo.getDaoShopInfo().setInfo(newInfo);
 
 		HttpSession session = request.getSession();
