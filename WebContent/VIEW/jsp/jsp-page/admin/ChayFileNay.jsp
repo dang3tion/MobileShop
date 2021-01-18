@@ -13,31 +13,18 @@
 
 </head>
 <body>
+
+<div>
+
 	<div ng-controller="driveController">
-		<h2>Cấp quyền tài khoản</h2>
-		Trạng thái đăng nhập :{{loggedIn}}
-		<button ng-disabled="checkingLogin || loggedIn" ng-click="login()">Cấp
-			quyền drive</button>
+		<button ng-disabled="uploading" ng-click="clickFileUpload()">upload</button>
+		<input type="file" id="uploadImage" accept="image/*"
+			onchange="angular.element(this).scope().upload()"
+			style="display: none;">
 
-		<div ng-show="loggedIn">
-			<button ng-disabled="uploading" ng-click="clickFileUpload()">Bếm
-				vào đây để tải ảnh từ máy tính lên google drive</button>
-			<input type="file" id="uploadImage" accept="image/*"
-				onchange="angular.element(this).scope().upload()"
-				style="display: none;">
-			<div ng-show="uploading">Đang tải ảnh lên...</div>
-
-			<h3>Ảnh kết quả:</h3>
-			<div ng-show="!images.length">Chưa có ảnh nào được up lên</div>
-			<div ng-repeat="image in images"
-				style="max-width: 300px; max-height: 300px;">
-				<img src="{{image}}" style="max-width: 100%; max-height: 100%;">
-
-				<h1> link ảnh : {{image}}</h1>
-
-			</div>
-		</div>
+		<h1>{{image}}</h1>
 	</div>
+
 	<script>
 		window.gapiCallbacks = [];
 
@@ -71,5 +58,7 @@
 	<script src="${urlDrive}/drive-controller.js"></script>
 	<script src="${urlDrive}/gapi-auth-service.js"></script>
 	<script src="${urlDrive}/drive-service.js"></script>
+	
+	</div>
 </body>
 </html>

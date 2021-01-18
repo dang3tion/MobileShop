@@ -345,49 +345,52 @@
 								số kỹ thuật</h5>
 
 						</div>
-						<div class="modal-body" style="padding-bottom: 0px">
-							<c:forEach items="${listAttribute }" var="att" varStatus="x">
-								<ul class="modal-attribute" id="${att.key.id }-${x.index }">
-									<div class="title-attribute">${att.key.name }</div>
-									<c:set var="arr" scope="page" value="${att.value }"></c:set>
-									<c:set var="ke" scope="page" value="${att.key }"></c:set>
-									<li class="item" id="${att.key.id }-item1">
-										<div class="title">
-											<select class=""
-												style="min-width: 240px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 3px;"
-												name="att-id">
-												<c:forEach items="${arr }" var="i">
-													<option value="${i.id }">${i.title }</option>
-												</c:forEach>
-											</select>
-										</div>
-										<div class="value">
+						<div class="modal-body" style="padding-bottom: 0px"
+							id="table-attribute">
 
-											<div class="input">
-												<input
-													style="border: 1px solid #b7b7b7; outline: 0; padding: 2px 5px; border-radius: 3px; min-width: 300px;"
-													name="att-value" type="text" value="">
+							<c:forEach items="${arrMap }" var="att" varStatus="x">
+								<ul class="modal-attribute" id="${att.key.id }">
+
+									<div class="title-attribute">${att.key.name }</div>
+									<c:forEach items="${att.value }" var="attri" varStatus="lo">
+										<li class="item" id="${att.key.id }-item${lo.index+1 }">
+											<div class="title">
+												<select class=""
+													style="min-width: 240px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 3px;"
+													name="att-id">
+													<c:forEach items="${attri }" var="i">
+														<option value="${i.id }">${i.title }</option>
+													</c:forEach>
+												</select>
+											</div>
+											<div class="value">
+
+												<div class="input">
+													<input
+														style="border: 1px solid #b7b7b7; outline: 0; padding: 2px 5px; border-radius: 3px; min-width: 300px;"
+														name="att-value" type="text" value="">
+												</div>
+
+											</div>
+											<div class="button">
+
+												<button class="btn btn-warning mb-2"
+													onclick="deleteAttribute('${att.key.id}-item${lo.index+1 }')">Xóa</button>
+
 											</div>
 
-										</div>
-										<div class="button">
-
-											<button class="btn btn-warning mb-2"
-												onclick="deleteAttribute('${ke.id}-item1')">Xóa</button>
-
-										</div>
-
-									</li>
-
+										</li>
+									</c:forEach>
 
 
 								</ul>
 								<div class="item">
 									<button class="btn btn-primary"
-										onclick="addAttribute('${att.key.id}-${x.index }')"
+										onclick="getListAttribute('${att.key.id}')"
 										style="outline: 0; border: 0; border-radius: 3px; margin: 10px 10px;">Thêm</button>
 								</div>
 							</c:forEach>
+
 						</div>
 
 					</div>
@@ -507,6 +510,28 @@
 			</div>
 		</div>
 	</div>
+
+
+
+	<script type="text/javascript">
+		function getListAttribute(ID) {
+
+			$.ajax({
+				type : 'POST',
+				url : '${pageContext.request.contextPath}/AJAXAdminAddProduct',
+				data : {
+
+					IDAttribute : ID
+
+				},
+				success : function(response) {
+					$('#'+ID).append(response);
+				}
+
+			});
+
+		}
+	</script>
 
 
 
