@@ -6,9 +6,20 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import model_ConnectDB.ExecuteCRUD;
-import model_beans.Account;
 
 public class DAO_AddProduct extends ExecuteCRUD {
+	private static DAO_AddProduct dao;
+
+	private DAO_AddProduct() {
+
+	}
+
+	public static DAO_AddProduct getInstance() {
+		if (dao == null) {
+			dao = new DAO_AddProduct();
+		}
+		return dao;
+	}
 
 	public String createIdColor() {
 		String color = "";
@@ -208,4 +219,7 @@ public class DAO_AddProduct extends ExecuteCRUD {
 
 	}
 
+	public static void main(String[] args) {
+		System.out.println(DAO_AddProduct.getInstance().createIdColor());
+	}
 }

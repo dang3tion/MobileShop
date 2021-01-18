@@ -2,7 +2,10 @@ package model_DAO;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import model_ConnectDB.ExecuteCRUD;
 import model_beans.AttributeClass;
@@ -22,12 +25,37 @@ public class DAO_Attribute extends ExecuteCRUD {
 		return dao;
 	}
 
+	public Map<AttributeClass, ArrayList<AttributeManager>> getAllAttributesClasses() {
+		Map<AttributeClass, ArrayList<AttributeManager>> map = new LinkedHashMap<AttributeClass, ArrayList<AttributeManager>>();
+		ArrayList<AttributeClass> arr = (ArrayList<AttributeClass>) getAllClassAttributes();
+		for (int i = 0; i < arr.size(); i++) {
+			ArrayList<AttributeManager> list = new ArrayList<AttributeManager>();
+			String query = "SELECT * FROM THUOCTINH WHERE MALOP=?";
+			String id = arr.get(i).getId();
+
+			try (ResultSet rs = super.ExecuteQuery(query, id)) {
+				while (rs.next()) {
+					AttributeManager att = new AttributeManager();
+					att.setId(rs.getString("MATT").trim());
+					att.setType(rs.getString("LOAI_GIATRI"));
+					att.setTitle(rs.getString("NOIDUNG"));
+					att.setClassAttribute(arr.get(i));
+					list.add(att);
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			map.put(arr.get(i), list);
+		}
+		return map;
+	}
+
 	public List<AttributeClass> getAllClassAttributes() {
 		ArrayList<AttributeClass> list = new ArrayList<AttributeClass>();
 		String query = "SELECT * FROM LOP_THUOCTINH";
 		try (ResultSet rs = super.ExecuteQuery(query)) {
 			while (rs.next()) {
-				list.add(new AttributeClass(rs.getString("MALOP"), rs.getString("NOIDUNG")));
+				list.add(new AttributeClass(rs.getString("MALOP").trim(), rs.getString("NOIDUNG")));
 			}
 			return list;
 		} catch (Exception e) {
@@ -181,6 +209,6 @@ public class DAO_Attribute extends ExecuteCRUD {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(DAO_Attribute.getInstance().checkNameClass("Pin & Sạc"));
+		System.out.println(DAO_Attribute.getInstance().getAllAttributesClasses());
 	}
 }
