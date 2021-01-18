@@ -135,7 +135,7 @@ request.setAttribute("color", dao.colorWeb());
 												<i class="far fa-id-card"></i>
 											</div>
 										</div>
-										<input value="${CUSTOMER_LOGINED.name}" id="inName" type="text" class="form-control"
+										<input value="${CUSTOMER_LOGINED.name}" id="inName" type="text" name="name" class="form-control"
 											placeholder="Nhập họ tên không dấu"
 											onfocusout="check_name(this.id)">
 									</div>
@@ -149,7 +149,7 @@ request.setAttribute("color", dao.colorWeb());
 												<i class="fas fa-phone-square-alt"></i>
 											</div>
 										</div>
-										<input value="${CUSTOMER_LOGINED.phoneNumber}" id="phone" type="text" class="form-control"
+										<input value="${CUSTOMER_LOGINED.phoneNumber}" id="phone" name="phoneNumber" type="text" class="form-control"
 											placeholder="Nhập số điện thoại" 
 											onfocusout="check_phone(this.id)">
 									</div>
@@ -182,7 +182,7 @@ request.setAttribute("color", dao.colorWeb());
 							<h6 class="mb-4">Chọn phương thức thanh toán:</h6>
 							<div class="d-block my-3">
 								<div class="custom-control custom-radio">
-									<input id="credit" name="paymentMethod" type="radio" 
+									<input id="credit" name="paymentMethod" value="Banking" type="radio" 
 										class="custom-control-input" onclick="hidenForm(this)" checked
 										required> <label class="custom-control-label"
 										for="credit">Chuyển khoản</label>

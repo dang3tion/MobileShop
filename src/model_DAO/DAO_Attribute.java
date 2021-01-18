@@ -180,7 +180,5 @@ public class DAO_Attribute extends ExecuteCRUD {
 		return result;
 	}
 
-	public static void main(String[] args) {
-		System.out.println(DAO_Attribute.getInstance().checkNameClass("Pin & Sạc"));
-	}
+
 }

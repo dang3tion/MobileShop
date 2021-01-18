@@ -9,14 +9,14 @@ public class Order {
 	private String timeCreate;
 	private String paymentMethods;
 	private String status;
-	private int customerID;
+	private String customerID;
 
 	public void Order() {
 
 	}
 	
 	public Order(String orderID, String name, String address, String phoneNumber, int totalMoney, String timeCreate,
-			String paymentMethods, String status, int customerID) {
+			String paymentMethods, String status, String customerID) {
 		this.orderID = orderID;
 		this.name = name;
 		this.address = address;
@@ -92,11 +92,11 @@ public class Order {
 		this.status = status;
 	}
 
-	public int getCustomerID() {
+	public String getCustomerID() {
 		return customerID;
 	}
 
-	public void setCustomerID(int customerID) {
+	public void setCustomerID(String customerID) {
 		this.customerID = customerID;
 	}
 

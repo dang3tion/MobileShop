@@ -23,17 +23,20 @@ public class DAO_Order extends ExecuteCRUD {
 	}
 
 	public boolean addNewOrder(Order newOrder) {
-		String query = "INSERT INTO DONHANG VALUES(?,?,?,?,?,?,?,?,?)";
+		String customerID = "null";
+		if (newOrder.getCustomerID()!=null) {
+			customerID = newOrder.getCustomerID();
+		}
+		String query = "INSERT INTO DONHANG VALUES(?,?,?,?,?,?,?,?,"+customerID+")";
 		try (ResultSet rs = super.ExecuteQuery(query, //
-				newOrder.getOrderID(), //
+				newOrder.getOrderID().trim(), //
 				newOrder.getName(), //
 				newOrder.getAddress(), //
 				newOrder.getPhoneNumber(), //
 				newOrder.getTotalMoney(), //
 				newOrder.getTimeCreate(), //
 				newOrder.getPaymentMethods(), //
-				newOrder.getStatus(), //
-				newOrder.getCustomerID()//
+				newOrder.getStatus() //
 		)) {
 
 		} catch (SQLException e) {
@@ -42,12 +45,11 @@ public class DAO_Order extends ExecuteCRUD {
 		}
 		return true;
 	}
-	
-	
-	public boolean addOrderDetail(String orderID, String productID, String quantity) {
+
+	public boolean addOrderDetail(String orderID, String productID, int quantity) {
+		
 		String query = "INSERT INTO CTDH VALUES(?,?,?)";
-		try (ResultSet rs = super.ExecuteQuery(query, orderID, productID, quantity
-		)) {
+		try (ResultSet rs = super.ExecuteQuery(query, orderID.trim(), productID, quantity)) {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -56,10 +58,8 @@ public class DAO_Order extends ExecuteCRUD {
 		return true;
 	}
 
-	
 	public static void main(String[] args) {
-		System.out.println(DataSource.getConnection());
-		new DAO_Order().addNewOrder(new Order("dsdsadasd", "sdfsdff", "dffdasda", "3653454", 42221, "2011-12-12", "xcxczxc", "ádsadsad", 3));
+		getDAO_Order().addOrderDetail("30619044", "SP01", 3);
 	}
-	
+
 }

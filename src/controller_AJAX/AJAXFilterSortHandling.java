@@ -36,7 +36,7 @@ public class AJAXFilterSortHandling extends HttpServlet {
 
 		String test = "từ khóa "+keyWord + "\n hiệu :" + branchName + "\n giá :" + khoanggia + "\n" + thanhNgang + "\n" + thanhLocDung;
 		request.setAttribute("TESTING", test);
-		System.out.println(test);
+
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-component/card-product-result.jsp");
 		dispatcher.forward(request, response);

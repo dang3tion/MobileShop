@@ -24,6 +24,7 @@ import model_beans.Product_main;
 @WebServlet(urlPatterns = "/index")
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private BO_Product bo = BO_Product.getBoProduct();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -37,7 +38,6 @@ public class Index extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("lstPrice", listHighesPrice.getLstProduct());
-		System.out.println(listHighesPrice.getLstProduct());
 		request.setAttribute("lstNew", listNew.getLstProduct());
 		request.setAttribute("lstSpecial", listSpecial.getLstProduct());
 

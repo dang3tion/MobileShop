@@ -1,6 +1,7 @@
 package controller_system;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,7 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model_BO_service.BO_Product;
+import model_DAO.DAO_Order;
+import model_DAO.DAO_Product_main;
+import model_beans.Account;
 import model_beans.Cart;
+import model_beans.Order;
 import model_beans.Product;
 import model_utility.CodeOrder;
 import model_utility.Const;
@@ -23,6 +28,8 @@ import model_utility.VerifyCaptcha;
 public class Payment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	BO_Product bo = BO_Product.getBoProduct();
+	DAO_Order daoOder = DAO_Order.getDAO_Order();
+	DAO_Product_main daoProductMain = DAO_Product_main.getDao_Product_main();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -52,7 +59,6 @@ public class Payment extends HttpServlet {
 		String phoneNumber = request.getParameter("phoneNumber");
 		String paymentMethod = request.getParameter("paymentMethod");
 
-		
 		request.setAttribute("LIST_INSTANCE_PRODUCT", Controller_Cart.getListInstanceProductInCart(cart));
 		request.setAttribute("TOTAL_MONEY", Controller_Cart.getTotalMoney(cart));
 		request.setAttribute("CODE_ODER", codeOder);
@@ -60,7 +66,6 @@ public class Payment extends HttpServlet {
 		request.setAttribute("CUSTOMER_LOGINED.address", address);
 		request.setAttribute("CUSTOMER_LOGINED.name", name);
 		request.setAttribute("CUSTOMER_LOGINED.phoneNumber", phoneNumber);
-		System.out.println(paymentMethod + "___" + address);
 		if (paymentMethod.equals("COD")) {
 			request.setAttribute("CHECKED_COD", "checked");
 		}
@@ -75,14 +80,44 @@ public class Payment extends HttpServlet {
 			}
 		}
 
-		/// INSERT VÀO DATABASE Ở ĐÂY
-		/// INSERT VÀO DATABASE Ở ĐÂY
-		/// INSERT VÀO DATABASE Ở ĐÂY
-		/// INSERT VÀO DATABASE Ở ĐÂY
-		/// INSERT VÀO DATABASE Ở ĐÂY
-		/// INSERT VÀO DATABASE Ở ĐÂY
-		/// INSERT VÀO DATABASE Ở ĐÂY
-		/// INSERT VÀO DATABASE Ở ĐÂY
+	
+
+
+		// ADD ORDER AREA
+		String customerID = null;
+		Account acc = (Account) session.getAttribute(Const.CUSTOMER_LOGINED);
+		if (acc != null) {
+			customerID = acc.getId();
+		}
+
+		daoOder.addNewOrder(new Order(//
+				codeOder, //
+				name, //
+				address, //
+				phoneNumber, //
+				Controller_Cart.getTotalMoney(cart), //
+				LocalDate.now().toString(), //
+				paymentMethod, //
+				"Pending", //
+				customerID));
+		
+		// ADD ORDER DETAIL AREA
+		for (String productID : cart.getListProductID()) {
+			String productName = daoProductMain.getProductNameFormID(productID.trim()) + " (";
+			int quantity = 0;
+			for (String colorID : cart.getListProduct().get(productID).keySet()) {
+				productName += daoProductMain.getColorName(colorID) + ", ";
+				quantity += cart.getListProduct().get(productID).get(colorID);
+			}
+			productName += ")";
+			daoOder.addOrderDetail(codeOder, productID, quantity);
+		}
+
+		
+	
+		cart.setCodeOder(new CodeOrder());
+		cart.getListProduct().clear();
+		Controller_Cart.updateCart(cart, session);
 
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/bill.jsp");

@@ -61,14 +61,7 @@ public class AddProduct extends HttpServlet {
 			}
 		}
 
-//		System.out.println(name);
-//		System.out.println(price);
-//		System.out.println(priceSale);
-//		System.out.println(brand);
-//		System.out.println(quatity);
-//		System.out.println(type);
-//		System.out.println(state);
-//		System.out.println(topic);
+
 		doGet(request, response);
 	}
 }
