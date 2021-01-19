@@ -59,7 +59,7 @@
 				</span>
 			</c:forEach>
 			<c:if test="${param.checkStart eq true}">
-				<span> <i class="fas fa-star-half-alt"></i>
+				<span> <i style="color: orange;" class="fas fa-star-half-alt"></i>
 				</span>
 				<c:forEach begin="1" end="${param.modStart}">
 
@@ -67,9 +67,15 @@
 					</span>
 				</c:forEach>
 			</c:if>
-			<c:if test="${param.checkStart eq false}">
+			<c:if test="${param.checkStart eq false && param.modStart != 5}">
 				<c:forEach begin="1" end="${param.modStart}">
 					<span> <i id="t1" class="fas fa-star"></i>
+					</span>
+				</c:forEach>
+			</c:if>
+			<c:if test="${param.checkStart eq false && param.modStart == 5}">
+				<c:forEach begin="1" end="${param.modStart}">
+					<span> <i style="visibility: hidden;" id="t1" class="fas fa-star"></i>
 					</span>
 				</c:forEach>
 			</c:if>
