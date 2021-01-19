@@ -85,17 +85,17 @@
 							<div class=" mx-2 row">
 								<span class="container-che-do-xem"><strong>Chế
 										độ xem :</strong></span> <label class="mx-2  container-che-do-xem">Xem
-									tất cả (${totalAccount})<input
+									tất cả <input
 									 type="radio" onclick="location.reload();"
 									class="mx-2" checked="checked" name="radio"> <span
 									class="checkmark"></span>
 								</label> <label class="mx-2 container-che-do-xem"> Đang hoạt
-									động(${TongSoAccDangHoatDong}) <input class="mx-2" name="radio"
+									động <input class="mx-2" name="radio"
 									value="enable" type="radio"
 									onclick="switchChedoXem(this.value)"> <span
 									class="checkmark"></span>
 								</label> <label class="mx-2 container-che-do-xem">Đã bị khóa
-									(${TongSoAccBiKhoa})<input onclick="switchChedoXem(this.value)"
+									<input onclick="switchChedoXem(this.value)"
 									class="mx-2" value="disable" type="radio" name="radio">
 									<span class="checkmark"></span>
 								</label>

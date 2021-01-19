@@ -19,6 +19,7 @@ import model_DAO.DAO_Product_main;
 import model_beans.Account;
 import model_beans.Cart;
 import model_beans.Order;
+import model_beans.OrderDetail;
 import model_beans.Product;
 import model_utility.CodeOrder;
 import model_utility.Const;
@@ -106,7 +107,7 @@ public class Payment extends HttpServlet {
 		for (String productID : cart.getListProductID()) {
 			for (String colorID : cart.getListProduct().get(productID).keySet()) {
 				int quantity = cart.getListProduct().get(productID).get(colorID);
-				daoOder.addOrderDetail(codeOder, productID, colorID,quantity);
+				daoOder.addOrderDetail(new OrderDetail(codeOder, productID, colorID, quantity));
 			}
 		}
 

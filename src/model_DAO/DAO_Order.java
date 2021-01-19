@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import model_ConnectDB.DataSource;
 import model_ConnectDB.ExecuteCRUD;
 import model_beans.Order;
+import model_beans.OrderDetail;
 
 public class DAO_Order extends ExecuteCRUD {
 
@@ -24,10 +25,10 @@ public class DAO_Order extends ExecuteCRUD {
 
 	public boolean addNewOrder(Order newOrder) {
 		String customerID = "null";
-		if (newOrder.getCustomerID()!=null) {
+		if (newOrder.getCustomerID() != null) {
 			customerID = newOrder.getCustomerID();
 		}
-		String query = "INSERT INTO DONHANG VALUES(?,?,?,?,?,?,?,?,"+customerID+")";
+		String query = "INSERT INTO DONHANG VALUES(?,?,?,?,?,?,?,?," + customerID + ")";
 		try (ResultSet rs = super.ExecuteQuery(query, //
 				newOrder.getOrderID().trim(), //
 				newOrder.getName(), //
@@ -46,10 +47,14 @@ public class DAO_Order extends ExecuteCRUD {
 		return true;
 	}
 
-	public boolean addOrderDetail(String orderID, String productID, String colorID, int quantity) {
-		
+	public boolean addOrderDetail(OrderDetail orderDetail) {
+
 		String query = "INSERT INTO CTDH VALUES(?,?,?,?)";
-		try (ResultSet rs = super.ExecuteQuery(query, orderID.trim(), productID.trim(), colorID.trim(), quantity)) {
+		try (ResultSet rs = super.ExecuteQuery(query, //
+				orderDetail.getOrderID().trim(), //
+				orderDetail.getProductID().trim(), //
+				orderDetail.getColorID().trim(), //
+				orderDetail.getQuantity())) {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -57,7 +62,5 @@ public class DAO_Order extends ExecuteCRUD {
 		}
 		return true;
 	}
-
-
 
 }
