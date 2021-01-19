@@ -51,6 +51,15 @@
 	border: 1px solid rgb(158, 158, 158);
 	border-radius: 3px;
 }
+.frame .information .content-input .input input[type="number"] {
+	color: #505050;
+	min-width: 450px;
+	padding: 6px 6px;
+	font-size: 16px;
+	outline: 0px;
+	border: 1px solid rgb(158, 158, 158);
+	border-radius: 3px;
+}
 .frame .information .content-input .input select {
 	color: #505050;
 	min-width: 300px;

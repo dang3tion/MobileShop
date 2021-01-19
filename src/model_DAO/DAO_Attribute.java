@@ -2,7 +2,6 @@ package model_DAO;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -206,6 +205,33 @@ public class DAO_Attribute extends ExecuteCRUD {
 		}
 
 		return result;
+	}
+
+	public String getIdDetail(String value, String idAtt) {
+		String query = "SELECT MACT FROM CHITIET_THUOCTINH WHERE NOIDUNG=? AND MATT=?";
+		try (ResultSet rs = super.ExecuteQuery(query, value, idAtt)) {
+			if (rs.next()) {
+				return rs.getString("MACT").trim();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return DAO_AddProduct.getInstance().addDetailProper(value, idAtt);
+
+	}
+
+	public boolean addConfiguration(String idConfig, String idAttr) {
+		String query = "INSERT INTO CH_CTTT VALUES(?,?)";
+		try (ResultSet rs = super.ExecuteQuery(query, idConfig, idAttr)) {
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
+	}
+
+	public boolean addNewConfiguration(Map<String, String> map) {
+		return false;
 	}
 
 }

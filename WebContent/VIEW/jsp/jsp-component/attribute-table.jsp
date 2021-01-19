@@ -22,7 +22,7 @@
 				</div>
 				<div class="button">
 
-					<button class="btn btn-warning mb-2"
+					<button class="btn btn-warning mb-2"type="button"
 						onclick="deleteAttribute('${idclass}-item${index }')">Xóa</button>
 
 				</div>

@@ -238,7 +238,7 @@
 											này không?</div>
 										<div class="modal-footer">
 											<input type="submit" name="add-attribute"
-											class="btn btn-primary" value="Đồng ý">
+												class="btn btn-primary" value="Đồng ý">
 											<button type="button" class="btn btn-secondary"
 												data-dismiss="modal">Không</button>
 

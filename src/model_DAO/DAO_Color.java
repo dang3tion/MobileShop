@@ -20,7 +20,7 @@ public class DAO_Color extends ExecuteCRUD {
 		}
 		return dao;
 	}
-
+	
 	public ArrayList<Color_product> getAllColor() {
 		ArrayList<Color_product> arr = new ArrayList<Color_product>();
 		String query = "SELECT * FROM MAUSAC";
