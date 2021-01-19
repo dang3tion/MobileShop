@@ -1,6 +1,8 @@
 package model_beans;
 
-public class Branch {
+import java.io.Serializable;
+
+public class Branch implements Serializable{
 	private String numOrder;
 	private String id;
 	private String name;

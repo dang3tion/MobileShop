@@ -1,5 +1,6 @@
 package model_DAO;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 import model_ConnectDB.ExecuteCRUD;
 import model_beans.Branch;
 
-public class DAO_Branch extends ExecuteCRUD {
+public class DAO_Branch extends ExecuteCRUD  {
 
 	private static DAO_Branch dao_Branch = null;
 
