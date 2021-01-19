@@ -141,6 +141,7 @@ public class DAO_Product_main extends ExecuteCRUD {
 		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			while (rs.next()) {
 				price.setPrice(rs.getInt(3));
+				
 				price.setPriceSales(rs.getInt(4));
 			}
 		} catch (SQLException e) {
@@ -155,7 +156,7 @@ public class DAO_Product_main extends ExecuteCRUD {
 		query = "SELECT TH.MATH,TH.TENTH,TH.SLDT FROM THUONGHIEU TH JOIN SANPHAM SP ON SP.MATH=TH.MATH WHERE SP.MASP= ? ";
 		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			while (rs.next()) {
-				branch.setId(rs.getString(1));
+				branch.setId(rs.getString(1).trim());
 				branch.setName(rs.getString(2));
 				branch.setproductQuantity(rs.getInt(3));
 			}
@@ -173,7 +174,7 @@ public class DAO_Product_main extends ExecuteCRUD {
 			while (rs.next()) {
 				Attribute att = new Attribute();
 				att.setName(rs.getString("NOIDUNG"));
-				att.setId(rs.getString("MALOP"));
+				att.setId(rs.getString("MALOP").trim());
 				String idAtt = rs.getString("MALOP");
 				String query2 = "\r\n"
 						+ "	SELECT SP.MASP, LTT.MALOP,tt.MATT,tt.NOIDUNG ,ctt.NOIDUNG GIATRI,ctt.MACT FROM SANPHAM SP JOIN CAUHINH CH ON CH.MACH=SP.MACH JOIN CH_CTTT CT ON CT.MACH=CH.MACH JOIN CHITIET_THUOCTINH CTT ON CTT.MACT=CT.MACT\r\n"
@@ -182,7 +183,7 @@ public class DAO_Product_main extends ExecuteCRUD {
 				ResultSet rs2 = super.ExecuteQuery(query2, id, idAtt);
 				while (rs2.next()) {
 					AttributeManager attv = new AttributeManager();
-					attv.setId(rs2.getString("MATT"));
+					attv.setId(rs2.getString("MATT").trim());
 					attv.setTitle(rs2.getString("NOIDUNG"));
 					att.addAttribute(attv, rs2.getString("GIATRI"));
 				}
@@ -202,7 +203,7 @@ public class DAO_Product_main extends ExecuteCRUD {
 		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			while (rs.next()) {
 				Color_main cl = new Color_main();
-				cl.setId(rs.getString("MAMAU"));
+				cl.setId(rs.getString("MAMAU").trim());
 				cl.setName(rs.getString("TENMAU"));
 				cl.setQuantity(rs.getInt("SOLUONG"));
 				cl.setQuantity_sale(rs.getInt("SL_DABAN"));
@@ -356,5 +357,7 @@ public class DAO_Product_main extends ExecuteCRUD {
 		}
 		return name;
 	}
-
+public static void main(String[] args) {
+	System.out.println(DAO_Product_main.getDao_Product_main().getPrices_Product("SP01").getPriceSales());
+}
 }

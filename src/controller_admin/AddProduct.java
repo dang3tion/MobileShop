@@ -70,6 +70,7 @@ public class AddProduct extends HttpServlet {
 
 			if (name.isBlank()) {
 				reString = "Tên không được bỏ trống";
+
 			} else if (price.isBlank()) {
 				reString = "Giá không được bỏ trống";
 			} else {
@@ -91,7 +92,8 @@ public class AddProduct extends HttpServlet {
 						map.put(attributeId[i].trim(), attributeValue[i].trim());
 					}
 				}
-				String idProduct = addProduct(map, name, idBranch, type, status, introduced, price, priceSale);
+				String idProduct = addProduct(map, name, idBranch, convertType(type), converStatus(status), introduced,
+						price, priceSale);
 
 				for (int i = 0; i < colorId.length; i++) {
 					addPicture(idProduct, colorId[i], imgMain[i].trim(), "NEN");
@@ -150,5 +152,22 @@ public class AddProduct extends HttpServlet {
 
 	public boolean addQuantity(String id, String idColor, int quantity) {
 		return DAO_AddProduct.getInstance().addQuantity(id, idColor, quantity);
+	}
+
+	public String convertType(String type) {
+		if (type.toUpperCase().equals("MOI")) {
+			return "Mới";
+		}
+		return "Cũ";
+	}
+
+	public String converStatus(String status) {
+		if (status.toUpperCase().equals("DANG BAN")) {
+			return "Đang bán";
+		}
+		if (status.toUpperCase().equals("NGUNG KINH DOANH")) {
+			return "Ngưng kinh doanh";
+		}
+		return "Hết hàng";
 	}
 }

@@ -4,7 +4,7 @@
 	prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:forEach items="${listProduct}" var="pro" varStatus="i">
-	<tr style="    font-size: 14px;">
+	<tr style="font-size: 14px;">
 		<td>${i.index +STT}</td>
 		<td><img src="${pro.imgMain}"
 			style="width: 70px; height: 60px; object-fit: contain;"></img></td>
@@ -34,7 +34,8 @@
 
 		<td class="row" style="border: none;">
 			<div style="margin: auto;">
-				<a href="${pageContext.request.contextPath}/product-edit"><button
+				<a
+					href="${pageContext.request.contextPath}/admin/product-edit?MASP=${pro.ID}"><button
 						class="m-wTD btn btn-primary" data-toggle="tooltip"
 						data-placement="top" title="Chỉnh sửa" data-toggle="modal"
 						data-target="#editUser">

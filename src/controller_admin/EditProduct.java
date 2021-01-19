@@ -16,10 +16,12 @@ import javax.servlet.http.HttpSession;
 import model_DAO.DAO_Attribute;
 import model_DAO.DAO_Branch;
 import model_DAO.DAO_Color;
+import model_DAO.DAO_Product_main;
 import model_beans.AttributeClass;
 import model_beans.AttributeManager;
 import model_beans.Branch;
 import model_beans.Color_product;
+import model_beans.Product_main;
 
 @WebServlet(urlPatterns = "/admin/product-edit")
 public class EditProduct extends HttpServlet {
@@ -45,9 +47,10 @@ public class EditProduct extends HttpServlet {
 		request.setAttribute("listColor", listColor);
 		request.setAttribute("listBranch", listBranch);
 		request.setAttribute("listAttribute", map);
-String id=request.getParameter("MASP");
-		
-		
+		String id = request.getParameter("MASP");
+		Product_main p = DAO_Product_main.getDao_Product_main().getProduct_main(id);
+		request.setAttribute("product", p);
+
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-product-edit.jsp");
 		dispatcher.forward(request, response);
