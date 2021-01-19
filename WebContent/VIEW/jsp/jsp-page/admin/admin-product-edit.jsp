@@ -65,7 +65,7 @@
 
 											<div class="input">
 												<input name="name" placeHolder="Nhập tên sản phẩm"
-													type="text" value="">
+													type="text" value="${product.name }">
 											</div>
 
 										</li>
@@ -76,7 +76,18 @@
 											<div class="input">
 												<select name="branch">
 													<c:forEach items="${listBranch }" var="b">
-														<option value="${b.id}">${b.name }</option>
+														<h3>${product.branch.id }</h3>
+														<h4>${b.id }</h4>
+														<c:choose>
+															<c:when test="${b.id==product.branch.id }">
+																<option value="${b.id}" selected>${b.name }</option>
+															</c:when>
+
+															<c:otherwise>
+																<option value="${b.id}">${b.name }</option>
+															</c:otherwise>
+
+														</c:choose>
 													</c:forEach>
 												</select>
 											</div>
@@ -89,8 +100,20 @@
 											</div>
 											<div class="input">
 												<select class="" name="type">
-													<option value="MOI">Mới</option>
-													<option value="CU">Cũ</option>
+													<c:choose>
+														<c:when test="${product.type=='Mới' }">
+															<option value="MOI" selected>Mới</option>
+															<option value="CU">Cũ</option>
+														</c:when>
+
+														<c:otherwise>
+														<option value="MOI" >Mới</option>
+															<option value="CU" selected>Cũ</option>
+														</c:otherwise>
+
+													</c:choose>
+
+
 												</select>
 											</div>
 										</li>
@@ -100,9 +123,31 @@
 											</div>
 											<div class="input">
 												<select class="" name="status">
-													<option value="DANG BAN">Đang bán</option>
-													<option value="HET HANG">Hết hàng</option>
-													<option value="NGUNG KINH DOANH">Ngưng kinh doanh</option>
+
+
+													<c:choose>
+														<c:when test="${product.status=='Đang bán' }">
+															<option value="DANG BAN" selected>Đang bán</option>
+															<option value="HET HANG">Hết Hàng</option>
+															<option value="NGUNG KINH DOANH">Ngưng kinh
+																doanh</option>
+														</c:when>
+														<c:when test="${product.status=='Hết hàng' }">
+															<option value="DANG BAN">Đang bán</option>
+															<option value="HET HANG" selected>Hết Hàng</option>
+															<option value="NGUNG KINH DOANH">Ngưng kinh
+																doanh</option>
+														</c:when>
+
+														<c:otherwise>
+															<option value="DANG BAN">Đang bán</option>
+															<option value="HET HANG">Hết Hàng</option>
+															<option value="NGUNG KINH DOANH"selected>Ngưng kinh
+																doanh</option>
+														</c:otherwise>
+
+													</c:choose>
+
 
 												</select>
 											</div>
@@ -112,7 +157,8 @@
 												<p>Giá bán (VND)</p>
 											</div>
 											<div class="input">
-												<input name="price" type="number" placeHolder="Nhập giá bán">
+												<input name="price" type="number"
+													value="${product.prices.price }" placeHolder="Nhập giá bán">
 											</div>
 										</li>
 										<li class="content-input">
@@ -121,113 +167,120 @@
 											</div>
 											<div class="input">
 												<input name="priceSale" type="number"
+													value="${product.prices.priceSales }"
 													placeHolder="Nhập giá sau khi khuyến mãi (trường này có thể trống)">
 											</div>
 										</li>
 
 									</ul>
 								</div>
+								<c:forEach items="${product.colors }" var="color" varStatus="i">
+									<div class="frame-number" id="color-${i.index+1 }"
+										style="width: 94%; box-shadow: 1px 1px 3px -1px #5f5f5f;">
 
-								<div class="frame-number" id="color-1"
-									style="width: 94%; box-shadow: 1px 1px 3px -1px #5f5f5f;">
+										<h5>Màu sắc sản phấm</h5>
+										<div class="frame-cog-content">
+											<div class="frame">
+												<ul class="information">
+													<li class="content-input">
+														<div class="title">
+															<p>Tên màu sắc</p>
+														</div>
 
-									<h5>Màu sắc sản phấm</h5>
-									<div class="frame-cog-content">
-										<div class="frame">
-											<ul class="information">
-												<li class="content-input">
-													<div class="title">
-														<p>Tên màu sắc</p>
-													</div>
+														<div class="input">
+															<select class="" name="color-name">
 
-													<div class="input">
-														<select class="" name="color-name">
-															<c:forEach items="${listColor }" var="c">
+																<c:forEach items="${listColor }" var="c">
+																	<c:choose>
+																		<c:when test="${color.id==c.idColor}">
+																			<option value="${c.idColor }" selected>${c.typeColor }</option>
+																		</c:when>
 
-																<option value="${c.idColor }">${c.typeColor }</option>
-															</c:forEach>
-														</select>
-													</div>
+																		<c:otherwise>
+																			<option value="${c.idColor }">${c.typeColor }</option>
+																		</c:otherwise>
 
-												</li>
-												<li class="content-input">
-													<div class="title">
-														<p>Nhập số lượng</p>
-													</div>
+																	</c:choose>
 
-													<div class="input">
-														<input name="quantity" type="number" value="0">
-													</div>
+																</c:forEach>
+															</select>
+														</div>
 
-												</li>
-												<li class="content-input">
-													<div class="title">
-														<p>Chọn màu sắc</p>
-													</div>
+													</li>
+													<li class="content-input">
+														<div class="title">
+															<p>Nhập số lượng</p>
+														</div>
 
-													<div class="input">
-														<input name="color-rgb" placeHolder="" type="color"
-															value="">
-													</div>
+														<div class="input">
+															<input name="quantity" type="number"
+																value="${color.quantity }">
+														</div>
 
-												</li>
-												<li class="content-input">
-													<div class="title">
-														<p>Chọn ảnh nền</p>
-													</div>
+													</li>
+													<li class="content-input">
+														<div class="title">
+															<p>Chọn màu sắc</p>
+														</div>
 
-													<div class="input">
-														<input type="text" name="color-imgmain"
-															id="color-imgmain-1">
-														<!-- 	<label
+														<div class="input">
+															<input name="color-rgb" placeHolder="" type="color"
+																value="">
+														</div>
+
+													</li>
+													<li class="content-input">
+														<div class="title">
+															<p>Chọn ảnh nền</p>
+														</div>
+
+														<div class="input">
+															<input type="text" value="${ color.imgMain}"
+																name="color-imgmain" id="color-imgmain-${i.index+1}">
+															<!-- 	<label
 															class="choose-file" style="margin: 0;"
 															for="color-imgmain-1">Chọn ảnh</label> -->
-													</div>
-
-												</li>
-												<div id="color-sub1">
-													<input type="number" id="number-color-sub1" value="2"
-														name="number-color-sub1" hidden>
-													<li class="content-input">
-														<div class="title">
-															<p>Chọn ảnh mô tả</p>
 														</div>
 
-														<div class="input">
-															<input type="text" name="color1" id="color1-sub1" />
-															<!-- <label class="choose-file" style="margin: 0;"
+													</li>
+													<c:forEach items="${color.imgSubs }" var="img"
+														varStatus="j">
+
+														<div id="color-sub${j.index+1 }">
+															<input type="number" id="number-color-sub${i.index+1 }"
+																value="2" name="number-color-sub${i.index+1 }" hidden>
+															<li class="content-input">
+																<div class="title">
+																	<p>Chọn ảnh mô tả</p>
+																</div>
+
+																<div class="input">
+																	<input type="text" value="${ img}"
+																		name="color${i.index+1 }"
+																		id="color${i.index+1 }-sub${j.index+1}" />
+																	<!-- <label class="choose-file" style="margin: 0;"
 																for="color1-sub1">Chọn ảnh</label> -->
-														</div>
+																</div>
 
-													</li>
+															</li>
+
+
+														</div>
+													</c:forEach>
 													<li class="content-input">
 														<div class="title">
-															<p>Chọn ảnh mô tả</p>
+															<button type="button" class="btn-primary"
+																style="box-shadow: 1px 1px 2px 0px #a5a5a5; padding: 5px; border-radius: 3px; outline: 0; border: 0"
+																onclick="addSubimg('color-sub${i.index+1}');">Thêm
+																ảnh mô tả</button>
 														</div>
-
-														<div class="input">
-															<input type="text" name="color1" id="color1-sub2" />
-															<!-- <label class="choose-file" style="margin: 0;"
-																for="color1-sub2">Chọn ảnh</label> -->
-														</div>
-
 													</li>
-
-												</div>
-												<li class="content-input">
-													<div class="title">
-														<button type="button" class="btn-primary"
-															style="box-shadow: 1px 1px 2px 0px #a5a5a5; padding: 5px; border-radius: 3px; outline: 0; border: 0"
-															onclick="addSubimg('color-sub1');">Thêm ảnh mô
-															tả</button>
-													</div>
-												</li>
-											</ul>
+												</ul>
+											</div>
 										</div>
+
 									</div>
-
-								</div>
-
+								</c:forEach>
 							</div>
 							<div>
 								<input type="number" value="1" id="number-color"
@@ -317,7 +370,7 @@
 							style="border: 1px solid #dadada; padding: 15px; border-radius: 5px;">
 							<!-- (2): textarea sẽ được thay thế bởi CKEditor -->
 
-							<textarea name="introduce" id="editor">${value}</textarea>
+							<textarea name="introduce" id="editor">${product.posts }</textarea>
 
 						</div>
 						<!-- (3): Code Javascript thay thế textarea có id='editor1' bởi CKEditor -->
