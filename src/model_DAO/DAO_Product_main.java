@@ -7,6 +7,7 @@ import java.util.List;
 
 import model_ConnectDB.ExecuteCRUD;
 import model_beans.Attribute;
+import model_beans.AttributeManager;
 import model_beans.Branch;
 import model_beans.Color_main;
 import model_beans.Price_product_main;
@@ -171,15 +172,19 @@ public class DAO_Product_main extends ExecuteCRUD {
 		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			while (rs.next()) {
 				Attribute att = new Attribute();
-				att.setName(rs.getString(3));
-				String idAtt = rs.getString(2);
+				att.setName(rs.getString("NOIDUNG"));
+				att.setId(rs.getString("MALOP"));
+				String idAtt = rs.getString("MALOP");
 				String query2 = "\r\n"
-						+ "SELECT SP.MASP, LTT.MALOP,tt.MATT,tt.NOIDUNG,ctt.NOIDUNG,ctt.MACT FROM SANPHAM SP JOIN CAUHINH CH ON CH.MACH=SP.MACH JOIN CH_CTTT CT ON CT.MACH=CH.MACH JOIN CHITIET_THUOCTINH CTT ON CTT.MACT=CT.MACT\r\n"
-						+ "JOIN THUOCTINH TT ON TT.MATT=CTT.MATT JOIN LOP_THUOCTINH LTT ON LTT.MALOP=TT.MALOP WHERE SP.MASP=? AND LTT.MALOP=? \r\n"
-						+ "GROUP BY SP.MASP, LTT.MALOP,tt.MATT,tt.NOIDUNG,ctt.NOIDUNG,ctt.MACT ORDER BY TT.MATT ASC";
+						+ "	SELECT SP.MASP, LTT.MALOP,tt.MATT,tt.NOIDUNG ,ctt.NOIDUNG GIATRI,ctt.MACT FROM SANPHAM SP JOIN CAUHINH CH ON CH.MACH=SP.MACH JOIN CH_CTTT CT ON CT.MACH=CH.MACH JOIN CHITIET_THUOCTINH CTT ON CTT.MACT=CT.MACT\r\n"
+						+ "						 JOIN THUOCTINH TT ON TT.MATT=CTT.MATT JOIN LOP_THUOCTINH LTT ON LTT.MALOP=TT.MALOP WHERE SP.MASP=? AND LTT.MALOP=? \r\n"
+						+ "						 GROUP BY SP.MASP, LTT.MALOP,tt.MATT,tt.NOIDUNG,ctt.NOIDUNG,ctt.MACT ORDER BY TT.MATT ASC";
 				ResultSet rs2 = super.ExecuteQuery(query2, id, idAtt);
 				while (rs2.next()) {
-					att.addAttribute(rs2.getString(4), rs2.getString(5));
+					AttributeManager attv = new AttributeManager();
+					attv.setId(rs2.getString("MATT"));
+					attv.setTitle(rs2.getString("NOIDUNG"));
+					att.addAttribute(attv, rs2.getString("GIATRI"));
 				}
 				lstAtt.add(att);
 
