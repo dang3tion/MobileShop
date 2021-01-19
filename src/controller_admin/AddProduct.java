@@ -99,7 +99,7 @@ public class AddProduct extends HttpServlet {
 
 					addQuantity(idProduct, colorId[i], Integer.parseInt(quantity[i]));
 					for (int j = 0; j < imgSub.length; j++) {
-						addPicture(idProduct, colorId[i], imgSub[i].trim(), "PHU");
+						addPicture(idProduct, colorId[i], imgSub[j].trim(), "PHU");
 					}
 				}
 				reString = "Thêm sản phẩm thành công";

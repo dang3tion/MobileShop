@@ -523,7 +523,7 @@ request.setAttribute("color", dao.colorWeb());
 										<div class="title-attribute">${i.name}</div>
 										<c:forEach items="${i.lstAtribute}" var="att">
 											<li class="item">
-												<div class="title">${att.key}</div>
+												<div class="title">${att.key.title}</div>
 												<div class="value">
 													<c:forEach items="${att.value}" var="va">
 														<p>${va}</p>

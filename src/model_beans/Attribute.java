@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 public class Attribute {
+	private String id;
 	private String name;
-	private Map<String, List<String>> lstAtribute = new HashMap<String, List<String>>();
+	private Map<AttributeManager, List<String>> lstAtribute = new HashMap<AttributeManager, List<String>>();
 
-	public Attribute(String name, Map<String, List<String>> lstAtribute) {
+	public Attribute(String id, String name, Map<AttributeManager, List<String>> lstAtribute) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.lstAtribute = lstAtribute;
 	}
@@ -19,14 +21,27 @@ public class Attribute {
 		super();
 	}
 
-	public void addAttribute(String name, String value) {
-		if (lstAtribute.containsKey(name)) {
-			lstAtribute.get(name).add(value);
+	public String getId() {
+		return id;
+	}
 
-		} else {
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void addAttribute(AttributeManager key, String value) {
+		int count = 0;
+		for (AttributeManager a : lstAtribute.keySet()) {
+			if (a.getId().trim().equals(key.getId().trim())) {
+				count++;
+				lstAtribute.get(a).add(value);
+				break;
+			}
+		}
+		if (count == 0) {
 			ArrayList<String> lst = new ArrayList<String>();
 			lst.add(value);
-			lstAtribute.put(name, lst);
+			lstAtribute.put(key, lst);
 		}
 
 	}
@@ -39,11 +54,11 @@ public class Attribute {
 		this.name = name;
 	}
 
-	public Map<String, List<String>> getLstAtribute() {
+	public Map<AttributeManager, List<String>> getLstAtribute() {
 		return lstAtribute;
 	}
 
-	public void setLstAtribute(Map<String, List<String>> lstAtribute) {
+	public void setLstAtribute(Map<AttributeManager, List<String>> lstAtribute) {
 		this.lstAtribute = lstAtribute;
 	}
 

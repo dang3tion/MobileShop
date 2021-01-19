@@ -13,7 +13,6 @@ public class Product_main {
 	private String status;
 	private String update_date;
 	private String posts;
-
 	private int view;
 	private Price_product_main prices;
 	private ArrayList<Attribute> attributes = new ArrayList<Attribute>();
