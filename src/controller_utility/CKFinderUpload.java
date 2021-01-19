@@ -33,7 +33,7 @@ public class CKFinderUpload extends HttpServlet {
 		request.setAttribute("URLImage3","http://localhost:8080"+URLImage3);
 		request.setAttribute("URLImage4","http://localhost:8080"+URLImage4);
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/manager_images.jsp");
+				= this.getServletContext().getRequestDispatcher("/CKFinder.jsp");
 		dispatcher.forward(request, response);
 	}
 
