@@ -104,14 +104,10 @@ public class Payment extends HttpServlet {
 		
 		// ADD ORDER DETAIL AREA
 		for (String productID : cart.getListProductID()) {
-			String productName = daoProductMain.getProductNameFormID(productID.trim()) + " (";
-			int quantity = 0;
 			for (String colorID : cart.getListProduct().get(productID).keySet()) {
-				productName += daoProductMain.getColorName(colorID) + ", ";
-				quantity += cart.getListProduct().get(productID).get(colorID);
+				int quantity = cart.getListProduct().get(productID).get(colorID);
+				daoOder.addOrderDetail(codeOder, productID, colorID,quantity);
 			}
-			productName += ")";
-			daoOder.addOrderDetail(codeOder, productID, quantity);
 		}
 
 		

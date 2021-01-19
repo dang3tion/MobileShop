@@ -46,10 +46,10 @@ public class DAO_Order extends ExecuteCRUD {
 		return true;
 	}
 
-	public boolean addOrderDetail(String orderID, String productID, int quantity) {
+	public boolean addOrderDetail(String orderID, String productID, String colorID, int quantity) {
 		
-		String query = "INSERT INTO CTDH VALUES(?,?,?)";
-		try (ResultSet rs = super.ExecuteQuery(query, orderID.trim(), productID, quantity)) {
+		String query = "INSERT INTO CTDH VALUES(?,?,?,?)";
+		try (ResultSet rs = super.ExecuteQuery(query, orderID.trim(), productID.trim(), colorID.trim(), quantity)) {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -58,8 +58,6 @@ public class DAO_Order extends ExecuteCRUD {
 		return true;
 	}
 
-	public static void main(String[] args) {
-		getDAO_Order().addOrderDetail("30619044", "SP01", 3);
-	}
+
 
 }
