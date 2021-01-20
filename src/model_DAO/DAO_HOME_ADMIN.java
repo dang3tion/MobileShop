@@ -196,11 +196,18 @@ public class DAO_HOME_ADMIN extends ExecuteCRUD {
 			return sum;
 		}
 
-	public ArrayList<Statictical> listSta(){
+	public ArrayList<Statictical> listSta(int start,int end){
 		ArrayList<Statictical> list  = new ArrayList<Statictical>();
-		for (int i = listDate().size()-1; i >=0; i--) {
-			String date = listDate().get(i);
-			list.add(new Statictical(date, totalMoneyMonth(date), productSaledMonth(date), sumAccessMonth(date)));	
+		if (end>listDate().size()) {
+			for (int i = listDate().size()-1; i >=start; i--) {
+				String date = listDate().get(i);
+				list.add(new Statictical(date, totalMoneyMonth(date), productSaledMonth(date), sumAccessMonth(date)));	
+			}
+		}else {
+			for (int i = end; i >=start; i--) {
+				String date = listDate().get(i);
+				list.add(new Statictical(date, totalMoneyMonth(date), productSaledMonth(date), sumAccessMonth(date)));	
+			}
 		}
 		
 		return list;
@@ -208,6 +215,6 @@ public class DAO_HOME_ADMIN extends ExecuteCRUD {
 	public static void main(String[] args) {
 		DAO_HOME_ADMIN dao = new DAO_HOME_ADMIN();
 		System.out.println(dao.listDate());
-		System.out.println(dao.listSta());
+		System.out.println(dao.listSta(1,200));
 	}
 }
