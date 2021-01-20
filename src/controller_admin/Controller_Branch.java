@@ -28,15 +28,25 @@ public class Controller_Branch extends HttpServlet {
 			throws ServletException, IOException {
 		String search = request.getParameter("searchBranch");
 		String id = request.getParameter("id");
-
+		String newBranch = request.getParameter("newBranch");
 		if (search != null) {
 			// hàm search
-			request.setAttribute("listBranch", bo.getListSearch(search,1, 1000));
+			request.setAttribute("listBranch", bo.getListSearch(search, 1, 1000));
 		}
 		if (id != null) {
 			request.setAttribute("messageblock", "Thay đổi của bạn đã được cập nhật.");
 			bo.updateState(id);
 			request.setAttribute("listBranch", bo.getListBranch(1, 1000));
+		}
+		if (newBranch != null) {
+			if (!bo.checkAdd(newBranch)) {
+				bo.addBranch(newBranch);
+				request.setAttribute("messageAdd", "Thương hiệu "+newBranch+" đã được thêm.");
+				request.setAttribute("listBranch", bo.getListBranch(1, 1000));
+			} else {
+				request.setAttribute("messageAdd", "<span style='color: red;'>Thương hiệu "+newBranch+" đã tồn tại.</span>");
+				request.setAttribute("listBranch", bo.getListBranch(1, 1000));
+			}
 		}
 
 		RequestDispatcher dispatcher //
