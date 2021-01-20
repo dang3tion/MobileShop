@@ -34,15 +34,15 @@ public class EditProduct extends HttpServlet {
 		ArrayList<Branch> listBranch = DAO_Branch.getDAO_Branch().getAllBranch();
 		Map<AttributeClass, ArrayList<AttributeManager>> map = DAO_Attribute.getInstance().getAllAttributesClasses();
 		Map<AttributeClass, ArrayList<ArrayList<AttributeManager>>> arrMap = new LinkedHashMap<AttributeClass, ArrayList<ArrayList<AttributeManager>>>();
-		for (AttributeClass a : map.keySet()) {
-			ArrayList<ArrayList<AttributeManager>> arrAtt = new ArrayList<ArrayList<AttributeManager>>();
-			arrAtt.add(map.get(a));
-			arrMap.put(a, arrAtt);
-		}
-		HttpSession session = request.getSession();
-		if (session.getAttribute("arrMap") == null) {
-			session.setAttribute("arrMap", arrMap);
-		}
+//		for (AttributeClass a : map.keySet()) {
+//			ArrayList<ArrayList<AttributeManager>> arrAtt = new ArrayList<ArrayList<AttributeManager>>();
+//			arrAtt.add(map.get(a));
+//			arrMap.put(a, arrAtt);
+//		}
+//		HttpSession session = request.getSession();
+//		if (session.getAttribute("arrMap") == null) {
+//			session.setAttribute("arrMap", arrMap);
+//		}
 
 		request.setAttribute("listColor", listColor);
 		request.setAttribute("listBranch", listBranch);
