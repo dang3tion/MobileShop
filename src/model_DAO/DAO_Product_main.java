@@ -277,6 +277,7 @@ public class DAO_Product_main extends ExecuteCRUD {
 				product.setStatus(rs.getString("TINHTRANG"));
 				product.setUpdate_date(rs.getString("NGAYCAPNHAT"));
 				product.setPosts(rs.getString("GIOITHIEU"));
+				product.setIdCongfig(rs.getString("MACH").trim());
 
 				product.setView(rs.getInt("LUOTXEM"));
 				product.setAttributes(lstAtt);

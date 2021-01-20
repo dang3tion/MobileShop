@@ -4,8 +4,22 @@
 	SET DATEFORMAT DMY;		
 	--THONG TIN CHUNG CUA SHOP
 	GO
+	select * from SANPHAM
+	delete CH_CTTT where MACH='ch12'
+	delete CAUHINH where MACH='ch12'
+	select * from HINHANH
+	delete HINHANH where MASP='sp12'
+	delete SOLUONG_SP where MASP='sp12'
+	delete GIA_SP where MASP='sp12'
+	delete SANPHAM where MASP='sp12'
+	select * from HINHANH
+	delete CAUHINH where MACH='ch12'
+	
 
 update SANPHAM set TINHTRANG=N'Đang bán',LOAI_SP=N'Mới' where MASP='sp11'
+SELECT * FROM GIA_SP
+select * from CAUHINH
+UPDATE GIA_SP  SET GIA=0 , GIA_KM=0 WHERE MASP='sp11' AND NGAYCAPNHAT='19/1/2021' GIA_SP MASP='sp01' AND NGAYCAPNHAT='19/1/2021'
 	CREATE TABLE THONGTIN_SHOP(
 	ID  NVARCHAR(10) NOT NULL,
 	TENSHOP NVARCHAR(100) NOT NULL,
