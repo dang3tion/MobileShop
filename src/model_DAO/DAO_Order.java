@@ -104,7 +104,7 @@ public class DAO_Order extends ExecuteCRUD {
 
 	public ArrayList<Order> getListOrder(int start, int end) {
 		ArrayList<Order> list = new ArrayList<Order>();
-		String query = "SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY NGAYLAP DESC) AS STT ,* FROM  DONHANG) AS X  WHERE STT BETWEEN ? AND ? AND TRANGTHAI not like ? ";
+		String query = "SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY SOTHUTU DESC) AS STT ,* FROM  DONHANG) AS X  WHERE STT BETWEEN ? AND ? AND TRANGTHAI not like ? ";
 		try (ResultSet rs = super.ExecuteQuery(query, start, end, ORDER_STATUS.CANCELED.toString())) {
 			while (rs.next()) {
 
@@ -134,7 +134,7 @@ public class DAO_Order extends ExecuteCRUD {
 	}
 	public ArrayList<Order> getListCancelOrder(int start, int end) {
 		ArrayList<Order> list = new ArrayList<Order>();
-		String query = "SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY NGAYLAP DESC) AS STT ,* FROM  DONHANG) AS X  WHERE STT BETWEEN ? AND ? AND TRANGTHAI = ? ";
+		String query = "SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY SOTHUTU DESC) AS STT ,* FROM  DONHANG) AS X  WHERE STT BETWEEN ? AND ? AND TRANGTHAI = ? ";
 		try (ResultSet rs = super.ExecuteQuery(query, start, end, ORDER_STATUS.CANCELED.toString())) {
 			while (rs.next()) {
 				
