@@ -11,6 +11,8 @@ import model_beans.Order;
 import model_beans.OrderDetail;
 import model_beans.Product_form;
 import model_beans.Product_main;
+import model_utility.Const;
+import model_utility.Const.ORDER_STATUS;
 
 public class DAO_Order extends ExecuteCRUD {
 
@@ -102,8 +104,8 @@ public class DAO_Order extends ExecuteCRUD {
 
 	public ArrayList<Order> getListOrder(int start, int end) {
 		ArrayList<Order> list = new ArrayList<Order>();
-		String query = "SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY NGAYLAP DESC) AS STT ,* FROM  DONHANG) AS X  WHERE STT BETWEEN ? AND ? ";
-		try (ResultSet rs = super.ExecuteQuery(query, start, end)) {
+		String query = "SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY NGAYLAP DESC) AS STT ,* FROM  DONHANG) AS X  WHERE STT BETWEEN ? AND ? AND TRANGTHAI not like ? ";
+		try (ResultSet rs = super.ExecuteQuery(query, start, end, ORDER_STATUS.CANCELED.toString())) {
 			while (rs.next()) {
 
 				Order order = new Order(//
@@ -123,6 +125,36 @@ public class DAO_Order extends ExecuteCRUD {
 				order.setOrderDetail(getOrderDetail(order.getOrderID()));
 				order.setListProduct(getListInstanceProductInCart(order.getOrderDetail()));
 
+				list.add(order);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public ArrayList<Order> getListCancelOrder(int start, int end) {
+		ArrayList<Order> list = new ArrayList<Order>();
+		String query = "SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY NGAYLAP DESC) AS STT ,* FROM  DONHANG) AS X  WHERE STT BETWEEN ? AND ? AND TRANGTHAI = ? ";
+		try (ResultSet rs = super.ExecuteQuery(query, start, end, ORDER_STATUS.CANCELED.toString())) {
+			while (rs.next()) {
+				
+				Order order = new Order(//
+						rs.getString(2).trim(), //
+						rs.getString(3), //
+						rs.getString(4), //
+						rs.getString(5), ///
+						rs.getInt(6), //
+						rs.getString(7), //
+						rs.getString(8), //
+						rs.getString(9), //
+						rs.getInt(10) + "");
+				
+				if (order.getCustomerID().equals("0")) {
+					order.setCustomerID("Không đăng nhập");
+				}
+				order.setOrderDetail(getOrderDetail(order.getOrderID()));
+				order.setListProduct(getListInstanceProductInCart(order.getOrderDetail()));
+				
 				list.add(order);
 			}
 		} catch (Exception e) {
@@ -152,36 +184,25 @@ public class DAO_Order extends ExecuteCRUD {
 		return listProduct;
 	}
 
-	public boolean switchOrderStatus(String orderID) {
-		String currentOrderStatus = "";
-
-		try (ResultSet rs = super.ExecuteQuery("select TRANGTHAI from DONHANG Where MaDH = ?", orderID)) {
-			if (rs.next()) {
-				currentOrderStatus = rs.getString(1).trim();
-			}	
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-		
-		switch (currentOrderStatus) {
-		case value:
-			
-			break;
-
-		default:
-			break;
-		}
-		
-		try(ResultSet rs = super.ExecuteQuery("update DONHANG set TRANGTHAI = ? where MaDH = ? ", newOrderStatus, orderID) ) {
-			
+	public boolean switchOrderStatus(String orderID, ORDER_STATUS newStatus) {
+		try {
+			if (newStatus == ORDER_STATUS.TRANSPORTED) {
+			 super.ExecuteQuery("SELECT * FROM CTDH");
+			}
+			if (newStatus == ORDER_STATUS.CANCELED) {
+				super.ExecuteQuery("SELECT * FROM CTDH");
+			}
+			super.ExecuteQuery("update DONHANG set TRANGTHAI = ? where MaDH = ? ", newStatus.toString(), orderID);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
-	
 
+	}
+	
+	public static void main(String[] args) {
+		DAO_Order.getDAO_Order().switchOrderStatus("30619044", ORDER_STATUS.CANCELED);
 	}
 
 }

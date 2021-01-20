@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <head>
 <c:url var="url" scope="page" value="/VIEW"></c:url>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css-admin.jsp"></jsp:include>
@@ -17,163 +18,164 @@
 		<c:import url="/VIEW/jsp/jsp-component/sidebar-admin.jsp">
 			<c:param name="cancelactive" value="active"></c:param>
 		</c:import>
-		<!--Nav-->
+
 
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
+
+
 			<!-- 		toggle logout -->
 			<jsp:include page="/VIEW/jsp/jsp-component/toggle-logout-bar.jsp"></jsp:include>
-			<div class="container-fluid">
-				<div class="mb-5 mt-3 ">
-					<div class="content">
-						<div class="animated fadeIn">
-							<div class="row">
 
-								<div class="col-md-12">
-									<div class="card">
-										<div class="card-body">
-											<div class=" mb-2">
-												<h4 class="text-center mt-3 mb-3">Danh sách đơn hàng bị
-													hủy</h4>
-												<div class="row">
-													<div class="show-page mb-3 ml-3">
-														Hiển thị <span> <select id="show"
-															onclick="select_page()">
-																<option value="10">10</option>
-																<option value="20">20</option>
-																<option value="50">50</option>
-														</select></span> cột
-													</div>
-													<div class="show-page " style="margin-left: 50px;">
+			<!-- main content page -->
+			<div class="container-fluid" style="margin-top: 20px;">
+				<div class="border mb-2">
+					<h4 class="text-center mt-3 mb-3">Đơn hàng bị hủy</h4>
+					<div class="mt-5">
+						
+						
+					</div>
+					<table class="table table-hover " id="receipt-table">
+						<thead class="thead-light">
+							<tr>
+								<th scope="col">Mã đơn hàng</th>
+								<th scope="col">Mã khách hàng</th>
 
-														Tìm kiếm <span> <input id="myInput"
-															style="padding-left: 15px; border: 0.5px solid grey;"
-															type="text" placeholder="Search.."></span>
-													</div>
-												</div>
-												<table id="bootstrap-data-table" class="table  table-hover ">
-													<thead class="thead-light">
-														<tr>
-															<th>Mã đơn hàng</th>
-															<th>Mã khách hàng</th>
-															<th>Ngày lập</th>
-															<th>Chi tiết đơn hàng</th>
+								<th scope="col">Tổng giá trị</th>
+								<th scope="col">Ngày lập</th>
 
-														</tr>
-													</thead>
-													<tbody id="content-table">
-														<tr>
-															<td>TH01</td>
-															<td>KH01</td>
-															<td>10/10/2020</td>
-															<td class="detail"><a data-toggle="modal"
-																data-target="#exampleModal" href='#'> Chi tiết <i
-																	class="fa fa-external-link-alt"></i></a>
-																<div class="modal fade" id="exampleModal" tabindex="-1"
-																	aria-labelledby="exampleModalLabel" aria-hidden="true">
-																	<div class="modal-dialog  detail-modal">
-																		<div class="modal-content">
-																			<div class="modal-header">
-																				<h5 class="modal-title" id="exampleModalLabel">Chi
-																					tiết đơn hàng</h5>
-																				<button type="button" class="close"
-																					data-dismiss="modal" aria-label="Close">
-																					<span aria-hidden="true">&times;</span>
-																				</button>
-																			</div>
-																			<div class="modal-body">
-																				<h5>Đơn hàng: DH01</h5>
-																				<table width="100%"
-																					class="text-center  table content-detail  table-hover">
-																					<thead class="thead-light">
-																						<tr>
-																							<th>Mã khách hàng</th>
-																							<th>Tên khách hàng</th>
-																							<th><span title="Số điện thoại"> SDT</span></th>
-																							<th style="min-width: 300px;">Địa chỉ</th>
-																							<th>Tên sản phẩm &amp; số lượng</th>
-																							<th>Giá</th>
-																						</tr>
-																					</thead>
-																					<tr>
+								<th scope="col">Chi tiết đơn hàng</th>
+
+							</tr>
+						</thead>
+						<tbody id="content-table">
+
+							<!-- 						START ĐƠN HÀNG -->
+							<c:forEach var="order" items="${LIST_ORDER}">
+								<tr>
+									<td>${order.orderID}</td>
+									<td>${order.customerID}</td>
+
+									<td><fmt:formatNumber type="number" maxFractionDigits="3"
+											value="${order.totalMoney}" /></td>
+									<td>${order.timeCreate}</td>
+
+									<td class="detail"><a data-toggle="modal"
+										data-target="#orderDetail${order.orderID}" > Chi tiết <i
+											class="fa fa-external-link-alt"></i></a> <!-- Modal -->
+											
+											
+											<!-- 						START CHI TIẾT ĐƠN HÀNG					 -->
+											<div class="modal fade" id="orderDetail${order.orderID}" tabindex="-1"
+												aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog  detail-modal">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="exampleModalLabel">Chi
+																tiết đơn hàng</h5>
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<h5>Đơn hàng: ${order.orderID}</h5>
+															<table width="100%"
+																class="text-center  table content-detail  table-hover">
+																<thead class="thead-light">
+																	<tr>
+																		<th>Mã khách hàng</th>
+																		<th>Tên khách hàng</th>
+																		<th><span title="Số điện thoại"> Số điện
+																				thoại</span></th>
+																		<th>Hình thức thanh toán</th>
+																		<th style="min-width: 300px;">Địa chỉ</th>
+
+																	</tr>
+																</thead>
+																<tr>
 
 
-																						<td>KH01</td>
-																						<td>Trần Thanh Bảo</td>
-																						<td><span title="Số điện thoại">
-																								09128374822</span></td>
-																						<td style="min-width: 300px;">Khu phố 6,
-																							phường Linh Trung, quận Thủ Đức,TP Hồ Chí Minh
-																						</th>
-																						<td>
-																							<p>
-																								Iphone 12 64GB <span class="font-weight-bold">x</span>
-																								2
-																							</p>
-																							<p>
-																								Iphone X 32GB <span class="font-weight-bold">x</span>
-																								2
-																							</p>
-																						</td>
-																						<td>
-																							<p>24,000,000</p>
-																							<p>7,000,000
-																						</td>
-																					</tr>
-																				</table>
-																			</div>
-																			<div class="modal-footer">
-																				<button type="button" class="btn btn-secondary"
-																					data-dismiss="modal">Đóng</button>
-																			</div>
-																		</div>
-																	</div>
-																</div></td>
+																	
+																	<td>${order.customerID}</td>
+												
+																	<td>${order.name}</td>
+																	<td><span title="Số điện thoại">
+																			${order.phoneNumber}</span></td>
+																	<td>${order.paymentMethods}</td>
+																	<td style="min-width: 300px;">${order.address}
+																	</th>
 
-														</tr>
+																</tr>
+															</table>
+															<table width="100%"
+																class="text-center  table content-detail  table-hover">
+																<thead class="thead-light">
+																	<tr>
+																		<th>Hình ảnh</th>
+																		<th>Mã sản phẩm</th>
+																		<th>Tên sản phẩm</th>
+																		<th>Màu sắc</th>
+																		<th>Số lượng</th>
+																		<th>Giá</th>
 
-														<tr>
-															<td>TH02</td>
-															<td>KH01</td>
-															<td>10/10/2020</td>
-															<td class="detail"><a href='#'> Chi tiết <i
-																	class="fa fa-external-link-alt"></i></a></td>
+																	</tr>
+																</thead>
+																
+																<c:forEach var="pro" items="${order.listProduct}">
+																<tr>
+																	<td style="max-width: 140px;"><img
+																		src="${pro.img}" width="100px"
+																		height="100px" alt=""></td>
+																	<td>${pro.id}</td>
+																	<td>${pro.name}</td>
+																	<td><span title="Số điện thoại">${pro.color}</span></td>
+																	<td style="min-width: 300px;">${pro.quantityInCart}
+																	</th>
+																	<td style="min-width: 300px;">${pro.price}<span
+																		style="text-decoration: underline;">đ</span>
+																	</th>
+																</tr>
+																	</c:forEach>														
+															
+															</table>
 
-														</tr>
-														<tr>
-															<td>TH03</td>
-															<td>KH03</td>
-															<td>10/10/2020</td>
-															<td class="detail"><a href='#'> Chi tiết <i
-																	class="fa fa-external-link-alt"></i></a></td>
-
-														</tr>
-														<tr>
-															<td>TH04</td>
-															<td>KH04</td>
-															<td>10/10/2020</td>
-															<td class="detail"><a href='#'> Chi tiết <i
-																	class="fa fa-external-link-alt"></i></a></td>
-
-														</tr>
-												</table>
-
-												<div class="page-navigation">
-													<div class="beta">
-														<button onclick="previous_page()">Trước</button>
-														<span id="page-number"> </span>
-														<button onclick="next_page()">Sau</button>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary"
+																data-dismiss="modal">Đóng</button>
+														</div>
 													</div>
 												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+											</div> <!-- 				END CHI TIẾT ĐƠN HÀNG	 -->							
+						
+								<!-- 						START CHI TIẾT ĐƠN HÀNG					 -->
+											
+											
+											</td>
+									
+									
+								</tr>
+							</c:forEach>
+
+							<!--END ĐƠN HÀNG -->
+
+						</tbody>
+					</table>
+
+
+				</div>
+				<div class="page-navigation">
+					<div class="beta">
+						<button onclick="previous_page()">Trước</button>
+						<span id="page-number"> </span>
+						<button onclick="next_page()">Sau</button>
 					</div>
 				</div>
+
+
 			</div>
+
 		</div>
 </body>
 
