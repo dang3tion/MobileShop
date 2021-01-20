@@ -19,15 +19,14 @@ public class Const {
 	// giá trị xác nhận người dùng đã đăng nhập
 	public static final String CUSTOMER_LOGINED = "CUSTOMER_LOGINED";
 	public static final String ADMIN_LOGINED = "KEY_ADMIN_LOGIN";
-	
+
 	public static final String KEY_SYSTEM_OTP = "SYS_OTP";
 	public static final String KEY_SYSTEM_OTP_FORGOT = "SYS_OTP_FORGOT";
-	
+
 	public static final String NEW_USER_REGISTER = "NEW_USER_REGISTER";
-	
-	
-	
-	
-	
+
+	public static enum ORDER_STATUS {
+		PENDING, TRANSPORTED, COMPLETE, CANCEL
+	}
 
 }

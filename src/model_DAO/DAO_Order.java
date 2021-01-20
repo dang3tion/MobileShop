@@ -117,8 +117,7 @@ public class DAO_Order extends ExecuteCRUD {
 						rs.getString(9), //
 						rs.getInt(10) + "");
 
-				
-				if(order.getCustomerID().equals("0")) {
+				if (order.getCustomerID().equals("0")) {
 					order.setCustomerID("Không đăng nhập");
 				}
 				order.setOrderDetail(getOrderDetail(order.getOrderID()));
@@ -153,6 +152,36 @@ public class DAO_Order extends ExecuteCRUD {
 		return listProduct;
 	}
 
+	public boolean switchOrderStatus(String orderID) {
+		String currentOrderStatus = "";
 
+		try (ResultSet rs = super.ExecuteQuery("select TRANGTHAI from DONHANG Where MaDH = ?", orderID)) {
+			if (rs.next()) {
+				currentOrderStatus = rs.getString(1).trim();
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		switch (currentOrderStatus) {
+		case value:
+			
+			break;
+
+		default:
+			break;
+		}
+		
+		try(ResultSet rs = super.ExecuteQuery("update DONHANG set TRANGTHAI = ? where MaDH = ? ", newOrderStatus, orderID) ) {
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	
+
+	}
+
 }

@@ -100,7 +100,7 @@ public class Payment extends HttpServlet {
 				Controller_Cart.getTotalMoney(cart), //
 				LocalDate.now().toString(), //
 				paymentMethod, //
-				"Pending", //
+				Const.ORDER_STATUS.PENDING+"", //
 				customerID));
 		
 		// ADD ORDER DETAIL AREA
