@@ -129,6 +129,10 @@ public class EditProduct extends HttpServlet {
 
 					for (int j = 0; j < p.getColors().get(i).getImgSubs().size(); j++) {
 						System.out.println(imgSub[j] + "xxx" + p.getColors().get(i).getImgSubs().get(j));
+						if (imgSub[j].isBlank()) {
+							DAO_EditProduct.getInstance().deleteImg(p.getID(), colorId[i], "PHU",
+									p.getColors().get(i).getImgSubs().get(j));
+						}
 						if (!imgSub[j].trim().equals(p.getColors().get(i).getImgSubs().get(j).trim())) {
 							updateImg(imgSub[j].trim(), colorId[i], "PHU", p.getColors().get(i).getImgSubs().get(j));
 							System.out.println("asdas");

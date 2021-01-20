@@ -117,7 +117,16 @@ public class DAO_EditProduct extends ExecuteCRUD {
 		return false;
 	}
 
-	
+	public boolean deleteImg(String id, String idColor, String type, String url) {
+
+		String query = "DELETE HINHANH WHERE MASP=? AND MAMAU=? AND LOAIANH=? AND ANH=?";
+		try (ResultSet rs = super.ExecuteQuery(query, id, idColor, type, url)) {
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
+	}
 
 	public boolean addURLImageSubs(String id, String idColor, String value) {
 		String query = "INSERT INTO HINHANH VALUES(?,?,?,PHU)";
