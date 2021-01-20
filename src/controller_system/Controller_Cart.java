@@ -28,6 +28,12 @@ public class Controller_Cart extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Cart cart = (Cart) session.getAttribute("CART");
+
+		if (cart == null) {
+			cart = new Cart();
+			session.setAttribute("CART", cart);
+		}
+
 		request.setAttribute("message", request.getAttribute("message"));
 		request.setAttribute("LIST_INSTANCE_PRODUCT", getListInstanceProductInCart(cart));
 		request.setAttribute("TOTAL_MONEY", getTotalMoney(cart));
@@ -35,7 +41,6 @@ public class Controller_Cart extends HttpServlet {
 		dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
 		dispatcher.forward(request, response);
 		return;
-
 
 	}
 
@@ -47,15 +52,14 @@ public class Controller_Cart extends HttpServlet {
 		String page = request.getParameter("page");
 		String datHang = request.getParameter("datHang");
 		String colorID = request.getParameter("colorID");
-		
-		if(productID!=null) {
+
+		if (productID != null) {
 			productID.trim();
 		}
-		
-		if (colorID!=null) {
+
+		if (colorID != null) {
 			colorID.trim();
 		}
-
 
 		HttpSession session = request.getSession();
 
@@ -67,7 +71,8 @@ public class Controller_Cart extends HttpServlet {
 			try {
 				switch (cart.add(productID, colorID)) {
 				case 1:
-					message = dao.getProductNameFormID(productID)+" chỉ được mua tối đa " + Config.MAX_QUANTITY_OF_PRODUCT+" sản phẩm " ;
+					message = dao.getProductNameFormID(productID) + " chỉ được mua tối đa "
+							+ Config.MAX_QUANTITY_OF_PRODUCT + " sản phẩm ";
 					break;
 				case 2:
 					message = "tối đa " + Config.MAX_PRODUCT + " mẫu điện thoại trong giỏ hàng";
@@ -93,10 +98,10 @@ public class Controller_Cart extends HttpServlet {
 			updateCart(cart, session);
 			request.setAttribute("message", message);
 			// cập nhật lượt xem
-				ProductDetail.updateProductView(productID, request);
+			ProductDetail.updateProductView(productID, request);
 
-				Product_main pm = DAO_Product_main.getDao_Product_main().getProduct_main(productID);
-				request.setAttribute("product", pm);
+			Product_main pm = DAO_Product_main.getDao_Product_main().getProduct_main(productID);
+			request.setAttribute("product", pm);
 			dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/detail-product.jsp");
 			dispatcher.forward(request, response);
 
@@ -187,7 +192,5 @@ public class Controller_Cart extends HttpServlet {
 		}
 		return listProduct;
 	}
-
-
 
 }

@@ -1,6 +1,7 @@
 package model_beans;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Order {
 	private String orderID;
@@ -18,7 +19,7 @@ public class Order {
 	public void Order() {
 
 	}
-	
+
 	public Order(String orderID, String name, String address, String phoneNumber, int totalMoney, String timeCreate,
 			String paymentMethods, String status, String customerID) {
 		this.orderID = orderID;
@@ -32,8 +33,6 @@ public class Order {
 		this.customerID = customerID;
 	}
 
-	
-	
 	public ArrayList<OrderDetail> getOrderDetail() {
 		return orderDetail;
 	}
@@ -130,11 +129,4 @@ public class Order {
 				+ ", listProduct=" + listProduct + "]\n";
 	}
 
-	
-
-	
-
-	
-	
-	
 }

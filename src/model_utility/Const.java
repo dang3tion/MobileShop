@@ -26,7 +26,7 @@ public class Const {
 	public static final String NEW_USER_REGISTER = "NEW_USER_REGISTER";
 
 	public static enum ORDER_STATUS {
-		PENDING, TRANSPORTED, COMPLETE, CANCEL
+		PENDING, TRANSPORTED, COMPLETED, CANCELED
 	}
 
 }

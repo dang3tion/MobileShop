@@ -31,14 +31,9 @@
 			<div class="container-fluid" style="margin-top: 20px;">
 				<div class="border mb-2">
 					<h4 class="text-center mt-3 mb-3">Quản lí đơn hàng</h4>
-					<div class="row">
+					<div class="mt-5">
 						
-						<div class="show-page " style="margin-left: 50px;">
-
-							Tìm kiếm <span> <input id="myInput"
-								style="padding-left: 15px; border: 0.5px solid grey;"
-								type="text" placeholder="Search.."></span>
-						</div>
+						
 					</div>
 					<table class="table table-hover " id="receipt-table">
 						<thead class="thead-light">
@@ -63,7 +58,7 @@
 									<td>${order.customerID}</td>
 
 									<td><fmt:formatNumber type="number" maxFractionDigits="3"
-											value="${order.totalMoney}" /></td>
+											value="${order.totalMoney}" /> <span> đ</span> </td>
 									<td>${order.timeCreate}</td>
 
 									<td class="detail"><a data-toggle="modal"
