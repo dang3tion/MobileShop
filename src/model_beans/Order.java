@@ -13,6 +13,7 @@ public class Order {
 	private String status;
 	private String customerID;
 	private ArrayList<OrderDetail> orderDetail = new ArrayList<OrderDetail>();
+	private ArrayList<Product_form> listProduct = new ArrayList<Product_form>();
 
 	public void Order() {
 
@@ -29,6 +30,24 @@ public class Order {
 		this.paymentMethods = paymentMethods;
 		this.status = status;
 		this.customerID = customerID;
+	}
+
+	
+	
+	public ArrayList<OrderDetail> getOrderDetail() {
+		return orderDetail;
+	}
+
+	public void setOrderDetail(ArrayList<OrderDetail> orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+
+	public ArrayList<Product_form> getListProduct() {
+		return listProduct;
+	}
+
+	public void setListProduct(ArrayList<Product_form> listProduct) {
+		this.listProduct = listProduct;
 	}
 
 	public String getOrderID() {
@@ -107,8 +126,11 @@ public class Order {
 	public String toString() {
 		return "Order [orderID=" + orderID + ", name=" + name + ", address=" + address + ", phoneNumber=" + phoneNumber
 				+ ", totalMoney=" + totalMoney + ", timeCreate=" + timeCreate + ", paymentMethods=" + paymentMethods
-				+ ", status=" + status + ", customerID=" + customerID + "]\n";
+				+ ", status=" + status + ", customerID=" + customerID + ", orderDetail=" + orderDetail
+				+ ", listProduct=" + listProduct + "]\n";
 	}
+
+	
 
 	
 

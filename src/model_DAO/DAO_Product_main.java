@@ -141,7 +141,7 @@ public class DAO_Product_main extends ExecuteCRUD {
 		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			while (rs.next()) {
 				price.setPrice(rs.getInt(3));
-				
+
 				price.setPriceSales(rs.getInt(4));
 			}
 		} catch (SQLException e) {
@@ -357,7 +357,5 @@ public class DAO_Product_main extends ExecuteCRUD {
 		}
 		return name;
 	}
-public static void main(String[] args) {
-	System.out.println(DAO_Product_main.getDao_Product_main().getPrices_Product("SP01").getPriceSales());
-}
+
 }

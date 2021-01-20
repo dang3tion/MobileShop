@@ -6,18 +6,23 @@ import java.util.ArrayList;
 
 import model_ConnectDB.DataSource;
 import model_ConnectDB.ExecuteCRUD;
+import model_beans.Cart;
 import model_beans.Order;
 import model_beans.OrderDetail;
+import model_beans.Product_form;
+import model_beans.Product_main;
 
 public class DAO_Order extends ExecuteCRUD {
 
-	private static DAO_Order dao = null;
+	private static DAO_Order daoOrder = null;
+
+	private static DAO_Product_main daoProductMain = DAO_Product_main.getDao_Product_main();
 
 	public static DAO_Order getDAO_Order() {
-		if (dao == null) {
-			dao = new DAO_Order();
+		if (daoOrder == null) {
+			daoOrder = new DAO_Order();
 		}
-		return dao;
+		return daoOrder;
 	}
 
 	private DAO_Order() {
@@ -100,9 +105,8 @@ public class DAO_Order extends ExecuteCRUD {
 		String query = "SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY NGAYLAP DESC) AS STT ,* FROM  DONHANG) AS X  WHERE STT BETWEEN ? AND ? ";
 		try (ResultSet rs = super.ExecuteQuery(query, start, end)) {
 			while (rs.next()) {
-				
-				
-				list.add(new Order(//
+
+				Order order = new Order(//
 						rs.getString(2).trim(), //
 						rs.getString(3), //
 						rs.getString(4), //
@@ -111,14 +115,44 @@ public class DAO_Order extends ExecuteCRUD {
 						rs.getString(7), //
 						rs.getString(8), //
 						rs.getString(9), //
-						rs.getInt(10) + "")//
+						rs.getInt(10) + "");
 
-				);
+				
+				if(order.getCustomerID().equals("0")) {
+					order.setCustomerID("Không đăng nhập");
+				}
+				order.setOrderDetail(getOrderDetail(order.getOrderID()));
+				order.setListProduct(getListInstanceProductInCart(order.getOrderDetail()));
+
+				list.add(order);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list;
 	}
+
+	public ArrayList<Product_form> getListInstanceProductInCart(ArrayList<OrderDetail> ListorderDetail) {
+		ArrayList<Product_form> listProduct = new ArrayList<Product_form>();
+		for (OrderDetail orderDetail : ListorderDetail) {
+			Product_main product = daoProductMain.getProduct_main(orderDetail.getProductID());
+			String color = daoProductMain.getColorName(orderDetail.getColorID());
+			Product_form product_form = new Product_form();
+
+			product_form.setId(product.getID());
+			product_form.setName(product.getName());
+			product_form.setNameBranch(product.getBranch().getName());
+			product_form.setPrice(product.getPrices().getPrice());
+			product_form.setImg(daoProductMain.getURLthumbnail(orderDetail.getProductID(), orderDetail.getColorID()));
+			product_form.setColorID(orderDetail.getColorID());
+			product_form.setColor(color);
+			product_form.setQuantityInCart(orderDetail.getQuantity());
+
+			listProduct.add(product_form);
+		}
+		return listProduct;
+	}
+
+
 	
 }
