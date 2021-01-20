@@ -82,8 +82,23 @@ public class DAO_Branch extends ExecuteCRUD {
 		return branch;
 	}
 
+	public String stateBranch(String id) {
+		String state = "";
+		String query = "select TRANGTHAI from THUONGHIEU where MATH = ?";
+		try (ResultSet rs = super.ExecuteQuery(query, id)) {
+			if (rs.next()) {
+				state = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return state;
+
+	}
+
 	public void updateState(String id) {
-		String check = branch(id).getState();
+		String check = stateBranch(id);
+		System.out.println(check);
 		if (check.equals("Còn kinh doanh")) {
 			try {
 				String query = "UPDATE THUONGHIEU SET TRANGTHAI = N'Ngừng kinh doanh' WHERE MATH = ?";
@@ -136,7 +151,7 @@ public class DAO_Branch extends ExecuteCRUD {
 		String id = "";
 		try (ResultSet rs = super.ExecuteQuery(query)) {
 			if (rs.next()) {
-				id = "TH" + (rs.getInt(1)+1);
+				id = "TH" + (rs.getInt(1) + 1);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -154,7 +169,7 @@ public class DAO_Branch extends ExecuteCRUD {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
 
 	// kiểm tra thương hiệu đã tồn tại hay chưa
@@ -164,7 +179,7 @@ public class DAO_Branch extends ExecuteCRUD {
 		try (ResultSet rs = super.ExecuteQuery(query, name)) {
 			if (rs.next()) {
 				check = true;
-			}else {
+			} else {
 				check = false;
 			}
 		} catch (SQLException e) {

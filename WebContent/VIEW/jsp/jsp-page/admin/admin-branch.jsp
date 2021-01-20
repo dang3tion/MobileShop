@@ -101,12 +101,12 @@
 																				<span aria-hidden="true">&times;</span>
 																			</button>
 																		</div>
-																		<div class="modal-body">Bạn có muốn thay đổi
-																			trạng thái thương hiệu hiệu này.</div>
-																		<div class="modal-footer">
 																			<form
 																				action="${pageContext.request.contextPath}/admin/branch"
 																				method="post">
+																		<div class="modal-body">Bạn có muốn thay đổi
+																			trạng thái thương hiệu hiệu này.</div>
+																		<div class="modal-footer">
 																				<input style="display: none" name="id"
 																					value="${pp.id}">
 																				<button type="button" class="btn btn-secondary"
@@ -146,36 +146,13 @@
 					<!-- .content -->
 
 
-					<!-- Add -->
-					<div class="modal fade" id="add" tabindex="-1" role="dialog"
-						aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-						<div class="modal-dialog modal-dialog-centered" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLongTitle">Thêm
-										User</h5>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">...</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">Đóng</button>
-									<button type="button" class="btn btn-primary">Lưu</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /#right-panel -->
+					
 			</div>
 		</div>
 	</div>
 
 	<!-- 	Thêm thương hiệu -->
-	<div class="modal fade" id="branch" tabindex="-1" role="dialog"
+	<div class="modal fade" id="branch" tabindex="-1" role="dialzog"
 		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">

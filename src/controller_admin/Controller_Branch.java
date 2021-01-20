@@ -29,13 +29,15 @@ public class Controller_Branch extends HttpServlet {
 		String search = request.getParameter("searchBranch");
 		String id = request.getParameter("id");
 		String newBranch = request.getParameter("newBranch");
+		System.out.println(id);
+		System.out.println(newBranch);
 		if (search != null) {
 			// hàm search
 			request.setAttribute("listBranch", bo.getListSearch(search, 1, 1000));
 		}
 		if (id != null) {
-			request.setAttribute("messageblock", "Thay đổi của bạn đã được cập nhật.");
 			bo.updateState(id);
+			request.setAttribute("messageblock", "Thay đổi của bạn đã được cập nhật.");
 			request.setAttribute("listBranch", bo.getListBranch(1, 1000));
 		}
 		if (newBranch != null) {
