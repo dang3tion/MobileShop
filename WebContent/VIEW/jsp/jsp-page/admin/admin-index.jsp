@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <head>
 <c:url var="url" scope="page" value="/VIEW"></c:url>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css-admin.jsp"></jsp:include>
@@ -30,36 +31,37 @@
 								<th scope="col">Tổng doanh thu</th>
 								<th scope="col">Doanh thu trung bình mỗi tháng</th>
 								<th scope="col">Tổng số sản phẩm đã bán</th>
-								<th scope="col">Số lượng tồn kho hiện tại</th>
 								<th scope="col">Tổng lượt truy cập</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr class="">
-								<th scope="row">100,000,000</th>
-								<td>10,000,000</td>
-								<td>123</td>
-								<td>23</td>
-								<td>17080</td>
+								<th scope="row"><fmt:formatNumber type="number"
+										maxFractionDigits="3" value="${total}" /> <span class="unit">đ</span></th>
+								<td><fmt:formatNumber type="number" maxFractionDigits="3"
+										value="${avg}" /> <span class="unit">đ</span></td>
+								<td>${sale}</td>
+								<td>${access}</td>
+
 							</tr>
 						</tbody>
 					</table>
-				
+
 				</div>
 				<div class="border mb-2">
 					<h4 class="text-center mt-3 mb-3">Bảng thống kê bán hàng</h4>
 					<div class="row">
 						<div class="show-page mb-3 ml-3" style="padding-left: 10px">
-							Hiển thị <span> <select id="show" onclick="select_page()">
-									<option value="10">10</option>
-									<option value="20">20</option>
-									<option value="50">50</option>
-							</select></span> cột
+							<!-- 							Hiển thị <span> <select id="show" onclick="select_page()"> -->
+							<!-- 									<option value="10">10</option> -->
+							<!-- 									<option value="20">20</option> -->
+							<!-- 									<option value="50">50</option> -->
+							<!-- 							</select></span> cột -->
 						</div>
 						<div class="show-page" style="margin-left: 50px">
-							Tìm kiếm <span> <input id="myInput"
-								style="padding-left: 15px; border: 0.5px solid grey" type="text"
-								placeholder="Search.." /></span>
+							<!-- 							Tìm kiếm <span> <input id="myInput" -->
+							<!-- 								style="padding-left: 15px; border: 0.5px solid grey" type="text" -->
+							<!-- 								placeholder="Search.." /></span> -->
 						</div>
 					</div>
 					<table class="table table-hover">
@@ -70,62 +72,20 @@
 								<th scope="col" data-toggle="tooltip" data-placement="top"
 									title="Số lượng sản phẩm được thêm"><span
 									title="Số lượng sản phẩm"> SLSP</span> bán được</th>
-								<th scope="col" data-toggle="tooltip" data-placement="top"
-									title="Số lượng sản phẩm tồn kho"><span
-									title="Số lượng sản phẩm"> SLSP</span> được thêm</th>
-								<th scope="col">Số lượng tồn kho</th>
 								<th scope="col">Số lượng truy cập</th>
 							</tr>
 						</thead>
 						<tbody id="content-table">
-							<tr>
-								<th scope="row">9/2020</th>
-								<td>30,000,00</td>
-								<td>4</td>
-								<td>2</td>
-								<td>42</td>
-								<td>400</td>
-							</tr>
-							<tr>
-								<th scope="row">8/2020</th>
-								<td>24,000,00</td>
-								<td>3</td>
-								<td>4</td>
-								<td>46</td>
-								<td>200</td>
-							</tr>
-							<tr>
-								<th scope="row">7/2020</th>
-								<td>12,000,00</td>
-								<td>2</td>
-								<td>5</td>
-								<td>49</td>
-								<td>502</td>
-							</tr>
-							<tr>
-								<th scope="row">6/2020</th>
-								<td>22,000,00</td>
-								<td>7</td>
-								<td>2</td>
-								<td>51</td>
-								<td>420</td>
-							</tr>
-							<tr>
-								<th scope="row">5/2020</th>
-								<td>30,000,00</td>
-								<td>5</td>
-								<td>8</td>
-								<td>58</td>
-								<td>492</td>
-							</tr>
-							<tr>
-								<th scope="row">4/2020</th>
-								<td>25,000,00</td>
-								<td>2</td>
-								<td>4</td>
-								<td>63</td>
-								<td>100</td>
-							</tr>
+							<c:forEach items="${list}" var="tk">
+								<tr>
+									<th scope="row">${tk.date}</th>
+									<td><fmt:formatNumber type="number" maxFractionDigits="3"
+										value="${tk.revenue}" /> <span class="unit">đ</span></td>
+									<td>${tk.productSaled}</td>
+									<td>${tk.sumAccess}</td>
+								</tr>
+							</c:forEach>
+
 						</tbody>
 					</table>
 				</div>
