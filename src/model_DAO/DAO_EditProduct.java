@@ -1,6 +1,8 @@
 package model_DAO;
 
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import model_ConnectDB.ExecuteCRUD;
 
@@ -26,6 +28,45 @@ public class DAO_EditProduct extends ExecuteCRUD {
 		return dao;
 	}
 
+	public boolean isUpdatePrice(String id) {
+		String query = "SELECT * FROM GIA_SP WHERE MASP=? AND NGAYCAPNHAT=?";
+		LocalDate localDate = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		String date = localDate.format(formatter);
+		try (ResultSet rs = super.ExecuteQuery(query, id, date)) {
+			if (rs.next()) {
+				return true;
+
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
+	}
+
+	public boolean updatePrice(int price, int priceSale, String id) {
+		LocalDate localDate = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		String date = localDate.format(formatter);
+		if (!isUpdatePrice(id)) {
+			String query = "INSERT INTO " + TABLE.GIA_SP + " VALUES(?,?,?,?)";
+			try (ResultSet rs = super.ExecuteQuery(query, id, date, price, priceSale)) {
+				return true;
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		} else {
+			String query = "UPDATE " + TABLE.GIA_SP + " SET GIA=? , GIA_KM=? WHERE MASP=? AND NGAYCAPNHAT=?";
+			try (ResultSet rs = super.ExecuteQuery(query, price, priceSale, id, date)) {
+				return true;
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		return false;
+
+	}
+
 	public boolean updateColumnProduct(TABLE table, EDIHT column, String id, String value) {
 		String query = "UPDATE " + table + " SET " + column + "=? WHERE MASP=?";
 		try (ResultSet rs = super.ExecuteQuery(query, value, id)) {
@@ -37,7 +78,7 @@ public class DAO_EditProduct extends ExecuteCRUD {
 	}
 
 	public boolean updateColorProduct(TABLE table, String id, String idColor, String idColorCurrent) {
-		if (table != TABLE.HINHANH || table != TABLE.SOLUONG_SP) {
+		if (table != TABLE.HINHANH && table != TABLE.SOLUONG_SP) {
 			return false;
 		}
 		String query = "UPDATE " + table + " SET MAMAU=? WHERE MASP=? AND MAMAU=?";
@@ -63,18 +104,20 @@ public class DAO_EditProduct extends ExecuteCRUD {
 		return false;
 	}
 
-	public boolean updateURLImage(TABLE table, String id, String idColor, String type, String url) {
+	public boolean updateURLImage(TABLE table, String id, String idColor, String type, String url, String urlCurrent) {
 		if (table != TABLE.HINHANH) {
 			return false;
 		}
-		String query = "UPDATE " + table + " SET " + EDIHT.ANH + "=? WHERE MASP=? AND MAMAU=? AND LOAIANH=?";
-		try (ResultSet rs = super.ExecuteQuery(query, url, id, idColor, type)) {
+		String query = "UPDATE " + table + " SET " + EDIHT.ANH + "=? WHERE MASP=? AND MAMAU=? AND LOAIANH=? AND ANH=?";
+		try (ResultSet rs = super.ExecuteQuery(query, url, id, idColor, type, urlCurrent)) {
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return false;
 	}
+
+	
 
 	public boolean addURLImageSubs(String id, String idColor, String value) {
 		String query = "INSERT INTO HINHANH VALUES(?,?,?,PHU)";
@@ -97,6 +140,4 @@ public class DAO_EditProduct extends ExecuteCRUD {
 		return false;
 	}
 
-	public static void main(String[] args) {
-	}
 }

@@ -83,7 +83,10 @@ public class DAO_AddProduct extends ExecuteCRUD {
 	public boolean isContainerImg(String idProduct, String idColor, String linkImg) {
 		String query = "SELECT * FROM HINHANH WHERE MASP=? AND MAMAU =? AND ANH=?";
 		try (ResultSet rs = super.ExecuteQuery(query, idProduct, idColor, linkImg)) {
-			return true;
+			if (rs.next()) {
+
+				return true;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -277,7 +280,4 @@ public class DAO_AddProduct extends ExecuteCRUD {
 		return null;
 	}
 
-	public static void main(String[] args) {
-		System.out.println(DAO_Attribute.getInstance().getIdDetail("Nguyên khối", "Tt27"));
-	}
 }

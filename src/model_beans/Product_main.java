@@ -18,10 +18,11 @@ public class Product_main {
 	private ArrayList<Attribute> attributes = new ArrayList<Attribute>();
 	private ArrayList<Color_main> colors = new ArrayList<Color_main>();
 	private StarEvaluate evaluate;
+	private String idCongfig;
 
 	public Product_main(String iD, String name, String type, Branch branch, String status, String update_date,
-			String posts, int quantity, int sale_quantity, int view, Price_product_main prices,
-			ArrayList<Attribute> attributes, ArrayList<Color_main> colors, StarEvaluate evaluate) {
+			String posts, int view, Price_product_main prices, ArrayList<Attribute> attributes,
+			ArrayList<Color_main> colors, StarEvaluate evaluate, String idCongfig) {
 		super();
 		ID = iD;
 		this.name = name;
@@ -35,11 +36,21 @@ public class Product_main {
 		this.attributes = attributes;
 		this.colors = colors;
 		this.evaluate = evaluate;
+		this.idCongfig = idCongfig;
+	}
+
+	public String getIdCongfig() {
+		return idCongfig;
+	}
+
+	public void setIdCongfig(String idCongfig) {
+		this.idCongfig = idCongfig;
 	}
 
 	public String getImgMain() {
 		return colors.get(0).getImgMain();
 	}
+
 	public int getQuantity() {
 		int result = 0;
 		for (Color_main co : colors) {
@@ -161,6 +172,5 @@ public class Product_main {
 				+ status + ", update_date=" + update_date + ", posts=" + posts + ", view=" + view + ", attributes="
 				+ attributes + ", colors=" + colors + "]/n";
 	}
-
 
 }

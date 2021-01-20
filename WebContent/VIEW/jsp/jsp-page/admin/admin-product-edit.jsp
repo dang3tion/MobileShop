@@ -29,7 +29,7 @@
 			<!-- 		toggle logout -->
 			<jsp:include page="/VIEW/jsp/jsp-component/toggle-logout-bar.jsp"></jsp:include>
 
-			<form action="${pageContext.request.contextPath}/admin/product-add"
+			<form action="${pageContext.request.contextPath}/admin/product-edit"
 				method="post">
 				<div class="container mt-5 " style="width: 95%">
 
@@ -175,6 +175,7 @@
 									</ul>
 								</div>
 								<c:forEach items="${product.colors }" var="color" varStatus="i">
+								<c:set value="${i.index+1 }" var="sizeColor"></c:set>
 									<div class="frame-number" id="color-${i.index+1 }"
 										style="width: 94%; box-shadow: 1px 1px 3px -1px #5f5f5f;">
 
@@ -243,10 +244,11 @@
 														</div>
 
 													</li>
-													<c:forEach items="${color.imgSubs }" var="img"
-														varStatus="j">
+												
 
-														<div id="color-sub${j.index+1 }">
+														<div id="color-sub${i.index+1 }">
+														<c:forEach items="${color.imgSubs }" var="img"
+															varStatus="j">
 															<input type="number" id="number-color-sub${i.index+1 }"
 																value="2" name="number-color-sub${i.index+1 }" hidden>
 															<li class="content-input">
@@ -265,8 +267,8 @@
 															</li>
 
 
-														</div>
-													</c:forEach>
+														</c:forEach>
+													</div>
 													<li class="content-input">
 														<div class="title">
 															<button type="button" class="btn-primary"
@@ -283,7 +285,7 @@
 								</c:forEach>
 							</div>
 							<div>
-								<input type="number" value="1" id="number-color"
+								<input type="number" value="${sizeColor }" id="number-color"
 									name="number-color" disabled="disabled" hidden>
 								<button type="button" class="btn-primary" data-toggle="modal"
 									data-target="#add-color-btn"
@@ -468,7 +470,7 @@
 								</div>
 								<div class="modal-footer">
 									<input type="submit" class="btn btn-primary"
-										name="confirm-add-product" value="Đồng ý">
+										name="confirm-edit-product" value="Đồng ý">
 									<button type="button" class="btn btn-secondary"
 										data-dismiss="modal">Hủy</button>
 								</div>
@@ -628,7 +630,7 @@
 									+ '<p>Chọn ảnh mô tả</p>'
 									+ '	</div>'
 									+ '<div class="input">'
-									+ '	<input type="text"  name="color'+numberColor+'" id="color'+color+'-'+'sub'+numberImgSub+'"  /> '
+									+ '	<input type="text"  name="color'+color+'" id="color'+color+'-'+'sub'+numberImgSub+'"  /> '
 									/*  <label'
 							+'		class="choose-file" style="margin: 0;" for="color'+color+'-'+'sub'+numberImgSub+'">Chọn'
 											ảnh</label>  */

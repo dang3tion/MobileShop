@@ -18,6 +18,7 @@ import model_DAO.DAO_Attribute;
 import model_DAO.DAO_Branch;
 import model_DAO.DAO_Color;
 import model_DAO.DAO_EditProduct;
+import model_DAO.DAO_EditProduct.EDIHT;
 import model_DAO.DAO_EditProduct.TABLE;
 import model_DAO.DAO_Product_main;
 import model_beans.AttributeClass;
@@ -37,7 +38,6 @@ public class EditProduct extends HttpServlet {
 		ArrayList<Color_product> listColor = DAO_Color.getInstance().getAllColor();
 		ArrayList<Branch> listBranch = DAO_Branch.getDAO_Branch().getAllBranch();
 		Map<AttributeClass, ArrayList<AttributeManager>> map = DAO_Attribute.getInstance().getAllAttributesClasses();
-		Map<AttributeClass, ArrayList<ArrayList<AttributeManager>>> arrMap = new LinkedHashMap<AttributeClass, ArrayList<ArrayList<AttributeManager>>>();
 //		for (AttributeClass a : map.keySet()) {
 //			ArrayList<ArrayList<AttributeManager>> arrAtt = new ArrayList<ArrayList<AttributeManager>>();
 //			arrAtt.add(map.get(a));
@@ -72,7 +72,7 @@ public class EditProduct extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String reString = "";
-		if (request.getParameter("confirm-add-product") != null) {
+		if (request.getParameter("confirm-edit-product") != null) {
 
 			String name = request.getParameter("name").trim();
 
@@ -100,21 +100,43 @@ public class EditProduct extends HttpServlet {
 				String[] attributeValue = request.getParameterValues("att-value");
 				String[] quantity = request.getParameterValues("quantity");
 				String introduced = request.getParameter("introduce");
-
+				// UPDATE IMAGE ON AND ADD NEW SUB IMG IF HAVE IT
+				System.out.println(p.getColors().size());
 				for (int i = 0; i < p.getColors().size(); i++) {
 					String[] imgSub = request.getParameterValues("color" + (i + 1));
-
+					// ADD NEW SUB IMAGE
 					if (imgSub.length > p.getColors().get(i).getImgSubs().size()) {
 
 						for (int j = p.getColors().get(i).getImgSubs().size(); j < imgSub.length; j++) {
-							addPicture(p.getID(), colorId[i], imgSub[j].trim(), "PHU");
+							if (!imgSub[j].isBlank()) {
+								addPicture(p.getID(), colorId[i], imgSub[j].trim(), "PHU");
+
+							}
 						}
 					}
-					if (colorId[i] != p.getColors().get(i).getId()) {
+					// UPDATE COLOR
+					if (!colorId[i].equals(p.getColors().get(i).getId())) {
+						updateColor(colorId[i], p.getColors().get(i).getId());
+					}
+					// UPADTE MAIN IMG
+					if (!imgMain[i].equals(p.getColors().get(i).getImgMain())) {
+						updateImg(imgMain[i], colorId[i], "NEN", p.getColors().get(i).getImgMain());
+					} // UPDATE QUANTITY
+					if (!quantity[i].equals(p.getQuantity() + "")) {
+						updateQuantity(quantity[i], colorId[i]);
+					}
+					// UPDATE SUB IMG
 
+					for (int j = 0; j < p.getColors().get(i).getImgSubs().size(); j++) {
+						System.out.println(imgSub[j] + "xxx" + p.getColors().get(i).getImgSubs().get(j));
+						if (!imgSub[j].trim().equals(p.getColors().get(i).getImgSubs().get(j).trim())) {
+							updateImg(imgSub[j].trim(), colorId[i], "PHU", p.getColors().get(i).getImgSubs().get(j));
+							System.out.println("asdas");
+						}
 					}
 
 				}
+				// ADD NEW COLOR
 				if (colorId.length > p.getColors().size()) {
 					for (int i = p.getColors().size(); i < colorId.length; i++) {
 						addPicture(p.getID(), colorId[i], imgMain[i].trim(), "NEN");
@@ -126,6 +148,30 @@ public class EditProduct extends HttpServlet {
 					}
 				}
 
+				// UPDATE FORM PROPERTY
+				if (!name.trim().equals(p.getName())) {
+					updateProperty(name, EDIHT.TENSP);
+				}
+				if (!idBranch.equals(p.getID())) {
+					updateProperty(idBranch, EDIHT.MATH);
+				}
+				if (!convertType(type).equals(p.getType())) {
+					updateProperty(convertType(type), EDIHT.LOAI_SP);
+				}
+				if (!converStatus(status).equals(p.getStatus())) {
+					updateProperty(converStatus(status), EDIHT.TINHTRANG);
+				}
+
+				if (!price.trim().equals(p.getPrices().getPrice() + "")
+						&& !priceSale.trim().equals(p.getPrices().getPriceSales() + "")) {
+					updatePrice(price, priceSale);
+				} else if (!price.trim().equals(p.getPrices().getPrice() + "")) {
+					updatePrice(price.trim(), p.getPrices().getPriceSales() + "");
+
+				} else if (!priceSale.trim().equals(p.getPrices().getPriceSales() + "")) {
+					updatePrice(p.getPrices().getPrice() + "", priceSale.trim());
+				}
+
 				Map<String, String> map = new LinkedHashMap<String, String>();
 
 				for (int i = 0; i < attributeId.length; i++) {
@@ -133,18 +179,8 @@ public class EditProduct extends HttpServlet {
 						map.put(attributeId[i].trim(), attributeValue[i].trim());
 					}
 				}
-				String idProduct = addProduct(map, name, idBranch, convertType(type), converStatus(status), introduced,
-						price, priceSale);
+				updateAttributes(map);
 
-				for (int i = 0; i < colorId.length; i++) {
-					addPicture(idProduct, colorId[i], imgMain[i].trim(), "NEN");
-					String[] imgSub = request.getParameterValues("color" + (i + 1));
-
-					addQuantity(idProduct, colorId[i], Integer.parseInt(quantity[i]));
-					for (int j = 0; j < imgSub.length; j++) {
-						addPicture(idProduct, colorId[i], imgSub[j].trim(), "PHU");
-					}
-				}
 				reString = "Thêm sản phẩm thành công";
 
 //				System.out.printf("name %s branch %s type %s status %s price %s priceSale %s", name, idBranch, type,
@@ -159,8 +195,27 @@ public class EditProduct extends HttpServlet {
 		doGet(request, response);
 	}
 
-	public String updateImg(String value, String colorId, String type) {
-		if (DAO_EditProduct.getInstance().updateURLImage(TABLE.HINHANH, p.getID(), colorId, type, value)) {
+	public String updatePrice(String price, String priceSale) {
+		if (DAO_EditProduct.getInstance().updatePrice(Integer.parseInt(price), Integer.parseInt(priceSale),
+				p.getID())) {
+			return "Cập nhật giá thành công";
+
+		}
+		return "Cập nhật giá thất bại";
+	}
+
+	public String updateProperty(String value, EDIHT column) {
+		if (DAO_EditProduct.getInstance().updateColumnProduct(TABLE.SANPHAM, column, p.getID(), value)) {
+			return "Cập nhật thuộc tính thành công";
+
+		}
+		return "Cập nhật thuộc tính thất bại";
+
+	}
+
+	public String updateImg(String value, String colorId, String type, String currentValue) {
+		if (DAO_EditProduct.getInstance().updateURLImage(TABLE.HINHANH, p.getID(), colorId, type, value,
+				currentValue)) {
 			return "Cập nhật ảnh thành công";
 
 		}
@@ -177,18 +232,17 @@ public class EditProduct extends HttpServlet {
 
 	}
 
-	public String updateImgMain(String colorId, String idColorCurrent) {
+	public String updateColor(String colorId, String idColorCurrent) {
 		if (DAO_EditProduct.getInstance().updateColorProduct(TABLE.HINHANH, p.getID(), colorId, idColorCurrent)
 				&& DAO_EditProduct.getInstance().updateColorProduct(TABLE.SOLUONG_SP, p.getID(), colorId,
 						idColorCurrent)) {
-			return "Cập nhật ảnh nền thành công";
+			return "Cập nhật màu sắc thành công";
 		}
-		return "Cập nhật ảnh nền thất bại";
+		return "Cập nhật màu sắc thất bại";
 	}
 
 	public String mergerConfiguration(ArrayList<String> arr) {
-		String id = DAO_AddProduct.getInstance().createIdConfig();
-		id = DAO_AddProduct.getInstance().addConfig(id, arr.size());
+		String id = p.getIdCongfig();
 		for (String s : arr) {
 			DAO_Attribute.getInstance().addConfiguration(id, s);
 		}
@@ -203,16 +257,10 @@ public class EditProduct extends HttpServlet {
 		return arr;
 	}
 
-	public String addProduct(Map<String, String> map, String name, String idBranch, String type, String status,
-			String introduce, String price, String priceSale) {
-		String idConfig = mergerConfiguration(addDetaiAttribute(map));
-		String id = DAO_AddProduct.getInstance().addProduct(name, type, idBranch, status, introduce, idConfig);
-		addPrice(id, Integer.parseInt(price), Integer.parseInt(priceSale));
-		return id;
-	}
-
-	public boolean addPrice(String id, int price, int priceSale) {
-		return DAO_AddProduct.getInstance().addPrice(id, price, priceSale);
+	public String updateAttributes(Map<String, String> map) {
+		DAO_EditProduct.getInstance().deleteConfig(p.getIdCongfig());
+		String id = mergerConfiguration(addDetaiAttribute(map));
+		return "Mã cấu hình đã cập nhật " + id;
 	}
 
 	public boolean addPicture(String id, String idColor, String url, String type) {
@@ -241,20 +289,6 @@ public class EditProduct extends HttpServlet {
 	}
 
 	public static void main(String[] args) {
-		for (int i = 0; i < 10; i++) {
-			int count = 0;
-			for (int j = 0; j < 9; j++) {
-				if (i == j) {
-					count = j;
-					System.out.println("ACTION");
-				}
-			}
-
-			if (i != count) {
-				System.out.println(i);
-
-			}
-		}
 	}
 
 }
