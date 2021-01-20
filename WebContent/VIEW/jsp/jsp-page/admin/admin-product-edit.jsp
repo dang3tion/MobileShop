@@ -316,77 +316,114 @@
 
 								<c:forEach items="${listAttribute }" var="att" varStatus="x">
 									<c:forEach items="${product.attributes }" var="attPro">
-										<c:choose>
-											<c:when test="${att.key.id==attPro.id }">
-												<ul class="modal-attribute" id="${att.key.id }">
+										<c:if test="${att.key.id==attPro.id }">
+											<c:set value="${attPro.id }" var="tmp">
+											</c:set>
+											<ul class="modal-attribute" id="${att.key.id }">
 
-													<div class="title-attribute">${att.key.name }</div>
-													<c:forEach items="${attPro.lstAtribute }" var="mapAtt">
-
-
-														<c:forEach items="${mapAtt.value }" var="it" varStatus="mapIndex">
-															<li class="item" id="${att.key.id }-item${mapIndex.index+1 }">
-																<div class="title">
-																	<select class=""
-																		style="min-width: 240px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 3px;"
-																		name="att-id">
-																		<c:forEach items="${att.value }" var="i">
+												<div class="title-attribute">${att.key.name }</div>
+												<c:forEach items="${attPro.lstAtribute }" var="mapAtt">
 
 
-																			<c:choose>
-																				<c:when test="${i.id==mapAtt.key.id}">
-																					<option value="${i.id }" selected>${i.title }</option>
+													<c:forEach items="${mapAtt.value }" var="it"
+														varStatus="mapIndex">
+														<li class="item"
+															id="${att.key.id }-item${mapIndex.index+1 }">
+															<div class="title">
+																<select class=""
+																	style="min-width: 240px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 3px;"
+																	name="att-id">
+																	<c:forEach items="${att.value }" var="i">
 
 
-																				</c:when>
-																				<c:otherwise>
-																					<option value="${i.id }">${i.title }</option>
-																				</c:otherwise>
-																			</c:choose>
+																		<c:choose>
+																			<c:when test="${i.id==mapAtt.key.id}">
+																				<option value="${i.id }" selected>${i.title }</option>
 
-																		</c:forEach>
-																	</select>
-																</div>
-																<div class="value">
 
-																	<div class="input">
-																		<input
-																			style="border: 1px solid #b7b7b7; outline: 0; padding: 2px 5px; border-radius: 3px; min-width: 300px;"
-																			name="att-value" type="text" value="${it }">
-																	</div>
+																			</c:when>
+																			<c:otherwise>
+																				<option value="${i.id }">${i.title }</option>
+																			</c:otherwise>
+																		</c:choose>
 
-																</div>
-																<div class="button">
+																	</c:forEach>
+																</select>
+															</div>
+															<div class="value">
 
-																	<button type="button" class="btn btn-warning mb-2"
-																		onclick="deleteAttribute('${att.key.id}-item${mapIndex.index+1 }')">Xóa</button>
-
+																<div class="input">
+																	<input
+																		style="border: 1px solid #b7b7b7; outline: 0; padding: 2px 5px; border-radius: 3px; min-width: 300px;"
+																		name="att-value" type="text" value="${it }">
 																</div>
 
-															</li>
-														</c:forEach>
+															</div>
+															<div class="button">
 
+																<button type="button" class="btn btn-warning mb-2"
+																	onclick="deleteAttribute('${att.key.id}-item${mapIndex.index+1 }')">Xóa</button>
 
+															</div>
+
+														</li>
 													</c:forEach>
-												</ul>
 
 
-												<div class="item">
-													<button type="button" class="btn btn-primary"
-														onclick="getListAttribute('${att.key.id}')"
-														style="outline: 0; border: 0; border-radius: 3px; margin: 10px 10px;">Thêm</button>
-												</div>
-											</c:when>
-											<c:otherwise>
+												</c:forEach>
+											</ul>
 
 
+											<div class="item">
+												<button type="button" class="btn btn-primary"
+													onclick="getListAttribute('${att.key.id}')"
+													style="outline: 0; border: 0; border-radius: 3px; margin: 10px 10px;">Thêm</button>
+											</div>
+										</c:if>
 
-
-
-
-											</c:otherwise>
-										</c:choose>
 									</c:forEach>
+									<c:if test="${tmp!=att.key.id }">
+
+										<ul class="modal-attribute" id="${att.key.id }">
+
+											<div class="title-attribute">${att.key.name }</div>
+
+											<li class="item" id="${att.key.id }-item${x.index+1 }">
+												<div class="title">
+													<select class=""
+														style="min-width: 240px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 3px;"
+														name="att-id">
+														<c:forEach items="${att.value }" var="attri">
+															<option value="${attri.id }">${attri.title }</option>
+														</c:forEach>
+													</select>
+												</div>
+												<div class="value">
+
+													<div class="input">
+														<input
+															style="border: 1px solid #b7b7b7; outline: 0; padding: 2px 5px; border-radius: 3px; min-width: 300px;"
+															name="att-value" type="text" value="">
+													</div>
+
+												</div>
+												<div class="button">
+
+													<button type="button" class="btn btn-warning mb-2"
+														onclick="deleteAttribute('${att.key.id}-item${x.index+1 }')">Xóa</button>
+
+												</div>
+
+											</li>
+
+
+										</ul>
+										<div class="item">
+											<button type="button" class="btn btn-primary"
+												onclick="getListAttribute('${att.key.id}')"
+												style="outline: 0; border: 0; border-radius: 3px; margin: 10px 10px;">Thêm</button>
+										</div>
+									</c:if>
 								</c:forEach>
 
 							</div>

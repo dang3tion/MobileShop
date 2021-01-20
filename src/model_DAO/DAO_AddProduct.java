@@ -81,7 +81,7 @@ public class DAO_AddProduct extends ExecuteCRUD {
 	}
 
 	public boolean isContainerImg(String idProduct, String idColor, String linkImg) {
-		String query = "SELECT * FROM HINH ANH WHERE MASP=? AND MAMAU =? ANH=?";
+		String query = "SELECT * FROM HINHANH WHERE MASP=? AND MAMAU =? AND ANH=?";
 		try (ResultSet rs = super.ExecuteQuery(query, idProduct, idColor, linkImg)) {
 			return true;
 		} catch (Exception e) {

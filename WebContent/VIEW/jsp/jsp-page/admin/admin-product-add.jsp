@@ -261,18 +261,18 @@
 							<div class="modal-body" style="padding-bottom: 0px"
 								id="table-attribute">
 
-								<c:forEach items="${arrMap }" var="att" varStatus="x">
+								<c:forEach items="${listAttribute }" var="att" varStatus="x">
 									<ul class="modal-attribute" id="${att.key.id }">
 
 										<div class="title-attribute">${att.key.name }</div>
-										<c:forEach items="${att.value }" var="attri" varStatus="lo">
-											<li class="item" id="${att.key.id }-item${lo.index+1 }">
+										
+											<li class="item" id="${att.key.id }-item${x.index+1 }">
 												<div class="title">
 													<select class=""
 														style="min-width: 240px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 3px;"
 														name="att-id">
-														<c:forEach items="${attri }" var="i">
-															<option value="${i.id }">${i.title }</option>
+														<c:forEach items="${att.value }" var="attri" >
+															<option value="${attri.id }">${attri.title }</option>
 														</c:forEach>
 													</select>
 												</div>
@@ -288,12 +288,11 @@
 												<div class="button">
 
 													<button type="button" class="btn btn-warning mb-2"
-														onclick="deleteAttribute('${att.key.id}-item${lo.index+1 }')">Xóa</button>
+														onclick="deleteAttribute('${att.key.id}-item${x.index+1 }')">Xóa</button>
 
 												</div>
 
 											</li>
-										</c:forEach>
 
 
 									</ul>
@@ -346,7 +345,7 @@
 								</div>
 								<div class="modal-footer">
 									<input type="submit" class="btn btn-primary"
-										name="confirm-add-product" value="Đồng ý">
+										name="confirm-edit-product" value="Đồng ý">
 									<button type="button" class="btn btn-secondary"
 										data-dismiss="modal">Hủy</button>
 								</div>

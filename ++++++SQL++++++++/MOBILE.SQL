@@ -4,7 +4,7 @@
 	SET DATEFORMAT DMY;		
 	--THONG TIN CHUNG CUA SHOP
 	GO
-select * from sanpham
+
 update SANPHAM set TINHTRANG=N'Đang bán',LOAI_SP=N'Mới' where MASP='sp11'
 	CREATE TABLE THONGTIN_SHOP(
 	ID  NVARCHAR(10) NOT NULL,

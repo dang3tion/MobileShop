@@ -38,18 +38,11 @@ public class AddProduct extends HttpServlet {
 			arrMap.put(a, arrAtt);
 		}
 		HttpSession session = request.getSession();
-		if (session.getAttribute("arrMap") == null) {
-			session.setAttribute("arrMap", arrMap);
-		}
+		session.setAttribute("arrMap", arrMap);
 
 		request.setAttribute("listColor", listColor);
 		request.setAttribute("listBranch", listBranch);
 		request.setAttribute("listAttribute", map);
-//		int count = 1;
-//		for (AttributeClass a : map.keySet()) {
-//			request.setAttribute("att" + count, map.get(a));
-//			count++;
-//		}
 
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-product-add.jsp");
@@ -169,5 +162,22 @@ public class AddProduct extends HttpServlet {
 			return "Ngưng kinh doanh";
 		}
 		return "Hết hàng";
+	}
+
+	public static void main(String[] args) {
+		for (int i = 0; i < 10; i++) {
+			int count=0;
+			for (int j = 0; j < 9; j++) {
+				if (i == j) {
+					count=j;
+					System.out.println("ACTION");
+				}
+			}
+			
+			if (i!=count) {
+				System.out.println(i);
+				
+			}
+		}
 	}
 }
