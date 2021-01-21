@@ -315,7 +315,7 @@ request.setAttribute("color", dao.colorWeb());
 						</div>
 						<div style="margin-top: 0px; margin-left: 10px;">
 							<p class="block" style="font-size: 16px; font-weight: 400;">
-								<span style="margin-right: 10px;">Thương hiệu:</span><a href="#">${product.branch.name }</a>
+								<span style="margin-right: 10px;">Thương hiệu:</span><a href="${pageContext.request.contextPath}/searchingProduct?thuonghieu=${product.branch.name}">${product.branch.name }</a>
 							</p>
 							<p class="block"
 								style="font-style: italic; font-size: 15px; font-weight: 400;">Đổi

@@ -79,7 +79,6 @@ request.setAttribute("color", dao.colorWeb());
 						<div class="title float-left">
 							<h3>Sản phẩm nổi bật</h3>
 
-							<h1>${CART}123</h1>
 
 						</div>
 						<div class="title float-right">

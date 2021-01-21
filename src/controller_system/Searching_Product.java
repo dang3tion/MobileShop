@@ -89,15 +89,10 @@ public class Searching_Product extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(listProduct.size());
-		System.out.println("Branch ===>" + branchName);
-		System.out.println("first  ===>" + startRange);
-		System.out.println("last ===>" + endRange);
-		System.out.println("moi/cu ====>" + aspect);
-		System.out.println("________________________________________");
+
 		request.setAttribute("lstPrices", listProduct);
 		RequestDispatcher dispatcher // dẫn link dùm t set cái link jsp
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/result-searching.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/result-filter-branch-price-range.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -114,3 +109,10 @@ public class Searching_Product extends HttpServlet {
 		return arr;
 	}
 }
+
+//System.out.println(listProduct.size());
+//System.out.println("Branch ===>" + branchName);
+//System.out.println("first  ===>" + startRange);
+//System.out.println("last ===>" + endRange);
+//System.out.println("moi/cu ====>" + aspect);
+//System.out.println("________________________________________");

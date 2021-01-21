@@ -92,7 +92,7 @@ request.setAttribute("color", dao.colorWeb());
 														Màu sắc: <span>${pro.color}</span>
 													</p>
 													<p>
-														Thương hiệu: <span><a href="">${pro.nameBranch }</a></span>
+														Thương hiệu: <span><a href="${pageContext.request.contextPath}/searchingProduct?thuonghieu=${pro.nameBranch}">${pro.nameBranch }</a></span>
 													</p>
 												</div>
 												<div class="beta">

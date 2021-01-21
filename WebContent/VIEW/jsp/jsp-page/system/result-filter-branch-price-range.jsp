@@ -39,6 +39,36 @@ request.setAttribute("color", dao.colorWeb());
 
 
 
+				<c:choose>
+					<c:when test="${!empty lstPrices}">
+						<div class="row">
+							<c:forEach items="${lstPrices}" var="pro" begin="0" end="8">
+								<div class="col-4">
+									<c:import url="/VIEW/jsp/jsp-component/card-product-index.jsp">
+										<c:param name="URLdetail"></c:param>
+										<c:param name="url" value="${pro.URL}"></c:param>
+										<c:param name="image" value="${pro.img}"></c:param>
+										<c:param name="name" value="${pro.name}"></c:param>
+										<c:param name="price" value="${pro.price}"></c:param>
+										<c:param name="salePrice" value="${pro.priceSales}"></c:param>
+										<c:param name="evaluate" value="${pro.avgEvaluate }"></c:param>
+										<c:param name="startIntact" value="${pro.startIntact}"></c:param>
+										<c:param name="modStart" value="${pro.modStart }"></c:param>
+										<c:param name="checkStart" value="${pro.checkStart}"></c:param>
+									</c:import>
+								</div>
+							</c:forEach>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="container text-center">
+							<h1>Không tìm thấy sản phẩm phù hợp</h1>
+						</div>
+					</c:otherwise>
+				</c:choose>
+
+
+
 
 
 				<!-- 				pagination -->
@@ -145,70 +175,6 @@ request.setAttribute("color", dao.colorWeb());
 			if (document.getElementById("sort_most_vote").checked) {
 				jsonDataSortNavigationbar.sort_most_vote = true;
 			}
-
-			/////////////////////////////////////////////////////////////////////
-			if (document.getElementById("os_ios").checked) {
-				jsonDataSortNavigationbar.os_ios = true;
-			}
-			if (document.getElementById("os_android").checked) {
-				jsonDataSortNavigationbar.os_android = true;
-			}
-			if (document.getElementById("os_other").checked) {
-				jsonDataSortNavigationbar.os_other = true;
-			}
-			if (document.getElementById("size_0_5inch").checked) {
-				jsonDataSortNavigationbar.size_0_5inch = true;
-			}
-			if (document.getElementById("size_5_6inch").checked) {
-				jsonDataSortNavigationbar.size_5_6inch = true;
-			}
-			if (document.getElementById("size_6_99inch").checked) {
-				jsonDataSortNavigationbar.size_6_99inch = true;
-			}
-			if (document.getElementById("rom_8GB").checked) {
-				jsonDataSortNavigationbar.rom_8GB = true;
-			}
-			if (document.getElementById("rom_16_128GB").checked) {
-				jsonDataSortNavigationbar.rom_16_128GB = true;
-			}
-			if (document.getElementById("rom_256GB").checked) {
-				jsonDataSortNavigationbar.rom_256GB = true;
-			}
-			if (document.getElementById("rom_12GB").checked) {
-				jsonDataSortNavigationbar.rom_12GB = true;
-			}
-// 			if (document.getElementById("ram_4GB").checked) {
-// 				jsonDataSortNavigationbar.ram_4GB = true;
-// 			}
-// 			if (document.getElementById("ram_4_6GB").checked) {
-// 				jsonDataSortNavigationbar.ram_4_6GB = true;
-// 			}
-			if (document.getElementById("ram_8GB").checked) {
-				jsonDataSortNavigationbar.ram_8GB = true;
-			}
-// 			if (document.getElementById("ram_12GB").checked) {
-// 				jsonDataSortNavigationbar.ram_12GB = true;
-// 			}
-			if (document.getElementById("front_cam_5MP").checked) {
-				jsonDataSortNavigationbar.front_cam_5MP = true;
-			}
-			if (document.getElementById("front_cam_5_12MP").checked) {
-				jsonDataSortNavigationbar.front_cam_5_12MP = true;
-			}
-			if (document.getElementById("front_cam_12_99MP").checked) {
-				jsonDataSortNavigationbar.front_cam_12_99MP = true;
-			}
-			if (document.getElementById("rear_cam_5MP").checked) {
-				jsonDataSortNavigationbar.rear_cam_5MP = true;
-			}
-			if (document.getElementById("rear_cam_5_12MP").checked) {
-				jsonDataSortNavigationbar.rear_cam_5_12MP = true;
-			}
-// 			if (document.getElementById("rear_cam_12_99M").checked) {
-// 				jsonDataSortNavigationbar.rear_cam_12_99M = true;
-// 			}
-
-			//////////////////////////////////////////////////////////////////////
 
 			$
 					.ajax({

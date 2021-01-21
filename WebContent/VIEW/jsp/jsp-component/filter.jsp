@@ -119,7 +119,7 @@ request.setAttribute("color", dao.colorWeb());
 							</div>
 							<div class="content-dropdown" id="content-order">
 								<div class="row">
-									<div class="col-12">
+									<div style="font-size: 0.8em" class="col-12">
 										<div class="list-group">
 										
 										<input onchange="sendAllUserSelected()" type="radio" name="sortListProduct" id="sort_lasted_update" style="display:none" checked>
