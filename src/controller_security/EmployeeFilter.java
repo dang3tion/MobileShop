@@ -20,7 +20,7 @@ import model_utility.Const;
  * @BẢO_VỆ_CÁC_TRANG_CÓ_TIỀN_TỐ_/ADMIN/*
  */
 @WebFilter(urlPatterns = { "/employee/*" })
-public class AdminFilter implements Filter {
+public class EmployeeFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
@@ -59,7 +59,7 @@ public class AdminFilter implements Filter {
 
 	}
 
-	public AdminFilter() {
+	public EmployeeFilter() {
 	}
 
 	public void destroy() {
