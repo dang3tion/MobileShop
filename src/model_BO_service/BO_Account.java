@@ -43,7 +43,7 @@ public class BO_Account {
 
 	public Account getAdmin(String username) {
 		Account acc = dao.get(username);
-		if (acc.getRole().equals(Const.ADMIN_ROLE)) {
+		if (acc != null && acc.getRole().equals(Const.ADMIN_ROLE)) {
 			return acc;
 		}
 		return null;

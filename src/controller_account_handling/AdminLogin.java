@@ -18,6 +18,7 @@ import model_utility.Const;
 @WebServlet(urlPatterns = "/adminlogin")
 public class AdminLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	BO_Account bo = BO_Account.getBoAccount();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -35,14 +36,14 @@ public class AdminLogin extends HttpServlet {
 		String messageErr = "Sai tên tài khoản hoặc mật khẩu";
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
 
-		Account acc =BO_Account.getBoAccount().getAdmin(email);
-		if (BO_Account.getBoAccount().checkLogin(email, password, Const.ADMIN_ROLE) == 1) {
+		Account acctemple = bo.getAdmin(email);
+
+		if ((acctemple != null) && (bo.checkLogin(email, password, Const.ADMIN_ROLE) == 1)) {
 			// mở khóa link
 			// Thêm user này vào session
 			HttpSession session = request.getSession();
-			session.setAttribute(Const.ADMIN_LOGINED, acc);
+			session.setAttribute(Const.ADMIN_LOGINED, acctemple);
 
 			String path = (String) session.getAttribute(Const.CURRENT_LINK);
 
