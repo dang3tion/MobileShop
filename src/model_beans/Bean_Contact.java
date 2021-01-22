@@ -1,7 +1,13 @@
 package model_beans;
 
+import java.io.Serializable;
 
-public class Bean_Contact {
+public class Bean_Contact implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String numericalOrder;
 	private String id;
 	private String name;

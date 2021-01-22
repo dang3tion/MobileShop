@@ -1,9 +1,15 @@
 package model_beans;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StarEvaluate {
+public class StarEvaluate implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nameCus;
 	private String dateEval;
 	private String contentEval;

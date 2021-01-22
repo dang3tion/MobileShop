@@ -1,6 +1,13 @@
 package model_beans;
 
-public class IconMenu {
+import java.io.Serializable;
+
+public class IconMenu implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String icon;
 	private String content;
 	public IconMenu(String icon, String content) {

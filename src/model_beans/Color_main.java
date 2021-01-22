@@ -1,8 +1,14 @@
 package model_beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Color_main {
+public class Color_main implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String id;
 	private String name;
 	private String imgMain;
