@@ -65,8 +65,9 @@ request.setAttribute("color", dao.colorWeb());
 									<li
 										class="list-group-item d-flex justify-content-between lh-condensed">
 										<div>
-											<h6 style="font-size: 0.8em" class="my-0">${pro.name} (${pro.color})
-												<span style="color: blue;"> x ${pro.quantityInCart} </span>
+											<h6 style="font-size: 0.8em" class="my-0">${pro.name}
+												(${pro.color}) <span style="color: blue;"> x
+													${pro.quantityInCart} </span>
 											</h6>
 										</div> <span style="color: #C41111; font-weight: bolder;"
 										class="price"> <fmt:formatNumber type="number"
@@ -108,20 +109,49 @@ request.setAttribute("color", dao.colorWeb());
 
 
 								<label for="cc-name">Địa chỉ giao hàng:</label>
-								<div class="input-group mb-2">
-									<div class="input-group-prepend">
-										<div class="input-group-text">
-											<i class="fas fa-map-marked-alt"></i>
-										</div>
+
+								<!-- 	@@@@@@@@@ START CHOOSE ADDRESS @@@@@@@@@@@@@ -->
+								<div class="row">
+									<div id="province-dropdown">
+										<select onchange="getDistrict(this.value)" class="mx-2"
+											style="height: 38px; min-width: 140px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
+											name="province">
+											<option disabled selected value>Chọn tỉnh/thành phố</option>
+											<c:forEach items="${LIST_PROVINCE}" var="pro">
+												<option value="${pro.key}">${pro.value}</option>
+											</c:forEach>
+										</select>
 									</div>
-									<input value="${CUSTOMER_LOGINED.address}" id="inAddress" name="address" type="text"
-										class="form-control" placeholder="Nhập địa chỉ giao hàng"
-										value="" onfocusout="check_address(this.id)">
+									<div id="district-dropdown">
+										<select class="mx-2"
+											style="height: 38px; min-width: 140px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
+											name="district">
+											<option disabled selected value>Chọn quận/huyện</option>
+										</select>
+									</div>
+									<div id="ward-dropdown">
+										<select class="mx-2"
+											style="height: 38px; min-width: 140px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
+											name="ward">
+											<option disabled selected value>Chọn phường/xã</option>
+										</select>
+									</div>
+
+									<div id="street">
+										<input style="width: 170px" id="inAddress"
+											name="street" type="text" class="form-control"
+											placeholder="Tên đường, số nhà" value=""
+											onfocusout="check_address(this.id)">
+
+										<div style="color: red;" class="col-6">
+											<span id="address" style="display: none">không để trống</span>
+										</div>
+
+									</div>
 								</div>
-								<div style="color: red;" class="col-6">
-									<p id="address" style="display: none">Vui lòng nhập đúng
-										địa chỉ.</p>
-								</div>
+								<!-- 	@@@@@@@@@ END CHOOSE ADDRESS @@@@@@@@@@@@@ -->
+
+
 							</div>
 
 
@@ -135,7 +165,8 @@ request.setAttribute("color", dao.colorWeb());
 												<i class="far fa-id-card"></i>
 											</div>
 										</div>
-										<input value="${CUSTOMER_LOGINED.name}" id="inName" type="text" name="name" class="form-control"
+										<input value="${CUSTOMER_LOGINED.name}" id="inName"
+											type="text" name="name" class="form-control"
 											placeholder="Nhập họ tên không dấu"
 											onfocusout="check_name(this.id)">
 									</div>
@@ -149,8 +180,9 @@ request.setAttribute("color", dao.colorWeb());
 												<i class="fas fa-phone-square-alt"></i>
 											</div>
 										</div>
-										<input value="${CUSTOMER_LOGINED.phoneNumber}" id="phone" name="phoneNumber" type="text" class="form-control"
-											placeholder="Nhập số điện thoại" 
+										<input value="${CUSTOMER_LOGINED.phoneNumber}" id="phone"
+											name="phoneNumber" type="text" class="form-control"
+											placeholder="Nhập số điện thoại"
 											onfocusout="check_phone(this.id)">
 									</div>
 								</div>
@@ -182,18 +214,19 @@ request.setAttribute("color", dao.colorWeb());
 							<h6 class="mb-4">Chọn phương thức thanh toán:</h6>
 							<div class="d-block my-3">
 								<div class="custom-control custom-radio">
-									<input id="credit" name="paymentMethod" value="Banking" type="radio" 
-										class="custom-control-input" onclick="hidenForm(this)" checked
-										required> <label class="custom-control-label"
-										for="credit">Chuyển khoản</label>
+									<input id="credit" name="paymentMethod" value="Banking"
+										type="radio" class="custom-control-input"
+										onclick="hidenForm(this)" checked required> <label
+										class="custom-control-label" for="credit">Chuyển khoản</label>
 								</div>
 
 								<div class="custom-control custom-radio "
 									style="margin-top: 20px;">
 									<input id="COD" name="paymentMethod" type="radio"
-										class="custom-control-input" onclick="hidenForm(this)" value="COD"
-									${CHECKED_COD}	required> <label class="custom-control-label "
-										for="COD">Thanh toán khi nhận hàng (COD)</label>
+										class="custom-control-input" onclick="hidenForm(this)"
+										value="COD" ${CHECKED_COD} required> <label
+										class="custom-control-label " for="COD">Thanh toán khi
+										nhận hàng (COD)</label>
 								</div>
 
 
@@ -355,6 +388,37 @@ request.setAttribute("color", dao.colorWeb());
 			}
 		}
 	</script>
+
+
+	<script type="text/javascript">
+		function getDistrict(provinceIDvalue) {
+			$.ajax({
+				type : 'GET',
+				url : '${pageContext.request.contextPath}/AJAXSelectDistrict',
+				data : {
+					provinceID : provinceIDvalue
+				},
+				success : function(response) {
+					$('#district-dropdown').html(response);
+				}
+
+			});
+		}
+		function getWard(districtIDvalue) {
+			$.ajax({
+				type : 'GET',
+				url : '${pageContext.request.contextPath}/AJAXSelectWard',
+				data : {
+					districtID : districtIDvalue
+				},
+				success : function(response) {
+					$('#ward-dropdown').html(response);
+				}
+
+			});
+		}
+	</script>
+
 
 	<script src="${url }/js/js-page/form-validation.js"></script>
 </body>

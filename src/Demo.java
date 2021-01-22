@@ -1,4 +1,3 @@
-package controller_system;
 
 import java.io.IOException;
 
@@ -9,30 +8,44 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model_DAO.DAO_Order;
+import controller_utility.GetAddress;
 
-@WebServlet(urlPatterns = "/check-receipt")
-public class CheckReceipt extends HttpServlet {
+/**
+ * Servlet implementation class Demo
+ */
+@WebServlet("/Demo")
+public class Demo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	DAO_Order dao = DAO_Order.getDAO_Order();
 
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Demo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 
-		String orderID = request.getParameter("orderID");
-
-		if (orderID != null) {
-			request.setAttribute("ORDER", dao.getOrder(orderID.trim()));
-		}
-
+		request.setAttribute("LIST_PROVINCE", GetAddress.getListProvince());
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/check-reciept.jsp");
-
+				= this.getServletContext().getRequestDispatcher("/VIEW/DemoAddress.jsp");
 		dispatcher.forward(request, response);
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

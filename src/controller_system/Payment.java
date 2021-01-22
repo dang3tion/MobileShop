@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controller_utility.GetAddress;
 import model_BO_service.BO_Product;
 import model_DAO.DAO_Order;
 import model_DAO.DAO_Product_main;
@@ -42,6 +43,7 @@ public class Payment extends HttpServlet {
 		request.setAttribute("LIST_INSTANCE_PRODUCT", Controller_Cart.getListInstanceProductInCart(cart));
 		request.setAttribute("TOTAL_MONEY", Controller_Cart.getTotalMoney(cart));
 		request.setAttribute("CODE_ODER", codeOder);
+		request.setAttribute("LIST_PROVINCE", GetAddress.getListProvince());
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/payment.jsp");
 		dispatcher.forward(request, response);
@@ -55,7 +57,12 @@ public class Payment extends HttpServlet {
 		Cart cart = (Cart) session.getAttribute("CART");
 		String codeOder = cart.getCodeOder().getCode();
 		String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
-		String address = request.getParameter("address");
+		String address = null;
+		String province = request.getParameter("province");
+		String district = request.getParameter("district");
+		String ward = request.getParameter("ward");
+		String street = request.getParameter("street");
+		address = province + " " + district + " " + ward + " " + street;
 		String name = request.getParameter("name");
 		String phoneNumber = request.getParameter("phoneNumber");
 		String paymentMethod = request.getParameter("paymentMethod");
@@ -82,9 +89,6 @@ public class Payment extends HttpServlet {
 			}
 		}
 
-	
-
-
 		// ADD ORDER AREA
 		String customerID = null;
 		Account acc = (Account) session.getAttribute(Const.CUSTOMER_LOGINED);
@@ -100,9 +104,9 @@ public class Payment extends HttpServlet {
 				Controller_Cart.getTotalMoney(cart), //
 				LocalDate.now().toString(), //
 				paymentMethod, //
-				Const.ORDER_STATUS.PENDING+"", //
+				Const.ORDER_STATUS.PENDING + "", //
 				customerID));
-		
+
 		// ADD ORDER DETAIL AREA
 		for (String productID : cart.getListProductID()) {
 			for (String colorID : cart.getListProduct().get(productID).keySet()) {
@@ -111,8 +115,6 @@ public class Payment extends HttpServlet {
 			}
 		}
 
-		
-	
 		cart.setCodeOder(new CodeOrder());
 		cart.getListProduct().clear();
 		Controller_Cart.updateCart(cart, session);
