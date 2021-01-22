@@ -1,6 +1,13 @@
 package model_beans;
 
-public class ProductAdmin {
+import java.io.Serializable;
+
+public class ProductAdmin implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String numOrder;
 	private String id;
 	private String img;

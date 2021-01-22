@@ -1,6 +1,13 @@
 package model_beans;
 
-public class Color_Web {
+import java.io.Serializable;
+
+public class Color_Web implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String colorMenu;
 	private String colorFilter;
 	private String colorBody;

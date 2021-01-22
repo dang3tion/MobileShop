@@ -1,6 +1,13 @@
 package model_beans;
 
-public class Evaluate_product {
+import java.io.Serializable;
+
+public class Evaluate_product implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int oneStar;
 	private int twoStar;
 	private int threeStar;

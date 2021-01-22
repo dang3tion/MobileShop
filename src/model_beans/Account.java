@@ -1,13 +1,18 @@
 package model_beans;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import model_utility.Const;
 import model_utility.Encrypt;
 
-public class Account {
+public class Account implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String id;
 	private String email;
 	private String password;

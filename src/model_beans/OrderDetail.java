@@ -1,6 +1,13 @@
 package model_beans;
 
-public class OrderDetail {
+import java.io.Serializable;
+
+public class OrderDetail implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String orderID;
 	private String productID;
 	private String colorID;

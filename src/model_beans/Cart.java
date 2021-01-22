@@ -1,5 +1,6 @@
 package model_beans;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,11 +10,15 @@ import model_DAO.DAO_ListProduct;
 import model_utility.CodeOrder;
 import model_utility.Config;
 
-public class Cart {
+public class Cart implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private HashMap<String, HashMap<String, Integer>> listProduct = new HashMap<String, HashMap<String, Integer>>();
 	CodeOrder codeOder = new CodeOrder();
-//	private Map<Product_form, Integer> list = new HashMap<Product_form, Integer>();
 
 	public CodeOrder getCodeOder() {
 		return codeOder;

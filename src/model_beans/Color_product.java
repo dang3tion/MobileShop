@@ -1,6 +1,13 @@
 package model_beans;
 
-public class Color_product {
+import java.io.Serializable;
+
+public class Color_product implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String idColor;
 	private String typeColor;
 

@@ -1,11 +1,17 @@
 package model_beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import model_DAO.DAO_ListProduct;
 
-public class Product_main {
+public class Product_main implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String ID;
 	private String name;
 	private String type;
