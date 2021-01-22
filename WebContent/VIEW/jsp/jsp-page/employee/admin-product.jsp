@@ -79,7 +79,7 @@
 
 												</div>
 												<a
-													href=" ${pageContext.request.contextPath}/admin/product-add"><button
+													href=" ${pageContext.request.contextPath}/employee/product-add"><button
 														data-toggle="tooltip" data-placement="top"
 														title="Thêm một sản phẩm mới vào danh sách"
 														style="float: right;" class="btn btn-success btn-add">

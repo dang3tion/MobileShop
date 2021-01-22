@@ -19,7 +19,7 @@ import model_utility.Const;
 /**
  * @BẢO_VỆ_CÁC_TRANG_CÓ_TIỀN_TỐ_/ADMIN/*
  */
-@WebFilter(urlPatterns = { "/admin/*" })
+@WebFilter(urlPatterns = { "/employee/*" })
 public class AdminFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -44,7 +44,7 @@ public class AdminFilter implements Filter {
 			// để sau khi đăng nhập thì tiếp tục vào trang này
 			// Dùng trong trường hợp user truy cập vào các mục
 			// được bảo vệ bằng URL không thông qua giao diện
-			// VD : gõ URL : abc.com/admin/quanliSanPham/
+			// VD : gõ URL : abc.com/employee/quanliSanPham/
 			session.setAttribute(Const.CURRENT_LINK, servletPath);
 //
 //			 chuyển qua login kèm theo thông báo

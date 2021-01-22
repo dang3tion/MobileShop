@@ -12,14 +12,14 @@ import javax.servlet.http.HttpSession;
 
 import model_DAO.DAO_ShopInfo;
 
-@WebServlet("/admin/information")
+@WebServlet("/employee/information")
 public class ShopInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-informatioin.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/admin-informatioin.jsp");
 		dispatcher.forward(request, response);
 	}
 

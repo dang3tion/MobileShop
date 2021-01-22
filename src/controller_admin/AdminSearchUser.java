@@ -14,7 +14,7 @@ import model_BO_service.BO_Account;
 import model_DAO.DAO_Account;
 import model_utility.Const;
 
-@WebServlet(urlPatterns = "/admin/searchUser")
+@WebServlet(urlPatterns = "/employee/searchUser")
 public class AdminSearchUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -44,7 +44,7 @@ public class AdminSearchUser extends HttpServlet {
 		request.setAttribute("totalAccountCreateToday", bo.getTotalAccountCreatedToday());
 		request.setAttribute("totalPage", bo.totalPage());
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-search-user.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/admin-search-user.jsp");
 		dispatcher.forward(request, response);
 		return;
 	}
@@ -55,7 +55,7 @@ public class AdminSearchUser extends HttpServlet {
 		String email = (String) request.getParameter("email");
 		BO_Account.getBoAccount().on_off_account(email);
 
-		response.sendRedirect(request.getContextPath() + "/admin/searchUser");
+		response.sendRedirect(request.getContextPath() + "/employee/searchUser");
 		return;
 
 	}

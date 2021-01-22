@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import model_DAO.DAO_Product_main;
 import model_beans.Product_main;
 
-@WebServlet(urlPatterns = "/admin/manager-product")
+@WebServlet(urlPatterns = "/employee/manager-product")
 public class ManagerProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +34,7 @@ public class ManagerProduct extends HttpServlet {
 		request.setAttribute("totalPage", DAO_Product_main.getDao_Product_main().getNumberOfPage(2));
 		request.setAttribute("listProduct", listProduct);
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-product.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/admin-product.jsp");
 		dispatcher.forward(request, response);
 	}
 

@@ -28,7 +28,7 @@
 
 			<!-- 		toggle logout -->
 			<jsp:include page="/VIEW/jsp/jsp-component/toggle-logout-bar.jsp"></jsp:include>
-			<form action="${pageContext.request.contextPath}/admin/information"
+			<form action="${pageContext.request.contextPath}/employee/information"
 				method="POST">
 				<!-- main content page -->
 				<div class="container-fluid">

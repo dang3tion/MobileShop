@@ -5,56 +5,56 @@
 <!--Nav-->
 <div class="side-bar bg-light border-right" id="sidebar-wrapper">
 	<div class="sidebar-heading text-center">
-			<a href="${pageContext.request.contextPath}/admin/index" ><b>${SHOPINFO.name}</b></a>
+			<a href="${pageContext.request.contextPath}/employee/index" ><b>${SHOPINFO.name}</b></a>
 		
 	</div>
 	<div class="list-group list-group-flush">
 		<ul>
-			<li><a href="${pageContext.request.contextPath}/admin/index"
+			<li><a href="${pageContext.request.contextPath}/employee/index"
 				class="list-group-item list-group-item-action ${param.indexactive}">
 					Trang chủ <i class="menu-icon fa fa-laptop"></i>
 			</a></li>
-			<li><a href="${pageContext.request.contextPath}/admin/user"
+			<li><a href="${pageContext.request.contextPath}/employee/user"
 				class="list-group-item list-group-item-action ${param.useractive}">
 					Thông tin người dùng<i class="menu-icon fas fa-users font-list"></i>
 			</a></li>
 			<li><a
-				href="${pageContext.request.contextPath}/admin/manager-product"
+				href="${pageContext.request.contextPath}/employee/manager-product"
 				class="list-group-item list-group-item-action ${param.listProductactive} ">
 					Quản lý sản phẩm <i class="menu-icon fas fa-mobile-alt font-list"></i>
 			</a></li>
-			<li><a href="${pageContext.request.contextPath}/admin/receipt"
+			<li><a href="${pageContext.request.contextPath}/employee/receipt"
 				class="list-group-item list-group-item-action ${param.receiptactive} ">
 					Quản lí đơn hàng <i
 					class="menu-icon fas fa-shopping-cart font-list"></i>
 			</a></li>
-			<li><a href="${pageContext.request.contextPath}/admin/branch"
+			<li><a href="${pageContext.request.contextPath}/employee/branch"
 				class="list-group-item list-group-item-action ${param.branchactive} ">
 					Thông tin thương hiệu <i class="menu-icon fas fa-archway"></i>
 			</a></li>
 			<li><a
-				href="${pageContext.request.contextPath}/admin/cancel-receipt"
+				href="${pageContext.request.contextPath}/employee/cancel-receipt"
 				class="list-group-item list-group-item-action ${param.cancelactive}">
 					Đơn hàng bị hủy <i class="menu-icon fas fa-phone-slash"></i>
 			</a></li>
-			<li><a href="${pageContext.request.contextPath}/admin/feedback"
+			<li><a href="${pageContext.request.contextPath}/employee/feedback"
 				class="list-group-item list-group-item-action ${param.feedbackactive}">
 					Phản hồi khách hàng <i class="menu-icon far fa-paper-plane"></i>
 			</a></li>
-			<li><a href="${pageContext.request.contextPath}/admin/attribute"
+			<li><a href="${pageContext.request.contextPath}/employee/attribute"
 				class="list-group-item list-group-item-action ${param.attributeactive}">
 					Thuộc tính sản phẩm <i class="menu-icon fas fa-cog"></i>
 			</a></li>
-			<li><a href="${pageContext.request.contextPath}/admin/filter"
+			<li><a href="${pageContext.request.contextPath}/employee/filter"
 				class="list-group-item list-group-item-action ${param.filteractive} ">
 					Dữ liệu lọc <i class="menu-icon fas fa-filter"></i>
 			</a></li>
-			<li><a href="${pageContext.request.contextPath}/admin/config"
+			<li><a href="${pageContext.request.contextPath}/employee/config"
 				class="list-group-item list-group-item-action ${param.configactive}">Giao
 					diện <i class="menu-icon fas fa-desktop"></i>
 			</a></li>
 			<li><a
-				href="${pageContext.request.contextPath}/admin/information"
+				href="${pageContext.request.contextPath}/employee/information"
 				class="list-group-item list-group-item-action ${param.informationactive}">
 					Thông tin cửa hàng <i class="menu-icon fas fa-cogs"></i>
 			</a></li>

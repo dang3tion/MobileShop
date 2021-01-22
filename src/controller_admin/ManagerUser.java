@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import model_BO_service.BO_Account;
 import model_utility.Const;
 
-@WebServlet(urlPatterns = "/admin/user")
+@WebServlet(urlPatterns = "/employee/user")
 public class ManagerUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -39,7 +39,7 @@ public class ManagerUser extends HttpServlet {
 		request.setAttribute("totalAccountCreateToday", bo.getTotalAccountCreatedToday());
 		request.setAttribute("totalPage", bo.totalPage());
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-user.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/admin-user.jsp");
 		dispatcher.forward(request, response);
 		return;
 	}

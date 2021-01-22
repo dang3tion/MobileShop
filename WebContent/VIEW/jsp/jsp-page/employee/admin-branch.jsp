@@ -43,7 +43,7 @@
 													</div>
 
 													<form
-														action="${pageContext.request.contextPath}/admin/branch"
+														action="${pageContext.request.contextPath}/employee/branch"
 														method="post"></form>
 												</div>
 												<table id="bootstrap-data-table" class="table table-hover ">
@@ -102,7 +102,7 @@
 																			</button>
 																		</div>
 																			<form
-																				action="${pageContext.request.contextPath}/admin/branch"
+																				action="${pageContext.request.contextPath}/employee/branch"
 																				method="post">
 																		<div class="modal-body">Bạn có muốn thay đổi
 																			trạng thái thương hiệu hiệu này.</div>
@@ -164,7 +164,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form action="${pageContext.request.contextPath}/admin/branch"
+				<form action="${pageContext.request.contextPath}/employee/branch"
 						method="post">        
 					<div class="modal-body">
 						<label for="exampleInputEmail1" style=""><h3>Nhập tên thương hiệu mới</h3></label> <input

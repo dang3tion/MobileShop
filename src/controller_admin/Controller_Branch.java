@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model_BO_service.BO_Branch;
 
-@WebServlet(urlPatterns = "/admin/branch")
+@WebServlet(urlPatterns = "/employee/branch")
 public class Controller_Branch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BO_Branch bo = new BO_Branch();
@@ -20,7 +20,7 @@ public class Controller_Branch extends HttpServlet {
 			throws ServletException, IOException {
 		request.setAttribute("listBranch", bo.getListBranch(1, 1000));
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-branch.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/admin-branch.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -52,7 +52,7 @@ public class Controller_Branch extends HttpServlet {
 		}
 
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-branch.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/admin-branch.jsp");
 		dispatcher.forward(request, response);
 	}
 

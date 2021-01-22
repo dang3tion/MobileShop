@@ -56,7 +56,7 @@
 
 
 
-						<form onsubmit="return checkSubmit()" action="${pageContext.request.contextPath}/admin/searchUser"
+						<form onsubmit="return checkSubmit()" action="${pageContext.request.contextPath}/employee/searchUser"
 							method="GET">
 							<div class="ml-5 mb-2 form-row align-items-center">
 								<div class="col-auto">

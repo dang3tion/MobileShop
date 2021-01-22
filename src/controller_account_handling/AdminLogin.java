@@ -56,7 +56,7 @@ public class AdminLogin extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + path);
 			} else {
 				// người dùng truy cập link ở footer
-				response.sendRedirect(request.getContextPath() + "/admin/index");
+				response.sendRedirect(request.getContextPath() + "/employee/index");
 			}
 		} else {
 			request.setAttribute("message", messageErr);

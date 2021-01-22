@@ -62,7 +62,7 @@
 
 
 
-						<form action="${pageContext.request.contextPath}/admin/searchUser"
+						<form action="${pageContext.request.contextPath}/employee/searchUser"
 							method="GET">
 							<div class="ml-5 mb-2 form-row align-items-center">
 								<div class="col-auto">
@@ -86,7 +86,7 @@
 
 						<!-- 						Chế độ Xem -->
 
-						<a href="${pageContext.request.contextPath}/admin/user"><button style="margin-left: 200px" type="submit"
+						<a href="${pageContext.request.contextPath}/employee/user"><button style="margin-left: 200px" type="submit"
 								class="btn btn-success mb-2">Hủy tìm kiếm</button></a>
 						<!-- 						Chế độ Xem -->
 
@@ -198,7 +198,7 @@
 		$
 				.ajax({
 					type : 'POST',
-					url : '${pageContext.request.contextPath}/admin/searchUser',
+					url : '${pageContext.request.contextPath}/employee/searchUser',
 					data : {
 
 						email : emailvalue

@@ -25,7 +25,7 @@
 				<div class="mb-5 mt-3 ">
 					<h4 class="text-center mt-3 mb-3">Cấu hình trang web</h4>
 
-					<form action="${pageContext.request.contextPath}/admin/config" method="post">
+					<form action="${pageContext.request.contextPath}/employee/config" method="post">
 						<div class="row space-r">
 							<h5>1.Màu sắc</h5>
 						</div>

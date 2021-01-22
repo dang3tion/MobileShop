@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model_DAO.DAO_IconMenu;
 
-@WebServlet("/admin/config")
+@WebServlet("/employee/config")
 public class ConfigGUI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private DAO_IconMenu dao = new DAO_IconMenu();
@@ -20,7 +20,7 @@ public class ConfigGUI extends HttpServlet {
 		request.setAttribute("color", dao.colorWeb());
 		request.setAttribute("list", dao.listIconMenu());
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/addmin-config-web.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/addmin-config-web.jsp");
 		dispatcher.forward(request, response);
 	}
 

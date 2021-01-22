@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model_DAO.DAO_Order;
 
-@WebServlet("/admin/receipt")
+@WebServlet("/employee/receipt")
 public class Receipt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAO_Order dao = DAO_Order.getDAO_Order();
@@ -21,7 +21,7 @@ public class Receipt extends HttpServlet {
 
 		request.setAttribute("LIST_ORDER", dao.getListOrder(1, 99999));
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-receipt.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/admin-receipt.jsp");
 		dispatcher.forward(request, response);
 	}
 

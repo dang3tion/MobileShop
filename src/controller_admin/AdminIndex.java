@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model_DAO.DAO_HOME_ADMIN;
 
-@WebServlet(urlPatterns = "/admin/index")
+@WebServlet(urlPatterns = "/employee/index")
 public class AdminIndex extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private DAO_HOME_ADMIN dao = new DAO_HOME_ADMIN();
@@ -28,7 +28,7 @@ public class AdminIndex extends HttpServlet {
 		request.setAttribute("list", dao.listSta(1, 200));
 		
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-index.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/admin-index.jsp");
 
 		dispatcher.forward(request, response);
 	}

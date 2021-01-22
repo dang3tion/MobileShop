@@ -3,9 +3,8 @@ build/
 target/
 .classpath
 .project
-pom.xml
 README.md
-
+pom.xml
 
 
 src/model_utility/Config.java
@@ -27,7 +26,7 @@ src/model_utility/Config.java
 .mtj.tmp/
 
 # Package Files #
-*.jar
+
 *.war
 *.nar
 *.ear

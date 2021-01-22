@@ -22,7 +22,7 @@ import model_beans.AttributeManager;
 import model_beans.Branch;
 import model_beans.Color_product;
 
-@WebServlet(urlPatterns = "/admin/product-add")
+@WebServlet(urlPatterns = "/employee/product-add")
 public class AddProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -45,7 +45,7 @@ public class AddProduct extends HttpServlet {
 		request.setAttribute("listAttribute", map);
 
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-product-add.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/admin-product-add.jsp");
 		dispatcher.forward(request, response);
 	}
 
