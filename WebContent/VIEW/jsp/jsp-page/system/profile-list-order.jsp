@@ -60,6 +60,7 @@ request.setAttribute("color", dao.colorWeb());
 										<th scope="col">Ngày lập</th>
 
 										<th scope="col">Chi tiết đơn hàng</th>
+										<th scope="col">Trạng thái</th>
 
 									</tr>
 								</thead>
@@ -72,7 +73,7 @@ request.setAttribute("color", dao.colorWeb());
 											<td>${order.customerID}</td>
 
 											<td><fmt:formatNumber type="number"
-													maxFractionDigits="3" value="${order.totalMoney}" /> đ </td>
+													maxFractionDigits="3" value="${order.totalMoney}" /> đ</td>
 											<td>${order.timeCreate}</td>
 
 											<td class="detail"><a data-toggle="modal"
@@ -144,7 +145,9 @@ request.setAttribute("color", dao.colorWeb());
 																			<td><span title="Số điện thoại">${pro.color}</span></td>
 																			<td style="min-width: 300px;">${pro.quantityInCart}
 																			</th>
-																			<td style="min-width: 300px;">${pro.price}<span
+																			<td style="min-width: 300px;"><fmt:formatNumber
+																					type="number" maxFractionDigits="3"
+																					value="${pro.price}" /> <span
 																				style="text-decoration: underline;">đ</span>
 																			</th>
 																		</tr>
@@ -164,6 +167,7 @@ request.setAttribute("color", dao.colorWeb());
 
 											</td>
 
+											<td>${order.status}</td>
 
 										</tr>
 									</c:forEach>
@@ -187,7 +191,7 @@ request.setAttribute("color", dao.colorWeb());
 	<!-- /.container -->
 
 
-<div style="margin-bottom: 200px"></div>
+	<div style="margin-bottom: 200px"></div>
 
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>

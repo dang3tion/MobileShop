@@ -65,6 +65,23 @@ public class GetAddress implements Serializable {
 		return districts;
 	}
 
+	public static String getWardName(String wardID) {
+		Gson gson = new Gson();
+		String jsonString = getJSONString("https://thongtindoanhnghiep.co/api/ward/" + wardID);
+		JsonObject ward = gson.fromJson(jsonString, JsonObject.class);
+		String wardName = ward.get("Title").toString();
+		wardName = wardName.substring(1, wardName.length() - 1);
+		return wardName;
+	}
+	public static String getDistrictName(String districtID) {
+		Gson gson = new Gson();
+		String jsonString = getJSONString("https://thongtindoanhnghiep.co/api/district/" + districtID);
+		JsonObject district = gson.fromJson(jsonString, JsonObject.class);
+		String districtName = district.get("Title").toString();
+		districtName = districtName.substring(1, districtName.length() - 1);
+		return districtName;
+	}
+
 	private static String getJSONString(String URL) {
 		String JSONString = null;
 		try {
@@ -87,9 +104,5 @@ public class GetAddress implements Serializable {
 		return JSONString;
 	}
 
-	public static void main(String[] args) {
-		System.out.println(getListProvince());
-		System.out.println(getListDistrict("13"));
-		System.out.println(getListWard("202"));
-	}
+
 }

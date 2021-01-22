@@ -57,12 +57,17 @@ public class Payment extends HttpServlet {
 		Cart cart = (Cart) session.getAttribute("CART");
 		String codeOder = cart.getCodeOder().getCode();
 		String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+
 		String address = null;
-		String province = request.getParameter("province");
-		String district = request.getParameter("district");
-		String ward = request.getParameter("ward");
+		String provinceID = request.getParameter("province");
+		String province = GetAddress.getListProvince().get(provinceID);
+		String districtID = request.getParameter("district");
+		String district = GetAddress.getDistrictName(districtID);
+		String wardID = request.getParameter("ward");
+		String ward = GetAddress.getWardName(wardID);
 		String street = request.getParameter("street");
-		address = province + " " + district + " " + ward + " " + street;
+		address = province + ", " + district + ", " + ward + ", đường/số nhà :" + street;
+
 		String name = request.getParameter("name");
 		String phoneNumber = request.getParameter("phoneNumber");
 		String paymentMethod = request.getParameter("paymentMethod");

@@ -37,7 +37,7 @@ public class Controller_Cart extends HttpServlet {
 		request.setAttribute("message", request.getAttribute("message"));
 		request.setAttribute("LIST_INSTANCE_PRODUCT", getListInstanceProductInCart(cart));
 		request.setAttribute("TOTAL_MONEY", getTotalMoney(cart));
-//		request.setAttribute("QUANTITY_MODEL", cart.getListProduct().size());
+		request.setAttribute("QUANTITY_MODEL", cart.getListProduct().size());
 		dispatcher = this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/cart.jsp");
 		dispatcher.forward(request, response);
 		return;
@@ -75,7 +75,7 @@ public class Controller_Cart extends HttpServlet {
 							+ Config.MAX_QUANTITY_OF_PRODUCT + " sản phẩm ";
 					break;
 				case 2:
-					message = "tối đa " + Config.MAX_PRODUCT + " mẫu điện thoại trong giỏ hàng";
+					message = "Đã đạt đến số lượng tối đa";
 					break;
 				}
 			} catch (SQLException e) {

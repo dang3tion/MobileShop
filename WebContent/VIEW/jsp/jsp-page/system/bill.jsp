@@ -131,7 +131,7 @@ request.setAttribute("color", dao.colorWeb());
 								</td>
 								<td class="m-b-5" colspan="2" align="right">
 									<h5 style="color: red; text-align: right;">
-										27.920.000 <span>VNĐ</span>
+										${TOTAL_MONEY} <span>VNĐ</span>
 									</h5>
 								</td>
 							</tr>

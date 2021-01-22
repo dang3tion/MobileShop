@@ -138,13 +138,14 @@ request.setAttribute("color", dao.colorWeb());
 									</div>
 
 									<div id="street">
-										<input style="width: 170px" id="inAddress"
-											name="street" type="text" class="form-control"
+										<input style="width: 170px" id="inAddress" name="street"
+											type="text" class="form-control"
 											placeholder="Tên đường, số nhà" value=""
 											onfocusout="check_address(this.id)">
 
 										<div style="color: red;" class="col-6">
-											<span id="address" style="display: none">không để trống</span>
+											<span id="address" style="display: none">không để
+												trống</span>
 										</div>
 
 									</div>
@@ -290,6 +291,7 @@ request.setAttribute("color", dao.colorWeb());
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 	<script>
+	
 		function hidenForm(x) {
 			if (x.id == "credit") {
 				var form = document.getElementById("FormThanhToanBangThe");
@@ -391,6 +393,7 @@ request.setAttribute("color", dao.colorWeb());
 
 
 	<script type="text/javascript">
+		
 		function getDistrict(provinceIDvalue) {
 			$.ajax({
 				type : 'GET',
