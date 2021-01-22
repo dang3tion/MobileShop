@@ -1,13 +1,6 @@
 package model_beans;
 
-import java.io.Serializable;
-
-public class ShopInfo implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class ShopInfo {
 	private String name;
 	private String policy;
 	private String URL_facebook;

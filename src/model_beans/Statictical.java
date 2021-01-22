@@ -1,13 +1,6 @@
 package model_beans;
 
-import java.io.Serializable;
-
-public class Statictical implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Statictical {
 	private String date;
 	private int revenue;
 	private int productSaled;

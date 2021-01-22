@@ -1,13 +1,6 @@
 package model_beans;
 
-import java.io.Serializable;
-
-public class Price_product_main implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Price_product_main {
 	private String date;
 	private int price;
 	private int priceSales;

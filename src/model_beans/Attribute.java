@@ -1,17 +1,11 @@
 package model_beans;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Attribute implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Attribute {
 	private String id;
 	private String name;
 	private Map<AttributeManager, List<String>> lstAtribute = new HashMap<AttributeManager, List<String>>();

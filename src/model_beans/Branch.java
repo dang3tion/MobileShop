@@ -2,12 +2,7 @@ package model_beans;
 
 import java.io.Serializable;
 
-public class Branch implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Branch implements Serializable{
 	private String numOrder;
 	private String id;
 	private String name;

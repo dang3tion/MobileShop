@@ -1,13 +1,6 @@
 package model_beans;
 
-import java.io.Serializable;
-
-public class Configuration implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Configuration {
 	private String idConfi;
 	private String titleConfi;
 	private String contentConfi;

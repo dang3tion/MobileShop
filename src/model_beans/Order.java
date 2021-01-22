@@ -1,15 +1,9 @@
 package model_beans;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Order implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Order {
 	private String orderID;
 	private String name;
 	private String address;

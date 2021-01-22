@@ -1,13 +1,7 @@
 package model_beans;
 
-import java.io.Serializable;
 
-public class Product_form implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Product_form {
 	private String URL;
 	private String id;
 	private String name;

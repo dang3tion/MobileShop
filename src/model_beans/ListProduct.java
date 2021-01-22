@@ -1,6 +1,5 @@
 package model_beans;
 
-import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,12 +10,7 @@ import model_DAO.DAO_ListProduct.LISTP;
 import model_DAO.DAO_ListProduct.ORDER;
 import model_DAO.DAO_ListProduct.SELECT;
 
-public class ListProduct implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class ListProduct {
 	private String query;
 	private Object[] para;
 	private ArrayList<Product_form> lstProduct;
