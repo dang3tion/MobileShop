@@ -184,7 +184,6 @@ request.setAttribute("color", dao.colorWeb());
 
 		</div>
 	</div>
-	</div>
 	<!-- /.container -->
 
 
