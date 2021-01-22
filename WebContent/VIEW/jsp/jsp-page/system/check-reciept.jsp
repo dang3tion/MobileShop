@@ -37,44 +37,47 @@ request.setAttribute("color", dao.colorWeb());
 			<div class="col-12">
 				<div class="frame-check">
 					<h5>Nhập mã đơn hàng cần kiểm tra</h5>
-					<div class="frame-input">
-						<label><i class="alpha fas fa-money-check"></i></label> <input
-							type="text" placeholder="Nhập mã đơn hàng" value="MS291">
-						<label> <a
-							href="../Check-reicept_Page/check-receipt-result.html"><i
-								class="beta fas fa-search"></i></a></label>
 
-					</div>
+					<form action="${pageContext.request.contextPath}/check-receipt" method="get">
+
+						<div class="frame-input">
+							<label><i class="alpha fas fa-money-check"></i></label> <input name="orderID"
+								type="text" placeholder="Nhập mã đơn hàng">
+							<button class="btn btn-primary">
+								<i class="beta fas fa-search"></i>
+							</button>
+						</div>
+					</form>
 				</div>
-			</div>
-			<div class="col-12">
-				<div class="check-result">
-					<h4 class="text-left mb-4">Kết quả tìm kiếm</h4>
-					<table class="table table-hover ">
-						<thead class="thead-light">
-							<tr>
-								<th scope="col">Mã đơn hàng</th>
-								<th scope="col">Mã khách hàng</th>
-								<th scope="col">Ngày đặt hàng</th>
-
-								<th scope="col">Tình trạng đơn hàng</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">MS291</th>
-								<td>KH01</td>
-								<td>10/10/2020</td>
-								<td>Đang giao hàng</td>
-							</tr>
-
-						</tbody>
-					</table>
-				</div>
-			</div>
-
 		</div>
-		<div class="row"></div>
+		<div class="col-12">
+			<div class="check-result">
+				<h4 class="text-left mb-4">Kết quả tìm kiếm</h4>
+				<table class="table table-hover ">
+					<thead class="thead-light">
+						<tr>
+							<th scope="col">Mã đơn hàng</th>
+							<th scope="col">Tên khách hàng</th>
+							<th scope="col">Ngày đặt hàng</th>
+
+							<th scope="col">Tình trạng đơn hàng</th>
+						</tr>
+					</thead>
+					<tbody>
+
+							<tr>
+								<th scope="row">${ORDER.orderID}</th>
+								<td>${ORDER.name}</td>
+								<td>${ORDER.timeCreate}</td>
+								<td>${ORDER.status}</td>
+							</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+	<div class="row"></div>
 	</div>
 
 

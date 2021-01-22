@@ -23,7 +23,7 @@ request.setAttribute("color", dao.colorWeb());
 	</c:import>
 
 	<c:import url="/VIEW/jsp/jsp-component/breadcumb.jsp">
-		<c:param name="title" value="Thông tin giao nhận hàng"></c:param>
+		<c:param name="title" value="Thông tin cá nhân"></c:param>
 	</c:import>
 	<!-- Page Content -->
 	<div class=" container m-2 mb-5">

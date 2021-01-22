@@ -11,8 +11,7 @@
 		</a>
 		<a href="${pageContext.request.contextPath}/member/receipted">
 			<li id="DonDatHang" class="list-group-item ${param.receiptedactive}"><i
-				class="fas fa-box"></i> Đơn hàng đã đặt <span
-				class="badge badge-secondary"> 103</span></li>
+				class="fas fa-box"></i> Đơn hàng đã đặt </li>
 		</a>
 		<a href="${pageContext.request.contextPath}/logout">
 			<li id="SanPhamDoiTra" class="list-group-item"><i

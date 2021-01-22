@@ -35,6 +35,7 @@
 						
 						
 					</div>
+					
 					<table class="table table-hover " id="receipt-table">
 						<thead class="thead-light">
 							<tr>
