@@ -114,7 +114,7 @@
 
 
 						<!-- Modal -->
-						<form action="${pageContext.request.contextPath}/admin/attribute"
+						<form action="${pageContext.request.contextPath}/admin/warehouse/attribute"
 							method="post">
 							<div class="modal fade" id="add-class" tabindex="-1"
 								aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -174,7 +174,7 @@
 
 						</form>
 
-						<form action="${pageContext.request.contextPath}/admin/attribute"
+						<form action="${pageContext.request.contextPath}/admin/warehouse/attribute"
 							method="post">
 							<div class="modal fade" id="add-attribute" tabindex="-1"
 								aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -15,7 +15,6 @@ public class Const {
 	public static final String TOKEN_OTP_RETYPE_PASS = "TOKEN_KEY";
 	public static final String TOKEN_CART_TO_PAY = "KEY_CART_TO_PAYMENT";
 	public static final String EMAIL_FORGOT_PASS = "CUSTOMER_EMAIL";
-	// link cần truy cập nhưng bị khóa, lưu lại để đăng nhập đúng vẫn vào trang đó
 	public static final String CURRENT_LINK = "CURRENT_URL";
 
 	// giá trị xác nhận người dùng đã đăng nhập

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model_BO_service.BO_Contact;
 import model_utility.SendMail;
 
-@WebServlet(urlPatterns = "/admin/feedback")
+@WebServlet(urlPatterns = "/admin/cskh/feedback")
 public class Feedback extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BO_Contact bo = new BO_Contact();

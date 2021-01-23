@@ -38,7 +38,7 @@
 											<div class=" mb-2">
 												<h4 class="text-center mt-3 mb-3">Phản hồi của khách
 													hàng</h4>
-												<form action="${pageContext.request.contextPath}/admin/feedback" method="post">
+												<form action="${pageContext.request.contextPath}/admin/cskh/feedback" method="post">
 													<div class="ml-5 mb-2 form-row align-items-center">
 														<div class="col-auto">
 															<div class="input-group mb-2">
@@ -109,7 +109,7 @@
 															role="dialog" aria-labelledby="exampleModalLabel"
 															aria-hidden="true">
 															<form
-																action="${pageContext.request.contextPath}/admin/feedback"
+																action="${pageContext.request.contextPath}/admin/cskh/feedback"
 																method="post">
 																<input style="display: none" value="${c.id}"
 																	name="idUpdate">
@@ -163,7 +163,7 @@
 															<div class="modal-dialog" role="document">
 																<div class="modal-content">
 																	<form
-																		action="${pageContext.request.contextPath}/admin/feedback"
+																		action="${pageContext.request.contextPath}/admin/cskh/feedback"
 																		method="post">
 																		<input style="display: none" value="${c.id}"
 																			name="delete">

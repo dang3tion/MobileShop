@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model_DAO.DAO_Order;
 
-@WebServlet(urlPatterns = "/admin/cancel-receipt")
+@WebServlet(urlPatterns = "/admin/cskh/cancel-receipt")
 public class CancelReceipt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAO_Order dao = DAO_Order.getDAO_Order();

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import model_BO_service.BO_Account;
 import model_utility.Const;
 
-@WebServlet(urlPatterns = "/admin/user")
+@WebServlet(urlPatterns = "/admin/cskh/user")
 public class ManagerUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

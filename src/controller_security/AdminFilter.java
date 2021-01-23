@@ -50,13 +50,14 @@ public class AdminFilter implements Filter {
 							= request.getServletContext().getRequestDispatcher("/AccessDenied");
 					dispatcher.forward(request, response);
 					return;
+
 				}
 			}
 			break;
 		case Const.CSKH_ROLE:
 			if (arr.length >= 2) {
 
-				if (arr[1].equals("warehouse")) {
+				if (arr[1].equals("cskh")) {
 					chain.doFilter(request, response);
 				} else {
 					RequestDispatcher dispatcher //
@@ -86,9 +87,4 @@ public class AdminFilter implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException {
 	}
 
-	public static void main(String[] args) {
-		String s = "/admin/employee/admin";
-		String[] arr = s.substring(1, s.length()).split("/");
-		System.out.println(arr[1]);
-	}
 }

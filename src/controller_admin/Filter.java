@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/admin/filter")
+@WebServlet(urlPatterns = "/admin/warehouse/filter")
 public class Filter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

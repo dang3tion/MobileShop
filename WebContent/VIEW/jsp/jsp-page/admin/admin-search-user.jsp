@@ -86,7 +86,7 @@
 
 						<!-- 						Chế độ Xem -->
 
-						<a href="${pageContext.request.contextPath}/admin/user"><button style="margin-left: 200px" type="submit"
+						<a href="${pageContext.request.contextPath}/admin/cskh/user"><button style="margin-left: 200px" type="submit"
 								class="btn btn-success mb-2">Hủy tìm kiếm</button></a>
 						<!-- 						Chế độ Xem -->
 
