@@ -29,7 +29,7 @@
 			<!-- 		toggle logout -->
 			<jsp:include page="/VIEW/jsp/jsp-component/toggle-logout-bar.jsp"></jsp:include>
 
-			<form action="${pageContext.request.contextPath}/employee/product-add"
+			<form action="${pageContext.request.contextPath}/admin/product-add"
 				method="post">
 				<div class="container mt-5 " style="width: 95%">
 
@@ -40,7 +40,7 @@
 
 							<div class="save">
 								<a
-									href="${pageContext.request.contextPath}/employee/manager-product"><button
+									href="${pageContext.request.contextPath}/admin/warehouse/manager-product"><button
 										type="button" style="float: left">
 										<i class="far fa-arrow-alt-circle-left"></i> Quay lại
 									</button></a>

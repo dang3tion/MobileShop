@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model_BO_service.BO_Contact;
 import model_utility.SendMail;
 
-@WebServlet(urlPatterns = "/employee/feedback")
+@WebServlet(urlPatterns = "/admin/feedback")
 public class Feedback extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BO_Contact bo = new BO_Contact();
@@ -21,7 +21,7 @@ public class Feedback extends HttpServlet {
 			throws ServletException, IOException {
 		request.setAttribute("listContact", bo.listContact(1, 1000));
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/admin-feedback.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-feedback.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -53,7 +53,7 @@ public class Feedback extends HttpServlet {
 		}
 		
 		RequestDispatcher dispatcher //
-		= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/admin-feedback.jsp");
+		= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-feedback.jsp");
 		dispatcher.forward(request, response);
 	}
 

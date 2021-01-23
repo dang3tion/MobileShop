@@ -37,44 +37,37 @@ public class AdminLogin extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 
+		String role = "EMPTY";
+
 		Account acc = bo.getAdmin(email);
 
-		boolean isLoginSuccess = false;
-
 		if (acc != null) {
-			String role = acc.getRole();
-			switch (role) {
-			case Const.ADMIN_ROLE:
-				isLoginSuccess = bo.checkLogin(email, password, Const.ADMIN_ROLE) == 1;
-				break;
-			case Const.EMPLOYEE_ROLE:
-				isLoginSuccess = bo.checkLogin(email, password, Const.EMPLOYEE_ROLE) == 1;
-				break;
-
-			default:
-				break;
-			}
-		}
-
-		if (isLoginSuccess) {
-
+			role = acc.getRole();
 			HttpSession session = request.getSession();
 			session.setAttribute(Const.ADMIN_LOGINED, acc);
-
-			String path = (String) session.getAttribute(Const.CURRENT_LINK);
-
-			if (path != null) {
-				response.sendRedirect(request.getContextPath() + path);
-			} else {
-				response.sendRedirect(request.getContextPath() + "/employee/index");
+			switch (role) {
+			case Const.ADMIN_ROLE:
+				if (bo.checkLogin(email, password, Const.ADMIN_ROLE) == 1) {
+					response.sendRedirect(request.getContextPath() + "/admin/index");
+				}
+				break;
+			case Const.WAREHOUSE_ROLE:
+				if (bo.checkLogin(email, password, Const.WAREHOUSE_ROLE) == 1) {
+					response.sendRedirect(request.getContextPath() + "/admin/warehouse/manager-product");
+				}
+				break;
+			case Const.CSKH_ROLE:
+				if (bo.checkLogin(email, password, Const.CSKH_ROLE) == 1) {
+					response.sendRedirect(request.getContextPath() + "/admin/index");
+				}
+				break;
+			default:
+				request.setAttribute("message", messageErr);
+				RequestDispatcher dispatcher //
+						= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/admin-login.jsp");
+				dispatcher.forward(request, response);
+				break;
 			}
-		} else {
-			request.setAttribute("message", messageErr);
-
-			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/admin-login.jsp");
-			dispatcher.forward(request, response);
-			return;
 		}
 
 	}

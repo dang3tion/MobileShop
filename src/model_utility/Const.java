@@ -2,8 +2,9 @@ package model_utility;
 
 public class Const {
 	public static final String ADMIN_ROLE = "ADMIN";
-	public static final String EMPLOYEE_ROLE = "EMPLOYEE";
+	public static final String WAREHOUSE_ROLE = "WAREHOUSE";
 	public static final String CUSTOMER_ROLE = "CUSTOMER";
+	public static final String CSKH_ROLE = "CSKH";
 	public static final String ACCOUNT_ENABLE = "ENABLE";
 	public static final String ACCONT_DISABLE = "DISABLE";
 

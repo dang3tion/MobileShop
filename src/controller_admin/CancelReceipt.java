@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model_DAO.DAO_Order;
 
-@WebServlet(urlPatterns = "/employee/cancel-receipt")
+@WebServlet(urlPatterns = "/admin/cancel-receipt")
 public class CancelReceipt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAO_Order dao = DAO_Order.getDAO_Order();
@@ -20,7 +20,7 @@ public class CancelReceipt extends HttpServlet {
 		
 		request.setAttribute("LIST_ORDER", dao.getListCancelOrder(1, 99999));
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/admin-cancel-receipt.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-cancel-receipt.jsp");
 		dispatcher.forward(request, response);
 
 	}

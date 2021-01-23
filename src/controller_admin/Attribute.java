@@ -15,7 +15,7 @@ import model_DAO.DAO_Attribute;
 import model_beans.AttributeClass;
 import model_beans.AttributeManager;
 
-@WebServlet(urlPatterns = "/employee/attribute")
+@WebServlet(urlPatterns = "/admin/attribute")
 public class Attribute extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -44,7 +44,7 @@ public class Attribute extends HttpServlet {
 		request.setAttribute("listAttributes", listAttributes);
 
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/admin-attribute.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-attribute.jsp");
 		dispatcher.forward(request, response);
 	}
 

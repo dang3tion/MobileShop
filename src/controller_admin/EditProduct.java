@@ -27,7 +27,7 @@ import model_beans.Branch;
 import model_beans.Color_product;
 import model_beans.Product_main;
 
-@WebServlet(urlPatterns = "/employee/product-edit")
+@WebServlet(urlPatterns = "/admin/product-edit")
 public class EditProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Product_main p;
@@ -65,7 +65,7 @@ public class EditProduct extends HttpServlet {
 		request.setAttribute("product", p);
 
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/admin-product-edit.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-product-edit.jsp");
 		dispatcher.forward(request, response);
 	}
 

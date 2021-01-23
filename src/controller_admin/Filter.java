@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/employee/filter")
+@WebServlet(urlPatterns = "/admin/filter")
 public class Filter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -16,7 +16,7 @@ public class Filter extends HttpServlet {
 			throws ServletException, IOException {
 
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/employee/admin-filter.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-filter.jsp");
 		dispatcher.forward(request, response);
 	}
 
