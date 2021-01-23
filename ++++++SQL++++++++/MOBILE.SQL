@@ -359,7 +359,7 @@ select * from TRALOI
 update SANPHAM set LOAI_SP='MOI' where MASP='sp01' 
 delete THONGTIN_SHOP where ID='00'
 INSERT INTO THONGTIN_SHOP 
-VALUES('00','Mobile','','fb.com/mobile-shop-nlu','youtube.com/mobile-shop-nlu',N'Khu phố 6, phường Linh Trung, quận Thủ Đức, thành phố Hồ Chí Minh')
+VALUES('00','Mobile','','fb.com/mobile-shop-nlu','youtube.com/mobile-shop-nlu',N'Khu phố 6, phường Linh Trung, quận Thủ Đức, thành phố Hồ Chí Minh','1/1/2021')
 update SANPHAM set LOAI_SP='MOI' where MASP='sp01' 
 update SANPHAM set LOAI_SP='MOI' where MASP='sp02' 
 update SANPHAM set LOAI_SP='MOI' where MASP='sp03' 
@@ -1528,4 +1528,8 @@ FROM  THUOCTINH TT  JOIN LOP_THUOCTINH LTT ON LTT.MALOP =TT.MALOP )
  
  ALTER TABLE THONGTIN_SHOP
    ADD NGAYBATDAU DATE
- 
+
+
+ select * from THONGTIN_SHOP
+
+ select * from TAIKHOAN
