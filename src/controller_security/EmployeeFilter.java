@@ -20,7 +20,7 @@ import model_utility.Const;
  * @BẢO_VỆ_CÁC_TRANG_CÓ_TIỀN_TỐ_/ADMIN/*
  */
 @WebFilter(urlPatterns = { "/employee/*" })
-public class AdminFilter implements Filter {
+public class EmployeeFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
@@ -32,34 +32,39 @@ public class AdminFilter implements Filter {
 
 		Account acc = (Account) session.getAttribute(Const.ADMIN_LOGINED);
 
-		// lấy quyền hạn của acc nếu đã đăng nhập
 		String currentRole = "empty";
 		if (acc != null) {
 			currentRole = acc.getRole();
+			System.out.println(currentRole);
 		}
 
-		if (acc == null || !currentRole.equals(Const.ADMIN_ROLE)) {
+		boolean accessPermeission = false;
 
-			// lưu url của trang hiện tại.
-			// để sau khi đăng nhập thì tiếp tục vào trang này
-			// Dùng trong trường hợp user truy cập vào các mục
-			// được bảo vệ bằng URL không thông qua giao diện
-			// VD : gõ URL : abc.com/employee/quanliSanPham/
+		switch (currentRole) {
+		case Const.ADMIN_ROLE:
+			accessPermeission = true;
+			break;
+		case Const.EMPLOYEE_ROLE:
+			accessPermeission = true;
+			break;
+
+		default:
+			break;
+		}
+
+		if (accessPermeission) {
+
+			chain.doFilter(request, response);
+		} else {
 			session.setAttribute(Const.CURRENT_LINK, servletPath);
-//
-//			 chuyển qua login kèm theo thông báo
 			RequestDispatcher dispatcher //
 					= request.getServletContext().getRequestDispatcher("/adminlogin");
 			dispatcher.forward(request, response);
-		} else {
-			// pass the request along the filter chain
-			chain.doFilter(request, response);
-
 		}
 
 	}
 
-	public AdminFilter() {
+	public EmployeeFilter() {
 	}
 
 	public void destroy() {

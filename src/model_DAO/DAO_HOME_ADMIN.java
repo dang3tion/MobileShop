@@ -78,7 +78,9 @@ public class DAO_HOME_ADMIN extends ExecuteCRUD {
 		LocalDate date = LocalDate.of(Integer.parseInt(token.nextToken()), Integer.parseInt(token.nextToken()),
 				Integer.parseInt(token.nextToken()));
 		int timeMonth = dateNow.getMonthValue() - date.getMonthValue();
-
+		if (timeMonth==0) {
+			timeMonth=1;
+		}
 		int year = dateNow.getYear() - date.getYear();
 		int numMonth = (year * 12) + timeMonth;
 		return numMonth;
@@ -199,15 +201,17 @@ public class DAO_HOME_ADMIN extends ExecuteCRUD {
 	public ArrayList<Statictical> listSta(int start,int end){
 		ArrayList<Statictical> list  = new ArrayList<Statictical>();
 		if (end>listDate().size()) {
-			for (int i = listDate().size()-1; i >=start; i--) {
+			for (int i = listDate().size()-1; i >=start-1; i--) {
 				String date = listDate().get(i);
 				list.add(new Statictical(date, totalMoneyMonth(date), productSaledMonth(date), sumAccessMonth(date)));	
+				System.out.println(date);
 			}
 		}else {
-			for (int i = end; i >=start; i--) {
+			for (int i = end; i >=start-1; i--) {
 				String date = listDate().get(i);
 				list.add(new Statictical(date, totalMoneyMonth(date), productSaledMonth(date), sumAccessMonth(date)));	
-			}
+			System.out.println(date);
+				}
 		}
 		
 		return list;
