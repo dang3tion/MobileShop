@@ -462,11 +462,11 @@ request.setAttribute("color", dao.colorWeb());
 
 					</c:if>
 					<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO KHI VƯỢT QUÁ GIỚI HẠN SẢN PHẨM TRONG GIỎ HÀNG @@@@@@@@@@@@@ -->
-					<h3 class="center-txt">Đánh giá chi tiết ${PRODUCT.name}</h3>
+					<h3 class="center-txt "style="margin-bottom:40px;">Đánh giá chi tiết</h3>
 
 
 					<div id="content" style="max-height: 50em; overflow: hidden;">
-						${PRODUCT.content}</div>
+						${product.posts}</div>
 					<div class="text-center">
 						<button id="send1" onclick="ttOpen()"
 							class="btn btn-primary btn-center"

@@ -164,6 +164,8 @@ public class EditProduct extends HttpServlet {
 				}
 				if (!converStatus(status).equals(p.getStatus())) {
 					updateProperty(converStatus(status), EDIHT.TINHTRANG);
+				}if(!introduced.equals(p.getPosts())) {
+					updateProperty(introduced, EDIHT.GIOITHIEU);
 				}
 
 				if (!price.trim().equals(p.getPrices().getPrice() + "")

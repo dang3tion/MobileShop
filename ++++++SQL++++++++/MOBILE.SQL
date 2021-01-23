@@ -375,7 +375,8 @@ INSERT INTO SDT_SHOP VALUES('18001099',N'Gọi mua hàng','(7:30 - 22:00)')
 INSERT INTO SDT_SHOP VALUES('18001079',N'Gọi khiếu nại','(8:00 - 21:30)')
 INSERT INTO SDT_SHOP VALUES('18001069 ',N'Gọi bảo hành','(8:00 - 21:00)')
 --QUAN LY GIAO DIEN
-INSERT INTO QL_GIAODIEN VALUES('GD01','white','#3f89d8','#000000c2','black')
+truncate table ql_giaodien
+INSERT INTO QL_GIAODIEN VALUES('GD01','#00BCD4','white','#545454c2','black')
 --ICON MENU
 INSERT INTO ICON_MENU VALUES('IC1','<i class="fas fa-phone-square-alt"></i>',N'Liên hệ & hỗ trợ')
 INSERT INTO ICON_MENU VALUES('IC2','<i class="fas fa-money-check"></i>',N'Kiểm tra đơn hàng')

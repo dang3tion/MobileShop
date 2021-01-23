@@ -108,7 +108,7 @@ a:hover {
 	top: 55px;
 	z-index: 1029;
 	backdrop-filter: blur(4px);
-	box-shadow: 0px 4px 4px -1px black;
+    box-shadow: 0px 2px 4px -1px black;
 }
 
 .filter-menu1 {
