@@ -37,26 +37,35 @@ public class AdminLogin extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 
-		Account acctemple = bo.getAdmin(email);
+		Account acc = bo.getAdmin(email);
 
-		if ((acctemple != null) && (bo.checkLogin(email, password, Const.ADMIN_ROLE) == 1)) {
-			// mở khóa link
-			// Thêm user này vào session
+		boolean isLoginSuccess = false;
+
+		if (acc != null) {
+			String role = acc.getRole();
+			switch (role) {
+			case Const.ADMIN_ROLE:
+				isLoginSuccess = bo.checkLogin(email, password, Const.ADMIN_ROLE) == 1;
+				break;
+			case Const.EMPLOYEE_ROLE:
+				isLoginSuccess = bo.checkLogin(email, password, Const.EMPLOYEE_ROLE) == 1;
+				break;
+
+			default:
+				break;
+			}
+		}
+
+		if (isLoginSuccess) {
+
 			HttpSession session = request.getSession();
-			session.setAttribute(Const.ADMIN_LOGINED, acctemple);
+			session.setAttribute(Const.ADMIN_LOGINED, acc);
 
 			String path = (String) session.getAttribute(Const.CURRENT_LINK);
 
-			// Tại đây có 2 trường hợp để redirect
-
-			// TH1 : trang khác bị khóa và redirect sang trang login để mở khóa
-			// TH2 : người dùng tự truy cập vào link
-
 			if (path != null) {
-				// chuyển cứng trang đó
 				response.sendRedirect(request.getContextPath() + path);
 			} else {
-				// người dùng truy cập link ở footer
 				response.sendRedirect(request.getContextPath() + "/employee/index");
 			}
 		} else {
