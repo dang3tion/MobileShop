@@ -44,7 +44,7 @@ public class DAO_Account extends ExecuteCRUD {
 
 	public void add(Account acc) {
 		try {
-			String query = "INSERT INTO " + ACCOUNT + " VALUES(?,?,?,?,?,?,?,?,?)";
+			String query = "EXEC  ADD_ACCOUNT ?,?,?,?,?,?,?,?,?";
 			String[] parameters = { //
 					acc.getEmail(), //
 					acc.getPassword(), //
