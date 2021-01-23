@@ -98,10 +98,6 @@ public class AddProduct extends HttpServlet {
 					}
 				}
 				reString = "Thêm sản phẩm thành công";
-
-//				System.out.printf("name %s branch %s type %s status %s price %s priceSale %s", name, idBranch, type,
-//						status, price, priceSale);
-//				System.out.println();
 			}
 		} else {
 			reString = "Thêm sản phẩm không thành công";
@@ -170,12 +166,10 @@ public class AddProduct extends HttpServlet {
 			for (int j = 0; j < 9; j++) {
 				if (i == j) {
 					count=j;
-					System.out.println("ACTION");
 				}
 			}
 			
 			if (i!=count) {
-				System.out.println(i);
 				
 			}
 		}

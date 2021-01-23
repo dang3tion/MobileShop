@@ -101,7 +101,6 @@ public class EditProduct extends HttpServlet {
 				String[] quantity = request.getParameterValues("quantity");
 				String introduced = request.getParameter("introduce");
 				// UPDATE IMAGE ON AND ADD NEW SUB IMG IF HAVE IT
-				System.out.println(p.getColors().size());
 				for (int i = 0; i < p.getColors().size(); i++) {
 					String[] imgSub = request.getParameterValues("color" + (i + 1));
 					// ADD NEW SUB IMAGE
@@ -128,14 +127,12 @@ public class EditProduct extends HttpServlet {
 					// UPDATE SUB IMG
 
 					for (int j = 0; j < p.getColors().get(i).getImgSubs().size(); j++) {
-						System.out.println(imgSub[j] + "xxx" + p.getColors().get(i).getImgSubs().get(j));
 						if (imgSub[j].isBlank()) {
 							DAO_EditProduct.getInstance().deleteImg(p.getID(), colorId[i], "PHU",
 									p.getColors().get(i).getImgSubs().get(j));
 						}
 						if (!imgSub[j].trim().equals(p.getColors().get(i).getImgSubs().get(j).trim())) {
 							updateImg(imgSub[j].trim(), colorId[i], "PHU", p.getColors().get(i).getImgSubs().get(j));
-							System.out.println("asdas");
 						}
 					}
 
@@ -188,10 +185,6 @@ public class EditProduct extends HttpServlet {
 				updateAttributes(map);
 
 				reString = "Thêm sản phẩm thành công";
-
-//				System.out.printf("name %s branch %s type %s status %s price %s priceSale %s", name, idBranch, type,
-//						status, price, priceSale);
-//				System.out.println();
 			}
 		} else {
 			reString = "Thêm sản phẩm không thành công";

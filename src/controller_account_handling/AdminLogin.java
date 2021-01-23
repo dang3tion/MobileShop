@@ -67,7 +67,6 @@ public class AdminLogin extends HttpServlet {
 		if (isLoginSuccess) {
 			switch (role) {
 			case Const.ADMIN_ROLE:
-				System.out.println("fhdsfuhusdhhufidshufshdif");
 				response.sendRedirect(request.getContextPath() + "/admin/index");
 				return;
 			case Const.WAREHOUSE_ROLE:

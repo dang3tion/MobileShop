@@ -32,10 +32,8 @@ public class AdminFilter implements Filter {
 		String currentRole = "empty";
 		if (acc != null) {
 			currentRole = acc.getRole();
-			System.out.println(currentRole);
 		}
 		String[] arr = servletPath.substring(1, servletPath.length()).split("/");
-		String result;
 		switch (currentRole) {
 		case Const.ADMIN_ROLE:
 			chain.doFilter(request, response);

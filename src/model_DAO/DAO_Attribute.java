@@ -233,7 +233,5 @@ public class DAO_Attribute extends ExecuteCRUD {
 	public boolean addNewConfiguration(Map<String, String> map) {
 		return false;
 	}
-public static void main(String[] args) {
-	System.out.println(DAO_Attribute.getInstance().addAttributeClass("Mới"));
-}
+
 }

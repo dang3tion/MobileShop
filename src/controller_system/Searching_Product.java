@@ -110,9 +110,4 @@ public class Searching_Product extends HttpServlet {
 	}
 }
 
-//System.out.println(listProduct.size());
-//System.out.println("Branch ===>" + branchName);
-//System.out.println("first  ===>" + startRange);
-//System.out.println("last ===>" + endRange);
-//System.out.println("moi/cu ====>" + aspect);
-//System.out.println("________________________________________");
+

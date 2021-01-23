@@ -7,7 +7,7 @@
 <!--Nav-->
 <div class="side-bar bg-light border-right" id="sidebar-wrapper">
 	<div class="sidebar-heading text-center">
-		<a href="${pageContext.request.contextPath}/admin/index"><b>${SHOPINFO.name}</b></a>
+		<a href="${pageContext.request.contextPath}/index"><b>${SHOPINFO.name}</b></a>
 
 	</div>
 	<div class="list-group list-group-flush">
@@ -94,6 +94,17 @@
 					href="${pageContext.request.contextPath}/admin/information"
 					class="list-group-item list-group-item-action ${param.informationactive}">
 						Thông tin cửa hàng <i class="menu-icon fas fa-cogs"></i>
+				</a></li>
+				
+				<li><a
+					href="${pageContext.request.contextPath}/admin/employeeaccount"
+					class="list-group-item list-group-item-action ${param.employeeaccountactive}">
+						Quản lí nhân viên <i class="menu-icon fas fa-user-cog"></i>
+				</a></li>
+				<li><a
+					href="${pageContext.request.contextPath}/admin/log"
+					class="list-group-item list-group-item-action ${param.logactive}">
+						Xem lịch sử quản trị <i class="menu-icon fas fa-history"></i>
 				</a></li>
 			</c:if>
 		</ul>

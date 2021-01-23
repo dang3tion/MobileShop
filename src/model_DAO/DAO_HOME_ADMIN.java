@@ -134,7 +134,6 @@ public class DAO_HOME_ADMIN extends ExecuteCRUD {
 				} else {
 
 					if (checkYear == yearNow) {
-						System.out.println("haha");
 						for (int i = 1; i <= monthNow; i++) {
 							list.add(i + "-" + checkYear);
 						}
@@ -204,21 +203,14 @@ public class DAO_HOME_ADMIN extends ExecuteCRUD {
 			for (int i = listDate().size()-1; i >=start-1; i--) {
 				String date = listDate().get(i);
 				list.add(new Statictical(date, totalMoneyMonth(date), productSaledMonth(date), sumAccessMonth(date)));	
-				System.out.println(date);
 			}
 		}else {
 			for (int i = end; i >=start-1; i--) {
 				String date = listDate().get(i);
 				list.add(new Statictical(date, totalMoneyMonth(date), productSaledMonth(date), sumAccessMonth(date)));	
-			System.out.println(date);
 				}
 		}
 		
 		return list;
-	}
-	public static void main(String[] args) {
-		DAO_HOME_ADMIN dao = new DAO_HOME_ADMIN();
-		System.out.println(dao.listDate());
-		System.out.println(dao.listSta(1,200));
 	}
 }

@@ -235,10 +235,7 @@ public class DAO_AddProduct extends ExecuteCRUD {
 			// it into an integer till there are consecutive
 			// numeric digits
 			if (Character.isDigit(str.charAt(i))) {
-				System.out.println(str.charAt(i));
-				System.out.println((str.charAt(i) - '0'));
 				num = num * 10 + (str.charAt(i) - '0');
-				System.out.println(num);
 			}
 
 			// Update maximum value
