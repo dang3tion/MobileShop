@@ -108,7 +108,7 @@ request.setAttribute("color", dao.colorWeb());
 								<ul>
 									<li class="item-acc"><a
 										href="${pageContext.request.contextPath}/login">
-											<div class="acc">Đăng nhập</div>
+											<div class="acc"><fmt:message key="login-menu-item"></fmt:message></div>
 									</a></li>
 									<li class="item-acc"><a
 										href="${pageContext.request.contextPath}/register">
