@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8;"
 	pageEncoding="utf-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,11 +43,11 @@ request.setAttribute("color", dao.colorWeb());
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLongTitle">${message}</h5>
+						<h5 class="modal-title" id="exampleModalLongTitle"><fmt:message key="checkdung"></fmt:message></h5>
 					</div>
 
 					<div class="modal-footer">
-						<button type="button" class="btn btn-success" data-dismiss="modal">Đóng</button>
+						<button type="button" class="btn btn-success" data-dismiss="modal"><fmt:message key="close"></fmt:message></button>
 					</div>
 				</div>
 			</div>
@@ -68,13 +69,12 @@ request.setAttribute("color", dao.colorWeb());
 		class="form-signin" id="otp">
 		<img class="mb-4" src="${url}/image/img-sys/OTP.png" alt="" width="72"
 			height="72">
-		<h1 class="h3 mb-3 font-weight-normal">Nhập mã OTP</h1>
+		<h1 class="h3 mb-3 font-weight-normal"><fmt:message key="nhapOTP"></fmt:message></h1>
 		<label class="sr-only">OTP</label> <input name="OTP" id="checkOTP"
-			class="form-control" placeholder="Nhập mã OTP đã được gửi trong mail">
+			class="form-control" placeholder="<fmt:message key="checkOTP"></fmt:message>">
 		<br />
 		</div>
-		<button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Tiếp
-			tục</button>
+		<button class="btn btn-lg btn-primary btn-block mt-3" type="submit"><fmt:message key="tieptuc"></fmt:message></button>
 	</form>
 
 	<div class="container">

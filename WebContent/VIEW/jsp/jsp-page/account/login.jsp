@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8;"
 	pageEncoding="utf-8"%>
 
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -16,7 +18,7 @@
 
 <%@page import="model_DAO.DAO_IconMenu"%>
 <%
-	DAO_IconMenu dao = new DAO_IconMenu();
+DAO_IconMenu dao = new DAO_IconMenu();
 request.setAttribute("color", dao.colorWeb());
 %>
 <body
@@ -42,45 +44,50 @@ request.setAttribute("color", dao.colorWeb());
 		<div class="form-signin color_tt" id="login">
 			<img class="mb-4" src="${url}/image/img-sys/user.png" width="72"
 				height="72">
-			<h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
+			<h1 class="h3 mb-3 font-weight-normal">
+				<fmt:message key="login"></fmt:message>
+			</h1>
 
 			<!-- 			<input type="text" name="email" id="inputEmail" class="form-control" -->
 			<%-- 				placeholder="Email hoặc số điện thoại" value="${messEmail}"> --%>
 			<input type="text" name="email" id="inputEmail" class="form-control"
-				placeholder="nhập email" value="${messEmail}"
-				onfocusout=" check_email(this.id)">
+				placeholder="<fmt:message key="nhapmaillogin"></fmt:message>"
+				value="${messEmail}" onfocusout=" check_email(this.id)">
 			<div class="require" id="require-email">
-				Yêu cầu nhập email theo đúng theo định dạng email <br>Ví dụ:
-				nlumobile@gmail.com
+
+				<fmt:message key="checkmaillogin"></fmt:message>
+
 			</div>
 			<input type="password" id="inputPassword" name="password"
-				class="form-control " placeholder="Nhập mật khẩu" value=""
-				onfocusout="check_password(this)">
-			<div class="require" id="require-password">Mật khẩu phải có ít
-				nhất 8 ký tự</div>
+				class="form-control "
+				placeholder="<fmt:message key="nhappasslogin"></fmt:message>"
+				value="" onfocusout="check_password(this)">
+			<div class="require" id="require-password">
+				<fmt:message key="checkpasslogin"></fmt:message>
+			</div>
 			<div class="checkbox mb-3">
-				<a href="${pageContext.request.contextPath}/forgot" class="mx-2">Quên
-					mật khẩu</a> <a href="${pageContext.request.contextPath}/register"
-					class="mx-2">Đăng kí</a>
+				<a href="${pageContext.request.contextPath}/forgot" class="mx-2"><fmt:message
+						key="quenlogin"></fmt:message></a> <a
+					href="${pageContext.request.contextPath}/register" class="mx-2"><fmt:message
+						key="dangkilogin"></fmt:message></a>
 			</div>
 			<div class="form-check">
 				<input type="checkbox" name="remember-me" value="on"
 					class="form-check-input"> <label
-					class=" mt-2 form-check-label">Ghi nhớ đăng nhập</label>
+					class=" mt-2 form-check-label"><fmt:message key="ghinhologin"></fmt:message></label>
 			</div>
 
 			<button onclick="check11()" class="btn btn-lg btn-primary btn-block"
-				style="font-size: 18px;" type="submit">Đăng nhập</button>
+				style="font-size: 18px;" type="submit"><fmt:message key="login"></fmt:message></button>
 
 			<div class="or-seperator">
-				<b>hoặc</b>
+				<b><fmt:message key="orlogin"></fmt:message></b>
 			</div>
 
 			<a id="google-login-button" class="btn btn-danger btn-lg  btn-block"
 				style="font-size: 18px;" role="button" aria-pressed="true"
 				href="${Config.GOOGLE_URL_HREF_JSP}"><i id="icon-google"
-				class="fab fa-google-plus-g mr-3" aria-hidden="true"></i> Đăng nhập
-				bằng Google</a>
+				class="fab fa-google-plus-g mr-3" aria-hidden="true"></i> <fmt:message key="loginGoogle-menu-item"></fmt:message> Google</a>
 
 
 		</div>
@@ -111,7 +118,7 @@ request.setAttribute("color", dao.colorWeb());
 					</div>
 
 					<div class="modal-footer">
-						<button type="button" class="btn btn-success" data-dismiss="modal">Đóng</button>
+						<button type="button" class="btn btn-success" data-dismiss="modal"><fmt:message key="close"></fmt:message></button>
 					</div>
 				</div>
 			</div>

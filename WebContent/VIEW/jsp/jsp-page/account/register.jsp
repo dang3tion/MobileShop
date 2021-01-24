@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -12,7 +14,7 @@
 
 <%@page import="model_DAO.DAO_IconMenu"%>
 <%
-	DAO_IconMenu dao = new DAO_IconMenu();
+DAO_IconMenu dao = new DAO_IconMenu();
 request.setAttribute("color", dao.colorWeb());
 %>
 <body
@@ -42,7 +44,9 @@ request.setAttribute("color", dao.colorWeb());
 					</div>
 
 					<div class="modal-footer">
-						<button type="button" class="btn btn-success" data-dismiss="modal">Đóng</button>
+						<button type="button" class="btn btn-success" data-dismiss="modal">
+							<fmt:message key="close"></fmt:message>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -71,32 +75,26 @@ request.setAttribute("color", dao.colorWeb());
 
 			<img class="mb-4" src="${url}/image/img-sys/register.png" alt=""
 				width="100" height="100">
-			<h1 class="h3 mb-3 font-weight-normal">Đăng kí tài khoản mới</h1>
+			<h1 class="h3 mb-3 font-weight-normal"><fmt:message key="register"></fmt:message></h1>
 			<label style="margin-bottom: -25px" for="recipient-name"
 				class="d-flex justify-content-start align-baseline col-form-label">Email:</label>
 			<input name="email" type="text" id="inputemail" value=""
 				class="form-control" onfocusout="check_email(this.id)"
 				placeholder="Email">
 			<div class="require" id="require-email">
-				Yêu cầu nhập email theo đúng theo định dạng email <br>Ví dụ:
-				nlumobile@gmail.com
+				<fmt:message key="checkmaillogin"></fmt:message>
 			</div>
 			<label style="margin-bottom: -25px" for="recipient-name"
-				class="d-flex justify-content-start align-baseline col-form-label">Mật
-				khẩu:</label> <input name="password" type="password" id="inputPassword"
-				class="form-control" value="" placeholder="Mật Khẩu">
-			<div class="require" id="require-password">Mật khẩu tối thiểu 8
-				ký tự, bao gồm chữ và số</div>
+				class="d-flex justify-content-start align-baseline col-form-label"><fmt:message key="pass"></fmt:message>:</label> <input name="password" type="password" id="inputPassword"
+				class="form-control" value="" placeholder="<fmt:message key="nhappasslogin"></fmt:message>">
+			<div class="require" id="require-password"><fmt:message key="checkpasslogin"></fmt:message></div>
 			<label style="margin-bottom: -25px" for="recipient-name"
-				class="d-flex justify-content-start align-baseline col-form-label">Nhập
-				lại mật khẩu:</label> <input type="password" id="inputPassword-confirm"
-				class="form-control" value="" placeholder="Nhập lại mật khẩu">
-			<div class=" require" id="require-password2">Nhập lại mật khẩu
-				không khớp</div>
-			<br /> <a href="${pageContext.request.contextPath}/login">Quay
-				lại trang đăng nhập</a>
+				class="d-flex justify-content-start align-baseline col-form-label"><fmt:message key="repass"></fmt:message>:</label> <input type="password" id="inputPassword-confirm"
+				class="form-control" value="" placeholder="<fmt:message key="nhaprepass"></fmt:message>">
+			<div class=" require" id="require-password2"><fmt:message key="checkrepass"></fmt:message></div>
+			<br /> <a href="${pageContext.request.contextPath}/login"><fmt:message key="quaylai"></fmt:message></a>
 			<button onclick="checkEmpty()"
-				class="btn btn-lg btn-primary btn-block">Đăng kí</button>
+				class="btn btn-lg btn-primary btn-block"><fmt:message key="register1"></fmt:message></button>
 		</div>
 	</form>
 

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8;"
 	pageEncoding="utf-8"%>
-
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -34,12 +34,11 @@ request.setAttribute("color", dao.colorWeb());
 		id="forget">
 		<img class="mb-4" src="${url}/image/img-sys/QMK.png" alt="" width="72"
 			height="72">
-		<h1 class="h3 mb-3 font-weight-normal">Nhập email đã đăng kí</h1>
+		<h1 class="h3 mb-3 font-weight-normal"><fmt:message key="title"></fmt:message></h1>
 		<input name="email" id="inputEmail" class="form-control"
-			placeholder="Nhập email" onfocusout=" check_email2(this.id)" value="">
+			placeholder="<fmt:message key="nhapmaillogin"></fmt:message>" onfocusout=" check_email2(this.id)" value="">
 		<div class="require" style="display: none" id="require-email2">
-			Nhập email theo đúng theo định dạng email <br>Ví dụ:
-			nlumobile@gmail.com
+			<fmt:message key="checkmaillogin"></fmt:message>
 		</div>
 
 
