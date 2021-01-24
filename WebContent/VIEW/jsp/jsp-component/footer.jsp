@@ -110,8 +110,8 @@
 					<div class="dropdown-menu">
 						<a class="dropdown-item"
 							href=" ${pageContext.request.contextPath}/switch-language?lang=en_US"><b>English</b></a>
-						<a class="dropdown-item"
-							href=" ${pageContext.request.contextPath}/switch-language?lang=cn_CN"><b>漢語</b></a>
+<!-- 						<a class="dropdown-item" -->
+<%-- 							href=" ${pageContext.request.contextPath}/switch-language?lang=cn_CN"><b>漢語</b></a> --%>
 						<a class="dropdown-item"
 							href=" ${pageContext.request.contextPath}/switch-language?lang=vi_VN"><b>Tiếng
 								Việt</b></a>
