@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model_BO_service.BO_Product;
 import model_DAO.DAO_Branch;
 import model_DAO.DAO_Product_main;
 import model_beans.Branch;
@@ -20,7 +21,7 @@ import model_beans.Product_main;
 public class ProductDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAO_Product_main dao = DAO_Product_main.getDao_Product_main();
-
+	BO_Product boStart = new BO_Product();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String id = request.getParameter("dien-thoai");
@@ -28,7 +29,7 @@ public class ProductDetail extends HttpServlet {
 		id = dao.convertBetweenURLandID(id);
 //		 cập nhật lượt xem
 		updateProductView(id, request);
-
+		request.setAttribute("star", boStart.star(id));
 		Product_main pm = DAO_Product_main.getDao_Product_main().getProduct_main(id);
 		request.setAttribute("product", pm);
 		RequestDispatcher dispatcher //

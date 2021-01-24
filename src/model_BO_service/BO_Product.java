@@ -49,6 +49,9 @@ public class BO_Product {
 	public void updateStateProduct(String id) {
 		dao.updateState(id);
 	}
-
+	public static void main(String[] args) {
+		BO_Product bo = new BO_Product();
+		System.out.println(bo.star("SP08").getStar1());
+	}
 	
 }
