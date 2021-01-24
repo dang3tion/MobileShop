@@ -5,7 +5,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="model_utility.Config"%>
 <%
-	DAO_IconMenu dao = new DAO_IconMenu();
+DAO_IconMenu dao = new DAO_IconMenu();
 request.setAttribute("icon", dao.listIconMenu());
 request.setAttribute("color", dao.colorWeb());
 %>
@@ -25,8 +25,8 @@ request.setAttribute("color", dao.colorWeb());
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="input-group md-form form-sm form-2 pl-5 pr-5">
-			<input id="keyWord" class="form-control my-0 py-1 lime-border" type="text"
-				placeholder="Bạn tìm gì..." aria-label="Search">
+			<input id="keyWord" class="form-control my-0 py-1 lime-border"
+				type="text" placeholder="Bạn tìm gì..." aria-label="Search">
 			<div class="input-group-append">
 				<span class="input-group-text lime lighten-2" id="basic-text1">
 					<a href="${pageContext.request.contextPath}/search"><i
@@ -84,7 +84,7 @@ request.setAttribute("color", dao.colorWeb());
 								<div class="item-menu">
 									<i class="fas fa-user"></i>
 									<div class="item-menu-text">
-										<p>Chào, ${CUSTOMER_LOGINED.getFirstName()} !</p>
+										<p><fmt:message key="hello-menu-item"></fmt:message>, ${CUSTOMER_LOGINED.getFirstName()} !</p>
 									</div>
 
 								</div>
@@ -108,18 +108,20 @@ request.setAttribute("color", dao.colorWeb());
 								<ul>
 									<li class="item-acc"><a
 										href="${pageContext.request.contextPath}/login">
-											<div class="acc"><fmt:message key="login-menu-item"></fmt:message></div>
+											<div class="acc">
+												<fmt:message key="login-menu-item"></fmt:message>
+											</div>
 									</a></li>
 									<li class="item-acc"><a
 										href="${pageContext.request.contextPath}/register">
-											<div class="acc">Tạo tài khoản</div>
+											<div class="acc"><fmt:message key="createAccount-menu-item"></fmt:message></div>
 									</a></li>
 									<li class="item-acc"><a
 										href="${Config.GOOGLE_URL_HREF_JSP}">
 											<div class=" login-google">
 												<i class="fab fa-google-plus-g"
-													style="font-size: 20px; float: left; padding: 2px 6px;"></i>Đăng
-												nhập bằng Google
+													style="font-size: 20px; float: left; padding: 2px 6px;"></i>
+												<fmt:message key="loginGoogle-menu-item"></fmt:message>
 											</div>
 									</a></li>
 								</ul>
@@ -147,7 +149,8 @@ request.setAttribute("color", dao.colorWeb());
 										</p>
 
 									</div>
-									<c:if test="${QUANTITY_INSTANCE_PRODUCT != 0 && QUANTITY_INSTANCE_PRODUCT != null }">
+									<c:if
+										test="${QUANTITY_INSTANCE_PRODUCT != 0 && QUANTITY_INSTANCE_PRODUCT != null }">
 										<label class="quantity-cart" id="quantity-cart123">${QUANTITY_INSTANCE_PRODUCT}</label>
 									</c:if>
 								</div>

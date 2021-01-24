@@ -11,7 +11,7 @@
 		<div class="row">
 			<div class="ml-5 col-3">
 				<div class="block">
-					<p>PHƯƠNG THỨC THANH TOÁN</p>
+					<p><fmt:message key="thanhtoan-footer"></fmt:message></p>
 
 					<p>
 
@@ -33,7 +33,7 @@
 
 
 				</div>
-				<p style="margin-top: -10px; font-size: 1em;">Đang online</p>
+				<p style="margin-top: -10px; font-size: 1em;">Online</p>
 				<p style="margin-top: -20px;">
 				
 				 <c:set var="userOnline" value="${USER_ONLINE}" scope="application" />
@@ -48,16 +48,16 @@
 
 			<div class="col-5">
 				<div class="PhoneSupport">
-					<p>HỖ TRỢ KHÁCH HÀNG</p>
+					<p><fmt:message key="support-footer"></fmt:message></p>
 					<p>
-						Gọi mua hàng: <strong>1800.1099</strong> (7:30 - 22:00)
+					<fmt:message key="purchase-footer"></fmt:message>: <strong>1800.1099</strong> (7:30 - 22:00)
 					</p>
 					<p>
-						Gọi khiếu nại: <strong class="ml-1">1800.1079</strong> (8:00 -
+						<fmt:message key="khieunai-footer"></fmt:message>: <strong class="ml-1">1800.1079</strong> (8:00 -
 						21:30)
 					</p>
 					<p>
-						Gọi bảo hành: <strong>1800.1069</strong> (8:00 - 21:00)
+						<fmt:message key="baohanh-footer"></fmt:message>: <strong>1800.1069</strong> (8:00 - 21:00)
 					</p>
 				</div>
 				<img width="30%" src="${url}/image/img-sys/BoCongThuong.png">
@@ -68,14 +68,12 @@
 
 
 			<div  class="col-3 hihi PhoneSupport">
-				<p>HỢP TÁC VÀ LIÊN KẾT</p>
+				<p><fmt:message key="hoptac-footer"></fmt:message></p>
 				<p>
-					<a style="color: white;"  href="${pageContext.request.contextPath}/contact">Chính sách
-						bảo hành</a>
+					<a style="color: white;"  href="${pageContext.request.contextPath}/contact"><fmt:message key="chinhsach-footer"></fmt:message></a>
 				</p>
 				<p>
-					<a  style="color: white;" href="${pageContext.request.contextPath}/contact"> Chính
-						sách đổi trả</a>
+					<a  style="color: white;" href="${pageContext.request.contextPath}/contact"> <fmt:message key="doitra-footer"></fmt:message></a>
 				</p>
 
 
