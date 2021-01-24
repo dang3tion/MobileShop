@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -10,7 +11,7 @@
 </head>
 <%@page import="model_DAO.DAO_IconMenu"%>
 <%
-	DAO_IconMenu dao = new DAO_IconMenu();
+DAO_IconMenu dao = new DAO_IconMenu();
 request.setAttribute("color", dao.colorWeb());
 %>
 <body
@@ -29,7 +30,9 @@ request.setAttribute("color", dao.colorWeb());
 			<div class="col-12">${SHOPINFO.policy}</div>
 			<div class="col-12  d-flex justify-content-center">
 				<div class="guide-buy">
-					<h4 class="mb-3">Liên hệ với chúng tôi</h4>
+					<h4 class="mb-3">
+						<fmt:message key="contact"></fmt:message>
+					</h4>
 					<div class="line mb-5"></div>
 					<!-- <iframe
           src="https://docs.google.com/forms/d/e/1FAIpQLSe1XOCa08YXv4uteomrqCV1WhCc3UuI-ZLgyVCyJ0ET47WMcg/viewform?embedded=true"
@@ -38,7 +41,7 @@ request.setAttribute("color", dao.colorWeb());
 					<div class="contact">
 						<div class="outframe-2">
 							<div class="frame-contact">
-								<h4>Gửi phản hồi của bạn</h4>
+								<h4><fmt:message key="gui-contact"></fmt:message></h4>
 								<form onsubmit="return checkVali()"
 									action="${pageContext.request.contextPath}/contact"
 									method="post">
@@ -46,9 +49,9 @@ request.setAttribute("color", dao.colorWeb());
 										<div class="form-2">
 											<div class="form-input-2">
 												<div class="title">
-													<p>Họ tên</p>
+													<p><fmt:message key="ten-contact"></fmt:message></p>
 												</div>
-												<input type="name" placeholder="Nhập tên của bạn"
+												<input type="name" placeholder="<fmt:message key="nhaptencontact"></fmt:message>"
 													onfocusout="fullname(this,name3)" name="name">
 											</div>
 											<div class=" fillText3" id='name3'></div>
@@ -61,13 +64,12 @@ request.setAttribute("color", dao.colorWeb());
 													<div class="title">
 														<p>Email*</p>
 													</div>
-													<input placeholder="Nhập email" id="email"
+													<input placeholder="<fmt:message key="nhapmailcontact"></fmt:message>" id="email"
 														onfocusout="email(this,text2)" name="email">
 
 												</div>
 												<p id="require-email"
-													style="display: none; color: red; margin-left: -1em">Vui
-													lòng nhập đúng email</p>
+													style="display: none; color: red; margin-left: -1em"><fmt:message key="checkmailcontact"></fmt:message></p>
 												<div class=" fillText3" id="text2">Email must have the
 													@ characters</div>
 											</div>
@@ -76,10 +78,10 @@ request.setAttribute("color", dao.colorWeb());
 											<div class="form-2">
 												<div class="form-input-2">
 													<div class="title">
-														<p>Số điện thoại</p>
+														<p><fmt:message key="phonecontact"></fmt:message></p>
 													</div>
 													<input class="input-2" type="text" outf
-														placeholder="Nhập số điện thoại"
+														placeholder="<fmt:message key="nhapphonecontact"></fmt:message>"
 														onfocusout="number(this,phone)" name="phone">
 												</div>
 												<div class=" fillText3" id="phone">Only number input</div>
@@ -91,9 +93,9 @@ request.setAttribute("color", dao.colorWeb());
 										<div class="form-3">
 											<div class="form-input-3">
 												<div class="title">
-													<p>Lời nhắn</p>
+													<p><fmt:message key="loinhancontact"></fmt:message></p>
 												</div>
-												<textarea cols="40" placeholder="Nhập lời nhắn của bạn"
+												<textarea cols="40" placeholder="<fmt:message key="nhaploinhancontact"></fmt:message>"
 													name="content"></textarea>
 											</div>
 										</div>
@@ -103,7 +105,7 @@ request.setAttribute("color", dao.colorWeb());
 										<div class="">
 											<button onclick="checkClick()" type="submit"
 												class="btn-submit">
-												Gửi <i class="fas fa-long-arrow-alt-right"></i>
+												<fmt:message key="submitcontact"></fmt:message> <i class="fas fa-long-arrow-alt-right"></i>
 											</button>
 										</div>
 
