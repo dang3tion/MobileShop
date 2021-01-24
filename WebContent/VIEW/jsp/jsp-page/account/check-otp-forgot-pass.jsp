@@ -86,10 +86,7 @@ request.setAttribute("color", dao.colorWeb());
 		<div class="row text-center">
 			<div class="col-12">
 				<script>
-					var timeleft = $
-					{
-						COUNTDOWN
-					};
+					var timeleft = ${COUNTDOWN};
 					var downloadTimer = setInterval(
 							function() {
 								if (timeleft <= 0) {

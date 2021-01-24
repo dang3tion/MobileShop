@@ -82,10 +82,7 @@ request.setAttribute("color", dao.colorWeb());
 			<div class="col-12">
 
 				<script>
-					var timeleft = $
-					{
-						COUNTDOWN
-					};
+					var timeleft = ${COUNTDOWN};
 
 					if (timeleft === 0) {
 

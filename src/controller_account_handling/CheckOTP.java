@@ -57,19 +57,21 @@ public class CheckOTP extends HttpServlet {
 
 		String tokenClient = (String) request.getParameter("TOKENKEY");
 
-
 		if (token != null | tokenClient != null) {
-			
-			if(tokenClient != null ) {
+
+			if (tokenClient != null) {
 				session.setAttribute(Const.KEY_SYSTEM_OTP, new OTP());
-				 otp = (OTP) session.getAttribute(Const.KEY_SYSTEM_OTP);
+				otp = (OTP) session.getAttribute(Const.KEY_SYSTEM_OTP);
 			}
-			
+
 			token = (String) request.getAttribute(Const.TOKEN_REGISTER_OTP);
 			request.removeAttribute(Const.TOKEN_REGISTER_OTP);
 			SendMail.sendOTP(email, otp.getSysOTP());
-			request.setAttribute("COUNTDOWN", Math.abs(
-					Config.OTP_LIVE_SECOND  - ChronoUnit.SECONDS.between(otp.getTimeCreate(), LocalDateTime.now())));
+			long countDown = Math
+					.abs(Config.OTP_LIVE_SECOND - ChronoUnit.SECONDS.between(otp.getTimeCreate(), LocalDateTime.now()));
+			request.setAttribute("COUNTDOWN", countDown);
+
+
 			RequestDispatcher dispatcher //
 					= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp.jsp");
 			dispatcher.forward(request, response);
@@ -77,18 +79,16 @@ public class CheckOTP extends HttpServlet {
 
 			// xử lý dữ liệu khách hàng gửi OTP lên
 		} else {
-			
-			
 
 			String userOTP = request.getParameter("OTP");
 			userOTP.trim();
 
 			if (!Validation.isNumeric(userOTP) || (userOTP.length() > 10) || !otp.checkOTP(userOTP)) {
 				request.setAttribute("message", "Mã OTP không đúng");
-				
+
 				long diffOTPTime = ChronoUnit.SECONDS.between(otp.getTimeCreate(), LocalDateTime.now());
 				long countDown = Math.abs(Config.OTP_LIVE_SECOND - diffOTPTime);
-					
+
 				request.setAttribute("COUNTDOWN", (otp.checkLiveOTP(LocalDateTime.now())) ? countDown : 0);
 				RequestDispatcher dispatcher //
 						= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/check-otp.jsp");
@@ -96,8 +96,7 @@ public class CheckOTP extends HttpServlet {
 				return;
 
 			}
-			
-			
+
 			if (!otp.checkLiveOTP(LocalDateTime.now())) {
 				request.setAttribute("message", "Mã OTP đã hết hiệu lực");
 				request.setAttribute("COUNTDOWN", 0);
@@ -106,7 +105,6 @@ public class CheckOTP extends HttpServlet {
 				dispatcher.forward(request, response);
 				return;
 			}
-			
 
 			// ĐÃ XÁC THỰC MAIL THÀNH CÔNG THÊM VÀO DATABASE
 			BO_Account.getBoAccount().add(newUser);
@@ -122,7 +120,5 @@ public class CheckOTP extends HttpServlet {
 			return;
 		}
 	}
-	
-	
-	
+
 }
