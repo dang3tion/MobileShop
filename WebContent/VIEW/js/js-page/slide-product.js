@@ -1,12 +1,12 @@
-//var clientHeight = document.getElementById('content').clientHeight;
-//
-//
-//
-//if (clientHeight < 500) {
-//	document.getElementById('send1').style.display = 'none';
-//} else {
-//	document.getElementById('send1').style.display = 'block';
-//}
+var clientHeight = document.getElementById('content').clientHeight;
+
+
+
+if (clientHeight <= 350) {
+	document.getElementById('send1').style.display = 'none';
+} else {
+	document.getElementById('send1').style.display = 'block';
+}
 
 var countSlide = 0;
 var arrSlide = [document.getElementById('img1').src, document.getElementById('img2').src, document.getElementById('img3').src, document.getElementById('img4').src]
@@ -49,6 +49,12 @@ function ttOpen(){
   document.getElementById('close').style.display = 'block';
 
 }
+function ttClose(){
+  document.getElementById('send1').style.display = 'block';
+  document.getElementById('content').style.maxHeight = '30em';
+  document.getElementById('close').style.display = 'none';
+}
+
 
 
 
