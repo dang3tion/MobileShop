@@ -58,7 +58,14 @@ request.setAttribute("color", dao.colorWeb());
 							<p style="font-size: 18px;">
 								<b>Số điện thoại : ${phoneNumber}</b>
 							</p>
-							<p style="font-size: 18px;">Nhân viên Shop sẽ liên hệ với bạn sau 5 phút</p>
+							<p style="font-size: 18px;">Nhân viên Shop sẽ liên hệ với bạn sau 5 phút </p>
+							
+							<c:if test="${CUSTOMER_LOGINED != null}">
+							
+							<h4 style="color:red">(Xem chi tiết trong mail ${CUSTOMER_LOGINED.email} )</h4>
+							
+							</c:if>
+							
 							<p style="font-size: 18px;">
 								<b>Mã đơn hàng : ${CodeOrder}</b>
 							</p>

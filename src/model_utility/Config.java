@@ -46,7 +46,7 @@ public class Config {
 
 	public static String GOOGLE_CLIENT_ID = "513013153147-13nhsbm8a1gtp4i1vq2l9j228f1q8691.apps.googleusercontent.com";
 	public static String GOOGLE_CLIENT_SECRET = "9vMjUVMMfYB3PfMxU4FD6heb";
-	public static String GOOGLE_REDIRECT_URI = "https://mobileshop.tk/login-google";
+	public static String GOOGLE_REDIRECT_URI = "http://localhost:8080/MobileShop/login-google";
 	public static String GOOGLE_URL_HREF_JSP = "https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri="
 			+ GOOGLE_REDIRECT_URI
 			+ "&response_type=code&client_id=513013153147-13nhsbm8a1gtp4i1vq2l9j228f1q8691.apps.googleusercontent.com&approval_prompt=force";
