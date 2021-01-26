@@ -27,9 +27,8 @@ public class ManagerProduct extends HttpServlet {
 		} else {
 			currentPage = (Integer) session.getAttribute("current_page");
 		}
-
 		ArrayList<Product_main> listProduct = (ArrayList<Product_main>) DAO_Product_main.getDao_Product_main()
-				.getAllProduct((currentPage - 1) * 2, currentPage * 2);
+				.getAllProduct((currentPage - 1) * 2 + 1, currentPage * 2);
 		request.setAttribute("STT", (currentPage - 1) * 2 + 1);
 		request.setAttribute("totalPage", DAO_Product_main.getDao_Product_main().getNumberOfPage(2));
 		request.setAttribute("listProduct", listProduct);

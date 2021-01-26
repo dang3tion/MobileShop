@@ -54,7 +54,11 @@ public class Product_main implements Serializable {
 	}
 
 	public String getImgMain() {
-		return colors.get(0).getImgMain();
+		if (colors.size() > 0) {
+
+			return colors.get(0).getImgMain();
+		}
+		return null;
 	}
 
 	public int getQuantity() {
@@ -67,9 +71,12 @@ public class Product_main implements Serializable {
 
 	public int getQuantitySale() {
 		int result = 0;
-		for (Color_main co : colors) {
-			result += co.getQuantity_sale();
+		if (colors.size() > 0) {
+			for (Color_main co : colors) {
+				result += co.getQuantity_sale();
+			}
 		}
+
 		return result;
 	}
 

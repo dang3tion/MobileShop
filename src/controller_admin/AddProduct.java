@@ -51,59 +51,80 @@ public class AddProduct extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String reString = "";
+		boolean isConfirm = false;
 		if (request.getParameter("confirm-add-product") != null) {
-
+			String reString = "";
+			boolean result = true;
 			String name = request.getParameter("name").trim();
 			String idBranch = request.getParameter("branch").trim();
 			String type = request.getParameter("type").trim();
 			String status = request.getParameter("status").trim();
 			String price = request.getParameter("price").trim();
 			String priceSale = "0";
+			String[] colorId = request.getParameterValues("color-name");
+			String[] colorRgb = request.getParameterValues("color-rgb");
+			String[] imgMain = request.getParameterValues("color-imgmain");
+			String[] attributeId = request.getParameterValues("att-id");
+			String[] attributeValue = request.getParameterValues("att-value");
+			String[] quantity = request.getParameterValues("quantity");
+			String introduced = request.getParameter("introduce");
 
+			Map<String, String> map = new LinkedHashMap<String, String>();
+			if (request.getParameter("priceSale") != null || !request.getParameter("priceSale").isBlank()) {
+				priceSale = request.getParameter("priceSale").trim();
+			}
+			for (int i = 0; i < imgMain.length; i++) {
+				if (imgMain[i].isBlank()) {
+					reString = "Trường ảnh nền bị trống";
+					result = false;
+				}
+
+			}
 			if (name.isBlank()) {
 				reString = "Tên không được bỏ trống";
+				result = false;
 
 			} else if (price.isBlank()) {
 				reString = "Giá không được bỏ trống";
+				result = false;
 			} else {
 
-				if (request.getParameter("priceSale") != null || !request.getParameter("priceSale").isBlank()) {
-					priceSale = request.getParameter("priceSale").trim();
-				}
-				String[] colorId = request.getParameterValues("color-name");
-				String[] colorRgb = request.getParameterValues("color-rgb");
-				String[] imgMain = request.getParameterValues("color-imgmain");
-				String[] attributeId = request.getParameterValues("att-id");
-				String[] attributeValue = request.getParameterValues("att-value");
-				String[] quantity = request.getParameterValues("quantity");
-				String introduced = request.getParameter("introduce");
-				Map<String, String> map = new LinkedHashMap<String, String>();
-
-				for (int i = 0; i < attributeId.length; i++) {
-					if (!attributeValue[i].isBlank()) {
-						map.put(attributeId[i].trim(), attributeValue[i].trim());
+				if (result != false) {
+					for (int i = 0; i < attributeId.length; i++) {
+						if (!attributeValue[i].isBlank()) {
+							map.put(attributeId[i].trim(), attributeValue[i].trim());
+						}
 					}
-				}
-				String idProduct = addProduct(map, name, idBranch, convertType(type), converStatus(status), introduced,
-						price, priceSale);
+					String idProduct = addProduct(map, name, idBranch, convertType(type), converStatus(status),
+							introduced, price, priceSale);
 
-				for (int i = 0; i < colorId.length; i++) {
-					addPicture(idProduct, colorId[i], imgMain[i].trim(), "NEN");
-					String[] imgSub = request.getParameterValues("color" + (i + 1));
+					for (int i = 0; i < colorId.length; i++) {
 
-					addQuantity(idProduct, colorId[i], Integer.parseInt(quantity[i]));
-					for (int j = 0; j < imgSub.length; j++) {
-						addPicture(idProduct, colorId[i], imgSub[j].trim(), "PHU");
+						addPicture(idProduct, colorId[i], imgMain[i].trim(), "NEN");
+						String[] imgSub = request.getParameterValues("color" + (i + 1));
+
+						addQuantity(idProduct, colorId[i], Integer.parseInt(quantity[i]));
+						for (int j = 0; j < imgSub.length; j++) {
+							addPicture(idProduct, colorId[i], imgSub[j].trim(), "PHU");
+						}
 					}
+
 				}
-				reString = "Thêm sản phẩm thành công";
+
 			}
-		} else {
-			reString = "Thêm sản phẩm không thành công";
+			isConfirm = true;
+			request.setAttribute("result", result);
+			request.setAttribute("reString", reString);
+			request.setAttribute("name", name);
+			request.setAttribute("price", price);
+			request.setAttribute("priceSale", priceSale);
+			request.setAttribute("ims", imgMain);
+			request.setAttribute("introduce", introduced);
 		}
-		request.setAttribute("reString", reString);
+
+		request.setAttribute("confirm", isConfirm);
 		doGet(request, response);
+
 	}
 
 	public String mergerConfiguration(ArrayList<String> arr) {
@@ -162,15 +183,15 @@ public class AddProduct extends HttpServlet {
 
 	public static void main(String[] args) {
 		for (int i = 0; i < 10; i++) {
-			int count=0;
+			int count = 0;
 			for (int j = 0; j < 9; j++) {
 				if (i == j) {
-					count=j;
+					count = j;
 				}
 			}
-			
-			if (i!=count) {
-				
+
+			if (i != count) {
+
 			}
 		}
 	}

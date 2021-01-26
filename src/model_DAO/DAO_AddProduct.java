@@ -117,6 +117,10 @@ public class DAO_AddProduct extends ExecuteCRUD {
 			String query = "INSERT INTO GIA_SP VALUES(?,?,?,?)";
 			try (ResultSet rs = super.ExecuteQuery(query, id, date, price, priceSale)) {
 				return true;
+				
+				
+				
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

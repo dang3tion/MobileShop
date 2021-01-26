@@ -5,7 +5,11 @@
 	--THONG TIN CHUNG CUA SHOP
 	GO
 
+	SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY masp ASC) AS STT ,* FROM  SANPHAM) AS X  WHERE STT BETWEEN 2 AND 10
 	
+	delete SANPHAM where MASP='sp1'
+	
+	INSERT INTO SANPHAM VALUES('SP11','xxxxx',N'Mới',N'TH03',N'Đang bán','10/10/2020',N'Giới thiệu',0,'CH02')
 
 
 	CREATE TABLE THONGTIN_SHOP(
@@ -358,6 +362,7 @@ select * from TRALOI
 --THONG TIN SHOP
 update SANPHAM set LOAI_SP='MOI' where MASP='sp01' 
 delete THONGTIN_SHOP where ID='00'
+
 INSERT INTO THONGTIN_SHOP 
 VALUES('00','Mobile','','fb.com/mobile-shop-nlu','youtube.com/mobile-shop-nlu',N'Khu phố 6, phường Linh Trung, quận Thủ Đức, thành phố Hồ Chí Minh','1/1/2021')
 update SANPHAM set LOAI_SP='MOI' where MASP='sp01' 
