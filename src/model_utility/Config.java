@@ -24,10 +24,10 @@ public class Config {
 //	  ____) | | |__| | | |____        | | | (_) | | (__  | (_| | | | | | | | | (_) | \__ \ | |_ 
 //	 |_____/   \___\_\ |______|       |_|  \___/   \___|  \__,_| |_| |_| |_|  \___/  |___/  \__|
 //	___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
-	public static final String SERVER_NAME = "jdbc:sqlserver://localhost:1433";
+	public static final String SERVER_NAME = "jdbc:sqlserver://103.130.212.219:1433";
 	public static final String DATABASE_NAME = "MOBILESHOP";
 	public static final String USERNAME_DB = "sa";
-	public static final String PASSWORD_DB = "sa";
+	public static final String PASSWORD_DB = "v![ALBg,6tqH#vG";
 ///	_______________________________________________________________________________________________________________________________________________________________________
 
 	public static final String DBDRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
