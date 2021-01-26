@@ -91,7 +91,7 @@ public class BO_Account {
 			String role = acc.getRole();
 			String encrytPass = acc.getPassword();
 			// kiểm tra trạng thái (có bị khóa không)
-			if (role.equals(Const.CUSTOMER_ROLE)) {
+			if (!role.equals(Const.ADMIN_ROLE)) {
 				if (acc.getStatus().equals(Const.ACCONT_DISABLE)) {
 					return 3;
 				}

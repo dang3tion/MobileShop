@@ -34,7 +34,7 @@
 			<!-- 		toggle logout -->
 			<jsp:include page="/VIEW/jsp/jsp-component/toggle-logout-bar.jsp"></jsp:include>
 			<div ng-controller="driveController">
-				<form action="${pageContext.request.contextPath}/admin/product-add"
+				<form action="${pageContext.request.contextPath}/admin/warehouse/product-add"
 					method="post">
 
 

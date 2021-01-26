@@ -22,7 +22,7 @@ import model_beans.AttributeManager;
 import model_beans.Branch;
 import model_beans.Color_product;
 
-@WebServlet(urlPatterns = "/admin/product-add")
+@WebServlet(urlPatterns = "/admin/warehouse/product-add")
 public class AddProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
