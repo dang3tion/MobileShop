@@ -1,46 +1,65 @@
-'use strict';
+"use strict";
 
-angular.module('driveApp', [])
-    .controller('driveController', function($scope,gapiAuthService,driveService) {
+angular
+	.module("driveApp", [])
+	.controller("driveController", function(
+		$scope,
+		gapiAuthService,
+		driveService
+	) {
+		//Auth
 
-        //Auth
+		$scope.checkingLogin = true;
+		gapiAuthService
+			.checkLogin()
+			.then(
+				function() {
+					$scope.loggedIn = true;
+				},
+				function() {
+					$scope.loggedIn = false;
+				}
+			)
+			.finally(function() {
+				$scope.checkingLogin = false;
+			});
 
-        $scope.checkingLogin=true;
-        gapiAuthService.checkLogin().then(function(){
-            $scope.loggedIn=true;
-        },function(){
-            $scope.loggedIn=false;
-        }).finally(function(){
-            $scope.checkingLogin=false;
-        });
+		$scope.login = function() {
+			gapiAuthService.login().then(
+				function() {
+					$scope.loggedIn = true;
+				},
+				function(authResult) {
+					$scope.loggedIn = false;
+					console.err(authResult);
+				}
+			);
+		};
 
-        $scope.login=function(){
-            gapiAuthService.login().then(function(){
-                $scope.loggedIn=true;
-            },function(authResult){
-                $scope.loggedIn = false;
-                console.err(authResult);
-            })
-        };
+		//Drive
 
-        //Drive
+		$scope.images = [];
+		var tmp = "";
+		$scope.clickFileUpload = function(id) {
+			document.getElementById("uploadImage").click();
+			tmp = id;
+		};
 
-        $scope.images=[];
+		$scope.upload = function() {
+			var allFiles = document.getElementById("uploadImage").files;
+			var file = allFiles[0];
 
-        $scope.clickFileUpload=function(){
-            document.getElementById('uploadImage').click();
-        };
+			driveService.insertFile(file, file.name).then(function(link) {
+				insertImg(tmp, link);
+			});
+		};
+	});
 
-        $scope.upload=function(){
-            $scope.uploading=true;
-            var allFiles=document.getElementById('uploadImage').files;
-            var file=allFiles[0];
+function insertImg(id, link) {
+	var input = document.getElementById(id);
+	var img = document.getElementById(id + "-img");
+	img.src = link;
+	input.value = link;
+}
 
-            driveService.insertFile(file, file.name).then(function(link){
-                $scope.images.push(link);
-            }).finally(function(){
-                $scope.uploading=false;
-            });
-        }
 
-    });
