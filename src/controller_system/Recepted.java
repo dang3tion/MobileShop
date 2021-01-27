@@ -22,13 +22,17 @@ public class Recepted extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		
 		HttpSession session = request.getSession();
 		
 		String customerID = ((Account) session.getAttribute(Const.CUSTOMER_LOGINED)).getId();
 		
+	
+		
 		request.setAttribute("LIST_ORDER", dao.getListCustomerOrder(customerID, 1, 999) );
+		
+		
 		
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/profile-list-order.jsp");
@@ -37,6 +41,10 @@ public class Recepted extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String cancel = request.getParameter("cancel");
+		if (cancel != null) {
+			dao.cancel(cancel);
+		}
 		doGet(request, response);
 	}
 

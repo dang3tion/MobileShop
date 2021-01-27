@@ -15,7 +15,7 @@
 
 <%@page import="model_DAO.DAO_IconMenu"%>
 <%
-	DAO_IconMenu dao = new DAO_IconMenu();
+DAO_IconMenu dao = new DAO_IconMenu();
 request.setAttribute("color", dao.colorWeb());
 %>
 <body
@@ -39,8 +39,8 @@ request.setAttribute("color", dao.colorWeb());
 			</c:import>
 
 			<div class="col-sm-8">
-				<form method="post" onsubmit="return checknhap()"
-					action="${pageContext.request.contextPath}/member/profile">
+<!-- 				<form method="post" onsubmit="return checknhap()" -->
+<%-- 					action="${pageContext.request.contextPath}/member/profile"> --%>
 					<div id="Card_ThongTinCaNhan" class="card block_component">
 						<div class="card-header">
 							<span> </span> <span><strong>Danh sách đơn hàng</strong></span>
@@ -168,8 +168,48 @@ request.setAttribute("color", dao.colorWeb());
 											</td>
 
 											<td>${order.status}</td>
+											<td>
+												<button class="btn btn-danger sizeTh1" data-toggle="modal"
+													data-target="#can${order.orderID}" data-toggle="tooltip"
+													data-placement="top" title="Xóa">
+													<i class="txt-center menu-icon fas fa-trash-alt"></i>
+												</button>
+											</td>
+
+
+										
 
 										</tr>
+										
+											<!-- Modal -->
+											<div class="modal fade" id="can${order.orderID}" tabindex="-1"
+												role="dialog" aria-labelledby="exampleModalLabel"
+												aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<form
+															action="${pageContext.request.contextPath}/member/receipted"
+															method="post">
+															<input style="display: none" value="${order.orderID}"
+																name="cancel">
+															<div class="modal-header">
+																<h5 class="modal-title" id="exampleModalLabel">Xác nhận hủy đơn hàng ${order.orderID}</h5>
+																<button type="button" class="close" data-dismiss="modal"
+																	aria-label="Close">
+																	<span aria-hidden="true">&times;</span>
+																</button>
+															</div>
+															<div class="modal-body">Bạn có muốn hủy đơn hàng ${order.orderID} với tổng giá trị ${order.totalMoney}.</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary"
+																	data-dismiss="modal">Không</button>
+																<button type="submit" class="btn btn-primary">Đồng
+																	ý</button>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
 									</c:forEach>
 
 									<!--END ĐƠN HÀNG -->
@@ -184,7 +224,7 @@ request.setAttribute("color", dao.colorWeb());
 
 					</div>
 			</div>
-			</form>
+<!-- 			</form> -->
 
 		</div>
 	</div>
