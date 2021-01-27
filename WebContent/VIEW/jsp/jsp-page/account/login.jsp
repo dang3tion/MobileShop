@@ -87,7 +87,7 @@ request.setAttribute("color", dao.colorWeb());
 			<a id="google-login-button" class="btn btn-danger btn-lg  btn-block"
 				style="font-size: 18px;" role="button" aria-pressed="true"
 				href="${Config.GOOGLE_URL_HREF_JSP}"><i id="icon-google"
-				class="fab fa-google-plus-g mr-3" aria-hidden="true"></i> <fmt:message key="loginGoogle-menu-item"></fmt:message> Google</a>
+				class="fab fa-google-plus-g mr-3" aria-hidden="true"></i> <fmt:message key="loginGoogle-menu-item"></fmt:message></a>
 
 
 		</div>

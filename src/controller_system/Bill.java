@@ -33,7 +33,6 @@ public class Bill extends HttpServlet {
 			SendMail.sendOrderSuccessful(acc.getEmail(), content);
 		}
 		int total = (int) request.getAttribute("MONEY_BILL");
-		System.out.println(total);
 		request.setAttribute("TOTAL_MONEY", total);
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/bill.jsp");
