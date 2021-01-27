@@ -71,7 +71,7 @@
                   <td class="confirm">
                     <span>
 
-                      <label title="Xác nhận đơn 	hàng" data-target="#confirm-id" class="label-check active"
+                      <label title="Xác nhận đơn hàng" data-target="#confirm-id" class="label-check active"
                         data-toggle="modal"><i class="fas fa-check-square"></i></label>
                       <div class="modal fade" id="confirm-id" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
@@ -23,7 +25,7 @@
 				<div class="button">
 
 					<button class="btn btn-warning mb-2"type="button"
-						onclick="deleteAttribute('${idclass}-item${index }')">Xóa</button>
+						onclick="deleteAttribute('${idclass}-item${index }')">XÃ³a</button>
 
 				</div>
 

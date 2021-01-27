@@ -6,13 +6,16 @@
 
 <head>
 <jsp:include page="/VIEW/jsp/jsp-component/head-css.jsp" />
+
 <c:url var="url" scope="session" value="/VIEW"></c:url>
+
 </head>
 <%@page import="model_DAO.DAO_IconMenu"%>
 <%
 	DAO_IconMenu dao = new DAO_IconMenu();
 request.setAttribute("color", dao.colorWeb());
 %>
+
 
 <body
 	style="color: ${color.colorText};background-color: ${color.colorBody}">
@@ -79,27 +82,48 @@ request.setAttribute("color", dao.colorWeb());
 			<div class="container">
 				<div class="row ">
 					<div class="col-12 d-flex justify-content-end">
-						<nav aria-label="...">
-							<ul class="pagination">
-								<li class="page-item disabled"><a class="page-link"
-									href="#" tabindex="-1" aria-disabled="true">Trở về</a></li>
-								<li class="page-item active"><a class="page-link" href="#">1</a></li>
-								<li class="page-item " aria-current="page"><a
-									class="page-link" href="#">2 </a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#">Tiếp</a>
-								</li>
-							</ul>
-						</nav>
+						<div class="page-navigation" id="page-navigation"
+							value="${totalPage}">
+							<div class="beta">
+								<button onclick="previousPage()">Trước</button>
+								<span id="page-number"> </span>
+								<button onclick="nextPage()">Sau</button>
+							</div>
+						</div>
 					</div>
 				</div>
+				<input id="curent-page" value="${current_page}"
+					style="display: none"></input>
 			</div>
 		</div>
 	</div>
 
 
 
+	<script>
+	function getCurrentPage() {
+		return document.getElementById("curent-page").value;
+	}
+	function SendDataToServlet(number) {
+		getNumberPageDefault(number);
+		$.ajax({
+			type : 'GET',
+			url : '${pageContext.request.contextPath}/AJAXResultSearching',
+			data : {
 
+				page : parseInt(number)
+
+			},
+			success : function(responseText) {
+				$('#result-content').html(responseText);
+			}
+
+		});
+		
+
+	}
+</script>
+	<script src="${url}/js/js-page/devide-page-admin.js"></script>
 	<!-- /.container -->
 	<script>
 		var obj = {

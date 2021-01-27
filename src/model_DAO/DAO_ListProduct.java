@@ -91,10 +91,26 @@ public class DAO_ListProduct extends ExecuteCRUD {
 		return list;
 	}
 
+	public int getTotalList(ListProduct list) throws SQLException {
+		String query = "SELECT COUNT(*) L FROM(" + list.getQuery() + ") TK";
+		try (ResultSet rs = super.ExecuteQuery(query, list.getPara())) {
+			if (rs.next()) {
+				return rs.getInt("L");
+			}
+		}
+		return 0;
+	}
+
 	public ArrayList<Product_form> orderListProduct(ListProduct list, String query)
 			throws NumberFormatException, SQLException {
+		System.out.println(query);
+		String[] arr = new String[list.getPara().length * 2];
+
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = "" + list.getPara()[i % list.getPara().length];
+		}
 		ArrayList<Product_form> lst = new ArrayList<Product_form>();
-		try (ResultSet rs = super.ExecuteQuery(query, list.getPara())) {
+		try (ResultSet rs = super.ExecuteQuery(query, arr)) {
 			while (rs.next()) {
 				Product_form p = new Product_form();
 				p.setId(rs.getString("MASP").trim());

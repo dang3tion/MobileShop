@@ -549,3 +549,41 @@ a:hover {
 .login-google:hover {
 	background-color: #d0021bde;
 }
+.page-navigation {
+	margin: 20px;
+	overflow: auto;
+}
+
+.page-navigation .alpha {
+	float: left;
+}
+
+.page-navigation .beta {
+	float: right;
+}
+
+.page-navigation .beta button {    min-width: 45px;
+	color: #6c757d;
+	cursor: pointer;
+	background-color: #fff;
+	border-color: #dee2e6;
+	padding: 0.5rem 0.75rem;
+	margin-left: -1px;
+	line-height: 1.25;
+	color: #007bff;
+	background-color: #fff;
+	outline: 0;
+	border: 1px solid #dee2e6;
+}
+
+.page-navigation .beta button:hover {
+	background: #292b35;
+	border-color: #292b35;
+	color: #fff;
+}
+
+.page-navigation .beta .active {
+	background: #292b35;
+	border-color: #292b35;
+	color: #fff;
+}

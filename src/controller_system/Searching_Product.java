@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model_DAO.DAO_ListProduct;
 import model_DAO.DAO_ListProduct.LISTP;
@@ -30,12 +31,15 @@ public class Searching_Product extends HttpServlet {
 
 		String typeList = request.getParameter("dssanpham");
 		ListProduct listMain = new ListProduct();
-
 		String branchName = request.getParameter("thuonghieu");
 		String range = request.getParameter("khoanggia");
 		Integer startRange = null;
 		Integer endRange = null;
 		String aspect = request.getParameter("tinhtrang");
+		int page = 1;
+		if (request.getParameter("p") != null) {
+			page = Integer.parseInt(request.getParameter("p"));
+		}
 		try {
 			if (typeList != null) {
 
@@ -114,7 +118,7 @@ public class Searching_Product extends HttpServlet {
 		}
 		ArrayList<Product_form> listProduct = new ArrayList<Product_form>();
 		try {
-			listProduct = orderList(listMain, price, order);
+			listProduct = orderList(listMain, price, order, (page - 1) * 10 + 1, page * 9);
 
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
@@ -127,7 +131,16 @@ public class Searching_Product extends HttpServlet {
 		System.out.println(orderUrl);
 		System.out.println(priceUrl);
 		System.out.println("-----------");
-
+		request.setAttribute("currentPage", page);
+		try {
+			request.setAttribute("totalPage",
+					getTotalPage(DAO_ListProduct.getDao_ListProduct().getTotalList(listMain), 9));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	HttpSession session=request.getSession();
+	session.setAttribute("listMain", listMain);
 		request.setAttribute("urlOrder", orderUrl);
 		request.setAttribute("urlPrice", priceUrl);
 		request.setAttribute("urlSearch", url);
@@ -139,7 +152,16 @@ public class Searching_Product extends HttpServlet {
 
 	}
 
-	public ArrayList<Product_form> orderList(ListProduct list, String price, String order)
+	public int getTotalPage(int totalCard, int cardPage) {
+		int result = totalCard / cardPage;
+		if (totalCard % cardPage >= 1) {
+			result += 1;
+		}
+
+		return result;
+	}
+
+	public ArrayList<Product_form> orderList(ListProduct list, String price, String order, int start, int end)
 			throws NumberFormatException, SQLException {
 		if (!price.isBlank()) {
 			list.addOrderLIst(convertSelect("gia"), convertOder(price));
@@ -147,8 +169,7 @@ public class Searching_Product extends HttpServlet {
 		if (!order.isBlank()) {
 			list.addOrderLIst(convertSelect(order), convertOder(order));
 		}
-		System.out.println(list.getQueryOrder());
-		return DAO_ListProduct.getDao_ListProduct().orderListProduct(list, list.getQueryOrder());
+		return DAO_ListProduct.getDao_ListProduct().orderListProduct(list, list.getQueryOrder(start, end));
 	}
 
 	private int[] getListNumber(String priceRange) {

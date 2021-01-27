@@ -61,7 +61,6 @@ public class ListProduct implements Serializable {
 			}
 		}
 		orderList.put(key, value);
-		resetListOder();
 	}
 
 	public void removerOrder(SELECT key) {
@@ -69,37 +68,30 @@ public class ListProduct implements Serializable {
 		if (orderList.containsKey(key)) {
 			orderList.remove(key);
 		}
-		resetListOder();
 	}
 
-	private void resetListOder() {
-		try {
-			this.lstProduct = DAO_ListProduct.getDao_ListProduct().orderListProduct(this, getQueryOrder());
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-
-	public String getQueryOrder() {
+	public String getQueryOrder(int start, int end) {
 		if (orderList.isEmpty()) {
 			return query;
 		} else {
 			int count = 0;
 			StringBuilder str = new StringBuilder();
-			str.append(query);
-			for (SELECT s : orderList.keySet()) {
-				if (count == 0) {
-					str.append(" ORDER BY " + convertEnum(s) + " " + orderList.get(s));
-				} else {
-					str.append(", " + convertEnum(s) + " " + orderList.get(s));
+			str.append("SELECT * FROM  (SELECT ROW_NUMBER() OVER (");
+			if (orderList.isEmpty()) {
+				str.append(" ORDER BY MASP ASC ");
+			} else {
+				for (SELECT s : orderList.keySet()) {
+					if (count == 0) {
+						str.append(" ORDER BY " + convertEnum(s) + " " + orderList.get(s));
+					} else {
+						str.append(", " + convertEnum(s) + " " + orderList.get(s));
+					}
+					count++;
 				}
-				count++;
 			}
+
+			str.append(") AS STT , * FROM (SELECT TOP(SELECT COUNT(*) FROM (" + query + ")TK) * FROM(" + query
+					+ ")TK) TK) AS X   WHERE STT BETWEEN " + start + " AND " + end);
 			return str.toString();
 		}
 	}
@@ -159,7 +151,7 @@ public class ListProduct implements Serializable {
 		ListProduct lst = DAO_ListProduct.getDao_ListProduct().getListProMenu(LISTP.NEW, 100);
 		System.out.println(lst.getLstProduct());
 		lst.addOrderLIst(SELECT.PRICE, ORDER.ASC);
-		lst.setLstProduct(DAO_ListProduct.getDao_ListProduct().orderListProduct(lst, lst.getQueryOrder()));
+		lst.setLstProduct(DAO_ListProduct.getDao_ListProduct().orderListProduct(lst, lst.getQueryOrder(10, 20)));
 		System.out.println("aaaa");
 		System.out.println(lst.getLstProduct());
 
