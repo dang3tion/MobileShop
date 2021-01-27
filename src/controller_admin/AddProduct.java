@@ -52,8 +52,8 @@ public class AddProduct extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		boolean isConfirm = false;
+		String reString = "";
 		if (request.getParameter("confirm-add-product") != null) {
-			String reString = "";
 			boolean result = true;
 			String name = request.getParameter("name").trim();
 			String idBranch = request.getParameter("branch").trim();
@@ -72,6 +72,18 @@ public class AddProduct extends HttpServlet {
 			Map<String, String> map = new LinkedHashMap<String, String>();
 			if (request.getParameter("priceSale") != null || !request.getParameter("priceSale").isBlank()) {
 				priceSale = converNumber(request.getParameter("priceSale").trim());
+			}
+			for (int i = 0; i < colorId.length; i++) {
+				if (!result) {
+					break;
+				}
+				for (int j = i + 1; j < colorId.length; j++) {
+					if (colorId[i].equals(colorId[j])) {
+						reString = "Trường màu sắc bị trùng";
+						result = false;
+						break;
+					}
+				}
 			}
 			for (int i = 0; i < imgMain.length; i++) {
 				if (imgMain[i].isBlank()) {
@@ -104,12 +116,12 @@ public class AddProduct extends HttpServlet {
 						String[] imgSub = request.getParameterValues("color" + (i + 1));
 
 						addQuantity(idProduct, colorId[i], Integer.parseInt(quantity[i]));
-						
+
 						for (int j = 0; j < imgSub.length; j++) {
-						if (!imgSub[j].isBlank()) {
-							
-							addPicture(idProduct, colorId[i], imgSub[j].trim(), "PHU");
-						}
+							if (!imgSub[j].isBlank()) {
+
+								addPicture(idProduct, colorId[i], imgSub[j].trim(), "PHU");
+							}
 						}
 					}
 
@@ -184,21 +196,12 @@ public class AddProduct extends HttpServlet {
 		}
 		return "Hết hàng";
 	}
+
 	public String converNumber(String number) {
-		return number.replaceAll(".", "");
+		return number.replaceAll("\\.", "");
 	}
+
 	public static void main(String[] args) {
-		for (int i = 0; i < 10; i++) {
-			int count = 0;
-			for (int j = 0; j < 9; j++) {
-				if (i == j) {
-					count = j;
-				}
-			}
-
-			if (i != count) {
-
-			}
-		}
+	
 	}
 }
