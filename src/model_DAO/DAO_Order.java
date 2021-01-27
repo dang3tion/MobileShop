@@ -3,6 +3,7 @@ package model_DAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import model_BO_service.BO_Order;
 import model_ConnectDB.DataSource;
@@ -12,6 +13,7 @@ import model_beans.Order;
 import model_beans.OrderDetail;
 import model_beans.Product_form;
 import model_beans.Product_main;
+import model_beans.UpdateQuatityProduct;
 import model_utility.Const;
 import model_utility.Const.ORDER_STATUS;
 
@@ -239,10 +241,44 @@ public class DAO_Order extends ExecuteCRUD {
 		return listProduct;
 	}
 
+	//hàm đếm số sản phẩm của đơn hàng ở trạng thái completed
+	public ArrayList<UpdateQuatityProduct> numCompleted(String orderID) {
+		
+		ArrayList<UpdateQuatityProduct> quatity = new ArrayList<UpdateQuatityProduct>();
+		String query = "select CTDH.MASP,CTDH.SOLUONG from CTDH inner join DONHANG on CTDH.MADH = DONHANG.MADH where DONHANG.MADH = ? and DONHANG.TRANGTHAI = 'completed'";
+		try {
+			ResultSet rs = super.ExecuteQuery(query, orderID);
+			while  (rs.next()) {
+				quatity.add(new UpdateQuatityProduct(rs.getString(1), rs.getInt(2)));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+		return quatity;
+	}
+	
+	public int updateQuatityProduct(String id,int quatity) {
+		String query = "select SOLUONG from SOLUONG_SP where MASP = ?";
+		try {
+			ResultSet rs = super.ExecuteQuery(query);
+			if  (rs.next()) {
+				return rs.getInt(1) - quatity;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+		return 0;
+	}
+	
 	public boolean switchOrderStatus(String orderID, ORDER_STATUS newStatus) {
 		try {
 			if (newStatus == ORDER_STATUS.TRANSPORTED) {
-				super.ExecuteQuery("SELECT * FROM CTDH");
+				for (int i = 0; i < numCompleted(orderID).size(); i++) {
+					String query = "update SOLUONG_SP set SOLUONG = ? where MASP = ?";
+					super.ExecuteQuery(orderID,numCompleted(orderID).get(i).getQuatity(),numCompleted(orderID).get(i).getId());
+				}
 			}
 			if (newStatus == ORDER_STATUS.CANCELED) {
 				super.ExecuteQuery("SELECT * FROM CTDH");
@@ -255,6 +291,8 @@ public class DAO_Order extends ExecuteCRUD {
 		}
 
 	}
+	
+	
 
 	private String translate(String orderStatus) {
 		String result = null;
@@ -289,5 +327,5 @@ public class DAO_Order extends ExecuteCRUD {
 			e.printStackTrace();
 		}
 	}
-
+	
 }
