@@ -295,7 +295,7 @@ public class DAO_Order extends ExecuteCRUD {
 		}
 	}
 	public static void main(String[] args) {
-		System.out.println(new DAO_Order().getListCancelOrder(1, 10).size());
+		System.out.println(DataSource.getConnection());
 	}
 	
 	

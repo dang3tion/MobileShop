@@ -36,15 +36,17 @@
 							</tr>
 						</thead>
 						<tbody id="content-table">
-							
-							
+
+
 							<c:forEach items="${listLog}" var="log">
-								<td>${log.date}</td>
-							<td>${log.name}</td>
-							<td>${log.content}</td>
-							<td>${log.detail}</td>
+								<tr>
+									<td>${log.date}</td>
+									<td>${log.name}</td>
+									<td>${log.content}</td>
+									<td>${log.detail}</td>
+								</tr>
 							</c:forEach>
-							
+
 						</tbody>
 					</table>
 					<div class="page-navigation" id="page-navigation" value="3">

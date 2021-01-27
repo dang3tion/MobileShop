@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model_BO_service.BO_Account;
+import model_DAO.DAO_Log;
+import model_beans.Account;
 import model_utility.Const;
 
 @WebServlet("/AJAXAdminUserManager")
@@ -58,10 +60,20 @@ public class AJAXAdminUserManager extends HttpServlet {
 
 		int page = Integer.parseInt((String) request.getParameter("page"));
 		String email = (String) request.getParameter("email");
+		
+		HttpSession session = request.getSession();
+		
+		Account acount = (Account) session.getAttribute(Const.ADMIN_LOGINED);
+		
+		String idStaff = acount.getId();
+		
 		updateCurrentPage(request, page);
 		BO_Account.getBoAccount().on_off_account(email);
 
 		BO_Account bo = new BO_Account(page, 20);
+		String stateLog = bo.stateLog(email);
+				new DAO_Log().update(idStaff, "Thay đổi trạng thái tài khoản", "Chuyển tài khoản ("+ email+") thành trạng thái "+stateLog);
+				
 		request.setAttribute("listUser", bo.getList());
 		request.setAttribute("STTstart", bo.startRow());
 		RequestDispatcher dispatcher //

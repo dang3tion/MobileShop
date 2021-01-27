@@ -2,10 +2,11 @@ package model_DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import model_ConnectDB.ExecuteCRUD;
-
 import model_beans.Log;
 
 public class DAO_Log extends ExecuteCRUD {
@@ -22,8 +23,39 @@ public class DAO_Log extends ExecuteCRUD {
 		}
 		return list;
 	}
+	
+	
+	// cập nhật log
+	public void update(String idStaff, String content,String detail) {
+		String query = "insert into LICHSU_THAOTAC values ( ?,?,?,?,?)";
+		 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		   LocalDateTime now = LocalDateTime.now();
+		   String date = dtf.format(now);
+		
+		
+		
+		try (ResultSet rs = super.ExecuteQuery(query,createId(),date,idStaff,content,detail)) {
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//tạo id
+	
+	public int createId() {
+		String query = "select count(*) from LICHSU_THAOTAC";
+		try (ResultSet rs = super.ExecuteQuery(query)) {
+			if (rs.next()) {
+				return rs.getInt(1)+1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
 
 	public static void main(String[] args) {
-		System.out.println(new DAO_Log().listLog(1, 10));
+		new DAO_Log().update("1", "Chào mừng", "Thay đổi trạng thái");
 	}
 }
