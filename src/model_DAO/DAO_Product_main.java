@@ -61,6 +61,18 @@ public class DAO_Product_main extends ExecuteCRUD {
 
 		return num;
 	}
+	
+
+	public int getNumberOfPage2(int numRow,String key) {
+		int num = tongtrangsearch(key) / numRow;
+
+		if (getTotalProduct() % numRow >= 1) {
+			num += 1;
+		}
+
+		return num;
+	}
+	
 
 	public int getTotalProduct() {
 		String query = "SELECT COUNT(*) FROM SANPHAM";
@@ -308,6 +320,36 @@ public class DAO_Product_main extends ExecuteCRUD {
 		return null;
 	}
 
+	
+	public List<Product_main> getSearchProduct(int start, int end,String key) {
+		ArrayList<Product_main> arr = new ArrayList<Product_main>();
+		String query = "SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY masp ASC) AS STT ,* FROM  searchProduct(?)) AS X  WHERE STT BETWEEN ? AND ? ";
+		try (ResultSet rs = super.ExecuteQuery(query,key, start, end)) {
+			while (rs.next()) {
+				Product_main p = getProduct_main(rs.getString("MASP"));
+				arr.add(p);
+			}
+			return arr;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+	
+	public int tongtrangsearch(String key) {
+		
+		String query = "select COUNT(*) from searchProduct(?) ";
+		try (ResultSet rs = super.ExecuteQuery(query,key)) {
+			if (rs.next()) {
+				return rs.getInt(1);
+				
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return 0;
+	}
+	
 	public int updateViewProduct(String id) {
 		String query = "EXEC  INCREASE_VIEW @ID= ? ";
 		int total = 0;
@@ -444,4 +486,9 @@ public class DAO_Product_main extends ExecuteCRUD {
 			}
 			return 0;
 		}
+		public static void main(String[] args) {
+			System.out.println(new DAO_Product_main().getSearchProduct(1, 10, "bấn"));
+			System.out.println(new DAO_Product_main().tongtrangsearch("samsung"));
+		}
+		
 }

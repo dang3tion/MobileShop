@@ -64,19 +64,25 @@
 												<h4 class="text-center mt-3 mb-3">Danh sách sản phẩm</h4>
 												<div class="row">
 
-													<div class="show-page  arrange ml-3">
-
-														Sắp xếp <span> <select id="show" onclick="">
-																<option value="10">A-Z</option>
-																<option value="20">Z-A</option>
-														</select></span>
+													<form action="${pageContext.request.contextPath}/admin/warehouse/manager-product" method="post">
+													<div class="ml-5 mb-2 form-row align-items-center">
+														<div class="col-auto">
+															<div class="input-group mb-2">
+																<div class="input-group-prepend">
+																	<div class="input-group-text">
+																		<i class="fas fa-search"></i>
+																	</div>
+																</div>
+																<input name="searchProduct" type="text" class="form-control"
+																	placeholder="Nhập từ khóa" >
+															</div>
+														</div>
+														<div class="col-auto">
+															<button type="submit" class="btn btn-primary mb-2">Tìm
+																kiếm</button>
+														</div>
 													</div>
-													<div class="show-page  arrange ml-3">
-
-														Tìm kiếm <span> <input id="myInput"
-															style="padding-left: 15px; border: 0.5px solid grey;"
-															text" placeholder="Search.."></span>
-													</div>
+												</form>
 
 												</div>
 												<a

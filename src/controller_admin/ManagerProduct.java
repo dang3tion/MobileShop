@@ -22,6 +22,7 @@ public class ManagerProduct extends HttpServlet {
 			throws ServletException, IOException {
 		int currentPage = 1;
 		int rowPerPage = 10;
+		String key = request.getParameter("searchProduct");
 		HttpSession session = request.getSession();
 		if (session.getAttribute("current_page") == null) {
 			session.setAttribute("current_page", 1);
@@ -31,14 +32,20 @@ public class ManagerProduct extends HttpServlet {
 		request.setAttribute("total", dao.totalProduct());
 		request.setAttribute("numProduct", dao.numProductSale());
 		request.setAttribute("productSale", dao.productSaling());
-		request.setAttribute("productStop", dao.productStop());
-		request.setAttribute("numProductStop", dao.numProductStop());
-		
-		
-		ArrayList<Product_main> listProduct = (ArrayList<Product_main>) DAO_Product_main.getDao_Product_main()
-				.getAllProduct((currentPage - 1) * rowPerPage + 1, currentPage * rowPerPage);
+		request.setAttribute(getServletName(), session);
+		ArrayList<Product_main> listProduct = new ArrayList<Product_main>();
+		if (key == null) {
+			 listProduct = (ArrayList<Product_main>) DAO_Product_main.getDao_Product_main()
+					.getAllProduct((currentPage - 1) * rowPerPage + 1, currentPage * rowPerPage);
+			 request.setAttribute("totalPage", DAO_Product_main.getDao_Product_main().getNumberOfPage(rowPerPage));
+		} 
+		else {
+			 listProduct = (ArrayList<Product_main>) DAO_Product_main.getDao_Product_main()
+					.getSearchProduct((currentPage - 1) * rowPerPage + 1, currentPage * rowPerPage,key);
+			
+			 request.setAttribute("totalPage", DAO_Product_main.getDao_Product_main().getNumberOfPage2(rowPerPage,key));
+		}
 		request.setAttribute("STT", (currentPage - 1) * rowPerPage + 1);
-		request.setAttribute("totalPage", DAO_Product_main.getDao_Product_main().getNumberOfPage(rowPerPage));
 		request.setAttribute("listProduct", listProduct);
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-product.jsp");

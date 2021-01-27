@@ -16,29 +16,23 @@ public class FirstSetup implements HttpSessionListener {
 
 	@Override
 	public void sessionCreated(HttpSessionEvent event) {
-
+		HttpSession session = event.getSession();
+//		@@@@@@@@@@@@@@@
+		String countTruycap =(String) session.getAttribute("user_count");
 		
+//		@@@@@@@@@@@@@@@
 		
 		
 		DataSource.countOnlineUserQuantity++;
 		updateOnlineUserQuantity(event);
 
-		HttpSession session = event.getSession();
+		
 		
 		
 
 		session.setAttribute("LANGUAGE", "vi_VN");
 		Cart cart = new Cart();
-//		try {
-//			cart.add("SP01", "MS04");
-//			cart.add("SP01", "MS04");
-//			cart.add("SP02", "MS03");
-//			cart.add("SP02", "MS04");
-//			cart.add("SP02", "MS04");
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
 		session.setAttribute("QUANTITY_INSTANCE_PRODUCT", 0);
 		session.setAttribute("CART", cart);
 		session.setAttribute("SHOPINFO", DAO_ShopInfo.getDaoShopInfo().getInfo());
