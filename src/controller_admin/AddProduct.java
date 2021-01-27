@@ -59,7 +59,7 @@ public class AddProduct extends HttpServlet {
 			String idBranch = request.getParameter("branch").trim();
 			String type = request.getParameter("type").trim();
 			String status = request.getParameter("status").trim();
-			String price = request.getParameter("price").trim();
+			String price = converNumber(request.getParameter("price").trim());
 			String priceSale = "0";
 			String[] colorId = request.getParameterValues("color-name");
 			String[] colorRgb = request.getParameterValues("color-rgb");
@@ -71,7 +71,7 @@ public class AddProduct extends HttpServlet {
 
 			Map<String, String> map = new LinkedHashMap<String, String>();
 			if (request.getParameter("priceSale") != null || !request.getParameter("priceSale").isBlank()) {
-				priceSale = request.getParameter("priceSale").trim();
+				priceSale = converNumber(request.getParameter("priceSale").trim());
 			}
 			for (int i = 0; i < imgMain.length; i++) {
 				if (imgMain[i].isBlank()) {
@@ -104,8 +104,12 @@ public class AddProduct extends HttpServlet {
 						String[] imgSub = request.getParameterValues("color" + (i + 1));
 
 						addQuantity(idProduct, colorId[i], Integer.parseInt(quantity[i]));
+						
 						for (int j = 0; j < imgSub.length; j++) {
+						if (!imgSub[j].isBlank()) {
+							
 							addPicture(idProduct, colorId[i], imgSub[j].trim(), "PHU");
+						}
 						}
 					}
 
@@ -180,7 +184,9 @@ public class AddProduct extends HttpServlet {
 		}
 		return "Hết hàng";
 	}
-
+	public String converNumber(String number) {
+		return number.replaceAll(".", "");
+	}
 	public static void main(String[] args) {
 		for (int i = 0; i < 10; i++) {
 			int count = 0;

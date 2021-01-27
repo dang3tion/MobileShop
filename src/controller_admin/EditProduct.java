@@ -79,7 +79,7 @@ public class EditProduct extends HttpServlet {
 			String idBranch = request.getParameter("branch").trim();
 			String type = request.getParameter("type").trim();
 			String status = request.getParameter("status").trim();
-			String price = request.getParameter("price").trim();
+			String price = converNumber(request.getParameter("price").trim());
 			String priceSale = "0";
 
 			if (name.isBlank()) {
@@ -90,7 +90,7 @@ public class EditProduct extends HttpServlet {
 			} else {
 
 				if (request.getParameter("priceSale") != null || !request.getParameter("priceSale").isBlank()) {
-					priceSale = request.getParameter("priceSale").trim();
+					priceSale = converNumber(request.getParameter("priceSale").trim());
 				}
 
 				String[] colorId = request.getParameterValues("color-name");
@@ -285,6 +285,9 @@ public class EditProduct extends HttpServlet {
 			return "Ngưng kinh doanh";
 		}
 		return "Hết hàng";
+	}
+	public String converNumber(String number) {
+		return number.replaceAll(".", "");
 	}
 
 	public static void main(String[] args) {

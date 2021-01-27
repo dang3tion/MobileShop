@@ -35,7 +35,7 @@ public class ConfigGUI extends HttpServlet {
 		String icon4 = request.getParameter("icon4");
 		String content4 = request.getParameter("content4");
 		String colorMenu = request.getParameter("colorMenu");
-		String colorFilter = request.getParameter("colorFilter");
+		String colorFilter = request.getParameter("colorFilter")+"a8";
 		String colorBody = request.getParameter("colorBody");
 		String colorText = request.getParameter("colorText");
 		
