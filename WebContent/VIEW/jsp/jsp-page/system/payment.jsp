@@ -14,7 +14,7 @@
 
 <%@page import="model_DAO.DAO_IconMenu"%>
 <%
-	DAO_IconMenu dao = new DAO_IconMenu();
+DAO_IconMenu dao = new DAO_IconMenu();
 request.setAttribute("color", dao.colorWeb());
 %>
 <body
@@ -115,26 +115,33 @@ request.setAttribute("color", dao.colorWeb());
 									<div id="province-dropdown">
 										<select onchange="getDistrict(this.value)" class="mx-2"
 											style="height: 38px; min-width: 140px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
-											name="province">
-											<option disabled selected value>Chọn tỉnh/thành phố</option>
+											name="province" id="setinh" onfocusout="check_tinh(this.id)">
+											<option value="0">Chọn tỉnh/thành phố</option>
+
 											<c:forEach items="${LIST_PROVINCE}" var="pro">
 												<option value="${pro.key}">${pro.value}</option>
 											</c:forEach>
-										</select>
+										</select> <span id="tinh"
+											style="display: none; width: 150px; color: red">Chọn
+											tỉnh/thành phố</span>
 									</div>
 									<div id="district-dropdown">
 										<select class="mx-2"
 											style="height: 38px; min-width: 140px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
-											name="district">
-											<option disabled selected value>Chọn quận/huyện</option>
-										</select>
+											name="district" id="sehuyen"
+											onfocusout="check_huyen(this.id)">
+											<option value="0">Chọn quận/huyện</option>
+										</select> <span id="huyen"
+											style="display: none; width: 150px; color: red">Chọn
+											quận/huyện</span>
 									</div>
 									<div id="ward-dropdown">
 										<select class="mx-2"
 											style="height: 38px; min-width: 140px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
-											name="ward">
-											<option disabled selected value>Chọn phường/xã</option>
-										</select>
+											name="ward" id="sexa" onfocusout="check_xa(this.id)">
+											<option selected value="0">Chọn phường/xã</option>
+										</select> <span id="xa" style="display: none; width: 150px; color: red">Chọn
+											phường/xã</span>
 									</div>
 
 									<div id="street">
@@ -144,8 +151,8 @@ request.setAttribute("color", dao.colorWeb());
 											onfocusout="check_address(this.id)">
 
 										<div style="color: red;" class="col-6">
-											<span id="address" style="display: none">không để
-												trống</span>
+											<span id="address" style="display: none; width: 150px">không
+												để trống</span>
 										</div>
 
 									</div>
@@ -290,7 +297,6 @@ request.setAttribute("color", dao.colorWeb());
 
 	<jsp:include page="/VIEW/jsp/jsp-component/footer.jsp"></jsp:include>
 	<script>
-	
 		function hidenForm(x) {
 			if (x.id == "credit") {
 				var form = document.getElementById("FormThanhToanBangThe");
@@ -314,7 +320,7 @@ request.setAttribute("color", dao.colorWeb());
 		}
 		function vali_name(text) {
 			const regex = /^[a-zA-Z]+[\-'\s]?[a-zA-Z ]+$/g;
-// 			const regex = /^\s*$/g;
+			// 			const regex = /^\s*$/g;
 			const result = regex.test(text);
 			return result;
 		}
@@ -323,8 +329,6 @@ request.setAttribute("color", dao.colorWeb());
 			const result = regex.test(text);
 			return result;
 		}
-		
-		
 
 		var checkPhone = false;
 		var checkName = false;
@@ -357,46 +361,118 @@ request.setAttribute("color", dao.colorWeb());
 			}
 		}
 
-// 		function check_name(id) {
-// 			var s = document.getElementById(id).value;
-// 			if (!vali_name(s)) {
-// 				document.getElementById("name").style.display = "block";
-// 				checkName = false;
-// 				return true;
-// 			}
-// 			if (vali_name(s)) {
-// 				document.getElementById("name").style.display = "none";
-// 				checkName = true;
-// 				return false;
-// 			}
-// 		}
-		
-		
+		function check_huyen(id) {
+			var s = document.getElementById(id).value;
+			if (vali_address(s)) {
+				document.getElementById("huyen").style.display = "block";
+				checkAddress = false;
+				return true;
+			}
+			if (!vali_address(s)) {
+				document.getElementById("huyen").style.display = "none";
+				checkAddress = true;
+				return false;
+			}
+		}
+
+		function check_xa(id) {
+			var s = document.getElementById(id).value;
+			if (vali_address(s)) {
+				document.getElementById("xa").style.display = "block";
+				checkAddress = false;
+				return true;
+			}
+			if (!vali_address(s)) {
+				document.getElementById("xa").style.display = "none";
+				checkAddress = true;
+				return false;
+			}
+		}
+
+		function check_tinh(id) {
+			var s = document.getElementById(id).value;
+			if (vali_address(s)) {
+				document.getElementById("tinh").style.display = "block";
+				checkAddress = false;
+				return true;
+			}
+			if (!vali_address(s)) {
+				document.getElementById("tinh").style.display = "none";
+				checkAddress = true;
+				return false;
+			}
+		}
+
+		// 		function check_name(id) {
+		// 			var s = document.getElementById(id).value;
+		// 			if (!vali_name(s)) {
+		// 				document.getElementById("name").style.display = "block";
+		// 				checkName = false;
+		// 				return true;
+		// 			}
+		// 			if (vali_name(s)) {
+		// 				document.getElementById("name").style.display = "none";
+		// 				checkName = true;
+		// 				return false;
+		// 			}
+		// 		}
+
 		function check_name(id) {
 			var s = document.getElementById(id).value;
-			if (s==null||s=="") {
+			if (s == null || s == "") {
 				document.getElementById("name").style.display = "block";
 				checkName = false;
 				return true;
 			}
-			if (s!=null||s=="") {
+			if (s != null || s == "") {
 				document.getElementById("name").style.display = "none";
 				checkName = true;
 				return false;
 			}
 		}
 		function checkSubmit() {
-			if (checkName && checkAddress && checkPhone) {
+			if (checkName && checkAddress && checkPhone && checkhuyen
+					&& checktinh && checkxa) {
 				return true;
 			} else {
 				return false;
 			}
 		}
+
+		var checkhuyen = false;
+		var chectinh = false;
+		var checxa = false;
+
 		function checkClick() {
 			var name = document.getElementById("inName").value;
 			var phone = document.getElementById("phone").value;
 			var address = document.getElementById("inAddress").value;
-			if (name==null||name=="") {
+			var huyen = document.getElementById("sehuyen").value;
+			var xa = document.getElementById("sexa").value;
+			var tinh = document.getElementById("setinh").value;
+			console.log(huyen);
+			console.log(tinh);
+			console.log(xa);
+
+			if (huyen == "0") {
+				document.getElementById("huyen").style.display = "block";
+			} else {
+				document.getElementById("huyen").style.display = "none";
+				checkhuyen = true;
+			}
+			if (xa == "0") {
+				document.getElementById("xa").style.display = "block";
+			} else {
+				document.getElementById("xa").style.display = "none";
+				checkxa = true;
+			}
+			if (tinh == "0") {
+				document.getElementById("tinh").style.display = "block";
+			} else {
+				document.getElementById("tinh").style.display = "none";
+				checktinh = true;
+			}
+			if (name == null || name == "") {
 				document.getElementById("name").style.display = "block";
 			}
 			if (!vali_PhoneNumber(phone)) {
@@ -410,7 +486,6 @@ request.setAttribute("color", dao.colorWeb());
 
 
 	<script type="text/javascript">
-		
 		function getDistrict(provinceIDvalue) {
 			$.ajax({
 				type : 'GET',

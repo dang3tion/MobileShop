@@ -29,9 +29,28 @@ public class EmployeeManagement extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		String name = request.getParameter("name");
+		String phoneNumber = request.getParameter("phoneNumber");
+		String address = request.getParameter("address");
+		String password = request.getParameter("password");
+		String username = request.getParameter("username");
+		String role = request.getParameter("role");
+
+		System.out.println("1 " + name);
+		System.out.println("2 " + phoneNumber);
+		System.out.println("3 " + address);
+		System.out.println("4 " + password);
+		System.out.println("5 " + username);
+		System.out.println("6" + role);
+
 		String email = (String) request.getParameter("email");
-		BO_Account.getBoAccount().on_off_account(email);
+
+		if (email != null) {
+			BO_Account.getBoAccount().on_off_account(email);
+		}
 		doGet(request, response);
+
 	}
 
 }
