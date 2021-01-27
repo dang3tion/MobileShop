@@ -38,26 +38,21 @@
 							</div>
 
 							<div class="col-3" style="margin-top: 20px;">
-								<h6>
-									Thanh lọc: 
-								</h6>
-								<input type="color" style="width: 100px; height: 60px" value="${color.colorFilter}"
+								<h6>Thanh lọc:</h6>
+								<input type="color" value="${color.colorFilter}" style="
+									width: 100px; height: 60px" 
 										name="colorFilter">
 							</div>
 
 							<div class="col-3" style="margin-top: 20px;">
-								<h6>
-									Chủ đạo trang web:
-								</h6>
-								 <input type="color" style="width: 100px; height: 60px"
-										value="${color.colorBody}" name="colorBody">
+								<h6>Chủ đạo trang web:</h6>
+								<input type="color" style="width: 100px; height: 60px"
+									value="${color.colorBody}" name="colorBody">
 							</div>
 							<div class="col-3" style="margin-top: 20px;">
-								<h6>
-									Màu chữ: 
-								</h6>
-								<input type="color" style="width: 100px; height: 60px" value="${color.colorText}"
-										name="colorText">
+								<h6>Màu chữ:</h6>
+								<input type="color" style="width: 100px; height: 60px"
+									value="${color.colorText}" name="colorText">
 							</div>
 
 

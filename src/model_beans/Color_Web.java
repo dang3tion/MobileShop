@@ -23,6 +23,7 @@ public class Color_Web implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public String getColorMenu() {
 		return colorMenu;
 	}
