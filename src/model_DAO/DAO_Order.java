@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model_BO_service.BO_Order;
 import model_ConnectDB.DataSource;
 import model_ConnectDB.ExecuteCRUD;
 import model_beans.Cart;
@@ -30,6 +31,8 @@ public class DAO_Order extends ExecuteCRUD {
 	private DAO_Order() {
 
 	}
+
+
 
 	public boolean addNewOrder(Order newOrder) {
 		String customerID = "null";
@@ -72,7 +75,7 @@ public class DAO_Order extends ExecuteCRUD {
 	}
 
 	public int totalOrder() {
-		String query = "SELECT COUNT(*) DONHANG";
+		String query = "SELECT COUNT(*) FROM DONHANG";
 		int total = 0;
 		try (ResultSet rs = super.ExecuteQueryNonParameter(query)) {
 			if (rs.next()) {
@@ -277,7 +280,5 @@ public class DAO_Order extends ExecuteCRUD {
 		return result;
 
 	}
-
-	
 
 }

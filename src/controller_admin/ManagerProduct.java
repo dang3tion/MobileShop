@@ -17,20 +17,28 @@ import model_beans.Product_main;
 @WebServlet(urlPatterns = "/admin/warehouse/manager-product")
 public class ManagerProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private  DAO_Product_main dao = new DAO_Product_main();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int currentPage = 1;
+		int rowPerPage = 10;
 		HttpSession session = request.getSession();
 		if (session.getAttribute("current_page") == null) {
 			session.setAttribute("current_page", 1);
 		} else {
 			currentPage = (Integer) session.getAttribute("current_page");
 		}
+		request.setAttribute("total", dao.totalProduct());
+		request.setAttribute("numProduct", dao.numProductSale());
+		request.setAttribute("productSale", dao.productSaling());
+		request.setAttribute("productStop", dao.productStop());
+		request.setAttribute("numProductStop", dao.numProductStop());
+		
+		
 		ArrayList<Product_main> listProduct = (ArrayList<Product_main>) DAO_Product_main.getDao_Product_main()
-				.getAllProduct((currentPage - 1) * 2 + 1, currentPage * 2);
-		request.setAttribute("STT", (currentPage - 1) * 2 + 1);
-		request.setAttribute("totalPage", DAO_Product_main.getDao_Product_main().getNumberOfPage(2));
+				.getAllProduct((currentPage - 1) * rowPerPage + 1, currentPage * rowPerPage);
+		request.setAttribute("STT", (currentPage - 1) * rowPerPage + 1);
+		request.setAttribute("totalPage", DAO_Product_main.getDao_Product_main().getNumberOfPage(rowPerPage));
 		request.setAttribute("listProduct", listProduct);
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-product.jsp");

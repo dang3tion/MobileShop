@@ -19,18 +19,19 @@ public class AJAXADminProductManager extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		int rowPerPage = 10;
 		int page = Integer.parseInt(request.getParameter("page"));
-		if (page > DAO_Product_main.getDao_Product_main().getNumberOfPage(2)) {
-			page = DAO_Product_main.getDao_Product_main().getNumberOfPage(2);
+		if (page > DAO_Product_main.getDao_Product_main().getNumberOfPage(rowPerPage)) {
+			page = DAO_Product_main.getDao_Product_main().getNumberOfPage(rowPerPage);
 		} else if (page < 1) {
 			page = 1;
 		}
 		ArrayList<Product_main> listProduct = (ArrayList<Product_main>) DAO_Product_main.getDao_Product_main()
-				.getAllProduct((page - 1) * 2 + 1, page * 2);
+				.getAllProduct((page - 1) * rowPerPage + 1, page * rowPerPage);
 		updateCurrentPage(request, page);
 		doPost(request, response);
 		request.setAttribute("listProduct", listProduct);
-		request.setAttribute("STT", (page - 1) * 2 + 1);
+		request.setAttribute("STT", (page - 1) * rowPerPage + 1);
 		RequestDispatcher dispatcher = this.getServletContext()
 				.getRequestDispatcher("/VIEW/jsp/jsp-component/product-table-admin.jsp");
 		dispatcher.forward(request, response);

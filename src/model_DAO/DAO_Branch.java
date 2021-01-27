@@ -98,7 +98,7 @@ public class DAO_Branch extends ExecuteCRUD {
 
 	public void updateState(String id) {
 		String check = stateBranch(id);
-		if (check.equals("Đang kinh doanh")) {
+		if (check.equals("Ðang kinh doanh")) {
 			try {
 				String query = "UPDATE THUONGHIEU SET TRANGTHAI = N'Ngừng kinh doanh' WHERE MATH = ?";
 				String query1 = "UPDATE SANPHAM SET TINHTRANG = N'Ngưng kinh doanh' WHERE MATH = ? AND TINHTRANG = N'Đang bán'";

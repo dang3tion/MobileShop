@@ -22,7 +22,7 @@ public class DAO_Product_main extends ExecuteCRUD {
 	private static DAO_Product_main dao_product_main = null;
 	private String query;
 
-	private DAO_Product_main() {
+	public DAO_Product_main() {
 
 	}
 
@@ -359,4 +359,89 @@ public class DAO_Product_main extends ExecuteCRUD {
 		return name;
 	}
 
+	// các hàm thống kê sản phẩm
+	public int totalProduct() {
+		try {
+			String query = "select count(*) from SANPHAM";
+			try (ResultSet rs = super.ExecuteQuery(query)) {
+				if (rs.next()) {
+					return rs.getInt(1);
+				} else {
+					return 0;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	//tổng số sản phẩm đang bán
+	public int productSaling() {
+
+		try {
+			String query = "select sum(SOLUONG) from SOLUONG_SP";
+			try (ResultSet rs = super.ExecuteQuery(query)) {
+				if (rs.next()) {
+					return rs.getInt(1);
+				} else {
+					return 0;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	//tổng số lượng đang bán
+	public int numProductSale() {
+
+		try {
+			String query = "select count(*) from SANPHAM where TINHTRANG = N'Đang bán'";
+			try (ResultSet rs = super.ExecuteQuery(query)) {
+				if (rs.next()) {
+					return rs.getInt(1);
+				} else {
+					return 0;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	//tổng số ngưng bán
+		public int productStop() {
+
+			try {
+				String query = "select count(*) from SANPHAM where TINHTRANG != N'Đang bán'";
+				try (ResultSet rs = super.ExecuteQuery(query)) {
+					if (rs.next()) {
+						return rs.getInt(1);
+					} else {
+						return 0;
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return 0;
+		}
+		//tổng số lượng ngưng bán
+		public int numProductStop() {
+			
+			try {
+				String query = "select sum(SL_DABAN) from SOLUONG_SP";
+				try (ResultSet rs = super.ExecuteQuery(query)) {
+					if (rs.next()) {
+						return rs.getInt(1);
+					} else {
+						return 0;
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return 0;
+		}
 }
