@@ -71,29 +71,26 @@ public class ListProduct implements Serializable {
 	}
 
 	public String getQueryOrder(int start, int end) {
-		if (orderList.isEmpty()) {
-			return query;
-		} else {
-			int count = 0;
-			StringBuilder str = new StringBuilder();
-			str.append("SELECT * FROM  (SELECT ROW_NUMBER() OVER (");
-			if (orderList.isEmpty()) {
-				str.append(" ORDER BY MASP ASC ");
-			} else {
-				for (SELECT s : orderList.keySet()) {
-					if (count == 0) {
-						str.append(" ORDER BY " + convertEnum(s) + " " + orderList.get(s));
-					} else {
-						str.append(", " + convertEnum(s) + " " + orderList.get(s));
-					}
-					count++;
-				}
-			}
 
-			str.append(") AS STT , * FROM (SELECT TOP(SELECT COUNT(*) FROM (" + query + ")TK) * FROM(" + query
-					+ ")TK) TK) AS X   WHERE STT BETWEEN " + start + " AND " + end);
-			return str.toString();
+		int count = 0;
+		StringBuilder str = new StringBuilder();
+		str.append("SELECT * FROM  (SELECT ROW_NUMBER() OVER (");
+		if (orderList.isEmpty()) {
+			str.append(" ORDER BY MASP ASC ");
+		} else {
+			for (SELECT s : orderList.keySet()) {
+				if (count == 0) {
+					str.append(" ORDER BY " + convertEnum(s) + " " + orderList.get(s));
+				} else {
+					str.append(", " + convertEnum(s) + " " + orderList.get(s));
+				}
+				count++;
+			}
 		}
+
+		str.append(") AS STT , * FROM (SELECT TOP(SELECT COUNT(*) FROM (" + query + ")TK) * FROM(" + query
+				+ ")TK) TK) AS X   WHERE STT BETWEEN " + start + " AND " + end);
+		return str.toString();
 	}
 
 	public ListProduct() {

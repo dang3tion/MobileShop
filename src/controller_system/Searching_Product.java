@@ -131,7 +131,7 @@ public class Searching_Product extends HttpServlet {
 		System.out.println(orderUrl);
 		System.out.println(priceUrl);
 		System.out.println("-----------");
-		request.setAttribute("currentPage", page);
+		request.setAttribute("current_page", page);
 		try {
 			request.setAttribute("totalPage",
 					getTotalPage(DAO_ListProduct.getDao_ListProduct().getTotalList(listMain), 9));
@@ -139,8 +139,9 @@ public class Searching_Product extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	HttpSession session=request.getSession();
-	session.setAttribute("listMain", listMain);
+		listMain.setLstProduct(listProduct);
+		HttpSession session = request.getSession();
+		session.setAttribute("listMain", listMain);
 		request.setAttribute("urlOrder", orderUrl);
 		request.setAttribute("urlPrice", priceUrl);
 		request.setAttribute("urlSearch", url);

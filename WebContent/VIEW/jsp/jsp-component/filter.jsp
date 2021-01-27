@@ -164,9 +164,7 @@ request.setAttribute("color", dao.colorWeb());
 								<li class="item-menu">
 									<div class="filter-check">
 										<a
-											href="${pageContext.request.contextPath}/${urlSearch}&gia=thap-cao${urlOrder}"><input
-											type="checkbox" name="check" onclick="onlyOne(this)"
-											value="thapcao" id="thapcao"> <label for="thapcao"><fmt:message
+											href="${pageContext.request.contextPath}/${urlSearch}&gia=thap-cao${urlOrder}"><fmt:message
 													key="giacao1-filter"></fmt:message> <i
 												class="fas fa-arrow-up"></i> </label></a>
 									</div>
@@ -175,8 +173,7 @@ request.setAttribute("color", dao.colorWeb());
 									<div class="filter-check">
 										<a
 											href="${pageContext.request.contextPath}/${urlSearch}&gia=cao-thap${urlOrder}">
-											<input type="checkbox" name="check" onclick="onlyOne(this)"
-											value="caothap" id="caothap"> <label for="caothap">
+											 <label for="caothap">
 												<fmt:message key="giathap1-filter"></fmt:message><i
 												class="fas fa-arrow-down"></i>
 										</label>
