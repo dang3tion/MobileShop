@@ -19,19 +19,14 @@ public class FirstSetup implements HttpSessionListener {
 	public void sessionCreated(HttpSessionEvent event) {
 		HttpSession session = event.getSession();
 //		@@@@@@@@@@@@@@@
-		String countTruycap =(String) session.getAttribute("user_count");
-		if (countTruycap==null) {
-			new DAO_Access().updateAccess();
-		}
+		String countTruycap = (String) session.getAttribute("user_count");
+
+		new DAO_Access().updateAccess();
+
 //		@@@@@@@@@@@@@@@
-		
-		
+
 		DataSource.countOnlineUserQuantity++;
 		updateOnlineUserQuantity(event);
-
-		
-		
-		
 
 		session.setAttribute("LANGUAGE", "vi_VN");
 		Cart cart = new Cart();
