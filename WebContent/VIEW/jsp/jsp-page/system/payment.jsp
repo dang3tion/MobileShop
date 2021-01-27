@@ -188,8 +188,7 @@ request.setAttribute("color", dao.colorWeb());
 									</div>
 								</div>
 								<div style="color: red;" class="col-6">
-									<p id="name" style="display: none">Vui lòng nhập tên không
-										dấu và số.</p>
+									<p id="name" style="display: none">Không được để trống.</p>
 								</div>
 								<div style="color: red; float: right">
 									<p id="checkphone" style="display: none;">Vui lòng nhập
@@ -315,6 +314,7 @@ request.setAttribute("color", dao.colorWeb());
 		}
 		function vali_name(text) {
 			const regex = /^[a-zA-Z]+[\-'\s]?[a-zA-Z ]+$/g;
+// 			const regex = /^\s*$/g;
 			const result = regex.test(text);
 			return result;
 		}
@@ -323,6 +323,8 @@ request.setAttribute("color", dao.colorWeb());
 			const result = regex.test(text);
 			return result;
 		}
+		
+		
 
 		var checkPhone = false;
 		var checkName = false;
@@ -355,14 +357,29 @@ request.setAttribute("color", dao.colorWeb());
 			}
 		}
 
+// 		function check_name(id) {
+// 			var s = document.getElementById(id).value;
+// 			if (!vali_name(s)) {
+// 				document.getElementById("name").style.display = "block";
+// 				checkName = false;
+// 				return true;
+// 			}
+// 			if (vali_name(s)) {
+// 				document.getElementById("name").style.display = "none";
+// 				checkName = true;
+// 				return false;
+// 			}
+// 		}
+		
+		
 		function check_name(id) {
 			var s = document.getElementById(id).value;
-			if (!vali_name(s)) {
+			if (s==null||s=="") {
 				document.getElementById("name").style.display = "block";
 				checkName = false;
 				return true;
 			}
-			if (vali_name(s)) {
+			if (s!=null||s=="") {
 				document.getElementById("name").style.display = "none";
 				checkName = true;
 				return false;
@@ -379,7 +396,7 @@ request.setAttribute("color", dao.colorWeb());
 			var name = document.getElementById("inName").value;
 			var phone = document.getElementById("phone").value;
 			var address = document.getElementById("inAddress").value;
-			if (!vali_name(name)) {
+			if (name==null||name=="") {
 				document.getElementById("name").style.display = "block";
 			}
 			if (!vali_PhoneNumber(phone)) {
@@ -423,7 +440,6 @@ request.setAttribute("color", dao.colorWeb());
 	</script>
 
 
-	<script src="${url }/js/js-page/form-validation.js"></script>
 </body>
 
 </html>
