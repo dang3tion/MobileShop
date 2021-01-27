@@ -20,7 +20,7 @@
 
 
 		<!-- Page Content -->
-		<div id="page-content-wrapper" >
+		<div id="page-content-wrapper">
 
 			<!-- 		toggle logout -->
 			<jsp:include page="/VIEW/jsp/jsp-component/toggle-logout-bar.jsp"></jsp:include>
@@ -43,12 +43,12 @@
 						</thead>
 						<tbody>
 							<tr class="">
-								<th scope="row"> ${total} </th>
-								<td> ${productSale} </td>
+								<th scope="row">${total}</th>
+								<td>${productSale}</td>
 								<td>${productStop}</td>
 								<td>${numProduct}</td>
 								<td>${numProductStop}</td>
-								
+
 							</tr>
 						</tbody>
 					</table>
@@ -64,7 +64,7 @@
 												<h4 class="text-center mt-3 mb-3">Danh sách sản phẩm</h4>
 												<div class="row">
 
-													<form action="${pageContext.request.contextPath}/admin/warehouse/manager-product" method="post">
+
 													<div class="ml-5 mb-2 form-row align-items-center">
 														<div class="col-auto">
 															<div class="input-group mb-2">
@@ -73,16 +73,16 @@
 																		<i class="fas fa-search"></i>
 																	</div>
 																</div>
-																<input name="searchProduct" type="text" class="form-control"
-																	placeholder="Nhập từ khóa" >
+																<input id="key-search" type="text" class="form-control"
+																	placeholder="Nhập từ khóa">
 															</div>
 														</div>
 														<div class="col-auto">
-															<button type="submit" class="btn btn-primary mb-2">Tìm
-																kiếm</button>
+															<button type="button" onclick="getkeysearch()"
+																class="btn btn-primary mb-2">Tìm kiếm</button>
 														</div>
 													</div>
-												</form>
+
 
 												</div>
 												<a
@@ -181,6 +181,25 @@
 						data : {
 
 							page : parseInt(number)
+
+						},
+						success : function(responseText) {
+							$('#content-table').html(responseText);
+						}
+
+					});
+
+		}
+
+		function getkeysearch() {
+			var key = document.getElementById('key-search').value;
+			$
+					.ajax({
+						type : 'GET',
+						url : '${pageContext.request.contextPath}/AJAXAdminProductManager',
+						data : {
+
+							key : key
 
 						},
 						success : function(responseText) {

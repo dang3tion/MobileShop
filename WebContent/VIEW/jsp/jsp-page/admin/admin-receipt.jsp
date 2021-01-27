@@ -34,32 +34,129 @@
 					<div class="mt-5"></div>
 
 
-					<table class="table table-hover " id="receipt-table">
-						<thead class="thead-light">
-							<tr>
-								<th scope="col">STT</th>
-								<th scope="col">Mã đơn hàng</th>
-								<th scope="col">Mã khách hàng</th>
+					
+            <table class="table table-hover " id="receipt-table">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Mã đơn hàng</th>
+                  <th scope="col">Mã khách hàng</th>
 
-								<th scope="col">Tổng giá trị</th>
-								<th scope="col">Ngày lập</th>
+                  <th scope="col">Tổng giá trị</th>
+                  <th scope="col">Ngày lập</th>
 
-								<th scope="col">Chi tiết đơn hàng</th>
-								<th scope="col">Xác nhận đơn hàng</th>
+                  <th scope="col">Chi tiết đơn hàng</th>
+                  <th scope="col">Xác nhận đơn hàng</th>
 
-							</tr>
-						</thead>
-						<tbody id="content-table">
+                </tr>
+              </thead>
+              <tbody id="content-table">
+                <tr>
+                  <td>DH01</td>
+                  <td>KH01</td>
 
-							<!--START ĐƠN HÀNG -->
+                  <td>
+                    20,200,000
+                  </td>
+                  <td>
+                    20/11/2020
+                  </td>
+
+                  <td class="detail"><a data-toggle="modal" data-target="#exampleModal" href='#'> Chi tiết <i
+                        class="fa fa-external-link-alt"></i></a>
 
 
+                    <!-- Modal -->
 
+                  </td>
+                  <td class="confirm">
+                    <span>
 
-							<!--END ĐƠN HÀNG -->
+                      <label title="Xác nhận đơn 	hàng" data-target="#confirm-id" class="label-check active"
+                        data-toggle="modal"><i class="fas fa-check-square"></i></label>
+                      <div class="modal fade" id="confirm-id" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Xác nhận đơn hàng</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <i aria-hidden="true">&times;</i>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              Bạn có muốn xác nhận đơn hàng này không?
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                              <button type="button" class="btn btn-primary" onclick="confirmedCheck(id)"
+                                data-dismiss="modal">Xác
+                                nhận</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </span>
 
-						</tbody>
-					</table>
+                    <span>
+
+                      <label title="Xác nhận vận chuyển thành công" data-target="#delivery-id"
+                        class="label-delivered disable"><i class="fas fa-truck"></i></label>
+                      <div class="modal fade" id="delivery-id" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Xác nhận vận chuyển</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <i aria-hidden="true">&times;</i>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              Bạn có muốn xác nhận vận chuyển thành công?
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                              <button type="button" class="btn btn-primary" onclick="confirmedDelivery(id)"
+                                data-dismiss="modal">Xác
+                                nhận</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </span>
+                    <span>
+
+                      <label title="Hủy đơn hàng" data-target="#cancel-id" data-toggle="modal"
+                        class="label-cancel warning"><i class="fas fa-trash"></i></label>
+                      <div class="modal fade" tabindex="-1" id="cancel-id" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Xác nhận hủy đơn</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <i aria-hidden="true">&times;</i>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              Bạn có muốn xác nhận hủy đơn hàng này không?
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                              <button type="button" class="btn btn-primary" onclick="confirmCancel(id)"
+                                data-dismiss="modal">Xác
+                                nhận</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </span>
+
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
 
 
 				</div>
@@ -82,28 +179,68 @@
 		<input id="curent-page" value="${CURRENT_PAGE_ORDER_MANAGEMENT}" style="display: none"></input>
 
 		<script type="text/javascript">
-			function getCurrentPage() {
-				return document.getElementById("curent-page").value;
-			}
-			function SendDataToServlet(number) {
-				getNumberPageDefault(number);
-				$
-						.ajax({
-							type : 'GET',
-							url : '${pageContext.request.contextPath}/AJAXOderManagement',
-							data : {
+		
+			
+			
 
-								page : parseInt(number)
+            function confirmedCheck(id) {
+              alert(id + "check");
+              $
+                .ajax({
+                  type: 'GET',
+                  url: '${pageContext.request.contextPath}/pageAjaxdexuly',
+                  data: {
 
-							},
-							success : function(responseText) {
-								$('#content-table').html(responseText);
-							}
 
-						});
+                    id: id
 
-			}
+                  },
+                  success: function (responseText) {
+                    $('#content-table').html(responseText);
+                  }
+
+                });
+
+            }
+
+            function confirmedDelivery(id) {
+              alert(id + "delivery");
+              $
+                .ajax({
+                  type: 'GET',
+                  url: '${pageContext.request.contextPath}/pageAjaxdexuly',
+                  data: {
+
+
+                    id: id
+
+                  },
+                  success: function (responseText) {
+                    $('#content-table').html(responseText);
+                  }
+
+                });
+
+            } function confirmCancel(id) {
+              alert(id + "cancel");
+              $
+                .ajax({
+                  type: 'GET',
+                  url: '${pageContext.request.contextPath}/pageAjaxdexuly',
+                  data: {
+
+                    id: id
+
+                  },
+                  success: function (responseText) {
+                    $('#content-table').html(responseText);
+                  }
+
+                });
+
+            }
 		</script>
+		
 		<script src="${url}/js/js-page/devide-page-admin.js"></script>
 		
 </body>

@@ -9,7 +9,6 @@
 		<td>${STTstart+i.index}</td>
 		<td>${order.orderID}</td>
 		<td>${order.customerID}</td>
-
 		<td><fmt:formatNumber type="number" maxFractionDigits="3"
 				value="${order.totalMoney}" /> <span> đ</span></td>
 		<td>${order.timeCreate}</td>
@@ -17,7 +16,10 @@
 		<td class="detail"><a data-toggle="modal"
 			data-target="#orderDetail${order.orderID}"> Chi tiết <i
 				class="fa fa-external-link-alt"></i></a> <!-- Modal --></td>
-		<td class="confirm"><span> <input class="confirm-check"
+		
+		<td class="confirm">
+		
+		<span> <input class="confirm-check"
 				type="checkbox" value="confirm-check" name="confirm-check">
 				<label title="Xác nhận đơn hàng" class="label-check active"
 				data-toggle="modal"><i class="fas fa-check-square"></i></label>
@@ -44,7 +46,8 @@
 						</div>
 					</div>
 				</div>
-		</span> <span> <input class="confirm-check" type="checkbox"
+		</span> 
+		<span> <input class="confirm-check" type="checkbox"
 				value="confirm-delivered" name="confirm-deliverd"> <label
 				title="Xác nhận vận chuyển thành công"
 				class="label-delivered disable"><i class="fas fa-truck"></i></label>
@@ -97,7 +100,12 @@
 							</div>
 						</div>
 					</div>
-				</div> <!-- 						START CHI TIẾT ĐƠN HÀNG					 -->
+				</div> 
+				
+				
+				
+				
+				<!-- START CHI TIẾT ĐƠN HÀNG-->
 				<div class="modal fade" id="orderDetail${order.orderID}"
 					tabindex="-1" aria-labelledby="exampleModalLabel"
 					aria-hidden="true">
@@ -178,7 +186,9 @@
 							</div>
 						</div>
 					</div>
-				</div> <!-- 				END CHI TIẾT ĐƠN HÀNG	 -->
+				</div> 
+				
+				<!-- END CHI TIẾT ĐƠN HÀNG	-->
 
 
 		</span></td>
