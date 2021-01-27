@@ -35,7 +35,7 @@
 							<strong>THÊM NHÂN VIÊN</strong>
 						</div>
 					</div>
-					<form action="" method="POST">
+					<form action="${pageContext.request.contextPath}/admin/employeeaccount" method="POST">
 						<div class="controller d-flex justify-content-center">
 
 							<div class="row">
@@ -170,7 +170,7 @@
 
 
 								<button style="margin-top: 50px; margin-left: 500px"
-									type="submit" class="btn btn-primary btn-lg">Lưu</button>
+									type="submit" class="btn btn-primary btn-lg"><i class="far fa-save"></i> <strong>Lưu</strong></button>
 
 
 							</div>
