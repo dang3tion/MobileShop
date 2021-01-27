@@ -115,9 +115,9 @@ request.setAttribute("color", dao.colorWeb());
 									<div id="province-dropdown">
 										<select onchange="getDistrict(this.value)" class="mx-2"
 											style="height: 38px; min-width: 140px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
-											name="province" id="setinh">
-											<option  value = "0">Chọn tỉnh/thành phố</option>
-											
+											name="province" id="setinh" onfocusout="check_tinh(this.id)">
+											<option value="0">Chọn tỉnh/thành phố</option>
+
 											<c:forEach items="${LIST_PROVINCE}" var="pro">
 												<option value="${pro.key}">${pro.value}</option>
 											</c:forEach>
@@ -128,8 +128,9 @@ request.setAttribute("color", dao.colorWeb());
 									<div id="district-dropdown">
 										<select class="mx-2"
 											style="height: 38px; min-width: 140px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
-											name="district" id="sehuyen">
-											<option  value="0">Chọn quận/huyện</option>
+											name="district" id="sehuyen"
+											onfocusout="check_huyen(this.id)">
+											<option value="0">Chọn quận/huyện</option>
 										</select> <span id="huyen"
 											style="display: none; width: 150px; color: red">Chọn
 											quận/huyện</span>
@@ -137,8 +138,8 @@ request.setAttribute("color", dao.colorWeb());
 									<div id="ward-dropdown">
 										<select class="mx-2"
 											style="height: 38px; min-width: 140px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
-											name="ward" id="sexa">
-											<option  selected value="0">Chọn phường/xã</option>
+											name="ward" id="sexa" onfocusout="check_xa(this.id)">
+											<option selected value="0">Chọn phường/xã</option>
 										</select> <span id="xa" style="display: none; width: 150px; color: red">Chọn
 											phường/xã</span>
 									</div>
@@ -360,6 +361,48 @@ request.setAttribute("color", dao.colorWeb());
 			}
 		}
 
+		function check_huyen(id) {
+			var s = document.getElementById(id).value;
+			if (vali_address(s)) {
+				document.getElementById("huyen").style.display = "block";
+				checkAddress = false;
+				return true;
+			}
+			if (!vali_address(s)) {
+				document.getElementById("huyen").style.display = "none";
+				checkAddress = true;
+				return false;
+			}
+		}
+
+		function check_xa(id) {
+			var s = document.getElementById(id).value;
+			if (vali_address(s)) {
+				document.getElementById("xa").style.display = "block";
+				checkAddress = false;
+				return true;
+			}
+			if (!vali_address(s)) {
+				document.getElementById("xa").style.display = "none";
+				checkAddress = true;
+				return false;
+			}
+		}
+
+		function check_tinh(id) {
+			var s = document.getElementById(id).value;
+			if (vali_address(s)) {
+				document.getElementById("tinh").style.display = "block";
+				checkAddress = false;
+				return true;
+			}
+			if (!vali_address(s)) {
+				document.getElementById("tinh").style.display = "none";
+				checkAddress = true;
+				return false;
+			}
+		}
+
 		// 		function check_name(id) {
 		// 			var s = document.getElementById(id).value;
 		// 			if (!vali_name(s)) {
@@ -388,22 +431,18 @@ request.setAttribute("color", dao.colorWeb());
 			}
 		}
 		function checkSubmit() {
-			console.log(checktinh);
-			console.log(checkxa);
-			console.log(checkhuyen);
-			
-			if (checkName && checkAddress && checkPhone&&checkhuyen&&checktinh&&checkxa) {
+			if (checkName && checkAddress && checkPhone && checkhuyen
+					&& checktinh && checkxa) {
 				return true;
 			} else {
 				return false;
 			}
 		}
-	
-		
+
 		var checkhuyen = false;
 		var chectinh = false;
 		var checxa = false;
-		
+
 		function checkClick() {
 			var name = document.getElementById("inName").value;
 			var phone = document.getElementById("phone").value;
@@ -414,22 +453,22 @@ request.setAttribute("color", dao.colorWeb());
 			console.log(huyen);
 			console.log(tinh);
 			console.log(xa);
-			
+
 			if (huyen == "0") {
 				document.getElementById("huyen").style.display = "block";
-			}else {
+			} else {
 				document.getElementById("huyen").style.display = "none";
 				checkhuyen = true;
 			}
 			if (xa == "0") {
 				document.getElementById("xa").style.display = "block";
-			}else {
+			} else {
 				document.getElementById("xa").style.display = "none";
 				checkxa = true;
 			}
 			if (tinh == "0") {
 				document.getElementById("tinh").style.display = "block";
-			}else {
+			} else {
 				document.getElementById("tinh").style.display = "none";
 				checktinh = true;
 			}

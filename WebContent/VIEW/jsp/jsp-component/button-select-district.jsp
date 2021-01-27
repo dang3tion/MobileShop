@@ -4,7 +4,7 @@
 
 <select onchange="getWard(this.value)" class="mx-2"
 	style="height: 38px;min-width: 140px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
-	name="district" id="sehuyen">
+	name="district" id="sehuyen" onfocusout="check_huyen(this.id)">
 	<option disabled selected value="0">Chọn quận/huyện</option>
 	<c:forEach items="${LIST_DISTRICT}" var="pro">
 		<option value="${pro.key}">${pro.value}</option>
