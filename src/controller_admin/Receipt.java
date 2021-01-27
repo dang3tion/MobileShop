@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import model_BO_service.BO_Account;
 import model_BO_service.BO_Order;
 import model_DAO.DAO_Order;
 
@@ -21,7 +23,20 @@ public class Receipt extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setAttribute("LIST_ORDER", dao.getListOrder(1, 99999));
+		HttpSession session = request.getSession();
+
+		int currentPage = 1;
+		if (session.getAttribute("CURRENT_PAGE_ORDER_MANAGEMENT") == null) {
+			session.setAttribute("CURRENT_PAGE_ORDER_MANAGEMENT", 1);
+		} else {
+			currentPage = (Integer) session.getAttribute("CURRENT_PAGE_ORDER_MANAGEMENT");
+		}
+
+		BO_Order bo = new BO_Order(currentPage, 15);
+
+		request.setAttribute("LIST_ORDER", bo.getList());
+		request.setAttribute("totalPage", bo.totalPage());
+		System.out.println(bo.getList());
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-receipt.jsp");
 		dispatcher.forward(request, response);
