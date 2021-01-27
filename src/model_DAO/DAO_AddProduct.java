@@ -9,7 +9,7 @@ import model_ConnectDB.ExecuteCRUD;
 
 public class DAO_AddProduct extends ExecuteCRUD {
 	private static DAO_AddProduct dao;
-
+	
 	private DAO_AddProduct() {
 
 	}
