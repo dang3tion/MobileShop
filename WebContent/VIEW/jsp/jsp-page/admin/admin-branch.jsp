@@ -64,24 +64,31 @@
 																<td>${pp.id}</td>
 																<td>${pp.name}</td>
 																<td>${pp.productQuantity}</td>
-																<td>${pp.state}</td>
+																<td>
+																<c:if test ="${pp.state == 'business'}">
+																		 Đang kinh doanh
+																	</c:if>
+																	<c:if test ="${pp.state == 'stop'}">
+																		 Ngừng kinh doanh
+																	</c:if>
+																</td>
 																<td class="row" style="border: none;">
 																	<button
 																		class="edit3 btn 
-																	<c:if test ="${pp.state == 'Ðang kinh doanh'}">
+																	<c:if test ="${pp.state == 'business'}">
 																		 btn-success
 																	</c:if>
-																	<c:if test ="${pp.state == 'Ngừng kinh doanh'}">
+																	<c:if test ="${pp.state == 'stop'}">
 																		 btn-danger
 																	</c:if>
 																	"
 																		data-toggle="modal" data-target="#del${pp.id}"
 																		style="margin: auto;" title='Thay đổi trạng thái'>
 																		<i
-																			class="txt-center menu-icon <c:if test ="${pp.state == 'Ðang kinh doanh'}">
+																			class="txt-center menu-icon <c:if test ="${pp.state == 'business'}">
 																			fas fa-lock-open
 																	</c:if>
-																	<c:if test ="${pp.state == 'Ngừng kinh doanh'}">
+																	<c:if test ="${pp.state == 'stop'}">
 																		 	
 																		 	fas fa-lock
 																	</c:if>"></i>
