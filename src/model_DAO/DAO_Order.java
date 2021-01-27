@@ -32,8 +32,6 @@ public class DAO_Order extends ExecuteCRUD {
 
 	}
 
-
-
 	public boolean addNewOrder(Order newOrder) {
 		String customerID = "null";
 		if (newOrder.getCustomerID() != null) {
@@ -280,25 +278,16 @@ public class DAO_Order extends ExecuteCRUD {
 		return result;
 
 	}
-	
-	//cập nhật hủy đơn
-	
-	
-	
+
+	// cập nhật hủy đơn
+
 	public void cancel(String id) {
 		String query = "update DONHANG set TRANGTHAI = 'CANCELED' where MADH = ?";
-		try (ResultSet rs = super.ExecuteQuery(query,id)) {
-			
-			
+		try (ResultSet rs = super.ExecuteQuery(query, id)) {
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	public static void main(String[] args) {
-		System.out.println(new DAO_Order().getListCancelOrder(1, 10).size());
-	}
-	
-	
-	
 
 }
