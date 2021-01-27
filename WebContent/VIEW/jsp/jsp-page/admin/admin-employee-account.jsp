@@ -35,64 +35,147 @@
 							<strong>THÊM NHÂN VIÊN</strong>
 						</div>
 					</div>
+					<form action="" method="POST">
+						<div class="controller d-flex justify-content-center">
 
-					<div class="controller d-flex justify-content-center">
-						
-						<div class="row">
-							<div class="col-4 mt-4">
-								<span>Tên tài khoản</span> <input style="min-width: 300px"
-									type="text" class="form-control">
-							</div>
-							<div class="col-4 mt-4">
-								<span>Mật khẩu</span> <input style="min-width: 300px"
-									type="text" class="form-control">
-							</div>
-							<div class="col-4 mt-4">
-								<span>Nhập lại mật khẩu</span> <input style="min-width: 300px"
-									type="text" class="form-control">
-							</div>
-							<div class="col-4 mt-4">
-								<span>Họ tên</span> <input style="min-width: 300px" type="text"
-									class="form-control">
-							</div>
-							<div class="col-4 mt-4">
-								<span>Số điện thoại</span> <input style="min-width: 300px"
-									type="text" class="form-control">
-							</div>
-							<div class="col-4 mt-4">
-								<span>Địa chỉ</span> <input style="min-width: 300px" type="text"
-									class="form-control">
-							</div>
-							<div class="col-4 mt-4">
-								<span>Chức vụ/ vị trí</span> <select
-									style="min-height: 38px; min-width: 372px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;">
-									<option disabled="" selected="" value="">Chọn chức
-										vụ/vị trí</option>
-
-									<option value="CSKH">Chăm sóc khách hàng</option>
-
-									<option value="WAREHOUSE">Nhân viên kho/ quản lý sản
-										phẩm</option>
+							<div class="row">
 
 
 
+								<div class="col-4 mt-4">
+									<span>Tên tài khoản</span> <input name="username"
+										style="min-width: 300px" type="text" class="form-control">
+								</div>
+								<div class="col-4 mt-4">
+									<span>Mật khẩu</span> <input name="password"
+										style="min-width: 300px" type="text" class="form-control">
+								</div>
+								<div class="col-4 mt-4">
+									<span>Nhập lại mật khẩu</span> <input style="min-width: 300px"
+										type="text" class="form-control">
+								</div>
+								<div class="col-4 mt-4">
+									<span>Họ tên</span> <input name="name" style="min-width: 300px"
+										type="text" class="form-control">
+								</div>
+								<div class="col-4 mt-4">
+									<span>Số điện thoại</span> <input name="phoneNumber"
+										style="min-width: 300px" type="text" class="form-control">
+								</div>
+								<div class="col-4 mt-4">
+									<span>Địa chỉ</span> <input name="address"
+										style="min-width: 300px" type="text" class="form-control">
+								</div>
+								<div class="col-4 mt-4">
+									<span>Chức vụ/ vị trí</span> <select name="role"
+										style="min-height: 38px; min-width: 372px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;">
+										<option disabled="" selected="" value="">Chọn chức
+											vụ/vị trí</option>
 
-								</select>
+										<option value="CSKH">Chăm sóc khách hàng</option>
+
+										<option value="WAREHOUSE">Nhân viên kho/ quản lý sản
+											phẩm</option>
 
 
 
-							</div>
-							<div class="col-4 mt-4">
-								<button type="button" class="btn btn-primary mt-4">Xem
-									quyền hạn nhân viên kho/ quản lý sản phẩm</button>
-							</div>
-							<div class="col-4 mt-4">
-								<button type="button" class="btn btn-primary mt-4">Xem
-									quyền hạn nhân viên CSKH</button>
+
+									</select>
+
+
+
+								</div>
+								<div class="col-4 mt-4">
+									
+									<button type="button" class="btn btn-primary mt-4"
+										data-toggle="modal" data-target="#xemQuyenKHO">
+										Xem
+										quyền hạn nhân viên kho/ quản lý sản phẩm</button>
+
+									<!-- Modal -->
+									<div class="modal fade" id="xemQuyenKHO" tabindex="-1"
+										role="dialog" 
+										aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered"
+											role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" >Quyền hạn nhân viên kho</h5>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+												
+												<p>Nhân viên quản lí kho hàng</p>
+												<p>Có quyền truy cập vào các trang : </p>
+												<p> - Quản lý sản phẩm </p>
+												<p> - Thông tin thương hiệu </p>
+												<p> - Thuộc tính sản phẩm </p>
+											
+												
+												
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary"
+														data-dismiss="modal">Close</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-4 mt-4">
+										<button type="button" class="btn btn-primary mt-4"
+										data-toggle="modal" data-target="#xemQuyenCSKH">
+										Xem
+										quyền hạn nhân viên CSKH</button>
+
+									<!-- Modal -->
+									<div class="modal fade" id="xemQuyenCSKH" tabindex="-1"
+										role="dialog" 
+										aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered"
+											role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" >Quyền hạn nhân viên chăm sóc khách hàng</h5>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+												
+												<p>Nhân viên chăm sóc khách hàng</p>
+												<p>Có quyền truy cập vào các trang : </p>
+												<p> - Thông tin người dùng </p>
+												<p> - Quản lý đơn hàng </p>
+												<p> - Phản hồi khách hàng</p>
+											
+												
+												
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary"
+														data-dismiss="modal">Close</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+
+
+								<button style="margin-top: 50px; margin-left: 500px"
+									type="submit" class="btn btn-primary btn-lg">Lưu</button>
+
+
 							</div>
 						</div>
-					</div>
-
+					</form>
 
 
 				</div>
