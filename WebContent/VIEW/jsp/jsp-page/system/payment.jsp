@@ -112,9 +112,9 @@ request.setAttribute("color", dao.colorWeb());
 
 								<!-- 	@@@@@@@@@ START CHOOSE ADDRESS @@@@@@@@@@@@@ -->
 								<div class="row">
-									<div id="province-dropdown">
+									<div id="province-dropdown" class = "col-3">
 										<select onchange="getDistrict(this.value)" class="mx-2"
-											style="height: 38px; min-width: 140px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
+											style="height: 38px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
 											name="province" id="setinh" onfocusout="check_tinh(this.id)">
 											<option value="0">Chọn tỉnh/thành phố</option>
 
@@ -125,9 +125,9 @@ request.setAttribute("color", dao.colorWeb());
 											style="display: none; width: 150px; color: red">Chọn
 											tỉnh/thành phố</span>
 									</div>
-									<div id="district-dropdown">
+									<div id="district-dropdown" class = "col-3">
 										<select class="mx-2"
-											style="height: 38px; min-width: 140px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
+											style="height: 38px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
 											name="district" id="sehuyen"
 											onfocusout="check_huyen(this.id)">
 											<option value="0">Chọn quận/huyện</option>
@@ -135,17 +135,17 @@ request.setAttribute("color", dao.colorWeb());
 											style="display: none; width: 150px; color: red">Chọn
 											quận/huyện</span>
 									</div>
-									<div id="ward-dropdown">
+									<div id="ward-dropdown" class = "col-3">
 										<select class="mx-2"
-											style="height: 38px; min-width: 140px; padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
+											style="height: 38px;  padding: 3px; outline: 0; border: 1px solid #b7b7b7; border-radius: 5px;"
 											name="ward" id="sexa" onfocusout="check_xa(this.id)">
 											<option selected value="0">Chọn phường/xã</option>
 										</select> <span id="xa" style="display: none; width: 150px; color: red">Chọn
 											phường/xã</span>
 									</div>
 
-									<div id="street">
-										<input style="width: 170px" id="inAddress" name="street"
+									<div id="street" class = "col-3">
+										<input style="width: 170px;position:static" id="inAddress" name="street"
 											type="text" class="form-control"
 											placeholder="Tên đường, số nhà" value=""
 											onfocusout="check_address(this.id)">
