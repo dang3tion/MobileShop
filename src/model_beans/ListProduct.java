@@ -144,7 +144,7 @@ public class ListProduct implements Serializable {
 		}
 		case TYPE: {
 
-			return "LOAISP";
+			return "LOAI_SP";
 		}
 		case VIEW: {
 
@@ -155,5 +155,14 @@ public class ListProduct implements Serializable {
 		}
 	}
 
-	
+	public static void main(String[] args) throws SQLException {
+		ListProduct lst = DAO_ListProduct.getDao_ListProduct().getListProMenu(LISTP.NEW, 100);
+		System.out.println(lst.getLstProduct());
+		lst.addOrderLIst(SELECT.PRICE, ORDER.ASC);
+		lst.setLstProduct(DAO_ListProduct.getDao_ListProduct().orderListProduct(lst, lst.getQueryOrder()));
+		System.out.println("aaaa");
+		System.out.println(lst.getLstProduct());
+
+	}
+
 }

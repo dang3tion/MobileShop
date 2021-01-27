@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import model_DAO.DAO_ListProduct;
 import model_DAO.DAO_ListProduct.LISTP;
+import model_DAO.DAO_ListProduct.ORDER;
+import model_DAO.DAO_ListProduct.SELECT;
+import model_beans.ListProduct;
 import model_beans.Product_form;
 
 @WebServlet(urlPatterns = "/searchingProduct")
@@ -23,11 +26,13 @@ public class Searching_Product extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String url = "searchingProduct";
+
 		String typeList = request.getParameter("dssanpham");
-		ArrayList<Product_form> listProduct = new ArrayList<Product_form>();
+		ListProduct listMain = new ListProduct();
+
 		String branchName = request.getParameter("thuonghieu");
 		String range = request.getParameter("khoanggia");
-
 		Integer startRange = null;
 		Integer endRange = null;
 		String aspect = request.getParameter("tinhtrang");
@@ -38,21 +43,22 @@ public class Searching_Product extends HttpServlet {
 				case "sanphamnoibat": {
 					// số 100 là số lượng lấy ra, vì câu lệnh sql bắt buộc phải nhập số lượng mới
 					// cho lấy ra list sản phẩm
-					listProduct = DAO_ListProduct.getDao_ListProduct().getListProMenu(LISTP.SPECIAL, 100)
-							.getLstProduct();
+					listMain = DAO_ListProduct.getDao_ListProduct().getListProMenu(LISTP.SPECIAL, 100);
+					url = "searchingProduct?dssanpham=sanphamnoibat";
 					break;
 				}
 				case "sanphammoi": {
 					// số 100 là số lượng lấy ra, vì câu lệnh sql bắt buộc phải nhập số lượng mới
 					// cho lấy ra list sản phẩm
-					listProduct = DAO_ListProduct.getDao_ListProduct().getListProMenu(LISTP.NEW, 100).getLstProduct();
+					listMain = DAO_ListProduct.getDao_ListProduct().getListProMenu(LISTP.NEW, 100);
+					url = "searchingProduct?dssanpham=sanphammoi";
 					break;
 				}
 				case "sanphamgiacao": {
 					// số 100 là số lượng lấy ra, vì câu lệnh sql bắt buộc phải nhập số lượng mới
 					// cho lấy ra list sản phẩm
-					listProduct = DAO_ListProduct.getDao_ListProduct().getListProMenu(LISTP.HIGHESTPRICE, 100)
-							.getLstProduct();
+					listMain = DAO_ListProduct.getDao_ListProduct().getListProMenu(LISTP.HIGHESTPRICE, 100);
+					url = "searchingProduct?dssanpham=sanphamgiacao";
 					break;
 				}
 				default:
@@ -60,30 +66,30 @@ public class Searching_Product extends HttpServlet {
 				}
 
 			} else if (branchName != null) {
-				listProduct = DAO_ListProduct.getDao_ListProduct().getListFollowBranch(branchName).getLstProduct();
+				listMain = DAO_ListProduct.getDao_ListProduct().getListFollowBranch(branchName);
+				url = "searchingProduct?thuonghieu=" + branchName;
 			} else if (range != null) {
 				// xử lí
 				if (range.contains("tren")) {
 					startRange = 15000000;
-					listProduct = DAO_ListProduct.getDao_ListProduct().getListFollowPricesBigger(startRange)
-							.getLstProduct();
-
+					listMain = DAO_ListProduct.getDao_ListProduct().getListFollowPricesBigger(startRange);
+					url = "searchingProduct?khoanggia=tren-15-trieu";
 				} else if (range.contains("duoi")) {
 					endRange = 1000000;
-					listProduct = DAO_ListProduct.getDao_ListProduct().getListFollowPricesSmaller(endRange)
-							.getLstProduct();
+					listMain = DAO_ListProduct.getDao_ListProduct().getListFollowPricesSmaller(endRange);
+					url = "searchingProduct?khoanggia=duoi-1-trieu";
 				} else {
 					startRange = getListNumber(range)[0] * 1000000;
 					endRange = getListNumber(range)[1] * 1000000;
-					listProduct = DAO_ListProduct.getDao_ListProduct().getListFollowPrices(startRange, endRange)
-							.getLstProduct();
-
+					listMain = DAO_ListProduct.getDao_ListProduct().getListFollowPrices(startRange, endRange);
+					url = "searchingProduct?khoanggia=tu-" + getListNumber(range)[0] + "-den-" + getListNumber(range)[1]
+							+ "-trieu";
 				}
 
 			} else if (aspect != null) {
 
-				listProduct = DAO_ListProduct.getDao_ListProduct().getListFollowtType(convertType(aspect))
-						.getLstProduct();
+				listMain = DAO_ListProduct.getDao_ListProduct().getListFollowtType(convertType(aspect));
+				url = "searchingProduct?tinhtrang=" + aspect;
 
 			} else {
 				// trar ve trang ko tìm thấy
@@ -93,13 +99,56 @@ public class Searching_Product extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		String priceUrl = "";
+		String orderUrl = "";
+		String price = "";
+		String order = "";
+		if (request.getParameter("gia") != null) {
+			price = request.getParameter("gia");
+			priceUrl = "&gia=" + price;
+		}
 
-		request.setAttribute("lstPrices", listProduct);
+		if (request.getParameter("sapxep") != null) {
+			order = request.getParameter("sapxep");
+			orderUrl = "&sapxep=" + order;
+		}
+		ArrayList<Product_form> listProduct = new ArrayList<Product_form>();
+		try {
+			listProduct = orderList(listMain, price, order);
+
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(url);
+		System.out.println(orderUrl);
+		System.out.println(priceUrl);
+		System.out.println("-----------");
+
+		request.setAttribute("urlOrder", orderUrl);
+		request.setAttribute("urlPrice", priceUrl);
+		request.setAttribute("urlSearch", url);
+		request.setAttribute("lstProduct", listProduct);
+
 		RequestDispatcher dispatcher // dẫn link dùm t set cái link jsp
-				= this.getServletContext()
-						.getRequestDispatcher("/VIEW/jsp/jsp-page/system/result-filter-branch-price-range.jsp");
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/result-searching.jsp");
 		dispatcher.forward(request, response);
 
+	}
+
+	public ArrayList<Product_form> orderList(ListProduct list, String price, String order)
+			throws NumberFormatException, SQLException {
+		if (!price.isBlank()) {
+			list.addOrderLIst(convertSelect("gia"), convertOder(price));
+		}
+		if (!order.isBlank()) {
+			list.addOrderLIst(convertSelect(order), convertOder(order));
+		}
+		System.out.println(list.getQueryOrder());
+		return DAO_ListProduct.getDao_ListProduct().orderListProduct(list, list.getQueryOrder());
 	}
 
 	private int[] getListNumber(String priceRange) {
@@ -112,6 +161,71 @@ public class Searching_Product extends HttpServlet {
 			i++;
 		}
 		return arr;
+	}
+
+	public ORDER convertOder(String s) {
+		switch (s.trim()) {
+		case "cao-thap": {
+			return ORDER.DESC;
+		}
+		case "thap-cao": {
+			return ORDER.ASC;
+		}
+		case "moicapnhat": {
+			return ORDER.DESC;
+		}
+		case "sp-moi-cu": {
+			return ORDER.ASC;
+		}
+		case "sp-cu-moi": {
+			return ORDER.DESC;
+		}
+		case "ten-a-z": {
+			return ORDER.ASC;
+		}
+		case "ten-z-a": {
+			return ORDER.DESC;
+		}
+		case "luotxemnhieu": {
+			return ORDER.DESC;
+		}
+		case "danhgiacao": {
+			return ORDER.DESC;
+		}
+		default:
+			return null;
+		}
+	}
+
+	public SELECT convertSelect(String s) {
+		switch (s.trim()) {
+		case "gia": {
+			return SELECT.PRICE;
+		}
+		case "moicapnhat": {
+			return SELECT.DATE;
+		}
+		case "sp-moi-cu": {
+			return SELECT.TYPE;
+		}
+		case "sp-cu-moi": {
+			return SELECT.TYPE;
+		}
+		case "ten-a-z": {
+			return SELECT.NAME;
+		}
+		case "ten-z-a": {
+			return SELECT.NAME;
+		}
+		case "luotxemnhieu": {
+			return SELECT.VIEW;
+		}
+		case "danhgiacao": {
+			return SELECT.EVALUATE;
+		}
+		default:
+			return null;
+		}
 	}
 
 	public String convertType(String type) {

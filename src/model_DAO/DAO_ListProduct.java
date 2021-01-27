@@ -126,7 +126,7 @@ public class DAO_ListProduct extends ExecuteCRUD {
 
 					p.setPriceSales(Integer.parseInt(rs.getString("GIA_KM")));
 				}
-				
+
 				p.setImg(rs.getString("ANH"));
 				p.setAvgEvaluate(Double.parseDouble(rs.getString("AVGDANHGIA")));
 				lstProduct.add(p);
@@ -135,7 +135,7 @@ public class DAO_ListProduct extends ExecuteCRUD {
 		ListProduct result = new ListProduct();
 		result.setLstProduct(lstProduct);
 		result.setQuery(query);
-//		result.setPara(para);
+		result.setPara(para);
 		return result;
 	}
 
