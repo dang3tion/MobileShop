@@ -50,7 +50,7 @@ request.setAttribute("color", dao.colorWeb());
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Đăng
 			nhập</button>
 		<p class="mt-3">
-			<a href="${pageContext.request.contextPath}/index">trở về trang
+			<a href="${pageContext.request.contextPath}/index">Trở về trang
 				chủ</a>
 		</p>
 

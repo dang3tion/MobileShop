@@ -25,76 +25,88 @@
 				<div class="mb-5 mt-3 ">
 					<h4 class="text-center mt-3 mb-3">Cấu hình trang web</h4>
 
-					<form action="${pageContext.request.contextPath}/admin/config" method="post">
+					<form action="${pageContext.request.contextPath}/admin/config"
+						method="post">
 						<div class="row space-r">
 							<h5>1.Màu sắc</h5>
 						</div>
 						<div class="row space-r">
 							<div class="col-3" style="margin-top: 20px;">
-								<h6>
-									Menu: <input type="color" value="${color.colorMenu}" name = "colorMenu">
-								</h6>
+								<h6>Menu:</h6>
+								<input type="color" style="width: 100px; height: 60px"
+									value="${color.colorMenu}" name="colorMenu">
 							</div>
 
 							<div class="col-3" style="margin-top: 20px;">
 								<h6>
-									Thanh lọc: <input type="color" value="${color.colorFilter}" name = "colorFilter">
+									Thanh lọc: 
 								</h6>
+								<input type="color" style="width: 100px; height: 60px" value="${color.colorFilter}"
+										name="colorFilter">
 							</div>
 
 							<div class="col-3" style="margin-top: 20px;">
 								<h6>
-									Chủ đạo trang web: <input type="color" value="${color.colorBody}" name = "colorBody" >
+									Chủ đạo trang web:
 								</h6>
+								 <input type="color" style="width: 100px; height: 60px"
+										value="${color.colorBody}" name="colorBody">
 							</div>
 							<div class="col-3" style="margin-top: 20px;">
 								<h6>
-									Màu chữ: <input type="color" value="${color.colorText}" name = "colorText">
+									Màu chữ: 
 								</h6>
+								<input type="color" style="width: 100px; height: 60px" value="${color.colorText}"
+										name="colorText">
 							</div>
 
 
 						</div>
-						<div class="row space-r" style="margin-top: 20px;">
+						<div class="row space-r" style="margin-top: 20px; display: none">
 							<h5>2.Biểu tượng trên thanh menu</h5>
 
 						</div>
-						<div class="row" style="margin-top: 20px; margin: auto;">
+						<div class="row"
+							style="margin-top: 20px; margin: auto; display: none">
 							<div class="card col-3" style="padding: 10px;">
 								<h6 style="text-align: center;">Icon 1</h6>
 								<div class="card-body">
 									<input type="text" class="form-control"
-										placeholder="Nhập font awesome" value="${list.get(0).icon}" name = "icon1"> <input
-										style="margin-top: 20px;" type="text" class="form-control"
-										placeholder="Nhập tiêu đề" value="${list.get(0).content}" name = "content1">
+										placeholder="Nhập font awesome" value="${list.get(0).icon}"
+										name="icon1"> <input style="margin-top: 20px;"
+										type="text" class="form-control" placeholder="Nhập tiêu đề"
+										value="${list.get(0).content}" name="content1">
 								</div>
 							</div>
 							<div class="card  col-3" style="padding: 10px;">
 								<h6 style="text-align: center;">Icon 2</h6>
 								<div class="card-body">
 									<input type="text" class="form-control"
-										placeholder="Nhập font awesome" value="'${list.get(1).icon}'" name = "icon2"> <input
-										style="margin-top: 20px;" type="text" class="form-control"
-										placeholder="Nhập tiêu đề" value="${list.get(1).content}" name = "content2">
+										placeholder="Nhập font awesome" value="'${list.get(1).icon}'"
+										name="icon2"> <input style="margin-top: 20px;"
+										type="text" class="form-control" placeholder="Nhập tiêu đề"
+										value="${list.get(1).content}" name="content2">
 								</div>
 							</div>
 							<div class="card col-3" style="padding: 10px;">
 								<h6 style="text-align: center;">Icon 3</h6>
-							
+
 								<div class="card-body">
 									<input type="text" class="form-control"
-										placeholder="Nhập font awesome" value ="${list.get(2).icon}" name = "icon3"> <input
-										style="margin-top: 20px;" type="text" class="form-control"
-										placeholder="Nhập tiêu đề" value="${list.get(2).content}" name = "content3">
+										placeholder="Nhập font awesome" value="${list.get(2).icon}"
+										name="icon3"> <input style="margin-top: 20px;"
+										type="text" class="form-control" placeholder="Nhập tiêu đề"
+										value="${list.get(2).content}" name="content3">
 								</div>
 							</div>
 							<div class="card col-3" style="padding: 10px;">
 								<h6 style="text-align: center;">Icon 4</h6>
 								<div class="card-body">
 									<input type="text" class="form-control"
-										placeholder="Nhập font awesome" value="${list.get(3).icon}" name = "icon4"> <input
-										style="margin-top: 20px;" type="text" class="form-control"
-										placeholder="Nhập tiêu đề" value ="${list.get(3).content}" name = "content4">
+										placeholder="Nhập font awesome" value="${list.get(3).icon}"
+										name="icon4"> <input style="margin-top: 20px;"
+										type="text" class="form-control" placeholder="Nhập tiêu đề"
+										value="${list.get(3).content}" name="content4">
 								</div>
 							</div>
 
@@ -146,7 +158,7 @@
 
 	</div>
 
-<!-- @@@@@@@@@@ HIỆN THÔNG GỬI  @@@@@@@@@@@@@ -->
+	<!-- @@@@@@@@@@ HIỆN THÔNG GỬI  @@@@@@@@@@@@@ -->
 	<c:if test="${messageEdit != null}">
 
 		<script>
@@ -156,9 +168,9 @@
 		</script>
 
 		<!-- Button trigger modal -->
-		<button style="display: none"
-			type="button" id="btn-message" class="btn btn-white"
-			data-toggle="modal" data-target="#exampleModalCenter"></button>
+		<button style="display: none" type="button" id="btn-message"
+			class="btn btn-white" data-toggle="modal"
+			data-target="#exampleModalCenter"></button>
 
 		<!-- Modal -->
 		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
