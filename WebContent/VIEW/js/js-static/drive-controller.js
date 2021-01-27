@@ -1,5 +1,5 @@
 "use strict";
-
+var tmp = "";
 angular
 	.module("driveApp", [])
 	.controller("driveController", function(
@@ -39,11 +39,7 @@ angular
 		//Drive
 
 		$scope.images = [];
-		var tmp = "";
-		$scope.clickFileUpload = function(id) {
-			document.getElementById("uploadImage").click();
-			tmp = id;
-		};
+
 
 		$scope.upload = function() {
 			var allFiles = document.getElementById("uploadImage").files;
@@ -55,9 +51,15 @@ angular
 		};
 	});
 
+
+function clickFileUpload(id) {
+	document.getElementById("uploadImage").click();
+	tmp = id;
+}
 function insertImg(id, link) {
 	var input = document.getElementById(id);
 	var img = document.getElementById(id + "-img");
+	img.style.display="block";
 	img.src = link;
 	input.value = link;
 }

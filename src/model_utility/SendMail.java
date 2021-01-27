@@ -16,9 +16,7 @@ import org.apache.commons.mail.SimpleEmail;
 
 public class SendMail {
 
-
-
-	public static void sendFeekBack(String customerMail, String content,String contentOfCus, String time) {
+	public static void sendFeekBack(String customerMail, String content, String contentOfCus, String time) {
 
 		String from = Config.OWNER_EMAIL;
 
@@ -45,7 +43,6 @@ public class SendMail {
 
 		});
 
-
 		try {
 			// Create a default MimeMessage object.
 			MimeMessage message = new MimeMessage(session);
@@ -60,7 +57,9 @@ public class SendMail {
 			message.setSubject("Phản hồi của Mobile Shop", "UTF-8");
 
 			// Nội dung
-			message.setText("Trả lời:["+contentOfCus+"("+time+")] của bạn."+"\n"+"Phản hồi của Shop:"+content, "UTF-8");
+			message.setText(
+					"Trả lời:[" + contentOfCus + "(" + time + ")] của bạn." + "\n" + "Phản hồi của Shop:" + content,
+					"UTF-8");
 			// Send message
 			Transport.send(message);
 		} catch (MessagingException mex) {
@@ -97,7 +96,6 @@ public class SendMail {
 
 		});
 
-
 		try {
 			// Create a default MimeMessage object.
 			MimeMessage message = new MimeMessage(session);
@@ -121,56 +119,57 @@ public class SendMail {
 		}
 
 	}
+
 	public static void sendOrderSuccessful(String CustomerMail, String content) {
-		
+
 		// Mail chủ Shop
 		String from = Config.OWNER_EMAIL;
-		
+
 		// Assuming you are sending email from through gmails smtp
 		String host = "smtp.gmail.com";
-		
+
 		// Get system properties
 		Properties properties = System.getProperties();
-		
+
 		// Setup mail server
 		properties.put("mail.smtp.host", host);
 		properties.put("mail.smtp.port", "465");
 		properties.put("mail.smtp.ssl.enable", "true");
 		properties.put("mail.smtp.auth", "true");
-		
+
 		// Get the Session object.// and pass username and password
 		Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-			
+
 			protected PasswordAuthentication getPasswordAuthentication() {
-				
+
 				return new PasswordAuthentication(Config.OWNER_EMAIL, Config.MAIL_PASSWORD);
-				
+
 			}
-			
+
 		});
-		
-		
+
+	
 		try {
 			// Create a default MimeMessage object.
 			MimeMessage message = new MimeMessage(session);
-			
+
 			// Set From: header field of the header.
 			message.setFrom(new InternetAddress(from));
-			
+
 			// Set To: header field of the header.
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(CustomerMail));
-			
+
 			// Tiêu Đề
 			message.setSubject("Đặt hàng thành công", "UTF-8");
-			
+
 			// Nội dung
-			message.setText("XXXXXX", "UTF-8");
+			message.setText(content, "UTF-8");
 			// Send message
 			Transport.send(message);
 		} catch (MessagingException mex) {
 			mex.printStackTrace();
 		}
-		
+
 	}
 
 }

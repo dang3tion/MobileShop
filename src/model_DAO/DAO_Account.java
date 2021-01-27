@@ -197,6 +197,31 @@ public class DAO_Account extends ExecuteCRUD {
 		return listAcc;
 	}
 
+	public List<Account> getEmployee(int start, int end) {
+		List<Account> listAcc = new ArrayList<Account>();
+		String query = "SELECT * FROM " + " (SELECT ROW_NUMBER() OVER (ORDER BY ID DESC) AS STT ,* FROM " + ACCOUNT
+				+ ") AS X " + " WHERE STT BETWEEN ? AND ? AND " + ROLE + " not in ('ADMIN', 'CUSTOMER')";
+		try (ResultSet rs = super.ExecuteQuery(query, start, end)) {
+			while (rs.next()) {
+				Account acc = new Account( //
+						rs.getString(CUSTOMERID), //
+						rs.getString(EMAIL), //
+						rs.getString(STATUS), //
+						rs.getString(TIMECREATE), //
+						rs.getString(NAME), //
+						rs.getString(PHONE), //
+						rs.getString(ADDRESS)//
+				);//
+				acc.setRole(rs.getString(ROLE));
+
+				listAcc.add(acc);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return listAcc;
+	}
+
 	public List<Account> getListAcountStatus(String status) {
 		List<Account> listAcc = new ArrayList<Account>();
 		String query = "SELECT * FROM " + ACCOUNT + " WHERE " + STATUS + " = ? AND " + ROLE + " = '"

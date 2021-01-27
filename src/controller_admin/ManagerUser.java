@@ -28,7 +28,7 @@ public class ManagerUser extends HttpServlet {
 			currentPage = (Integer) session.getAttribute("CURRENT_PAGE_MANAGEMENT_USER");
 		}
 
-		BO_Account bo = new BO_Account(currentPage, 20);
+		BO_Account bo = new BO_Account(currentPage, 15);
 
 		request.setAttribute("STTstart", bo.startRow());
 		request.setAttribute("totalAccount", bo.getTotalAccount());

@@ -34,24 +34,21 @@
 			<!-- 		toggle logout -->
 			<jsp:include page="/VIEW/jsp/jsp-component/toggle-logout-bar.jsp"></jsp:include>
 			<div ng-controller="driveController">
-				<form action="${pageContext.request.contextPath}/admin/warehouse/product-add"
+
+
+				<form
+					action="${pageContext.request.contextPath}/admin/warehouse/product-add"
 					method="post">
 
 
 
 					<div class="container mt-5 " style="width: 95%">
-
+						<input type="file" id="uploadImage" accept="image/*"
+							onchange="angular.element(this).scope().upload()" hidden>
 
 						<div class="container-fluid">
 							<div class="frame-cog">
 								<h3>Thêm sản phẩm mới</h3>
-
-
-
-
-
-
-
 
 								<div class="save">
 									<a
@@ -214,7 +211,7 @@
 										<c:when test="${not empty ims }">
 
 											<c:forEach items="${ims }" var="i" varStatus="x">
-
+												<c:set value="${x.index+1 }" var="noCo"></c:set>
 												<div class="frame-number" id="color-${x.index +1 }"
 													style="width: 94%; box-shadow: 1px 1px 3px -1px #5f5f5f;">
 
@@ -266,20 +263,29 @@
 
 																	<div class="input">
 																		<input type="text" name="color-imgmain"
+																			style="min-width: 310px;"
 																			id="color-imgmain-${x.index+1 }" value=${i }>
-																		<!-- 	<label
-															class="choose-file" style="margin: 0;"
-															for="color-imgmain-1">Chọn ảnh</label> -->
+
+
+
 
 
 
 
 																	</div>
+																	<div class="input">
+																		<label class="choose-file"
+																			style="margin: 0; margin-left: 15px;"
+																			onclick="clickFileUpload('color-imgmain-${x.index+1 }')">Chọn
+																			ảnh</label>
+																	</div> <img
+																	style="width: 40; height: 60px; object-fit: contain; margin-left: 10px; display: none"
+																	id="color-imgmain-${x.index+1 }-img" src="">
 
 																</li>
-																<div id="color-sub1">
-																	<input type="number" id="number-color-sub1" value="2"
-																		name="number-color-sub1" hidden>
+																<div id="color-sub${x.index+1 }">
+																	<input type="number" id="number-color-sub${x.index+1 }"
+																		value="2" name="number-color-sub${x.index+1 }" hidden>
 																	<li class="content-input">
 																		<div class="title">
 																			<p>Chọn ảnh mô tả</p>
@@ -287,11 +293,18 @@
 
 																		<div class="input">
 																			<input type="text" name="color${x.index+1 }"
+																				style="min-width: 310px;"
 																				id="color${x.index+1 }-sub1" />
-																			<!-- <label class="choose-file" style="margin: 0;"
-																for="color1-sub1">Chọn ảnh</label> -->
-																		</div>
 
+																		</div>
+																		<div class="input">
+																			<label class="choose-file"
+																				style="margin: 0; margin-left: 15px;"
+																				onclick="clickFileUpload('color${x.index+1}-sub2')">Chọn
+																				ảnh</label>
+																		</div> <img
+																		style="width: 40; height: 60px; object-fit: contain; margin-left: 10px; display: none"
+																		id="color${x.index+1 }-sub1-img" src="">
 																	</li>
 																	<li class="content-input">
 																		<div class="title">
@@ -300,11 +313,18 @@
 
 																		<div class="input">
 																			<input type="text" name="color${x.index+1 }"
+																				style="min-width: 310px;"
 																				id="color${x.index+1 }-sub2" />
-																			<!-- <label class="choose-file" style="margin: 0;"
-																for="color1-sub2">Chọn ảnh</label> -->
-																		</div>
 
+																		</div>
+																		<div class="input">
+																			<label class="choose-file"
+																				style="margin: 0; margin-left: 15px;"
+																				onclick="clickFileUpload('color${x.index+1}-sub2')">Chọn
+																				ảnh</label>
+																		</div> <img
+																		style="width: 40; height: 60px; object-fit: contain; margin-left: 10px; display: none"
+																		id="color${x.index+1 }-sub2-img" src="">
 																	</li>
 
 																</div>
@@ -321,7 +341,6 @@
 													</div>
 
 												</div>
-
 											</c:forEach>
 
 
@@ -332,6 +351,9 @@
 												style="width: 94%; box-shadow: 1px 1px 3px -1px #5f5f5f;">
 
 												<h5>Màu sắc sản phấm</h5>
+
+
+
 												<div class="frame-cog-content">
 													<div class="frame">
 														<ul class="information">
@@ -377,23 +399,19 @@
 																</div>
 
 																<div class="input">
-																	<input type="text" style="min-width: 310px;" name="color-imgmain"
-																		id="color-imgmain-1" value="aaaaa">
-																	<!-- 	<label
-															class="choose-file" style="margin: 0;"
-															for="color-imgmain-1">Chọn ảnh</label> -->
+																	<input type="text" style="min-width: 310px;"
+																		name="color-imgmain" id="color-imgmain-1" value="">
+
 																</div>
 
 																<div class="input">
-																	<label class="choose-file"style="margin: 0; margin-left: 15px;"
-																		ng-click="clickFileUpload('color-imgmain-1')">Chọn
+																	<label class="choose-file"
+																		style="margin: 0; margin-left: 15px;"
+																		onclick="clickFileUpload('color-imgmain-1')">Chọn
 																		ảnh</label>
 																</div> <img
-																style="width: 40; height: 60px; object-fit: contain; margin-left: 10px;"
-																id="color-imgmain-1-img" src=""> <input
-																type="file" id="uploadImage" accept="images/*"
-																onchange="angular.element(this).scope().upload()" hidden>
-
+																style="width: 40; height: 60px; object-fit: contain; margin-left: 10px; display: none"
+																id="color-imgmain-1-img" src="">
 
 
 															</li>
@@ -406,7 +424,8 @@
 																	</div>
 
 																	<div class="input">
-																		<input type="text" style="min-width: 310px;" name="color1" id="color1-sub1" />
+																		<input type="text" style="min-width: 310px;"
+																			name="color1" id="color1-sub1" />
 																		<!-- <label class="choose-file" style="margin: 0;"
 																for="color1-sub1">Chọn ảnh</label> -->
 																	</div>
@@ -416,15 +435,11 @@
 																	<div class="input">
 																		<label class="choose-file"
 																			style="margin: 0; margin-left: 15px;"
-																			ng-click="clickFileUpload('color1-sub1')">Chọn
+																			onclick="clickFileUpload('color1-sub1')">Chọn
 																			ảnh</label>
 																	</div> <img
-																	style="width: 40; height: 60px; object-fit: contain; margin-left: 10px;"
-																	id="color1-sub1-img" src=""> <input type="file"
-																	id="uploadImage" accept="images/*"
-																	onchange="angular.element(this).scope().upload()"
-																	hidden>
-
+																	style="width: 40; height: 60px; object-fit: contain; margin-left: 10px; display: none"
+																	id="color1-sub1-img" src="">
 																</li>
 																<li class="content-input">
 																	<div class="title">
@@ -432,10 +447,20 @@
 																	</div>
 
 																	<div class="input">
-																		<input type="text"  name="color1" id="color1-sub2" />
+																		<input type="text" name="color1" id="color1-sub2"
+																			style="min-width: 310px;" />
 																		<!-- <label class="choose-file" style="margin: 0;"
 																for="color1-sub2">Chọn ảnh</label> -->
 																	</div>
+
+																	<div class="input">
+																		<label class="choose-file"
+																			style="margin: 0; margin-left: 15px;"
+																			onclick="clickFileUpload('color1-sub2')">Chọn
+																			ảnh</label>
+																	</div> <img
+																	style="width: 40; height: 60px; object-fit: contain; margin-left: 10px; display: none"
+																	id="color1-sub2-img" src="">
 
 																</li>
 
@@ -458,8 +483,17 @@
 
 								</div>
 								<div>
-									<input type="number" value="1" id="number-color"
-										name="number-color" disabled="disabled" hidden>
+									<c:choose>
+										<c:when test="${not empty noCo }">
+											<input type="number" value="${noCo }" id="number-color"
+												name="number-color" disabled="disabled" hidden>
+										</c:when>
+										<c:otherwise>
+											<input type="number" value="1" id="number-color"
+												name="number-color" disabled="disabled" hidden>
+										</c:otherwise>
+									</c:choose>
+
 									<button type="button" class="btn-primary" data-toggle="modal"
 										data-target="#add-color-btn"
 										style="background: #FFC107; margin-right: 30px; float: right; box-shadow: 1px 1px 2px 0px #a5a5a5; padding: 10px; border-radius: 3px; outline: 0; border: 0;">Thêm
@@ -680,16 +714,26 @@
 									+ '				</div>'
 
 									+ '				<div class="input">'
-									+ '				<input type="text" name="color-imgmain" id="color-imgmain-'+numberColor+'"  > '
+									+ '				<input type="text" style="min-width: 310px;" name="color-imgmain" id="color-imgmain-'+numberColor+'"  > '
 									/* <label'
 												+ '					class="choose-file" style="margin: 0;" for="color-imgmain-'+numberColor+'">Chọn'
 									+ '											ảnh</label>' */
 									+ '					</div>'
 
+									+ '		<div class="input">'
+									+ '		<label class="choose-file"'
+									+ '			style="margin: 0; margin-left: 15px;"'
+									+ '			onclick="clickFileUpload(\'color-imgmain-'
+									+ numberColor
+									+ '\')">Chọn'
+									+ '			ảnh</label>'
+									+ '		</div> <img'
+									+ '		style="width: 40; height: 60px; object-fit: contain; margin-left: 10px; display:none" '
+									+ '		id="color-imgmain-'+numberColor+'-img" src="">'
 									+ '				</li>'
 									+ '				<div id="color-sub'+numberColor+'">'
 
-									+ '		<input type="number" id="number-color-sub'+numberColor+'"'
+									+ '		<input type="number"  id="number-color-sub'+numberColor+'"'
 												+ '			 value="1" name="number-color-sub1"'
 												+ '			hidden>'
 									+ '					<li class="content-input">'
@@ -698,13 +742,22 @@
 									+ '						</div>'
 
 									+ '						<div class="input">'
-									+ '							<input type="text"  name="color'+numberColor+'" id="color'+numberColor+'-sub1"  > '
+									+ '							<input type="text"  style="min-width: 310px;" name="color'+numberColor+'" id="color'+numberColor+'-sub1"  > '
 
 									/* 	<label'
 								+ '								class="choose-file" style="margin: 0;" for="color'+numberColor+'-sub1">Chọn'
 										+ '								ảnh</label>' */
 									+ '						</div>'
-
+									+ '	<div class="input">'
+									+ '	<label class="choose-file"'
+									+ '			style="margin: 0; margin-left: 15px;"'
+									+ '			onclick="clickFileUpload(\'color'
+									+ numberColor
+									+ '-sub1\')">Chọn'
+									+ '			ảnh</label>'
+									+ '		</div> <img' 
+								+ '	style="width: 40; height: 60px; object-fit: contain; margin-left: 10px;  display:none"'
+								+ '	id="color'+numberColor+'-sub1-img" src=""> '
 									+ '					</li>'
 
 									+ '				</div>'
@@ -734,11 +787,27 @@
 									+ '<p>Chọn ảnh mô tả</p>'
 									+ '	</div>'
 									+ '<div class="input">'
-									+ '	<input type="text"  name="color'+numberColor+'" id="color'+color+'-'+'sub'+numberImgSub+'"  /> '
+									+ '	<input type="text" style="min-width: 310px;"  name="color'+numberColor+'" id="color'+color+'-'+'sub'+numberImgSub+'"  /> '
+
 									/*  <label'
 							+'		class="choose-file" style="margin: 0;" for="color'+color+'-'+'sub'+numberImgSub+'">Chọn'
 											ảnh</label>  */
-									+ '</div>' + '</li>')
+									+ '</div>'
+
+									+ '	<div class="input">'
+									+ '	<label class="choose-file"'
+									+ '			style="margin: 0; margin-left: 15px;"'
+									+ '			onclick="clickFileUpload(\'color'
+									+ numberColor
+									+ '-sub'
+									+ numberImgSub
+									+ '\')">Chọn'
+									+ '			ảnh</label>'
+									+ '		</div> <img'
+								+ '	style="width: 40; height: 60px; object-fit: contain; margin-left: 10px; display:none" '
+								+ '	id="color'+numberColor+'-sub'+numberImgSub+'-img" src="">'
+
+									+ '</li>')
 
 		}
 	</script>

@@ -124,8 +124,9 @@ public class Payment extends HttpServlet {
 		cart.getListProduct().clear();
 		Controller_Cart.updateCart(cart, session);
 
+		request.setAttribute("CODE_ODER", codeOder);
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/bill.jsp");
+				= this.getServletContext().getRequestDispatcher("/ordersuccessfull");
 		dispatcher.forward(request, response);
 	}
 

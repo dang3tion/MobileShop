@@ -23,7 +23,11 @@ public class Register extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.sendRedirect(request.getContextPath() + "/VIEW/jsp/jsp-page/account/register.jsp");
+
+		RequestDispatcher dispatcher //
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/account/register.jsp");
+		dispatcher.forward(request, response);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -41,10 +45,9 @@ public class Register extends HttpServlet {
 		} else {
 			session.setAttribute(Const.NEW_USER_REGISTER, tmpAcc);
 			request.setAttribute(Const.TOKEN_REGISTER_OTP, "register");
-			
+
 			OTP sysOtp = new OTP();
 			session.setAttribute(Const.KEY_SYSTEM_OTP, sysOtp);
-			
 
 			RequestDispatcher dispatcher //
 					= this.getServletContext().getRequestDispatcher("/otp");
