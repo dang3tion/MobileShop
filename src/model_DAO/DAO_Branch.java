@@ -74,7 +74,7 @@ public class DAO_Branch extends ExecuteCRUD {
 		try (ResultSet rs = super.ExecuteQuery(query, id)) {
 			while (rs.next()) {
 				branch = new Branch(rs.getString("MATH").trim(), rs.getString("TENTH"), rs.getInt(countBranch(id)),
-						rs.getString("TRANGTHAI"));
+						rs.getString("TRANGTHAI").trim());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

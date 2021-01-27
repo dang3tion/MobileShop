@@ -31,8 +31,8 @@ public class DAO_IconMenu extends ExecuteCRUD {
 		Color_Web color = null;
 		try (ResultSet rs = super.ExecuteQueryNonParameter(query)) {
 			if (rs.next()) {
-				color = new Color_Web(rs.getString("MAU_NEN"), rs.getString("MAU_THANHLOC"), rs.getString("MAU_CHUDAO"),
-						rs.getString("MAU_CHU"));
+				color = new Color_Web(rs.getString("MAU_NEN").trim(), rs.getString("MAU_THANHLOC").trim(), rs.getString("MAU_CHUDAO").trim(),
+						rs.getString("MAU_CHU").trim());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -43,9 +43,7 @@ public class DAO_IconMenu extends ExecuteCRUD {
 	public void updateColor(String colornen, String colorchudao, String colorloc, String colorchu) {
 		try {
 			String query = "UPDATE QL_GIAODIEN SET MAU_NEN = ?,MAU_CHUDAO = ?,MAU_THANHLOC = ?,MAU_CHU = ? WHERE MAGD = 'GD01'";
-			String[] parameters = { colornen, colorchudao, colorloc, colorchu };
-
-			try (ResultSet rs = super.ExecuteQuery(query, parameters)) {
+			try (ResultSet rs = super.ExecuteQuery(query, colornen,colorchudao,colorloc,colorchu)) {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -57,7 +55,6 @@ public class DAO_IconMenu extends ExecuteCRUD {
 
 		try {
 			String query = "UPDATE ICON_MENU SET ICON = ? , TIEUDE = ? WHERE MAIC = 'IC1'";
-
 			try (ResultSet rs = super.ExecuteQuery(query, icon1, content1)) {
 			}
 		} catch (Exception e) {
@@ -105,6 +102,9 @@ public class DAO_IconMenu extends ExecuteCRUD {
 			e.printStackTrace();
 		}
 		return count;
+	}
+	public static void main(String[] args) {
+		System.out.println(new DAO_IconMenu().colorWeb().toString());
 	}
 
 }
