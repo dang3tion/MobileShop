@@ -98,9 +98,9 @@ public class DAO_Branch extends ExecuteCRUD {
 
 	public void updateState(String id) {
 		String check = stateBranch(id);
-		if (check.equals("Ðang kinh doanh")) {
+		if (check.equals("business")) {
 			try {
-				String query = "UPDATE THUONGHIEU SET TRANGTHAI = N'Ngừng kinh doanh' WHERE MATH = ?";
+				String query = "UPDATE THUONGHIEU SET TRANGTHAI = 'stop' WHERE MATH = ?";
 				String query1 = "UPDATE SANPHAM SET TINHTRANG = N'Ngưng kinh doanh' WHERE MATH = ? AND TINHTRANG = N'Đang bán'";
 				try (ResultSet rs = super.ExecuteQuery(query, id)) {
 				}
@@ -112,9 +112,9 @@ public class DAO_Branch extends ExecuteCRUD {
 			}
 		}
 
-		if (check.equals("Ngừng kinh doanh")) {
+		if (check.equals("stop")) {
 			try {
-				String query = "UPDATE THUONGHIEU SET TRANGTHAI = N'Đang kinh doanh' WHERE MATH = ?";
+				String query = "UPDATE THUONGHIEU SET TRANGTHAI = 'business' WHERE MATH = ?";
 				String query1 = "UPDATE SANPHAM SET TINHTRANG = N'Đang bán' WHERE MATH = ? AND TINHTRANG = N'Ngưng kinh doanh'";
 				try (ResultSet rs = super.ExecuteQuery(query, id)) {
 				}
