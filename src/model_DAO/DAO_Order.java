@@ -191,7 +191,7 @@ public class DAO_Order extends ExecuteCRUD {
 
 	public ArrayList<Order> getListCustomerOrder(String customerID, int start, int end) {
 		ArrayList<Order> list = new ArrayList<Order>();
-		String query = "SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY SOTHUTU DESC) AS STT ,* FROM  DONHANG) AS X  WHERE STT BETWEEN ? AND ? AND MaKH = ? ";
+		String query = "SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY SOTHUTU DESC) AS STT ,* FROM  DONHANG where TRANGTHAI != 'CANCEL') AS X  WHERE STT BETWEEN ? AND ? AND MaKH = ? ";
 		try (ResultSet rs = super.ExecuteQuery(query, start, end, customerID)) {
 			while (rs.next()) {
 
@@ -280,5 +280,25 @@ public class DAO_Order extends ExecuteCRUD {
 		return result;
 
 	}
+	
+	//cập nhật hủy đơn
+	
+	
+	
+	public void cancel(String id) {
+		String query = "update DONHANG set TRANGTHAI = 'CANCELED' where MADH = ?";
+		try (ResultSet rs = super.ExecuteQuery(query,id)) {
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static void main(String[] args) {
+		System.out.println(new DAO_Order().getListCancelOrder(1, 10).size());
+	}
+	
+	
+	
 
 }

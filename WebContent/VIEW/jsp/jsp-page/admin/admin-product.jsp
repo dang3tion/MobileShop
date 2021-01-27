@@ -43,10 +43,10 @@
 						</thead>
 						<tbody>
 							<tr class="">
-								<th scope="row">${total}</th>
-								<td>${productSale}</td>
-								<td>${productStop}</td>
+								<th scope="row"> ${total} </th>
 								<td>${numProduct}</td>
+								<td>${productStop}</td>
+								<td> ${productSale} </td>
 								<td>${numProductStop}</td>
 
 							</tr>

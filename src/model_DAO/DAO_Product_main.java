@@ -61,9 +61,8 @@ public class DAO_Product_main extends ExecuteCRUD {
 
 		return num;
 	}
-	
 
-	public int getNumberOfPage2(int numRow,String key) {
+	public int getNumberOfPage2(int numRow, String key) {
 		int num = tongtrangsearch(key) / numRow;
 
 		if (getTotalProduct() % numRow >= 1) {
@@ -72,7 +71,6 @@ public class DAO_Product_main extends ExecuteCRUD {
 
 		return num;
 	}
-	
 
 	public int getTotalProduct() {
 		String query = "SELECT COUNT(*) FROM SANPHAM";
@@ -320,11 +318,10 @@ public class DAO_Product_main extends ExecuteCRUD {
 		return null;
 	}
 
-	
-	public List<Product_main> getSearchProduct(int start, int end,String key) {
+	public List<Product_main> getSearchProduct(int start, int end, String key) {
 		ArrayList<Product_main> arr = new ArrayList<Product_main>();
 		String query = "SELECT * FROM  (SELECT ROW_NUMBER() OVER (ORDER BY masp ASC) AS STT ,* FROM  searchProduct(?)) AS X  WHERE STT BETWEEN ? AND ? ";
-		try (ResultSet rs = super.ExecuteQuery(query,key, start, end)) {
+		try (ResultSet rs = super.ExecuteQuery(query, key, start, end)) {
 			while (rs.next()) {
 				Product_main p = getProduct_main(rs.getString("MASP"));
 				arr.add(p);
@@ -335,21 +332,21 @@ public class DAO_Product_main extends ExecuteCRUD {
 		}
 		return null;
 	}
-	
+
 	public int tongtrangsearch(String key) {
-		
+
 		String query = "select COUNT(*) from searchProduct(?) ";
-		try (ResultSet rs = super.ExecuteQuery(query,key)) {
+		try (ResultSet rs = super.ExecuteQuery(query, key)) {
 			if (rs.next()) {
 				return rs.getInt(1);
-				
+
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return 0;
 	}
-	
+
 	public int updateViewProduct(String id) {
 		String query = "EXEC  INCREASE_VIEW @ID= ? ";
 		int total = 0;
@@ -417,7 +414,8 @@ public class DAO_Product_main extends ExecuteCRUD {
 		}
 		return 0;
 	}
-	//tổng số sản phẩm đang bán
+
+	// tổng số sản phẩm đang bán
 	public int productSaling() {
 
 		try {
@@ -434,8 +432,8 @@ public class DAO_Product_main extends ExecuteCRUD {
 		}
 		return 0;
 	}
-	
-	//tổng số lượng đang bán
+
+	// tổng số lượng đang bán
 	public int numProductSale() {
 
 		try {
@@ -452,43 +450,52 @@ public class DAO_Product_main extends ExecuteCRUD {
 		}
 		return 0;
 	}
-	//tổng số ngưng bán
-		public int productStop() {
 
-			try {
-				String query = "select count(*) from SANPHAM where TINHTRANG != N'Đang bán'";
-				try (ResultSet rs = super.ExecuteQuery(query)) {
-					if (rs.next()) {
-						return rs.getInt(1);
-					} else {
-						return 0;
-					}
+	// tong só luong ton kho
+	public int producttonkho() {
+
+		return numProductSale() - numProductStop();
+	}
+
+	// tổng số ngưng bán
+	public int productStop() {
+
+		try {
+			String query = "select count(*) from SANPHAM where TINHTRANG != N'Đang bán'";
+			try (ResultSet rs = super.ExecuteQuery(query)) {
+				if (rs.next()) {
+					return rs.getInt(1);
+				} else {
+					return 0;
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
 			}
-			return 0;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		//tổng số lượng ngưng bán
-		public int numProductStop() {
-			
-			try {
-				String query = "select sum(SL_DABAN) from SOLUONG_SP";
-				try (ResultSet rs = super.ExecuteQuery(query)) {
-					if (rs.next()) {
-						return rs.getInt(1);
-					} else {
-						return 0;
-					}
+		return 0;
+	}
+
+	// tổng số lượng ngưng bán
+	public int numProductStop() {
+
+		try {
+			String query = "select sum(SL_DABAN) from SOLUONG_SP";
+			try (ResultSet rs = super.ExecuteQuery(query)) {
+				if (rs.next()) {
+					return rs.getInt(1);
+				} else {
+					return 0;
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
 			}
-			return 0;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		public static void main(String[] args) {
-			System.out.println(new DAO_Product_main().getSearchProduct(1, 10, "bấn"));
-			System.out.println(new DAO_Product_main().tongtrangsearch("samsung"));
-		}
-		
+		return 0;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(new DAO_Product_main().getSearchProduct(1, 10, "bấn"));
+		System.out.println(new DAO_Product_main().tongtrangsearch("samsung"));
+	}
+
 }
