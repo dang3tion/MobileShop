@@ -36,7 +36,7 @@
 
 					<div class="container-fluid">
 						<div class="frame-cog">
-							<h3>Thêm sản phẩm mới</h3>
+							<h3>Cập nhật sản phẩm </h3>
 
 							<div class="save">
 								<a
