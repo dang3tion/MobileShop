@@ -98,7 +98,7 @@ public class DAO_Branch extends ExecuteCRUD {
 
 	public void updateState(String id) {
 		String check = stateBranch(id);
-		if (check.equals("Còn kinh doanh")) {
+		if (check.equals("Đang kinh doanh")) {
 			try {
 				String query = "UPDATE THUONGHIEU SET TRANGTHAI = N'Ngừng kinh doanh' WHERE MATH = ?";
 				String query1 = "UPDATE SANPHAM SET TINHTRANG = N'Ngưng kinh doanh' WHERE MATH = ? AND TINHTRANG = N'Đang bán'";
@@ -114,7 +114,7 @@ public class DAO_Branch extends ExecuteCRUD {
 
 		if (check.equals("Ngừng kinh doanh")) {
 			try {
-				String query = "UPDATE THUONGHIEU SET TRANGTHAI = N'Còn kinh doanh' WHERE MATH = ?";
+				String query = "UPDATE THUONGHIEU SET TRANGTHAI = N'Đang kinh doanh' WHERE MATH = ?";
 				String query1 = "UPDATE SANPHAM SET TINHTRANG = N'Đang bán' WHERE MATH = ? AND TINHTRANG = N'Ngưng kinh doanh'";
 				try (ResultSet rs = super.ExecuteQuery(query, id)) {
 				}
@@ -160,7 +160,7 @@ public class DAO_Branch extends ExecuteCRUD {
 	// thêm thương hiệu
 
 	public void addBranch(String name) {
-		String query = "insert into THUONGHIEU values (?,?,'0',N'Còn kinh doanh')";
+		String query = "insert into THUONGHIEU values (?,?,'0',N'Đang kinh doanh')";
 		boolean check = false;
 		if (!checkBranch(name)) {
 			try (ResultSet rs = super.ExecuteQuery(query, createId(), name)) {

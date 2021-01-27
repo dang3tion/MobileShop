@@ -68,7 +68,7 @@
 																<td class="row" style="border: none;">
 																	<button
 																		class="edit3 btn 
-																	<c:if test ="${pp.state == 'Còn kinh doanh'}">
+																	<c:if test ="${pp.state == 'Đang kinh doanh'}">
 																		 btn-success
 																	</c:if>
 																	<c:if test ="${pp.state == 'Ngừng kinh doanh'}">
@@ -78,7 +78,7 @@
 																		data-toggle="modal" data-target="#del${pp.id}"
 																		style="margin: auto;" title='Thay đổi trạng thái'>
 																		<i
-																			class="txt-center menu-icon <c:if test ="${pp.state == 'Còn kinh doanh'}">
+																			class="txt-center menu-icon <c:if test ="${pp.state == 'Đang kinh doanh'}">
 																			fas fa-lock-open
 																	</c:if>
 																	<c:if test ="${pp.state == 'Ngừng kinh doanh'}">
