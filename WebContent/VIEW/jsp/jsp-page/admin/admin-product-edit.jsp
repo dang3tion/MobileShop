@@ -482,15 +482,14 @@
 								<div class="modal-content">
 									<div class="modal-header">
 										<h5 class="modal-title" id="exampleModalLabel">Xác nhận
-											thêm sản phẩm</h5>
+											cập nhật sản phẩm</h5>
 										<button type="button" class="close" data-dismiss="modal"
 											aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
 									</div>
 									<div class="modal-body">
-										<p>Sản phẩm mới bạn thêm vào không thể xóa bỏ, bạn có chắc
-											muốn thêm sản phẩm này không?</p>
+										<p>Bạn có muốn cập nhật lại dữ liệu sản phẩm sau khi cập nhật toàn bộ dữ liệu sẽ bị thay đổi?</p>
 
 									</div>
 									<div class="modal-footer">

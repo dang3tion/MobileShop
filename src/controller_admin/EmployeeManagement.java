@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model_BO_service.BO_Account;
 import model_DAO.DAO_Account;
+import model_beans.Account;
 
 @WebServlet(urlPatterns = "/admin/employeeaccount")
 public class EmployeeManagement extends HttpServlet {
@@ -30,6 +31,13 @@ public class EmployeeManagement extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		String email = (String) request.getParameter("email");
+		if (email != null) {
+			BO_Account.getBoAccount().on_off_account(email);
+			response.sendRedirect(request.getContextPath() + "/admin/employeeaccount");
+			return;
+		}
+
 		String name = request.getParameter("name");
 		String phoneNumber = request.getParameter("phoneNumber");
 		String address = request.getParameter("address");
@@ -37,19 +45,23 @@ public class EmployeeManagement extends HttpServlet {
 		String username = request.getParameter("username");
 		String role = request.getParameter("role");
 
-		System.out.println("1 " + name);
-		System.out.println("2 " + phoneNumber);
-		System.out.println("3 " + address);
-		System.out.println("4 " + password);
-		System.out.println("5 " + username);
-		System.out.println("6" + role);
+//		System.out.println("1 " + name);
+//		System.out.println("2 " + phoneNumber);
+//		System.out.println("3 " + address);
+//		System.out.println("4 " + password);
+//		System.out.println("5 " + username);
+//		System.out.println("6" + role);
 
-		String email = (String) request.getParameter("email");
+		Account acc = new Account(username, password);
+		acc.setRole(role);
+		acc.setAddress(address);
+		acc.setPhoneNumber(phoneNumber);
+		acc.setName(name);
 
-		if (email != null) {
-			BO_Account.getBoAccount().on_off_account(email);
-		}
-		doGet(request, response);
+		dao.add(acc);
+
+		response.sendRedirect(request.getContextPath() + "/admin/employeeaccount");
+		return;
 
 	}
 

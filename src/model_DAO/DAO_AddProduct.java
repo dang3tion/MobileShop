@@ -63,7 +63,8 @@ public class DAO_AddProduct extends ExecuteCRUD {
 		}
 		return "SP" + (Integer.parseInt(id) + 1);
 	}
-
+	
+	
 	public boolean addImg(String idProduct, String idColor, String linkImg, String type) {
 		try {
 

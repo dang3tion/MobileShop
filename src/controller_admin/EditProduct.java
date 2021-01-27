@@ -72,124 +72,149 @@ public class EditProduct extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String reString = "";
+		boolean isConfirm = false;
 		if (request.getParameter("confirm-edit-product") != null) {
-
+			boolean result = true;
 			String name = request.getParameter("name").trim();
-
 			String idBranch = request.getParameter("branch").trim();
 			String type = request.getParameter("type").trim();
 			String status = request.getParameter("status").trim();
 			String price = converNumber(request.getParameter("price").trim());
 			String priceSale = "0";
+			String[] colorId = request.getParameterValues("color-name");
+			String[] colorRgb = request.getParameterValues("color-rgb");
+			String[] imgMain = request.getParameterValues("color-imgmain");
+			String[] attributeId = request.getParameterValues("att-id");
+			String[] attributeValue = request.getParameterValues("att-value");
+			String[] quantity = request.getParameterValues("quantity");
+			String introduced = request.getParameter("introduce");
+			if (request.getParameter("priceSale") != null || !request.getParameter("priceSale").isBlank()) {
+				priceSale = converNumber(request.getParameter("priceSale").trim());
+			}
+			for (int i = 0; i < colorId.length; i++) {
+				if (!result) {
+					break;
+				}
+				for (int j = i + 1; j < colorId.length; j++) {
+					if (colorId[i].equals(colorId[j])) {
+						reString = "Trường màu sắc bị trùng";
+						result = false;
+						break;
+					}
+				}
+			}
+			for (int i = 0; i < imgMain.length; i++) {
+				if (imgMain[i].isBlank()) {
+					reString = "Trường ảnh nền bị trống";
+					result = false;
+				}
 
+			}
 			if (name.isBlank()) {
 				reString = "Tên không được bỏ trống";
+				result = false;
 
 			} else if (price.isBlank()) {
 				reString = "Giá không được bỏ trống";
+				result = false;
 			} else {
 
-				if (request.getParameter("priceSale") != null || !request.getParameter("priceSale").isBlank()) {
-					priceSale = converNumber(request.getParameter("priceSale").trim());
-				}
-
-				String[] colorId = request.getParameterValues("color-name");
-				String[] colorRgb = request.getParameterValues("color-rgb");
-				String[] imgMain = request.getParameterValues("color-imgmain");
-				String[] attributeId = request.getParameterValues("att-id");
-				String[] attributeValue = request.getParameterValues("att-value");
-				String[] quantity = request.getParameterValues("quantity");
-				String introduced = request.getParameter("introduce");
 				// UPDATE IMAGE ON AND ADD NEW SUB IMG IF HAVE IT
-				for (int i = 0; i < p.getColors().size(); i++) {
-					String[] imgSub = request.getParameterValues("color" + (i + 1));
-					// ADD NEW SUB IMAGE
-					if (imgSub.length > p.getColors().get(i).getImgSubs().size()) {
+				if (result != false) {
+					for (int i = 0; i < p.getColors().size(); i++) {
+						String[] imgSub = request.getParameterValues("color" + (i + 1));
+						// ADD NEW SUB IMAGE
+						if (imgSub.length > p.getColors().get(i).getImgSubs().size()) {
 
-						for (int j = p.getColors().get(i).getImgSubs().size(); j < imgSub.length; j++) {
-							if (!imgSub[j].isBlank()) {
+							for (int j = p.getColors().get(i).getImgSubs().size(); j < imgSub.length; j++) {
+								if (!imgSub[j].isBlank()) {
+									addPicture(p.getID(), colorId[i], imgSub[j].trim(), "PHU");
+
+								}
+							}
+						}
+						// UPDATE COLOR
+						if (!colorId[i].equals(p.getColors().get(i).getId())) {
+							updateColor(colorId[i], p.getColors().get(i).getId());
+						}
+						// UPADTE MAIN IMG
+						if (!imgMain[i].equals(p.getColors().get(i).getImgMain())) {
+							updateImg(imgMain[i], colorId[i], "NEN", p.getColors().get(i).getImgMain());
+						} // UPDATE QUANTITY
+						if (!quantity[i].equals(p.getQuantity() + "")) {
+							updateQuantity(quantity[i], colorId[i]);
+						}
+						// UPDATE SUB IMG
+
+						for (int j = 0; j < p.getColors().get(i).getImgSubs().size(); j++) {
+							if (imgSub[j].isBlank()) {
+								DAO_EditProduct.getInstance().deleteImg(p.getID(), colorId[i], "PHU",
+										p.getColors().get(i).getImgSubs().get(j));
+							}
+							if (!imgSub[j].trim().equals(p.getColors().get(i).getImgSubs().get(j).trim())) {
+								updateImg(imgSub[j].trim(), colorId[i], "PHU",
+										p.getColors().get(i).getImgSubs().get(j));
+							}
+						}
+
+					}
+					// ADD NEW COLOR
+					if (colorId.length > p.getColors().size()) {
+						for (int i = p.getColors().size(); i < colorId.length; i++) {
+							addPicture(p.getID(), colorId[i], imgMain[i].trim(), "NEN");
+							String[] imgSub = request.getParameterValues("color" + (i + 1));
+							addQuantity(p.getID(), colorId[i], Integer.parseInt(quantity[i]));
+							for (int j = 0; j < imgSub.length; j++) {
 								addPicture(p.getID(), colorId[i], imgSub[j].trim(), "PHU");
-
 							}
 						}
 					}
-					// UPDATE COLOR
-					if (!colorId[i].equals(p.getColors().get(i).getId())) {
-						updateColor(colorId[i], p.getColors().get(i).getId());
-					}
-					// UPADTE MAIN IMG
-					if (!imgMain[i].equals(p.getColors().get(i).getImgMain())) {
-						updateImg(imgMain[i], colorId[i], "NEN", p.getColors().get(i).getImgMain());
-					} // UPDATE QUANTITY
-					if (!quantity[i].equals(p.getQuantity() + "")) {
-						updateQuantity(quantity[i], colorId[i]);
-					}
-					// UPDATE SUB IMG
 
-					for (int j = 0; j < p.getColors().get(i).getImgSubs().size(); j++) {
-						if (imgSub[j].isBlank()) {
-							DAO_EditProduct.getInstance().deleteImg(p.getID(), colorId[i], "PHU",
-									p.getColors().get(i).getImgSubs().get(j));
+					// UPDATE FORM PROPERTY
+					if (!name.trim().equals(p.getName())) {
+						updateProperty(name, EDIHT.TENSP);
+					}
+					if (!idBranch.equals(p.getID())) {
+						updateProperty(idBranch, EDIHT.MATH);
+					}
+					if (!convertType(type).equals(p.getType())) {
+						updateProperty(convertType(type), EDIHT.LOAI_SP);
+					}
+					if (!converStatus(status).equals(p.getStatus())) {
+						updateProperty(converStatus(status), EDIHT.TINHTRANG);
+					}
+					if (!introduced.equals(p.getPosts())) {
+						updateProperty(introduced, EDIHT.GIOITHIEU);
+					}
+
+					if (!price.trim().equals(p.getPrices().getPrice() + "")
+							&& !priceSale.trim().equals(p.getPrices().getPriceSales() + "")) {
+						updatePrice(price, priceSale);
+					} else if (!price.trim().equals(p.getPrices().getPrice() + "")) {
+						updatePrice(price.trim(), p.getPrices().getPriceSales() + "");
+
+					} else if (!priceSale.trim().equals(p.getPrices().getPriceSales() + "")) {
+						updatePrice(p.getPrices().getPrice() + "", priceSale.trim());
+					}
+
+					Map<String, String> map = new LinkedHashMap<String, String>();
+
+					for (int i = 0; i < attributeId.length; i++) {
+						if (!attributeValue[i].isBlank()) {
+							map.put(attributeId[i].trim(), attributeValue[i].trim());
 						}
-						if (!imgSub[j].trim().equals(p.getColors().get(i).getImgSubs().get(j).trim())) {
-							updateImg(imgSub[j].trim(), colorId[i], "PHU", p.getColors().get(i).getImgSubs().get(j));
-						}
 					}
+					updateAttributes(map);
 
+					reString = "Thêm sản phẩm thành công";
 				}
-				// ADD NEW COLOR
-				if (colorId.length > p.getColors().size()) {
-					for (int i = p.getColors().size(); i < colorId.length; i++) {
-						addPicture(p.getID(), colorId[i], imgMain[i].trim(), "NEN");
-						String[] imgSub = request.getParameterValues("color" + (i + 1));
-						addQuantity(p.getID(), colorId[i], Integer.parseInt(quantity[i]));
-						for (int j = 0; j < imgSub.length; j++) {
-							addPicture(p.getID(), colorId[i], imgSub[j].trim(), "PHU");
-						}
-					}
-				}
-
-				// UPDATE FORM PROPERTY
-				if (!name.trim().equals(p.getName())) {
-					updateProperty(name, EDIHT.TENSP);
-				}
-				if (!idBranch.equals(p.getID())) {
-					updateProperty(idBranch, EDIHT.MATH);
-				}
-				if (!convertType(type).equals(p.getType())) {
-					updateProperty(convertType(type), EDIHT.LOAI_SP);
-				}
-				if (!converStatus(status).equals(p.getStatus())) {
-					updateProperty(converStatus(status), EDIHT.TINHTRANG);
-				}if(!introduced.equals(p.getPosts())) {
-					updateProperty(introduced, EDIHT.GIOITHIEU);
-				}
-
-				if (!price.trim().equals(p.getPrices().getPrice() + "")
-						&& !priceSale.trim().equals(p.getPrices().getPriceSales() + "")) {
-					updatePrice(price, priceSale);
-				} else if (!price.trim().equals(p.getPrices().getPrice() + "")) {
-					updatePrice(price.trim(), p.getPrices().getPriceSales() + "");
-
-				} else if (!priceSale.trim().equals(p.getPrices().getPriceSales() + "")) {
-					updatePrice(p.getPrices().getPrice() + "", priceSale.trim());
-				}
-
-				Map<String, String> map = new LinkedHashMap<String, String>();
-
-				for (int i = 0; i < attributeId.length; i++) {
-					if (!attributeValue[i].isBlank()) {
-						map.put(attributeId[i].trim(), attributeValue[i].trim());
-					}
-				}
-				updateAttributes(map);
-
-				reString = "Thêm sản phẩm thành công";
 			}
-		} else {
-			reString = "Thêm sản phẩm không thành công";
+
+			isConfirm = true;
+			request.setAttribute("reString", reString);
+			request.setAttribute("result", result);
 		}
-		request.setAttribute("reString", reString);
+		request.setAttribute("confirm", isConfirm);
 
 		doGet(request, response);
 	}
@@ -286,8 +311,9 @@ public class EditProduct extends HttpServlet {
 		}
 		return "Hết hàng";
 	}
+
 	public String converNumber(String number) {
-		return number.replaceAll(".", "");
+		return number.replaceAll("\\.", "");
 	}
 
 	public static void main(String[] args) {

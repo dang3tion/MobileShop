@@ -20,6 +20,7 @@ import model_beans.Product_form;
 @WebServlet(urlPatterns = "/searchingProduct")
 public class Searching_Product extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String typeList = request.getParameter("dssanpham");
@@ -80,7 +81,10 @@ public class Searching_Product extends HttpServlet {
 				}
 
 			} else if (aspect != null) {
-				listProduct = DAO_ListProduct.getDao_ListProduct().getListFollowtType(aspect).getLstProduct();
+
+				listProduct = DAO_ListProduct.getDao_ListProduct().getListFollowtType(convertType(aspect))
+						.getLstProduct();
+
 			} else {
 				// trar ve trang ko tìm thấy
 				response.sendRedirect(request.getContextPath() + "/KhongTimThaySanPham");
@@ -92,7 +96,8 @@ public class Searching_Product extends HttpServlet {
 
 		request.setAttribute("lstPrices", listProduct);
 		RequestDispatcher dispatcher // dẫn link dùm t set cái link jsp
-				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/result-filter-branch-price-range.jsp");
+				= this.getServletContext()
+						.getRequestDispatcher("/VIEW/jsp/jsp-page/system/result-filter-branch-price-range.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -108,6 +113,11 @@ public class Searching_Product extends HttpServlet {
 		}
 		return arr;
 	}
+
+	public String convertType(String type) {
+		if (type.toUpperCase().equals("MOI")) {
+			return "Mới";
+		}
+		return "Cũ";
+	}
 }
-
-
