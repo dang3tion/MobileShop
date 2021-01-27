@@ -24,14 +24,15 @@ public class ProductDetail extends HttpServlet {
 	BO_Product boStart = new BO_Product();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String id = request.getParameter("dien-thoai");
+		String URLDetail = request.getParameter("dien-thoai");
 		
-		id = dao.convertBetweenURLandID(id);
+		String id = dao.convertBetweenURLandID(URLDetail);
 //		 cập nhật lượt xem
 		updateProductView(id, request);
 		request.setAttribute("star", boStart.star(id));
 		Product_main pm = DAO_Product_main.getDao_Product_main().getProduct_main(id);
 		request.setAttribute("product", pm);
+		request.setAttribute("URLDetail",URLDetail);
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/detail-product.jsp");
 		dispatcher.forward(request, response);

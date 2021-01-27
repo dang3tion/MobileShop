@@ -315,7 +315,8 @@ request.setAttribute("color", dao.colorWeb());
 						</div>
 						<div style="margin-top: 0px; margin-left: 10px;">
 							<p class="block" style="font-size: 16px; font-weight: 400;">
-								<span style="margin-right: 10px;">Thương hiệu:</span><a href="${pageContext.request.contextPath}/searchingProduct?thuonghieu=${product.branch.name}">${product.branch.name }</a>
+								<span style="margin-right: 10px;">Thương hiệu:</span><a
+									href="${pageContext.request.contextPath}/searchingProduct?thuonghieu=${product.branch.name}">${product.branch.name }</a>
 							</p>
 							<p class="block"
 								style="font-style: italic; font-size: 15px; font-weight: 400;">Đổi
@@ -381,14 +382,14 @@ request.setAttribute("color", dao.colorWeb());
 							<input name="choose" value="add" hidden="true"> <input
 								name="datHang" value="true" hidden="true"> <input
 								name="colorID" id="color-input-mua" value="MS01" hidden="true">
-							<button name="id" onclick="addCartMua()" value="${product.ID }" type="submit"
-								class="btnMua btn btn-danger btn-lg btn-block">
+							<button name="id" onclick="addCartMua()" value="${product.ID }"
+								type="submit" class="btnMua btn btn-danger btn-lg btn-block">
 								<strong>ĐẶT HÀNG</strong>
 							</button>
 						</form>
 					</div>
-					
-					
+
+
 					<script>
 						function addCartMua() {
 							var btn = document
@@ -403,7 +404,7 @@ request.setAttribute("color", dao.colorWeb());
 						}
 						addCartMua();
 					</script>
-					
+
 				</div>
 			</div>
 
@@ -462,7 +463,8 @@ request.setAttribute("color", dao.colorWeb());
 
 					</c:if>
 					<!-- @@@@@@@@@@ END HIỆN THÔNG BÁO KHI VƯỢT QUÁ GIỚI HẠN SẢN PHẨM TRONG GIỎ HÀNG @@@@@@@@@@@@@ -->
-					<h3 class="center-txt "style="margin-bottom:40px;">Đánh giá chi tiết</h3>
+					<h3 class="center-txt " style="margin-bottom: 40px;">Đánh giá
+						chi tiết</h3>
 
 
 					<div id="content" style="max-height: 400px; overflow: hidden;">
@@ -569,30 +571,34 @@ request.setAttribute("color", dao.colorWeb());
 					<ul class="star-evaluate">
 						<li><span class="star">5<i class="fas fa-star"></i></span>
 							<div class="progress">
-								<div class="progress-bar" style="width:${star.percent5}%" role="progressbar"
-									aria-valuenow="25
+								<div class="progress-bar" style="width:${star.percent5}%"
+									role="progressbar" aria-valuenow="25
 									aria-valuemin="
 									25" aria-valuemax="100"></div>
 							</div> <span class="title"> ${star.star5} </span>đánh giá</li>
 						<li><span class="star">4<i class="fas fa-star"></i></span>
 							<div class="progress">
-								<div class="progress-bar" style="width:${star.percent4}%" role="progressbar" aria-valuenow="0"
-									aria-valuemin="25" aria-valuemax="100"></div>
+								<div class="progress-bar" style="width:${star.percent4}%"
+									role="progressbar" aria-valuenow="0" aria-valuemin="25"
+									aria-valuemax="100"></div>
 							</div> <span class="title"> ${star.star4} </span>đánh giá</li>
 						<li><span class="star">3<i class="fas fa-star"></i></span>
 							<div class="progress">
-								<div class="progress-bar" style="width:${star.percent3}%" role="progressbar" aria-valuenow="0"
-									aria-valuemin="25" aria-valuemax="100"></div>
+								<div class="progress-bar" style="width:${star.percent3}%"
+									role="progressbar" aria-valuenow="0" aria-valuemin="25"
+									aria-valuemax="100"></div>
 							</div> <span class="title"> ${star.star3}</span> đánh giá</li>
 						<li><span class="star">2<i class="fas fa-star"></i></span>
 							<div class="progress">
-								<div class="progress-bar"  style="width:${star.percent2}%" role="progressbar" aria-valuenow="0"
-									aria-valuemin="25" aria-valuemax="100"></div>
+								<div class="progress-bar" style="width:${star.percent2}%"
+									role="progressbar" aria-valuenow="0" aria-valuemin="25"
+									aria-valuemax="100"></div>
 							</div> <span class="title"> ${star.star2} </span>đánh giá</li>
 						<li><span class="star">1<i class="fas fa-star"></i></span>
 							<div class="progress">
-								<div class="progress-bar" style="width:${star.percent1}%" role="progressbar" aria-valuenow="0"
-									aria-valuemin="25" aria-valuemax="100"></div>
+								<div class="progress-bar" style="width:${star.percent1}%"
+									role="progressbar" aria-valuenow="0" aria-valuemin="25"
+									aria-valuemax="100"></div>
 							</div> <span class="title"> ${star.star1} </span>đánh giá</li>
 					</ul>
 				</div>
@@ -715,130 +721,22 @@ request.setAttribute("color", dao.colorWeb());
 			<div class="comment-frame row">
 				<div class="header">Thảo luận về sản phẩm</div>
 				<div class="stick"></div>
-				<div class="col-12">
-					<div class="create-cmt">
-						<div style="display: flex; width: 70%;">
-							<input type="text" placeholder="Nhập tên của bạn"
-								class="name input-cmt">
-							<!-- 								 <input type="text" -->
-							<!-- 								placeholder="Nhập email của bạn" class="email input-cmt"> -->
-						</div>
-						<div class="col-12" id="send-cmt" style="">
-							<div class="input-evaluate">
-								<textarea placeholder="Nội dung bình luận"></textarea>
-							</div>
-							<div class="btn-cmt">
-								<button>Gửi bình luận</button>
-							</div>
-						</div>
-					</div>
-					<div class="comment">
-						<div class="comment-title">
-							<span class="ico-user">B</span> <span class="name-title">Thanh
-								Bảo</span>
-						</div>
-						<div class="comment-content">
-							<p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s rồi
-								. Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc k vậy
-								. Mình chưa có hộ khẩu . Xin cảm ơn</p>
-						</div>
-						<div class="respone-cmt">
-							<button class="respone-btn">
-								<i class="fas fa-reply" style="margin-right: 5px;"></i>Trả lời
-							</button>
-							<span class="cmt-time">- 5 ngày trước</span>
-						</div>
-						<ul class="respone">
-							<li>
-								<div class="comment-title">
-									<span class="ico-user">B</span> <span class="name-title">Thanh
-										Bảo</span>
-								</div>
-								<div class="comment-content">
-									<p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s
-										rồi . Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc
-										k vậy . Mình chưa có hộ khẩu . Xin cảm ơn</p>
-								</div>
-								<div class="respone-cmt">
-									<button class="respone-btn">
-										<i class="fas fa-reply" style="margin-right: 5px;"></i>Trả lời
-									</button>
-									<span class="cmt-time">- 5 ngày trước</span>
-								</div>
-							</li>
-							<li>
-								<div class="comment-title">
-									<span class="ico-user">B</span> <span class="name-title">Thanh
-										Bảo</span>
-								</div>
-								<div class="comment-content">
-									<p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s
-										rồi . Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc
-										k vậy . Mình chưa có hộ khẩu . Xin cảm ơn</p>
-								</div>
-								<div class="respone-cmt">
-									<button class="respone-btn">
-										<i class="fas fa-reply" style="margin-right: 5px;"></i>Trả lời
-									</button>
-									<span class="cmt-time">- 4 ngày trước</span>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="comment">
-						<div class="comment-title">
-							<span class="ico-user">B</span> <span class="name-title">Thanh
-								Bảo</span>
-						</div>
-						<div class="comment-content">
-							<p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s rồi
-								. Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc k vậy
-								. Mình chưa có hộ khẩu . Xin cảm ơn</p>
-						</div>
-						<div class="respone-cmt">
-							<button class="respone-btn">
-								<i class="fas fa-reply" style="margin-right: 5px;"></i>Trả lời
-							</button>
-							<span class="cmt-time">- 5 ngày trước</span>
-						</div>
-						<ul class="respone">
-							<li>
-								<div class="comment-title">
-									<span class="ico-user">B</span> <span class="name-title">Thanh
-										Bảo</span>
-								</div>
-								<div class="comment-content">
-									<p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s
-										rồi . Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc
-										k vậy . Mình chưa có hộ khẩu . Xin cảm ơn</p>
-								</div>
-								<div class="respone-cmt">
-									<button class="respone-btn">
-										<i class="fas fa-reply" style="margin-right: 5px;"></i>Trả lời
-									</button>
-									<span class="cmt-time">- 5 ngày trước</span>
-								</div>
-							</li>
-							<li>
-								<div class="comment-title">
-									<span class="ico-user">B</span> <span class="name-title">Thanh
-										Bảo</span>
-								</div>
-								<div class="comment-content">
-									<p>Mình dùng bằng lái và cmnd mua trả góp 1 chiếc đt a21s
-										rồi . Bgio có thể dùng 2 loại giấy tờ đó mua trả góp laptop dc
-										k vậy . Mình chưa có hộ khẩu . Xin cảm ơn</p>
-								</div>
-								<div class="respone-cmt">
-									<button class="respone-btn">
-										<i class="fas fa-reply" style="margin-right: 5px;"></i>Trả lời
-									</button>
-									<span class="cmt-time">- 4 ngày trước</span>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
+
+				<!-- 				COMMENT FACEBOOK -->
+
+
+				<div id="fb-root"></div>
+				<script async defer crossorigin="anonymous"
+					src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0"
+					nonce="PEAYhXWS"></script>
+				<div class="fb-comments ml-5"
+					data-href="http://localhost:8080/MobileShop/chi-tiet?dien-thoai=${URLDetail}"
+					data-width="1000" data-numposts="20"></div>
+
+
+				<!-- 				COMMENT FACEBOOK -->
+
+
 			</div>
 		</div>
 	</div>

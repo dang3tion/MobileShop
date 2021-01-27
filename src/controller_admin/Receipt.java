@@ -9,12 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model_BO_service.BO_Order;
 import model_DAO.DAO_Order;
 
 @WebServlet("/admin/cskh/receipt")
 public class Receipt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAO_Order dao = DAO_Order.getDAO_Order();
+	BO_Order bo = BO_Order.getBO_Order();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
