@@ -35,7 +35,7 @@
 		<td class="row" style="border: none;">
 			<div style="margin: auto;">
 				<a
-					href="${pageContext.request.contextPath}/admin/warehouse/product-add?MASP=${pro.ID}"><button
+					href="${pageContext.request.contextPath}/admin/product-edit?MASP=${pro.ID}"><button
 						class="m-wTD btn btn-primary" data-toggle="tooltip"
 						data-placement="top" title="Chỉnh sửa" data-toggle="modal"
 						data-target="#editUser">

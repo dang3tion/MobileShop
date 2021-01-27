@@ -27,7 +27,7 @@ import model_beans.Branch;
 import model_beans.Color_product;
 import model_beans.Product_main;
 
-@WebServlet(urlPatterns = "/admin/warehouse/product-add")
+@WebServlet(urlPatterns = "/admin/product-edit")
 public class EditProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Product_main p;
