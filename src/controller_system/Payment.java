@@ -35,11 +35,21 @@ public class Payment extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		
+		
+		
+		
 		HttpSession session = request.getSession();
 
 		Cart cart = (Cart) session.getAttribute("CART");
 		String codeOder = cart.getCodeOder().getCode();
 
+		if (cart.getListProduct().size()==0) {
+			response.sendRedirect(request.getContextPath() + "/index");
+		}else {
+			
+		
 		request.setAttribute("LIST_INSTANCE_PRODUCT", Controller_Cart.getListInstanceProductInCart(cart));
 		request.setAttribute("TOTAL_MONEY", Controller_Cart.getTotalMoney(cart));
 		request.setAttribute("CODE_ODER", codeOder);
@@ -47,7 +57,7 @@ public class Payment extends HttpServlet {
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/payment.jsp");
 		dispatcher.forward(request, response);
-
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
