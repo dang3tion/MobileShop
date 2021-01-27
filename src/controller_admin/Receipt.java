@@ -18,7 +18,6 @@ import model_DAO.DAO_Order;
 public class Receipt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAO_Order dao = DAO_Order.getDAO_Order();
-	BO_Order bo = BO_Order.getBO_Order();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -32,11 +31,9 @@ public class Receipt extends HttpServlet {
 			currentPage = (Integer) session.getAttribute("CURRENT_PAGE_ORDER_MANAGEMENT");
 		}
 
-		BO_Order bo = new BO_Order(currentPage, 15);
+		BO_Order bo = new BO_Order(currentPage, 5);
 
-		request.setAttribute("LIST_ORDER", bo.getList());
 		request.setAttribute("totalPage", bo.totalPage());
-		System.out.println(bo.getList());
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-receipt.jsp");
 		dispatcher.forward(request, response);

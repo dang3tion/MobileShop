@@ -4,8 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
-<c:forEach var="order" items="${LIST_ORDER}">
+<c:forEach var="order" items="${LIST_ORDER}" varStatus="i">
 	<tr>
+		<td>${STTstart+i.index}</td>
 		<td>${order.orderID}</td>
 		<td>${order.customerID}</td>
 
@@ -183,3 +184,4 @@
 		</span></td>
 	</tr>
 </c:forEach>
+<script src="${url}/js/js-page/confirmed.js"></script>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model_BO_service.BO_Account;
+import model_BO_service.BO_Order;
 
 @WebServlet("/AJAXOderManagement")
 public class AJAXOderManagement extends HttpServlet {
@@ -17,10 +18,10 @@ public class AJAXOderManagement extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		int page = Integer.parseInt((String) request.getParameter("page"));
-		BO_Account bo = new BO_Account(page, 20);
-		request.setAttribute("listUser", bo.getList());
+
+		BO_Order bo = new BO_Order(page, 5);
+		request.setAttribute("LIST_ORDER", bo.getList());
 		request.setAttribute("STTstart", bo.startRow());
 
 		RequestDispatcher dispatcher //

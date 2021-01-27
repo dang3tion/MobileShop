@@ -2,6 +2,8 @@ package model_BO_service;
 
 import java.util.List;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import model_DAO.DAO_Account;
 import model_DAO.DAO_Order;
 import model_beans.Account;
@@ -66,6 +68,8 @@ public class BO_Order {
 		}
 		return endRow;
 	}
-	
+	public static void main(String[] args) {
+		System.out.println(new BO_Order(1,10).getList());
+	}
 	
 }

@@ -37,6 +37,7 @@
 					<table class="table table-hover " id="receipt-table">
 						<thead class="thead-light">
 							<tr>
+								<th scope="col">STT</th>
 								<th scope="col">Mã đơn hàng</th>
 								<th scope="col">Mã khách hàng</th>
 
@@ -55,7 +56,6 @@
 
 
 
-
 							<!--END ĐƠN HÀNG -->
 
 						</tbody>
@@ -63,32 +63,28 @@
 
 
 				</div>
-				<div class="page-navigation">
+				<div class="page-navigation" id="page-navigation"
+					value="${totalPage}">
 					<div class="beta">
-						<button onclick="previous_page()">Trước</button>
+						<button onclick="previousPage()">Trước</button>
 						<span id="page-number"> </span>
-						<button onclick="next_page()">Sau</button>
+						<button onclick="nextPage()">Sau</button>
 					</div>
 				</div>
-
 
 			</div>
 
 		</div>
-		<script src="${url}/js/js-page/devide-page-admin.js"></script>
 
-		<script src="${url}/js/js-page/confirmed.js"></script>
 
-		<input id="curent-home-page-admin-management-order"
-			value="${CURRENT_PAGE_ORDER_MANAGEMENT}" style="display: none"></input>
+
+
+		<input id="curent-page" value="${CURRENT_PAGE_ORDER_MANAGEMENT}" style="display: none"></input>
 
 		<script type="text/javascript">
-		
-		function getCurrentPage() {
-			return document
-					.getElementById("curent-home-page-admin-management-order").value;
-		
-		
+			function getCurrentPage() {
+				return document.getElementById("curent-page").value;
+			}
 			function SendDataToServlet(number) {
 				getNumberPageDefault(number);
 				$
@@ -108,6 +104,8 @@
 
 			}
 		</script>
+		<script src="${url}/js/js-page/devide-page-admin.js"></script>
+		
 </body>
 
 </html>
