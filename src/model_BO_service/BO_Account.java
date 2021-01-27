@@ -196,6 +196,11 @@ public class BO_Account {
 
 	}
 
+	public String stateLog(String email) {
+		Account acc = get(email);
+		return acc.getStatus();
+	}
+
 	public List<Account> search(String keyword, int start, int end) {
 		List<Account> listAcc = dao.search(keyword, start, end);
 		return listAcc;
