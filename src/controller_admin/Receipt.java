@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import model_BO_service.BO_Account;
 import model_BO_service.BO_Order;
 import model_DAO.DAO_Order;
+import model_utility.Const.ORDER_STATUS;
 
 @WebServlet("/admin/cskh/receipt")
 public class Receipt extends HttpServlet {
@@ -44,7 +45,22 @@ public class Receipt extends HttpServlet {
 
 		String id = (String) request.getParameter("id");
 
-		System.out.println("==========> " + id);
+		String action = (String) request.getParameter("action");
+
+		switch (action) {
+		case "CONFIRM":
+			dao.switchOrderStatus(id, ORDER_STATUS.COMPLETED);
+			break;
+		case "DELIVERY":
+			dao.switchOrderStatus(id, ORDER_STATUS.TRANSPORTED);
+			break;
+		case "CANCEL":
+			dao.switchOrderStatus(id, ORDER_STATUS.CANCELED);
+			break;
+
+		default:
+			break;
+		}
 
 		doGet(request, response);
 	}

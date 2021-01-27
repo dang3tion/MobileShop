@@ -17,10 +17,17 @@
 			data-target="#orderDetail${order.orderID}"> Chi tiết <i
 				class="fa fa-external-link-alt"></i></a> <!-- Modal --></td>
 
-		<td class="confirm"><span> <label
-				title="Xác nhận đơn hàng" data-target="#confirm-${order.orderID}"
-				class="label-check active" data-toggle="modal"><i
-					class="fas fa-check-square"></i></label>
+		<td class="confirm">
+		
+		
+		
+		
+		
+		
+		<span> <label
+				title="Xác nhận đơn hàng" id="lbcheck-${order.orderID}"
+				data-target="#confirm-${order.orderID}" class="label-check active"
+				data-toggle="modal"><i class="fas fa-check-square"></i></label>
 				<div class="modal fade" id="confirm-${order.orderID}" tabindex="-1"
 					aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
@@ -45,6 +52,7 @@
 					</div>
 				</div>
 		</span> <span> <label title="Xác nhận vận chuyển thành công"
+				id="lbdelivery-${order.orderID}"
 				data-target="#delivery-${order.orderID}"
 				class="label-delivered disable"><i class="fas fa-truck"></i></label>
 				<div class="modal fade" id="delivery-${order.orderID}" tabindex="-1"
@@ -72,6 +80,7 @@
 					</div>
 				</div>
 		</span> <span> <label title="Hủy đơn hàng"
+				id="lbcancel-${order.orderID}"
 				data-target="#cancel-${order.orderID}" data-toggle="modal"
 				class="label-cancel warning"><i class="fas fa-trash"></i></label>
 				<div class="modal fade" tabindex="-1" id="cancel-${order.orderID}"
@@ -118,7 +127,7 @@
 								<thead class="thead-light">
 									<tr>
 										<th>Mã khách hàng</th>
-										<th>Tên khách hàng</th>
+										<th>Tên  khách hàng</th>
 										<th><span title="Số điện thoại"> Số điện thoại</span></th>
 										<th>Hình thức thanh toán</th>
 										<th style="min-width: 300px;">Địa chỉ</th>
@@ -185,16 +194,22 @@
 
 <script type="text/javascript">
 	function confirmedCheck(id) {
+		var lb = document.getElementById('lbcheck-' + id);
+		var deli = document.getElementById('lbdelivery-' + id);
+		lb.setAttribute("class", "confirmed");
+		$(lb).removeAttr("data-toggle");
+		deli.setAttribute("class", "active");
+		deli.setAttribute("data-toggle", "modal");
 		$.ajax({
 			type : 'POST',
 			url : '${pageContext.request.contextPath}/admin/cskh/receipt',
 			data : {
 
-				id : id
+				id : id,
+				action : 'CONFIRM'
 
 			},
 			success : function(responseText) {
-				// 				$('#content-table').html(responseText);
 				location.reload();
 			}
 
@@ -203,12 +218,18 @@
 	}
 
 	function confirmedDelivery(id) {
+
+		var lb = document.getElementById('lbdelivery-' + id);
+		lb.setAttribute("class", "confirmed");
+		$(lb).removeAttr("data-toggle");
+
 		$.ajax({
 			type : 'POST',
 			url : '${pageContext.request.contextPath}/admin/cskh/receipt',
 			data : {
 
-				id : id
+				id : id,
+				action : 'DELIVERY'
 
 			},
 			success : function(responseText) {
@@ -220,16 +241,19 @@
 
 	}
 	function confirmCancel(id) {
+		var lb = document.getElementById('lbcancel-' + id);
+		lb.setAttribute("class", "confirmed");
+		$(lb).removeAttr("data-toggle");
 		$.ajax({
 			type : 'POST',
 			url : '${pageContext.request.contextPath}/admin/cskh/receipt',
 			data : {
 
-				id : id
+				id : id,
+				action : 'CANCEL'
 
 			},
 			success : function(responseText) {
-				// 				$('#content-table').html(responseText);
 				location.reload();
 			}
 

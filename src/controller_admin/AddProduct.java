@@ -17,10 +17,13 @@ import model_DAO.DAO_AddProduct;
 import model_DAO.DAO_Attribute;
 import model_DAO.DAO_Branch;
 import model_DAO.DAO_Color;
+import model_DAO.DAO_Log;
+import model_beans.Account;
 import model_beans.AttributeClass;
 import model_beans.AttributeManager;
 import model_beans.Branch;
 import model_beans.Color_product;
+import model_utility.Const;
 
 @WebServlet(urlPatterns = "/admin/warehouse/product-add")
 public class AddProduct extends HttpServlet {
@@ -126,7 +129,14 @@ public class AddProduct extends HttpServlet {
 					}
 
 				}
+				HttpSession session = request.getSession();
 
+				Account acount = (Account) session.getAttribute(Const.ADMIN_LOGINED);
+
+				String idStaff = acount.getId();
+				new DAO_Log().update(idStaff, "Thêm sản phẩm",
+						"Thêm sản phẩm mới với tên: "+name + " và giá bán:"+price);
+					
 			}
 			isConfirm = true;
 			request.setAttribute("result", result);
@@ -138,6 +148,7 @@ public class AddProduct extends HttpServlet {
 			request.setAttribute("introduce", introduced);
 		}
 
+		
 		request.setAttribute("confirm", isConfirm);
 		doGet(request, response);
 
@@ -202,6 +213,6 @@ public class AddProduct extends HttpServlet {
 	}
 
 	public static void main(String[] args) {
-	
+
 	}
 }
