@@ -18,14 +18,17 @@ import model_DAO.DAO_Attribute;
 import model_DAO.DAO_Branch;
 import model_DAO.DAO_Color;
 import model_DAO.DAO_EditProduct;
+import model_DAO.DAO_Log;
 import model_DAO.DAO_EditProduct.EDIHT;
 import model_DAO.DAO_EditProduct.TABLE;
 import model_DAO.DAO_Product_main;
+import model_beans.Account;
 import model_beans.AttributeClass;
 import model_beans.AttributeManager;
 import model_beans.Branch;
 import model_beans.Color_product;
 import model_beans.Product_main;
+import model_utility.Const;
 
 @WebServlet(urlPatterns = "/admin/warehouse/product-edit")
 public class EditProduct extends HttpServlet {
@@ -209,7 +212,13 @@ public class EditProduct extends HttpServlet {
 					reString = "Thêm sản phẩm thành công";
 				}
 			}
+			HttpSession session = request.getSession();
 
+			Account acount = (Account) session.getAttribute(Const.ADMIN_LOGINED);
+
+			String idStaff = acount.getId();
+			new DAO_Log().update(idStaff, "Chỉnh sửa sản phẩm",
+					"Chỉnh sửa sản phẩm  với mã sản phẩm: "+session.getAttribute("MASP-EDIT") + " và tên:"+name);
 			isConfirm = true;
 			request.setAttribute("reString", reString);
 			request.setAttribute("result", result);
