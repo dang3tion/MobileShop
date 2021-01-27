@@ -45,12 +45,12 @@ public class EmployeeManagement extends HttpServlet {
 		String username = request.getParameter("username");
 		String role = request.getParameter("role");
 
-//		System.out.println("1 " + name);
-//		System.out.println("2 " + phoneNumber);
-//		System.out.println("3 " + address);
-//		System.out.println("4 " + password);
-//		System.out.println("5 " + username);
-//		System.out.println("6" + role);
+		System.out.println("1 " + name);
+		System.out.println("2 " + phoneNumber);
+		System.out.println("3 " + address);
+		System.out.println("4 " + password);
+		System.out.println("5 " + username);
+		System.out.println("6" + role);
 
 		Account acc = new Account(username, password);
 		acc.setRole(role);
