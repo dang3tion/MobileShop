@@ -28,6 +28,7 @@ public class AJAXADminProductManager extends HttpServlet {
 		}
 		ArrayList<Product_main> listProduct = (ArrayList<Product_main>) DAO_Product_main.getDao_Product_main()
 				.getAllProduct((page - 1) * rowPerPage + 1, page * rowPerPage);
+		
 		updateCurrentPage(request, page);
 		doPost(request, response);
 		request.setAttribute("listProduct", listProduct);

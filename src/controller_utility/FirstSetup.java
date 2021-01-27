@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 import model_ConnectDB.DataSource;
+import model_DAO.DAO_Access;
 import model_DAO.DAO_Branch;
 import model_DAO.DAO_ShopInfo;
 import model_beans.Cart;
@@ -19,7 +20,9 @@ public class FirstSetup implements HttpSessionListener {
 		HttpSession session = event.getSession();
 //		@@@@@@@@@@@@@@@
 		String countTruycap =(String) session.getAttribute("user_count");
-		
+		if (countTruycap==null) {
+			new DAO_Access().updateAccess();
+		}
 //		@@@@@@@@@@@@@@@
 		
 		
