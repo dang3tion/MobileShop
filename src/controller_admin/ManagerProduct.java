@@ -29,9 +29,18 @@ public class ManagerProduct extends HttpServlet {
 		} else {
 			currentPage = (Integer) session.getAttribute("current_page");
 		}
+		
+		//thống kê
 		request.setAttribute("total", dao.totalProduct());
-		request.setAttribute("numProduct", dao.numProductSale());
+		request.setAttribute("numProduct", dao.producttonkho());
 		request.setAttribute("productSale", dao.productSaling());
+		request.setAttribute("productStop", dao.productStop());
+		request.setAttribute("numProductStop", dao.numProductStop());
+		
+		
+		
+		
+		
 		request.setAttribute(getServletName(), session);
 		ArrayList<Product_main> listProduct = new ArrayList<Product_main>();
 		if (key == null) {
