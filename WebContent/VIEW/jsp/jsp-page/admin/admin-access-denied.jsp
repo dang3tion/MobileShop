@@ -9,6 +9,13 @@
 <link rel="stylesheet" href="${url}/css/css-page/contact.css">
 </head>
 
+
+<script type="text/javascript">
+	const audio = new Audio(
+			'https://audio.jukehost.co.uk/AVKQ5J2NAlT2GVeslHgIqFVONAY8io50');
+	audio.play();
+</script>
+
 <body>
 	<jsp:include page="/VIEW/jsp/jsp-component/menu.jsp"></jsp:include>
 	<!-- Thanh menu loc du lieu va sap xep-->
