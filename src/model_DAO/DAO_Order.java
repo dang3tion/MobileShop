@@ -286,7 +286,7 @@ public class DAO_Order extends ExecuteCRUD {
 	
 	
 	public void cancel(String id) {
-		String query = "update DONHANG set TRANGTHAI = 'CANCEL' where MADH = ?";
+		String query = "update DONHANG set TRANGTHAI = 'CANCELED' where MADH = ?";
 		try (ResultSet rs = super.ExecuteQuery(query,id)) {
 			
 			
@@ -294,7 +294,9 @@ public class DAO_Order extends ExecuteCRUD {
 			e.printStackTrace();
 		}
 	}
-	
+	public static void main(String[] args) {
+		System.out.println(new DAO_Order().getListCancelOrder(1, 10).size());
+	}
 	
 	
 	
