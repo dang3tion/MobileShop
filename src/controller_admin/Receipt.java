@@ -41,11 +41,11 @@ public class Receipt extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String id = request.getParameter("");
-		
-		System.out.println();
-		
+
+		String id = (String) request.getParameter("id");
+
+		System.out.println("==========> " + id);
+
 		doGet(request, response);
 	}
 
