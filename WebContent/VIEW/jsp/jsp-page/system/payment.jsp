@@ -318,12 +318,7 @@ request.setAttribute("color", dao.colorWeb());
 			const result = regex.test(text);
 			return result;
 		}
-		function vali_name(text) {
-			const regex = /^[a-zA-Z]+[\-'\s]?[a-zA-Z ]+$/g;
-			// 			const regex = /^\s*$/g;
-			const result = regex.test(text);
-			return result;
-		}
+		
 		function vali_address(text) {
 			const regex = /^\s*$/g;
 			const result = regex.test(text);
@@ -424,7 +419,7 @@ request.setAttribute("color", dao.colorWeb());
 				checkName = false;
 				return true;
 			}
-			if (s != null || s == "") {
+			if (s != null || s != "") {
 				document.getElementById("name").style.display = "none";
 				checkName = true;
 				return false;
@@ -450,10 +445,7 @@ request.setAttribute("color", dao.colorWeb());
 			var huyen = document.getElementById("sehuyen").value;
 			var xa = document.getElementById("sexa").value;
 			var tinh = document.getElementById("setinh").value;
-			console.log(huyen);
-			console.log(tinh);
-			console.log(xa);
-
+			
 			if (huyen == "0") {
 				document.getElementById("huyen").style.display = "block";
 			} else {
@@ -473,7 +465,10 @@ request.setAttribute("color", dao.colorWeb());
 				checktinh = true;
 			}
 			if (name == null || name == "") {
+				checkName = false;
 				document.getElementById("name").style.display = "block";
+			}else {
+				checkName = true;
 			}
 			if (!vali_PhoneNumber(phone)) {
 				document.getElementById("checkphone").style.display = "block";
