@@ -94,43 +94,43 @@
 								</ul>
 							</div>
 
-							<div class="frame-number">
-								<h5>Thông tin liên hệ</h5>
-								<div class="tab">
-									<div class="title-number">
-										<ul>
-											<li>Tiêu đề</li>
-											<li>Số điện thoại</li>
-											<li>Giờ hoạt động</li>
-										</ul>
-									</div>
-									<ul class="number">
-										<li>
-											<div class="content-number">
-												<input type="text" value="asdfassafdsadf">
-											</div>
-											<div class="content-number">
-												<input type="number">
-											</div>
-											<div class="content-number">
-												<input type="text">
-											</div>
-											<div class="content-number">
+<!-- 							<div class="frame-number"> -->
+<!-- 								<h5>Thông tin liên hệ</h5> -->
+<!-- 								<div class="tab"> -->
+<!-- 									<div class="title-number"> -->
+<!-- 										<ul> -->
+<!-- 											<li>Tiêu đề</li> -->
+<!-- 											<li>Số điện thoại</li> -->
+<!-- 											<li>Giờ hoạt động</li> -->
+<!-- 										</ul> -->
+<!-- 									</div> -->
+<!-- 									<ul class="number"> -->
+<!-- 										<li> -->
+<!-- 											<div class="content-number"> -->
+<!-- 												<input type="text" value="asdfassafdsadf"> -->
+<!-- 											</div> -->
+<!-- 											<div class="content-number"> -->
+<!-- 												<input type="number"> -->
+<!-- 											</div> -->
+<!-- 											<div class="content-number"> -->
+<!-- 												<input type="text"> -->
+<!-- 											</div> -->
+<!-- 											<div class="content-number"> -->
 
-												<i class="fas  fa-trash-alt"></i>
-											</div>
-										</li>
-									</ul>
-								</div>
-								<button class="plus">
-									<i class="fas fa-plus"></i>
-								</button>
-							</div>
+<!-- 												<i class="fas  fa-trash-alt"></i> -->
+<!-- 											</div> -->
+<!-- 										</li> -->
+<!-- 									</ul> -->
+<!-- 								</div> -->
+<!-- 								<button class="plus"> -->
+<!-- 									<i class="fas fa-plus"></i> -->
+<!-- 								</button> -->
+<!-- 							</div> -->
 						</div>
 					</div>
 				</div>
 
-				<div class="frame-liscen">
+				<div class="frame-liscen mt-5">
 					<div class="form-group space-top">
 
 
