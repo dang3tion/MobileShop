@@ -16,20 +16,17 @@
 		<td class="detail"><a data-toggle="modal"
 			data-target="#orderDetail${order.orderID}"> Chi tiết <i
 				class="fa fa-external-link-alt"></i></a> <!-- Modal --></td>
-		
-		<td class="confirm">
-		
-		<span> <input class="confirm-check"
-				type="checkbox" value="confirm-check" name="confirm-check">
-				<label title="Xác nhận đơn hàng" class="label-check active"
-				data-toggle="modal"><i class="fas fa-check-square"></i></label>
-				<div class="modal fade" tabindex="-1"
+
+		<td class="confirm"><span> <label
+				title="Xác nhận đơn hàng" data-target="#confirm-${order.orderID}"
+				class="label-check active" data-toggle="modal"><i
+					class="fas fa-check-square"></i></label>
+				<div class="modal fade" id="confirm-${order.orderID}" tabindex="-1"
 					aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Xác nhận đơn
-									hàng</h5>
+								<h5 class="modal-title">Xác nhận đơn hàng</h5>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<i aria-hidden="true">&times;</i>
@@ -41,17 +38,16 @@
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">Hủy</button>
 								<button type="button" class="btn btn-primary"
+									onclick="confirmedCheck('${order.orderID}')"
 									data-dismiss="modal">Xác nhận</button>
 							</div>
 						</div>
 					</div>
 				</div>
-		</span> 
-		<span> <input class="confirm-check" type="checkbox"
-				value="confirm-delivered" name="confirm-deliverd"> <label
-				title="Xác nhận vận chuyển thành công"
+		</span> <span> <label title="Xác nhận vận chuyển thành công"
+				data-target="#delivery-${order.orderID}"
 				class="label-delivered disable"><i class="fas fa-truck"></i></label>
-				<div class="modal fade" tabindex="-1"
+				<div class="modal fade" id="delivery-${order.orderID}" tabindex="-1"
 					aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -69,16 +65,16 @@
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">Hủy</button>
 								<button type="button" class="btn btn-primary"
+									onclick="confirmedDelivery('${order.orderID}')"
 									data-dismiss="modal">Xác nhận</button>
 							</div>
 						</div>
 					</div>
 				</div>
-		</span> <span> <input class="confirm-check" type="checkbox"
-				value="confirm-cancel" name="confirm-cancel"> <label
-				title="Hủy đơn hàng" data-toggle="modal"
+		</span> <span> <label title="Hủy đơn hàng"
+				data-target="#cancel-${order.orderID}" data-toggle="modal"
 				class="label-cancel warning"><i class="fas fa-trash"></i></label>
-				<div class="modal fade" tabindex="-1"
+				<div class="modal fade" tabindex="-1" id="cancel-${order.orderID}"
 					aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -96,102 +92,155 @@
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">Hủy</button>
 								<button type="button" class="btn btn-primary"
+									onclick="confirmCancel('${order.orderID}')"
 									data-dismiss="modal">Xác nhận</button>
 							</div>
 						</div>
 					</div>
-				</div> 
-				
-				
-				
-				
-				<!-- START CHI TIẾT ĐƠN HÀNG-->
-				<div class="modal fade" id="orderDetail${order.orderID}"
-					tabindex="-1" aria-labelledby="exampleModalLabel"
-					aria-hidden="true">
-					<div class="modal-dialog  detail-modal">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Chi tiết đơn
-									hàng</h5>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<h5>Đơn hàng: ${order.orderID}</h5>
-								<table width="100%"
-									class="text-center  table content-detail  table-hover">
-									<thead class="thead-light">
-										<tr>
-											<th>Mã khách hàng</th>
-											<th>Tên khách hàng</th>
-											<th><span title="Số điện thoại"> Số điện thoại</span></th>
-											<th>Hình thức thanh toán</th>
-											<th style="min-width: 300px;">Địa chỉ</th>
-
-										</tr>
-									</thead>
+				</div>
+		</span> <!-- START CHI TIẾT ĐƠN HÀNG-->
+			<div class="modal fade" id="orderDetail${order.orderID}"
+				tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog  detail-modal">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Chi tiết đơn
+								hàng</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<h5>Đơn hàng: ${order.orderID}</h5>
+							<table width="100%"
+								class="text-center  table content-detail  table-hover">
+								<thead class="thead-light">
 									<tr>
-
-
-
-										<td>${order.customerID}</td>
-
-										<td>${order.name}</td>
-										<td><span title="Số điện thoại">
-												${order.phoneNumber}</span></td>
-										<td>${order.paymentMethods}</td>
-										<td style="min-width: 300px;">${order.address}
-										</th>
+										<th>Mã khách hàng</th>
+										<th>Tên khách hàng</th>
+										<th><span title="Số điện thoại"> Số điện thoại</span></th>
+										<th>Hình thức thanh toán</th>
+										<th style="min-width: 300px;">Địa chỉ</th>
 
 									</tr>
-								</table>
-								<table width="100%"
-									class="text-center  table content-detail  table-hover">
-									<thead class="thead-light">
-										<tr>
-											<th>Hình ảnh</th>
-											<th>Mã sản phẩm</th>
-											<th>Tên sản phẩm</th>
-											<th>Màu sắc</th>
-											<th>Số lượng</th>
-											<th>Giá</th>
+								</thead>
+								<tr>
 
-										</tr>
-									</thead>
 
-									<c:forEach var="pro" items="${order.listProduct}">
-										<tr>
-											<td style="max-width: 140px;"><img src="${pro.img}"
-												width="100px" height="100px" alt=""></td>
-											<td>${pro.id}</td>
-											<td>${pro.name}</td>
-											<td><span title="Số điện thoại">${pro.color}</span></td>
-											<td style="min-width: 300px;">${pro.quantityInCart}
-											</th>
-											<td style="min-width: 300px;">${pro.price}<span
-												style="text-decoration: underline;">đ</span>
-											</th>
-										</tr>
-									</c:forEach>
 
-								</table>
+									<td>${order.customerID}</td>
 
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">Đóng</button>
-							</div>
+									<td>${order.name}</td>
+									<td><span title="Số điện thoại">
+											${order.phoneNumber}</span></td>
+									<td>${order.paymentMethods}</td>
+									<td style="min-width: 300px;">${order.address}
+									</th>
+
+								</tr>
+							</table>
+							<table width="100%"
+								class="text-center  table content-detail  table-hover">
+								<thead class="thead-light">
+									<tr>
+										<th>Hình ảnh</th>
+										<th>Mã sản phẩm</th>
+										<th>Tên sản phẩm</th>
+										<th>Màu sắc</th>
+										<th>Số lượng</th>
+										<th>Giá</th>
+
+									</tr>
+								</thead>
+
+								<c:forEach var="pro" items="${order.listProduct}">
+									<tr>
+										<td style="max-width: 140px;"><img src="${pro.img}"
+											width="100px" height="100px" alt=""></td>
+										<td>${pro.id}</td>
+										<td>${pro.name}</td>
+										<td><span title="Số điện thoại">${pro.color}</span></td>
+										<td style="min-width: 300px;">${pro.quantityInCart}
+										</th>
+										<td style="min-width: 300px;">${pro.price}<span
+											style="text-decoration: underline;">đ</span>
+										</th>
+									</tr>
+								</c:forEach>
+
+							</table>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Đóng</button>
 						</div>
 					</div>
-				</div> 
-				
-				<!-- END CHI TIẾT ĐƠN HÀNG	-->
-
-
-		</span></td>
+				</div>
+			</div> <!-- END CHI TIẾT ĐƠN HÀNG	--></td>
 	</tr>
 </c:forEach>
-<script src="${url}/js/js-page/confirmed.js"></script>
+
+
+<script type="text/javascript">
+	function confirmedCheck(id) {
+		$.ajax({
+			type : 'POST',
+			url : '${pageContext.request.contextPath}/admin/cskh/receipt',
+			data : {
+
+				id : id
+
+			},
+			success : function(responseText) {
+				// 				$('#content-table').html(responseText);
+				location.reload();
+			}
+
+		});
+
+	}
+
+	function confirmedDelivery(id) {
+		$.ajax({
+			type : 'POST',
+			url : '${pageContext.request.contextPath}/admin/cskh/receipt',
+			data : {
+
+				id : id
+
+			},
+			success : function(responseText) {
+				// 				$('#content-table').html(responseText);
+				location.reload();
+			}
+
+		});
+
+	}
+	function confirmCancel(id) {
+		$.ajax({
+			type : 'POST',
+			url : '${pageContext.request.contextPath}/admin/cskh/receipt',
+			data : {
+
+				id : id
+
+			},
+			success : function(responseText) {
+				// 				$('#content-table').html(responseText);
+				location.reload();
+			}
+
+		});
+
+	}
+</script>
+
+
+
+
+
+
+
