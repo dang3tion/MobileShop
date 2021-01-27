@@ -24,19 +24,17 @@ public class Bill extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		Cart cart = (Cart) session.getAttribute("CART");
-
 		String codeOder = (String) request.getAttribute("CODE_ODER");
 
 		Account acc = (Account) session.getAttribute(Const.CUSTOMER_LOGINED);
 		String content = "Đơn hàng " + codeOder
 				+ " đã được đặt thành công, vui lòng try cập https://mobileshop.tk/check-receipt để kiểm tra đơn hàng";
-		SendMail.sendOrderSuccessful(acc.getEmail(), content);
-
-		System.out.println("mail " + acc.getEmail());
-		System.out.println(" code " + codeOder);
-
-		request.setAttribute("TOTAL_MONEY", Controller_Cart.getTotalMoney(cart));
+		if (acc != null) {
+			SendMail.sendOrderSuccessful(acc.getEmail(), content);
+		}
+		int total = (int) request.getAttribute("MONEY_BILL");
+		System.out.println(total);
+		request.setAttribute("TOTAL_MONEY", total);
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/system/bill.jsp");
 		dispatcher.forward(request, response);

@@ -121,10 +121,12 @@ public class Payment extends HttpServlet {
 		}
 
 		cart.setCodeOder(new CodeOrder());
+		request.setAttribute("MONEY_BILL", Controller_Cart.getTotalMoney(cart));
 		cart.getListProduct().clear();
 		Controller_Cart.updateCart(cart, session);
 
 		request.setAttribute("CODE_ODER", codeOder);
+	
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/ordersuccessfull");
 		dispatcher.forward(request, response);
