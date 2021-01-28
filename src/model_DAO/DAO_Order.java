@@ -8,6 +8,7 @@ import java.util.Iterator;
 import model_BO_service.BO_Order;
 import model_ConnectDB.DataSource;
 import model_ConnectDB.ExecuteCRUD;
+import model_DAO.DAO_ListProduct.ORDER;
 import model_beans.Cart;
 import model_beans.Order;
 import model_beans.OrderDetail;
@@ -241,49 +242,71 @@ public class DAO_Order extends ExecuteCRUD {
 		return listProduct;
 	}
 
-	//hàm đếm số sản phẩm của đơn hàng ở trạng thái completed
+	// hàm đếm số sản phẩm của đơn hàng ở trạng thái completed
 	public ArrayList<UpdateQuatityProduct> numCompleted(String orderID) {
-		
+
 		ArrayList<UpdateQuatityProduct> quatity = new ArrayList<UpdateQuatityProduct>();
 		String query = "select CTDH.MASP,CTDH.SOLUONG from CTDH inner join DONHANG on CTDH.MADH = DONHANG.MADH where DONHANG.MADH = ? and DONHANG.TRANGTHAI = 'completed'";
 		try {
 			ResultSet rs = super.ExecuteQuery(query, orderID);
-			while  (rs.next()) {
+			while (rs.next()) {
 				quatity.add(new UpdateQuatityProduct(rs.getString(1), rs.getInt(2)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 		}
 		return quatity;
 	}
-	
-	public int updateQuatityProduct(String id,int quatity) {
+
+	public int updateQuatityProduct(String id, int quatity) {
 		String query = "select SOLUONG from SOLUONG_SP where MASP = ?";
 		try {
-			ResultSet rs = super.ExecuteQuery(query);
-			if  (rs.next()) {
+			ResultSet rs = super.ExecuteQuery(query,id);
+			if (rs.next()) {
 				return rs.getInt(1) - quatity;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 		}
 		return 0;
 	}
-	
+
+	public int updateQuatityProductSaled(String id, int quatity) {
+		String query = "select SL_DABAN from SOLUONG_SP where MASP = ?";
+		try {
+			ResultSet rs = super.ExecuteQuery(query,id);
+			if (rs.next()) {
+				return rs.getInt(1) + quatity;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		return 0;
+	}
+
 	public boolean switchOrderStatus(String orderID, ORDER_STATUS newStatus) {
 		try {
 			if (newStatus == ORDER_STATUS.TRANSPORTED) {
+				String update = "update DONHANG set TRANGTHAI = 'COMPLETED' where MADH = ?";
+				super.ExecuteQuery(update,orderID);
+				
+				
 				for (int i = 0; i < numCompleted(orderID).size(); i++) {
 					String query = "update SOLUONG_SP set SOLUONG = ? where MASP = ?";
-					super.ExecuteQuery(orderID,numCompleted(orderID).get(i).getQuatity(),numCompleted(orderID).get(i).getId());
+					int num = numCompleted(orderID).get(i).getQuatity();
+					String id = numCompleted(orderID).get(i).getId();
+					super.ExecuteQuery(query,  updateQuatityProduct(id, num), id);
+					String query2 = "update SOLUONG_SP set SL_DABAN = ? where MASP = ?";
+					super.ExecuteQuery(query2,  updateQuatityProductSaled(id, num), id);
 				}
 			}
 			if (newStatus == ORDER_STATUS.CANCELED) {
 				super.ExecuteQuery("SELECT * FROM CTDH");
 			}
-			super.ExecuteQuery("update DONHANG set TRANGTHAI = ? where MaDH = ? ", newStatus.toString(), orderID);
+//			super.ExecuteQuery("update DONHANG set TRANGTHAI = ? where MaDH = ? ", newStatus.toString(), orderID);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -291,8 +314,6 @@ public class DAO_Order extends ExecuteCRUD {
 		}
 
 	}
-	
-	
 
 	private String translate(String orderStatus) {
 		String result = null;
@@ -327,5 +348,9 @@ public class DAO_Order extends ExecuteCRUD {
 			e.printStackTrace();
 		}
 	}
-	
+	public static void main(String[] args) {
+		System.out.println(new DAO_Order().switchOrderStatus("75040722", ORDER_STATUS.TRANSPORTED));
+		System.out.println(new DAO_Order().numCompleted("75040722"));
+	}
+
 }
