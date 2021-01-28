@@ -235,13 +235,13 @@ request.setAttribute("color", dao.colorWeb());
 
 		</div>
 		<div class="row">
-			<jsp:include page="/VIEW/jsp/jsp-component/sidebar-filter.jsp"></jsp:include>
-			<div class="col-9" id="result-content">
+			
+			<div class="col-12" id="result-content">
 
 				<!-- 				Hang ket qua -->
-				<div class="title overflow-auto ">
+				<div class="title overflow-auto mb-3">
 					<div class="title float-left">
-						<h3>Danh sách sản phẩm</h3>
+						<h3>Danh sách sản phẩm từ giá cao nhất</h3>
 					</div>
 					<div class="title float-right">
 						<a
@@ -255,8 +255,8 @@ request.setAttribute("color", dao.colorWeb());
 				<div class="row">
 
 
-					<c:forEach items="${lstPrice}" var="pro" begin="0" end="8">
-						<div class="col-4">
+					<c:forEach items="${lstPrice}" var="pro" begin="0" end="11">
+						<div class="col-3">
 							<c:import url="/VIEW/jsp/jsp-component/card-product-index.jsp">
 								<c:param name="URLdetail"></c:param>
 								<c:param name="url" value="${pro.URL}"></c:param>
@@ -281,14 +281,9 @@ request.setAttribute("color", dao.colorWeb());
 					<div class="col-12 d-flex justify-content-end">
 						<nav aria-label="...">
 							<ul class="pagination">
-								<li class="page-item disabled"><a class="page-link"
-									href="#" tabindex="-1" aria-disabled="true">Trở về</a></li>
-								<li class="page-item active"><a class="page-link" href="#">1</a></li>
-								<li class="page-item " aria-current="page"><a
-									class="page-link" href="#">2 </a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#">Tiếp</a>
-								</li>
+								<li class="page-item"><a class="page-link"
+									href="${pageContext.request.contextPath}/searchingProduct?dssanpham=sanphamgiacao" >Xem thêm chi tiết</a></li>
+								
 							</ul>
 						</nav>
 					</div>

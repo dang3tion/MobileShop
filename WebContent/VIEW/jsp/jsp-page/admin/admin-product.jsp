@@ -43,10 +43,10 @@
 						</thead>
 						<tbody>
 							<tr class="">
-								<th scope="row"> ${total} </th>
+								<th scope="row">${total}</th>
 								<td>${numProduct}</td>
 								<td>${productStop}</td>
-								<td> ${productSale} </td>
+								<td>${productSale}</td>
 								<td>${numProductStop}</td>
 
 							</tr>
@@ -92,7 +92,8 @@
 														style="float: right;" class="btn btn-success btn-add">
 														<i class="fas fa-plus-square"></i> Thêm sản phẩm
 													</button></a>
-												<table id="bootstrap-data-table" class="table table-hover ">
+												<table id="bootstrap-data-table" style="height: 900px;"
+													class="table table-hover ">
 													<thead class="thead-light">
 														<tr style="font-size: 14px;">
 															<th>STT</th>
