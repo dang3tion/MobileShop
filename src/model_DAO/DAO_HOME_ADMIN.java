@@ -33,7 +33,7 @@ public class DAO_HOME_ADMIN extends ExecuteCRUD {
 	// tổng số sản phẩm đã bán
 	public int productSaled() {
 		int sum = 0;
-		String query = "select SUM(SOLUONG) from CTDH inner join DONHANG on CTDH.MADH = DONHANG.MADH where TRANGTHAI = 'complete'  ";
+		String query = "select SUM(SL_DABAN) from SOLUONG_SP ";
 		try (ResultSet rs = super.ExecuteQuery(query)) {
 			if (rs.next()) {
 				sum = rs.getInt(1);
@@ -171,7 +171,7 @@ public class DAO_HOME_ADMIN extends ExecuteCRUD {
 		public int productSaledMonth(String date) {
 			int sum = 0;
 			StringTokenizer dte = new StringTokenizer(date, "-");
-			String query = "select SUM(SOLUONG) from CTDH inner join DONHANG on CTDH.MADH = DONHANG.MADH where TRANGTHAI = 'complete' and MONTH(DONHANG.NGAYLAP) = ? and YEAR(donhang.NGAYLAP) = ?";
+			String query = "select SUM(SOLUONG) from CTDH inner join DONHANG on CTDH.MADH = DONHANG.MADH where TRANGTHAI = 'completed' and MONTH(DONHANG.NGAYLAP) = ? and YEAR(donhang.NGAYLAP) = ?";
 			try (ResultSet rs = super.ExecuteQuery(query,dte.nextToken(),dte.nextToken())) {
 				if (rs.next()) {
 					sum = rs.getInt(1);
