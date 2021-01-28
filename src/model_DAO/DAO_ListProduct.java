@@ -103,10 +103,11 @@ public class DAO_ListProduct extends ExecuteCRUD {
 
 	public ArrayList<Product_form> orderListProduct(ListProduct list, String query)
 			throws NumberFormatException, SQLException {
-		System.out.println(query);
+	
 		String[] arr = new String[list.getPara().length * 2];
 
 		for (int i = 0; i < arr.length; i++) {
+			
 			arr[i] = "" + list.getPara()[i % list.getPara().length];
 		}
 		ArrayList<Product_form> lst = new ArrayList<Product_form>();

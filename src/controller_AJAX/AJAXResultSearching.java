@@ -49,8 +49,7 @@ public class AJAXResultSearching extends HttpServlet {
 		}
 
 		ArrayList<Product_form> lstPorduct = getListOther(listMain, (page - 1) * 9 + 1, page * 9);
-		System.out.println(lstPorduct);
-		System.out.println("aaaaaaaa");
+		
 		updateCurrentPage(request, page);
 		doPost(request, response);
 		request.setAttribute("lstProduct", lstPorduct);

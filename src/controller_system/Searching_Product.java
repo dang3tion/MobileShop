@@ -127,10 +127,7 @@ public class Searching_Product extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(url);
-		System.out.println(orderUrl);
-		System.out.println(priceUrl);
-		System.out.println("-----------");
+
 		request.setAttribute("current_page", page);
 		try {
 			request.setAttribute("totalPage",
@@ -141,6 +138,7 @@ public class Searching_Product extends HttpServlet {
 		}
 		listMain.setLstProduct(listProduct);
 		HttpSession session = request.getSession();
+		session.removeAttribute("listMain");
 		session.setAttribute("listMain", listMain);
 		request.setAttribute("urlOrder", orderUrl);
 		request.setAttribute("urlPrice", priceUrl);
