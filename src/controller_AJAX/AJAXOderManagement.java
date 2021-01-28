@@ -20,7 +20,7 @@ public class AJAXOderManagement extends HttpServlet {
 			throws ServletException, IOException {
 		int page = Integer.parseInt((String) request.getParameter("page"));
 
-		BO_Order bo = new BO_Order(page, 5);
+		BO_Order bo = new BO_Order(page, 10);
 		request.setAttribute("LIST_ORDER", bo.getList());
 		request.setAttribute("STTstart", bo.startRow());
 

@@ -31,9 +31,10 @@ public class Receipt extends HttpServlet {
 		} else {
 			currentPage = (Integer) session.getAttribute("CURRENT_PAGE_ORDER_MANAGEMENT");
 		}
-
-		BO_Order bo = new BO_Order(currentPage, 5);
-
+		System.out.println(currentPage);
+		BO_Order bo = new BO_Order(currentPage, 10);
+		System.out.println(bo.getList().size()+"aaaaa");
+		request.setAttribute("LIST_ORDER", bo.getList());
 		request.setAttribute("totalPage", bo.totalPage());
 		RequestDispatcher dispatcher //
 				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-receipt.jsp");
@@ -47,6 +48,8 @@ public class Receipt extends HttpServlet {
 
 		String action = (String) request.getParameter("action");
 
+		int page = Integer.parseInt(request.getParameter("page"));
+System.out.println("bbbb");
 		switch (action) {
 		case "CONFIRM":
 			dao.switchOrderStatus(id, ORDER_STATUS.COMPLETED);
@@ -61,8 +64,16 @@ public class Receipt extends HttpServlet {
 		default:
 			break;
 		}
+		HttpSession session = request.getSession();
+		session.setAttribute("CURRENT_PAGE_ORDER_MANAGEMENT", page);
 
-		doGet(request, response);
+		BO_Order bo = new BO_Order(page, 10);
+		System.out.println(bo.getList().size());
+		request.setAttribute("LIST_ORDER", bo.getList());
+		request.setAttribute("totalPage", bo.totalPage());
+		RequestDispatcher dispatcher //
+				= this.getServletContext().getRequestDispatcher("/VIEW/jsp/jsp-page/admin/admin-receipt.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

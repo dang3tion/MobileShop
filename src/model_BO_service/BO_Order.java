@@ -29,8 +29,9 @@ public class BO_Order {
 	}
 
 	public List<Order> getList() {
-		List<Order> listAcc = dao.getListOrder(startRow(), endRow());
-		return listAcc;
+		System.out.println(startRow());
+		System.out.println(endRow());
+		return dao.getListOrder(startRow(), endRow());
 
 	}
 
@@ -41,9 +42,9 @@ public class BO_Order {
 	}
 
 	public int totalPage() {
-		int num = getTotalOrder() / numRowPerPage;
+		int num = getTotalOrder() / 10;
 
-		if (getTotalOrder() % numRowPerPage > 1) {
+		if (getTotalOrder() % 10 > 1) {
 			num += 1;
 		}
 
@@ -51,22 +52,17 @@ public class BO_Order {
 	}
 
 	public int startRow() {
-		int startRow = 0;
-		if (pageNumber <= totalPage()) {
-			startRow = endRow() - numRowPerPage + 1;
-		}
-		return startRow;
+		
+		return (pageNumber-1)*10+1;
 	}
 
 	public int endRow() {
-		int endRow = 0;
-		if (pageNumber <= totalPage()) {
-			endRow = pageNumber * numRowPerPage;
-		}
-		return endRow;
-	}
-	public static void main(String[] args) {
-		System.out.println(new BO_Order(1,10).getList());
-	}
 	
+		return pageNumber*10;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(new BO_Order(1, 10).getList());
+	}
+
 }

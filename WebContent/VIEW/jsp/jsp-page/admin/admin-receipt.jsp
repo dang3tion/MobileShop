@@ -34,7 +34,7 @@
 					<div class="mt-5"></div>
 
 
-					<table class="table table-hover " id="receipt-table">
+					<table class="table table-hover " style="height:640px" id="receipt-table">
 						<thead class="thead-light">
 							<tr>
 								<th scope="col">STT</th>

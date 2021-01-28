@@ -206,7 +206,8 @@
 			data : {
 
 				id : id,
-				action : 'CONFIRM'
+				action : 'CONFIRM',
+				page : getMove()
 
 			},
 			success : function(responseText) {
@@ -229,7 +230,8 @@
 			data : {
 
 				id : id,
-				action : 'DELIVERY'
+				action : 'DELIVERY',
+				page : getMove()
 
 			},
 			success : function(responseText) {
@@ -250,7 +252,8 @@
 			data : {
 
 				id : id,
-				action : 'CANCEL'
+				action : 'CANCEL',
+				page : getMove()
 
 			},
 			success : function(responseText) {
