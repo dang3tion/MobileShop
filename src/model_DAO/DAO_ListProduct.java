@@ -110,6 +110,7 @@ public class DAO_ListProduct extends ExecuteCRUD {
 			
 			arr[i] = "" + list.getPara()[i % list.getPara().length];
 		}
+		System.out.println(query);
 		ArrayList<Product_form> lst = new ArrayList<Product_form>();
 		try (ResultSet rs = super.ExecuteQuery(query, arr)) {
 			while (rs.next()) {

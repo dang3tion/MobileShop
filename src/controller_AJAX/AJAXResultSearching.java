@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model_DAO.DAO_Attribute;
 import model_DAO.DAO_ListProduct;
 import model_DAO.DAO_ListProduct.LISTP;
 import model_beans.ListProduct;
@@ -24,10 +23,12 @@ public class AJAXResultSearching extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		ListProduct listMain = new ListProduct();
+		System.out.println("aaaxxxx");
 		if (session.getAttribute("listMain") != null) {
 			listMain = (ListProduct) session.getAttribute("listMain");
 		} else {
 			try {
+				System.out.println("aaaaaa");
 				listMain = DAO_ListProduct.getDao_ListProduct().getListProMenu(LISTP.HIGHESTPRICE, 100);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -49,7 +50,8 @@ public class AJAXResultSearching extends HttpServlet {
 		}
 
 		ArrayList<Product_form> lstPorduct = getListOther(listMain, (page - 1) * 9 + 1, page * 9);
-		
+		System.out.println("AJAXXXXXXXXXXXXXXX");
+		System.out.println(lstPorduct);
 		updateCurrentPage(request, page);
 		doPost(request, response);
 		request.setAttribute("lstProduct", lstPorduct);

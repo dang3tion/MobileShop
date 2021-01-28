@@ -27,6 +27,8 @@ public class Searching_Product extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		session.removeAttribute("listMain");
 		String url = "searchingProduct";
 
 		String typeList = request.getParameter("dssanpham");
@@ -137,8 +139,7 @@ public class Searching_Product extends HttpServlet {
 			e.printStackTrace();
 		}
 		listMain.setLstProduct(listProduct);
-		HttpSession session = request.getSession();
-		session.removeAttribute("listMain");
+		
 		session.setAttribute("listMain", listMain);
 		request.setAttribute("urlOrder", orderUrl);
 		request.setAttribute("urlPrice", priceUrl);

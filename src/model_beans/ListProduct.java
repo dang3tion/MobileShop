@@ -76,7 +76,18 @@ public class ListProduct implements Serializable {
 		StringBuilder str = new StringBuilder();
 		str.append("SELECT * FROM  (SELECT ROW_NUMBER() OVER (");
 		if (orderList.isEmpty()) {
-			str.append(" ORDER BY MASP ASC ");
+			switch (query) {
+			case "SELECT * FROM GET_PRODUCT_SPECIAL(?) ": {
+				str.append(" ORDER BY AVGDANHGIA DESC ");
+				break;
+			}
+			case "SELECT * FROM GET_PRODUCT_NEW(?) ": {
+				str.append(" ORDER BY NGAYCAPNHAT DESC ");
+				break;
+			}
+			default:
+				str.append(" ORDER BY GIA DESCF");
+			}
 		} else {
 			for (SELECT s : orderList.keySet()) {
 				if (count == 0) {
