@@ -58,9 +58,34 @@
 									<div class="frame"
 										style="box-shadow: 1px 1px 3px -1px #5f5f5f;">
 										<div>
-											<p style="font-style: italic; color: #2196f3;">
-												<i class="fas fa-check-circle"></i> ${reString }
-											</p>
+										<c:if test="${confirm }">
+										<c:choose>
+
+
+													<c:when test="${result}">
+
+														<p style="font-style: italic; color: #2196f3;">
+															<i class="fas fa-check-circle"></i>Cập nhật sản phẩm thành
+															công
+														</p>
+
+													</c:when>
+													<c:when test="${!result }">
+
+														<p style="font-style: italic; color: #ff5722;">
+															<i class="fas fa-exclamation-circle"></i> Cập nhật sản phẩm
+															không thành công
+														</p>
+														<p style="font-style: italic; color: #ff5722;">
+															${reString }</p>
+
+
+
+													</c:when>
+
+												</c:choose>
+										</c:if>
+									
 										</div>
 										<h5>Thông tin chung</h5>
 										<ul class="information">

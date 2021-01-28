@@ -198,5 +198,7 @@ public class DAO_ListProduct extends ExecuteCRUD {
 			}
 		}
 		return p;
+	}public static void main(String[] args) throws SQLException {
+		System.out.println(DAO_ListProduct.getDao_ListProduct().getListProMenu(LISTP.SPECIAL, 8).getLstProduct());
 	}
 }

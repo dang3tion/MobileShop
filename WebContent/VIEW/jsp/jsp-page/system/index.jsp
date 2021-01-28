@@ -96,7 +96,7 @@ request.setAttribute("color", dao.colorWeb());
 							<div class="carousel-inner">
 								<div class="carousel-item active ">
 									<div class="row d-block ">
-										<c:forEach items="${lstPrice }" var="pro" begin="0" end="3">
+										<c:forEach items="${lstSpecial }" var="pro" begin="0" end="3">
 											<div class="col-3">
 												<c:import
 													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
@@ -117,7 +117,7 @@ request.setAttribute("color", dao.colorWeb());
 								</div>
 								<div class="carousel-item ">
 									<div class="row d-block">
-										<c:forEach items="${lstPrice }" var="pro" begin="4" end="7">
+										<c:forEach items="${lstSpecial }" var="pro" begin="4" end="7">
 											<div class="col-3">
 												<c:import
 													url="/VIEW/jsp/jsp-component/card-product-index.jsp">
@@ -241,7 +241,7 @@ request.setAttribute("color", dao.colorWeb());
 				<!-- 				Hang ket qua -->
 				<div class="title overflow-auto mb-3">
 					<div class="title float-left">
-						<h3>Danh sách sản phẩm từ giá cao nhất</h3>
+						<h3>Danh sách sản phẩm</h3>
 					</div>
 					<div class="title float-right">
 						<a
