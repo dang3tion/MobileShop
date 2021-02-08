@@ -15,16 +15,18 @@ Database :
 - Microsoft SQL server 2019 
 
 API, plugin, add-on
-- facebook comment
-- Login with google
-- Google Recaptcha V2
-- Zalo chat widget
+facebook comment
+Login with google
+Google Recaptcha V2
+Zalo chat widget
+CKEditor
+Google Drive API
 
 - Mô hình : MVC, singleton. 
-+- M -> java beans, utility model
-+- V -> java JSP 
-+- C -> java servlet, filter
-+- Singleton -> DAO, BO services
+M -> java beans, utility model
+V -> java JSP 
+C -> java servlet, filter
+Singleton -> DAO, BO services
 
 
 
