@@ -24,7 +24,7 @@ API, plugin, add-on :
 - Google Drive API.
 
 Mô hình, Design Parten :
-- MVC, singleton, DTO 
+- MVC, singleton, DTO.
 M -> java beans, utility model.
 V -> java JSP .
 C -> java servlet, filter.
