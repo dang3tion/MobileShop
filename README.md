@@ -21,10 +21,10 @@ API, plugin, add-on
 - Zalo chat widget
 
 -- Mô hình : MVC, singleton. 
-++ M -> java beans, utility model
-++ V -> java JSP 
-++ C -> java servlet, filter
-++ Singleton -> DAO, BO services
++- M -> java beans, utility model
++- V -> java JSP 
++- C -> java servlet, filter
++- Singleton -> DAO, BO services
 
 
 
