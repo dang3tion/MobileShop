@@ -23,8 +23,8 @@ API, plugin, add-on :
 - CKEditor,
 - Google Drive API.
 
-Mô hình :
-- MVC, singleton. 
+Mô hình, Design Parten :
+- MVC, singleton, DTO 
 M -> java beans, utility model.
 V -> java JSP .
 C -> java servlet, filter.
