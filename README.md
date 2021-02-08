@@ -1,5 +1,6 @@
 # MobileShop
-#ĐỒ ÁN MÔN HỌC - Môn Học : Lập trình web 
+
+ĐỒ ÁN MÔN HỌC - Môn Học : Lập trình web 
 GV : ThS. Phan Đình Long .
 Thời gian hoàn thành : 12/2020
 
@@ -24,10 +25,10 @@ API, plugin, add-on :
 
 Mô hình :
 - MVC, singleton. 
--M -> java beans, utility model.
--V -> java JSP .
--C -> java servlet, filter.
--Singleton -> DAO, BO services.
+M -> java beans, utility model.
+V -> java JSP .
+C -> java servlet, filter.
+Singleton -> DAO, BO services.
 
 
 
