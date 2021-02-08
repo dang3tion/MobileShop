@@ -20,7 +20,7 @@ API, plugin, add-on
 - Google Recaptcha V2
 - Zalo chat widget
 
--- Mô hình : MVC, singleton. 
+- Mô hình : MVC, singleton. 
 +- M -> java beans, utility model
 +- V -> java JSP 
 +- C -> java servlet, filter
