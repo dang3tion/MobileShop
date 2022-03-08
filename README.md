@@ -1,7 +1,7 @@
 # MobileShop
+**Chi tiết vui lòng xem tại [Hướng dẫn sử dụng](https://github.com/dang3tion/MobileShop/blob/main/Huongdansudung.docx)**
 
 ĐỒ ÁN MÔN HỌC - Môn Học : Lập trình web 
-GV : ThS. Phan Đình Long .
 Thời gian hoàn thành : 12/2020
 
 Front-End
